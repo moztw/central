@@ -46,8 +46,8 @@ $lang['Attach_posting_cp_explain'] = '如果您點選「新增附加檔案」，
 
 // Posting/PM -> Posting Attachments
 $lang['Add_attachment'] = '新增附加檔案';
-$lang['Add_attachment_title'] = '新增附加檔案';
-$lang['Add_attachment_explain'] = '如果您不想要新增附加檔案到您的文章中，請保持欄位空白即可。';
+$lang['Add_attachment_title'] = '新增附加檔案或貼圖';
+$lang['Add_attachment_explain'] = '這裡可以附上方便您討論用的螢幕貼圖或附檔，但請勿濫用。如果您不想要新增附加檔案到您的文章中，請保持欄位空白即可。';
 $lang['File_name'] = '檔名';
 $lang['File_comment'] = '檔案註解';
 
