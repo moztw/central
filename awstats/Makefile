@@ -5,6 +5,7 @@ CONF 	?= moztw.org
 AWROOT	= /home/moztw/awstats
 DIR	= $(AWROOT)/$(CONF)/$(YYYY)/$(MM)
 PROG	= ./prog/awstats.pl
+INDEXFN = $(AWROOT)/$(CONF)/index.shtml
 
 all:
 	echo $(CONF)
@@ -14,7 +15,10 @@ update:
 
 output:
 	mkdir -p $(DIR)
-	cd $(AWROOT)/$(CONF) && find 2*/* -type d | sed -e 's#\(.*\)#<a href="\1/">\1</a><br>#g' > index.html
+	# build header
+	echo "<!--#include virtual='/header.shtml'--><h1>Load statistics for $(CONF)</h1><ul>" > $(INDEXFN)
+	cd $(AWROOT)/$(CONF) && find 2*/* -type d | sed -e 's#\(.*\)#<li><a href="\1/">\1</a></li>#g' >> $(INDEXFN)
+	echo "</ul><!--#include virtual='/footer.shtml'-->" >> $(INDEXFN)
 	nice -n 20 /usr/local/bin/awstats_buildstaticpages.pl -config=$(CONF) -dir=$(DIR) -awstatsprog=$(PROG) -year=$(YYYY) -month=$(MM)
 	cd $(DIR) && ln -sf awstats.$(CONF).html index.html
 
