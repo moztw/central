@@ -64,8 +64,8 @@ include($phpbb_root_path . 'attach_mod/includes/functions_admin.' . $phpEx);
 $types_download = array(INLINE_LINK, PHYSICAL_LINK);
 $modes_download = array('inline', 'physical');
 
-$types_category = array(IMAGE_CAT, STREAM_CAT, SWF_CAT);
-$modes_category = array($lang['Category_images'], $lang['Category_stream_files'], $lang['Category_swf_files']);
+$types_category = array(IMAGE_CAT, STREAM_CAT, SWF_CAT, XPI_CAT);
+$modes_category = array($lang['Category_images'], $lang['Category_stream_files'], $lang['Category_swf_files'], "Firefox Install");
 
 if(isset($HTTP_GET_VARS['size']) || isset($HTTP_POST_VARS['size']))
 {

@@ -1,0 +1,1 @@
+<div style="border:5px solid red; padding: 2em; margin: 1em 5em;">建議您：<ol><li>發問前，請先使用頁面上方的「<a href="http://forum.moztw.org/search.php">搜尋</a>」功能檢查看看，可能早就有解答囉！</li><li style="color: red;">碰到不能看的網頁？請貼到「<a href="http://forum.moztw.org/viewforum.php?f=13">問題網頁與技術傳教</a>」區，並附上<strong>網址</strong>跟碰上問題時的<strong>操作步驟</strong>。</li></ol></div>

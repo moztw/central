@@ -598,7 +598,14 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
 
 				if ($link)
 				{
+					
+					$BC_assign_type = "postrow.attach.attachrow";
 					$upload_image = '';
+
+					if (intval($display_categories[$extension]) == XPI_CAT){
+						$BC_assign_type = "postrow.attach.cat_firefox_install";
+					}
+						
 
 					if ( ($attach_config['upload_img'] != '') && ($upload_icons[$extension] == '') )
 					{
@@ -614,7 +621,7 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
 					//
 					// display attachment
 					//
-					$template->assign_block_vars('postrow.attach.attachrow', array(
+					$template->assign_block_vars($BC_assign_type, array(
 						'U_DOWNLOAD_LINK' => $filename,
 						'S_UPLOAD_IMAGE' => $upload_image,
 						
@@ -913,13 +920,16 @@ function display_attachments($post_id)
 			}
 
 			if ($link)
-			{
+			{	$BC_assign_type = "postrow.attach.attachrow";
 				$target_blank = ( (intval($display_categories[$attachments['_' . $post_id][$i]['extension']]) == IMAGE_CAT) ) ? 'target="_blank"' : '';
 
+				if (intval($display_categories[$attachments['_' . $post_id][$i]['extension']]) == XPI_CAT){
+					$BC_assign_type = "postrow.attach.cat_firefox_install";
+				}
 				//
 				// display attachment
 				//
-				$template->assign_block_vars('postrow.attach.attachrow', array(
+				$template->assign_block_vars($BC_assign_type, array(
 					'U_DOWNLOAD_LINK' => append_sid('download.' . $phpEx . '?id=' . $attachments['_' . $post_id][$i]['attach_id']),
 					'S_UPLOAD_IMAGE' => $upload_image,
 						

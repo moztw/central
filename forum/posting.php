@@ -958,6 +958,7 @@ include($phpbb_root_path . 'includes/page_header.'.$phpEx);
 $template->set_filenames(array(
 	'body' => 'posting_body.tpl', 
 	'pollbody' => 'posting_poll_body.tpl', 
+	'sbusbody' => 'posting_sbus.tpl',
 	'reviewbody' => 'posting_topic_review.tpl')
 );
 make_jumpbox('viewforum.'.$phpEx);
@@ -1056,7 +1057,9 @@ $template->assign_vars(array(
 	'S_POST_ACTION' => append_sid("posting.$phpEx"),
 	'S_HIDDEN_FORM_FIELDS' => $hidden_form_fields)
 );
-
+if( $mode == 'newtopic') {
+	$template->assign_var_from_handle('SEARCHFIRST', 'sbusbody');
+}
 //
 // Poll entry switch/output
 //

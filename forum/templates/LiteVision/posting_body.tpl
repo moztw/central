@@ -259,6 +259,7 @@ function storeCaret(textEl) {
 
 {POST_PREVIEW_BOX}
 {ERROR_BOX}
+{SEARCHFIRST}
 
 <table width="98%"  border="0" cellspacing="0" cellpadding="0" align="center">
     <td>
