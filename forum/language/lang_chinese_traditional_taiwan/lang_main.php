@@ -165,7 +165,7 @@ $lang['Search_new'] = '搜尋新文章';
 $lang['Search_your_posts'] = '檢視您發表的文章';
 $lang['Search_unanswered'] = '檢視未回覆的主題';
 
-$lang['Register'] = '會員註冊';
+$lang['Register'] = '註冊新會員';
 $lang['Profile'] = '個人資料';
 $lang['Edit_profile'] = '編輯個人資料';
 $lang['Search'] = '搜尋';
