@@ -49,6 +49,8 @@ $forum_auth_ary = array(
 	"auth_pollcreate" => AUTH_REG
 );
 
+$forum_auth_ary['auth_attachments'] = AUTH_REG;
+$forum_auth_ary['auth_download'] = AUTH_REG;
 //
 // Mode setting
 //

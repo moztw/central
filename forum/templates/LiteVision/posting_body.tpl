@@ -255,7 +255,7 @@ function storeCaret(textEl) {
 <br clear="all" />
 <!-- END privmsg_extensions -->
 
-<form action="{S_POST_ACTION}" method="post" name="post" onsubmit="return checkForm(this)">
+<form action="{S_POST_ACTION}" method="post" name="post" onsubmit="return checkForm(this)" {S_FORM_ENCTYPE}>
 
 {POST_PREVIEW_BOX}
 {ERROR_BOX}
@@ -474,6 +474,7 @@ function storeCaret(textEl) {
           <!-- END switch_type_toggle -->
         </table></td>
       </tr>
+	{ATTACHBOX}
 	{POLLBOX} 
 	<tr> 
         <td colspan="2" valign="top"> <div align="center">{S_HIDDEN_FORM_FIELDS}

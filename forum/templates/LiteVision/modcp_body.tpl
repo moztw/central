@@ -73,7 +73,7 @@
 	<!-- BEGIN topicrow -->
 	<tr> 
 	  <td bgcolor="#E1ECFB" align="center" valign="middle"><img src="{topicrow.TOPIC_FOLDER_IMG}" width="19" height="18" alt="{topicrow.L_TOPIC_FOLDER_ALT}" title="{topicrow.L_TOPIC_FOLDER_ALT}" /></td>
-	  <td bgcolor="#E1ECFB">&nbsp;<span class="topictitle">{topicrow.TOPIC_TYPE}<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a></span></td>
+	  <td bgcolor="#E1ECFB">&nbsp;<span class="topictitle">{topicrow.TOPIC_ATTACHMENT_IMG}{topicrow.TOPIC_TYPE}<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a></span></td>
 	  <td bgcolor="#EAF1FC" align="center" valign="middle"><span class="postdetails">{topicrow.REPLIES}</span></td>
 	  <td bgcolor="#E1ECFB" align="center" valign="middle"><span class="postdetails">{topicrow.LAST_POST_TIME}</span></td>
 	  <td bgcolor="#EAF1FC" align="center" valign="middle"> 

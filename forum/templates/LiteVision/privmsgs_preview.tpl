@@ -43,7 +43,11 @@
               <td width="100%" bgcolor="#E1ECFB"><span class="genmed">&nbsp;{POST_SUBJECT}</span></td>
             </tr>
             <tr>
-              <td valign="top" colspan="2" bgcolor="#EAF1FC"><span class="postbody">{MESSAGE}</span></td>
+              <td valign="top" colspan="2" bgcolor="#EAF1FC"><span class="postbody">{MESSAGE}</span>
+	<!-- BEGIN postrow -->
+	{ATTACHMENTS}
+	<!-- END postrow -->
+	</td>
             </tr>
           </table></td>
         </tr>

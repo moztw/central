@@ -65,14 +65,14 @@ src="{U_PRINT_IMG}" alt="{L_PRINT}" border="0" /></a>
                 {postrow.POSTER_FROM}</span><br />            </td>
             <td width="79%" valign="top"><table width="100%" border="0" cellspacing="2" cellpadding="0">
                 <tr>
-                  <td width="100%"><a href="{postrow.U_MINI_POST}"><img src="{postrow.MINI_POST_IMG}" width="12" height="9" alt="{postrow.L_MINI_POST_ALT}" title="{postrow.L_MINI_POST_ALT}" border="0" /></a><span class="postdetails">{L_POSTED}: {postrow.POST_DATE}</span></td>
+                  <td width="100%"><b style='color: red; font-size: 12px;'>{postrow.POST_SUBJECT}</b> <a href="{postrow.U_MINI_POST}"><img src="{postrow.MINI_POST_IMG}" width="12" height="9" alt="{postrow.L_MINI_POST_ALT}" title="{postrow.L_MINI_POST_ALT}" border="0" /></a><span class="postdetails">{L_POSTED}: {postrow.POST_DATE}</span></td>
                   <td valign="top" nowrap="nowrap">{postrow.QUOTE_IMG} {postrow.EDIT_IMG} {postrow.DELETE_IMG} {postrow.IP_IMG}</td>
                 </tr>
                 <tr valign="top">
                   <td colspan="2" class="border-bleu-sus">&nbsp;</td>
                 </tr>
                 <tr>
-                  <td colspan="2"><span class="postbody">{postrow.MESSAGE}{postrow.SIGNATURE}</span><span class="gensmall">{postrow.EDITED_MESSAGE}</span></td>
+                  <td colspan="2"><span class="postbody">{postrow.MESSAGE}</span>{postrow.ATTACHMENTS}<span class="postbody">{postrow.SIGNATURE}</span><span class="gensmall">{postrow.EDITED_MESSAGE}</span></td>
                 </tr>
             </table></td>
           </tr>

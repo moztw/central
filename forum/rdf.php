@@ -47,16 +47,6 @@ $server_port = ( $board_config['server_port'] <> 80 ) ? ':' . trim($board_config
 $index_url = $server_protocol . $server_name . $server_port . $index;
 $viewtopic_url = $server_protocol . $server_name . $server_port . $viewtopic;
 
-// Set the encoding
-$rdf = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
-<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns=\"http://my.netscape.com/rdf/simple/0.9/\">
-
-<channel>
-    <title>" . $board_config['sitename'] . " Forum</title>
-    <link>" . $index_url . "</link>
-    <description>" . $board_config['site_desc'] . "</description>
-</channel>
-";
 
 $fid = ( isset($HTTP_GET_VARS['fid']) ) ? intval($HTTP_GET_VARS['fid']) : '';
 $sql_where = ( !empty($fid) ) ? " AND f.forum_id = $fid " : " ";
@@ -88,6 +78,25 @@ if ( count($topics) == 0 )
 }
 else
 {
+// Set the encoding
+$rdftitle = $board_config['sitename'];
+$rdflink = $index_url;
+$rdfdesc = $board_config['site_desc'];
+if (!empty($fid) ) {
+	$rdftitle = $rdftitle . "; " . $topics[0]['forum_name'];
+	$rdflink = $index_url . '';
+	$rdfdesc = $board_config['site_desc'];
+}
+
+$rdf = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
+<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns=\"http://my.netscape.com/rdf/simple/0.9/\">
+
+<channel>
+    <title>" . $rdftitle  . " Forum</title>
+    <link>" . $index_url . "</link>
+    <description>" . $rdfdesc . "</description>
+</channel>
+";
 // Interesting...very very interesting.
     for ($i = 0; $i < count($topics); $i++)
     {

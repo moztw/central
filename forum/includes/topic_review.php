@@ -42,6 +42,8 @@ function topic_review($topic_id, $is_inline_review)
 			FROM " . TOPICS_TABLE . " t, " . FORUMS_TABLE . " f 
 			WHERE t.topic_id = $topic_id
 				AND f.forum_id = t.forum_id";
+		$tmp = '';
+		attach_setup_viewtopic_auth($tmp, $sql);
 		if ( !($result = $db->sql_query($sql)) )
 		{
 			message_die(GENERAL_ERROR, 'Could not obtain topic information', '', __LINE__, __FILE__, $sql);
@@ -51,6 +53,7 @@ function topic_review($topic_id, $is_inline_review)
 		{
 			message_die(GENERAL_MESSAGE, 'Topic_post_not_exist');
 		}
+		$db->sql_freeresult($result);
 
 		$forum_id = $forum_row['forum_id'];
 		$topic_title = $forum_row['topic_title'];
@@ -114,6 +117,7 @@ function topic_review($topic_id, $is_inline_review)
 		message_die(GENERAL_ERROR, 'Could not obtain post/user information', '', __LINE__, __FILE__, $sql);
 	}
 
+	init_display_review_attachments($is_auth);
 	//
 	// Okay, let's do the loop, yeah come on baby let's do the loop
 	// and it goes like this ...
@@ -198,6 +202,7 @@ function topic_review($topic_id, $is_inline_review)
 					
 				'L_MINI_POST_ALT' => $mini_post_alt)
 			);
+			display_review_attachments($row['post_id'], $row['post_attachment'], $is_auth);
 
 			$i++;
 		}
@@ -207,6 +212,7 @@ function topic_review($topic_id, $is_inline_review)
 	{
 		message_die(GENERAL_MESSAGE, 'Topic_post_not_exist', '', __LINE__, __FILE__, $sql);
 	}
+	$db->sql_freeresult($result);
 
 	$template->assign_vars(array(
 		'L_AUTHOR' => $lang['Author'],

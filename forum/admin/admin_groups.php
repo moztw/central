@@ -56,6 +56,7 @@ else
 	$mode = '';
 }
 
+attachment_quota_settings('group', $HTTP_POST_VARS['group_update'], $mode);
 if ( isset($HTTP_POST_VARS['edit']) || isset($HTTP_POST_VARS['new']) )
 {
 	//

@@ -95,7 +95,11 @@
               <td nowrap="nowrap" bgcolor="#E1ECFB" align="right"> {QUOTE_PM_IMG} {EDIT_PM_IMG}&nbsp;</td>
             </tr>
             <tr>
-              <td valign="top" colspan="3" bgcolor="#EAF1FC"><span class="postbody">{MESSAGE}</span></td>
+              <td valign="top" colspan="3" bgcolor="#EAF1FC"><span class="postbody">{MESSAGE}</span>
+<!-- BEGIN postrow -->
+	{ATTACHMENTS}
+<!-- END postrow -->
+	  </td>
             </tr>
             <tr>
               <td width="100%" height="28" valign="bottom" colspan="3" bgcolor="#E1ECFB">
@@ -122,6 +126,11 @@
                   <input type="submit" name="save" value="{L_SAVE_MSG}" class="form2" />
 &nbsp;
       <input type="submit" name="delete" value="{L_DELETE_MSG}" class="form2" />
+<!-- BEGIN switch_attachments -->
+		&nbsp; 
+		<input type="submit" name="pm_delete_attach" value="{L_DELETE_ATTACHMENTS}" class="liteoption" />
+<!-- END switch_attachments -->
+
               </td>
             </tr>
           </table></td>

@@ -111,6 +111,7 @@ function prune($forum_id, $prune_date, $prune_all = false)
 			}
 
 			remove_search_post($sql_post);
+			prune_attachments($sql_post);
 
 			return array ('topics' => $pruned_topics, 'posts' => $pruned_posts);
 		}

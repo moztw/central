@@ -168,6 +168,7 @@ $search = '<a href="' . $temp_url . '">' . $lang['Search_user_posts'] . '</a>';
 //
 $page_title = $lang['Viewing_profile'];
 include($phpbb_root_path . 'includes/page_header.'.$phpEx);
+display_upload_attach_box_limits($profiledata['user_id']);
 
 $template->assign_vars(array(
 	'USERNAME' => $profiledata['username'],

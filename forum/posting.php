@@ -223,6 +223,7 @@ switch ( $mode )
 if ( $result = $db->sql_query($sql) )
 {
 	$post_info = $db->sql_fetchrow($result);
+	$db->sql_freeresult($result);
 
 	$forum_id = $post_info['forum_id'];
 	$forum_name = $post_info['forum_name'];
@@ -400,6 +401,7 @@ else
 		}
 
 		$notify_user = ( $db->sql_fetchrow($result) ) ? TRUE : $userdata['user_notify'];
+		$db->sql_freeresult($result);
 	}
 	else
 	{
@@ -408,6 +410,7 @@ else
 }
 
 $attach_sig = ( $submit || $refresh ) ? ( ( !empty($HTTP_POST_VARS['attach_sig']) ) ? TRUE : 0 ) : ( ( $userdata['user_id'] == ANONYMOUS ) ? 0 : $userdata['user_attachsig'] );
+execute_posting_attachment_handling();
 
 // --------------------
 //  What shall we do?
@@ -474,12 +477,12 @@ else if ( $mode == 'vote' )
 				FROM " . VOTE_USERS_TABLE . "  
 				WHERE vote_id = $vote_id 
 					AND vote_user_id = " . $userdata['user_id'];
-			if ( !($result = $db->sql_query($sql)) )
+			if ( !($result2 = $db->sql_query($sql)) )
 			{
 				message_die(GENERAL_ERROR, 'Could not obtain user vote data for this topic', '', __LINE__, __FILE__, $sql);
 			}
 
-			if ( !($row = $db->sql_fetchrow($result)) )
+			if ( !($row = $db->sql_fetchrow($result2)) )
 			{
 				$sql = "UPDATE " . VOTE_RESULTS_TABLE . " 
 					SET vote_result = vote_result + 1 
@@ -503,11 +506,13 @@ else if ( $mode == 'vote' )
 			{
 				$message = $lang['Already_voted'];
 			}
+			$db->sql_freeresult($result2);
 		}
 		else
 		{
 			$message = $lang['No_vote_option'];
 		}
+		$db->sql_freeresult($result);
 
 		$template->assign_vars(array(
 			'META' => '<meta http-equiv="refresh" content="3;url=' . append_sid("viewtopic.$phpEx?" . POST_TOPIC_URL . "=$topic_id") . '">')
@@ -564,6 +569,7 @@ else if ( $submit || $confirm )
 			$user_id = ( $mode == 'reply' || $mode == 'newtopic' ) ? $userdata['user_id'] : $post_data['poster_id'];
 			update_post_stats($mode, $post_data, $forum_id, $topic_id, $post_id, $user_id);
 		}
+		$attachment_mod['posting']->insert_attachment($post_id);
 
 		if ($error_msg == '' && $mode != 'poll_delete')
 		{
@@ -624,6 +630,7 @@ if( $refresh || isset($HTTP_POST_VARS['del_poll_option']) || $error_msg != '' )
 
 	if ( isset($poll_add) && !empty($HTTP_POST_VARS['add_poll_option_text']) )
 	{
+		#$poll_options[] = htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['add_poll_option_text'])));
 		$poll_options[] = ereg_replace("&amp;","&",htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['add_poll_option_text']))));
 	}
 
@@ -701,6 +708,7 @@ if( $refresh || isset($HTTP_POST_VARS['del_poll_option']) || $error_msg != '' )
 		$template->set_filenames(array(
 			'preview' => 'posting_preview.tpl')
 		);
+		$attachment_mod['posting']->preview_attachments();
 
 		$template->assign_vars(array(
 			'TOPIC_TITLE' => $preview_subject,
@@ -802,6 +810,8 @@ else
 			{
 				$subject = 'Re: ' . $subject;
 			}
+			# we don't need new subject
+			$subject = '';
 
 			$mode = 'reply';
 		}

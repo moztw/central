@@ -91,7 +91,7 @@
         <td width="60%" bgcolor="#EAF1FC" class="border-bleu-dr"><table width="98%"  border="0" align="center" cellpadding="0" cellspacing="2">
             <tr>
               <td width="6%" valign="top"><div align="center"><img src="{topicrow.TOPIC_FOLDER_IMG}" alt="{topicrow.L_TOPIC_FOLDER_ALT}" title="{topicrow.L_TOPIC_FOLDER_ALT}" /></div></td>
-              <td width="94%" valign="top"><span class="topictitle"> {topicrow.TOPIC_TYPE}<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a></span><br />
+              <td width="94%" valign="top"><span class="topictitle"> {topicrow.TOPIC_ATTACHMENT_IMG}{topicrow.TOPIC_TYPE}<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a></span><br />
 					<span class="genmed">&nbsp;&raquo;{topicrow.TOPIC_AUTHOR}</span><br />
                    <span class="gensmall">{topicrow.GOTO_PAGE}</span><br></td>
             </tr>
@@ -107,6 +107,7 @@
       <!-- END topicrow -->
     </table></td>
   </tr>
+<TR><td style='text-align: right;'><span class="gensmall"><b>{PAGINATION}</b></span></td>
 </table>
 </form>
 
@@ -122,7 +123,6 @@
                       <td width="5%"><table height="21"  border="0" cellpadding="0" cellspacing="0">
                           <tr>
                             <td><img src="templates/LiteVision/images/05.gif" width="49" height="21"></td>
-                          </tr>
                       </table></td>
                       <td width="95%"><span class="genmed"><strong>&nbsp;&nbsp;&nbsp;ICONS</strong></span></td>
                     </tr>

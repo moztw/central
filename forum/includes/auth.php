@@ -108,6 +108,7 @@ function auth($type, $forum_id, $userdata, $f_access = '')
 		default:
 			break;
 	}
+	attach_setup_basic_auth($type, $auth_fields, $a_sql);
 
 	//
 	// If f_access has been passed, or auth is needed to return an array of forums
@@ -132,7 +133,6 @@ function auth($type, $forum_id, $userdata, $f_access = '')
 			$db->sql_freeresult($result);
 			return array();
 		}
-
 		$db->sql_freeresult($result);
 	}
 
@@ -172,6 +172,7 @@ function auth($type, $forum_id, $userdata, $f_access = '')
 			}
 			while( $row = $db->sql_fetchrow($result) );
 		}
+		$db->sql_freeresult($result);
 	}
 
 	$is_admin = ( $userdata['user_level'] == ADMIN && $userdata['session_logged_in'] ) ? TRUE : 0;

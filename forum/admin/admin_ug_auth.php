@@ -88,6 +88,7 @@ $field_names = array(
 	'auth_vote' => $lang['Vote'], 
 	'auth_pollcreate' => $lang['Pollcreate']);
 
+attach_setup_usergroup_auth($forum_auth_fields, $auth_field_match, $field_names);
 // ---------------
 // Start Functions
 //

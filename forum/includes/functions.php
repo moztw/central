@@ -253,6 +253,7 @@ function init_userprefs($userdata)
 		include($phpbb_root_path . 'language/lang_' . $board_config['default_lang'] . '/lang_admin.' . $phpEx);
 	}
 
+	include_attach_lang();
 	//
 	// Set up style
 	//

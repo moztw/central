@@ -22,7 +22,10 @@
         <tr>
           <td bgcolor="#EAF1FC"><table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
             <tr>
-              <td> <span class="postbody">{MESSAGE}</span> </td>
+              <td> <span class="postbody">{MESSAGE}</span> 
+					<!-- BEGIN postrow -->
+					{ATTACHMENTS}
+					<!-- END postrow -->
             </tr>
           </table></td>
         </tr>

@@ -210,6 +210,7 @@ while ( $row = $db->sql_fetchrow($result) )
 {
 	$board_config[$row['config_name']] = $row['config_value'];
 }
+include($phpbb_root_path . 'attach_mod/attachment_mod.'.$phpEx);
 
 if (file_exists('install') || file_exists('contrib'))
 {

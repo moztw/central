@@ -69,6 +69,25 @@
 		  <td width="33%" align="right" bgcolor="#E1ECFB"><div align="center"><span class="gensmall">100%</span></div></td>
 		</tr>
 	  </table>
+	  <table width="175" cellspacing="1" cellpadding="2" border="0" class="bodyline">
+		<tr> 
+		  <td colspan="3" width="175" class="row1" nowrap="nowrap"><span class="gensmall">{ATTACH_BOX_SIZE_STATUS}</span></td>
+		</tr>
+		<tr> 
+		  <td colspan="3" width="175" class="row2">
+			<table cellspacing="0" cellpadding="1" border="0">
+			  <tr> 
+				<td bgcolor="{T_TD_COLOR2}"><img src="templates/subSilver/images/spacer.gif" width="{ATTACHBOX_LIMIT_IMG_WIDTH}" height="8" alt="{ATTACH_LIMIT_PERCENT}" /></td>
+			  </tr>
+			</table>
+		  </td>
+		</tr>
+		<tr> 
+		  <td width="33%" class="row1"><span class="gensmall">0%</span></td>
+		  <td width="34%" align="center" class="row1"><span class="gensmall">50%</span></td>
+		  <td width="33%" align="right" class="row1"><span class="gensmall">100%</span></td>
+		</tr>
+	  </table>
 	  <div align="center">
 	    <!-- END switch_box_size_notice -->
 	    </div></td>
@@ -130,7 +149,7 @@
 	<!-- BEGIN listrow -->
 	<tr> 
 	  <td bgcolor="#E1ECFB" width="5%" align="center" valign="middle"><img src="{listrow.PRIVMSG_FOLDER_IMG}" width="19" height="18" alt="{listrow.L_PRIVMSG_FOLDER_ALT}" title="{listrow.L_PRIVMSG_FOLDER_ALT}" /></td>
-	  <td width="55%" valign="middle" bgcolor="#E1ECFB"><span class="topictitle">&nbsp;<a href="{listrow.U_READ}" class="topictitle">{listrow.SUBJECT}</a></span></td>
+	  <td width="55%" valign="middle" bgcolor="#E1ECFB">{listrow.PRIVMSG_ATTACHMENTS_IMG}<span class="topictitle">&nbsp;<a href="{listrow.U_READ}" class="topictitle">{listrow.SUBJECT}</a></span></td>
 	  <td width="20%" valign="middle" align="center" bgcolor="#E1ECFB"><span class="name">&nbsp;<a href="{listrow.U_FROM_USER_PROFILE}" class="name">{listrow.FROM}</a></span></td>
 	  <td width="15%" align="center" valign="middle" bgcolor="#E1ECFB"><span class="postdetails">{listrow.DATE}</span></td>
 	  <td width="5%" align="center" valign="middle" bgcolor="#E1ECFB"><span class="postdetails"> 

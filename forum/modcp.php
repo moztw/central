@@ -336,6 +336,7 @@ switch( $mode )
 				}
 
 				remove_search_post($post_id_sql);
+				delete_attachment(explode(', ', $post_id_sql));
 			}
 
 			if ( $vote_id_sql != '' )
@@ -1181,6 +1182,7 @@ switch( $mode )
 				'REPLIES' => $topic_replies,
 				'LAST_POST_TIME' => $last_post_time,
 				'TOPIC_ID' => $topic_id,
+				'TOPIC_ATTACHMENT_IMG' => topic_attachment_image($row['topic_attachment']),
 					
 				'L_TOPIC_FOLDER_ALT' => $folder_alt)
 			);

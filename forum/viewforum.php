@@ -376,6 +376,7 @@ if ($is_auth['auth_reply']) $s_auth_can .= $lang['Rules_reply_can'] . '<br/>';
 if ($is_auth['auth_edit']) $s_auth_can .= $lang['Rules_edit_can'] . '<br/>';
 if ($is_auth['auth_delete']) $s_auth_can .= $lang['Rules_delete_can'] . '<br/>';
 if ($is_auth['auth_vote']) $s_auth_can .= $lang['Rules_vote_can'] . '<br/>';
+attach_build_auth_levels($is_auth, $s_auth_can);
 
 if ( $is_auth['auth_mod'] )
 {
@@ -404,7 +405,7 @@ make_jumpbox('viewforum.'.$phpEx);
 
 $template->assign_vars(array(
 	'FORUM_ID' => $forum_id,
-	'FORUM_NAME' => $forum_row['forum_name'],
+	'FORUM_NAME' => $forum_row['forum_name'] . '  <a href="rdf.php?fid=' . $forum_row['forum_id'] . '"><img src="images/rss.gif" alt="RSS" style="border: 0;" /></a>',
 	'MODERATORS' => $forum_moderators,
 	'POST_IMG' => ( $forum_row['forum_status'] == FORUM_LOCKED ) ? $images['post_locked'] : $images['post_new'],
 
@@ -653,6 +654,7 @@ if( $total_topics )
 			'GOTO_PAGE' => $goto_page,
 			'REPLIES' => $replies,
 			'NEWEST_POST_IMG' => $newest_post_img, 
+			'TOPIC_ATTACHMENT_IMG' => topic_attachment_image($topic_rowset[$i]['topic_attachment']),
 			'TOPIC_TITLE' => $topic_title,
 			'TOPIC_TYPE' => $topic_type,
 			'VIEWS' => $views,

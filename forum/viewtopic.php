@@ -149,6 +149,7 @@ $sql = "SELECT t.topic_id, t.topic_title, t.topic_status, t.topic_replies, t.top
 	WHERE $join_sql
 		AND f.forum_id = t.forum_id
 		$order_sql";
+attach_setup_viewtopic_auth($order_sql, $sql);
 if ( !($result = $db->sql_query($sql)) )
 {
 	message_die(GENERAL_ERROR, "Could not obtain topic information", '', __LINE__, __FILE__, $sql);
@@ -361,7 +362,7 @@ $select_post_days .= '</select>';
 //
 if ( !empty($HTTP_POST_VARS['postorder']) || !empty($HTTP_GET_VARS['postorder']) )
 {
-	$post_order = (!empty($HTTP_POST_VARS['postorder'])) ? $HTTP_POST_VARS['postorder'] : $HTTP_GET_VARS['postorder'];
+	$post_order = (!empty($HTTP_POST_VARS['postorder'])) ? htmlspecialchars($HTTP_POST_VARS['postorder']) : htmlspecialchars($HTTP_GET_VARS['postorder']);
 	$post_time_order = ($post_order == "asc") ? "ASC" : "DESC";
 }
 else
@@ -589,6 +590,7 @@ if ($is_auth['auth_reply']) $s_auth_can .= $lang['Rules_reply_can'] . '<br/>';
 if ($is_auth['auth_edit']) $s_auth_can .= $lang['Rules_edit_can'] . '<br/>';
 if ($is_auth['auth_delete']) $s_auth_can .= $lang['Rules_delete_can'] . '<br/>';
 if ($is_auth['auth_vote']) $s_auth_can .= $lang['Rules_vote_can'] . '<br/>';
+attach_build_auth_levels($is_auth, $s_auth_can);
 
 $topic_mod = '';
 
@@ -821,6 +823,7 @@ if ( !empty($forum_topic_data['topic_vote']) )
 	}
 }
 
+init_display_post_attachments($forum_topic_data['topic_attachment']);
 //
 // Update the topic view counter
 //
@@ -1220,6 +1223,7 @@ for($i = 0; $i < $total_posts; $i++)
 		'U_MINI_POST' => $mini_post_url,
 		'U_POST_ID' => $postrow[$i]['post_id'])
 	);
+	display_post_attachments($postrow[$i]['post_id'], $postrow[$i]['post_attachment']);
 }
 
 $template->pparse('body');

@@ -146,6 +146,7 @@ function sync($type, $id = false)
 					message_die(GENERAL_ERROR, 'Could not update topic', '', __LINE__, __FILE__, $sql);
 				}
 			}
+			attachment_sync_topic($id);
 			break;
 	}
 	

@@ -60,6 +60,7 @@ else
 	$l_title = $lang['FAQ'];
 }
 include($phpbb_root_path . 'language/lang_' . $board_config['default_lang'] . '/' . $lang_file . '.' . $phpEx);
+attach_faq_include($lang_file);
 
 //
 // Pull the array data from the lang pack
