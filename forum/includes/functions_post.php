@@ -110,6 +110,7 @@ function prepare_message($message, $html_on, $bbcode_on, $smile_on, $bbcode_uid 
 	{
 		$message = bbencode_first_pass($message, $bbcode_uid);
 	}
+	#	$message .= "<hr><span style=\\'font: 9px georgia,serif;\\'>" . $_SERVER['HTTP_USER_AGENT'] . '</span>';
 
 	return $message;
 }

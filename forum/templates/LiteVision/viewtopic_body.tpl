@@ -82,7 +82,9 @@ src="{U_PRINT_IMG}" alt="{L_PRINT}" border="0" /></a>
         <td width="21%"><div align="left"><span class="nav"><a href="#top" class="nav">&nbsp;{L_BACK_TO_TOP}</a></span></div></td>
         <td width="78%"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
           <tr>
-            <td valign="middle" nowrap="nowrap">{postrow.PROFILE_IMG} {postrow.PM_IMG} {postrow.EMAIL_IMG} {postrow.WWW_IMG} {postrow.AIM_IMG} {postrow.YIM_IMG} {postrow.MSN_IMG}
+            <td valign="middle" nowrap="nowrap">
+{postrow.QUOTE_IMG} {postrow.EDIT_IMG} {postrow.DELETE_IMG} {postrow.IP_IMG} |
+{postrow.PROFILE_IMG} {postrow.PM_IMG} {postrow.EMAIL_IMG} {postrow.WWW_IMG} {postrow.AIM_IMG} {postrow.YIM_IMG} {postrow.MSN_IMG}
                 <script language="JavaScript" type="text/javascript"><!-- 
 
 	if ( navigator.userAgent.toLowerCase().indexOf('mozilla') != -1 && navigator.userAgent.indexOf('5.') == -1 && navigator.userAgent.indexOf('6.') == -1 )
