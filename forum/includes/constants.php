@@ -6,7 +6,7 @@
  *   copyright            : ('C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: constants.php,v 1.47.2.4 2003/06/10 00:39:51 psotfx Exp $
+ *   $Id: constants.php,v 1.47.2.5 2004/11/18 17:49:42 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -148,6 +148,7 @@ define('AUTH_ATTACH', 11);
 
 
 // Table names
+define('CONFIRM_TABLE', $table_prefix.'confirm');
 define('AUTH_ACCESS_TABLE', $table_prefix.'auth_access');
 define('BANLIST_TABLE', $table_prefix.'banlist');
 define('CATEGORIES_TABLE', $table_prefix.'categories');

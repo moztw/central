@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: topic_review.php,v 1.5.2.1 2002/05/03 15:58:35 the_systech Exp $
+ *   $Id: topic_review.php,v 1.5.2.3 2004/11/18 17:49:45 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -30,9 +30,9 @@ function topic_review($topic_id, $is_inline_review)
 
 	if ( !$is_inline_review )
 	{
-		if ( !isset($topic_id) )
+		if ( !isset($topic_id) || !$topic_id)
 		{
-			message_die(GENERAL_MESSAGE, 'Topic_not_exist');
+			message_die(GENERAL_MESSAGE, 'Topic_post_not_exist');
 		}
 
 		//

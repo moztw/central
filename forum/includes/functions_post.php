@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: functions_post.php,v 1.9.2.36 2004/07/11 16:46:19 acydburn Exp $
+ *   $Id: functions_post.php,v 1.9.2.37 2004/11/18 17:49:44 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -132,7 +132,7 @@ function prepare_post(&$mode, &$post_data, &$bbcode_on, &$html_on, &$smilies_on,
 	// Check username
 	if (!empty($username))
 	{
- 		$username = trim(strip_tags($username));
+		$username = phpbb_clean_username($username);
 
  		if (!$userdata['session_logged_in'] || ($userdata['session_logged_in'] && $username != $userdata['username']))
 		{

@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_sendpasswd.php,v 1.6.2.11 2003/05/03 23:24:03 acydburn Exp $
+ *   $Id: usercp_sendpasswd.php,v 1.6.2.12 2004/11/18 17:49:45 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -29,7 +29,7 @@ if ( !defined('IN_PHPBB') )
 
 if ( isset($HTTP_POST_VARS['submit']) )
 {
-	$username = ( !empty($HTTP_POST_VARS['username']) ) ? trim(strip_tags($HTTP_POST_VARS['username'])) : '';
+	$username = ( !empty($HTTP_POST_VARS['username']) ) ? phpbb_clean_username($HTTP_POST_VARS['username']) : '';
 	$email = ( !empty($HTTP_POST_VARS['email']) ) ? trim(strip_tags(htmlspecialchars($HTTP_POST_VARS['email']))) : '';
 
 	$sql = "SELECT user_id, username, user_email, user_active, user_lang 

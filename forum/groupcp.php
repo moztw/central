@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: groupcp.php,v 1.58.2.21 2004/07/11 22:18:27 acydburn Exp $
+ *   $Id: groupcp.php,v 1.58.2.22 2004/11/18 17:49:34 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -472,7 +472,7 @@ else if ( $group_id )
 
 			if ( isset($HTTP_POST_VARS['add']) )
 			{
-				$username = ( isset($HTTP_POST_VARS['username']) ) ? htmlspecialchars($HTTP_POST_VARS['username']) : '';
+				$username = ( isset($HTTP_POST_VARS['username']) ) ? phpbb_clean_username($HTTP_POST_VARS['username']) : '';
 				
 				$sql = "SELECT user_id, user_email, user_lang, user_level  
 					FROM " . USERS_TABLE . " 

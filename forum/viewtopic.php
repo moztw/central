@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: viewtopic.php,v 1.186.2.36 2004/07/11 16:46:18 acydburn Exp $
+ *   $Id: viewtopic.php,v 1.186.2.37 2004/11/18 17:49:39 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -483,7 +483,7 @@ $highlight_match = $highlight = '';
 if (isset($HTTP_GET_VARS['highlight']))
 {
 	// Split words and phrases
-	$words = explode(' ', trim(htmlspecialchars(urldecode($HTTP_GET_VARS['highlight']))));
+	$words = explode(' ', trim(htmlspecialchars($HTTP_GET_VARS['highlight'])));
 
 	for($i = 0; $i < sizeof($words); $i++)
 	{

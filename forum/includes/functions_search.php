@@ -6,7 +6,7 @@
 *     copyright            : (C) 2002 The phpBB Group
 *     email                : support@phpbb.com
 *
-*     $Id: functions_search.php,v 1.8.2.18 2004/03/25 15:57:20 acydburn Exp $
+*     $Id: functions_search.php,v 1.8.2.19 2004/11/18 17:49:45 acydburn Exp $
 *
 ****************************************************************************/
 
@@ -435,7 +435,7 @@ function username_search($search_match)
 	$username_list = '';
 	if ( !empty($search_match) )
 	{
-		$username_search = preg_replace('/\*/', '%', trim(strip_tags($search_match)));
+		$username_search = preg_replace('/\*/', '%', phpbb_clean_username($search_match));
 
 		$sql = "SELECT username 
 			FROM " . USERS_TABLE . " 
@@ -469,7 +469,7 @@ function username_search($search_match)
 	);
 
 	$template->assign_vars(array(
-		'USERNAME' => ( !empty($search_match) ) ? strip_tags($search_match) : '', 
+		'USERNAME' => (!empty($search_match)) ? phpbb_clean_username($search_match) : '', 
 
 		'L_CLOSE_WINDOW' => $lang['Close_window'], 
 		'L_SEARCH_USERNAME' => $lang['Find_username'], 

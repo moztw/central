@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: profile.php,v 1.193.2.4 2004/07/11 16:46:17 acydburn Exp $
+ *   $Id: profile.php,v 1.193.2.5 2004/11/18 17:49:37 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -98,6 +98,17 @@ if ( isset($HTTP_GET_VARS['mode']) || isset($HTTP_POST_VARS['mode']) )
 		}
 
 		include($phpbb_root_path . 'includes/usercp_register.'.$phpEx);
+		exit;
+	}
+	else if ( $mode == 'confirm' )
+	{
+		// Visual Confirmation
+		if ( $userdata['session_logged_in'] )
+		{
+			exit;
+		}
+
+		include($phpbb_root_path . 'includes/usercp_confirm.'.$phpEx);
 		exit;
 	}
 	else if ( $mode == 'sendpassword' )

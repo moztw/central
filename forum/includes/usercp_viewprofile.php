@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_viewprofile.php,v 1.5.2.2 2004/07/11 16:46:20 acydburn Exp $
+ *   $Id: usercp_viewprofile.php,v 1.5.2.3 2004/11/18 17:49:45 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -170,6 +170,15 @@ $page_title = $lang['Viewing_profile'];
 include($phpbb_root_path . 'includes/page_header.'.$phpEx);
 display_upload_attach_box_limits($profiledata['user_id']);
 
+if (function_exists('get_html_translation_table'))
+{
+	$u_search_author = urlencode(strtr($profiledata['username'], array_flip(get_html_translation_table(HTML_ENTITIES))));
+}
+else
+{
+	$u_search_author = urlencode(str_replace(array('&amp;', '&#039;', '&quot;', '&lt;', '&gt;'), array('&', "'", '"', '<', '>'), $profiledata['username']));
+}
+
 $template->assign_vars(array(
 	'USERNAME' => $profiledata['username'],
 	'JOINED' => create_date($lang['DATE_FORMAT'], $profiledata['user_regdate'], $board_config['board_timezone']),
@@ -224,7 +233,7 @@ $template->assign_vars(array(
 	'L_OCCUPATION' => $lang['Occupation'],
 	'L_INTERESTS' => $lang['Interests'],
 
-	'U_SEARCH_USER' => append_sid("search.$phpEx?search_author=" . urlencode($profiledata['username'])),
+	'U_SEARCH_USER' => append_sid("search.$phpEx?search_author=" . $u_search_author),
 
 	'S_PROFILE_ACTION' => append_sid("profile.$phpEx"))
 );

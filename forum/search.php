@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: search.php,v 1.72.2.14 2004/07/17 13:48:32 acydburn Exp $
+ *   $Id: search.php,v 1.72.2.15 2004/11/18 17:49:39 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -60,7 +60,7 @@ else
 if ( isset($HTTP_POST_VARS['search_author']) || isset($HTTP_GET_VARS['search_author']))
 {
 	$search_author = ( isset($HTTP_POST_VARS['search_author']) ) ? $HTTP_POST_VARS['search_author'] : $HTTP_GET_VARS['search_author'];
-	$search_author = htmlspecialchars($search_author);
+	$search_author = phpbb_clean_username($search_author);
 }
 else
 {
