@@ -96,11 +96,10 @@
             <tr>
               <td width="6%" valign="top"><div align="center"><img src="{topicrow.TOPIC_FOLDER_IMG}" alt="{topicrow.L_TOPIC_FOLDER_ALT}" title="{topicrow.L_TOPIC_FOLDER_ALT}" /></div></td>
               <td width="94%" valign="top"><span class="topictitle"> {topicrow.TOPIC_ATTACHMENT_IMG}{topicrow.TOPIC_TYPE}<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a></span> 
-					<span class="genmed">&nbsp;&raquo;{topicrow.TOPIC_AUTHOR}
-					<!-- BEGIN switch_topic_desc -->
-              		 <br />{L_TP_DESCRIPTION}: {topicrow.switch_topic_desc.TOPIC_DESCRIPTION}
+					<br /><span class="genmed"><!-- BEGIN switch_topic_desc -->
+              		 {topicrow.switch_topic_desc.TOPIC_DESCRIPTION}
               		<!-- END switch_topic_desc -->
-					</span><br />
+					&nbsp;&raquo;{topicrow.TOPIC_AUTHOR}</span><br />
                    <span class="gensmall">{topicrow.GOTO_PAGE}</span><br></td>
             </tr>
         </table></td>
