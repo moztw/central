@@ -31,5 +31,5 @@ foreach(@ARGV) {
 		print OUTF $_;
 	}
 	close OUTF;
-	print "\nDone MD5 update\n";
 }
+print "\nDone MD5 update\n";

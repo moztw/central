@@ -75,6 +75,7 @@ for (@dats) {
 # Main Program
 if (@ARGV == 1) {
 	# got filename
+	print "Output File: $ARGV[0]\n";
 	close STDOUT;
 	open STDOUT, ">$ARGV[0]";
 } else {

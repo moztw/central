@@ -7,16 +7,17 @@
 #define COMMAND \
 "cd " DATAROOT " && " \
 "echo 'SVN update...' && /usr/local/bin/svn --username anonymous --no-auth-cache update 2>&1 && "\
-"echo 'update XML News...' && perl " SCRIPTROOT "/genxmlnews.pl /home/moztw/htdocs/xmlnews.rdf" \
+"echo 'update XML News...' && " SCRIPTROOT "/genxmlnews.pl /home/moztw/htdocs/xmlnews.rdf" \
 
 #define COMMAND_MD5 \
 "cd " DATAROOT " && " \
-"echo 'update MD5...' && perl " SCRIPTROOT "/updateMD5.pl dl*-latest.shtml dl*-all.shtml"
+"echo 'update MD5...' && " SCRIPTROOT "/updateMD5.pl dl*-latest.shtml dl*-all.shtml"
 
 int main(int argc, char *argv[]) {
 	// svn update local
 	int cmdMD5 = 0;
 	char *cgicmd = NULL;
+	setuid(geteuid());
 
 	printf ("\n\n");
 	fflush(stdout);
