@@ -16,9 +16,11 @@ update:
 output:
 	mkdir -p $(DIR)
 	# build header
-	echo "<!--#include virtual='/header.shtml'--><h1>Load statistics for $(CONF)</h1><ul>" > $(INDEXFN)
+	echo "<!--#include virtual='/header.shtml'-->" > $(INDEXFN)
+	echo "<h1>Load statistics for $(CONF)</h1><ul>" >> $(INDEXFN)
 	cd $(AWROOT)/$(CONF) && find 2*/* -type d | sed -e 's#\(.*\)#<li><a href="\1/">\1</a></li>#g' >> $(INDEXFN)
-	echo "</ul><!--#include virtual='/footer.shtml'-->" >> $(INDEXFN)
+	echo "</ul>" >> $(INDEXFN)
+	echo "<!--#include virtual='/footer.shtml'-->" >> $(INDEXFN)
 	nice -n 20 /usr/local/bin/awstats_buildstaticpages.pl -config=$(CONF) -dir=$(DIR) -awstatsprog=$(PROG) -year=$(YYYY) -month=$(MM)
 	cd $(DIR) && ln -sf awstats.$(CONF).html index.html
 
