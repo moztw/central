@@ -1,4 +1,4 @@
-Subject: 您已經被加入這個群組
+Subject: [moztw.org] You have been added to this usergroup
 Charset: utf-8
 
 恭喜您,

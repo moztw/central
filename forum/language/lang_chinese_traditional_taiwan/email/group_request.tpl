@@ -1,4 +1,4 @@
-Subject: 有待處理的申請等您批准
+Subject: [moztw.org] A request to join your group has been made
 Charset: utf-8
 
 親愛的 {GROUP_MODERATOR} 您好,

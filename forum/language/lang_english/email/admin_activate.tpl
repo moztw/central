@@ -1,4 +1,4 @@
-Subject: New user account
+Subject: [moztw.org] New user account
 Charset: iso-8859-1
 
 Hello,

@@ -1,4 +1,4 @@
-Subject: 密碼更新啟用
+Subject: [moztw.org] New password activation
 Charset: utf-8
 
 親愛的 {USERNAME} 您好,

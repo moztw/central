@@ -1,4 +1,4 @@
-Subject: 您的申請已獲得批准
+Subject: [moztw.org] Your request has been approved
 Charset: utf-8
 
 恭喜您,

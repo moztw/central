@@ -1,4 +1,4 @@
-Subject: 重新啟動帳號
+Subject: [moztw.org] Reactivate your account
 Charset: utf-8
 
 親愛的 {USERNAME} 您好,

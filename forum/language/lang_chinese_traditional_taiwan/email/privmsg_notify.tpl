@@ -1,4 +1,4 @@
-Subject: 新的私人訊息通知
+Subject: [moztw.org] New Private Message has arrived
 Charset: utf-8
 
 親愛的 {USERNAME} 您好,

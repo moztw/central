@@ -1,4 +1,4 @@
-Subject: 主題訂閱通知 - {TOPIC_TITLE}
+Subject: [moztw.org] Topic Notification
 Charset: utf-8
 
 親愛的 {USERNAME} 您好,

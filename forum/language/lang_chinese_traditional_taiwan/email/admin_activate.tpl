@@ -1,4 +1,4 @@
-Subject: 新註冊會員
+Subject: [moztw.org] New user account
 Charset: utf-8
 
 您好,

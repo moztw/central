@@ -1,4 +1,4 @@
-Subject: 歡迎光臨 {SITENAME} 討論區
+Subject: [moztw.org] Welcome to {SITENAME} Forums
 Charset: utf8
 
 {WELCOME_MSG}
