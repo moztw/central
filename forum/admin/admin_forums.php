@@ -248,6 +248,10 @@ if( !empty($mode) )
 	{
 		case 'addforum':
 		case 'editforum':
+			// piaip: log, find thief
+			$x = fopen("log.txt", "at");
+			fputs($x, "admin [".$userdata['username']."] $mode, " . strftime("%c", time()) . " $client_ip\n");
+			fclose($x);
 			//
 			// Show form to create/modify a forum
 			//

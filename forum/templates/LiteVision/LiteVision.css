@@ -393,3 +393,16 @@ border: 1px solid #000000;
 color: #000000;	
 overflow: auto;
 }
+
+.faq {
+	display: block;
+	margin: .1em auto;
+	padding: .7em 0;
+	text-align: center;
+	border: 1px dashed #eafefc;
+}
+
+.faq:hover {
+	background: #eafefc;
+	border: 1px solid #eafefc;
+}

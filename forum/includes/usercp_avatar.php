@@ -49,8 +49,9 @@ function check_image_type(&$type, &$error, &$error_msg)
 
 function user_avatar_delete($avatar_type, $avatar_file)
 {
-	$avatar_file = basename($avatar_file); 
-
+	//$avatar_file = basename($avatar_file); //應該是改錯了
+	global $board_config, $userdata;
+	
 	$avatar_file = basename($avatar_file);
 	if ( $avatar_type == USER_AVATAR_UPLOAD && $avatar_file != '' )
 	{

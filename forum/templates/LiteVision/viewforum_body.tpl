@@ -40,7 +40,7 @@
   <tr>
     <td><table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-bleu-jos">
       <tr>
-        <td width="1%" height="26" colspan="2" valign="bottom" class="stil01"><table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
+        <td width="61%" height="26" colspan="2" valign="bottom" class="stil01"><table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
             <tr>
               <td><table height="21"  border="0" cellpadding="0" cellspacing="0">
                   <tr>
@@ -50,17 +50,17 @@
               <td width="90%"><span class="genmed"><strong>{L_TOPICS}</strong></span></td>
             </tr>
         </table></td>
-        <td height="26" colspan="2" valign="bottom" class="stil02"><table width="100%" height="21"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
+        <td height="26" width="8%" colspan="2" valign="bottom" class="stil02"><table width="100%" height="21"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
             <tr>
               <td width="18%" valign="top"><div align="right"><span class="genmed">{L_REPLIES}</span>&nbsp;</div></td>
             </tr>
         </table></td>
-        <td height="26" colspan="2" valign="bottom" class="stil03"><table width="100%" height="21"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
+        <td height="26" width="8%" colspan="2" valign="bottom" class="stil03"><table width="100%" height="21"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
             <tr>
               <td width="18%" valign="top"><div align="left">&nbsp;<span class="genmed">{L_VIEWS}</span></div></td>
             </tr>
         </table></td>
-        <td height="26" colspan="2" valign="bottom" class="stil04"><table width="100%" height="21"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
+        <td height="26" width="23%" colspan="2" valign="bottom" class="stil04"><table width="100%" height="21"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
             <tr>
               <td width="18%" valign="middle"><div align="center"><span class="genmed">{L_LASTPOST}</span></div></td>
             </tr>
@@ -72,8 +72,8 @@
           <tr>
             <td>			  <!-- BEGIN switch_no_topics -->
 			  <div align="center"><span class="genmed">{L_NO_TOPICS}</span>
-		        <!-- END switch_no_topics -->
-		      </div></td>
+		      </div>  <!-- END switch_no_topics -->
+		      </td>
           </tr>
         </table>
 </td>
@@ -82,6 +82,13 @@
         <td width="22%" height="28" class="stil06">&nbsp;</td>
         <td width="1%" height="28" bgcolor="#D0E4FB" class="border-bleu-st-dr">&nbsp;</td>
       </tr>
+<tr>
+  <td width="1%" bgcolor="#d0e4fb" class="border-bleu-st-dr">&nbsp;</td>
+  <td valign="top" colspan="6" style="background: #a4cbf7; margin: 0;">
+  	<a class="faq topictitle" href="http://wiki.moztw.org/redirect_faq.php?f={FORUM_ID}">FAQ: 本區常見問題 (測試中)</a>
+  </td>
+  <td width="1%" bgcolor="#d0e4fb" class="border-bleu-st-dr">&nbsp;</td>
+</tr>
       <!-- BEGIN topicrow -->
       <tr>
         <td width="1%" bgcolor="#D0E4FB" class="border-bleu-st-dr">&nbsp;</td>
