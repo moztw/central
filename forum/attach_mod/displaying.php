@@ -599,7 +599,7 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
 				if ($link)
 				{
 					
-					$BC_assign_type = "postrow.attach.cat_firefox_install"; //attachrow";
+					$BC_assign_type = "postrow.attach.attachrow";
 					$upload_image = '';
 
 					if (intval($display_categories[$extension]) == XPI_CAT){
@@ -920,7 +920,7 @@ function display_attachments($post_id)
 			}
 
 			if ($link)
-			{	$BC_assign_type = "postrow.attach.cat_firefox_install"; //attachrow";
+			{	$BC_assign_type = "postrow.attach.attachrow";
 				$target_blank = ( (intval($display_categories[$attachments['_' . $post_id][$i]['extension']]) == IMAGE_CAT) ) ? 'target="_blank"' : '';
 
 				if (intval($display_categories[$attachments['_' . $post_id][$i]['extension']]) == XPI_CAT){
