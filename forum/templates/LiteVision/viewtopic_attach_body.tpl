@@ -192,7 +192,7 @@ table.attachtable	{ font: normal 12px Verdana, Arial, Helvetica, sans-serif; col
 		<td width="75%" class="attachrow"><span class="genmed">&nbsp;{postrow.attach.attachrow.L_DOWNLOAD_COUNT}</span></td>
 	</tr>
 	<tr>
-		<td width="15%" rolspan="3" class="attachrow" align="right">¦¹ÀÉ®×¥ÑªÀ¸s¦¨­û´£¨Ñ¡AMozilla Taiwan ¤£´£¨Ñ¥ô¦ó«OÃÒ¡A½Ğ°Ñ¦Ò¬ÛÃö¸ê°T¡]»¡©ú¡B«áÄò°Q½×¡^«á¦A¦æ¦w¸Ë¡A¦Û­t³d¥ô¡C</td>
+		<td rolspan="3" class="attachrow" align="right">æ­¤æª”æ¡ˆç”±ç¤¾ç¾¤æˆå“¡æä¾›ï¼ŒMozilla Taiwan ä¸æä¾›ä»»ä½•ä¿è­‰ï¼Œè«‹åƒè€ƒç›¸é—œè³‡è¨Šï¼ˆèªªæ˜ã€å¾ŒçºŒè¨è«–ï¼‰å¾Œå†è¡Œå®‰è£ï¼Œè‡ªè² è²¬ä»»ã€‚</td>
 	</tr>
 	</table>
 	<div align="center"><hr width="95%" /></div>
