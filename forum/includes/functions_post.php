@@ -161,6 +161,10 @@ function prepare_post(&$mode, &$post_data, &$bbcode_on, &$html_on, &$smilies_on,
  		$error_msg .= (!empty($error_msg)) ? '<br />' . $lang['Empty_subject'] : $lang['Empty_subject'];
 	}
 
+	# This is not CN.
+	$message = ereg_replace('祖国', '中国', $message);
+	$message = ereg_replace('祖國', '中國', $message);
+
 	// Check message
  	if (!empty($message))
 	{
