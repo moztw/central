@@ -1,4 +1,4 @@
-#!/usr/bin/env perl
+#!/usr/bin/perl
 
 # moztw.org news html -> rdf generator
 # Author: Hung-Te Lin <piaip@csie.ntu.edu.tw>
@@ -97,3 +97,4 @@ foreach (@ents) {
 }
 print $RDF_FOOTER;
 close STDOUT;
+

@@ -1,4 +1,4 @@
-#!/usr/bin/env perl
+#!/usr/bin/perl
 #
 # update MD5 fingerprint
 # usage: put a title="MD5:" entry in any html.
@@ -9,7 +9,7 @@
 my $chkroot = 'dls';
 
 foreach(@ARGV) {
-	print STDERR "MD5 update: $_\n";
+	print "MD5 update: $_\n";
 	open INF, "<$_";
 	my @src = <INF>;
 	close INF;
@@ -25,10 +25,11 @@ foreach(@ARGV) {
 				$md5 =~ s/\s//g;
 				$_ =~ s/MD5:\s*([^'"]*)(['"])/MD5: $md5$2/;
 			} else {
-				print STDERR "No such file: $2 \n";
+				print "No such file: $2 \n";
 			}
 		}
 		print OUTF $_;
 	}
 	close OUTF;
+	print "\nDone MD5 update\n";
 }
