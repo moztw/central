@@ -739,6 +739,18 @@ $lang['Install_No_Ext'] = '您主機上的 PHP 設定並不支援您所選擇的
 $lang['Install_No_PCRE'] = 'phpBB2 需要使用到 Perl-Compatible Regular Expressions Module, 而您的 PHP 設定並不支援這項功能';
 
 //
+// Version Check
+//
+$lang['Version_up_to_date'] = '你目前安裝的版本是最新的, 你不需要做更新的動作.';
+$lang['Version_not_up_to_date'] = '你目前安裝的版本 <b>不是</b> 最新的. phpBB 的最新(更新)檔案可以在 <a href="http://www.phpbb.com/downloads.php" target="_new">http://www.phpbb.com/downloads.php</a> 下載到.';
+$lang['Latest_version_info'] = '目前最新的版本是 <b>phpBB %s</b>.';
+$lang['Current_version_info'] = '你目前使用的是 <b>phpBB %s</b>.';
+$lang['Connect_socket_error'] = '無法成功連上 phpBB 的主機, 錯誤回報:<br />%s';
+$lang['Socket_functions_disabled'] = '無法使用 socket 功能.';
+$lang['Mailing_list_subscribe_reminder'] = '欲得知 phpBB 的最新更新消息, 何不 <a href="http://www.phpbb.com/support/" target="_new">訂閱我們的電子報</a>.';
+$lang['Version_information'] = '版本資訊'; 
+
+//
 // That's all Folks!
 // -------------------------------------------------
 
