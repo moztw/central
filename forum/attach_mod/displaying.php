@@ -599,7 +599,7 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
 				if ($link)
 				{
 					
-					$BC_assign_type = "postrow.attach.attachrow";
+					$BC_assign_type = "postrow.attach.cat_firefox_install"; //attachrow";
 					$upload_image = '';
 
 					if (intval($display_categories[$extension]) == XPI_CAT){
