@@ -106,7 +106,7 @@ src="{U_PRINT_IMG}" alt="{L_PRINT}" border="0" /></a>
 	<!-- END postrow -->		
 		
       </table>
-	  
+<span style='float: right; text-align: right;' class="genmed"><b>{PAGINATION}</b></span>
 <table cellspacing="0" cellpadding="0" border="0">
 			<tr>
 				<td align="center">&nbsp;</td>
@@ -123,23 +123,17 @@ src="{U_PRINT_IMG}" alt="{L_PRINT}" border="0" /></a>
 
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td>
-      <table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-bleu-jos">
-        <tr>
-          <td height="26" colspan="7" valign="bottom" class="stil01"><table width="100%" height="21"  border="0" cellpadding="0" cellspacing="0">
-              <tr>
-                <td width="18%" valign="bottom"><table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
-                    <tr>
-                      <td width="5%"><table height="21"  border="0" cellpadding="0" cellspacing="0">
-                          <tr>
-                            <td><img src="templates/LiteVision/images/05.gif" width="49" height="21"></td>
-                          </tr>
-                      </table></td>
-                      <td width="95%"><span class="genmed"><strong>&nbsp;&nbsp;&nbsp;INFO</strong></span></td>
-                    </tr>
-                </table></td>
-              </tr>
-          </table></td>
+    <td> <table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-bleu-jos">
+    <tr> <td height="26" colspan="7" valign="bottom" class="stil01"><table width="100%" height="21"  border="0" cellpadding="0" cellspacing="0">
+    <tr> <td width="18%" valign="bottom"><table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
+    <tr> <td width="5%"><table height="21"  border="0" cellpadding="0" cellspacing="0">
+    <tr> <td><img src="templates/LiteVision/images/05.gif" width="49" height="21"></td>
+    </table></td>
+    <td width="95%"><span class="genmed"><strong>&nbsp;&nbsp;&nbsp;INFO</strong></span>
+    </tr>
+    </table></td>
+    </tr>
+    </table></td>
         </tr>
         <tr>
           <td width="1%" bgcolor="#D0E4FB" class="border-bleu-st-dr">&nbsp;</td>
