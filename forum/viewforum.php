@@ -24,6 +24,7 @@ define('IN_PHPBB', true);
 $phpbb_root_path = './';
 include($phpbb_root_path . 'extension.inc');
 include($phpbb_root_path . 'common.'.$phpEx);
+include_once($phpbb_root_path . 'includes/bbcode.'.$phpEx);
 
 //
 // Start initial var setup
@@ -439,6 +440,7 @@ $template->assign_vars(array(
 	'L_POSTED' => $lang['Posted'],
 	'L_JOINED' => $lang['Joined'],
 	'L_AUTHOR' => $lang['Author'],
+	'L_DESCRIPTION' => $lang['Description'],
 
 	'S_AUTH_LIST' => $s_auth_can, 
 
@@ -667,6 +669,13 @@ if( $total_topics )
 
 			'U_VIEW_TOPIC' => $view_topic_url)
 		);
+        if ( !empty($topic_rowset[$i]['topic_desc']))
+        {
+             $topic_desc = $topic_rowset[$i]['topic_desc'];
+             $template->assign_block_vars('topicrow.switch_topic_desc', array(
+                      'TOPIC_DESCRIPTION' => smilies_pass($topic_desc))
+             );
+        }
 	}
 
 	$topics_count -= $total_announcements;

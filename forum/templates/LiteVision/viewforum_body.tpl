@@ -95,8 +95,12 @@
         <td width="60%" bgcolor="#EAF1FC" class="border-bleu-dr"><table width="98%"  border="0" align="center" cellpadding="0" cellspacing="2">
             <tr>
               <td width="6%" valign="top"><div align="center"><img src="{topicrow.TOPIC_FOLDER_IMG}" alt="{topicrow.L_TOPIC_FOLDER_ALT}" title="{topicrow.L_TOPIC_FOLDER_ALT}" /></div></td>
-              <td width="94%" valign="top"><span class="topictitle"> {topicrow.TOPIC_ATTACHMENT_IMG}{topicrow.TOPIC_TYPE}<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a></span><br />
-					<span class="genmed">&nbsp;&raquo;{topicrow.TOPIC_AUTHOR}</span><br />
+              <td width="94%" valign="top"><span class="topictitle"> {topicrow.TOPIC_ATTACHMENT_IMG}{topicrow.TOPIC_TYPE}<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a></span> 
+					<span class="genmed">&nbsp;&raquo;{topicrow.TOPIC_AUTHOR} <br />
+					<!-- BEGIN switch_topic_desc -->
+              		{L_DESCRIPTION}: {topicrow.switch_topic_desc.TOPIC_DESCRIPTION}
+              		<!-- END switch_topic_desc -->
+					</span><br />
                    <span class="gensmall">{topicrow.GOTO_PAGE}</span><br></td>
             </tr>
         </table></td>

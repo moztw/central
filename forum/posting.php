@@ -204,7 +204,7 @@ switch ( $mode )
 			message_die(GENERAL_MESSAGE, $lang['No_post_id']);
 		}
 
-		$select_sql = ( !$submit ) ? ", t.topic_title, p.enable_bbcode, p.enable_html, p.enable_smilies, p.enable_sig, p.post_username, pt.post_subject, pt.post_text, pt.bbcode_uid, u.username, u.user_id, u.user_sig" : '';
+		$select_sql = ( !$submit ) ? ", t.topic_title, t.topic_desc, p.enable_bbcode, p.enable_html, p.enable_smilies, p.enable_sig, p.post_username, pt.post_subject, pt.post_text, pt.bbcode_uid, u.username, u.user_id, u.user_sig" : '';
 		$from_sql = ( !$submit ) ? ", " . POSTS_TEXT_TABLE . " pt, " . USERS_TABLE . " u" : '';
 		$where_sql = ( !$submit ) ? "AND pt.post_id = p.post_id AND u.user_id = p.poster_id" : '';
 
@@ -540,19 +540,20 @@ else if ( $submit || $confirm )
 		case 'reply':
 			$username = ( !empty($HTTP_POST_VARS['username']) ) ? $HTTP_POST_VARS['username'] : '';
 			$subject = ( !empty($HTTP_POST_VARS['subject']) ) ? trim($HTTP_POST_VARS['subject']) : '';
+			$topic_desc = ( !empty($HTTP_POST_VARS['topic_desc']) ) ? trim($HTTP_POST_VARS['topic_desc']) : '';
 			$message = ( !empty($HTTP_POST_VARS['message']) ) ? $HTTP_POST_VARS['message'] : '';
 			$poll_title = ( isset($HTTP_POST_VARS['poll_title']) && $is_auth['auth_pollcreate'] ) ? $HTTP_POST_VARS['poll_title'] : '';
 			$poll_options = ( isset($HTTP_POST_VARS['poll_option_text']) && $is_auth['auth_pollcreate'] ) ? $HTTP_POST_VARS['poll_option_text'] : '';
 			$poll_length = ( isset($HTTP_POST_VARS['poll_length']) && $is_auth['auth_pollcreate'] ) ? $HTTP_POST_VARS['poll_length'] : '';
 			$bbcode_uid = '';
 
-			prepare_post($mode, $post_data, $bbcode_on, $html_on, $smilies_on, $error_msg, $username, $bbcode_uid, $subject, $message, $poll_title, $poll_options, $poll_length);
+			prepare_post($mode, $post_data, $bbcode_on, $html_on, $smilies_on, $error_msg, $username, $bbcode_uid, $subject, $message, $poll_title, $poll_options, $poll_length, $topic_desc);
 
 			if ( $error_msg == '' )
 			{
 				$topic_type = ( $topic_type != $post_data['topic_type'] && !$is_auth['auth_sticky'] && !$is_auth['auth_announce'] ) ? $post_data['topic_type'] : $topic_type;
 
-				submit_post($mode, $post_data, $return_message, $return_meta, $forum_id, $topic_id, $post_id, $poll_id, $topic_type, $bbcode_on, $html_on, $smilies_on, $attach_sig, $bbcode_uid, str_replace("\'", "''", $username), str_replace("\'", "''", $subject), str_replace("\'", "''", $message), str_replace("\'", "''", $poll_title), $poll_options, $poll_length);
+				submit_post($mode, $post_data, $return_message, $return_meta, $forum_id, $topic_id, $post_id, $poll_id, $topic_type, $bbcode_on, $html_on, $smilies_on, $attach_sig, $bbcode_uid, str_replace("\'", "''", $username), str_replace("\'", "''", $subject), str_replace("\'", "''", $message), str_replace("\'", "''", $poll_title), $poll_options, $poll_length, str_replace("\'", "''", $topic_desc));
 			}
 			break;
 
@@ -604,6 +605,7 @@ if( $refresh || isset($HTTP_POST_VARS['del_poll_option']) || $error_msg != '' )
 	$username = ( !empty($HTTP_POST_VARS['username']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['username']))) : '';
 	$subject = ( !empty($HTTP_POST_VARS['subject']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['subject']))) : '';
 	$message = ( !empty($HTTP_POST_VARS['message']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['message']))) : '';
+	$topic_desc = ( !empty($HTTP_POST_VARS['topic_desc']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['topic_desc']))) : '';
 
 	$poll_title = ( !empty($HTTP_POST_VARS['poll_title']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['poll_title']))) : '';
 	$poll_length = ( isset($HTTP_POST_VARS['poll_length']) ) ? max(0, intval($HTTP_POST_VARS['poll_length'])) : 0;
@@ -763,6 +765,7 @@ else
 	{
 		$subject = ( $post_data['first_post'] ) ? $post_info['topic_title'] : $post_info['post_subject'];
 		$message = $post_info['post_text'];
+		$topic_desc = $post_info['topic_desc'];
 
 		if ( $mode == 'editpost' )
 		{
@@ -978,6 +981,15 @@ $template->assign_vars(array(
 $template->assign_block_vars('switch_not_privmsg', array());
 
 //
+// Enable the Topic Description MOD only if this is a new post
+// or if you edit the fist post of a topic
+//
+if ( $mode == 'newtopic' || ( $mode == 'editpost' && $post_data['first_post'] ) )
+{
+   $template->assign_block_vars('topic_description', array());
+}
+
+//
 // Output the data to the template
 //
 $template->assign_vars(array(
@@ -1043,9 +1055,11 @@ $template->assign_vars(array(
 
 	'L_BBCODE_CLOSE_TAGS' => $lang['Close_Tags'], 
 	'L_STYLES_TIP' => $lang['Styles_tip'], 
+	'L_TOPIC_DESCRIPTION' => $lang['Topic_description'],
 
 	'U_VIEWTOPIC' => ( $mode == 'reply' ) ? append_sid("viewtopic.$phpEx?" . POST_TOPIC_URL . "=$topic_id&amp;postorder=desc") : '', 
 	'U_REVIEW_TOPIC' => ( $mode == 'reply' ) ? append_sid("posting.$phpEx?mode=topicreview&amp;" . POST_TOPIC_URL . "=$topic_id") : '', 
+	'TOPIC_DESCRIPTION' => $topic_desc,
 
 	'S_HTML_CHECKED' => ( !$html_on ) ? 'checked="checked"' : '', 
 	'S_BBCODE_CHECKED' => ( !$bbcode_on ) ? 'checked="checked"' : '', 
