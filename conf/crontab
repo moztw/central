@@ -1,2 +1,5 @@
-@weekly /home/moztw/conf/backup.sh
-@daily  /home/moztw/conf/mirrorlist.sh
+@weekly /home/moztw/conf/backup.sh >/dev/null
+@daily  /home/moztw/conf/mirrorlist.sh >/dev/null
+@hourly /home/moztw/awstats/rebuild.sh 2>/home/moztw/log/cron.awstats >/dev/null
+@reboot /bin/echo "Subject: [moztw] reboot" | /usr/local/bin/esmtp piaip@csie.ntu.edu.tw
+@hourly /home/moztw/htdocs/genxmlnews.cgi /home/moztw/htdocs/xmlnews.rdf
