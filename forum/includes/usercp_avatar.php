@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_avatar.php,v 1.8.2.18 2004/07/11 16:46:20 acydburn Exp $
+ *   $Id: usercp_avatar.php,v 1.8.2.19 2005/02/21 18:37:51 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -51,6 +51,7 @@ function user_avatar_delete($avatar_type, $avatar_file)
 {
 	$avatar_file = basename($avatar_file); 
 
+	$avatar_file = basename($avatar_file);
 	if ( $avatar_type == USER_AVATAR_UPLOAD && $avatar_file != '' )
 	{
 		if ( @file_exists(@phpbb_realpath('./' . $board_config['avatar_path'] . '/' . $avatar_file)) )
@@ -234,6 +235,10 @@ function user_avatar_upload($mode, $avatar_mode, &$current_avatar, &$current_typ
             message_die(GENERAL_ERROR, 'Unable to upload file', '', __LINE__, __FILE__);
          }
 
+			if (!is_uploaded_file($avatar_filename))
+			{
+				message_die(GENERAL_ERROR, 'Unable to upload file', '', __LINE__, __FILE__);
+			}
 			$move_file($avatar_filename, './' . $board_config['avatar_path'] . "/$new_filename");
 		}
 

@@ -7,7 +7,7 @@
  *     copyright            : (C) 2001 The phpBB Group
  *     email                : support@phpbb.com
  *
- *     $Id: lang_admin.php,v 1.35.2.9 2003/06/10 00:31:19 psotfx Exp $
+ *     $Id: lang_admin.php,v 1.35.2.10 2005/02/21 18:38:17 acydburn Exp $
  *
  ****************************************************************************/
 
@@ -723,6 +723,18 @@ $lang['Install_Method'] = 'Choose your installation method';
 $lang['Install_No_Ext'] = 'The PHP configuration on your server doesn\'t support the database type that you chose';
 
 $lang['Install_No_PCRE'] = 'phpBB2 Requires the Perl-Compatible Regular Expressions Module for PHP which your PHP configuration doesn\'t appear to support!';
+
+//
+// Version Check
+//
+$lang['Version_up_to_date'] = 'Your installation is up to date, no updates are available for your version of phpBB.';
+$lang['Version_not_up_to_date'] = 'Your installation does <b>not</b> seem to be up to date. Updates are available for your version of phpBB, please visit <a href="http://www.phpbb.com/downloads.php" target="_new">http://www.phpbb.com/downloads.php</a> to obtain the latest version.';
+$lang['Latest_version_info'] = 'The latest available version is <b>phpBB %s</b>.';
+$lang['Current_version_info'] = 'You are running <b>phpBB %s</b>.';
+$lang['Connect_socket_error'] = 'Unable to open connection to phpBB Server, reported error is:<br />%s';
+$lang['Socket_functions_disabled'] = 'Unable to use socket functions.';
+$lang['Mailing_list_subscribe_reminder'] = 'For the latest information on updates to phpBB, why not <a href="http://www.phpbb.com/support/" target="_new">subscribe to our mailing list</a>.';
+$lang['Version_information'] = 'Version Information';
 
 //
 // That's all Folks!

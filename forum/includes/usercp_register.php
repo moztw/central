@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_register.php,v 1.20.2.58 2004/11/18 17:49:45 acydburn Exp $
+ *   $Id: usercp_register.php,v 1.20.2.59 2005/02/21 18:37:51 acydburn Exp $
  *
  *
  ***************************************************************************/

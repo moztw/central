@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: sessions.php,v 1.58.2.11 2004/07/11 16:46:19 acydburn Exp $
+ *   $Id: sessions.php,v 1.58.2.12 2005/02/27 20:33:01 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -79,7 +79,7 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 			if ( isset($sessiondata['autologinid']) && $userdata['user_active'] )
 			{
 				// We have to login automagically
-				if( $sessiondata['autologinid'] == $auto_login_key )
+				if( $sessiondata['autologinid'] === $auto_login_key )
 				{
 					// autologinid matches password
 					$login = 1;

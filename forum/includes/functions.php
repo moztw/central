@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: functions.php,v 1.133.2.33 2004/11/18 17:49:42 acydburn Exp $
+ *   $Id: functions.php,v 1.133.2.34 2005/02/21 18:37:33 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -78,8 +78,8 @@ function get_db_stat($mode)
 function phpbb_clean_username($username)
 {
 	$username = substr(htmlspecialchars(str_replace("\'", "'", trim($username))), 0, 25);
-   $username = phpbb_rtrim($username, "\\");   
-   $username = str_replace("'", "\'", $username); 
+	$username = phpbb_rtrim($username, "\\");   
+	$username = str_replace("'", "\'", $username); 
 
 	return $username;
 }
