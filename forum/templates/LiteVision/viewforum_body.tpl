@@ -27,7 +27,7 @@
       <tr>
         <td align="left" valign="middle" width="50"><a href="{U_POST_NEW_TOPIC}"><img src="{POST_IMG}" border="0" alt="{L_POST_NEW_TOPIC}" /></a></td>
         <td align="left" valign="middle" class="nav" width="100%"><span class="nav">&nbsp;<a href="{U_INDEX}" class="nav">{L_INDEX}</a> &raquo; <a class="nav" href="{U_VIEW_FORUM}">{FORUM_NAME}</a></span></td>
-        <td>&nbsp;</td>
+        <td align="right">&nbsp;</td>
       </tr>
     </table></td>
   </tr>
@@ -35,10 +35,7 @@
 	</td>
   </tr>
 </table>
-
-  
-  <br>
-
+<div style="margin: .2em 1%; text-align: right" class="gensmall"><a href="{U_MARK_READ}">{L_MARK_TOPICS_READ}</a></div>
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td><table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-bleu-jos">

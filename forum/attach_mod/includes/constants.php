@@ -45,6 +45,7 @@ define('IMAGE_CAT', 1);
 define('STREAM_CAT', 2);
 define('SWF_CAT', 3);
 define('XPI_CAT', 4);
+define('SRC_CAT', 5);
 
 // Tables
 define('ATTACH_CONFIG_TABLE', $table_prefix . 'attachments_config');

@@ -86,6 +86,9 @@
                   <!-- END searchresults -->
                 </table></td>
               </tr>
+              <tr>
+                <td height="30" align="right"><span class="nav">{PAGINATION}</span></td>
+              </tr>
           </table></td>
           <td width="1%" bgcolor="#D0E4FB" class="border-bleu-st-dr">&nbsp;</td>
         </tr>

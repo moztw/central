@@ -33,7 +33,7 @@ header ('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
 header ('Content-Type: text/xml');
 
 // Set default output rate at 10 well it's not to small and not too big ;)
-$count = ( !isset($HTTP_GET_VARS['count']) ) ? 10 : intval($HTTP_GET_VARS['count']);
+$count = ( !isset($HTTP_GET_VARS['count']) ) ? 15 : intval($HTTP_GET_VARS['count']);
 $count = ( $count == 0 ) ? 20 : $count;
 
 // Set main url

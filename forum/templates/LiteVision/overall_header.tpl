@@ -52,7 +52,9 @@
             <td width="33%"><table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0" class="border-maro" onmouseover="this.style.backgroundColor='#F8F9FC';" onmouseout="this.style.backgroundColor='#FFFFFF';">
               <tr>
                 <td><div align="center" style='line-height: 120%;'>
-<img src='templates/icons/icon_mini_search.gif'> <a href="{U_SEARCH}" style='font-weight: bold;' class="mainmenu">{L_SEARCH}</a><br>
+<form method="POST" action="search.php?mode=results" class="gensmall" style="margin:.2em; padding: 0;">
+<input type="text" name="search_keywords" value="請輸入關鍵字" style="color: #DDDDDD; width: 7em" onfocus="if (this.value=='請輸入關鍵字') {this.value=''; this.style.color='#000000'}"> <input type="hidden" name="search_terms" value="any"><input type="hidden" name="search_author" value=""><input type="hidden" name="search_forum" value="-1"><input type="hidden" name="search_time" value="0"><input type="hidden" name="search_fields" value="all"><input type="hidden" name="search_cat" value="-1"><input type="hidden" name="sort_by" value="0"><input type="hidden" name="sort_dir" value="DESC"><input type="hidden" name="show_results" value="topics"><input type="hidden" name="return_chars" value="200"><input type="submit" value="搜尋"></form>
+<img src='templates/icons/icon_mini_search.gif'> <a href="{U_SEARCH}" style='font-weight: bold;' class="mainmenu">進階{L_SEARCH}</a>
 <!-- <a href="{U_GROUP_CP}" class="mainmenu">{L_USERGROUPS}</a> -->
 </div></td>
               </tr>
@@ -105,5 +107,9 @@
       </tr>
     </table></td>
   </tr>
+  <!-- BEGIN switch_user_logged_out -->
+  <!-- 全站公告區 UTF-8 -->
+  <tr><td align="center" colspan="3" class="gensmall">您好，<a href="http://forum.moztw.org/viewtopic.php?t=5571">一月十八號起<strong>部分</strong>討論區將僅開放會員張貼文章</a>，建議您<a href="{U_REGISTER}">註冊為會員</a>。（註冊免費，未註冊依然可閱讀所有文章）</td></tr>
+  <!-- END switch_user_logged_out -->
 </table>
 <br />

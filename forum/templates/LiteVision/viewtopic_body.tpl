@@ -1,4 +1,21 @@
+<script type="text/javascript">
+<!-- 
+function addEngine(name, imgName, sugName)
+{
+  if ((typeof window.sidebar == "object") && (typeof
+	  window.sidebar.addSearchEngine == "function"))
+  {
+    window.sidebar.addSearchEngine('http://forum.moztw.org/'+name+'&.src',imgName,sugName,"General");
+  }
+  else
+  {
+    alert("You must use Mozilla or Netscape to install these engines.");
+  }
+}
+     // -->
+</script>
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
+{POLL_DISPLAY}
   <tr>
     <td>
 <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0" class="border-bleu-jos">
@@ -50,6 +67,7 @@ src="{U_PRINT_IMG}" alt="{L_PRINT}" border="0" /></a>
     </table></td>
     <td width="1%" rowspan="2" bgcolor="#D0E4FB" class="border-bleu-st-dr">&nbsp;</td>
   </tr>
+  
   <tr>
     <td bgcolor="#EAF1FC"><table width="99%"  border="0" align="center" cellpadding="0" cellspacing="0">
 	<!-- BEGIN postrow -->

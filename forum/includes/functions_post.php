@@ -225,6 +225,7 @@ function prepare_post(&$mode, &$post_data, &$bbcode_on, &$html_on, &$smilies_on,
 //
 function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_id, &$post_id, &$poll_id, &$topic_type, &$bbcode_on, &$html_on, &$smilies_on, &$attach_sig, &$bbcode_uid, &$post_username, &$post_subject, &$post_message, &$poll_title, &$poll_options, &$poll_length)
 {
+	global $html_specialchars_match, $html_specialchars_replace;
 	global $board_config, $lang, $db, $phpbb_root_path, $phpEx;
 	global $userdata, $user_ip;
 
@@ -286,7 +287,9 @@ function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_
 		$post_id = $db->sql_nextid();
 	}
 	$useragent = addslashes($_SERVER['HTTP_USER_AGENT']);
-
+	//$useragent = preg_replace($html_entities_match, $html_entities_replace, $_SERVER['HTTP_USER_AGENT']);
+	
+	
 	$sql = ($mode != 'editpost') ? "INSERT INTO " . POSTS_TEXT_TABLE . " (post_id, post_subject, bbcode_uid, post_text, poster_useragent) VALUES ($post_id, '$post_subject', '$bbcode_uid', '$post_message','$useragent')" : "UPDATE " . POSTS_TEXT_TABLE . " SET post_text = '$post_message',  bbcode_uid = '$bbcode_uid', post_subject = '$post_subject', poster_useragent='$useragent' WHERE post_id = $post_id";
 	if (!$db->sql_query($sql))
 	{

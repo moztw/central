@@ -28,7 +28,7 @@
         <tr>
           <td>
 
-<form action="{S_LOGIN_ACTION}" method="post" target="_top">
+<form action="{S_LOGIN_ACTION}" name="loginform" method="post" target="_top">
 <table border="0" cellpadding="3" cellspacing="1" width="100%">
 		  <tr> 
 			<td colspan="2" align="center">&nbsp;</td>
@@ -64,3 +64,6 @@
 </table></td>
   </tr>
 </table>
+<script>
+window.onload = document.forms["loginform"].username.focus();
+</script>

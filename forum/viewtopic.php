@@ -1172,6 +1172,8 @@ for($i = 0; $i < $total_posts; $i++)
 	$row_color = ( !($i % 2) ) ? $theme['td_color1'] : $theme['td_color2'];
 	$row_class = ( !($i % 2) ) ? $theme['td_class1'] : $theme['td_class2'];
 
+	$useragent = preg_replace(array('#&(?!(\#[0-9]+;))#', '#<#', '#>#'), array('&amp;', '&lt;', '&gt;'), $useragent);
+
 	$template->assign_block_vars('postrow', array(
 		'ROW_COLOR' => '#' . $row_color,
 		'ROW_CLASS' => $row_class,

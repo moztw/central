@@ -604,6 +604,8 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
 
 					if (intval($display_categories[$extension]) == XPI_CAT){
 						$BC_assign_type = "postrow.attach.cat_firefox_install";
+					} elseif (intval($display_categories[$extension]) == SRC_CAT){
+						$BC_assign_type = "postrow.attach.cat_search_install";
 					}
 						
 
@@ -925,6 +927,8 @@ function display_attachments($post_id)
 
 				if (intval($display_categories[$attachments['_' . $post_id][$i]['extension']]) == XPI_CAT){
 					$BC_assign_type = "postrow.attach.cat_firefox_install";
+				} elseif (intval($display_categories[$attachments['_' . $post_id][$i]['extension']]) == SRC_CAT){
+					$BC_assign_type = "postrow.attach.cat_search_install";
 				}
 				//
 				// display attachment
