@@ -440,7 +440,7 @@ $template->assign_vars(array(
 	'L_POSTED' => $lang['Posted'],
 	'L_JOINED' => $lang['Joined'],
 	'L_AUTHOR' => $lang['Author'],
-	'L_DESCRIPTION' => $lang['Description'],
+	'L_TP_DESCRIPTION' => $lang['Topic_Description_Display'],
 
 	'S_AUTH_LIST' => $s_auth_can, 
 
