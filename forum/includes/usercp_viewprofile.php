@@ -159,6 +159,9 @@ $msn = $msn_img;
 $yim_img = ( $profiledata['user_yim'] ) ? '<a href="http://edit.yahoo.com/config/send_webmesg?.target=' . $profiledata['user_yim'] . '&amp;.src=pg"><img src="' . $images['icon_yim'] . '" alt="' . $lang['YIM'] . '" title="' . $lang['YIM'] . '" border="0" /></a>' : '';
 $yim = ( $profiledata['user_yim'] ) ? '<a href="http://edit.yahoo.com/config/send_webmesg?.target=' . $profiledata['user_yim'] . '&amp;.src=pg">' . $lang['YIM'] . '</a>' : '';
 
+$skype_img = ( $profiledata['user_skype'] ) ? '<a href="callto://' . $profiledata['user_skype'] . '/"><img src="' . $images['icon_skype'] . '" alt="' . $lang['SKYPE'] . '" title="' . $lang['SKYPE'] . '" border="0" /></a>' : '';
+$skype = ( $profiledata['user_skype'] ) ? '<a href="callto://' . $profiledata['user_skype'] . '/">' . $lang['SKYPE'] . '</a>' : '';
+
 $temp_url = append_sid("search.$phpEx?search_author=" . urlencode($profiledata['username']) . "&amp;showresults=posts");
 $search_img = '<a href="' . $temp_url . '"><img src="' . $images['icon_search'] . '" alt="' . $lang['Search_user_posts'] . '" title="' . $lang['Search_user_posts'] . '" border="0" /></a>';
 $search = '<a href="' . $temp_url . '">' . $lang['Search_user_posts'] . '</a>';
@@ -207,6 +210,8 @@ $template->assign_vars(array(
 	'MSN' => $msn,
 	'YIM_IMG' => $yim_img,
 	'YIM' => $yim,
+	'SKYPE_IMG' => $skype_img,
+	'SKYPE' => $skype,
 
 	'LOCATION' => ( $profiledata['user_from'] ) ? $profiledata['user_from'] : '&nbsp;',
 	'OCCUPATION' => ( $profiledata['user_occ'] ) ? $profiledata['user_occ'] : '&nbsp;',
@@ -226,6 +231,7 @@ $template->assign_vars(array(
 	'L_PM' => $lang['Private_Message'],
 	'L_ICQ_NUMBER' => $lang['ICQ'],
 	'L_YAHOO' => $lang['YIM'],
+	'L_SKYPE' => $lang['SKYPE'],
 	'L_AIM' => $lang['AIM'],
 	'L_MESSENGER' => $lang['MSNM'],
 	'L_WEBSITE' => $lang['Website'],

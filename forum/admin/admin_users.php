@@ -228,6 +228,7 @@ if ( $mode == 'edit' || $mode == 'save' && ( isset($HTTP_POST_VARS['username']) 
 		$aim = ( !empty($HTTP_POST_VARS['aim']) ) ? trim(strip_tags( $HTTP_POST_VARS['aim'] ) ) : '';
 		$msn = ( !empty($HTTP_POST_VARS['msn']) ) ? trim(strip_tags( $HTTP_POST_VARS['msn'] ) ) : '';
 		$yim = ( !empty($HTTP_POST_VARS['yim']) ) ? trim(strip_tags( $HTTP_POST_VARS['yim'] ) ) : '';
+		$skype = ( !empty($HTTP_POST_VARS['skype']) ) ? trim(strip_tags( $HTTP_POST_VARS['skype'] ) ) : '';
 
 		$website = ( !empty($HTTP_POST_VARS['website']) ) ? trim(strip_tags( $HTTP_POST_VARS['website'] ) ) : '';
 		$location = ( !empty($HTTP_POST_VARS['location']) ) ? trim(strip_tags( $HTTP_POST_VARS['location'] ) ) : '';
@@ -235,7 +236,7 @@ if ( $mode == 'edit' || $mode == 'save' && ( isset($HTTP_POST_VARS['username']) 
 		$interests = ( !empty($HTTP_POST_VARS['interests']) ) ? trim(strip_tags( $HTTP_POST_VARS['interests'] ) ) : '';
 		$signature = ( !empty($HTTP_POST_VARS['signature']) ) ? trim(str_replace('<br />', "\n", $HTTP_POST_VARS['signature'] ) ) : '';
 
-		validate_optional_fields($icq, $aim, $msn, $yim, $website, $location, $occupation, $interests, $signature);
+		validate_optional_fields($icq, $aim, $msn, $yim, $skype, $website, $location, $occupation, $interests, $signature);
 
 		$viewemail = ( isset( $HTTP_POST_VARS['viewemail']) ) ? ( ( $HTTP_POST_VARS['viewemail'] ) ? TRUE : 0 ) : 0;
 		$allowviewonline = ( isset( $HTTP_POST_VARS['hideonline']) ) ? ( ( $HTTP_POST_VARS['hideonline'] ) ? 0 : TRUE ) : TRUE;
@@ -282,6 +283,7 @@ if ( $mode == 'edit' || $mode == 'save' && ( isset($HTTP_POST_VARS['username']) 
 			$aim = htmlspecialchars(stripslashes($aim));
 			$msn = htmlspecialchars(stripslashes($msn));
 			$yim = htmlspecialchars(stripslashes($yim));
+			$skype = htmlspecialchars(stripslashes($skype));
 
 			$website = htmlspecialchars(stripslashes($website));
 			$location = htmlspecialchars(stripslashes($location));
@@ -655,7 +657,7 @@ if ( $mode == 'edit' || $mode == 'save' && ( isset($HTTP_POST_VARS['username']) 
 		if( !$error )
 		{
 			$sql = "UPDATE " . USERS_TABLE . "
-				SET " . $username_sql . $passwd_sql . "user_email = '" . str_replace("\'", "''", $email) . "', user_icq = '" . str_replace("\'", "''", $icq) . "', user_website = '" . str_replace("\'", "''", $website) . "', user_occ = '" . str_replace("\'", "''", $occupation) . "', user_from = '" . str_replace("\'", "''", $location) . "', user_interests = '" . str_replace("\'", "''", $interests) . "', user_sig = '" . str_replace("\'", "''", $signature) . "', user_viewemail = $viewemail, user_aim = '" . str_replace("\'", "''", $aim) . "', user_yim = '" . str_replace("\'", "''", $yim) . "', user_msnm = '" . str_replace("\'", "''", $msn) . "', user_attachsig = $attachsig, user_sig_bbcode_uid = '$signature_bbcode_uid', user_allowsmile = $allowsmilies, user_allowhtml = $allowhtml, user_allowavatar = $user_allowavatar, user_allowbbcode = $allowbbcode, user_allow_viewonline = $allowviewonline, user_notify = $notifyreply, user_allow_pm = $user_allowpm, user_notify_pm = $notifypm, user_popup_pm = $popuppm, user_lang = '" . str_replace("\'", "''", $user_lang) . "', user_style = $user_style, user_timezone = $user_timezone, user_dateformat = '" . str_replace("\'", "''", $user_dateformat) . "', user_active = $user_status, user_rank = $user_rank" . $avatar_sql . "
+				SET " . $username_sql . $passwd_sql . "user_email = '" . str_replace("\'", "''", $email) . "', user_icq = '" . str_replace("\'", "''", $icq) . "', user_website = '" . str_replace("\'", "''", $website) . "', user_occ = '" . str_replace("\'", "''", $occupation) . "', user_from = '" . str_replace("\'", "''", $location) . "', user_interests = '" . str_replace("\'", "''", $interests) . "', user_sig = '" . str_replace("\'", "''", $signature) . "', user_viewemail = $viewemail, user_aim = '" . str_replace("\'", "''", $aim) . "', user_yim = '" . str_replace("\'", "''", $yim) . "', user_msnm = '" . str_replace("\'", "''", $msn) . "', user_skype = '" . str_replace("\'", "''", $skype) . "', user_attachsig = $attachsig, user_sig_bbcode_uid = '$signature_bbcode_uid', user_allowsmile = $allowsmilies, user_allowhtml = $allowhtml, user_allowavatar = $user_allowavatar, user_allowbbcode = $allowbbcode, user_allow_viewonline = $allowviewonline, user_notify = $notifyreply, user_allow_pm = $user_allowpm, user_notify_pm = $notifypm, user_popup_pm = $popuppm, user_lang = '" . str_replace("\'", "''", $user_lang) . "', user_style = $user_style, user_timezone = $user_timezone, user_dateformat = '" . str_replace("\'", "''", $user_dateformat) . "', user_active = $user_status, user_rank = $user_rank" . $avatar_sql . "
 				WHERE user_id = $user_id";
 
 			if( $result = $db->sql_query($sql) )
@@ -716,6 +718,7 @@ if ( $mode == 'edit' || $mode == 'save' && ( isset($HTTP_POST_VARS['username']) 
 			$aim = htmlspecialchars(str_replace('+', ' ', stripslashes($aim)));
 			$msn = htmlspecialchars(stripslashes($msn));
 			$yim = htmlspecialchars(stripslashes($yim));
+			$skype = htmlspecialchars(stripslashes($skype));
 
 			$website = htmlspecialchars(stripslashes($website));
 			$location = htmlspecialchars(stripslashes($location));
@@ -760,6 +763,7 @@ if ( $mode == 'edit' || $mode == 'save' && ( isset($HTTP_POST_VARS['username']) 
 		$aim = htmlspecialchars(str_replace('+', ' ', $this_userdata['user_aim'] ));
 		$msn = htmlspecialchars($this_userdata['user_msnm']);
 		$yim = htmlspecialchars($this_userdata['user_yim']);
+		$skype = htmlspecialchars($this_userdata['user_skype']);
 
 		$website = htmlspecialchars($this_userdata['user_website']);
 		$location = htmlspecialchars($this_userdata['user_from']);
@@ -888,6 +892,7 @@ if ( $mode == 'edit' || $mode == 'save' && ( isset($HTTP_POST_VARS['username']) 
 			$s_hidden_fields .= '<input type="hidden" name="aim" value="' . str_replace("\"", "&quot;", $aim) . '" />';
 			$s_hidden_fields .= '<input type="hidden" name="msn" value="' . str_replace("\"", "&quot;", $msn) . '" />';
 			$s_hidden_fields .= '<input type="hidden" name="yim" value="' . str_replace("\"", "&quot;", $yim) . '" />';
+			$s_hidden_fields .= '<input type="hidden" name="skype" value="' . str_replace("\"", "&quot;", $skype) . '" />';
 			$s_hidden_fields .= '<input type="hidden" name="website" value="' . str_replace("\"", "&quot;", $website) . '" />';
 			$s_hidden_fields .= '<input type="hidden" name="location" value="' . str_replace("\"", "&quot;", $location) . '" />';
 			$s_hidden_fields .= '<input type="hidden" name="occupation" value="' . str_replace("\"", "&quot;", $occupation) . '" />';
@@ -994,6 +999,7 @@ if ( $mode == 'edit' || $mode == 'save' && ( isset($HTTP_POST_VARS['username']) 
 			'ICQ' => $icq,
 			'MSN' => $msn,
 			'AIM' => $aim,
+			'SKYPE' => $skype,
 			'OCCUPATION' => $occupation,
 			'INTERESTS' => $interests,
 			'LOCATION' => $location,
@@ -1042,6 +1048,7 @@ if ( $mode == 'edit' || $mode == 'save' && ( isset($HTTP_POST_VARS['username']) 
 			'L_ICQ_NUMBER' => $lang['ICQ'],
 			'L_MESSENGER' => $lang['MSNM'],
 			'L_YAHOO' => $lang['YIM'],
+			'L_SKYPE' => $lang['SKYPE'],
 			'L_WEBSITE' => $lang['Website'],
 			'L_AIM' => $lang['AIM'],
 			'L_LOCATION' => $lang['Location'],

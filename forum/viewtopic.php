@@ -385,7 +385,7 @@ $select_post_order .= '</select>';
 //
 // Go ahead and pull all data for this topic
 //
-$sql = "SELECT u.username, u.user_id, u.user_posts, u.user_from, u.user_website, u.user_email, u.user_icq, u.user_aim, u.user_yim, u.user_regdate, u.user_msnm, u.user_viewemail, u.user_rank, u.user_sig, u.user_sig_bbcode_uid, u.user_avatar, u.user_avatar_type, u.user_allowavatar, u.user_allowsmile, p.*,  pt.post_text, pt.post_subject, pt.bbcode_uid, pt.poster_useragent
+$sql = "SELECT u.username, u.user_id, u.user_posts, u.user_from, u.user_website, u.user_email, u.user_icq, u.user_aim, u.user_yim, u.user_skype, u.user_regdate, u.user_msnm, u.user_viewemail, u.user_rank, u.user_sig, u.user_sig_bbcode_uid, u.user_avatar, u.user_avatar_type, u.user_allowavatar, u.user_allowsmile, p.*,  pt.post_text, pt.post_subject, pt.bbcode_uid, pt.poster_useragent
 	FROM " . POSTS_TABLE . " p, " . USERS_TABLE . " u, " . POSTS_TEXT_TABLE . " pt
 	WHERE p.topic_id = $topic_id
 		$limit_posts_time
@@ -976,6 +976,9 @@ for($i = 0; $i < $total_posts; $i++)
 
 		$yim_img = ( $postrow[$i]['user_yim'] ) ? '<a href="http://edit.yahoo.com/config/send_webmesg?.target=' . $postrow[$i]['user_yim'] . '&amp;.src=pg"><img src="' . $images['icon_yim'] . '" alt="' . $lang['YIM'] . '" title="' . $lang['YIM'] . '" border="0" /></a>' : '';
 		$yim = ( $postrow[$i]['user_yim'] ) ? '<a href="http://edit.yahoo.com/config/send_webmesg?.target=' . $postrow[$i]['user_yim'] . '&amp;.src=pg">' . $lang['YIM'] . '</a>' : '';
+		
+		$skype_img = ( $postrow[$i]['user_skype'] ) ? '<a href="callto://' . $postrow[$i]['user_skype'] . '/"><img src="' . $images['icon_skype'] . '" alt="' . $lang['SKYPE'] . '" title="' . $lang['SKYPE'] . '" border="0" /></a>' : '';
+		$skype = ( $postrow[$i]['user_skype'] ) ? '<a href="callto://' . $postrow[$i]['user_skype'] . '/">' . $lang['SKYPE'] . '</a>' : '';
 	}
 	else
 	{
@@ -996,6 +999,8 @@ for($i = 0; $i < $total_posts; $i++)
 		$msn = '';
 		$yim_img = '';
 		$yim = '';
+		$skype_img = '';
+		$skype = '';
 	}
 
 	$temp_url = append_sid("posting.$phpEx?mode=quote&amp;" . POST_POST_URL . "=" . $postrow[$i]['post_id']);
@@ -1212,6 +1217,8 @@ for($i = 0; $i < $total_posts; $i++)
 		'MSN' => $msn,
 		'YIM_IMG' => $yim_img,
 		'YIM' => $yim,
+		'SKYPE_IMG' => $skype_img,
+		'SKYPE' => $skype,
 		'EDIT_IMG' => $edit_img,
 		'EDIT' => $edit,
 		'QUOTE_IMG' => $quote_img,

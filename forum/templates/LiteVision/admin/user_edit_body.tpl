@@ -147,6 +147,11 @@
 		<input class="form2" type="text" name="yim" size="20" maxlength="255" value="{YIM}" />	  </td>
 	</tr>
 	<tr> 
+	  <td width="50%" bgcolor="#EAF1FC"><span class="gen">{L_SKYPE} {USERNAME}</span></td>
+	  <td width="50%" bgcolor="#E1ECFB"> 
+		<input class="form2" type="text" name="skype" size="20" maxlength="255" value="{SKYPE}" />	  </td>
+	</tr>
+	<tr> 
 	  <td width="50%" bgcolor="#EAF1FC"><span class="gen">{L_WEBSITE}</span></td>
 	  <td width="50%" bgcolor="#E1ECFB"> 
 		<input class="form2" type="text" name="website" size="35" maxlength="255" value="{WEBSITE}" />	  </td>

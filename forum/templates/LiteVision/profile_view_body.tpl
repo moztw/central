@@ -122,6 +122,10 @@
                     <td valign="middle"><span class="gen">{YIM_IMG}</span></td>
                   </tr>
                   <tr>
+                    <td valign="middle" nowrap="nowrap" align="right"><span class="gen">{L_SKYPE} {USERNAME}:</span></td>
+                    <td valign="middle"><span class="gen">{SKYPE_IMG}</span></td>
+                  </tr>
+                  <tr>
                     <td valign="middle" nowrap="nowrap" align="right"><span class="gen">{L_AIM}:</span></td>
                     <td valign="middle"><span class="gen">{AIM_IMG}</span></td>
                   </tr>

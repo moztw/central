@@ -117,6 +117,7 @@ $lang['ICQ'] = 'ICQ 號碼';
 $lang['AIM'] = 'AIM Address';
 $lang['MSNM'] = 'MSN Messenger';
 $lang['YIM'] = '雅虎訊息通';
+$lang['SKYPE'] = 'Skype';
 
 $lang['Forum_Index'] = '%s 首頁';  // eg. sitename Forum Index, %s can be removed if you prefer
 

@@ -122,6 +122,12 @@
 	  </td>
 	</tr>
 	<tr> 
+	  <td bgcolor="#EAF1FC"><span class="gen">{L_SKYPE} {USERNAME}:</span></td>
+	  <td bgcolor="#EAF1FC"> 
+		<input type="text" class="form2"style="width: 150px"  name="skype" size="20" maxlength="255" value="{SKYPE}" />
+	  </td>
+	</tr>
+	<tr> 
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_WEBSITE}:</span></td>
 	  <td bgcolor="#EAF1FC"> 
 		<input type="text" class="form2"style="width: 200px"  name="website" size="25" maxlength="255" value="{WEBSITE}" />
