@@ -1,7 +1,7 @@
 #!/bin/sh
 backupdir=/home/moztw/backup
 webdir=/home/moztw/htdocs
-forumdir=/home/moztw/htdocs/forum
+forumdir=/home/moztw/forum
 date=`date +"%Y-%m-%d"`
 dumpdb=/usr/local/bin/mysqldump
 webexcludes="--exclude htdocs/dls --exclude htdocs/forum --exclude htdocs/tmp"
