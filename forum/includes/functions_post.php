@@ -44,6 +44,9 @@ function prepare_message($message, $html_on, $bbcode_on, $smile_on, $bbcode_uid 
 	//
 	$message = trim($message);
 
+	// clean up phpbb url
+	$message = preg_replace('#&sid=[0-9a-z]{10,50}#', '', $message);
+
 	if ($html_on)
 	{
 		$allowed_html_tags = split(',', $board_config['allow_html_tags']);
