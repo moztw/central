@@ -1,1 +1,2 @@
 @weekly /home/moztw/conf/backup.sh
+@daily  /home/moztw/conf/mirrorlist.sh
