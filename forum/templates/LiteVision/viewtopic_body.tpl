@@ -78,12 +78,17 @@ src="{U_PRINT_IMG}" alt="{L_PRINT}" border="0" /></a>
           </tr>
         </table></td>
         </tr>
+	<tr><td width='21%'><td style='font-size: 10px; font-family: Verdana,Tahoma,serif;
+	margin-top: 2px; border-top: 1px dotted #bbf; color: #77c;
+	' width='78%'> {postrow.POSTER_USERAGENT}
       <tr>
         <td width="21%"><div align="left"><span class="nav"><a href="#top" class="nav">&nbsp;{L_BACK_TO_TOP}</a></span></div></td>
-        <td width="78%"><table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
+        <td width="78%">
+
+	<table cellspacing="0" cellpadding="0" border="0" height="18" width="18">
           <tr>
             <td valign="middle" nowrap="nowrap">
-{postrow.QUOTE_IMG} {postrow.EDIT_IMG} {postrow.DELETE_IMG} {postrow.IP_IMG} |
+{postrow.QUOTE_IMG} {postrow.EDIT_IMG} {postrow.DELETE_IMG} {postrow.IP_IMG}
 {postrow.PROFILE_IMG} {postrow.PM_IMG} {postrow.EMAIL_IMG} {postrow.WWW_IMG} {postrow.AIM_IMG} {postrow.YIM_IMG} {postrow.MSN_IMG}
                 <script language="JavaScript" type="text/javascript"><!-- 
 

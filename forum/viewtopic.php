@@ -384,7 +384,7 @@ $select_post_order .= '</select>';
 //
 // Go ahead and pull all data for this topic
 //
-$sql = "SELECT u.username, u.user_id, u.user_posts, u.user_from, u.user_website, u.user_email, u.user_icq, u.user_aim, u.user_yim, u.user_regdate, u.user_msnm, u.user_viewemail, u.user_rank, u.user_sig, u.user_sig_bbcode_uid, u.user_avatar, u.user_avatar_type, u.user_allowavatar, u.user_allowsmile, p.*,  pt.post_text, pt.post_subject, pt.bbcode_uid
+$sql = "SELECT u.username, u.user_id, u.user_posts, u.user_from, u.user_website, u.user_email, u.user_icq, u.user_aim, u.user_yim, u.user_regdate, u.user_msnm, u.user_viewemail, u.user_rank, u.user_sig, u.user_sig_bbcode_uid, u.user_avatar, u.user_avatar_type, u.user_allowavatar, u.user_allowsmile, p.*,  pt.post_text, pt.post_subject, pt.bbcode_uid, pt.poster_useragent
 	FROM " . POSTS_TABLE . " p, " . USERS_TABLE . " u, " . POSTS_TEXT_TABLE . " pt
 	WHERE p.topic_id = $topic_id
 		$limit_posts_time
@@ -1043,6 +1043,7 @@ for($i = 0; $i < $total_posts; $i++)
 	}
 
 	$post_subject = ( $postrow[$i]['post_subject'] != '' ) ? $postrow[$i]['post_subject'] : '';
+	$useragent = ( $postrow[$i]['poster_useragent'] != '' ) ? $postrow[$i]['poster_useragent'] : '';
 
 	$message = $postrow[$i]['post_text'];
 	$bbcode_uid = $postrow[$i]['bbcode_uid'];
@@ -1126,6 +1127,7 @@ for($i = 0; $i < $total_posts; $i++)
 	if (count($orig_word))
 	{
 		$post_subject = preg_replace($orig_word, $replacement_word, $post_subject);
+		$useragent = preg_replace($orig_word, $replacement_word, $useragent);
 
 		if ($user_sig != '')
 		{
@@ -1179,6 +1181,7 @@ for($i = 0; $i < $total_posts; $i++)
 		'POSTER_AVATAR' => $poster_avatar,
 		'POST_DATE' => $post_date,
 		'POST_SUBJECT' => $post_subject,
+		'POSTER_USERAGENT' => $useragent,
 		'MESSAGE' => $message,
 		'SIGNATURE' => $user_sig,
 		'EDITED_MESSAGE' => $l_edited_by,
