@@ -52,6 +52,7 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 	{
 		$session_id = '';
 	}
+	$page_id = (int) $page_id;
 
 	$last_visit = 0;
 	$current_time = time();
@@ -91,6 +92,10 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 					$login = 0; 
 					$enable_autologin = 0; 
 					$user_id = $userdata['user_id'] = ANONYMOUS;
+					$sql = 'SELECT * FROM ' . USERS_TABLE . ' WHERE user_id = ' . ANONYMOUS;
+	               $result = $db->sql_query($sql);
+	               $userdata = $db->sql_fetchrow($result);
+	               $db->sql_freeresult($result);
 				}
 			}
 			else
@@ -99,6 +104,10 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 				$login = 0;
 				$enable_autologin = 0;
 				$user_id = $userdata['user_id'] = ANONYMOUS;
+				$sql = 'SELECT * FROM ' . USERS_TABLE . ' WHERE user_id = ' . ANONYMOUS;
+            $result = $db->sql_query($sql);
+            $userdata = $db->sql_fetchrow($result);
+            $db->sql_freeresult($result);
 			}
 		}
 		else
@@ -258,6 +267,8 @@ function session_pagestart($user_ip, $thispage_id)
  	{
  		$session_id = '';
  	}
+ 
+ 	$thispage_id = (int) $thispage_id;
  
 	//
 	// Does a session exist?

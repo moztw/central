@@ -204,6 +204,10 @@ else if ( $search_keywords != '' || $search_author != '' || $search_id )
 			}
 			else
 			{
+				if (preg_match('#^[\*%]+$#', trim($search_author)) || preg_match('#^[^\*]{1,2}$#', str_replace(array('*', '%'), '', trim($search_author))))
+            {
+               $search_author = '';
+            }
 				$search_author = str_replace('*', '%', trim($search_author));
 				
 				$sql = "SELECT user_id
@@ -271,6 +275,11 @@ else if ( $search_keywords != '' || $search_author != '' || $search_id )
 
 			for($i = 0; $i < count($split_search); $i++)
 			{
+				if (preg_match('#^[\*%]+$#', trim($split_search[$i])) || preg_match('#^[^\*]{1,2}$#', str_replace(array('*', '%'), '', trim($split_search[$i]))))
+            {
+               $split_search[$i] = '';
+               continue;
+            }
 				switch ( $split_search[$i] )
 				{
 					case 'and':
@@ -414,6 +423,10 @@ else if ( $search_keywords != '' || $search_author != '' || $search_id )
 		//
 		if ( $search_author != '' )
 		{
+			if (preg_match('#^[\*%]+$#', trim($search_author)) || preg_match('#^[^\*]{1,2}$#', str_replace(array('*', '%'), '', trim($search_author))))
+         {
+            $search_author = '';
+         }
 			$search_author = str_replace('*', '%', trim(str_replace("\'", "''", $search_author)));
 		}
 
