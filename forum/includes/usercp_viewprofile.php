@@ -32,7 +32,10 @@ if ( empty($HTTP_GET_VARS[POST_USERS_URL]) || $HTTP_GET_VARS[POST_USERS_URL] == 
 	message_die(GENERAL_MESSAGE, $lang['No_user_id_specified']);
 }
 $profiledata = get_userdata($HTTP_GET_VARS[POST_USERS_URL]);
-
+if (!$profiledata)
+{
+   message_die(GENERAL_MESSAGE, $lang['No_user_id_specified']);
+}
 $sql = "SELECT *
 	FROM " . RANKS_TABLE . "
 	ORDER BY rank_special, rank_min";

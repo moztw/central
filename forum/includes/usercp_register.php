@@ -411,7 +411,7 @@ if ( isset($HTTP_POST_VARS['submit']) )
 		}
 		else if ( $username != $userdata['username'] || $mode == 'register' )
 		{
-			if (strtolower($username) != strtolower($userdata['username']))
+			if (strtolower($username) != strtolower($userdata['username']) || $mode == 'register')
 			{
 			$result = validate_username($username);
 			if ( $result['error'] )

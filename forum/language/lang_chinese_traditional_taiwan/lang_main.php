@@ -1028,6 +1028,7 @@ $lang['General_Error'] = '一般錯誤';
 $lang['Critical_Error'] = '重大錯誤';
 $lang['An_error_occured'] = '發生錯誤';
 $lang['A_critical_error'] = '發生重大錯誤';
+$lang['Admin_reauthenticate'] = '討論區系統管理員登入，必須重新輸入帳號密碼確認身份.';
 $lang['Topic_description'] = '標題補述';
 $lang['Topic_Description_Display'] = '補述';
 

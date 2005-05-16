@@ -24,7 +24,7 @@
 // Adds/updates a new session to the database for the given userid.
 // Returns the new session ID on success.
 //
-function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_autologin = 0)
+function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_autologin = 0, $admin = 0)
 {
 	global $db, $board_config;
 	global $HTTP_COOKIE_VARS, $HTTP_GET_VARS, $SID;
@@ -47,13 +47,12 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 		$sessionmethod = SESSION_METHOD_GET;
 	}
 
-	//
-	if (!preg_match('/^[A-Za-z0-9]*$/', $session_id)) 
-	{
-		$session_id = '';
-	}
-	$page_id = (int) $page_id;
-
+ 	//
+ 	if (!preg_match('/^[A-Za-z0-9]*$/', $session_id)) 
+ 	{
+ 		$session_id = '';
+ 	}
+ 
 	$last_visit = 0;
 	$current_time = time();
 	$expiry_time = $current_time - $board_config['session_length'];
@@ -92,10 +91,6 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 					$login = 0; 
 					$enable_autologin = 0; 
 					$user_id = $userdata['user_id'] = ANONYMOUS;
-					$sql = 'SELECT * FROM ' . USERS_TABLE . ' WHERE user_id = ' . ANONYMOUS;
-	               $result = $db->sql_query($sql);
-	               $userdata = $db->sql_fetchrow($result);
-	               $db->sql_freeresult($result);
 				}
 			}
 			else
@@ -104,10 +99,6 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 				$login = 0;
 				$enable_autologin = 0;
 				$user_id = $userdata['user_id'] = ANONYMOUS;
-				$sql = 'SELECT * FROM ' . USERS_TABLE . ' WHERE user_id = ' . ANONYMOUS;
-            $result = $db->sql_query($sql);
-            $userdata = $db->sql_fetchrow($result);
-            $db->sql_freeresult($result);
 			}
 		}
 		else
@@ -152,56 +143,38 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 	// Create or update the session
 	//
 	$sql = "UPDATE " . SESSIONS_TABLE . "
-		SET session_user_id = $user_id, session_start = $current_time, session_time = $current_time, session_page = $page_id, session_logged_in = $login
+		SET session_user_id = $user_id, session_start = $current_time, session_time = $current_time, session_page = $page_id, session_logged_in = $login, session_admin = $admin
 		WHERE session_id = '" . $session_id . "' 
 			AND session_ip = '$user_ip'";
 	if ( !$db->sql_query($sql) || !$db->sql_affectedrows() )
 	{
-		$session_id = md5(uniqid($user_ip));
+		list($sec, $usec) = explode(' ', microtime());
+      mt_srand((float) $sec + ((float) $usec * 100000));
+      
+		//$session_id = md5(uniqid($user_ip));
+		global $HTTP_SERVER_VARS; //Googlebot and others
+		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Googlebot') ) ? md5(uniqid(mt_rand(), true)) : md5(d8ef2eab); // Googlebot
+		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mediapartners-Google') ) ? md5(uniqid(mt_rand(), true)) : md5(d8ef4e12); // Mediapartners-Google/2.1
+		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ia_archiver') ) ? md5(uniqid(mt_rand(), true)) : md5(d1edeea1); // Alexa
+		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ZyBorg') ) ? md5(uniqid(mt_rand(), true)) : md5(d1f9436c); // ZyBorg www.WISEnutbot.com
+		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mercator') ) ? md5(uniqid(mt_rand(), true)) : md5(cc7b1c20); // Mercator  http://www.research.compaq.com/SRC/mercator/faq.html
+		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'msnbot') ) ? md5(uniqid(mt_rand(), true)) : md5(cf2e6244); // msnbot/0.11 http://search.msn.com/msnbot.htm
+//		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'FAST') ) ? md5(uniqid(mt_rand(), true)) : md5(424d49fe); // FAST
 
 		$sql = "INSERT INTO " . SESSIONS_TABLE . "
-			(session_id, session_user_id, session_start, session_time, session_ip, session_page, session_logged_in)
-			VALUES ('$session_id', $user_id, $current_time, $current_time, '$user_ip', $page_id, $login)";
+			(session_id, session_user_id, session_start, session_time, session_ip, session_page, session_logged_in, session_admin)
+			VALUES ('$session_id', $user_id, $current_time, $current_time, '$user_ip', $page_id, $login, $admin)";
 		if ( !$db->sql_query($sql) )
 		{
-//			message_die(CRITICAL_ERROR, 'Error creating new session', '', __LINE__, __FILE__, $sql);
-$error = TRUE;
-if (SQL_LAYER == "mysql" || SQL_LAYER == "mysql4")
-{
-    $sql_error = $db->sql_error($result);
-    if ($sql_error["code"] == 1114)
-    {
-        $result = $db->sql_query('SHOW TABLE STATUS LIKE "'.SESSIONS_TABLE.'"');
-        $row = $db->sql_fetchrow($result);
-        if ($row["Type"] == "HEAP")
-        {
-            if ($row["Rows"] > 2500)
-            {
-                $delete_order = (SQL_LAYER=="mysql4") ? " ORDER BY session_time ASC" : "";
-                $db->sql_query("DELETE QUICK FROM ".SESSIONS_TABLE."$delete_order LIMIT 50");
-            }
-            else
-            {
-                $db->sql_query("ALTER TABLE ".SESSIONS_TABLE." MAX_ROWS=".($row["Rows"]+50));
-            }
-            if ($db->sql_query($sql))
-            {
-                $error = FALSE;
-            }                       
-        }
-    }
-}
-if ($error)
-{
-    message_die(CRITICAL_ERROR, "Error creating new session", "", __LINE__, __FILE__, $sql);
-}
+			message_die(CRITICAL_ERROR, 'Error creating new session', '', __LINE__, __FILE__, $sql);
 		}
 	}
 
 	if ( $user_id != ANONYMOUS )
 	{// ( $userdata['user_session_time'] > $expiry_time && $auto_create ) ? $userdata['user_lastvisit'] : ( 
 		$last_visit = ( $userdata['user_session_time'] > 0 ) ? $userdata['user_session_time'] : $current_time; 
-
+if (!$admin)
+      {
 		$sql = "UPDATE " . USERS_TABLE . " 
 			SET user_session_time = $current_time, user_session_page = $page_id, user_lastvisit = $last_visit
 			WHERE user_id = $user_id";
@@ -209,10 +182,10 @@ if ($error)
 		{
 			message_die(CRITICAL_ERROR, 'Error updating last visit time', '', __LINE__, __FILE__, $sql);
 		}
-
+}
 		$userdata['user_lastvisit'] = $last_visit;
 
-		$sessiondata['autologinid'] = ( $enable_autologin && $sessionmethod == SESSION_METHOD_COOKIE ) ? $auto_login_key : '';
+		$sessiondata['autologinid'] = (!$admin) ? (( $enable_autologin && $sessionmethod == SESSION_METHOD_COOKIE ) ? $auto_login_key : '') : $sessiondata['autologinid'];
 		$sessiondata['userid'] = $user_id;
 	}
 
@@ -223,6 +196,7 @@ if ($error)
 	$userdata['session_page'] = $page_id;
 	$userdata['session_start'] = $current_time;
 	$userdata['session_time'] = $current_time;
+	$userdata['session_admin'] = $admin;
 
 	setcookie($cookiename . '_data', serialize($sessiondata), $current_time + 31536000, $cookiepath, $cookiedomain, $cookiesecure);
 	setcookie($cookiename . '_sid', $session_id, 0, $cookiepath, $cookiedomain, $cookiesecure);
@@ -261,16 +235,50 @@ function session_pagestart($user_ip, $thispage_id)
 		$session_id = ( isset($HTTP_GET_VARS['sid']) ) ? $HTTP_GET_VARS['sid'] : '';
 		$sessionmethod = SESSION_METHOD_GET;
 	}
-
+	global $HTTP_SERVER_VARS;
+	if ( empty($session_id)  && strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Googlebot') )
+	{
+		$sessiondata = '';
+		$session_id = md5(d8ef2eab);
+		$sessionmethod = SESSION_METHOD_GET;
+	}
+	if ( empty($session_id)  && strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ia_archiver') )
+	{
+		$sessiondata = '';
+		$session_id = md5(d1edeea1);
+		$sessionmethod = SESSION_METHOD_GET;
+	}
+	if ( empty($session_id)  && strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ZyBorg') )
+	{
+		$sessiondata = '';
+		$session_id = md5(d1f9436c);
+		$sessionmethod = SESSION_METHOD_GET;
+	}
+	if ( empty($session_id)  && strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mercator') )
+	{
+		$sessiondata = '';
+		$session_id = md5(cc7b1c20);
+		$sessionmethod = SESSION_METHOD_GET;
+	}
+	if ( empty($session_id)  && strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'msnbot') )
+	{
+		$sessiondata = '';
+		$session_id = md5(cf2e6244);
+		$sessionmethod = SESSION_METHOD_GET;
+	}
+//	if ( empty($session_id)  && strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'FAST') )
+//	{
+//		$sessiondata = '';
+//		$session_id = md5(424d49fe);
+//		$sessionmethod = SESSION_METHOD_GET;
+//	}
 	//
  	if (!preg_match('/^[A-Za-z0-9]*$/', $session_id))
  	{
  		$session_id = '';
  	}
  
- 	$thispage_id = (int) $thispage_id;
- 
-	//
+ 	//
 	// Does a session exist?
 	//
 	if ( !empty($session_id) )
@@ -303,7 +311,8 @@ function session_pagestart($user_ip, $thispage_id)
 			$ip_check_s = substr($userdata['session_ip'], 0, 6);
 			$ip_check_u = substr($user_ip, 0, 6);
 
-			if ($ip_check_s == $ip_check_u)
+			//      if ( $ip_check_s == $ip_check_u )
+			if (( $ip_check_s == $ip_check_u ) || ($session_id == md5(d8ef2eab)&&(strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Googlebot'))))
 			{
 				$SID = ($sessionmethod == SESSION_METHOD_GET || defined('IN_ADMIN')) ? 'sid=' . $session_id : '';
 
@@ -312,8 +321,11 @@ function session_pagestart($user_ip, $thispage_id)
 				//
 				if ( $current_time - $userdata['session_time'] > 60 )
 				{
-					$sql = "UPDATE " . SESSIONS_TABLE . " 
-						SET session_time = $current_time, session_page = $thispage_id 
+					// A little trick to reset session_admin on session re-usage
+               $update_admin = (!defined('IN_ADMIN') && $current_time - $userdata['session_time'] > ($board_config['session_length']+60)) ? ', session_admin = 0' : '';
+
+               $sql = "UPDATE " . SESSIONS_TABLE . "
+                  SET session_time = $current_time, session_page = $thispage_id$update_admin
 						WHERE session_id = '" . $userdata['session_id'] . "'";
 					if ( !$db->sql_query($sql) )
 					{
@@ -398,11 +410,11 @@ function session_end($session_id, $user_id)
 		$sessionmethod = SESSION_METHOD_GET;
 	}
 
-	if (!preg_match('/^[A-Za-z0-9]*$/', $session_id))
-	{
-		return;
-	}
-	
+ 	if (!preg_match('/^[A-Za-z0-9]*$/', $session_id))
+ 	{
+ 		return;
+ 	}
+ 	
 	//
 	// Delete existing session
 	//
@@ -428,9 +440,9 @@ function session_end($session_id, $user_id)
 //
 function append_sid($url, $non_html_amp = false)
 {
-	global $SID;
+	global $SID, $HTTP_SERVER_VARS;
 
-	if ( !empty($SID) && !preg_match('#sid=#', $url) )
+	if ( !empty($SID) && !preg_match('#sid=#', $url) && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ia_archiver') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Googlebot') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ZyBorg') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mercator') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'msnbot') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mozilla/4.0 (compatible;)') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ASPseek') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mediapartners-Google') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'FAST') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Slurp'))
 	{
 		$url .= ( ( strpos($url, '?') != false ) ?  ( ( $non_html_amp ) ? '&' : '&amp;' ) : '?' ) . $SID;
 	}
