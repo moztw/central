@@ -175,7 +175,37 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 			VALUES ('$session_id', $user_id, $current_time, $current_time, '$user_ip', $page_id, $login, $admin)";
 		if ( !$db->sql_query($sql) )
 		{
-			message_die(CRITICAL_ERROR, 'Error creating new session', '', __LINE__, __FILE__, $sql);
+			//message_die(CRITICAL_ERROR, 'Error creating new session', '', __LINE__, __FILE__, $sql);
+			$error = TRUE;
+if (SQL_LAYER == "mysql" || SQL_LAYER == "mysql4")
+{
+   $sql_error = $db->sql_error($result);
+   if ($sql_error["code"] == 1114)
+   {
+      $result = $db->sql_query('SHOW TABLE STATUS LIKE "'.SESSIONS_TABLE.'"');
+      $row = $db->sql_fetchrow($result);
+      if ($row["Type"] == "HEAP")
+      {
+         if ($row["Rows"] > 2500)
+         {
+            $delete_order = (SQL_LAYER=="mysql4") ? " ORDER BY session_time ASC" : "";
+            $db->sql_query("DELETE QUICK FROM ".SESSIONS_TABLE."$delete_order LIMIT 50");
+         }
+         else
+         {
+            $db->sql_query("ALTER TABLE ".SESSIONS_TABLE." MAX_ROWS=".($row["Rows"]+50));
+         }
+         if ($db->sql_query($sql))
+         {
+            $error = FALSE;
+         }                   
+      }
+   }
+}
+if ($error)
+{
+   message_die(CRITICAL_ERROR, "Error creating new session", "", __LINE__, __FILE__, $sql);
+}
 		}
 	}
 
