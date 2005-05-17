@@ -52,6 +52,7 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
  	{
  		$session_id = '';
  	}
+	$page_id = (int) $page_id;
  
 	$last_visit = 0;
 	$current_time = time();
@@ -91,6 +92,10 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 					$login = 0; 
 					$enable_autologin = 0; 
 					$user_id = $userdata['user_id'] = ANONYMOUS;
+					$sql = 'SELECT * FROM ' . USERS_TABLE . ' WHERE user_id = ' . ANONYMOUS;
+					$result = $db->sql_query($sql);
+					$userdata = $db->sql_fetchrow($result);
+					$db->sql_freeresult($result);
 				}
 			}
 			else
@@ -99,6 +104,10 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 				$login = 0;
 				$enable_autologin = 0;
 				$user_id = $userdata['user_id'] = ANONYMOUS;
+				$sql = 'SELECT * FROM ' . USERS_TABLE . ' WHERE user_id = ' . ANONYMOUS;
+				$result = $db->sql_query($sql);
+				$userdata = $db->sql_fetchrow($result);
+				$db->sql_freeresult($result);
 			}
 		}
 		else
@@ -149,17 +158,17 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 	if ( !$db->sql_query($sql) || !$db->sql_affectedrows() )
 	{
 		list($sec, $usec) = explode(' ', microtime());
-      mt_srand((float) $sec + ((float) $usec * 100000));
-      
-		//$session_id = md5(uniqid($user_ip));
+		mt_srand((float) $sec + ((float) $usec * 100000));
+		// //$session_id = md5(uniqid($user_ip));
+		$session_id = md5(uniqid(mt_rand(), true));
 		global $HTTP_SERVER_VARS; //Googlebot and others
-		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Googlebot') ) ? md5(uniqid(mt_rand(), true)) : md5(d8ef2eab); // Googlebot
-		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mediapartners-Google') ) ? md5(uniqid(mt_rand(), true)) : md5(d8ef4e12); // Mediapartners-Google/2.1
-		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ia_archiver') ) ? md5(uniqid(mt_rand(), true)) : md5(d1edeea1); // Alexa
-		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ZyBorg') ) ? md5(uniqid(mt_rand(), true)) : md5(d1f9436c); // ZyBorg www.WISEnutbot.com
-		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mercator') ) ? md5(uniqid(mt_rand(), true)) : md5(cc7b1c20); // Mercator  http://www.research.compaq.com/SRC/mercator/faq.html
-		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'msnbot') ) ? md5(uniqid(mt_rand(), true)) : md5(cf2e6244); // msnbot/0.11 http://search.msn.com/msnbot.htm
-//		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'FAST') ) ? md5(uniqid(mt_rand(), true)) : md5(424d49fe); // FAST
+		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Googlebot') ) ? md5(uniqid($user_ip)) : md5(d8ef2eab); // Googlebot
+		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mediapartners') ) ? md5(uniqid($user_ip)) : md5(d8ef4e12); // Mediapartners-Google/2.1
+		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ia_archiver') ) ? md5(uniqid($user_ip)) : md5(d1edeea1); // Alexa
+		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ZyBorg') ) ? md5(uniqid($user_ip)) : md5(d1f9436c); // ZyBorg www.WISEnutbot.com
+		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mercator') ) ? md5(uniqid($user_ip)) : md5(cc7b1c20); // Mercator  http://www.research.compaq.com/SRC/mercator/faq.html
+		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'msnbot') ) ? md5(uniqid($user_ip)) : md5(cf2e6244); // msnbot/0.11 http://search.msn.com/msnbot.htm
+//		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'FAST') ) ? md5(uniqid($user_ip)) : md5(424d49fe); // FAST
 
 		$sql = "INSERT INTO " . SESSIONS_TABLE . "
 			(session_id, session_user_id, session_start, session_time, session_ip, session_page, session_logged_in, session_admin)
@@ -172,9 +181,11 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 
 	if ( $user_id != ANONYMOUS )
 	{// ( $userdata['user_session_time'] > $expiry_time && $auto_create ) ? $userdata['user_lastvisit'] : ( 
-		$last_visit = ( $userdata['user_session_time'] > 0 ) ? $userdata['user_session_time'] : $current_time; 
-if (!$admin)
-      {
+		$last_visit = ( $userdata['user_session_time'] > 0 ) ? $userdata['user_session_time'] : $current_time;
+		
+		if (!$admin)
+		{
+
 		$sql = "UPDATE " . USERS_TABLE . " 
 			SET user_session_time = $current_time, user_session_page = $page_id, user_lastvisit = $last_visit
 			WHERE user_id = $user_id";
@@ -182,7 +193,9 @@ if (!$admin)
 		{
 			message_die(CRITICAL_ERROR, 'Error updating last visit time', '', __LINE__, __FILE__, $sql);
 		}
-}
+		
+		}
+
 		$userdata['user_lastvisit'] = $last_visit;
 
 		$sessiondata['autologinid'] = (!$admin) ? (( $enable_autologin && $sessionmethod == SESSION_METHOD_COOKIE ) ? $auto_login_key : '') : $sessiondata['autologinid'];
@@ -277,6 +290,8 @@ function session_pagestart($user_ip, $thispage_id)
  	{
  		$session_id = '';
  	}
+
+	$thispage_id = (int) $thispage_id;
  
  	//
 	// Does a session exist?
@@ -322,10 +337,10 @@ function session_pagestart($user_ip, $thispage_id)
 				if ( $current_time - $userdata['session_time'] > 60 )
 				{
 					// A little trick to reset session_admin on session re-usage
-               $update_admin = (!defined('IN_ADMIN') && $current_time - $userdata['session_time'] > ($board_config['session_length']+60)) ? ', session_admin = 0' : '';
+					$update_admin = (!defined('IN_ADMIN') && $current_time - $userdata['session_time'] > ($board_config['session_length']+60)) ? ', session_admin = 0' : '';
 
-               $sql = "UPDATE " . SESSIONS_TABLE . "
-                  SET session_time = $current_time, session_page = $thispage_id$update_admin
+					$sql = "UPDATE " . SESSIONS_TABLE . " 
+						SET session_time = $current_time, session_page = $thispage_id$update_admin 
 						WHERE session_id = '" . $userdata['session_id'] . "'";
 					if ( !$db->sql_query($sql) )
 					{
@@ -442,7 +457,7 @@ function append_sid($url, $non_html_amp = false)
 {
 	global $SID, $HTTP_SERVER_VARS;
 
-	if ( !empty($SID) && !preg_match('#sid=#', $url) && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ia_archiver') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Googlebot') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ZyBorg') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mercator') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'msnbot') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mozilla/4.0 (compatible;)') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ASPseek') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mediapartners-Google') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'FAST') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Slurp'))
+	if ( !empty($SID) && !preg_match('#sid=#', $url) && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ia_archiver') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Googlebot') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ZyBorg') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mercator') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'msnbot') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mozilla/4.0 (compatible;)') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'ASPseek') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Mediapartners') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'FAST') && !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Slurp'))
 	{
 		$url .= ( ( strpos($url, '?') != false ) ?  ( ( $non_html_amp ) ? '&' : '&amp;' ) : '?' ) . $SID;
 	}
