@@ -66,7 +66,7 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 		WHERE user_id = $user_id";
 	if ( !($result = $db->sql_query($sql)) )
 	{
-		message_die(CRITICAL_ERROR, 'Could not obtain lastvisit data from user table', '', __LINE__, __FILE__, $sql);
+		message_die(CRITICAL_ERROR, 'Could not obtain lastvisit data from user table', '', __LINE__, __FILE__, "69");
 	}
 
 	$userdata = $db->sql_fetchrow($result);
@@ -137,7 +137,7 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 	}
 	if ( !($result = $db->sql_query($sql)) )
 	{
-		message_die(CRITICAL_ERROR, 'Could not obtain ban information', '', __LINE__, __FILE__, $sql);
+		message_die(CRITICAL_ERROR, 'Could not obtain ban information', '', __LINE__, __FILE__, "140");
 	}
 
 	if ( $ban_info = $db->sql_fetchrow($result) )
@@ -175,7 +175,7 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 			VALUES ('$session_id', $user_id, $current_time, $current_time, '$user_ip', $page_id, $login, $admin)";
 		if ( !$db->sql_query($sql) )
 		{
-			//message_die(CRITICAL_ERROR, 'Error creating new session', '', __LINE__, __FILE__, $sql);
+			//message_die(CRITICAL_ERROR, 'Error creating new session', '', __LINE__, __FILE__, "178");
 			$error = TRUE;
 if (SQL_LAYER == "mysql" || SQL_LAYER == "mysql4")
 {
@@ -204,7 +204,7 @@ if (SQL_LAYER == "mysql" || SQL_LAYER == "mysql4")
 }
 if ($error)
 {
-   message_die(CRITICAL_ERROR, "Error creating new session", "", __LINE__, __FILE__, $sql);
+   message_die(CRITICAL_ERROR, "Error creating new session", "", __LINE__, __FILE__, "207");
 }
 		}
 	}
@@ -221,7 +221,7 @@ if ($error)
 			WHERE user_id = $user_id";
 		if ( !$db->sql_query($sql) )
 		{
-			message_die(CRITICAL_ERROR, 'Error updating last visit time', '', __LINE__, __FILE__, $sql);
+			message_die(CRITICAL_ERROR, 'Error updating last visit time', '', __LINE__, __FILE__, "224");
 		}
 		
 		}
@@ -338,7 +338,7 @@ function session_pagestart($user_ip, $thispage_id)
 				AND u.user_id = s.session_user_id";
 		if ( !($result = $db->sql_query($sql)) )
 		{
-			message_die(CRITICAL_ERROR, 'Error doing DB query userdata row fetch', '', __LINE__, __FILE__, $sql);
+			message_die(CRITICAL_ERROR, 'Error doing DB query userdata row fetch', '', __LINE__, __FILE__, "341");
 		}
 
 		$userdata = $db->sql_fetchrow($result);
@@ -374,7 +374,7 @@ function session_pagestart($user_ip, $thispage_id)
 						WHERE session_id = '" . $userdata['session_id'] . "'";
 					if ( !$db->sql_query($sql) )
 					{
-						message_die(CRITICAL_ERROR, 'Error updating sessions table', '', __LINE__, __FILE__, $sql);
+						message_die(CRITICAL_ERROR, 'Error updating sessions table', '', __LINE__, __FILE__, "377");
 					}
 
 					if ( $userdata['user_id'] != ANONYMOUS )
@@ -384,7 +384,7 @@ function session_pagestart($user_ip, $thispage_id)
 							WHERE user_id = " . $userdata['user_id'];
 						if ( !$db->sql_query($sql) )
 						{
-							message_die(CRITICAL_ERROR, 'Error updating sessions table', '', __LINE__, __FILE__, $sql);
+							message_die(CRITICAL_ERROR, 'Error updating sessions table', '', __LINE__, __FILE__, "387");
 						}
 					}
 
@@ -397,7 +397,7 @@ function session_pagestart($user_ip, $thispage_id)
 							AND session_id <> '$session_id'";
 					if ( !$db->sql_query($sql) )
 					{
-						message_die(CRITICAL_ERROR, 'Error clearing sessions table', '', __LINE__, __FILE__, $sql);
+						message_die(CRITICAL_ERROR, 'Error clearing sessions table', '', __LINE__, __FILE__, "400");
 					}
 
 					setcookie($cookiename . '_data', serialize($sessiondata), $current_time + 31536000, $cookiepath, $cookiedomain, $cookiesecure);
@@ -417,7 +417,7 @@ function session_pagestart($user_ip, $thispage_id)
 
 	if ( !($userdata = session_begin($user_id, $user_ip, $thispage_id, TRUE)) )
 	{
-		message_die(CRITICAL_ERROR, 'Error creating user session', '', __LINE__, __FILE__, $sql);
+		message_die(CRITICAL_ERROR, 'Error creating user session', '', __LINE__, __FILE__, "420");
 	}
 
 	return $userdata;
@@ -468,7 +468,7 @@ function session_end($session_id, $user_id)
 			AND session_user_id = $user_id";
 	if ( !$db->sql_query($sql) )
 	{
-		message_die(CRITICAL_ERROR, 'Error removing user session', '', __LINE__, __FILE__, $sql);
+		message_die(CRITICAL_ERROR, 'Error removing user session', '', __LINE__, __FILE__, "471");
 	}
 
 	setcookie($cookiename . '_data', '', $current_time - 31536000, $cookiepath, $cookiedomain, $cookiesecure);
