@@ -312,12 +312,19 @@ function storeCaret(textEl) {
 		</span></td>
       </tr>
       <!-- BEGIN topic_description -->
+
 	   <tr>
+
 	     <td class="row1" width="22%"><span class="gen"><b>{L_TOPIC_DESCRIPTION}</b></span></td>
+
 	     <td class="row2" width="78%"><span class="gen">
+
 	      <input type="text" name="topic_desc" size="45" maxlength="60" style="width:450px" tabindex="2" class="post" value="{TOPIC_DESCRIPTION}" />
+
 	      </span></td>
+
 	   </tr>
+
 	  <!-- END topic_description -->
       <tr>
         <td valign="top"><table width="100%" border="0" align="center" cellpadding="1" cellspacing="0">
@@ -497,5 +504,3 @@ function storeCaret(textEl) {
 </table>
 
 </form>
-	</td>
-  </tr>

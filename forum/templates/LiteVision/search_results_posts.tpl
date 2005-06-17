@@ -1,22 +1,6 @@
+﻿<span class="nav">您現在位於: <a href="http://moztw.org/">MozTW</a> &gt; <a href="{U_INDEX}">討論區</a> &gt; <a href="{U_SEARCH}">{L_SEARCH}</a> &gt; 搜尋結果<br /></span>
+
 <table width="98%"  border="0" cellspacing="0" cellpadding="0" align="center">
-    <td>
-
-
-<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-bleu-jos">
-  <tr valign="bottom">
-    <td height="26" colspan="3" class="stil01"><table width="100%" height="20"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
-      <tr>
-        <td width="5%" valign="bottom"><img src="templates/LiteVision/images/05.gif" width="49" height="21"></td>
-        <td width="95%" valign="bottom"><table width="99%" height="18"  border="0" align="center" cellpadding="0" cellspacing="0">
-          <tr>
-            <td width="72%" valign="top"><div align="left"><span class="nav"><a href="{U_INDEX}" class="nav">{L_INDEX}</a></span></div></td>
-            <td width="28%" valign="bottom"><div align="right"></div></td>
-          </tr>
-        </table></td>
-	
-      </tr>
-    </table></td>
-  </tr>
   <tr>
     <td width="1%" rowspan="2" bgcolor="#D0E4FB" class="border-bleu-st-dr">&nbsp;</td>
     <td width="98%" height="50" valign="bottom" class="stil06"><table width="100%" height="50"  border="0" align="center" cellpadding="0" cellspacing="0">

@@ -1,4 +1,4 @@
-<script type="text/javascript">
+﻿<script type="text/javascript">
 <!-- 
 function addEngine(name, imgName, sugName)
 {
@@ -14,33 +14,28 @@ function addEngine(name, imgName, sugName)
 }
      // -->
 </script>
+<span class="nav">您現在位於: <a href="http://moztw.org/">MozTW</a> &gt; <a href="{U_INDEX}">討論區</a> &gt; <a href="{U_VIEW_FORUM}">{FORUM_NAME}</a> &gt; <strong>{TOPIC_TITLE}</strong><br></span>
+
+
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
 {POLL_DISPLAY}
   <tr>
     <td>
 <table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0" class="border-bleu-jos">
-  <tr valign="bottom">
-    <td height="26" colspan="3" class="stil01"><table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
-      <tr>
-        <td width="5%"><img src="templates/LiteVision/images/05.gif" width="49" height="21"></td>
-        <td width="95%">
-<span style='float: right; text-align: right;' class="genmed"><b>{PAGINATION}</b></span>
-<span style='float: left; text-align: left;' class="nav">&nbsp;<a href="{U_INDEX}" class="nav">{L_INDEX}</a> &raquo; <a class="nav" href="{U_VIEW_FORUM}">{FORUM_NAME}</a></span>
-</td>
-      </tr>
-    </table></td>
-  </tr>
   <tr>
     <td bgcolor="#EAF1FC"><table width="98%"  border="0" align="center" cellpadding="0" cellspacing="2">
-      <tr>
-        <td width="180" align="left" valign="middle"><span class="nav"><a href="{U_POST_NEW_TOPIC}"><img src="{POST_IMG}" border="0" alt="{L_POST_NEW_TOPIC}" align="middle" /></a>&nbsp;&nbsp;<a href="{U_POST_REPLY_TOPIC}"><img src="{REPLY_IMG}" border="0" alt="{L_POST_REPLY_TOPIC}" align="middle" /></a></span></td>
+     <tr>
+        <td width="90" align="left" valign="middle"><span class="nav"><a href="{U_POST_REPLY_TOPIC}"><img src="{REPLY_IMG}" border="0" alt="{L_POST_REPLY_TOPIC}" align="middle" /></a></span></td>
         <td align="left" valign="middle" class="nav">
-<span><strong><a href="{U_VIEW_TOPIC}" class='nav gen' style='font-size: 110%;'>&nbsp; &raquo; {TOPIC_TITLE} &laquo; </a></strong></span>
+<span><strong><a href="{U_VIEW_TOPIC}" class='nav gen' style='font-size: 110%;'>{TOPIC_TITLE}</a></strong></span>
 	</td>
 		<td width='90' align='right' valign='middle'>
+<!-- BEGIN switch_user_logged_in -->
 <a href="{U_PRINT}" title="{L_PRINT}" class="nav" target="_blank"><img
 src="{U_PRINT_IMG}" alt="{L_PRINT}" border="0" /></a>
-      </tr>
+<!-- END switch_user_logged_in -->
+	</tr>
+       <tr><td align="right" valign="middle" class="nav" colspan="3"><span style='float: right; text-align: right;' class="genmed"><b>{PAGINATION}</b></span></td></tr>
     </table></td>
   </tr>
 </table>
@@ -162,7 +157,8 @@ src="{U_PRINT_IMG}" alt="{L_PRINT}" border="0" /></a>
           <td width="1%" bgcolor="#D0E4FB" class="border-bleu-st-dr">&nbsp;</td>
           <td colspan="5" bgcolor="#EAF1FC"><table width="98%"  border="0" align="center" cellpadding="0" cellspacing="2">
             <tr>
-              <td width="65%"><span class="gensmall">{S_WATCH_TOPIC}</span><br />
+              <td width="65%"><a href="{U_POST_REPLY_TOPIC}"><img src="{REPLY_IMG}" border="0" alt="{L_POST_REPLY_TOPIC}" align="middle" /></a><br />
+              <span class="gensmall">{S_WATCH_TOPIC}</span><br />
 &nbsp;<br />
 {S_TOPIC_ADMIN}</td>
               <td width="35%"><div align="right"><span class="gensmall">{S_AUTH_LIST}</span></div></td>

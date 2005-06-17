@@ -1,30 +1,12 @@
-<table width="98%"  border="0" cellspacing="0" cellpadding="0" align="center">
-  <tr>
-    <td>
-        <table width="100%"  border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td width="100%" height="26" valign="bottom" class="stil01"><table width="100%" height="21"  border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td width="18%" valign="bottom"><table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
-                      <tr>
-                        <td width="5%" valign="bottom"><table height="21"  border="0" cellpadding="0" cellspacing="0">
-                            <tr>
-                              <td><img src="templates/LiteVision/images/05.gif" width="49" height="21"></td>
-                            </tr>
-                        </table></td>
-                        <td width="95%"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <td width="70%"><span class="genmed">
-<strong><img src='templates/icons/atmoztw.png' alt='moztw.org' style='vertical-align: bottom;'>&nbsp;Forum system: </strong></span><a href="http://www.phpbb.com" target="_blank" class="copyright">[phpBB {PHPBB_VERSION}]</a><span class="genmed">. Locale: [<a href='http://phpbb-tw.net' target='_blank' class='copyright'>phpbb-tw.net</a>]. LiteVision Theme: [</span><a href="http://www.phpbb.ro" target="_blank" class="copyright">phpbb.ro</a>/<a href="http://www.michaeljackson.ro" target="_blank" class="copyright">MJR</a>]</span></td>
-                              <td width="30%"><span class="copyright">{ADMIN_LINK}</span></td>
-                            </tr>
-                        </table></td>
-                      </tr>
-                  </table></td>
-                </tr>
-            </table></td>
-          </tr>
-        </table>
-    </td>
-  </tr>
-</table>
+﻿  <div id="footer">
+<span class="copyright">{ADMIN_LINK}</span>
+   <ul id="bn">
+	<li><a href="rdf.php" class="mainmenu"><img style='vertical-align: bottom;' src='templates/icons/rss.png' alt='RSS (RDF/XML)' title='RSS'/></a></li>
+	<li><a href="http://moztw.org/about">聯絡資訊</a></li>
+   </ul>
+   <p><small>Forum system: <a href="http://www.phpbb.com" target="_blank" class="copyright">[phpBB {PHPBB_VERSION}]</a>. Locale: [<a href='http://phpbb-tw.net' target='_blank' class='copyright'>phpbb-tw.net</a>]. LiteVision Theme: [<a href="http://www.phpbb.ro" target="_blank" class="copyright">phpbb.ro</a>/<a href="http://www.michaeljackson.ro" target="_blank" class="copyright">MJR</a>, modified by <a href="http://ant.sillydog.org/" target="_blank" class="copyright">Antony</a>.]</small><br />
+   Copyright &copy; 2002-2005 <a href="http://moztw.org/" class="copyright">Mozilla Taiwan</a> (Mozilla 正體中文/台灣, Mozilla Localization: Traditional Chinese)</p>
+  </div>
+  <!-- closes #footer-->
+</body>
+</html>

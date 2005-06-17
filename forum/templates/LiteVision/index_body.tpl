@@ -1,4 +1,20 @@
-<link href="templates/LiteVision/LiteVision.css" rel="stylesheet" type="text/css">
+﻿<span class="nav">您現在位於: <a href="http://moztw.org/">MozTW</a> &gt; <a href="{U_INDEX}">討論區</a><br /></span>
+
+<!-- BEGIN switch_user_logged_out -->
+<form method="post" action="{S_LOGIN_ACTION}">
+<span class="gensmall">{L_USERNAME}: 
+ <input class="form3" type="text" name="username" size="10" />
+&nbsp;&nbsp;&nbsp;{L_PASSWORD}:
+  <input class="form3" type="password" name="password" size="10" maxlength="32" />
+&nbsp;&nbsp; (<input type="checkbox" name="autologin" checked />{L_AUTO_LOGIN})&nbsp;
+		  <input type="submit" class="form4" name="login" value="{L_LOGIN}" />
+</div>
+</form>
+<!-- END switch_user_logged_out -->
+
+<!-- BEGIN switch_user_logged_in -->
+<br />
+<!-- END switch_user_logged_in -->
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td valign="top">
@@ -38,9 +54,8 @@
     <td width="60%" bgcolor="#EAF1FC" class="border-bleu-dr"><table width="98%"  border="0" align="center" cellpadding="0" cellspacing="2">
       <tr>
         <td width="6%" valign="middle"><div align="center"><img src="{catrow.forumrow.FORUM_FOLDER_IMG}" alt="{catrow.forumrow.L_FORUM_FOLDER_ALT}" title="{catrow.forumrow.L_FORUM_FOLDER_ALT}" /></div></td>
-        <td width="94%"><span class="forumlink"> <a href="{catrow.forumrow.U_VIEWFORUM}" class="forumlink">{catrow.forumrow.FORUM_NAME}</a><br />
-	   <span class="genmed">{catrow.forumrow.FORUM_DESC}</span><br />
-	  <br /></td>
+        <td width="94%"><a href="{catrow.forumrow.U_VIEWFORUM}" class="forumlink">{catrow.forumrow.FORUM_NAME}</a><br />
+	   <span class="genmed">{catrow.forumrow.FORUM_DESC}</span><hr style="height:1px;"></td>
       </tr>
     </table>      </td>
     <td width="1%">&nbsp;</td>
@@ -75,7 +90,12 @@
                   </tr>
               </table></td>
               <td width="95%"><span class="genmed"><strong>
+<!-- BEGIN switch_user_logged_in -->
 <span class="cattitle"><a href="{U_VIEWONLINE}" class="cattitle">{L_WHO_IS_ONLINE}</a></span>
+<!-- END switch_user_logged_in -->
+<!-- BEGIN switch_user_logged_out -->
+<span class="cattitle">{L_WHO_IS_ONLINE}</span>
+<!-- END switch_user_logged_out -->
 </strong></span></td>
             </tr>
           </table></td>
@@ -87,13 +107,11 @@
     <td width="62%" bgcolor="#EAF1FC" class="border-bleu-dr"><table width="98%"  border="0" align="center" cellpadding="0" cellspacing="3">
       <tr>
         <td width="10%" valign="middle"><div align="center"><img src="templates/LiteVision/images/whosonline.gif" alt="{L_WHO_IS_ONLINE}" /></div></td>
-        <td width="88%">
-<span class="gensmall">
-{TOTAL_POSTS}<br />
+        <td width="88%" class="gensmall">
+{TOTAL_POSTS}, 
 {TOTAL_USERS}<br />
-<span class="gensmall">
 {TOTAL_USERS_ONLINE} &nbsp;
-[ {L_WHOSONLINE_ADMIN} ] &nbsp; [ {L_WHOSONLINE_MOD} ]<br />
+[ {L_WHOSONLINE_ADMIN} ] &nbsp; [ {L_WHOSONLINE_MOD} ], 
 <!-- BEGIN switch_user_logged_in -->
 <a href="{U_MEMBERLIST}" class="mainmenu"> [ {L_MEMBERLIST} ] </a><br/>
 <!-- END switch_user_logged_in -->
@@ -111,50 +129,6 @@
     <td width="1%" bgcolor="#D0E4FB" class="border-bleu-st-dr">&nbsp;</td>
   </tr>
 </table>
-	
-	</td>
-  </tr>
-</table>
-
-<br>
-
-<table width="98%"  border="0" cellspacing="0" cellpadding="0" align="center">
-  <tr>
-    <td>
-	
-<!-- BEGIN switch_user_logged_out -->
-<form method="post" action="{S_LOGIN_ACTION}">
-<table width="100%"  border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td width="100%" height="26" valign="bottom" class="stil01"><table width="100%" height="21"  border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <td width="18%" valign="bottom"><table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
-            <tr>
-              <td width="5%"><table height="21"  border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td><img src="templates/LiteVision/images/05.gif" width="49" height="21"></td>
-                  </tr>
-              </table></td>
-              <td width="95%"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td width="26%"><span class="genmed"><strong>&nbsp;&nbsp;&nbsp;{L_LOGIN_LOGOUT}</strong></span></td>
-                  <td width="74%"><div align="right"><span class="gensmall">{L_USERNAME}: 
-		                  <input class="form3" type="text" name="username" size="10" />
-&nbsp;&nbsp;&nbsp;{L_PASSWORD}:
-  <input class="form3" type="password" name="password" size="10" maxlength="32" />
-&nbsp;&nbsp; &nbsp;&nbsp;
-		  <input type="submit" class="form4" name="login" value="{L_LOGIN}" />
-&nbsp;&nbsp;&nbsp;		            </span></div></td>
-                </tr>
-              </table></td>
-            </tr>
-          </table></td>
-        </tr>
-      </table></td>
-  </tr>
-</table>
-</form>
-<!-- END switch_user_logged_out -->
 	
 	</td>
   </tr>

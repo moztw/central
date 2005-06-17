@@ -1,33 +1,12 @@
+﻿<span class="nav">您現在位於: <a href="http://moztw.org/">MozTW</a> &gt; <a href="{U_INDEX}">討論區</a> &gt; <strong><a href="{U_VIEW_FORUM}">{FORUM_NAME}</a></strong><br></span>
 
 <form method="post" action="{S_POST_DAYS_ACTION}">
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td>
-<table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0" class="border-bleu-jos">
-  <tr valign="bottom">
-    <td height="26" colspan="3" class="stil01"><table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
-      <tr>
-        <td width="5%"><img src="templates/LiteVision/images/05.gif" width="49" height="21"></td>
-        <td width="95%">&nbsp;&nbsp;<span class="genmed"><strong><a href="{U_VIEW_FORUM}">{FORUM_NAME}</a></strong></span></td>
-      </tr>
-    </table></td>
-  </tr>
-  <tr>
-    <td width="1%" rowspan="2" bgcolor="#D0E4FB" class="border-bleu-st-dr">&nbsp;</td>
-    <td width="98%" height="28" valign="bottom" class="stil06"><table width="98%" height="20"  border="0" align="center" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="52%"><span class="gensmall">&nbsp;<b>{L_MODERATOR}: {MODERATORS}</b></td>
-        <td width="48%"><div align="right"><span class="gensmall"><b>{PAGINATION}</b></span></div></td>
-      </tr>
-    </table></td>
-    <td width="1%" rowspan="2" bgcolor="#D0E4FB" class="border-bleu-st-dr">&nbsp;</td>
-  </tr>
-  <tr>
     <td bgcolor="#EAF1FC"><table width="98%"  border="0" align="center" cellpadding="0" cellspacing="2">
       <tr>
         <td align="left" valign="middle" width="50"><a href="{U_POST_NEW_TOPIC}"><img src="{POST_IMG}" border="0" alt="{L_POST_NEW_TOPIC}" /></a></td>
-        <td align="left" valign="middle" class="nav" width="100%"><span class="nav">&nbsp;<a href="{U_INDEX}" class="nav">{L_INDEX}</a> &raquo; <a class="nav" href="{U_VIEW_FORUM}">{FORUM_NAME}</a></span></td>
-        <td align="right">&nbsp;</td>
+        <td align="right"><span class="gensmall"><b>{PAGINATION}</b><br />{L_MODERATOR}: {MODERATORS}</td>
       </tr>
     </table></td>
   </tr>
@@ -85,7 +64,7 @@
 <tr>
   <td width="1%" bgcolor="#d0e4fb" class="border-bleu-st-dr">&nbsp;</td>
   <td valign="top" colspan="6" style="background: #a4cbf7; margin: 0;">
-  	<a class="faq topictitle" href="http://wiki.moztw.org/redirect_faq.php?f={FORUM_ID}">FAQ: 本區常見問題 (測試中)</a>
+  	<a class="faq topictitle" href="http://wiki.moztw.org/redirect_faq.php?f={FORUM_ID}">FAQ: 本區常見問題 (beta, 請協助整理資料！)  </a>
   </td>
   <td width="1%" bgcolor="#d0e4fb" class="border-bleu-st-dr">&nbsp;</td>
 </tr>
@@ -95,13 +74,11 @@
         <td width="60%" bgcolor="#EAF1FC" class="border-bleu-dr"><table width="98%"  border="0" align="center" cellpadding="0" cellspacing="2">
             <tr>
               <td width="6%" valign="top"><div align="center"><img src="{topicrow.TOPIC_FOLDER_IMG}" alt="{topicrow.L_TOPIC_FOLDER_ALT}" title="{topicrow.L_TOPIC_FOLDER_ALT}" /></div></td>
-              <td width="94%" valign="top"><span class="topictitle"> {topicrow.TOPIC_ATTACHMENT_IMG}{topicrow.TOPIC_TYPE}<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a></span> 
-					<br /><span class="genmed">
-					<!-- BEGIN switch_topic_desc -->
+              <td width="94%" valign="top"><span class="topictitle"> {topicrow.TOPIC_ATTACHMENT_IMG}{topicrow.TOPIC_TYPE}<a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a></span> <span class="genmed">&nbsp;&raquo;{topicrow.TOPIC_AUTHOR}<br />
+			<!-- BEGIN switch_topic_desc -->
               		 {topicrow.switch_topic_desc.TOPIC_DESCRIPTION}
-              		<!-- END switch_topic_desc -->
-					&nbsp;&raquo;{topicrow.TOPIC_AUTHOR}</span><br />
-                   <span class="gensmall">{topicrow.GOTO_PAGE}</span><br></td>
+              		<!-- END switch_topic_desc --></span>
+<span class="gensmall">{topicrow.GOTO_PAGE}</span><br/><br /></td>
             </tr>
         </table></td>
         <td width="1%">&nbsp;</td>

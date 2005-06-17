@@ -1,4 +1,4 @@
-<table width="98%"  border="0" cellspacing="0" cellpadding="0" align="center">
+﻿<table width="98%"  border="0" cellspacing="0" cellpadding="0" align="center">
     <td>
 
 
@@ -46,7 +46,7 @@
 			</td>
 		  </tr>
 		  <tr align="center"> 
-			<td colspan="2"><span class="gen">{L_AUTO_LOGIN}: <input type="checkbox" name="autologin" /></span></td>
+			<td colspan="2"><span class="gen">{L_AUTO_LOGIN}: <input type="checkbox" name="autologin" checked /></span></td>
 		  </tr>
 		  <tr align="center"> 
 			<td colspan="2">{S_HIDDEN_FIELDS}<input type="submit" name="login" class="form2" value="{L_LOGIN}" /></td>
