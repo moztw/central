@@ -1,0 +1,68 @@
+Coppermine Gallery 1.21 and vBulletin 3.0.0 Integration
+Version 1.0
+Compiled by SpeedStreet
+
+I'm not the hacker for this; I am merely the guy who poured through all of the threads on vBulletin.org and the Coppermine Development Forums to come up with one definitive post about integrating vBulletin with Coppermine.
+
+WHAT IT DOES:
+At the end of this how-to, you're installations of vBulletin and Coppermine will work together off of the same login.  While everyone else wants to see all sorts of integration between the two, I believe this is the first step to making those things happen.
+
+CREDITS:
+A big thanks to everyone over at Coppermine for a terrific product and the users that support and mod it on a daily basis.  I am merely standing on the shoulders of giants here, folks.   Also, Nanobot was the guy over there that did the vB3 Gamma bridge, so the credit for that is all his.
+
+FILES TO EDIT (2):
+/bridge/vbulletin30.inc.php  (Coppermine)
+/include/init.inc.php  (Coppermine)
+
+HACK REQUIREMENTS:
+vBulletin 3.0.0 Installed and Running
+Coppermine 1.2.1 Installed and Running
+5 Minutes of your time
+
+SUPPORT THREADS:
+Coppermine Gamma Thread (original thread): http://coppermine.sourceforge.net/board/viewtopic.php?t=2370&start=30&postdays=0&postorder=asc&highlight=
+vBulletin.org Hack Thread:
+Coppermine vB 3.0.0 Thread:
+
+FINAL WARNINGS:  
+
+There are seem to be some issues with people integrating this with forums located on subdomains (e.g. subaruforums.speedstreet.org).  Please reference the Coppermine Gamma Thread above for more info.
+Please ensure that Coppermine and vBulletin cookies are NOT named the same thing.
+
+-------------------------------------
+
+HOW TO INTEGRATE:
+1.) Download vbulletin30.inc.php (provided as an archive with this hack)
+2.) Open for Editing vbulletin30.inc.php and edit the following with data specific to your site:
+
+//NOTE : Your vBulletin license number is provided at the top of every php file in your vBulletin installation!
+define('VB_CUST_NO', 'xxxxxxxx'); // Your vBulletin license number (NOT your customer number)
+define('VB_DB_NAME', 'forum'); // The name of the database used by the board
+define('VB_BD_HOST', 'localhost'); // The name of the database server
+define('VB_DB_USERNAME', 'username'); // The username to use to connect to the database
+define('VB_DB_PASSWORD', 'password'); // The password to use to connect to the database
+
+// The web path to your vBulletin Board directory
+// In this example http://yoursite_name.com/vbulletin3/
+define('VB_WEB_PATH', '/vbulletin3/');
+
+3.) Save vbulletin30.inc.php to the bridge directory of your Coppermine installation
+4.) Open for Editing init.inc.php (located in the /include directory of your Coppermine installation
+Find:
+// define('UDB_INTEGRATION', 'vbulletin30');
+Remove the double slashes in front of the line to uncomment
+
+5. Save init.inc.php to the include directory of your Coppermine installation
+6. Point your browser to your Coppermine installation and verify integration is complete.
+
+That should do it.  I tried it on a fresh install of both, and a custom install to an existing board.  Both worked fine.  
+
+
+
+
+
+
+
+
+
+

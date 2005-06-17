@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html dir="{LANG_DIR}">
+<head>
+<title>{TITLE}</title>
+<meta http-equiv="Content-Type" content="text/html; charset={CHARSET}" />
+<meta http-equiv="Pragma" content="no-cache" />
+{META}
+
+{CUSTOM_STYLESHEET}
+
+<script type="text/javascript" src="scripts.js"></script>
+<script type="text/javascript" src="themes/styleguide/domLib.js"></script>
+<script type="text/javascript" src="themes/styleguide/domTT.js"></script>
+<script type="text/javascript">
+  var domTT_classPrefix = 'domTTOverlib';
+</script>
+<!--
+$Id: template.html,v 1.2 2004/07/24 15:04:10 gaugau Exp $
+-->
+</head>
+<body>
+
+
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="100%" align="center">
+      <h1>{GAL_NAME}</h1>
+      <h3>{GAL_DESCRIPTION}</h3>
+      {LANGUAGE_SELECT_FLAGS}
+      {LANGUAGE_SELECT_LIST}
+      {THEME_SELECT_LIST}
+      <br />
+      {MAIN_MENU}
+    </td>
+    </tr>
+</table>
+
+<img src="images/spacer.gif" width="1" height="15" /><br />
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center" valign="top">
+      {CUSTOM_HEADER}
+    </td>
+    <td align="center" valign="top">
+      {ADMIN_MENU}
+      {GALLERY}
+    </td>
+  </tr>
+</table>
+<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br />
+
+</body>
+</html>

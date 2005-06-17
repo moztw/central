@@ -1,0 +1,115 @@
+/*
+$Id: installer.css,v 1.3 2004/06/11 11:06:04 tarique Exp $
+*/
+body {
+        font-family : Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        background : #F7F7F7 ;
+        color : Black;
+        margin: 0px;
+}
+
+h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+        margin: 0px;
+}
+
+p {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        margin: 2px 0px;
+}
+
+td {
+        font-size: 12px;
+}
+
+hr {
+        color : #000000;
+        height: 1px;
+}
+
+.textinput {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        border: groove 1px;
+        width: 100%;
+}
+
+.listbox {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        border: groove 1px;
+}
+
+.button {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        border: raised 1px;
+}
+
+a {
+        color: #0033CC;
+        text-decoration: none;
+}
+
+a:hover {
+        color: #0033CC;
+        text-decoration: underline;
+}
+
+.tableh1 {
+        background : #0E72A4 ;
+        color : #FFFFFF;
+        padding-top: 3px;
+        padding-right: 10px;
+        padding-bottom: 3px;
+        padding-left: 10px;
+}
+
+.tableh2 {
+        background: #D1D7DC ;
+        color : #000000;
+        padding-top: 3px;
+        padding-right: 10px;
+        padding-bottom: 3px;
+        padding-left: 10px;
+}
+
+.tableb {
+        background: #EFEFEF ;
+        padding-top: 8px;
+        padding-right: 10px;
+        padding-bottom: 8px;
+        padding-left: 10px;
+}
+
+.updatesOK {
+        background: #EFEFEF ;
+        padding-top: 8px;
+        padding-right: 10px;
+        padding-bottom: 8px;
+        padding-left: 10px;
+        font-weight: bold;
+        color: green;
+}
+
+.updatesFail {
+        background: #EFEFEF ;
+        padding-top: 8px;
+        padding-right: 10px;
+        padding-bottom: 8px;
+        padding-left: 10px;
+}
+
+.maintable {
+        border: 1px solid #0E72A4;
+        background-color: #FFFFFF;
+        margin: 2px;
+}
+
+ .error {
+        color : Red;
+        font-weight : bold;
+}

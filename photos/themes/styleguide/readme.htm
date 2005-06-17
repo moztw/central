@@ -1,0 +1,159 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Coppermine Photo Gallery - Styleguide</title>
+<meta http-equiv=content-type content="text/html; charset=iso-8859-1">
+<style type=text/css>
+
+body {
+        font-size: 12px; background: #F7F7F7; margin: 2%; color: black; font-family: verdana, arial, helvetica, sans-serif;
+        scrollbar-face-color: #DEE3E7;
+        scrollbar-highlight-color: #FFFFFF;
+        scrollbar-shadow-color: #DEE3E7;
+        scrollbar-3dlight-color: #D1D7DC;
+        scrollbar-arrow-color:  #006699;
+        scrollbar-track-color: #EFEFEF;
+        scrollbar-darkshadow-color: #98AAB1;
+}
+td {
+        font-size: 12px
+}
+h1 {
+        font-weight: bolder; font-size: 24px; color: #0E72A4; line-height: 120%; font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; text-decoration: none
+}
+h2 {
+        font-size: 20px; color: #0E72A4; font-family: Arial, Helvetica, sans-serif; text-decoration: none;
+}
+h3 {
+        font-weight: bolder; font-size: 16px; font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none; color: #0E72A4;
+}
+h4 {
+        font-weight: bold; font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none; color: #0E72A4;
+}
+p {
+        font-size: 12px; margin: 10px 10px 0px 0px; font-family: Verdana, Arial, Helvetica, sans-serif
+}
+pre {
+        border-right: #999999 1px solid; padding-right: 5px; border-top: #999999 1px solid; padding-left: 5px; font-size: 12px; padding-bottom: 5px; margin: 10px 10px 0px 0px; border-left: #999999 1px solid; padding-top: 5px; border-bottom: #999999 1px solid; font-style: normal; font-family: "Courier New", Courier, mono; background-color: #E0E0E0
+}
+ul {
+        padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 10px 0px 10px 5px; padding-top: 0px
+}
+ul.content {
+        padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 5px 5px 0px 0px; padding-top: 0px
+}
+li {
+        padding-right: 0px; margin-top: 4px; padding-left: 0px; list-style-position: outside; margin-bottom: 4px; padding-bottom: 0px; margin-left: 10px; padding-top: 0px; list-style-type: disc
+}
+li.content {
+        padding-right: 0px; margin-top: 0px; padding-left: 0px; list-style-position: outside; margin-bottom: 5px; padding-bottom: 0px; margin-left: 10px; padding-top: 0px; list-style-type: none;
+}
+hr {
+        border-right: #000000 0px solid; border-top: #000000 1px solid; border-left: #000000 0px solid; border-bottom: #000000 0px solid; height: 0px
+}
+.navbar {
+        font-weight: bold; font-size: 10px; background: url(/coppermine/themes/pixel-rave-blue100/images/nav-bar-button.gif) #72a5cc no-repeat; vertical-align: middle; color: #A5C6DF; font-family: Arial, Helvetica, sans-serif
+}
+a.navbar {
+        display: block; vertical-align: middle; width: 100px; color: #A5C6DF; line-height: 25px; position: relative; height: 25px; text-align: center; text-decoration: none
+}
+a.navbar:hover {
+        color: #ffffff; text-decoration: none
+}
+
+.back {
+        margin-top: 10px; font-size: 10px; margin-bottom: 10px
+}
+.important { color: red }
+</style>
+
+<!--
+$Id: readme.htm,v 1.2 2004/07/24 15:04:10 gaugau Exp $
+-->
+
+</head>
+<body>
+<table cellspacing="0" cellpadding="0" width="100%" border="0">
+  <tbody>
+  <tr>
+    <td>
+<h1>Coppermine Photo Gallery: Styleguide v1.0</h1>
+<a id="about" name="about"></a><h2>About Coppermine Styleguide</h2>
+<p>The styleguide theme is not meant to be used for end users to view, but to give Coppermine admins an idea how to modify the look of the themes that come with the coppermine package or create new themes.</p>
+<p>At the moment, there's only help for the css part of the themes in the styleguide - maybe there will be a full tutorial on theme/template building later.</p>
+<p>The purpose of this theme is to give coppermine starters an overview about the css classes used by coppermine - that's it!</p>
+
+<a id="top" name="top"></a>
+<!--<h2>Table of contents</h2>
+<ul class="content">
+  <li class="content"><a href="#what">1. What is required</a></li>
+  <li class="content"><a href="#installation">2. Installation and setup</a></li>
+  <ul style="margin-top:0px;margin-bottom:0px;list-style-type:none">
+    <li class="content"><a href="#how">2.1 How To Install The Script</a></li>
+    <li class="content"><a href="#getting">2.2 Getting Started</a></li>
+    <li class="content"><a href="#xp">2.3 Using Windows XP Web Publishing Wizard with Coppermine</a></li>
+    <li class="content"><a href="#creating">2.4 Creating your own themes</a></li>
+    <li class="content"><a href="#safe">2.5 Safe mode issues</a></li>
+    <li class="content"><a href="#smtp">2.6 Using SMTP to send emails</a></li>
+  </ul>
+
+</ul>
+<hr />
+-->
+
+
+<a name="install"></a>
+<h2>1. Installation</h2>
+<ul>
+  <li>create a new folder within the &quot;themes&quot; folder of your coppermine install on your webserver and name it &quot;styleguide&quot; (important: don't rename it, or some links will be broken!)</li>
+  <li>upload the files from the styleguide package to the &quot;styleguide&quot; folder.</li>
+</ul>
+
+<h2>2. Running Styleguide</h2>
+<ul>
+  <li>point your browser to <br />
+  <pre>http://yoursite.com/your_coppermine_folder/?theme=styleguide</pre></li>
+  <li>check the matrix to see what css class is visible on which coppermine file</li>
+  <li>hover your mouse over the css class' name to show additional info</li>
+  <li>click on the css class' name to highlight the affected area on the current page</li>
+</ul>
+
+<h2>3. Creating your own theme</h2>
+<ul>
+  <li>you can't create your own theme from scratch - instead: browse through the different themes that come with coppermine, choose the one you like best and start modifying it. To keep things simple, you should start with the default theme that comes with coppermine and modify it step-by-step</li>
+  <li>On your local hard drive, copy the folder &quot;default&quot; (with all the files contained in it) within the themes folder and paste it to another location on your hard drive</li>
+  <li>rename the copy of the default folder (do not use spaces or special chars), e.g. &quot;my_theme&quot;</li>
+  <li>cut the new folder &quot;my_theme&quot; and paste it back into the &quot;themes&quot; of coppermine</li>
+  <li>upload &quot;my_theme&quot; to your webserver and browse it by entering <pre>http://yoursite.com/your_coppermine_folder/?theme=my_theme</pre> into your browser's address bar (open a new browser window, so you can alwas compare your modified theme and the styleguide window)</li>
+  <li>use a text editor and modify /coppermine/themes/my_theme/style.css</li>
+  <li>Only change some bits within style.css at a time - save your changes and upload the modified file to your webserver, and view them in your browser</li>
+  <li><b>Important</b>: do not change nor touch the files within the styleguide folder. Do not use the styleguide theme as a base for your modifications. The styleguide theme has been &quot;altered&quot; and doesn't work in the same way as the rest of the coppermine themes!</li>
+</ul>
+
+<h2>4. How to use</h2>
+<ul>
+  <li>move around your coppermine gallery with the coppermine menu</li>
+  <li>click on a css style in the left of the coppermine-with-styleguide window to highlight the class within coppermine</li>
+  <li>edit the class in your theme's style.css (in above example, edit /themes/my_theme/style.css). Do <b>not</b> edit /themes/styleguide/... (you'll notice that there isn't a file calles style.css within the styleguide folder)</li>
+</ul>
+
+<h2>5. Links</h2>
+<p>To find out what can (and what can't) be done with the use of cascading style sheets (css), here are some useful links:</p>
+<ul>
+  <li><a href="http://www.w3.org/Style/CSS/" target="_blank"><img src="../../images/flags/us.gif" width="16" height="10" border="0" alt="" title="English" />W3C Cascading Style Sheets home page</a></li>
+  <li><a href="http://selfhtml.teamone.de/css/" target="_blank"><img src="../../images/flags/de.gif" width="16" height="10" border="0" alt="" title="German" />SELFHTML: CSS Stylesheets</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/css/" target="_blank"><img src="../../images/flags/us.gif" width="16" height="10" border="0" alt="" title="English" />WDG Guide to Cascading Style Sheets</a></li>
+  <li><a href="http://www.w3schools.com/css/default.asp" target="_blank"><img src="../../images/flags/us.gif" width="16" height="10" border="0" alt="" title="English" />W3schools CSS Tutorial</a></li>
+</ul>
+
+<h2>6. Credits</h2>
+<p>I would like to say thanks to the following people:</p>
+<ul>
+  <li>Dan Allen for <a href="http://www.mojavelinux.com/forum/viewtopic.php?t=127" target="_blank">Mojave DOM Tooltip (javascript)</a></li>
+  <li><a href="http://coppermine.sourceforge.net/board/profile.php?mode=viewprofile&u=1150" target="_blank">jeremed</a> for his <a href="http://www.photoshoptutorials.org/samples/coppermine/styles.html" target="_blank">coppermine css guide</a></li>
+</ul>
+
+<h2>7. Copyrights &amp; misc</h2>
+<p>This styleguide is still pretty crude - do with it whatever you like, it's released under GPL (see Coppermine credits page). Please don't ask me for support on the styleguide: it's meant to make things easier for newbies; if it doesn't for you, simply don't use it.<br />&nbsp;<br />GauGau (aka Joachim M&uuml;ller)</p>
+                        </td></tr></tbody></table>
+</body></html>

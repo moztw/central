@@ -1,0 +1,577 @@
+/*
+$Id: style.css,v 1.2 2004/06/11 09:20:08 tarique Exp $
+*/
+
+/* Colors used:                                */
+/* --------------------------------------------*/
+/* #FFFFFF = RBG 255,255,255 = (white)         */
+/* #000000 = RBG   0,  0,  0 = (black)         */
+/* #FFA600 = RGB 255,166,  0 = (orange)        */
+/* #6BBE10 = RGB 107,190, 16 = (green)         */
+/* #FFFF00 = RGB 255,255,  0 = (yellow)        */
+/* #D1D7DC = RGB 209,215,220 = (light grey)    */
+/* #F7F37B = RGB 247,243,123 = (light yellow)  */
+/* #5F5F5F = RGB  95, 95, 95 = (dark grey)     */
+/* #E7F38C = RGB 239,243,140 = (light green)   */
+/* if you don't like a color, just do a search */
+/* and replace on the hex color...             */
+
+body {
+scrollbar-face-color: #FFA600;
+scrollbar-highlight-color: #FFA600;
+scrollbar-shadow-color: #6BBE10;
+scrollbar-3dlight-color: #FFFF00;
+scrollbar-arrow-color:  #FFFF00;
+scrollbar-track-color: #FFFFFF;
+scrollbar-darkshadow-color: #6BBE10;
+background-color:#FFFFFF;
+margin-top:0px;
+margin-bottom:100px;
+margin-left:0px;
+margin-right:0px;
+padding:0px;
+overflow : auto;
+font-family:Verdana,Arial,sans-serif;
+color:#000000;
+font-size:16px;
+}
+
+
+h1{
+        font-weight: bold;
+        font-size: 22px;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        line-height : 120%;
+        color : #000000;
+        margin: 2px;
+}
+
+h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+        margin: 0px;
+}
+
+h3 {
+        font-weight: normal;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        margin: 2px;
+}
+
+td {
+        font-size: 12px;
+}
+
+p {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        margin: 2px 0px;
+}
+
+ul {
+        margin-left: 5px;
+        padding: 0px;
+}
+
+li {
+        margin-left: 10px;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        padding: 0px;
+        list-style-position: outside;
+        list-style-type: disc;
+}
+
+.textinput {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        border: 1px solid #D1D7DC;
+        padding-right: 3px;
+        padding-left: 3px;
+}
+
+.listbox {
+        font-family: Verdana, Arial, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        border: 1px solid #D1D7DC;
+        vertical-align : middle;
+}
+
+.button {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        border: 1px solid #005D8C;
+        background-image : url(images/button_bg.gif);
+        background-position : bottom;
+}
+
+.comment_button {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        border: 1px solid #005D8C;
+        background-image : url(images/button_bg.gif);
+        background-position : bottom;
+        padding-left: 3px;
+        padding-right: 3px;
+}
+
+.radio {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        vertical-align : middle;
+}
+
+.checkbox {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        vertical-align : middle;
+}
+
+a {
+        color: #FFA600;
+        text-decoration: none;
+}
+
+a:hover {
+        color: #FFFFFF;
+        text-decoration: none;
+        background-color: #6BBE10;
+}
+
+bblink a {
+        color: #FFA600;
+        text-decoration: none;
+}
+
+bblink a:hover {
+        color: #FFFFFF;
+        text-decoration: none;
+        background-color: #6BBE10;
+}
+
+a:hover.nobg {
+        text-decoration: none;
+        background-color: #F7F37B;
+}
+
+
+a:hover.yebg {
+        text-decoration: none;
+        background-color: #FFFF00;
+}
+
+.maintable {
+        border: 1px solid #6BBE10;
+        background-color: #FFFFFF;
+        margin-top: 1px;
+        margin-bottom: 1px;
+}
+
+.tableh1 {
+        background : #FFA600 ;
+        color : #FFFFFF;
+        padding-top: 3px;
+        padding-right: 10px;
+        padding-bottom: 3px;
+        padding-left: 10px;
+}
+
+.tableh1_compact {
+        background : #6BBE10 ;
+        color : #FFFFFF;
+        padding-top: 2px;
+        padding-right: 5px;
+        padding-bottom: 2px;
+        padding-left: 5px;
+}
+
+.tableh2 {
+        background: #F7F37B ;
+        color : #000000;
+        padding-top: 3px;
+        padding-right: 10px;
+        padding-bottom: 3px;
+        padding-left: 10px;
+}
+
+.tableh2_compact {
+        background: #FFFF00 ;
+        color : #000000;
+        padding-top: 2px;
+        padding-right: 5px;
+        padding-bottom: 2px;
+        padding-left: 5px;
+}
+
+.tableb {
+        background: #F7F37B ;
+        padding-top: 3px;
+        padding-right: 10px;
+        padding-bottom: 3px;
+        padding-left: 10px;
+}
+
+.tableb_compact {
+        background: #F7F37B ;
+        padding-top: 2px;
+        padding-right: 5px;
+        padding-bottom: 2px;
+        padding-left: 5px;
+}
+
+.tablef {
+        background: #6BBE10;
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+}
+
+.album_stat {
+        font-size : 10px;
+        margin: 5px 0px;
+}
+
+.thumb_title {
+        font-weight : bold;
+        font-size: 9px;
+        padding: 2px;
+        display : block;
+}
+
+.thumb_caption {
+        font-size: 9px;
+        padding: 1px;
+        display : block;
+}
+
+.thumb_num_comments {
+        font-weight: normal;
+        font-size: 9px;
+        padding: 2px;
+        font-style : italic;
+        display : block;
+}
+
+.user_thumb_infobox {
+        margin-top: 1px;
+        margin-bottom: 1px;
+}
+
+.user_thumb_infobox th {
+        font-weight : bold;
+        font-size: 12px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        text-align : center;
+}
+
+.user_thumb_infobox td {
+        font-size: 10px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        text-align : center;
+}
+
+.user_thumb_infobox a {
+        text-decoration: none;
+        color: #000000;
+}
+
+.user_thumb_infobox a:hover {
+        color: #000000;
+        text-decoration: underline;
+}
+
+.sortorder_cell {
+        background : #6BBE10 ;
+        color : #FFFFFF;
+        padding: 0px;
+        margin: 0px;
+}
+
+.sortorder_options {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        background : #6BBE10 ;
+        color : #FFFFFF;
+        padding: 0px;
+        margin: 0px;
+        font-weight: normal;
+        font-size: 9px;
+        white-space: nowrap;
+}
+
+.navmenu {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        color: #FFFFFF;
+        font-size: 12px;
+        font-weight: bold;
+        background : #6BBE10 ;
+        border-style: none;
+}
+
+.navmenu img {
+        margin-top: 1px;
+        margin-right: 5px;
+        margin-bottom: 1px;
+        margin-left: 5px;
+}
+
+.navmenu a {
+        position: relative;
+        display: block;
+        padding-top: 2px;
+        padding-right: 5px;
+        padding-bottom: 2px;
+        padding-left: 5px;
+        text-decoration: none;
+        color: #FFFFFF;
+}
+
+.navmenu a:hover {
+        background : #FFA600 ;
+        text-decoration: none;
+        color:         #000000;
+}
+
+.admin_menu_thumb {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        border: 1px solid #005D8C;
+        background-image : url(images/button_bg.gif);
+        background-position : bottom;
+        color: #000000;
+        font-weight: bold;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        width: 85px;
+}
+
+.admin_menu_thumb a {
+        color: #000000;
+        text-decoration: none;
+        display: block;
+        position: relative;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 10px;
+        padding-right: 10px;
+}
+
+
+.admin_menu_thumb a:hover {
+        color: #000000;
+        text-decoration: underline;
+}
+
+.admin_menu {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        border: 1px solid #FFA600;
+        background-image : url(images/button_bg.gif);
+        background-position : bottom;
+        color: #000000;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        text-align: center;
+}
+
+.admin_menu a {
+        color: #000000;
+        text-decoration: none;
+        display: block;
+        position: relative;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 2px;
+        padding-right: 2px;
+}
+
+.admin_menu a:hover {
+        color: #000000;
+        text-decoration: none;
+        background: #FFA600;
+}
+
+.comment_date{
+        color : #5F5F5F;
+        font-size : 10px;
+        vertical-align : middle;
+}
+
+.image {
+        border-style: solid;
+        border-width:1px;
+        border-color: #000000;
+        margin: 2px;
+}
+
+.imageborder {
+        border: 1px solid #000000;
+        background-color: #FFFFFF;
+        margin-top: 30px;
+        margin-bottom: 30px;
+}
+
+.thumbnails {
+        background: #E7F38C ;
+        padding: 5px;
+}
+
+.footer {
+        font-size : 9px;
+}
+
+.footer a {
+        text-decoration: none;
+        color: #000000;
+}
+
+.footer a:hover {
+        color: #000000;
+        text-decoration: underline;
+}
+
+.statlink {
+        color: #FFFFFF;
+        text-decoration: none;
+}
+
+.statlink a {
+        text-decoration: none;
+        color: #FFFFFF;
+}
+
+.statlink a:hover {
+        color: #FFFFFF;
+        text-decoration: none;
+}
+
+.alblink a {
+        text-decoration: underline;
+        color: #000000;
+}
+
+.alblink a:hover {
+        color: #000000;
+        text-decoration: underline;
+}
+
+.catlink {
+        display: block;
+        margin-bottom: 2px;
+}
+
+.catlink a {
+        text-decoration: underline;
+        color: #000000;
+}
+
+.catlink a:hover {
+        color: #000000;
+        text-decoration: underline;
+}
+
+.topmenu {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        color: #000000;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        width:120px;
+}
+
+.topmenu a {
+    display: block;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    border-left-width: 0px;
+    background: #6BBE10;
+    background-image : url(images/button_bg.gif);
+    background-position: middle;
+    border-bottom-width: 0px;
+    margin: 0px 0px 2px;
+    color: #625b55;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #E7F38C;
+    color: #000000
+    }
+
+.topmenu a:hover {
+    color: #000000;
+    text-decoration: none;
+    background: #FFFF00;
+    background-image : none;
+}
+
+
+
+
+
+.img_caption_table {
+        border: none;
+        background-color: #FFFFFF;
+        width : 100%;
+        margin : 0px;
+}
+
+.img_caption_table th {
+        background: #6BBE10 ;
+        font-size : 12px;
+        color : #FFFFFF;
+        padding-top: 4px;
+        padding-right: 10px;
+        padding-bottom: 4px;
+        padding-left: 10px;
+        border-top : 1px solid #FFFFFF;
+}
+
+.img_caption_table td {
+        background: #FFA600 ;
+        padding-top: 6px;
+        padding-right: 10px;
+        padding-bottom: 6px;
+        padding-left: 10px;
+        border-top : 1px solid #FFFFFF;
+}
+
+.debug_text {
+        border: #BDBEBD;
+        background-color: #EFEFEF;
+        width : 100%;
+        margin : 0px;
+}
+
+.clickable_option {
+        color: #6BBE10;
+        font-weight: bold;
+        cursor : hand;
+}
+
+.listbox_lang {
+        color: #000000;
+        background-color: #E7F38C;
+        border: 1px solid #6BBE10;
+        font-size: 80%;
+        font-family: Arial, Helvetica, sans-serif;
+        vertical-align : middle;
+}
+
+/* Colors used:                                */
+/* --------------------------------------------*/
+/* #FFFFFF = RBG 255,255,255 = (white)         */
+/* #000000 = RBG   0,  0,  0 = (black)         */
+/* #FFA600 = RGB 255,166,  0 = (orange)        */
+/* #6BBE10 = RGB 107,190, 16 = (green)         */
+/* #FFFF00 = RGB 255,255,  0 = (yellow)        */
+/* #D1D7DC = RGB 209,215,220 = (light grey)    */
+/* #F7F37B = RGB 247,243,123 = (light yellow)  */
+/* #5F5F5F = RGB  95, 95, 95 = (dark grey)     */
+/* #E7F38C = RGB 239,243,140 = (light green)   */
+/* if you don't like a color, just do a search */
+/* and replace on the hex color...

@@ -1,0 +1,121 @@
+$Id: CHANGELOG,v 1.24 2004/08/16 21:20:47 gaugau Exp $
+
+Added Title option to sort in albums, Tarique
+Separated the breadcrumb block so that it can be placed independently of category, Tarique
+Added option to choose max hieght or width for thumbnails - will help in creating nicer looking thumbnail rows and cols, Tarique
+Added option to display a clickable flimstrip of thumbnails below the image display, Tarique
+Added option to show first level albums of a category instead of just statistics of the category, Tarique
+Added Absolute URL of a picture in the pic info this helps in giving out links to other people and the same picture will display regardless of the sort setting of the individual, Tarique
+Added option of turning on OR off the showing of "Private" Icon to unlogged / unprivileged user, Tarique
+Added Breadcrumb navigation to include album names - 23 Aug 2003, Tarique
+Added Last Updated Album Block - 23 Aug 2003, Tarique
+Fixed the bug in search.inc.php - 1st September 2003, Tarique
+Added Edit Name in comments - 2nd September 2003, Tarique
+Added IP logging - 18th - 18th September 2003, Jack
+Added Fav Pics Option - 18th September 2003, Tarique
+Added AnyContent Block - 19th September 2003, Tarique
+Added Complete Queries to the debug output - 24th September 2003, Tarique
+Added Comment IP viewing - 24th September 2003, Jack
+Fixed Batch Update to force selection of an album & identify the category of an album - 25th September 2003, Jack
+Added Email notification on Comment - 25th September 2003, Tarique
+Moved hardcoded text from util.php to language file - 27th September 2003, GauGau
+updated dutch.php and greek.php (minor bugfixes by original translators) - 30th September 2003, GauGau
+Added 'no right-click' admin option (I know this is childish but has been requested often), db update necessary (see update.sql) - 30th September 2003, GauGau
+IP Logging now on picture uploads - 30th September 2003, Jack
+fixed improper html tags in hardwired theme - 1st October 2003, GauGau
+added version info to html output (above </body>) for easier support - 1st October, GauGau
+Added user banning functionality - 2nd October, 2003,
+Added offline-manual in /docs-folder (manual.pdf) - 03rd October 2003, GauGau
+Fixed charset in pop-up bug (http://coppermine.sourceforge.net/board/viewtopic.php?t=291) - 05th October 2003, GauGau
+Fixed pop-up scrollbar bug (http://coppermine.sourceforge.net/board/viewtopic.php?t=290) - 05th October 2003, GauGau
+Added 1.2.0 translations for dutch, finnish, norwegian, spanish - 05th October 2003, GauGau
+Added 1.2.0 translations for arabic, hebrew and turkish - 06th October 2003, GauGau
+Moved all docs into the docs folder - 06th October 2003, GauGau
+Added 1.2.0 translations for swedish and german - 07th October 2003, GauGau
+Added 1.2.0 changes in english language to bosnian.php, brazilian.php, estonian.php, latvian.php, portuguese.php, russian.php, slovenian.php for 1.2.0 compliance - 07th October 2003, GauGau
+Added 1.2.0 indonesian (done by sengsara), updated danish (Laugesen) - 08th October 2003, GauGau
+Fixed corrupted language files (mustn't be in unicode, but ansi)  - 08th October 2003, GauGau
+Added romanian language file - 09th October 2003, GauGau
+Fixed rtl-bug (filesize/unit) - 09th October 2003, GauGau
+Added french translation for 1.2.0 - 10th October 2003, GauGau
+Added korean language file for 1.2.0 - 10th October 2003, GauGau
+Added slovenian language file for 1.2.0 - 12th October 2003, GauGau
+Added croatian language file for 1.2.0 - 14th October 2003, GauGau
+Added chinese_gb language file for 1.2.0 - 14th October 2003, GauGau
+Added Thumbnails for categories, Edit Single Picture, EXIF and IPTC data shown, some bug fixes and new bugs - 16th October 2003, Tarique
+Added latvian language file for 1.2.0 - 16th October 2003, GauGau
+Added notification on user registration by email (admin option) - 19th October 2003, GauGau
+Added option to disable comment flood protection - 19th October 2003, GauGau
+Added estonian and japanese language file for 1.2.0 - 21th October 2003, GauGau
+Updated croatian, french, german, italian  - 21th October 2003, GauGau
+Added portuguese language file for 1.2.0 - 22th October 2003, GauGau
+Removed buggy no right-click option - 27th October2003, GauGau
+Added options to searchnew.php (batch-add): album selection mandatory; no dsiplay of dot-folders, userpics nor manipulation folders; buttons "select all/unselect all" - 2nd November 2003, GauGau
+Added focus on search box and login box - 2nd November, GauGau
+Added admin notification for upload approval - 2nd November, GauGau
+Added Breadcrumb for meta-albums -  8th November 2003, Tarique
+Added forgot my password link in login form - 9th November - GauGau
+Cosmetical fixes to util.php - 10th November 2003, GauGau
+Added picture ownername display as an admin setable option - 17th November 2003, Tarique
+Moved debug_output from themes to functions.inc.php with easy copy-and-paste option - 22nd November 2003, GauGau
+Changed yes/no dropdown in config to radio buttons (less clicks!) - 22nd November 2003, GauGau
+Added language and theme selection - 19th December 2003, GauGau
+Added admin set able option to put gallery offline - 3rd January 2004, Tarique
+Added a faster EXIF Reader class - 7th January 2004, Tarique
+Added a new crop and rotate editor - 7th January 2004, Tarique
+Added RSS Feed Add On - 9th January 2004, Tarique
+Added admin option "show views under thumbnail" - 29th January 2004, GauGau
+Added video mod to {index.php;reviewcom.php;displayimage.php;db_input.php;editpics.php;searchnew.php;thumbnails.php;include/functions.inc.php;include/picmgmt.php;include/init.inc.php} - February 1, 2004, Chris
+Added category name to dropdown in upload.php (user contrib by the Burrek) - 17th February 2004, GauGau
+Added memberlist hack by jason - 17th February 2004, GauGau
+Updated the documentation - 17th February 2004, GauGau
+Added user FAQ (admin option) - 18th February 2004, GauGau
+Added "user can't rate own picture" hack (user contrib by jdbaranger) - 20th February 2004, GauGau
+Added bbcode help (user contrib by icebox) - 20th February 2004, GauGau
+Added clickable album names (user contrib) - 21th February 2004, GauGau
+Added theme 'styleguide' - 29th February 2004, GauGau
+Added ecards logging - 29th February 2004, GauGau
+Re-introduced "notify admin on comments" - 29th February 2004, GauGau
+Moved HTML format for image-borders from theme.php to style.css - 29th February 2004, GauGau
+Changed "picture" to "file" in lang/english.php - March 1, 2004, Chris
+Added bug fixes for video mod to {reviewcom.php;index.php;displayimage.php} - March 1, 2004, Chris
+Added config option "debug output for admin only" - 2nd March 2004, GauGau
+Added multiple HTTP upload changes to the language file - 2nd March 2004, Hyperion
+Added Download Favourites as Zip file - 4th March 2004, Tarique
+Added footnote on album manager to explain group settings - 5th March 2004, GauGau
+Added feature "admin can't ban himself" - 11th March 2004, GauGau
+Added IP address lookup - 14th March 2004, GauGau
+Added switch to turn off notices in debug mode - 14th March 2004, GauGau
+Added slideshow intervall as admin option - 14th March 2004, GauGau
+Added pic keywords to meta tags - 14th March 2004, GauGau
+Added multiple URI upload changes to the language file - 16th March 2004, Hyperion
+Fixed album thumb bug - 22 March 2004, Chris
+Added support for multiple HTTP/URI uploads - 30 March 2004, Hyperion
+Added height/width fields to editOnePic.php - 20 April 2004, Chris
+Fixed height/width fields in editpics.php - 20 April 2004, Chris
+Fixed 'missing controls' bug in displayimage.php - 20 April 2004, Chris
+Changed 'tiff', 'ram', and 'psd' doctypes to 'document' - 22 April 2004, Chris
+Updated miscellaneous documentation information - 24 April 2004, Chris
+Updated/Added new screenshot gifs - 24 April 2004, Chris
+Bridge to Simple Machines Forum (SMF) - April 2004, Jack
+Calculate suitable permissioons and quotas for users in multiple usergroups - May 2004, Jack
+Album visibility now correct for admins and users in multiple usergroups - May 2004, Jack
+Release 1.3.0 - 11 June 2004, GauGau
+Removed 'field1' typo in editOnepics.php, 13th June 2004 casper
+Changed 'cpg130_filetypes' to 'CPG_filetypes' - 14 June 2004, Chris
+Added 'images' folder to 'themes/classic' and inserted Coppermine logo as 'site_logo.png' - 15 June 2004, Chris
+Fixed user album thumb showing only 'nopic.jpg' - 15 June 2004, Chris
+Changed thumb generation in index.php [list_users()] to same as devel branch - 15 June 2004, Chris
+Fixed user album visibility issue - 16 June 2004, Chris
+Fixed pic count in categories issue - 16 June 2004, Chris
+Added Finnsih and Malay translations - 22 June 2004, GauGau
+Removed 17 cpg1.2.1 language files from stable cvs branch - 22 June 2004, GauGau
+Added Arabic language files (user contrib) - 25 June 2004, GauGau
+Added Swedish language files (user contrib) - 25 June 2004, GauGau
+Added Latvian language files (user contrib) - 30 June 2004, GauGau
+Added Czech language files (user contrib) - 30 June 2004, GauGau
+Added warning in docs to backup anycontent when upgrading, 4 July 2004, Casper
+Fixed double slash '//' bug in upload notification email, in upload.php - 17th July 2004, Casper
+Updated version info to cpg1.3.2
+Added PunBB integration support - 9th August, Nibbler
+Added version check routine for easier upgrades - 16 August 2004, GauGau

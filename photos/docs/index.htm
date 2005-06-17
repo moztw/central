@@ -1,0 +1,1803 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Coppermine Photo Gallery - Documentation &amp; Manual</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="language"    content="en">
+<meta name="author"      content="Coppermine dev team">
+<meta name="copyright"   content="Coppermine dev team">
+<meta name="description" content="Coppermine Photo Gallery project - Coppermine is an easily set-up, fast, feature-rich photo gallery script with mySQL database, user management, private galleries, automatic thumbnail creation, ecard feature and a template system for easy customization to match the rest of a site.">
+<meta name="keywords"    content="photo,gallery,galery,image,coppermine,php,mysql,easy,feature,phpnuke,thumbnail,automatic,creation,gd,Image Magick,ecard">
+<meta name="page-topic"    content="photo,gallery,galery,image,coppermine,php,mysql,easy,feature,phpnuke,thumbnail,automatic,creation,gd,Image Magick,ecard">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="MSSmartTagsPreventParsing" content="true">
+<meta http-equiv="imagetoolbar" content="no">
+<!--
+CVS version info:
+$Id: index.htm,v 1.18 2004/08/18 05:02:04 gaugau Exp $
+-->
+<style type=text/css>
+
+body {
+        font-size: 12px; background: #F7F7F7; margin: 2%; color: black; font-family: verdana, arial, helvetica, sans-serif;
+        scrollbar-face-color: #DEE3E7;
+        scrollbar-highlight-color: #FFFFFF;
+        scrollbar-shadow-color: #DEE3E7;
+        scrollbar-3dlight-color: #D1D7DC;
+        scrollbar-arrow-color:  #006699;
+        scrollbar-track-color: #EFEFEF;
+        scrollbar-darkshadow-color: #98AAB1;
+}
+td {
+        font-size: 12px
+}
+h1 {
+        font-weight: bolder; font-size: 24px; color: #0E72A4; line-height: 120%; font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; text-decoration: none
+}
+h2 {
+        font-size: 20px; color: #0E72A4; font-family: Arial, Helvetica, sans-serif; text-decoration: none;
+}
+h3 {
+        font-weight: bolder; font-size: 16px; font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none; color: #0E72A4;
+}
+h4 {
+        font-weight: bold; font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none; color: #0E72A4;
+}
+p {
+        font-size: 12px; margin: 10px 10px 0px 0px; font-family: Verdana, Arial, Helvetica, sans-serif
+}
+pre {
+        border-right: #999999 1px solid; padding-right: 5px; border-top: #999999 1px solid; padding-left: 5px; font-size: 12px; padding-bottom: 5px; margin: 10px 10px 0px 0px; border-left: #999999 1px solid; padding-top: 5px; border-bottom: #999999 1px solid; font-style: normal; font-family: "Courier New", Courier, mono; background-color: #E0E0E0
+}
+ul {
+        padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 10px 0px 10px 5px; padding-top: 0px
+}
+ul.content {
+        padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 5px 5px 0px 0px; padding-top: 0px
+}
+li {
+        padding-right: 0px; margin-top: 4px; padding-left: 0px; list-style-position: outside; margin-bottom: 4px; padding-bottom: 0px; margin-left: 10px; padding-top: 0px; list-style-type: disc
+}
+li.content {
+        padding-right: 0px; margin-top: 0px; padding-left: 0px; list-style-position: outside; margin-bottom: 5px; padding-bottom: 0px; margin-left: 10px; padding-top: 0px; list-style-type: none;
+}
+hr {
+        border-right: #000000 0px solid; border-top: #000000 1px solid; border-left: #000000 0px solid; border-bottom: #000000 0px solid; height: 0px
+}
+.navbar {
+        font-weight: bold; font-size: 10px; background: url(/coppermine/themes/pixel-rave-blue100/images/nav-bar-button.gif) #72a5cc no-repeat; vertical-align: middle; color: #A5C6DF; font-family: Arial, Helvetica, sans-serif
+}
+a.navbar {
+        display: block; vertical-align: middle; width: 100px; color: #A5C6DF; line-height: 25px; position: relative; height: 25px; text-align: center; text-decoration: none
+}
+a.navbar:hover {
+        color: #ffffff; text-decoration: none
+}
+
+a.external {
+        background: transparent url('pics/link.gif') 100% 50% no-repeat;
+        padding-right: 10px;
+}
+
+.back {
+        margin-top: 10px; font-size: 10px; margin-bottom: 10px
+}
+.important { color: red }
+.menu1 {font-weight:bolder;font-stretch:expanded;font-size:120%}
+.menu2 {font-weight:bold;font-stretch:normal;font-size:100%}
+.menu3 {font-weight:normal;font-stretch:condensed }
+.code {
+        font-size: 12px; font-style: normal; font-family: "Courier New", Courier, mono; background-color: #E0E0E0
+}
+.border1 {
+        border-right: #999999 1px solid; padding-right: 5px; border-top: #999999 1px solid; padding-left: 5px; font-size: 12px; padding-bottom: 5px; margin: 10px 10px 0px 0px; border-left: #999999 1px solid; padding-top: 5px; border-bottom: #999999 1px solid;
+          }
+.quote
+{
+        color: #000000;
+        background-color: #C3B8D0;
+        border: 1px solid #000000;
+        margin: 1px;
+        padding: 1px;
+        font-size: x-small;
+}
+</style>
+</head>
+<body>
+<table cellspacing="0" cellpadding="0" width="100%" border="0">
+  <tbody>
+  <tr>
+    <td>
+                        <p><img src="../images/coppermine_logo.png" alt="Coppermine Photo Gallery - Your Online Photo Gallery">
+<h1>Coppermine Photo Gallery v1.3.2: Documentation and Manual</h1>
+<h1>About Coppermine</h1>
+<p>Coppermine Photo Gallery is a picture gallery script. Users can upload pictures
+  with a web browser (thumbnails are created on the fly), rate pictures, add comments
+  and send e-cards. The admins can manage the galleries and batch add pictures
+  that have been uploaded on the server by FTP. Support for multimedia files has been added recently.</p>
+<p>Images are stored in albums and albums can be grouped by categories. The script
+  supports multiple users and each user can possibly have its own set of albums.</p>
+<p>The script also supports multiple languages and has a theme system. It uses
+  PHP, a MySQL database and the GD library (version 1.x or 2.x) or ImageMagick
+  to make the thumbnails. An install script makes the installation fast and simple.</p>
+
+      <a id="top" name="top"></a>
+      <h1>Table of contents</h1>
+      <ul class="content">
+        <!--<li class="content"><a href="#testVersion"><span class="menu1">0. Beta (Testing) version</span></a></li>-->
+        <li class="content"><a href="#what"><span class="menu1">1. What is required</span></a></li>
+        <li class="content"><a href="#installation"><span class="menu1">2. Installation and setup</span></a></li>
+        <ul style="margin-top:0px;margin-bottom:0px;list-style-type:none">
+          <li class="content"><a href="#how"><span class="menu2">2.1 How To Install The Script</a></span></li>
+          <li class="content"><a href="#getting"><span class="menu2">2.2 Getting Started</a></span></li>
+          <li class="content"><a href="#xp"><span class="menu2">2.3 Using Windows XP Web Publishing Wizard with Coppermine</a></span></li>
+          <li class="content"><a href="#creating"><span class="menu2">2.4 Creating or upgrading your own themes</a></span></li>
+          <li class="content"><a href="#safe"><span class="menu2">2.5 Safe mode issues</a></span></li>
+          <li class="content"><a href="#smtp"><span class="menu2">2.6 Using SMTP to send emails</a></span></li>
+        </ul>
+        <li class="content"><a href="#upgrade"><span class="menu1">3. Upgrading</span></a></li>
+        <ul class="content">
+          <li class="content"><a href="#10"><span class="menu2">3.1 Upgrading from version 1.0</span></a></li>
+          <li class="content"><a href="#11"><span class="menu2">3.2 Upgrading from releases of version 1.1</a></span></li>
+          <li class="content"><a href="#13"><span class="menu2">3.4 Upgrading from cpg1.2.0 (or better) to version cpg1.3.2</a></span></li>
+        </ul>
+        <li class="content"><a href="#administration"><span class="menu1">4. Configuration &amp; Administration</span></a></li>
+        <ul class="content">
+          <li class="content"><a href="#cat_alb_pic"><span class="menu2">4.1 Categories, albums and files</a></span></li>
+          <li class="content"><a href="#admin_user_mode"><span class="menu2">4.2 Admin mode &amp; User mode</a></span></li>
+          <li class="content"><a href="#group_cp"><span class="menu2">4.3 The group control panel</a></span></li>
+          <li class="content"><a href="#cat_cp"><span class="menu2">4.4 The category control panel</a></span></li>
+          <li class="content"><a href="#albmgr"><span class="menu2">4.5 The album manager</a></span>
+          <ul class="content">
+            <li class="content"><a href="#albmgr_create">4.5.1 Creating albums</a></li>
+            <li class="content"><a href="#albmgr_rename">4.5.2 Renaming albums</a></li>
+            <li class="content"><a href="#albmgr_order">4.5.3 Changing the album order</a></li>
+            <li class="content"><a href="#albmgr_delete">4.5.4 Deleting albums</a></li>
+          </ul>
+          </li>
+          <li class="content"><a href="#modif_alb_pics"><span class="menu2">4.6 Modifying album/files</a></span></li>
+          <li class="content"><a href="#batch_add_pics"><span class="menu2">4.7 Uploading pics by FTP / Batch-Add Pictures</a></span></li>
+          <li class="content"><a href="#album_prop"><span class="menu2">4.8 Album properties</a></span></li>
+          <li class="content"><a href="#edit_pics"><span class="menu2">4.9 Editing files</a></span></li>
+            <ul class="content">
+            <li class="content"><a href="#edit_vids">4.9.1 Editing videos</a></li>
+            <li class="content"><a href="#cust_thmb">4.9.2 Custom thumbnails</a></li>
+            </ul>
+          <li class="content"><a href="#config"><span class="menu2">4.10 The configuration page</a></span></li>
+            <ul class="content">
+            <li class="content"><a href="#config_general">4.10.1 General settings</a></li>
+            <li class="content"><a href="#config_language">4.10.2 Language, Themes &amp; Charset settings</a></li>
+            <li class="content"><a href="#config_album_list">4.10.3 Album list view</a></li>
+            <li class="content"><a href="#config_thumbnail_view">4.10.4 Thumbnail view</a></li>
+            <li class="content"><a href="#config_image_comment">4.10.5 Image view &amp; Comment settings</a></li>
+            <li class="content"><a href="#config_picture_thumbnail">4.10.6 File and thumbnail settings</a></li>
+            <li class="content"><a href="#config_picture_thumb_advanced">4.10.7 Files and thumbnails advanced settings</a></li>
+            <li class="content"><a href="#config_user">4.10.8 User settings</a></li>
+            <li class="content"><a href="#config_custom">4.10.9 Custom fields for image description</a></li>
+            <li class="content"><a href="#config_cookie">4.10.10 Cookie settings</a></li>
+            <li class="content"><a href="#config_misc">4.10.11 Miscellaneous settings</a></li>
+            </ul>
+          </ul>
+        <li class="content"><a href="#integrating" class="menu1">5. Integrating the script with your bulletin board</a>
+            <ul class="content">
+               <li class="content"><a href="#integrating_bridge_start" class="menu2">5.1 Available bridge files</a></li>
+               <li class="content"><a href="#integrating_prerequisites_start" class="menu2">5.2 Pre-requistes</a>
+                   <ul class="content">
+                       <li class="content"><a href="#integrating_cookie_start">5.2.1 Authentification by cookie</a></li>
+                       <li class="content"><a href="#integrating_standalone_start">5.2.2 Standalone version first</a></li>
+                       <li class="content"><a href="#integrating_users_start">5.2.3 Coppermine users, groups and pics uploaded by users are lost when integrating</a></li>
+                       <li class="content"><a href="#integrating_backup_start">5.2.4 Backup</a></li>
+                       <li class="content"><a href="#integrating_database_start">5.2.5 Keep Coppermine and bbs tables in the same database</a></li>
+                   </ul>
+               </li>
+               <li class="content"><a href="#integrating_steps_start" class="menu2">5.3 Integration steps</a>
+                   <ul class="content">
+                       <li class="content"><a href="#integrating_steps_settings_start">5.3.1 Check your bbs settings</a></li>
+                       <li class="content"><a href="#integrating_steps_bridge_start">5.3.2 Edit your bridge file</a></li>
+                       <li class="content"><a href="#integrating_steps_init_start">5.3.3 Enable bbs integration</a></li>
+                       <li class="content"><a href="#integrating_steps_special_start">5.3.4 Special steps depending on the bbs you use</a>
+                           <ul class="content">
+                               <li class="content"><a href="#integrating_steps_special_phpbb_start">5.3.4.1 For phpBB only</a></li>
+                               <li class="content"><a href="#integrating_steps_special_punbb_start">5.3.4.2 For PunBB only</a></li>
+                           </ul>
+                       </li>
+                       <li class="content"><a href="#integrating_steps_upload_start">5.3.5 Upload the modified files</a></li>
+                       <li class="content"><a href="#integrating_steps_sync_start">5.3.6 Synchronsising the bbs groups with Coppermine's groups</a></li>
+                   </ul>
+               </li>
+            </ul>
+        </li>
+        <li class="content"><a href="#translating"><span class="menu1">6. Translating Coppermine into other languages</span></a></li>
+        <li class="content"><a href="#known_issues"><span class="menu1">7. Known Issues</span></a></li>
+        <li class="content"><a href="#credits"><span class="menu1">8. Credits</span></li>
+        <ul class="content">
+          <li class="content"><a href="#developers"><span class="menu2">8.1 Coppermine team</a></span></li>
+          <li class="content"><a href="#contributors"><span class="menu2">8.2 Contributors</a></span></li>
+          <li class="content"><a href="#codebase"><span class="menu2">8.3 Code used in Coppermine</a></span></li>
+          <li class="content"><a href="#copyright"><span class="menu2">8.4 License</a> (Copyright &amp; disclaimer)</span></li>
+        </ul>
+      </ul>
+      <hr />
+<!--
+<a name="testVersion"></a>
+<h1>0. Beta (Testing) version</h1>
+<p>Dear Tester,<br />&nbsp;<br />
+Thank you for taking the time to test Coppermine Photo Gallery.
+Please be rough on the program so that we can track down and
+eliminate bugs from our public release of version 1.3.<br />
+Please understand that this is still beta software that is meant to be used for testing purposes and not for production, so there is no support for cpg1.3.0beta yet.</p>
+
+<p>While testing CPG 1.3, please make certain to note any odd behavior you
+encounter.  This could include typographical errors, misleading instructions,
+or any other out-right error.  If you encounter a major error, please switch
+the debug mode to &quot;on&quot; in the configuration panel and copy the text in the
+debug window.  This will greatly aid the development team in hunting down the
+problem.</p>
+
+<p><b>Areas to be particularly mindful of:</b></p>
+<ul>
+<li>Please test every facet of CPG, from the installation on to every feature available (and in as many themes as possible).</li>
+<li>If you have the ability to test GD, GD2 and ImageMagick, please test all of them.</li>
+<li>Please attempt to use multiple types of graphics such as JPEG, PNG and GIF (for IM users).</li>
+</ul>
+<p>Please report your test results to the <a href="http://coppermine.sourceforge.net/board/viewforum.php?f=19">testing board</a>, but before starting a new thread make sure that the potential bug you're going to report hasn't been posted before.</p>
+
+<p><b>The report format should include:</b></p>
+<ul>
+<li>Server OS</li>
+<li>Web Server Software</li>
+<li>GD, GD2 or ImageMagick Test</li>
+<li>PHP Version</li>
+<li>BB Integration (if any)</li>
+<li>Themes fully tested (by fully tested, we mean as many different features as</li>
+<li>possible using that theme)</li>
+<li>Major Errors</li>
+<li>Client OS and Browser</li>
+<li>Fresh install or upgrade (if yes, from which version of cpg)</li>
+</ul>
+
+<p>Your test results will not merely be used to fix problems but will also be used
+to tout the compatibility of CPG with multiple browsers and OS's.  That is why
+this information is important EVEN IF YOU FIND NOTHING WRONG.</p>
+
+<p>Thanks for your participation and your time in making CPG the premiere
+open-source photo gallery!</p>
+
+<p>Coppermine Development Team</p>
+<p><a class="back" href="#top">Back to
+      top</a></p>
+-->
+
+
+<a name="what"></a>
+<h1>1. What is required</h1>
+<ul>
+  <li>A web server that supports PHP (the script should work with any version
+    &gt;= 4.1.0)</li>
+  <li>A MySQL database</li>
+  <li>PHP compiled with the support for the GD library or the ImageMagick &quot;convert&quot;
+    utility in order to make thumbnails and reduced size images</li>
+</ul>
+
+<p><a class="back" href="#top">Back to
+      top</a></p>
+
+<a name="installation"></a>
+<h1>2. Installation and Setup</h1>
+<a name="how"></a>
+<h2>2.1 How to install the script</h2>
+<ul>
+  <li><b>Unpack the archive preserving the directory structure</b><br />(you can rename the coppermine folder, but not the files or folders within).</li>
+  <li><b>Upload all files onto your webserver</b> (make sure to use the correct ftp mode)</li>
+  <li><b>CHMOD the folders <i>albums</i> and <i>include</i> to 755 (or 777, depending on your server config)</b> - this step is really important, don't skip it!<br />There are a lot of tutorials for beginners how to use chmod available: <a href="http://www.google.com/search?q=chmod+tutorial" class="external">search chmod tutorials with google</a>. If you're on a windows server, you'll have to set permissions accordingly as well (usually the webserver runs under the user name &quot;IUSR_hostname&quot; - you'll have to set rwx-permissions for this user).</li>
+  <li><b>Run the install script on your server</b> (http://your_server/coppermine_dir/install.php)
+    and follow the instructions</li>
+</ul>
+<p><a class="back" href="#top">Back to top</a></p>
+
+
+<a name="getting"></a>
+<h2>2.2 Getting started</h2>
+<p>Log in with the admin username and password you set up during install, click on the &quot;admin mode&quot;
+  link if it is visible, go to the <b>Config</b> page and start to configure your
+  gallery. Note that even if you are a member of the administrator group, you
+  need to be in &quot;admin mode&quot; to configure your gallery.</p>
+<p>There are some settings in config that can't be changed later (if there are already files in the database) - make sure to set them up correctly in the first place. Although you'll surely want to start using coppermine immediately it is advisable to configure those settings (marked with an asterisk &quot;*&quot;) properly at the very beginning.</p>
+<p>Use the &quot;<b><a href="#albmgr">Album Manager</a></b>&quot; (&quot;Albums&quot; link in the admin
+  menu) in to create and order your albums. You'll need at least one album your files can go into.</p>
+<p>Use the <b>anonymous</b> group to define what non-regsitered users can and
+  can't do (in the <a href="#group_cp">groups</a> panel).</p>
+<p>Use the <b><a href="#modif_alb_pics">properties</a></b> of an album to modify its description and permissions.
+</p>
+<p>In order for a user to be allowed to upload a file in album two conditions
+  must be met:</p>
+<ul>
+  <li> The user must be part of a <a href="#group_cp">group</a> that can upload files.</li>
+  <li>There must be at least one album where &quot;<b>Visitors can upload files</b>&quot;
+    has been set to &quot;<b>Yes</b>&quot;,<br> <b>OR</b> <br>The user has created an album in the 'user galleries', if allowed.</li>
+</ul>
+<p>The same applies to <b>picture rating</b> and <b>comment posting</b>.</p>
+<p>If you have installed the script succesfully but are having trouble getting
+  it working properly you can enable the &quot;<b><a href="#debug_mode">debug mode</a></b>&quot; on the
+  <b>config page</b>. In this mode, the script outputs most of the warning/error
+  messages produced by PHP in addition to some debug information. This can provide
+  valuable information to understand what is wrong.</p>
+<p><a class="back" href="#top">Back to top</a></p>
+
+<a name="xp"></a>
+<h2>2.3 Using Windows XP Web Publishing Wizard with Coppermine</h2>
+<p>If you are using Windows XP, you can use its built-in web publishing wizard
+  to upload your photos to your gallery.</p>
+<p>Once you have properly installed the script on your server, call the xp_publish.php
+  file from your web browser (http://your_site.com/coppermine_dir/xp_publish.php).</p>
+<p>The script displays some information on how to do the installation on the client
+  side and how to use the Wizard. Basically you will need to download a small
+  file created by the script that needs to be loaded into your Windows registry.</p>
+<img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+<img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+<img src="pics/cpg111.gif" width="23" height="20" border="0" alt="" /><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt="" ><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+<img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+<img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+<img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+<p><a class="back" href="#top">Back to top</a></p>
+
+<a name="creating"></a>
+<h2>2.4 Creating or upgrading your own themes</h2>
+<p>To upgrade an existing custom theme, to version 1.3.x, read <a href="theme.htm">theme.htm</a></p>
+<p>Coppermine themes are stored in the &quot;<b>themes</b>&quot; directory, they
+  consist of 3 files : </p>
+<ul>
+  <li>&quot;<b>template.html</b>&quot; the main template in plain HTML.</li>
+  <li>&quot;<b>style.css</b>&quot; the stylesheet associated with the template</li>
+  <li>&quot;<b>theme.php</b>&quot; the PHP theme file</li>
+</ul>
+<p>To create a new template, the best solution is to use an existing one as a basis. To do that, make a copy of the folder of the theme you want to use as a basis. Then edit the &quot;<b>template.html</b>&quot; and &quot;<b>theme.php</b>&quot; files and replace all occurences of &quot;<b>themes/old_theme_dir</b>&quot; with &quot;<b>themes/new_theme_dir</b>&quot; in order for the links to point to the correct place.</p>
+<p>When editing the &quot;<b>template.html</b>&quot; file do not remove the elements
+  between <b>{}</b> these are the placeholders used by the script. Also keep in
+  mind that despite this file being located in the &quot;<b>themes/your_theme_dir</b>&quot;
+  directory, it must be build like if it was in the main directory of the script.
+  Practically to load an image, you must use <i>&lt;img src=&quot;themes/theme_dir/images/image.gif&quot;
+  alt=&quot;&quot;/&gt;</i> and not <i>&lt;img src=&quot;images/image.gif&quot;
+  alt=&quot;&quot;/&gt;.</i> The same apply for the &quot;<b>theme.php</b>&quot;
+  file.</p>
+  <p>Also, make sure not to delete the line <i>&lt;script type="text/javascript" src="scripts.js"&gt;&lt;/script&gt;</i> that is needed for the full-size pop-ups and other stuff related to JavaScript.</p>
+<p>If you are using an HTML editor to make your template, the best solution is
+  that you copy the &quot;<b>template.html</b>&quot; file into the main directory
+  of the script and edit it there. If the script find a file named &quot;<b>template.html</b>&quot;
+  in the main directory it will load it instead of the one of the theme directory.
+  Once you have finished your editings, move the file back to the directory of
+  your theme.</p>
+<p>To modify the colors, fonts, font sizes, etc... used by the script, edit the
+  &quot;<b>style.css</b>&quot; stylesheet. If you want to increase or decrease
+  the size of the fonts you can simply modify the line with : <i>table { font-size:
+  12px; }</i>. Most of the font sizes used by the script are defined as a percentage
+  of this size.</p>
+<p>The &quot;<b>theme.php</b>&quot; file contains all the HTML templates used
+  by the script. You can also edit them. When making modifications to these templates,
+  don't touch the lines with <i>&lt;!-- BEGIN xxx --&gt;</i> and <i>&lt;!-- END
+  xxx --&gt;</i>.</p>
+<p>If you're not sure how to create your own theme, you could also have a look at the download section of the coppermine homepage: there are tons of <a href="http://sourceforge.net/project/showfiles.php?group_id=89658&package_id=98541">user-contributed themes</a> available for download that can be previewed on the <a href="http://coppermine.sourceforge.net/demo/">coppermine demo page</a>.</p>
+<p>While you're in the process of creating a new theme, you might not want to show the theme to the visitors of your page, but you (as coppermine admin) want to be able to preview your theme. To do that, simply add <tt class="code">theme=your_theme_name</tt> to the url in your browser.</p>
+<b>Examples:</b>
+<ul>
+<li><tt class="code">http://yoursite.tld/coppermine/index.php?theme=your_theme_name</tt> will show the coppermine index page, using your theme</li>
+<li><tt class="code">http://yoursite.tld/coppermine/thumbnails.php?album=1&theme=your_theme_name</tt> will show the thumbnail view of album 1, using your theme</li>
+<li><tt class="code">http://yoursite.tld/coppermine/?theme=xxx</tt> will reset your view back to the theme you chose as your default theme in coppermine config</li>
+</ul>
+<p><a class="back" href="#top">Back to top</a></p>
+
+<a name="safe"></a>
+<h2>2.5 Safe mode issues</h2>
+<p>A significant number of webhost on the Internet run PHP in safe mode. Coppermine
+  runs without any problem in safe mode and with the &quot;open basedir restriction&quot;
+  active, provided safe mode is properly configured. Unfortunately on many hosts,
+  safe mode is not configured properly.</p>
+<p>If your webhost is running PHP in safe mode but is misconfigured, you may need
+  to do the following :</p>
+<ul>
+  <li>With a FTP program, change the mode of Coppermine's &quot;<b>include</b>&quot;
+    directory on your server to <b>0777</b>.</li>
+  <li>Do the same for the &quot;<b>albums</b>&quot; and &quot;<b>userpics</b>&quot;
+    directories.</li>
+  <li>Check that at the beginning the the &quot;<b>include/config.inc.php</b>&quot;
+    file, you have a line with : &quot;<b>define('SILLY_SAFE_MODE', 1);</b>&quot;</li>
+</ul>
+<p><a class="back" href="#top">Back to top</a></p>
+
+<a name="smtp"></a>
+<h2>2.6 Using SMTP to send emails</h2>
+<p>By default the script uses the PHP built-in <b>mail</b> function to send emails.
+  In some cases, the PHP built-in function can't be used.</p>
+<p> If in order to send emails with PHP you need to supply a <b>hostname</b>,
+  a <b>username</b> and a <b>password</b>, you need to edit the file &quot;<b>include/mailer.inc.php</b>&quot;
+  and put the correct values there (<i>$CONFIG['smtp_host'] = 'smtp.somewhere.com';
+  $CONFIG['smtp_username'] = 'username'; $CONFIG['smtp_password'] = 'password';</i>).
+  If you don't need a username and password to connect to your SMTP server, just
+  leave them blank.</p>
+<p><a class="back" href="#top">Back to top</a></p>
+
+<a name="upgrade"></a>
+<h1>3. Upgrading</h1>
+<a name="10"></a>
+<h2>3.1 Upgrading from version 1.0</h2>
+
+<p>If you already have installed version 1.0 and you want to transfer your albums
+  to version 1.2 proceed in the following way:</p>
+<ul>
+  <li> Install version 1.3 normally in a directory different from the one where
+    you installed v 1.0. Note that in order to use the upgrade script, <b>tables
+    for version 1.0 and 1.3 must be stored in the same database</b>.</li>
+  <li>Copy the &quot;<b>albums</b>&quot; directory of version 1.0 into the directory
+    where you installed version 1.3</li>
+  <li>The upgrade script assumes that you used the &quot;<b>CPG_</b>&quot; prefix
+    for tables (default value) when you installed version 1.0, if this is not
+    the case, edit upgrade-1.0-to-1.2.php and edit the $prefix10 variable.</li>
+  <li>Login to your 1.3 Gallery, enter the admin mode</li>
+  <li>Call the upgrade script, http://yousitename/coppermine_dir/upgrade-1.0-to-1.2.php</li>
+  <li><b>The upgrade from 1.0 to 1.3 is a two-step process.</b> You must click the link which comes up on the bottom of the page to complete the upgrade!.</li>
+        <li><b>Delete upgrade-1.0-to-1.2.php from your server</b>.
+  <li>If you get an error, go to Coppermine 1.2 config page, enable <a href="#debug_mode">debug mode</a>,
+    try to call the upgrade script again and check what errors you get.</li>
+</ul>
+<p> <b>This upgrade process leaves your v1.0 gallery untouched </b></p>
+<p><a class="back" href="#top">Back to top</a></p>
+
+<a name="11"></a>
+<h2>3.2 Upgrading from releases of version 1.1</h2>
+        <ul>
+                <li>Backup your include/config.inc.php file, your anycontent.php file and your "albums" directoy.</li>
+                <li>Unpack the archive</li>
+                <li>If the file <b>install.php</b> exists in the root directory, delete it.</li>
+                <li>Upload all of the new files and directories</li>
+                <li>CHMOD the albums directory and all subfolders once more to 755 or 777 (depending on your server config)</li>
+                <li>Call the upgrade script http://yousitename/coppermine_dir/update.php</li>
+                <li>Your upgrade should be complete.</li>
+        </ul>
+<p><a class="back" href="#top">Back to top</a></p>
+
+
+<a name="13"></a>
+<h2>3.4 Upgrading from cpg1.2.0rc2 or better to version cpg1.3.2</h2>
+        <ul>
+                <li>Backup your include/config.inc.php file, your anycontent.php file and your &quot;albums&quot; directoy.</li>
+                <li>Unpack the archive</li>
+                <li>If the file <b>install.php</b> exists in the root directory, delete it.</li>
+                <li><b>Except for the &quot;albums&quot; directory</b>, upload all of the new files and directories making sure not to overwrite the include/config.inc.php file, your anycontent.php file or the albums directory.</li>
+                <li>If you have not already done so, create a folder called &quot;edit&quot; within your &quot;albums&quot; directory - this folder will be used by coppermine as a temporary folder, do not ftp-upload files there. Make sure the new &quot;edit&quot;-folder is CHMODed the same way your albums-directory is (755 or 777, depending on your server's config)</li>
+                <li>Run the file &quot;update.php&quot; in the coppermine directory once in your browser (e.g. http://yourdomain.tld/coppermine/update.php). This will update your coppermine install by making all necessary changes in the database.</li>
+                <li>If you have made a custom theme, apply the changes that were introduced in the themes structure to your custom-made theme - refer to the <a href="theme.htm">theme-upgrade guide</a>.</li>
+                <li>You can not use language files from older versions of Coppermine - make sure to only have the language files that come with this package inside your lang folder (delete or rename all files from older versions within the lang folder)</li>
+        </ul>
+<p>Please note: as there have been changes both in the coppermine files and the database from cpg1.3.0 or cpg1.3.1 to cpg1.3.2, users of cpg1.3.0/1.3.1 will have to apply all steps mentioned above: both the files have to be replaced and the update.php script has to be run once.</p>
+
+<p><a class="back" href="#top">Back to top</a></p>
+
+<hr />
+
+<a name="administration"></a>
+<h1>4. Configuration &amp; Administration</h1>
+
+      <h2>4.1 Categories, albums and files<a id="cat_alb_pic"
+      name="cat_alb_pic"></a></h2>
+      <p>The Coppermine Photo Gallery (CPG) works in the following way:</p>
+      <ul>
+        <li>Files are stored in albums</li>
+        <li>Albums are organised in categories</li>
+        <li>Categories can be nested (subcategories)</li>
+                        </ul>
+      <p>If you don't have many albums, you don't need to use categories. In
+      that case you don't create any category and all your albums will appear on
+      the main page of the script.</p>
+      <p>There is a special category named "<b>User galleries</b>". This
+      category can't be deleted. If a user belongs to a group where "can have a
+      personal gallery" is set to YES, he will have the right to create his own
+      albums and his gallery will be a sub-category of "User galleries".</p>
+      <p>The administrator can create albums in any category. Regular users can
+      only create albums in "User galleries/Their_username".</p>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr>
+
+      <h2>4.2 Admin mode &amp; User mode<a id="admin_user_mode"
+      name="admin_user_mode"></a></h2>
+      <p>When you are logged in as an admin, the script has two modes of
+      operation : Admin mode &amp; User mode. You switch between Admin &amp;
+      User mode by clicking on the corresponding link in the menu bar at the top
+      of the screen.</p>
+      <p>When you are in admin mode, you can administer your gallery and the
+      following menu bar appears :</p>
+      <p><a name="admin_menu"></a><img src="pics/admin_menu.gif" border="0" alt="Admin menu" /></p>
+      <p>When you are in user mode you are just a regular user and can't access
+      the admin pages.</p>
+      <p>The items in the admin menu should be pretty self-explanatory:</p>
+      <ul>
+      <li><b>Upload approval</b><br />See all pics that await approval by the admin (depending on the settings in the &quot;<a href="#group_cp">groups</a>&quot; control panel)</li>
+      <li><b>Config</b><br />Configure the overall look of your gallery and the settings using the &quot;<a href="#config">Config</a>&quot; button in the admin menu (note: you can not access the configuration by manually entering the url of the config file)</li>
+      <li><b>Albums</b><br />Create/edit/delete <a href="#albmgr">albums</a></li>
+      <li><b>Categories</b><br />Create/edit/delete <a href="#cat_cp">categories</a></li>
+      <li><b>Users</b><br />Create/edit/delete <!--<a href="#users_cp">-->users<!--</a>--></li>
+      <li><b>Groups</b><br />Create/edit/delete <a href="#group_cp">groups</a></li>
+      <li><b>Ban Users</b><br />Ban users based on hostname or IP address. Make sure not to ban yourself! Use this feature with extreme care, since most users don't have static IP addresses, this feature should only be used if you really know what you're doing.<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_exclam.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_exclam.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt="">
+      </li>
+      <li><b>Display Ecards</b><br />View the ecards sent by users.<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt="">
+      </li>
+      <li><b>Review Comments</b><br />edit/delete user's comments</li>
+      <li><b>Batch add files</b><br /><a href="#batch_add_pics">Batch-add files</a> to the coppermine database that have been uploaded by FTP.</li>
+      <li><b>Admin Tools (Resize Pictures)</b><br />Collection of utilities to;<br><br>
+                <dd><b>Rebuild or resize intermediate pictures and thumbnails.</b><br>
+                <dd><img src="pics/util_re-size.gif" width="451" height="188" alt="" border="0"><br>Use this if you have changed the settings for thumbnail or intermediate images in config, or if you have to replace corrupt versions.<br>Select the radio button for this action, then choose to rebuild the thumbnails, intermediates, or both.<br>This uses a lot of server resources, so if you have timeout problems, try doing it in smaller batches.
+                <br><br><dd><b>Delete full-size pictures.</b><br></dd>
+                Use this to save space on your webspace.<br>When selected, Coppermine checks to see if an intermediate copy exists, and if it does, it deletes the original sized picture, then re-names the intermediate. If no intermediate exists, Coppermine leaves the original in place.<br><br>
+                <dd><b>Delete orphaned comments.</b><br></dd>
+                Sometimes, when pictures have been deleted, any comments associated with them remain in the database.  Use this to remove them from the database entirely.<br><br>
+                <dd><b>Rename file titles.</b><br></dd>
+                Use this to re-name the title of all files in an album, using info from the filename.<br><br>
+                <dd><b>Delete file titles.</b><br></dd>
+                Use this to clear the file titles from one or more albums.<br><br>
+                <dd><b>View your server php info.</b><br></dd>
+                If you are having problems, it is sometimes caused by server setup.  Clicking this link will provide you with all your php and mySQL settings, as well as on the GD library (if installed).  This may be needed by the support team, if you are unable to sort problems yourself.<br>It is not possible for visitors to your site to browse to this information, so if asked for it, copy and paste it to the support board.<br><br>
+                <dd><b>Run a database update (update.php).</b><br></dd>
+                After an update/upgrade, it is usually necessary to run update.php.  This can be done by typing the address directly into your browser, or by clicking this link.
+
+                </li><br><br>
+      <li><b>My profile</b><br />Edit your own user profile</li>
+      </ul>
+      <p>There's an admin mode and user mode for &quot;regular&quot; users as well - the user admin has these options:</p>
+      <ul>
+      <li><b>Create / order my albums</b><br />similar to album manager in admin mode, the user can create albums within his user gallery</li>
+      <li><b>Modify my albums</b><br />The user can edit album title and description (similar to &quot;<a href="#album_prop">album properties</a>&quot; for the admin, but the user can't move his albums to other categories)</li>
+      <li><b>My profile</b><br />The user can edit his profile (changing passwords, edit location, interests, home page and occupation properties, view quota usage). If you're using bbs integration, the &quot;My profile&quot; link will send the user to the bbs's profile page. </li>
+
+      </ul>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr>
+
+
+
+      <h2>4.3 The group control panel<a id="group_cp" name="group_cp"></a></h2>
+      <p><img src="pics/group_cp.GIF" border="1" /></p>
+      <p>This is where you define what members of a group can and can't do.</p>
+      <p>The disk quota applies only for groups where &quot;<i>Can have a personal</i>&quot;
+      gallery has been set to &quot;<b>YES</b>&quot;. Both files uploaded by a user in his
+      personal gallery as well as files uploaded to public galleries are included in the quota.</p>
+      <p>Use the <b>anonymous</b> group to define what non-registered users can
+      and can't do. Quota and &quot;<i>Can have a personal gallery</i>&quot; are meaningless for anonymous users.</p>
+      <p>Bear in mind that if a user is a member of a group where &quot;<i>can rate pictures</i>&quot;, &quot;<i>can post comments</i>&quot; or &quot;<i>can upload files</i>&quot; is set &quot;<i>YES</i>&quot;, he will have the right to perform these operations only in albums where they are allowed, ie. uploading files will only be possible in albums where
+      &quot;<i>Visitors can upload files</i>&quot; has been set to <i>YES</i>.</p>
+      <p>If &quot;<i>can have a personal gallery</i>&quot; is set to <i>YES</i>, the members of the
+      group will have their own gallery in the &quot;<i>User galleries</i>&quot; category where
+      they will be able to create their own albums.</p>
+      <p>If &quot;<i>priv. upl. approval</i>&quot; is set to <i>NO</i>, files uploaded by members of
+      the group in albums created in their own gallery won't need to be approved
+      by the admin.</p>
+      <p><img src="pics/groupsscrsht2.jpg" border="1" /></p>
+      <p>The group control panel enables you to control the upload experience of any group.</p>
+      <p><i>Upload form configuration</i> lets you select the type of upload form a group may use. Four form types are currently available.
+      <ul>
+      <li><b>Single file uploads only</b> - The group may not use advanced uploading features. They may upload one file at a time.</li>
+      <li><b>Multiple file uploads only</b> - The group may upload multiple files at one time.</li>
+      <li><b>URI uploads only</b> - The group may only upload files using URIs. Acceptable URIs must begin with 'http://' or 'ftp://'.</li>
+      <li><b>File-URI</b> - The group may upload files using file upload boxes and URIs.</li>
+      </ul>
+      </p>
+      <p><i>User may customize number of upload boxes?</i> allows the user to select the number of upload boxes for an upload.</p>
+      <p><i>Maximum/exact number of file upload boxes</i> controls the number of file upload boxes presented to the user. If the user may customize the number of boxes, this setting serves a maximum limit for the number of boxes he may request. Otherwise, this setting determines the number of boxes that will appear on the upload form.</p>
+      <p><i>Maximum/exact number of URI upload boxes</i> is the same type of control as <i>Maximum/exact number of file upload boxes</i>, but it controls the presentation of URI upload boxes.</p>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr>
+
+      <h2>4.4 The categories control panel<a id="cat_cp" name="cat_cp"></a></h2>
+      <p><img src="pics/category_cp.GIF" border="1" /></p>
+      <p>This is where you can edit your categories.</p>
+      <ul>
+        <li>The <img src="pics/edit.gif" border="0" width="16" height="16" alt="" /> button
+        allows you to edit the title, description and parent category of an
+        existing cetegory.
+        <li>The <img src="pics/delete.gif" width="16" height="16" alt="" /> button
+        allows you to delete a category. Deleting a category does not delete the
+        albums and files it contains. They are simply moved to the &quot;Root&quot;
+        category.
+        <li>The <img src="pics/up.gif" width="16" height="16" alt="" /> and <img
+        src="pics/down.gif" width="16" height="16" alt="" /> buttons allow you to
+        order your categories.
+        <li>The &quot;<b>Move into</b>&quot; dropdown lists allow you to change the parent
+        of a specific category. </li></ul>
+      <p>&quot;<b>User galleries</b>&quot; is a special category. It is not visible unless
+      you have some users that have created their own gallery. It can't be
+      deleted but you can edit its title and description by using the <img
+      src="pics/edit.gif" width="16" height="16" alt="" /> button. </p>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr>
+
+      <h2><a name="albmgr"></a>4.5 The Album Manager</h2>
+      <p><img src="pics/albmgr.gif" width="360" height="288" border="0" alt="" title="Album Manager" /></p>
+      <p>Coppermine stores files inside of albums, so you'll need at least one album your pictures/files can go to. Albums can be stored in categories (but they don't <i>need</i> a category, they can as well go into the coppermine &quot;root&quot;).<br />
+      When you click on &quot;albums&quot; in the admin menu, you will see the <i>Album Manager</i>.</p>
+      <h3><a name="albmgr_create"></a>4.5.1 Creating albums</h3>
+      <ul>
+      <li><b>Choose a category from the dropdown list</b> &quot;Select category&quot; where your album should go to (or choose &quot;* No category *&quot; if the album should go into the coppermine &quot;root&quot;). If you haven't created a category yet, go to the <a href="#cat_cp">categories control panel</a> first, but you can later move the album as well using the <a href="#album_prop">album properties</a> page.</li>
+      <li><b>Click on the button &quot;New&quot;</b> - your new album will appear on the list, by default labelled &quot;New album&quot;</li>
+      <li><b>Click on the text input filed at the bottom of the screen</b>, highlighting the default name &quot;New album&quot;</li>
+      <li><b>Type the album name you want to assign</b></li>
+      <li>(repeat steps 2 to 4 to add more than one album)</li>
+      <li><b>click &quot;Apply modifications&quot;</b> to submit your changes to the database (if you don't, all changes will be lost)</li>
+      <li><b>Confirm the alert box with &quot;OK&quot;</b> (<i>Are you sure you want to make these modifications ?</i>)</li>
+      </ul>
+      <h3><a name="albmgr_rename"></a>4.5.2 Renaming albums</h3>
+      <ul>
+      <li><b>Choose a category from the dropdown list</b></li>
+      <li><b>Click on the album you want to change</b></li>
+      <li><b>Click on the text input filed at the bottom of the screen</b>, highlighting the album name</li>
+      <li><b>Type the album name you want to assign</b></li>
+      <li><b>click &quot;Apply modifications&quot;</b></li>
+      <li><b>Confirm the alert box with &quot;OK&quot;</b> (<i>Are you sure you want to make these modifications ?</i>)</li>
+      </ul>
+      <h3><a name="albmgr_order"></a>4.5.3 Changing the album order</h3>
+      <ul>
+      <li><b>Choose a category from the dropdown list</b></li>
+      <li><b>Click on the album you want to move up or down in the list</b></li>
+      <li><b>Use the arrow buttons to move the album up<img src="../images/move_up.gif" width="26" height="21" border="0" alt="" title="move the album up" /> or down<img src="../images/move_down.gif" width="26" height="21" border="0" alt="" title="move the album down" /></b></li>
+      <li><b>click &quot;Apply modifications&quot;</b></li>
+      <li><b>Confirm the alert box with &quot;OK&quot;</b> (<i>Are you sure you want to make these modifications ?</i>)</li>
+      </ul>
+      <h3><a name="albmgr_delete"></a>4.5.4 Deleting albums</h3>
+      <ul>
+      <li><b>Choose a category from the dropdown list</b></li>
+      <li><b>Click on the album you want to delete</b></li>
+      <li><b>Click the &quot;Delete&quot; button</b></li>
+      <li><b>Confirm the alert box with &quot;OK&quot;</b> (<i>Are you sure you want to delete this album ? All files and comments it contains will be lost !</i>)</li>
+      <li><b>click &quot;Apply modifications&quot;</b></li>
+      <li><b>Confirm the alert box with &quot;OK&quot;</b> (<i>Are you sure you want to make these modifications ?</i>)</li>
+      </ul>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr>
+
+      <h2>4.6 Modifying albums/files<a id="modif_alb_pics"
+      name="modif_alb_pics"></a></h2>
+      <p>When you are in admin mode there is a menu displayed next to each
+      album</p>
+      <p></p>
+      <p><img src="pics/album_menu.GIF" border="1" /></p>
+      <p><b>Delete</b> allows you to delete the album and all files it
+      contains.</p>
+      <p><b>Properties</b> allows you to modify the name, description and
+      permissions of the album</p>
+      <p><b>Edit pics</b> allows you to modify the title/caption/keywords etc...
+      of the files in the album</p>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr>
+
+<a name="ftp"></a><a name="batch_add_pics"></a>
+<h2>4.7 Uploading pics by FTP / Batch-Add Pictures</h2>
+<p>It's recommended that the coppermine admin uses ftp to upload many pics in one go. Use your ftp software to create sub-folders within <i>your_coppermine_directory/albums/</i>, where your ftp uploads can go to. It's a good idea to have a folder structure within the <i>albums</i> folder that reflects your coppermine categories and albums, but it's not mandatory.<br /><span class="important">Important</span>: do not create folders or upload to the <i>userpics</i>- nor the <i>edit</i>-folder by ftp: these folders are used by coppermine internally and mustn't be used for any other purpose! Folder names mustn't contain dots and it's even recommended not to use any special chars - only use a-z, numbers and maybe <tt class="code">-</tt> or <tt class="code">_</tt>. Make sure to upload in binary or auto-mode.</p>
+<p>Once you have uploaded your photos by ftp, click on the Batch Add Pictures button. The batch-add is done in three steps:</p>
+<ul>
+<li>find the directory under which you have uploaded your photos. Select this directory by clicking on it.
+<br /><img src="pics/searchnew_1.gif" width="602" height="185" border="0" alt="" /></li>
+<li>select the photos you wish to upload (by ticking them, the new pics are pre-selected, those that already are in your coppermine database are not selected) and the album you wish to insert them into. Click &quot;Insert Selected Pictures&quot; to start the batch-add process.<br />
+<img src="pics/searchnew_2.gif" width="561" height="320" border="0" alt="" /></li>
+<li>CPG will then display the results of the batch-add (allow some time untill all results are being shown).<br />
+If the OK, DP, PB 'signs' does not appear click on the broken file to see any error message produced by PHP.<br />
+If your browser times out, hit the reload button.
+<ul>
+<li>OK : means that the file was succesfully added</li>
+<li>DP : means that the file is a duplicate and is already in the database</li>
+<li>PB : means that the file could not be added, check your configuration and the permission of directories where the files are located</li>
+<li>NA : means that you haven't selected an album the files should go to, hit 'back' and select an album. If you don't have an album create one first</li>
+</ul>
+</li>
+</ul>
+<p>Giving FTP-access to other users is a serious security threat, that's why batch-add is only available for the coppermine gallery admin.</p>
+<p>Once files have been added to coppermine's database, make sure not to rename or delete them by ftp - use coppermine's admin menu to remove files instead, since this way they will be removed both from the file system <b>and</b> the database.</p>
+<p><a class="back" href="#top">Back to top</a></p>
+<hr />
+
+      <h2>4.8 Album properties<a id="album_prop" name="album_prop"></a></h2>
+      <p><img src="pics/edit_album.GIF" border="1" /></p>
+      <p>The "Album category" drop down list allows you to move an album between
+      categories. If you set this to "* No category *" then the album will be
+      displayed on your main page.</p>
+      <a name="bbcode"></a><p>Coppermine understands the following bbCodes (the same bbCodes that are
+      used by phpBB) in image and album description</p>
+      <ul>
+        <li>[b]<b>bold</b>[/b]
+        <li>[i]<i>italic</i>[/i]
+        <li>[url=http://url]URL text[/url]
+        <li>[email]user@domain.tld[/email] </li></ul>
+      <p>The thumbnail is the picture that will represent the album in the album
+      list.</p>
+      <p>If you have set &quot;Users can can have private albums&quot; to YES on the
+      <a href="#config">config page</a>, you can define who can view the files of this album.</p>
+      <p>When &quot;visitors can upload file&quot; is set to YES, it is possible to
+      upload files in this album. <b>Note that a visitor will have the right
+      to upload files into an album where this option is set to YES only if
+      he is a member of a group for which &quot;Can upload pictures&quot; is set to YES.
+      </b>Non registered users are members of the "Anonymous" group.</p>
+      <p>The same rules as above apply for &quot;Visitors can post comments&quot; and
+      &quot;Visitors can rate files&quot;.</p>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr>
+
+      <h2>4.9 Editing files<a id="edit_pics" name="edit_pics"></a></h2>
+      <p><img src="pics/edit_picture.GIF" border="1" /></p>
+      <p>This is where you can modify the title description, keywords and custom
+      fields (if they are used) of a file.</p>
+      <p>Use the album drop down menu to move the file to another album.<br /></p>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr>
+
+      <h3>4.9.1 Editing videos<a id="edit_vids" name="edit_vids"></a></h3>
+      <p><img src="pics/edit_video.gif" border="1" /></p>
+      <p>This is where you can modify the title description, keywords and custom
+      fields (if they are used) of a video.</p>
+      <p>Use the album drop down menu to move the video to another album.</p>
+      <p>Use the height and width fields to set the size of the video.</p>
+      <p>Video uploads are available for cpg1.3.0 (or better) as part of the distribution and for cpg1.2.1 as separate modification.<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_exclam.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr>
+
+      <h3>4.9.2 Custom Thumbnails<a id="cust_thmb" name="cust_thmb"></a></h3>
+      <p><img src="pics/cust_thmb.gif" border="1" /></p>
+      <p><b>Order of thumbnails:</b><br />
+      <b style="color:red;">Thumbnails are selected by level (user-defined, theme-defined, global) then by type (file-specific,
+      extension-specific, media-specific) in order.</b> User-defined thumbnails are stored in the folder where the file is located. Theme-defined thumbnails
+      are stored in the themes 'images' folder. Global thumbnails are stored within the 'images' folder of the Coppermine root.
+      <b style="color:red;">Thumbnails can be either a 'gif', 'png', or 'jpg'.</b>
+      </p>
+      <p><b>Types of thumbnails:</b><br />
+      <b style="color:red;">File-specific thumbnails must have the same base name as the file.</b> Using the example in the screenshot, its thumbnails could be
+      'thumb_<b>thailand_waterfall</b>.gif', 'thumb_<b>thailand_waterfall</b>.png', or 'thumb_<b>thailand_waterfall</b>.jpg'
+      , chosen in that order.
+      </p>
+      <p><b style="color:red;">Extension-specific thumbnails are named after the extension of the file.</b>
+      (Examples: 'thumb_wmv.jpg', 'thumb_wav.jpg'.)
+      </p>
+      <p><b style="color:red;">The base name for media-specific thumbnails are 'thumb_movie', 'thumb_document', and 'thumb_audio'.</b>
+      Images use file-specific thumbnails by default.
+      </p>
+      <p><b>Uploading:</b><br />
+      There are 2 ways to upload custom thumbnails:</p>
+      <p>
+      1. Have an image already uploaded then upload a video via the upload page. (or vice versa) The video will share the thumbnail of the image.<br />
+      </p><br /><br />
+      <p><img src="pics/cust_thmb_3.gif" border="1" /></p>
+      <p>
+      2. FTP upload both the video and (thumbnail or image) then batch-add. If you FTP upload the thumbnail, the thumbnail will be shown instead of the default Coppermine thumbnail on the batch-add page.
+      If you upload an image it will look like the screenshot. However, when the two files are added, the thumbnail of the image will be used by the video.</p>
+      <br /><br />
+      <p><img src="pics/cust_thmb_final.gif" border="1" /></p>
+      <p>Final result.</p>
+      <p>Note: If methods 1 is used and the image is deleted, the thumbnail will be deleted also, and the default Coppermine thumbnails will be used.<br />
+      If a previous video has be uploaded via FTP, the thumbnail must be uploaded via FTP to the same folder.
+      </p>
+      <p>Video uploads are available for cpg1.3.0 (or better) as part of the distribution and for cpg1.2.1 as separate modification.
+      Custom thumbnails aren't supported in versions prior to 1.3.0. <b style="color:red;">Using these instructions, a custom thumbnail can be applied to any file, not just videos.</b>
+      </p>
+<p><b>FAQS:</b>
+<ul>
+<p><li><b>Quote</b><br /><div class="quote">I have a video named <b>'movie.wmv'</b>, when I upload a thumbnail for it <b>'thumb_movie.jpg'</b> it replaces multiple videos!!!!</div>
+Duhh. <b>'thumb_movie.jpg'</b> is a media-specific thumbnail. Rename the video and the thumbnail to something other than just <b>'movie'</b>.</li>
+</p>
+<p><li><b>Quote</b><br /><div class="quote">I can't find my user's folder!</div>
+From within Coppermine, browse to the user's album. Look in the url of your browser and you should see the folder's name. (See screenshot for an example.)<br />
+<img src="pics/user_folder_link.gif" /><br />
+Your users can upload their own thumbnails by using this trick: Create an album. Change the permissions on it so no one can view it except him. Then upload the fullsize images of the thumbnails to this folder. Files outside this album will be able to use the thumbnails of these images. (See above for naming.)</li>
+</p>
+<p><li><b>Quote</b><br /><div class="quote">How do I stop my users from creating their own custom thumbnails?</div>
+Right now, you can't.</li>
+</p>
+</ul>
+      <br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr>
+
+      <h2>4.10 The configuration page<a id="config" name="config"></a></h2>
+      <a name="config_general"></a>
+      <h3>4.10.1 General settings</h3>
+      <h4>Gallery name</h4>
+      <p>This is the name of your gallery. It will appear in the title of your
+      page and is shown on some templates.</p>
+      <h4>Gallery description</h4>
+      <p>This is a short description of your gallery. This description is shown
+      on some templates below the name of your gallery.</p>
+      <h4>Gallery administrator email</h4>
+      <p>All emails sent by the gallery are sent with this email address.</p>
+      <h4>Target address for the 'See more pictures' link in e-cards</h4>
+      <p>This is the URL where a user will be directed when he will click on the
+      &quot;See more pictures&quot; link in an e-card. This should normally be the URL for
+      your gallery but it may be the URL of another page of your site. </p>
+      <h4>Gallery is offline</h4>
+      <p>If you have to do maintenance work to do on your gallery, switch it to offline mode. Only members of the admin group will be able to log in, all other users will only see &quot;Gallery is offline&quot;. Remember to switch this option off once your maintenance work is done.<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Log ecards</h4>
+      <p>When enabled, all ecards that are being sent are as well written into the database, where the coppermine admin can view them. Before switching this option on, make sure that logging is legal in your country. It is also advisable to notify your users that all ecards are being logged (preferrably on the registration screen).<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Allow ZIP-download of favorites</h4>
+      <p>When enabled, the user can download the files put into the favorites in a zip-file from the &quot;My favorites&quot; page. This option requires zlib to be installed on your server (run <a href="http://www.php.net/phpinfo" class="external">phpinfo</a> to check if this library exists on your server).<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <p><a class="back" href="#top">Back to top</a></p>
+      <hr />
+
+      <a name="config_language"></a>
+      <h3>4.10.2 Language, Themes &amp; Charset settings</h3>
+      <p><img src="pics/config_language.gif" width="612" height="234" border="1" alt=""></p>
+      <h4>Language</h4>
+      <p>This is the default language for your gallery. All language files are
+      stored in the <b>lang</b> directory on your server.</p>
+      <p>The language files with an "<b>-utf8</b>" suffix are unicode encoded
+      files. If you select an -utf8 file as the default language and you set
+      "Character encoding" to "Unicode (utf-8)" then the script will auto detect
+      the preferred language of the visitor based on what is configured in his
+      browser. If the corresponding language is available it will be used else
+      the default language file will be used.</p>
+      <p>When the script auto detect the preferred language, it stores the
+      result in a cookie on the visitor's computer. To reset this cookie (and so
+      force the script to do another auto detection) call it with something
+      like: <a
+      href="#">http://yoursite.com/coppermine_dir/index.php?lang=xxx</a></p>
+      <p>Once you have added some comments or files to your gallery, you
+      should not change the character set of your gallery. If you do so,
+      non-ASCII character may not be shown correctly.</p>
+      <h4>Theme</h4>
+      <p>Use this line to select the theme of your gallery. Themes are stored in
+      sub-directories of the <b>themes</b> directory.</p>
+      <h4>Display language list</h4>
+      <p>Enable this option if you want your users to be able to select their own language with a dropdown list (you can specify to display only the list itself or a label saying &quot;<b>Choose your language:</b>&quot; in front of the list). Edit your template file (/themes/yourtheme/template.html) to specify where the language dropdown list should appear on your gallery (look for <b>{LANGUAGE_SELECT_LIST}</b>).<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Display language flags</h4>
+      <p>Enable this option if you want your users to be able to select their own language by clicking on a flag representing their language (you can specify to display only the flags themselves or a label saying &quot;<b>Choose your language:</b>&quot; in front of the flags). Edit your template file (/themes/yourtheme/template.html) to specify where the language dropdown list should appear on your gallery (look for <b>{LANGUAGE_SELECT_FLAGS}</b>).<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Display &quot;reset&quot; in language selection</h4>
+      <p>This option only applies if you enabled language selection at all - it will show a &quot;default&quot;-icon or list entry to let the users go back to the original language of your gallery.<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Display theme list</h4>
+      <p>Enable this option if you want your users to be able to select another theme with a dropdown list (you can specify to display only the list itself or a label saying &quot;<b>Choose your theme:</b>&quot; in front of the list). Edit your template file (/themes/yourtheme/template.html) to specify where the theme dropdown list should appear on your gallery (look for <b>{THEME_SELECT_LIST}</b>).<br />
+      This option only makes sense if you have at least one other theme in your /themes/ folder than your default theme. It's recommended to only offer this option if there's an additional benefit for the user (for example a theme with less graphics in it that loads faster for users on a dial-up connection, or a theme with reduced color pallettes and good contrast).<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Display &quot;reset&quot; in theme selection</h4>
+      <p>This option only applies if you enabled theme selection at all - it will show a &quot;default&quot; list entry to let the users go back to the original theme of your gallery.<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Display FAQ</h4>
+      <p>This option adds &quot;FAQ&quot; to the menu bar when enabled. If a user clicks on it, it will display a list of &quot;Frequently asked question&quot; on how to use coppermine. To change the content of the FAQ, edit the file /your_coppermine_folder/lang/yourlanguage.php (e.g. english.php) and look for <pre>// ------------------------------------------------------------------------- //
+// File faq.php
+// ------------------------------------------------------------------------- //</pre><br />Edit the stuff that comes after it.<br />
+<img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Display bbcode help</h4>
+      <p>When enabled, this will display the <a href="#bbcode">bulletin board codes</a> that are allowed to use in description fields next to the field.<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Character encoding</h4>
+      <p>This should normally be set to "Default (language file)" or "Unicode
+      (utf-8)". See the discussion in the &quot;<b><a href="#config_language">language</a></b>&quot; section of this
+      page.</p>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr />
+
+      <a name="config_album_list"></a>
+      <h3>4.10.3 Album list view</h3>
+      <h4>Width of the main table (pixels or %)</h4>
+      <p>This is the width of tables used on your main page or when you are
+      viewing thumbnails of an album. You can enter a width in pixels or specify
+      it in percents. The default value is 100%.</p>
+      <h4>Number of levels of categories to display</h4>
+      <p>The default value is 2. With this value the script will display the
+      current categories plus one level of sub-categories.</p>
+      <h4>Number of albums to display</h4>
+      <p>This is the number of albums to display on a page. If the current
+      category contains more albums, the album list will spread over multiple
+      pages.</p>
+      <h4>Number of columns for the album list</h4>
+      <p>Self explanatory. The default value is 2.</p>
+      <h4>Size of thumbnails in pixels</h4>
+      <p>This is the size of the thumbnails that are displayed for each album.
+      50 means that the thumbnail will fit inside a square of 50x50 pixels.</p>
+      <p>If the size you specify there is larger than &quot;Pictures and thumbnails
+      settings/Max width or height of a thumbnail&quot;, the thumbnail will be
+      stretched.</p>
+      <a name="changing"></a><h4>The content of the main page</h4>
+      <p>This option allows you to change the content of the main page displayed
+      by the script.</p>
+      <p>The default value is "<b>catlist/alblist/random,2/lastup,2</b>"</p>
+      <p>You can use the following "codes"</p>
+      <ul>
+        <li>'<b>breadcrumb</b>': navigation inside the gallery (e.g. &quot;home &gt; category &gt; subcategory &gt; album&quot;)<br />
+        <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+        <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+        <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt="">
+        </li>
+        <li>'<b>catlist</b>': category list
+        <li>'<b>alblist</b>': album list
+        <li>'<b>random</b>': random files (leaving random files &quot;on&quot; for huge galleries with more than 10,000 pics might result in performance problems; switch random &quot;off&quot; in this case)
+        <li>'<b>lastup</b>': last uploads
+        <li>'<b>topn</b>': most viewed
+        <li>'<b>toprated</b>': top rated
+        <li>'<b>lastcom</b>': last comments </li>
+        <li>'<b>lasthits</b>': last viewed </li>
+        <li>'<b>anycontent</b>': inserts php-generated content that has to reside within the file 'anycontent.php' into the index page. Can be used to include banner-rotation scripts or similar.<br />
+        <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+        <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+        <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt="">
+        </li>
+        <li>'<b>lastalb</b>': last created albums<br />
+        <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+        <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+        <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt="">
+        </li>
+        </ul>
+      <p></p>
+      <p>The <b>,2</b> means 2 rows of thumbnails.</p>
+
+                        <h4>Show first level album thumbnails in categories</h4>
+                        <p>Use this setting to choose between showing or not showing thumbnails from
+                        the first album in the categories.</p>
+                        <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr />
+
+      <a name="config_thumbnail_view"></a>
+      <h3>4.10.4 Thumbnail view</h3>
+      <h4>Number of columns on thumbnail page</h4>
+      <p>Default value is 4 this means that each row will show 4 thumbnails.</p>
+      <h4>Number of rows on thumbnail page</h4>
+      <p>Default value is 3.</p>
+      <h4>Maximum number of tabs to display</h4>
+      <p>When the thumbnails spread over multiple pages, tabs are displayed at
+      the bottom of the page. This value define how many tabs will be
+      displayed.</p>
+                        <h4>Display file caption (in addition to title) below the thumbnail </h4>
+                        <p>Toggles whether the file caption is displayed
+                        below each thumbnail while user is in thumbnail view.<br />
+                        <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+                        <h4>Display number of views below the thumbnail</h4>
+                        <p>Toggles whether the number of views is displayed
+                        below each thumbnail while user is in thumbnail view.<br />
+                        <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+                        <h4>Display number of comments below the thumbnail</h4>
+                        <p>Toggles the display of the number of comments for below each thumbnail.<br />
+                        <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+                        <h4>Default sort order for files</h4>
+                        <p>This option determines if you wish to have the file caption displayed
+                        below each thumbnail while user is in thumbnail view.</p>
+      <h4>Minimum number of votes for a file to appear in the 'top-rated'
+      list</h4>
+                        Used to determine how many votes a file must receive before appearing as
+                        &quot;top-rated.&quot;  If a file has received less than &quot;this value&quot;
+                        votes, it will not be displayed on the "top-rated" page.</p>
+                        <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr />
+
+      <a name="config_image_comment"></a>
+      <h3>4.10.5 Image view &amp; Comment settings</h3>
+      <h4>Width of the table for picture display (pixels or %)</h4>
+      <p>The width of the table used to display the intermediate picture.</p>
+      <h4>File information are visible by default</h4>
+      <p>Define whether or not file information (those that appear when you
+      click on the (i) button) should be visible by default.</p>
+      <h4>Filter bad words in comments</h4>
+      <p>Remove "bad words" from comments. The "bad words" list is in the
+      language file. So far only the English language file has one.</p>
+      <h4>Max length for an image description</h4>
+      <p>Maximum number of characters that an image description may contain.</p>
+      <h4>Max number of characters in a word</h4>
+      <p>This is intended to prevent that someone break the layout of the
+      gallery by posting a long comment without space. With the default value,
+      words with more than 38 characters are censored.</p>
+      <h4>Max number of lines in a comment</h4>
+      <p>Prevent a comment for containing too many new line char.</p>
+      <h4>Maximum length of a comment</h4>
+      <p>Maximum number of characters that a comment may contain.</p>
+                        <h4>Show film strip</h4>
+                        <p>Toggles display of a "film strip" showing thumbnails of prior
+                        and following photos in the album.<br />
+                        <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+                        <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+                        <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+                        <h4>Number of items in film strip</h4>
+                        <p>Set the number of thumbnails to display in film strip.<br />
+                        <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+                        <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+                        <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+                        <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr />
+
+      <a name="config_picture_thumbnail"></a>
+      <h3>4.10.6 Picture and thumbnail settings</h3>
+      <h4>Quality for JPEG files</h4>
+      <p>The quality used for JPEG compression when the script resizes an image.
+      Value can range from 0 (worst) to 100 (best). This value can be set to 75
+      when using ImageMagick.</p>
+                        <h4>Max dimension of a thumbnail</h4>
+                        <p>Sets the maximum size in pixels for the specified dimension for thumbnails.
+                        <div class="important">When changing this setting, only the files that are added from that point on are affected, so it is advisable that this setting must not be changed if there are already photos in the gallery. You can, however, apply the changes to the existing pictures with the &quot;admin tools (resize pictures)&quot; utility from the admin menu.</div></p>
+                        <h4>Use dimension ( width or height or Max aspect for thumbnail )</h4>
+                        <p>Sets the dimension for which the maximum pixel size should apply to.
+                        <div class="important">When changing this setting, only the files that are added from that point on are affected, so it is advisable that this setting must not be changed if there are already photos in the gallery. You can, however, apply the changes to the existing files with the &quot;resize pictures&quot; utility from the admin menu.</div></p>
+      <h4>Create intermediate pictures</h4>
+      <p>By default, whenever you upload a file, the script creates a
+      thumbnail of the file (file name with a thumb_ prefix) plus an
+      intermediate version (file name with a normal_ prefix). If you set this
+      option to NO, the intermediate file is not created.</p>
+      <h4>Max width or height of an intermediate picture</h4>
+      <p>The intermediate pictures are those that appears when you click on a
+      thumbnail. The default value is 400, it means that the intermediate
+      picture will fit inside a square of 400x400 pixels.</p>
+      <h4>Max size for uploaded files (KB)</h4>
+      <p>Any file with a file size larger than this value will be rejected by
+      the script.</p>
+      <h4>Max width or height for uploaded pictures (pixels)</h4>
+      <p>Limit the dimensions of the pictures that are uploaded. Resizing large
+      pictures requires a lot of memory and consumes CPU.</p>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr />
+
+      <a name="config_picture_thumb_advanced"></a>
+      <h3>4.10.7 Files and thumbnails advanced settings</h3>
+                        <h4>Show private album Icon to unlogged user </h4>
+                        <p>Toggles the display of the private album icon to unlogged users.<br>Set to 'NO', the album is hidden from unauthorised users.<br>Set to 'YES', the album name, description and statistics are shown, but not the thumbnails or files.</p>
+      <h4>Characters forbidden in filenames</h4>
+      <p>When the filename of a file that is uploaded contains one of these
+      characters, it will be replaced with an underscore.</p>
+      <p>Don't change this unless you know exactly what you are doing.</p>
+      <h4>Accepted file extensions for uploaded pictures</h4>
+      <p>Any file uploaded whose extension is not in this list will be rejected
+      by the script. This is intended to prevent a user from uploading non-image
+      files.</p>
+      <p>The GD library only supports JPEG and PNG images so other types of
+      files will be rejected even if their extension is valid.<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_exclam.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Allowed image types</h4>
+      <p>&quot;<i>ALL</i>&quot; will result in all allowed image file types that your image library (GD or ImageMagick) is capable of handling to be allowed. If you want to restrict the allowed file types to certain types only, enter a coma-separated list of extensions, e.g. <tt class="code">jpg,bmp,tif</tt>
+      <br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_exclam.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Allowed movie types</h4>
+      <p>&quot;<i>ALL</i>&quot; will result in all allowed movie file types to be uploaded. If you want to restrict the allowed file types to certain extensions only, enter a coma-separated list of extensions, e.g. <tt class="code">wmv,avi,mov</tt>.<br />
+      Note that being able to display a movie requires the cpg-user to have the codecs needed to display the movie installed and configured properly on their computer, e.g. if you allow the file type <tt class="faq">mov</tt>, the user who is going to watch the movie will need to have Apple's Quick-Time plug-in installed. Also note that <tt class="code">avi</tt> is just a container for different codecs - this means that a computer which is capable of playing movie1.avi may not be capable of playing movie2.avi if those files have been encoded with different codecs.
+      <br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_exclam.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Allowed audio types</h4>
+      <p>&quot;<i>ALL</i>&quot; will result in all allowed audio file types to be uploaded. If you want to restrict the allowed file types to certain extensions only, enter a coma-separated list of extensions, e.g. <tt class="code">wav,mp3,wma</tt>.<br />
+      Note that being able to listen to an audio file requires the cpg-user to have the codecs needed installed and configured properly on their computer, e.g. if you allow the file type <tt class="code">mp3</tt>, the user who is going to listen to the file will need to have an mp3-player installed.<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_exclam.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Allowed document types</h4>
+      <p>&quot;<i>ALL</i>&quot; will result in all allowed document file types to be uploaded. If you want to restrict the allowed file types to certain extensions only, enter a coma-separated list of extensions, e.g. <tt class="code">txt,pdf</tt>.<br />
+      Note that being able to browse a document file requires the cpg-user to have a software installed and configured properly on their computer that is capable of displaying the document type uploaded, e.g. if you allow the file type <tt class="code">xls</tt>, the user who is going browse the file will need to have an application installed that can display MS-Excel sheets. Be carefull with some document types (especially if you allow users to be capable of uploading documents without admin approval), as they may contain macro viruses.
+      <br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_exclam.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Method for resizing images</h4>
+      <p>If you are using GD 1.x and the colors of your thumbnails or
+      intermediate image are wrong then switch to GD 2.x</p>
+      <h4>Path to ImageMagick 'convert' utility (example /usr/bin/X11/)</h4>
+      <p>If you are using ImageMagick convert utility to resize you picture, you
+      must enter the name of the directory where the convert program is located
+      there. Don't forget the trailing "/".</p>
+      <p>If your server is running under Windows, use / and not \ to separate
+      components of the path (eg. use C:/ImageMagick/ and not C:\ImageMagick\).
+      This path must not contain any space so under Windows don't put
+      ImageMagick in the "Program files" directory.</p>
+      <p><b>ImageMagick will hardly work if PHP on your server is running in
+      SAFE mode and it is a real challenge to get it running under Windows.
+      Consider using GD in these cases and don't waste your time asking for
+      support in the forum. There are too many things that can prevent
+      ImageMagick to work correctly and without a physical access to your server
+      it is hard to guess what is wrong.</b></p>
+      <h4>Allowed image types (only valid for ImageMagick)</h4>
+      <p>This is the list of image types that the script will accept when using
+      ImageMagick. Image type detection is performed by reading the header of
+      the file and not by looking at its file extension.</p>
+      <h4>Command line options for ImageMagick</h4>
+      <p>Here you can add options that will be appended to the command line when
+      executing ImageMagick. Read the ImageMagick Convert manual to see what is
+      available.</p>
+      <h4>Read EXIF data in JPEG files</h4>
+      <p>With this option turned on, the script will read the EXIF data stored
+      by digicams in JPEG files. For cpg1.x to cpg1.2.1, this option will work only if PHP was compiled
+      with the EXIF extension. Coppermine 1.3.0 (or better) comes with built-in EXIF support even if the webserver itself doesn't have EXIF support, as it uses a <a href="http://www.sanisoft.com/phpexifrw/" class="external">separate EXIF class</a>.<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_exclam.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_exclam.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_exclam.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_exclam.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Read IPTC data in JPEG files</h4>
+      <p>With this option turned on, the script will read the <a href="http://www.iptc.org/" class="external">IPTC</a> data stored
+      by digicams in picture files.
+      <br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>The album directory</h4>
+      <p>This is the base directory for your "Image Store". The path is relative
+      to the main directory of the script. </p>
+      <p>You can use ../ in the path to move-up one level in the directory
+      tree.</p>
+      <p>You can <b>not</b> use an absolute path there ("/var/my_images/" will not
+      work) and the album directory must be visible by your web server.</p>
+      <h4>The directory for user files</h4>
+      <p>This is the directory where files uploaded with the web interface
+      are stored. This directory is a subdirectory of the album directory.</p>
+      <p>The same remarks as above apply.</p>
+      <p>When you upload files by FTP, store them in a subdirectory of the
+      "album directory" and not inside the &quot;directory for user files&quot;. </p>
+                        <h4>The prefix for intermediate pictures</h4>
+                        <p>This prefix is added to the file name of created pictures.</p>
+                        <h4>The prefix for thumbnails</h4>
+                        <p>This prefix is added to the file name of created intermediate thumbnails.</p>
+      <h4>Default mode for directories</h4>
+      <p>If during the installation, the installer complained about directory
+      not having the right permissions set this to <b>0777</b> else you won't be
+      able to delete the directories created by the script with your FTP client
+      the day you will decide to uninstall the script.</p>
+      <h4>Default mode for files</h4>
+      <p>If during the installation, the installer complained about directories
+      not having the right permissions set this to <b>0666</b>.</p>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr />
+
+      <a name="config_user"></a>
+      <h3>4.10.8 User settings</h3>
+      <h4>Allow new user registrations</h4>
+      <p>Define whether new users can self-register or not.</p>
+      <h4>User registration requires email verification</h4>
+      <p>If set to YES an email will be sent to the user that will contain a
+      code to activate his account. If set to NO, user accounts become
+      immediately active.</p>
+      <h4>Notify admin of user registration by email</h4>
+      <p>If set to YES an email will be sent to the gallery admin when a new user registers.<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt="">
+      </p>
+      <h4>Allow two users to have the same email address</h4>
+      <p>Allow or prevent two users from registering with the same email
+      address. Recommended setting is NO</p>
+      <h4>Users can can have private albums</h4>
+      <p>If set to YES then your gallery can contain albums that can be visible
+      only by users that belong to a certain group.</p>
+      <p>If a user is a member of a group that can have its own gallery and this
+      option is turned on then this user will have the permission to hide some
+      of their albums to other users.</p>
+      <p class="important">Note: if you switch from 'yes' to 'no' any current private albums will become public!</p>
+      <h4>Notify admin of user upload awaiting approval</h4>
+      <p>When enabled, the gallery admin receives an email notification of all pics that wait for his approval (depends on the approval settings in &quot;<a href="#group_cp">groups</a>&quot;). The email is sent to the address specified in &quot;<a href="#config_general">General settings</a>&quot;.<br />This option is only recommended with low or medium traffic (if users only upload every now and then).<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <h4>Allow logged in users to view memberlist</h4>
+      <p>When enabled, an additional menu item &quot;Memberlist&quot; is being displayed in the coppermine main menu if a user is logged in, to let him see a list of all users, with stats on their last visits, uploads and quota usage.<br />This is a new feature in cpg1.3.0 (user contribution by <a href="#contributors">Jason</a>) - it's available as <a href="http://sourceforge.net/project/showfiles.php?group_id=89658&package_id=98542">mod</a> (not in the regular coppermine package) for older versions than cpg1.3.0.<br />
+      <img src="pics/cpg10.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg110.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg111.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg120.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg121.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_no.gif" width="18" height="20" border="0" alt=""><img src="pics/spacer.gif" width="5" height="20" border="0" alt="" />
+      <img src="pics/cpg13x.gif" width="23" height="20" border="0" alt=""><img src="pics/cpg_ok.gif" width="18" height="20" border="0" alt=""></p>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr />
+
+      <a name="config_custom"></a>
+      <h3>4.10.9 Custom fields for image description (leave blank if unused)</h3>
+      <p>These fields are displayed within the &quot;file information&quot; area. They
+      will appear only if you give them a name.</p>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr />
+
+      <a name="config_cookie"></a>
+      <h3>4.10.10 Cookie settings</h3>
+      <h4>Name of the cookie used by the script</h4>
+      <p>Default value is "cpg130". Even if you have multiple instances of the
+      script running on the same server you can keep the default value.<br /><span class="important">When using bbs integration, make sure it <b>differs</b> from the bbs's cookie name</span></p>
+      <h4>Path of the cookie used by the script</h4>
+      <p>Default value is "/". Don't change this unless you know what you are
+      doing. This may prevent you from logging in.</p>
+      <p>If you have broken your gallery by modifying this value, use phpMyAdmin
+      to edit the xxxx_config table in your database and restore the default
+      value. </p>
+      <p>When using bbs integration into Coppermine, make sure to use <b>different</b> cookie names for coppermine and your bbs!</p>
+      <p><a class="back" href="#top">Back to
+      top</a></p>
+      <hr />
+
+      <a name="config_misc"></a>
+      <h3>4.10.11 Miscellaneous settings</h3>
+      <a name="debug_mode"></a><h4>Enable debug mode</h4>
+      <p>CPG will show error messages which are normally suppressed.  This is
+      helpful in troubleshooting problems with your gallery or when asking
+      for help on the <a href="http://coppermine.sourceforge.net/board/">
+      CPG Support Forums</a>. Turn this feature off if you don't experience problems.<br />
+      Turn it on (option &quot;Everyone&quot;) if you are requesting help on the <a href="http://coppermine.sourceforge.net/board/">coppermine support board</a>, so the supporters can have a look at the debug output as well. Choose the option &quot;Admin only&quot; when trouble-shooting on your own - debug output will be only visible when you're logged in as admin, regular users or guests won't see the debug output.</p>
+      <h4>Display notices in debug mode</h4>
+      <p>May be helpfull to trouble-shoot problems with your coppermine install - only recommended if you know a little PHP and you can understand the additional error messages this option shows. This option only applies if debug mode is enabled.</p>
+      <p><a class="back" href="#top">Back to
+top</a></p>
+      <hr />
+
+<a name="integrating"></a>
+<h1>5. Integrating the script with your bulletin board</h1>
+<a name="integrating_bridge_start"></a>
+<h2>5.1 Available bridge files</h2>
+<p>Coppermine can be integrated with the following bulletin boards (eg. Coppermine
+  and your bulletin board will share the same user database).</p>
+<ul>
+  <li>phpBB 2</li>
+  <li>Invision Power Board</li>
+  <li>vBulletin</li>
+  <li>YaBB SE</li>
+  <li>Woltlab Burning Board 2.1</li>
+  <li>SMF</li>
+  <li>PunBB 1.1.5</li>
+</ul>
+<a name="integrating_bridge_end"></a>
+
+<a name="integrating_prerequisites_start"></a>
+<h2>5.2 Pre-requistes</h2>
+
+<a name="integrating_cookie_start"></a>
+<h3>5.2.1 Authentification by cookie</h3>
+<p>The login integration uses your bulletin board cookies, therefore it won't work if your board cookies are not visible by Coppermine. So unless you are an expert, keep things simple and install Coppermine and your bulletin board on the same domain. Examples :</p>
+<table border="0" cellspacing="5" cellpadding="5" class="border1">
+<tr>
+<td>This <b>will</b> work:</td>
+<td>This <b class="important">won't</b> work:</td>
+</tr>
+<tr>
+<td class="code">Bulletin board: http://yourdomain.com/board/<br />
+Coppermine: http://yourdomain.com/gallery/</td>
+<td class="code">Bulletin board: http://board.yourdomain.com/<br />
+Coppermine: http://gallery.yourdomain.com/</td>
+</tr>
+</table>
+<p><span class="important">Important</span>: the cookie names of your bbs and coppermine must <b>not</b> be the same - they <b>must</b> differ!</p>
+<a name="integrating_cookie_end"></a>
+
+<a name="integrating_standalone_start"></a>
+<h3>5.2.2 Standalone version first</h3>
+<p>To avoid confusion, make sure to set up both coppermine and your bbs as standalone first. Make sure they both run correctly without integration. Test all features of coppermine (like upload, registration etc.) when Coppermine is installed, before you even start integration.</p>
+<a name="integrating_standalone_end"></a>
+
+<a name="integrating_users_start"></a>
+<h3>5.2.3 Coppermine users, groups and pics uploaded by users are lost when integrating</h3>
+<p><span class="important">Warning:</span> If you already have users and custom groups in your coppermine database when you enable bbs integration, be aware that they will be lost. If your coppermine users have already created private albums and uploaded pics to them, they will be lost as well!</p>
+<a name="integrating_users_end"></a>
+
+<a name="integrating_backup_start"></a>
+<h3>5.2.4 Backup</h3>
+<p><span class="important">Backup</span>: it is very advisable to backup both your coppermine database before enabling bbs integration, so you can savely go back if the integration fails.</p>
+<p>In fact you're encouraged to backup your database on a regular base, and especially before applying code changes.</p>
+<a name="integrating_backup_end"></a>
+
+<a name="integrating_database_start"></a>
+<h3>5.2.5 Keep Coppermine and bbs tables in the same database</h3>
+<p>It is recommended that you use the same database for your board and Coppermine (in fact it is even mandatory!).</p>
+<a name="integrating_database_end"></a>
+
+<a name="integrating_prerequisites_end"></a>
+
+<a name="integrating_steps_start"></a>
+<h2>5.3 Integration steps</h2>
+
+<a name="integrating_steps_settings_start"></a>
+<h3>5.3.1 Check your bbs settings</h3>
+<p>You will also need to perform the following operations after having unpacked the archive on your harddrive and before uploading the files to your webserver:</p>
+<ul>
+<li>If you are using <b>phpBB</b> 2, go to the admin control panel and check that &quot;Cookie domain&quot; corresponds to your domain, &quot;Cookie name&quot; is &quot;phpbb2mysql&quot; and &quot;Cookie path&quot; is &quot;/&quot;.</li>
+<li>If you are using <b>Invision Power Board</b>, go to the &quot;admin control panel / board settings / cookies&quot; and check that all fields are blank. If they are not, you modified the default values and you are an expert.</li>
+<li>If you are using <b>vBulletin</b>, go to the &quot;admin control panel / vBulletin options / HTTP Headers and output&quot; and check that the value for &quot;Cookie Domain&quot; corresponds to your domain and that &quot;Path to save cookies&quot; is &quot;/&quot;</li>
+</ul>
+<a name="integrating_steps_settings_end"></a>
+
+<a name="integrating_steps_bridge_start"></a>
+<h3>5.3.2 Edit your bridge file</h3>
+<p>Go to the <i>bridge</i> directory and open the file that corresponds to the bulletin board you use (eg. <i>phpbb.inc.php</i> if you use phpBB) with a text editor.</p>
+<p>At the beginning of the file there are a number a configuration values that need to be set. For phpBB as an example they are the following :</p>
+<pre>// database configuration
+define('PHPBB_DB_NAME','phpBB');     // The name of the database used by the board
+define('PHPBB_BD_HOST','localhost'); // The name of the database server
+define('PHPBB_DB_USERNAME','root');  // The username to use to connect to the    database
+define('PHPBB_DB_PASSWORD','');      // The password to use to connect to the database
+
+// The web path to your phpBB directory
+// If your URL to your board is for example 'http://yoursite_name.com/phpBB2/',
+// you'll have to set the below var to '/phpBB2/'.
+define('PHPBB_WEB_PATH', '/phpBB2/');
+// Logout Flag
+// the value of this boolean constant depends on your phpBB version:
+// If your version of phpBB is 2.0.4 or lower - change the value to FALSE;
+// if your version of phpBB is 2.0.5 or newer - leave it as TRUE
+define('PHPBB_LOGOUT_GET', TRUE);</pre>
+<p>Modify them according to the configuration of your board and save the file.</p>
+<a name="integrating_steps_bridge_end"></a>
+
+<a name="integrating_steps_init_start"></a>
+<h3>5.3.3 Enable bbs integration</h3>
+<p>Edit the file <i>include/init.inc.php</i>. At the beginning of the file you will find the following lines :</p>
+<pre>// User database integration
+// Uncomment the applicable line if you want to use it
+// define('UDB_INTEGRATION', 'phpbb');
+// define('UDB_INTEGRATION', 'invisionboard');
+// define('UDB_INTEGRATION', 'vbulletin23');
+// define('UDB_INTEGRATION', 'vbulletin30');
+// define('UDB_INTEGRATION', 'yabbse');
+// define('UDB_INTEGRATION', 'smf');
+// define('UDB_INTEGRATION', 'woltlab21');
+// define('UDB_INTEGRATION', 'punbb');</pre>
+<p>Un-comment the line that corresponds to the bulletin board you use (eg. remove the &quot;//&quot; that are at the beginning of the line)</p>
+<pre>define('UDB_INTEGRATION', 'phpbb');</pre>
+<a name="integrating_steps_init_end"></a>
+
+<a name="integrating_steps_special_start"></a>
+<h3>5.3.4 Special steps depending on the bbs you use</h3>
+<p><span class="important">Important</span>: if you use phpBB or PunBB, you'll have to do this additional steps</p>
+
+<a name="integrating_steps_special_phpbb_start"></a>
+<h4>5.3.4.1 For phpBB only</h4>
+<p>Create a new file named <b>cpg_redir.php</b> in your <b>phpBB directory</b>, and paste the following code into the file:</p>
+<pre>&lt;?php
+if (!$_SERVER['HTTP_HOST']) {
+  $cpg_host=$HTTP_SERVER_VARS['HTTP_HOST'];
+} else {
+  $cpg_host=$_SERVER['HTTP_HOST'];
+}
+$cpg_path='/gallery';
+header("Location: http://".$cpg_host.$cpg_path);
+exit;
+?&gt;</pre>
+<p><span class="important">Important</span> - before you save the file, you must ensure that:</p>
+<ul>
+<li><b>$cpg_path</b> - contains the the path in which Coppermine is installed </li>
+<li><b>$cpg_host</b> - contains the domain pointer to Coppermine. If Coppermine and phpBB are installed on the same server and domain (the &quot;normal&quot; case), you should leave the default value. Otherwise you should provide a string constant which contains the domain where Coppermine is installed (for example: '<i>www.my-other-domain.com</i>').</li>
+<li>If you change both variables make sure that either $cpg_host contains a trailing slash or $cpg_path contains a leading slash. In other words, the concatenation of the two variables must result in a correct path such as <i>www.my-other-domain.com<span class="important">/</span>my_gallery_dir</i></li>
+</ul>
+<a name="integrating_steps_special_phpbb_end"></a>
+
+<a name="integrating_steps_special_punbb_start"></a>
+<h4>5.3.4.2 For PunBB only</h4>
+<p>Create a new file named <b>redir.php</b> in your <b>PunBB directory</b>, and paste the following code into the file:</p>
+<pre>&lt;?php
+
+/// Set URL of coppermine to return to after login
+$cpg_url = 'http://www.yousite.com/coppermine';
+
+if (isset($_POST['redir'])){
+        echo '&lt;html&gt;
+                  &lt;body onload="document.redir.submit();"&gt;
+                      &lt;form name="redir" method="post" action="'.$_POST['redir'].'"&gt;
+                      &lt;/form&gt;
+                  &lt;/body&gt;
+              &lt;/html&gt;';
+} else {
+        header("Location: $cpg_url");
+}
+?&gt;</pre>
+<span class="important">Important</span> - before you save the file, you must ensure that:
+<ul>
+<li><b>$cpg_url</b> - contains the the path in which Coppermine is installed </li>
+</ul>
+<a name="integrating_steps_special_punbb_end"></a>
+<a name="integrating_steps_special_end"></a>
+
+<a name="integrating_steps_upload_start"></a>
+<h3>5.3.5 Upload the modified files</h3>
+<p>Upload all modified files (the file in the &quot;bridge&quot; folder that corresponds to your bbs and the file <i>include/init.inc.php</i>, plus the redirector files your created in step &quot;Special steps for depending on the bbs you use&quot; if you're using one of the mentioned bbs) onto your webserver. Visit your coppermine gallery in your browser. To login as an admin, you will need to use the admin username and password of your board.</p>
+<a name="integrating_steps_upload_end"></a>
+
+<a name="integrating_steps_sync_start"></a>
+<h3>5.3.6 Synchronsising the bbs groups with Coppermine's groups</h3>
+<p>Login using the admin account of your board. Go to the gallery, enter admin mode and click on the &quot;Groups&quot; button. This will synchronize Coppermine groups with those of your board. The permission you will see for each group will be completely messy, so take some time to set them properly.</p>
+<p>Each time you add or delete a group in your board you will need to do the operation above in order to keep the synchronisation of the groups.</p>
+<p>When you will try to login / logout or manage users from Coppermine, you will be redirected to the corresponding page of your bulletin board. Once the login or logout is performed you won't be redirected automatically to the gallery because your board does not have any function for that. It's up to you to add a link on your board to get you back to the gallery.</p>
+<a name="integrating_steps_sync_end"></a>
+<a name="integrating_steps_end"></a>
+<a name="integrating_end"></a>
+<p><a class="back" href="#top">Back to top</a></p><hr />
+
+<a name="translating"></a>
+<h1>6. Translating Coppermine into other languages</h1>
+<p>Coppermine has a separate language file that make the translation of the
+  script much more easy. The language files are stored in the <b>lang </b>directory.
+  The files with the <b>utf-8</b> suffix are unicode encoded files. They are automatically
+  generated with the <b>iconv</b> program so there is no need for you to make
+  an unicode version of your translation.</p>
+<p>If you select an utf-8 language file as the default one, then the script will
+  be able to automatically select a language file based on the visitor browser
+  configuration. For instance if the default language file is danish-utf-8 and
+  an english visitor access your gallery, the english-utf-8 language file will
+  be used by the script.</p>
+<p> If you have translated Coppermine into a language not already supported, please read the <a href="translation.htm">translator's guide</a> and visit the <a href="http://coppermine.sourceforge.net/board/index.php?topic=4623.0">Coppermine Web Site</a> at Sourceforge and follow the instructions for submitting your language.</p>
+<p></p>
+<p><a class="back" href="#top">Back to top</a></p>
+<hr />
+
+<a name="known_issues"></a>
+<h1>7. Known Issues</h1>
+<p>The following slight quirks and tiny issues are known and will be fixed in future releases.</p>
+<ul>
+        <li>Some small text items are only available in English, e.g picEditor. (Language issue)</li>
+        <li>Various error messages (especially notices) while in debug mode with notices display turned on. (Does not affect main CPG app)</li>
+        <li>Documentation (this document) and FAQ still incomplete.</li>
+        <li>User upload settings breaks table-width display in groups manager. This feature has been added recently before the release of cpg1.3.0; the broken layout will be fixed in the next version.</li>
+        <li>&quot;Download favorites as zip&quot; only works if the zlib library is installed on the server</li>
+        <li>The <a href="http://coppermine.sourceforge.net/board/index.php?topic=1866.0">arrows used for navigation</a> from one pic to the other display in the wrong order for rtl-languages</li>
+        <li>There is a bar that appears underneath the menus and above the album title on the category and thumbnail page that shouldn't be there in the theme &quot;Mac OX X&quot;</li>
+        <li>On pages with high traffic load the &quot;top rated&quot; pic might get outdated while the user watches the page, resulting in the thumbnail linking to a different pic.</li>
+        <li>minor issue with the filmstrip not displaying correctly when the number of pics to appear on the filmstrip is set to an even number</li>
+        <li>Crop and rotate not working on all server setups.</li>
+</ul>
+<p><a class="back" href="#top">Back to top</a></p>
+<hr />
+
+<a name="credits"></a>
+<h1>8. Credits</h1>
+<a name="developers"></a>
+<h2>8.1 Coppermine team</h2>
+<table border="0" cellspacing="6" cellpadding="4">
+<tr>
+        <td><b>Developer</b></td>
+        <td><b>Username</b></td>
+        <td><b>Role/Position</b></td>
+        <td><b>Status</b></td>
+</tr>
+<tr>
+        <td>Aditya Mooley</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=5957">Aditya</a></td>
+        <td>Developer</td>
+        <td>active</td>
+</tr>
+<tr>
+        <td>Clive Leech</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=56">casper</a></td>
+        <td>Supporter</td>
+        <td>active</td>
+</tr>
+<tr>
+        <td>Maarten Hagoort</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=404">DJ Maze</a></td>
+        <td>Developer (nuke team)</td>
+        <td>active</td>
+</tr>
+<tr>
+        <td>Eyal Zvi</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=94">EZ</a></td>
+        <td>Developer</td>
+        <td>active</td>
+</tr>
+<tr>
+        <td>Joachim M&uuml;ller</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=2">gaugau</a></td>
+        <td>Project Manager</td>
+        <td>active</td>
+</tr>
+<tr>
+        <td>Scott Gahres</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=66">gtroll</a></td>
+        <td>Developer (nuke team project manager)</td>
+        <td>active</td>
+</tr>
+<tr>
+        <td>Jack</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=6">datajack</a></td>
+        <td>Developer</td>
+        <td>active</td>
+</tr>
+<tr>
+        <td>Dave Kazebeer</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=7">kegobeer</a></td>
+        <td>Support Technician</td>
+        <td>active</td>
+</tr>
+<tr>
+        <td>Tommy</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=941">Nibbler</a></td>
+        <td>Supporter</td>
+        <td>active</td>
+</tr>
+<tr>
+        <td>Jay Hao-En Liu</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=59">Oasis</a></td>
+        <td>Developer</td>
+        <td>active</td>
+</tr>
+<tr>
+        <td>Christopher Brown-Floyd</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=1874">omniscientdeveloper</a></td>
+        <td>Developer</td>
+        <td>active</td>
+</tr>
+<tr>
+        <td>Timothy</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=6949">skybax</a></td>
+        <td>Developer</td>
+        <td>active</td>
+</tr>
+<tr>
+        <td>Dr Tarique Sani</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=4">tarique</a></td>
+        <td>Lead Developer</td>
+        <td>active</td>
+</tr>
+<tr>
+        <td>DJ Axion</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=9">djaxion</a></td>
+        <td>Developer</td>
+        <td>retired</td>
+</tr>
+<tr>
+        <td>Gr&eacute;gory Demar</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=259">Greg</a></td>
+        <td>Developer, Original creator of Coppermine</td>
+        <td>retired</td>
+</tr>
+<tr>
+        <td>Hyperion</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=125">hyperion01</a></td>
+        <td>Developer</td>
+        <td>retired</td>
+</tr>
+<tr>
+        <td>John Asendorf</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=30">jasendorf</a></td>
+        <td>Developer</td>
+        <td>pending</td>
+</tr>
+<tr>
+        <td>mitirapa</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=133">mitirapa</a></td>
+        <td>Porter (Cross Platform Devel.)</td>
+        <td>retired</td>
+</tr>
+<tr>
+        <td>Moorey</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=13">moorey</a></td>
+        <td>Web Designer</td>
+        <td>pending</td>
+</tr>
+<tr>
+        <td>David Holm</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=14">wormie_dk</a></td>
+        <td>Developer</td>
+        <td>pending</td>
+</tr>
+<tr>
+        <td>Mark Zerr</td>
+        <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=11">zarsky99</a></td>
+        <td>Tester</td>
+        <td>retired</td>
+</tr>
+</table>
+<p><a class="back" href="#top">Back to top</a></p>
+<hr />
+
+<a name="contributors"></a>
+<h2>8.2 Contributors</h2>
+<table border="0" cellspacing="6" cellpadding="4">
+<tr>
+  <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=101">DaMysterious</a></td>
+  <td>DaMysterious has created loads of fantastic themes for Coppermine</td>
+</tr>
+<tr>
+  <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=1399">Nanobot</a></td>
+  <td>Doug has done the vBulletin v3 bridge file</td>
+</tr>
+<tr>
+  <td><a href="http://www.sanisoft.com/aboutus.php3">Girish Nair</a></td>
+  <td>Girish has contributed to the film strip feature</td>
+</tr>
+<tr>
+  <td><a href="http://coppermine.sourceforge.net/board/index.php?action=profile;u=378">Jason Kawaja</a></td>
+  <td>Jason did the <a href="http://coppermine.sourceforge.net/board/index.php?topic=1985.0">memberlist hack</a></td>
+</tr>
+</table>
+<p><a class="back" href="#top">Back to top</a></p>
+<hr />
+
+<a name="codebase"></a>
+<h2>8.3 Coppermine uses code from the following free softwares :</h2>
+<p><b>phpBB</b><br />
+  Author: phpBBGroup <br />
+  URL: <a href="http://www.phpbb.com/">http://www.phpbb.com/</a><br />
+</p>
+<p><b>phpMyAdmin</b><br />
+  Author: phpMyAdmin devel team<br />
+  URL: <a href="http://www.phpmyadmin.net/">http://www.phpmyadmin.net/</a><br />
+</p>
+<p><b>phpPhotoAlbum</b><br />
+  Author: Henning St&oslash;verud<br />
+  E-mail: henning AT stoverud DOT com<br />
+  URL: <a href="http://www.stoverud.com/PHPhotoalbum/">http://www.stoverud.com/PHPhotoalbum/</a><br />
+</p>
+<p><b>DOM Tooltip 0.6.0</b><br />
+  Author: Dan Allen<br />
+  E-mail: dan AT mojavelinux DOT com<br />
+  URL: <a href="http://www.mojavelinux.com/forum/viewtopic.php?t=127">http://www.mojavelinux.com/forum/viewtopic.php?t=127</a><br />
+  Note: DOM Tooltip, which is being used with the theme &quot;styleguide&quot; only, is released under <a href="http://www.gnu.org/copyleft/lesser.html">LGPL</a><br />
+</p>
+<p><b>TAR/GZIP/ZIP Archive Classes</b><br />
+  Author: Devin Doucette<br />
+  E-mail: darksnoopy AT shaw DOT ca<br />
+</p>
+<p><b>phpExifRW</b><br />
+  Author: Vinay Yadav (vinayRas)<br />
+  E-mail: vinay AT sanisoft DOT com<br />
+  URL: <a href="http://www.sanisoft.com/phpexifrw/">http://www.sanisoft.com/phpexifrw</a><br />
+  Note: phpExifRW is a pure PHP class to read, write and transfer EXIF information  that most of the digital camera produces. It is released under <a href="http://www.gnu.org/copyleft/lesser.html">LGPL</a><br />
+</p>
+<p><b>Codelifter Slideshow</b><br />
+  URL: <a href="http://www.codelifter.com/">http://www.codelifter.com</a><br />
+</p>
+<p><a class="back" href="#top">Back to top</a></p>
+<hr />
+
+<a name="copyright"></a>
+<h2>8.4 Copyright and disclaimer</h2>
+<p>This application is opensource software released under the <a href="http://www.gnu.org/copyleft/gpl.html">GPL</a>.
+</p>
+<p>Because the program is licensed free of charge, there is no warranty
+  for the program, to the extent permitted by applicable law. Except when
+  otherwise stated in writing the copyright holders and/or other parties
+  provide the program &quot;as is&quot; without warranty of any kind, either expressed
+  or implied, including, but not limited to, the implied warranties of
+  merchantability and fitness for a particular purpose. The entire risk as
+  to the quality and performance of the program is with you. Should the
+  program prove defective, you assume the cost of all necessary servicing,
+  repair or correction. </p>
+<p>Coppermine Photo Gallery is Copyright &copy; 2002 - 2004 <a href="http://www.chezgreg.net/coppermine/">Gr&eacute;gory
+  DEMAR</a> and the Coppermine Dev Team, All Rights Reserved.<br />
+</p>
+<p><a class="back" href="#top">Back to top</a></p>
+<hr />
+
+
+                        </td></tr></tbody></table>
+</body>
+</html>

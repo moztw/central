@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Coppermine Photo Gallery - Documentation &amp; Manual</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="language"    content="en" />
+<meta name="author"      content="GauGau" />
+<meta name="copyright"   content="Coppermine dev team" />
+<meta name="description" content="Coppermine Photo Gallery project - Coppermine is an easily set-up, fast, feature-rich photo gallery script with mySQL database, user management, private galleries, automatic thumbnail creation, ecard feature and a template system for easy customization to match the rest of a site." />
+<meta name="keywords"    content="photo,gallery,galery,image,coppermine,php,mysql,easy,feature,phpnuke,thumbnail,automatic,creation,gd,Image Magick,ecard" />
+<meta name="page-topic"    content="photo,gallery,galery,image,coppermine,php,mysql,easy,feature,phpnuke,thumbnail,automatic,creation,gd,Image Magick,ecard" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<meta http-equiv="imagetoolbar" content="no" />
+<!--
+CVS version info:
+$Id: faq.htm,v 1.7 2004/08/16 07:44:09 gaugau Exp $
+-->
+<style type="text/css">
+<!--
+body {
+        font-size: 12px; background: #F7F7F7; margin: 2%; color: black; font-family: verdana, arial, helvetica, sans-serif;
+        scrollbar-face-color: #DEE3E7;
+        scrollbar-highlight-color: #FFFFFF;
+        scrollbar-shadow-color: #DEE3E7;
+        scrollbar-3dlight-color: #D1D7DC;
+        scrollbar-arrow-color:  #006699;
+        scrollbar-track-color: #EFEFEF;
+        scrollbar-darkshadow-color: #98AAB1;
+}
+td {
+        font-size: 12px
+}
+h1 {
+        font-weight: bolder; font-size: 24px; color: #0E72A4; line-height: 120%; font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; text-decoration: none
+}
+h2 {
+        font-size: 20px; color: #0E72A4; font-family: Arial, Helvetica, sans-serif; text-decoration: none;
+}
+h3 {
+        font-weight: bolder; font-size: 16px; font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none; color: #0E72A4;
+}
+h4 {
+        font-weight: bold; font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none; color: #0E72A4;
+}
+p {
+        font-size: 12px; margin: 10px 10px 0px 0px; font-family: Verdana, Arial, Helvetica, sans-serif
+}
+pre {
+        border-right: #999999 1px solid; padding-right: 5px; border-top: #999999 1px solid; padding-left: 5px; font-size: 12px; padding-bottom: 5px; margin: 10px 10px 0px 0px; border-left: #999999 1px solid; padding-top: 5px; border-bottom: #999999 1px solid; font-style: normal; font-family: "Courier New", Courier, mono; background-color: #E0E0E0
+}
+
+.code {
+        font-size: 12px; font-style: normal; font-family: "Courier New", Courier, mono; background-color: #E0E0E0
+}
+ul {
+        padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 10px 0px 10px 5px; padding-top: 0px
+}
+ul.content {
+        padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 5px 5px 0px 0px; padding-top: 0px
+}
+li {
+        padding-right: 0px; margin-top: 4px; padding-left: 0px; list-style-position: outside; margin-bottom: 4px; padding-bottom: 0px; margin-left: 10px; padding-top: 0px;
+}
+li.content {
+        padding-right: 0px; margin-top: 0px; padding-left: 0px; list-style-position: outside; margin-bottom: 5px; padding-bottom: 0px; margin-left: 10px; padding-top: 0px; list-style-type: none;
+}
+hr {
+        border-right: #000000 0px solid; border-top: #000000 1px solid; border-left: #000000 0px solid; border-bottom: #000000 0px solid; height: 0px
+}
+.navbar {
+        font-weight: bold; font-size: 10px; background: url(/coppermine/themes/pixel-rave-blue100/images/nav-bar-button.gif) #72a5cc no-repeat; vertical-align: middle; color: #A5C6DF; font-family: Arial, Helvetica, sans-serif
+}
+a.navbar {
+        display: block; vertical-align: middle; width: 100px; color: #A5C6DF; line-height: 25px; position: relative; height: 25px; text-align: center; text-decoration: none
+}
+a.navbar:hover {
+        color: #ffffff; text-decoration: none
+}
+
+a.content {
+        text-decoration: none
+}
+a.content:hover {
+        text-decoration: underline
+}
+
+a.external {
+        background: transparent url('pics/link.gif') 100% 50% no-repeat;
+        padding-right: 10px;
+}
+
+.back {
+        margin-top: 10px; font-size: 10px; margin-bottom: 10px
+}
+.important { color: red }
+.totop {font-size:8px; text-align:right}
+-->
+</style>
+</head>
+<body>
+<h1>Coppermine 1.3.0 FAQ</h1>
+<p>FAQ for <a href="http://coppermine.sourceforge.net/">Coppermine Photo Gallery v1.3.0</a><br />
+For credits and copyrights, see <a href="index.htm#credits">Coppermine documentation</a></p>
+
+
+<p>There are always the same questions asked on the <a href="http://coppermine.sourceforge.net/board/">support forums for Coppermine Photo Gallery</a>; that's why we decided to start a little <acronym class="tool" title="FAQ=Frequently Asked Questions">FAQ</acronym> on this issues.</p>
+
+<a name="top"></a>
+<h2><b>Table of contents</b>:</h2>
+<ul class="nomargin">
+<li><b>Installation</b></li>
+<ul class="nomargin">
+<li><a class="content" href="#MinimumRequirements">What are the <b>minimum requirements</b> for the use of Coppermine 1.3.0 ?</a></li>
+<li><a class="content" href="#whatIsImageMagick">What's <b>ImageMagick</b> and how can I get it?</a></li>
+<li><a class="content" href="#WhatIsGD">What's <b>GD</b> and how can I get it?</a></li>
+<li><a class="content" href="#VersionPHP">How do I find out <b>which version of PHP</b> I have?</a></li>
+<li><a class="content" href="#VersionGD">How do I find out <b>which version of GD</b> I have?</a></li>
+<li><a class="content" href="#GD1vsGD2">What&#39;s the difference between <b>GD1 and GD2</b>?</a></li>
+<li><a class="content" href="#InstallSteps">What are the <b>steps</b> to get Coppermine running?</a></li>
+<li><a class="content" href="#installIMwhenHosted">How can I <b>install ImageMagick or GD</b>?</a></li>
+<li><a class="content" href="#minimumInstall">I'm short on webspace. Is there a &quot;<b>minimum install</b>&quot;?</a></li>
+</ul>
+
+<li><b>Upload</b></li>
+<ul class="nomargin">
+<li><a class="content" href="#uploadGeneralTroubleshooting">General Upload Troubleshooting</a></li>
+</ul>
+
+<li><b>Error messages</b></li>
+<ul class="nomargin">
+<li><a class="content" href="#WhatIsImageMagick">When installing I get the <b>error</b> <tt class="code">Fatal error: Call to undefined function: imagecreatefromjpeg() in /include/picmgmt.inc.php on line 168</tt>. What does that mean?</a></li>
+<li><a class="content" href="#mkdirPermissionDenied">When installing I get the <b>error</b> <tt class="code">Warning: mkdir(dummy) [function.mkdir]: Permission denied in /your/path/to/coppermine/install.php on line 126</tt>. What does that mean?</a></li>
+<li><a class="content" href="#EmptyDelimiter">I get the <b>error</b> &quot;<tt class="code">Warning: Empty Delimiter in search.inc.php line 33&quot;</tt>. What can I do?</a></li>
+<li><a class="content" href="#zerosizedreply">I get the <b>error</b> <tt class="code">Zero Sized Reply</tt> during install. What can I do?</a></li>
+<li><a class="content" href="#ErrorUndefinedIndex">I have the error message <tt class="code">Warning: Undefined index: SCRIPT_NAME in /www.your-domain.com/include/init.inc.php on line 90</tt>. What can I do?</a></li>
+<li><a class="content" href="#ErrorCantMovePic">When a user tries to upload a picture I get the error message <tt class="code">Impossible to move somepic.jpg to albums/userpics/ | Warning: move_uploaded_file(/tmp/phpezCYKr) [function.move-uploaded-file]: failed to create stream: Operation not permitted</tt>. What&#39;s wrong?</a></li>
+<li><a class="content" href="#httpPostVars">When uploading I get the error <tt class="code">Warning: Undefined variable: HTTP_POST_VARS in include/init.inc.php on line 43</tt>. What can I do?</a></li>
+</ul>
+
+<li><b>Setup / Administration</b></li>
+<ul class="nomargin">
+<li><a class="content" href="#LinkInAlbumDescription">How can I include a <b>link in an album description</b> or the caption of a pic?</a></li>
+<li><a class="content" href="#NoLastUploads">I don&#39;t want to show the <b>last uploads</b> on the start page. How do I edit what&#39;s shown on the start page of coppermine?</a></li>
+<li><a class="content" href="#editCopyrights">How do I <b>remove/edit the bottom line</b> &quot;<tt class="code">Powered by Coppermine</tt>&quot; ?</a></li>
+<li><a class="content" href="#buyLicense">I want to buy a <b>license</b> for Coppermine (and get rid of the &quot;<tt class="code">Powered by Coppermine</tt>&quot; line). How?</a></li>
+<li><a class="content" href="#removeFeature">I don&#39;t want to use the feature XYZ of Coppermine. How can I <b>remove</b> it?</a></li>
+<li><a class="content" href="#customHeader">How do I add a <b>custom header/footer</b> to Coppermine?</a></li>
+<li><a class="content" href="#createPublicAlbum">How do I create an <b>album</b> that <b>anyone</b> can add photos to?</a></li>
+<li><a class="content" href="#BackupDatabase">How can I <b>backup</b> my coppermine database?</a></li>
+<li><a class="content" href="#noFullsizePopup">The <b>fullsize-pic doesn&#39;t pop up</b> when clicking on the intermediate size pic. What&#39;s wrong?</a></li>
+<li><a class="content" href="#viewThumbnailsOnly">How can I let unregistered users see the <b>thumbnails only</b>, but not the actual pictures?</a></li>
+<li><a class="content" href="#preventHotlinks">How can I prevent other sites linking directly to the pictures in my gallery instead of the gallery page?</a></li>
+<li><a class="content" href="#changeLanguage">I tried to change the <b>language</b> on the config page, but it doesn&#39;t work. What&#39;s wrong?</a></li>
+<li><a class="content" href="#onlyregisteredcomments">How do I let guests, not only registered users to put <b>comments</b> on pictures?</a></li>
+<li><a class="content" href="#httpUpload">I <b>can&#39;t upload</b> with the upload feature. What&#39;s wrong?</a></li>
+<li><a class="content" href="#ordercategories">How do I change the <b>order of categories</b>?</a></li>
+<li><a class="content" href="#cantDeletePic">I <b>can&#39;t delete a certain picture</b> with ftp. What can I do?</a></li>
+<li><a class="content" href="#cantUploadBigPics">I <b>can&#39;t upload big pics</b>. What&#39;s wrong?</a></li>
+<li><a class="content" href="#cookie">I can&#39;t <b>login</b> to Coppermine. What&#39;s wrong?</a></li>
+<li><a class="content" href="#moveAlbum">How can I <b>move an album</b> from one category to another?</a></li>
+<li><a class="content" href="#sortAlbum">How can I change the <b>sorting order of the albums</b>?</a></li>
+<li><a class="content" href="#deleteIntermediates">I don't use the <b>intermediate pictures</b> anymore. How can I <b>delete</b> them to gain disk space?</a></li>
+<li><a class="content" href="#howAlbumsFolderWork">How do <b>albums and folders</b> work in coppermine?</a></li>
+<li><a class="content" href="#howMoveAlbum">How can I <b>move albums from one category to another</b>?</a></li>
+</ul>
+<li><b>Add-ons / Modifications / Hacks</b></li>
+<ul class="nomargin">
+<li><a class="content" href="#changeOrderEdit">How can I change the order of the pics when <b>editing</b> them?</a></li>
+<li><a class="content" href="#rightHandMenu">How can I create a menu that&#39;s shown on the <b>right side</b> of the gallery?</a></li>
+<li><a class="content" href="#jumpToPrivateAlbum">How can I send a user <b>directly to his private album</b> once he logs in?</a></li>
+<li><a class="content" href="#registeredUsersOnly">How can I <b>prevent unregistered user</b> from viewing the gallery?</a></li>
+<li><a class="content" href="#displayUploaderName">How can I <b>display the name of the uploader</b> with the picture info?</a></li>
+<li><a class="content" href="#linksInCustomFields">How do I enable clickable <b>links in custom user fields</b>?</a></li>
+<li><a class="content" href="#sortThumbsByCustomField">How can I <b>sort the thumbnails by user defined (custom) fields</b>?</a></li>
+<li><a class="content" href="#iptcSupport">How do I <b>enable IPTC support</b>?</a></li>
+<li><a class="content" href="#addFooterBeforePoweredBy">How can I <b>add</b> some output <b>directly before</b> the line &quot;Powered by Coppermine&quot;?</a></li>
+<li><a class="content" href="#commonPHPerrors">Common PHP errors and how to get rid of them...</a></li>
+<li><a class="content" href="#renameTemplateHtml">Can I <b>rename template.html to template.php</b> to include <b>PHP code</b> in my template?</a></li>
+<li><a class="content" href="#preventPictureStealing">How can I prevent users from saving (stealing) my pictures?</a></li>
+</ul>
+<li><b>I'm running my own server</b></li>
+<ul class="nomargin">
+<li><a class="content" href="#enableGD">How do I <b>enable gd</b> on my Windows server?</a></li>
+<li><a class="content" href="#enableIMonWindows">How do I <b>enable ImageMagick</b> on my Windows server?</a></li>
+</ul>
+<li><b>Coppermine Support board</b></li>
+<ul class="nomargin">
+<li><a class="content" href="#phpNewbie">I <b>don&#39;t know</b> PHP/mySQL...</a></li>
+<li><a class="content" href="#lamesupport">I&#39;ve posted my question a while ago, but <b>nobody answers</b>. What the...?</a></li>
+<li><a class="content" href="#howtoask">How should I write my <b>question</b>?</a></li>
+<li><a class="content" href="#firstSteps">I&#39;ve run into trouble. What should I do first (<b>before posting</b> on the board)?</a></li>
+<li><a class="content" href="#nonEnglishPosting">Hey, by looking at your profile I can see you&#39;re German/French/Whatever. Can I post a question in that <b>language</b>?</a></li>
+<li><a class="content" href="#emailSupport">May I email/<acronym title="private message" class="tool">pm</acronym>/<acronym title="instant message" class="tool">im</acronym> you for <b>support</b>?</a></li>
+<li><a class="content" href="#aboutTeam"><b>Who</b> are you anyway?</a></li>
+</ul>
+</ul>
+
+
+<br />&nbsp;<br />
+<h2>Installation</h2><a name="MinimumRequirements"></a>
+<h3>What are the <b>minimum requirements</b> for the use of Coppermine 1.3.0 ?</h3>
+<p>
+    <ul>
+        <li>any webserver, Apache recommended (Coppermine has been reported to work with <a href="http://httpd.apache.org/" class="external">Apache</a>, <a href="http://www.microsoft.com/iis/" class="external">Microsoft Internet Information Server</a> (IIS), <a href="http://www.roxen.com/products/webserver/" class="external">Roxen WebServer</a>, <a href="http://www.aprelium.com/" class="external">Abyss</a>, <a href="http://www.janaserver.de/" class="external">JanaServer</a>)</li>
+        <li>PHP 4.1.0 or better</li>
+        <li><a href="#WhatIsGD">GD lib</a> or Image Magick</li>
+        <li>mySQL 3.23.23 or better (4.x recommended). Don&#39;t confuse the client api version (which is shown in phpinfo) with the mySQL version!</li>
+    </ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+<a name="WhatIsGD"></a>
+<h3>What's <b>GD</b> and how can I get it?</h3>
+<p>GD is a graphical library which enables PHP to do image manipulation. You can download it at <a href="http://www.boutell.com/gd/" class="external">www.boutell.com/gd/</a>. You will need to recompile PHP on (L)Unix systems, depending on your setup Apache as well. Most recent versions of PHP come with GD - go for a package. On most windows systems, you can just enable it in the php.ini file. (this can of course only be done if you're running your own server; if you're with a webhost: find out if your webspace has gd; if not: ask your webhost if you can have it or get another webhost).<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="whatIsImageMagick"></a>
+<h3>What's ImageMagick and how can I get it?</h3>
+<p>ImageMagick is a graphical library for image manipulation. You can download it at <a href="http://www.imagemagick.org" class="external">imagemagick.org</a>. There are sources available for Unix, Linux, Mac and Windows executables, as well as binary packages for various server operating systems. You can only install ImageMagick if you are running your own server, or you have shell access to it - you can not install ImageMagick if you're webhosted.
+<br /></p>
+<br />
+<div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="VersionPHP"></a>
+<h3>How do I find out <b>which version of PHP</b> I have?</h3>
+<p>create a blank file named "info.php", put this code into it: <tt class="code">&lt;?php phpinfo(); ?&gt;</tt>, upload this file to your webserver and run it in your browser (e.g. http://www.yourdomain.com/info.php). In the very first line it should say &quot;PHP Version X.Y.Z&quot;<br />Please note: leaving info.php on your server might be a security risk; either delete it after use or move it into a password protected directory!<br />&nbsp;<br />In cpg1.3.0 (or better), there's a phpinfo file (phpinfo.php) within the coppermine folder (you'll have to be logged in as admin though) - simply point your browser to http://yourdomain.tld/your_coppermine_folder/phpinfo.php .</p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="VersionGD"></a>
+<h3>How do I find out <b>which version of GD</b> I have?</h3>
+<p>create a blank file named "info.php", put this code into it: <tt class="code">&lt;?php phpinfo(); ?&gt;</tt>, upload this file to your webserver and run it in your browser (e.g. http://www.yourdomain.com/info.php). Look for a table like this:<br />
+<div align="center" style="font-family: arial, helvetica, sans-serif; font-size: 14pt; font-weight: bold;">gd</div>
+<table border="0" cellpadding="3" cellspacing="1" width="600" bgcolor="#000000" align="center">
+<tr valign="baseline" bgcolor="#cccccc"><td bgcolor="#ccccff" ><b>GD Support</b></td><td align="left">enabled</td></tr>
+<tr valign="baseline" bgcolor="#cccccc"><td bgcolor="#ccccff" ><b>GD Version</b></td><td align="left">1.6.2 or higher</td></tr>
+<tr valign="baseline" bgcolor="#cccccc"><td bgcolor="#ccccff" ><b>FreeType Support</b></td><td align="left">enabled</td></tr>
+<tr valign="baseline" bgcolor="#cccccc"><td bgcolor="#ccccff" ><b>FreeType Linkage</b></td><td align="left">with TTF library</td></tr>
+<tr valign="baseline" bgcolor="#cccccc"><td bgcolor="#ccccff" ><b>JPG Support</b></td><td align="left">enabled</td></tr>
+<tr valign="baseline" bgcolor="#cccccc"><td bgcolor="#ccccff" ><b>PNG Support</b></td><td align="left">enabled</td></tr>
+<tr valign="baseline" bgcolor="#cccccc"><td bgcolor="#ccccff" ><b>WBMP Support</b></td><td align="left">enabled</td></tr>
+</table>
+<br />Please note: leaving info.php on your server might be a security risk; either delete it after use or move it into a password protected directory!<br />&nbsp;<br />In cpg1.3.0 (or better), there's a phpinfo file (phpinfo.php) within the coppermine folder (you'll have to be logged in as admin though) - simply point your browser to http://yourdomain.tld/your_coppermine_folder/phpinfo.php .<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="GD1vsGD2"></a>
+<h3>What&#39;s the difference between <b>GD1 and GD2</b>?</h3>
+<p>GD2 will create pictures with better quality (intermediate and thumbnails). <table border="0" class="frame2"><tr><td colspan="2"><span class="winzig">Here&#39;s an example taken from <a href="http://www.vddh.com/wnailer/index.php?pag=res&pic=1#comp" class="external">w-nailer: about resizing</a><br />(Original pic size: 1024 x 768 pixels):</span></td></tr><tr><td align="center"><img src="http://coppermine.sourceforge.net/images/128x96gd1.jpg" width="128" height="96" border="0" alt="" title="GD1"></td><td align="center"><img src="http://coppermine.sourceforge.net/images/128x96gd2.jpg" width="128" height="96" border="0" alt="" title="GD2"></td></tr><tr><td align="center"><span class="winzig">GD 1.8.4:<br />ImageCreate<br />ImageCopyResized<br />128 x 96 pixels</span></td><td align="center"><span class="winzig">GD 2.0.1:<br />ImageCreateTrueColor<br />ImageCopyResampled<br />128 x 96 pixels</span></td></tr></table>Upgrading GD lib when coppermine is already installed will therefor not affect the pictures which are already created, but only new ones. <b>You can not upgrade nor install GD lib unless you&#39;re running your own webserver - only your webhost can!</b><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="InstallSteps"></a>
+<h3>What are the <b>steps</b> to get Coppermine running?</h3>
+<p>as stated in the readme:
+<ol>
+<li>Download Coppermine</li>
+<li>Unzip it to your harddrive</li>
+<li>Upload the stuff to your server</li>
+<li>chmod the folders "include" and "albums" for the script (the webserver, that is) to have read/write access</li>
+<li>point your browser to http://www.yoursite.com/coppermine/install.php and follow the directions of the install file (basically the mySQL-tables will be created there and the config table will be filled with default values)</li>
+<li>after successfull installation, delete install.php from your webserver</li>
+<li>point your browser to http://www.yoursite.com/coppermine/ , log in as admin, admin mode and do the config job (customizing your coppermine)</li>
+<li>Play around, toy a little, test if everything works</li>
+<li>Publish your site by linking it (e.g. from your homepage)</li>
+</ol><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="installIMwhenHosted"></a>
+<h3>How can I <b>install ImageMagick or GD</b>?</h3>
+<p>You can only <a href="#enableIMonWindows">install ImageMagic or GD if you&#39;re running your own server</a> or if you have at least shell access to your webserver. If you&#39;re hosted by a webhost you can only contact your webhost and ask them to install it for you or choose another webhost.<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="minimumInstall"></a>
+<h3>I'm short on webspace. Is there a &quot;<b>minimum install</b>&quot;?</h3>
+<p>This is of course a contradiction in terms: running a gallery page usually means you will need a lot of webspace for your pics, but if you only want to publish some pics and have little webspace left, there are some files that don't have to be uploaded or can be removed if not needed. It is however recommended that only experienced users create a minimum install; when in doubt, go for the full install.</p>
+<ol>
+<li><b>Remove all languages that you don't need</b> (if your users are all from the same country).<br />
+It's recommended that you keep English anyway even if your users use another language, just for you as admin to be able to temporarily switch to English.<br />
+Delete all files in the lang-subfolder of your coppermine install except yourlanguage.php (e.g. if you're using french, delete all files but /lang/french.php and /lang/french-utf-8.php).
+<br /><div class="totop">Webspace that can be saved (maximum): 2.9 MB</div>
+</li>
+<li><b>Remove all language files that come with an encoding you don't need</b><br />
+You'll notice that for each language there are two files in the lang-folder: yourlanguage.php and yourlanguage-utf-8.php. You will need the utf-8 files only if you chose &quot;Unicode(utf-8)&quot; in &quot;Character encoding&quot; on your config page. Using <i>Unicode (utf-8)</i> will display the gallery in the language your page visitor has set in his browser. If you haven't chosen <i>Unicode (utf-8)</i> in coppermine config, it's safe to delete all language files with &quot;utf-8&quot; in their filenames from the lang folder.
+<br /><div class="totop">Webspace that can be saved (maximum): 1.7 MB</div>
+</li>
+<li><b>Remove all unnecessary themes</b><br />
+Remove all themes you won't use from your themes folder. If you're using a customized theme, it's recommended to leave the classic/default theme in place for administrative purposes.<br />
+Example: if you're using the theme &quot;Eyeball&quot; that comes with coppermine, you can safely delete the sub-folders &quot;classic&quot;, &quot;fruity&quot;, &quot;hardwired&quot;, &quot;igames&quot;, &quot;mac_ox_x&quot;, &quot;project_vii&quot;, &quot;rainy_day&quot;, &quot;styleguide&quot; and &quot;water_drop&quot; from your themes folder.
+<br /><div class="totop">Webspace that can be saved (maximum): 1 MB</div>
+</li>
+<li><b>Remove the docs folder</b><br />
+The docs folder contains documents that are meant to help you set up and administer coppermine, but it doesn't have to be on your webserver. You can safely delete the docs folder from your webserver (or even don't upload it in the first place), but it's strongly recommended to keep the docs folder on your local machine for reference.
+<br /><div class="totop">Webspace that can be saved (maximum): 0.5 MB</div>
+</li>
+<li><b>Remove bridge files</b><br />
+The bridge files are being used for integration of coppermine with a bulletin board software like phpBB, YaBB SE, SMF etc. If you're not using bbs integration at all it is safe to delete the whole bridge folder from your webserver (or not upload it in the first place). If you <i>are</i> using bbs integration, you will have to keep the bridge file that corresponds to the bbs you're using - it's safe to delete all other bridge files that exist inside the bridge folder.
+<br /><div class="totop">Webspace that can be saved (maximum): 137 KB</div>
+</li>
+<li><b>Remove the flags</b><br />
+If you're not going to use the &quot;select language by flags&quot; option from the coppermine menu, it's safe to delete the flags folder (/your_coppermine_folder/images/flags/). If you <i>are</i> using the flags option, you can of course delete all flags you don't use at all.
+<br /><div class="totop">Webspace that can be saved (maximum): 80 KB</div>
+</li>
+<li><b>Remove files that are needed for install or upgrade only</b><br />
+Once Coppermine has been installed and is &quot;up-and-running&quot;, you can safely delete the files that are needed for installing only: from the coppermine root folder, delete install.php, installer.css, update.php,  upgrade-1.0-to-1.2.php. You can delete the folder &quot;sql&quot; as well.<br />
+If you want to update/upgrade your coppermine install later (once a new version comes out), you will of course have to re-upload the update files and the sql folder to your webserver.
+<br /><div class="totop">Webspace that can be saved (maximum): 73 KB</div>
+</li>
+</ol>
+Summary: a minimum install of coppermine will need approx. 3.3 MB of webspace.
+<br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<h2>Upload</h2>
+
+<a name="uploadGeneralTroubleshooting"></a>
+<h3>General Upload Troubleshooting</h3>
+<p>When troubleshooting uploads in CPG 1.3, you are advised to change the upload settings in the Groups console to 'Single uploads only' and to activate 'Debug mode' in the Config console.  Changing this setting negates some of the error masking done in the multiple upload setting.  This will allow you to access more detailed error messages.</p>
+<p><span class="important">First and foremost: check your permissions on the /albums, /albums/userpics, and /albums/edit directories.  All should be 777 or 755.</span><br />If you don't know what we mean when we write 777 or 755,  you need to do a Google search on UNIX file permissions. Windows has a similar set of file permissions. You can usually set these permissions using your FTP client.<br />
+For those of you who skim over statements written in red letters, I will repeat to try to get your attention:
+<br />
+<span class="important">Yes, we are writing about something that could apply to YOU.
+<br />&nbsp;<br />
+We repeat -- check your permissions on the <tt class="code">/albums</tt>, <tt class="code">/albums/userpics</tt>, and <tt class="code">/albums/edit</tt> directories.  All should be 777 or 755.
+<br />&nbsp;<br />
+Yes, we want you to check the permissions of each folder even if you think you have already done this. Yes, we mean it.</span>
+</p>
+<p>Please keep in mind that HTTP uploads are limited by the restrictions placed upon them in PHP's configuration.</p>
+<br />&nbsp;<br />
+<b>Things to check:</b>
+<ol>
+<li><b>max_input_time</b>- 60 seconds is the default time limit for uploading files.<br />This time limit includes the time it takes for the files to upload, so if you exceed this limit, the file will not even parse, and the browser will not get a response. You can workaround this by trying to upload smaller or fewer files, or you can try uploading over broadband. The best solution, of course, is to increase the time limit to something more in line with your needs.</li>
+<li><b>upload_max_filesize</b> - 2MB is the default limit for individual files.</li>
+<li><b>post_max_size</b> - 8MB is the default limit for post requests.</li>
+<li><b>memory_limit</b> - 8MB is the default size.</li>
+<li>PHP's <b>LimitRequestBody</b> - 512KB default limit. (mainly an issue on Redhat/Apache systems.  Found in /etc/http/conf.d)<br />In general, upload_max_filesize &lt; post_max_size &lt; memory_limit in order for uploads to function properly. Coppermine may warn you if a file exceeds upload_max_filesize, but it cannot warn you if the total size of all the files exceeds the post limit or the memory limit.</li>
+<li><b>file_uploads</b> – This determines whether or not PHP will allow file uploads. It must be set to ‘On’.</li>
+<li><b>upload_tmp_dir</b> – This specifies the temporary directory where PHP stores uploaded files.</li>
+</ol>
+
+<p>The most common issue caused by this setting is an open_basedir warning.  In this situation, your server administrator has restricted the files that PHP can work with to a certain directory.  If he does not create and specify a temporary directory within the open_basedir restriction, PHP will attempt to use the OS temporary directory, and it will be rebuffed by the open_basedir restriction.</p>
+
+<p><b>Some notes about the different types of upload mechanisms available in CPG 1.3:</b><br />
+Multiple HTTP uploads are designed to handle a small number of files, and have been capped at 10.  Therefore, they are not really suited for large numbers of files unless you have control over your php.ini configuration.
+<br />
+If you are looking to upload in excess of 15 or 20 files at a time, you should consider the batch add process or the XP_Publisher utility.  Each has its own drawbacks and advantages.
+<br />
+The batch add process is fast, but it puts quite a load on the server and may experience timeouts.  The XP Publisher utility is slower, but it limits the load on the server.  Also, it avoids many of the pitfalls caused by the php.ini configuration by uploading each file in the set as an individual post request.</p>
+
+<br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<h2>Error Messages</h2>
+
+<a name="WhatIsImageMagick"></a>
+<h3>When installing I get the <b>error</b> <tt class="code">Fatal error: Call to undefined function: imagecreatefromjpeg() in /include/picmgmt.inc.php on line 168</tt>. What does that mean?</h3>
+<p>This error means that the version of PHP installed on your server has no support for the GD image library.<br />
+If the ImageMagick suite is installed on your server you can try to use it, else you have to complain to your webhost (the GD image library is now a standard component of PHP and should normally be installed de facto). Coppermine won't run without gd or image magick.<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="mkdirPermissionDenied"></a>
+<h3>When installing I get the <b>error</b> <tt class="code">Warning: mkdir(dummy) [function.mkdir]: Permission denied in /your/path/to/coppermine/install.php on line 126</tt>. What does that mean?</h3>
+<p>The script must have the right to create and delete files.
+<ul>
+<li>on *nix/linux-webservers:<br />chmod the coppermine directory (and all subdirectories) to 755 (rwxr-xr-x). To find more about chmod: check some of these <a href="http://www.google.com/search?q=chmod+tutorial" class="external">fine chmod tutorials</a></li>
+<li>on Windows/IIS:<br />Check if the user the webserver runs the php-scripts under (usually called IUSR) has sufficient rights to read, execute, change, delete in the Coppermine folder. To find out how, ask your webhost or read the server manual if you're running the server yourself.
+</li>
+<li>on Windows/Apache:<br />Check the account Apache runs under an set the rights in the file-system.
+</li>
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="EmptyDelimiter"></a>
+<h3>I get the <b>error</b> &quot;<tt class="code">Warning: Empty Delimiter in search.inc.php line 33&quot;</tt>. What can I do?</h3>
+<p>Edit the file include/search.inc.php<br />
+Look for the line with<br /><tt class="code">$charset = $CONFIG[&#39;charset&#39;] == &#39;language file&#39; ? $lang_charset : $CONFIG[&#39;charset&#39;];</tt><br />
+Replace it with :<br />
+<tt class="code">$charset = $CONFIG[&#39;charset&#39;] == &#39;language file&#39; ? $GLOBALS[&#39;lang_charset&#39;] : $CONFIG[&#39;charset&#39;];</tt><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="zerosizedreply"></a>
+<h3>I get the <b>error</b> <span class="code">Zero Sized Reply</span> during install. What can I do?</h3>
+<p>Some users experienced this error message during install:<br />
+<pre>While trying to retrieve the URL: http://yoursite.com/coppermine/install.php
+The system returned:
+Zero Sized Reply
+Reason:
+The remote server did not reply any data for this request.
+Please try again later</pre>
+It&#39;s unknown why this happens so far - those who have this error simply can&#39;t use Coppermine (sorry for that). If you have got an idea what causes this error (and possibly can come up with a solution), please visit the support board and clue us in!<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="ErrorUndefinedIndex"></a>
+<h3>I have the error message <tt class="code">Warning: Undefined index: SCRIPT_NAME in /www.your-domain.com/include/init.inc.php on line 90</tt>. What can I do?</h3>
+<p>Try to edit the file include/init.inc.php:<br />
+change<br />
+<pre>$PHP_SELF = isset($HTTP_SERVER_VARS[&#39;REDIRECT_URL&#39;]) ? $HTTP_SERVER_VARS[&#39;REDIRECT_URL&#39;] : $HTTP_SERVER_VARS[&#39;SCRIPT_NAME&#39;];</pre>
+to<br />
+<pre>$PHP_SELF = $HTTP_SERVER_VARS[&#39;PHP_SELF&#39;];</pre>
+</p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="ErrorCantMovePic"></a>
+<h3>When a user tries to upload a picture I get the error message <tt class="code">Impossible to move somepic.jpg to albums/userpics/ | Warning: move_uploaded_file(/tmp/phpezCYKr) [function.move-uploaded-file]: failed to create stream: Operation not permitted</tt>. What&#39;s wrong?</h3>
+<p>You should contact the admin of your webhost because usually you can&#39;t change the location of the temporary directory for file uploads yourself (it is part of PHP configuration) .<br />
+If the open basedir restriction is in effect on your site then the temp directory for file uploads should be one that you can access.<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="httpPostVars"></a>
+<h3>When uploading I get the error <tt class="code">Warning: Undefined variable: HTTP_POST_VARS in include/init.inc.php on line 43</tt>. What can I do?</h3>
+<p>Check if <a href="#VersionPHP">your version of PHP</a> fullfills the <a href="#MinimumRequirements">minimum requirements</a> for Coppermine. If your version is 4.1.0 or better, then this error is probably caused by a misconfiguration of your server, so Coppermine isn&#39;t to blame in the first place. If the server isn&#39;t yours to configure properly (that is: if you&#39;re with a webhost), you can try this workaround (at your own risk):<br >
+Edit the file "init.inc.php" and look for<br />
+<pre>$PHP_SELF = isset($HTTP_SERVER_VARS[&#39;REDIRECT_URL&#39;]) ? $HTTP_SERVER_VARS[&#39;REDIRECT_URL&#39;] : $HTTP_SERVER_VARS[&#39;SCRIPT_NAME&#39;];</pre>
+Replace it with<br />
+<pre>$PHP_SELF = $HTTP_SERVER_VARS[&#39;PHP_SELF&#39;];</pre><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<br />&nbsp;<br />
+<h2>Setup / Administration</h2><a name="LinkInAlbumDescription"></a>
+<h3>How can I include a <b>link in an album description</b> or the caption of a pic?</h3>
+<p>Coppermine understands the following bbCodes (the same bbCodes that are used by phpBB) in image and album description:</p>
+<table border="0">
+<tr>
+<th>code</th>
+<th>output</th>
+</tr>
+<tr><td><pre>[b]bold text[/b]</pre></td><td><b>bold text</b></td></tr>
+<tr><td><pre>[i]italic[/i]</pre></td><td><i>italic</i></td></tr>
+<tr><td><pre>[url=http://www.foo.com/bar.html]URL text[/url]</pre></td><td><a href="http://www.foo.com/bar.html">URL text</a></td></tr>
+<tr><td><pre>[email]user@domain.tld[/email]</pre></td><td><a href="mailto:user@domain.tld">user@domain.tld</a></td></tr>
+</table>
+
+
+
+
+<div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+<a name="NoLastUploads"></a>
+<h3>I don&#39;t want to show the <b>last uploads</b> on the start page. How do I edit what&#39;s shown on the start page of coppermine?</h3>
+<p>  <ol>
+    <li>login as admin into your CPG</li>
+    <li>click on "Admin Mode" if it is not already enabled</li>
+    <li>Click on Config in the "Admin Menu"</li>
+    <li>under "Album list view" use the above provided keywords:
+    <ul>
+      <li>'<b>breadcrumb</b>': navigation inside the gallery (e.g. &quot;home &gt; category &gt; subcategory &gt; album&quot;)</li>
+      <li>'<b>catlist</b>': category list
+      <li>'<b>alblist</b>': album list
+      <li>'<b>random</b>': random pictures (leaving random pictures &quot;on&quot; for huge galleries with more than 10,000 pics might result in performance problems; switch random &quot;off&quot; in this case)
+      <li>'<b>lastup</b>': last uploads
+      <li>'<b>topn</b>': most viewed
+      <li>'<b>toprated</b>': top rated
+      <li>'<b>lastcom</b>': last comments </li>
+      <li>'<b>lasthits</b>': last viewed </li>
+      <li>'<b>anycontent</b>': inserts php-generated content that has to reside within the file 'anycontent.php' into the index page. Can be used to include banner-rotation scripts or similar.</li>
+    </ul>
+    (e.g. <tt class="code">catlist/alblist/random,2/lastup,2</tt> means &quot;category list, album list, 2 rows of random pics, 2 rows of last uploads&quot;)</li>
+  </ol><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="editCopyrights"></a>
+  <h3>How do I <b>remove/edit the bottom line</b> &quot;<tt class="code">Powered by Coppermine</tt>&quot; ?</h3>
+<p>You mustn&#39;t remove the line - it&#39;s part of the deal: you&#39;re allowed to use Coppermine on your site, but the line stays! It&#39;s more than justified to give credit where credit is due; be glad you&#39;re able to use such a great piece of software for free.<br />
+You are allowed to change the way the line looks by editing the CSS class to make it fit into the design of your site; edit /themes/yourtheme/style.css, look for the class "Footer" and change it as you wish.<br />
+Note: don&#39;t ask stupid questions on removing this line in the <a href="http://coppermine.sourceforge.net/board/">Coppermine Photo Gallery Support Board</a> - your posting will be deleted!<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="buyLicense"></a>
+<h3>I want to buy a <b>license</b> for Coppermine (and get rid of the &quot;<tt class="code">Powered by Coppermine</tt>&quot; line). How?</h3>
+<p>As Coppermine itself is based on OpenSource software published under GNU/GPL (which allows the modification of the code, but disallows to sell the code, modified or not), you can not purchase a version of coppermine with the credit line removed. Read the file COPYING that comes with the distribution of Coppermine for details.<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="removeFeature"></a>
+<h3>I don&#39;t want to use the feature XYZ of Coppermine. How can I <b>remove</b> it?</h3>
+<p>Just remove the link; edit /themes/yourtheme/theme.php, look for the feature you want to remove and comment out the HTML code.<br />Example: if you want to remove the ecard-feature, just look for
+<pre>&lt;td align=&quot;center&quot; valign=&quot;middle&quot; class=&quot;navmenu&quot; width=&quot;48&quot;&gt;
+&lt;a href=&quot;{ECARD_TGT}&quot; title=&quot;{ECARD_TITLE}&quot;&gt;
+&lt;img src=&quot;images/ecard.gif&quot; width=&quot;16&quot; height=&quot;16&quot; border=&quot;0&quot; align=&quot;absmiddle&quot; alt=&quot;{ECARD_TITLE}&quot;&gt;&lt;/a&gt;
+&lt;/td&gt;</pre>
+and replace it with<br />
+<pre>&lt;!--&lt;td align=&quot;center&quot; valign=&quot;middle&quot; class=&quot;navmenu&quot; width=&quot;48&quot;&gt;
+&lt;a href=&quot;{ECARD_TGT}&quot; title=&quot;{ECARD_TITLE}&quot;&gt;
+&lt;img src=&quot;images/ecard.gif&quot; width=&quot;16&quot; height=&quot;16&quot; border=&quot;0&quot; align=&quot;absmiddle&quot; alt=&quot;{ECARD_TITLE}&quot;&gt;&lt;/a&gt;
+&lt;/td&gt;--&gt;</pre></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="customHeader"></a>
+<h3>How do I add a <b>custom header/footer</b> to Coppermine?</h3>
+<p>There are these files to look for:
+<ul>
+<li>if you want to add static html-content (for example your site logo), edit <tt class="code">/themes/yourtheme/template.html</tt> - add/remove anything you want, but be sure to leave everything in that is in brackets.</li>
+<li>if you want dynamic content (or want to add PHP-code), edit the file <tt class="code">/themes/yourtheme/theme.php</tt></li>
+<li>if you want the edit the color scheme of a theme to match the &quot;look-and-feel&quot; of your site, edit <tt class="code">/themes/yourtheme/style.css</tt></li>
+<li>if you know PHP (at least a little) and want to use PHP-includes, look for <tt class="code">function pageheader</tt> in <tt class="code">/themes/yourtheme/theme.php</tt> and edit change it like this:<br />
+<pre>function pageheader($section, $meta = &#39;&#39;)
+{
+   global $CONFIG, $THEME_DIR;
+   global $template_header, $lang_charset, $lang_text_dir;
+
+   if(empty($custom_header)){
+      include(&#39;/path/your_file.php&#39;);
+      static $custom_header = ob_get_contents();
+      ob_clean();
+   }
+
+   header(&#39;P3P: CP=&quot;CAO DSP COR CURa ADMa DEVa OUR IND PHY ONL UNI COM NAV INT DEM PRE&quot;&#39;);
+   user_save_profile();
+
+   $template_vars = array(
+      &#39;{LANG_DIR}&#39; => $lang_text_dir,
+      &#39;{TITLE}&#39; => $CONFIG[&#39;gallery_name&#39;].&#39; - &#39;.$section,
+      &#39;{CHARSET}&#39; => $CONFIG[&#39;charset&#39;] == &#39;language file&#39; ? $lang_charset : $CONFIG[&#39;charset&#39;],
+      &#39;{META}&#39; => $meta,
+      &#39;{GAL_NAME}&#39; => $CONFIG[&#39;gallery_name&#39;],
+      &#39;{GAL_DESCRIPTION}&#39; => $CONFIG[&#39;gallery_description&#39;],
+      &#39;{MAIN_MENU}&#39; => theme_main_menu(),
+      &#39;{ADMIN_MENU}&#39; => theme_admin_mode_menu(),
+      &#39;{CUSTOM_HEADER}&#39; => $custom_header,
+   );
+
+   echo template_eval($template_header, $template_vars);
+}</pre>
+You will need to add a new field {CUSTOM_HEADER} in your template.html file.
+</li>
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="createPublicAlbum"></a>
+<h3>How do I create an <b>album</b> that <b>anyone</b> can add photos to?</h3>
+<p>(assuming you have already created at least one category with at least one album where the uploads should go to):
+<ul>
+<li>log in as admin</li>
+<li>admin mode</li>
+<li>Groups</li>
+<li>Group name &quot;anonymous&quot; - give them quota and upload rights</li>
+<li>Album list</li>
+<li>choose category</li>
+<li>next to the appropriate album, click on &quot;properties&quot;</li>
+<li>turn &quot;Visitors can upload pictures&quot; to &quot;yes&quot; and click &quot;update album&quot;</li>
+<li>provide an upload link in your navigation if it&#39;s not already there (check /themes/yourtheme/theme.php)</li>
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="BackupDatabase"></a>
+<h3>How can I <b>backup</b> my coppermine database?</h3>
+<p>There&#39;s no built-in backup solution for coppermine available yet. Meanwhile, backup your directory/file structure via good old ftp and use a tool like <a href="http://www.phpmyadmin.net/" class="external">phpMyAdmin</a> to backup the database (many webhosts that offer mySQL also offer a pre-installed version of phpMyAdmin - go for that!). PhpMyAdmin is easy to install: just download the distribution, unzip it to your harddrive, edit one config file and upload it to your server.<br />
+Here&#39;s a small &quot;howto backup a database with phpMyAdmin&quot;:
+<ul>
+<li>get the software, install it (remember to password-protect it)</li>
+<li>point your browser to the location you installed it on</li>
+<li>click your database name in the left frame</li>
+<li>in &quot;View dump (schema) of database&quot; select the table(s) you want to back up (press CTRL to select more than one table)</li>
+<li>mark &quot;Structure and data&quot;</li>
+<li>check &quot;Save as file&quot;</li>
+<li>check &quot;zipped&quot;</li>
+<li><b>DON&#39;T</b> check &quot;Add &#39;drop table&#39;&quot; - your database will be erased, if you do</li>
+<li>press &quot;go&quot;</li>
+<li>save the file on your harddisk (depending on the speed of your connection this could take a while)</li>
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="noFullsizePopup"></a>
+<h3>The <b>fullsize-pic doesn&#39;t pop up</b> when clicking on the intermediate size pic. What&#39;s wrong?</h3>
+<p>You probably over-edited your template: you&#39;ll definitely need the line <tt class="code">&lt;script type=&quot;text/javascript&quot; src=&quot;scripts.js&quot;&gt;&lt;/script&gt;</tt> inside /themes/yourtheme/template.html to make the pop-up window work...<br />
+The &lt;head&gt;-part of your template file should look like this:<br />
+<pre>&lt;head&gt;
+&lt;title&gt;{TITLE}&lt;/title&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset={CHARSET}&quot; /&gt;
+{META}
+&lt;link rel=&quot;stylesheet&quot; href=&quot;themes/default/style.css&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;scripts.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;</pre>
+- just check the default theme that comes with coppermine if you&#39;re unsure.<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="viewThumbnailsOnly"></a>
+<h3>How can I let unregistered users see the <b>thumbnails only</b>, but not the actual pictures?</h3>
+<p>Edit displayimage.php and add<br /><tt class="code">if (!USER_ID) cpg_die(ERROR, &#39;You need to register to access this page&#39;, __FILE__, __LINE__);</tt><br />just before<br />
+<pre>/**************************************************************************
+* Local functions definition
+**************************************************************************/</pre></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="preventHotlinks"></a>
+<h3>How can I prevent other sites linking directly to the pictures in my gallery instead of the gallery page?</h3>
+<p>Prevent &quot;hotlinking&quot; by creating a .htaccess file in the albums folder and adding this:<br />
+<pre>SetEnvIfNoCase Referer &quot;^http://www.yourdomian.com/&quot; locally_linked=1
+SetEnvIfNoCase Referer &quot;^http://yourdomain.com/&quot; locally_linked=1
+SetEnvIf Referer &quot;^$&quot; locally_linked=1
+&lt;FilesMatch &quot;\.(gif|png|jpe?g)$&quot;&gt;
+  Order Allow,Deny
+  Allow from env=locally_linked
+&lt;/FilesMatch&gt;</pre>
+This will only work on linux/unix and only if you&#39;re allowed to do that by your webhost or if you run your own server!<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="changeLanguage"></a>
+<h3>I tried to change the <b>language</b> on the config page, but it doesn&#39;t work. What&#39;s wrong?</h3>
+<p>&quot;Character encoding&quot; is probably set (or has been set sometime ago) to UTF-8 on your config page.<br />
+When UTF-8 is selected, Coppermine chooses your language file based on your browser configuration and stores the value in a cookie. This overrides the value stored in the CONFIG.<br />
+<b>To fix that:</b><br />
+<ul>
+<li>Set &quot;Character encoding&quot; to Default (language file)</li>
+<li>Then call the script with <tt class="code">http://yoursite.com/coppermine_dir/index.php?lang=xxx</tt> (this will reset the cookie)
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="onlyregisteredcomments"></a>
+<h3>How do I let guests, not only registered users to put <b>comments</b> on pictures?</h3>
+<p><ul>
+<li>log in as admin</li>
+<li>admin mode</li>
+<li>groups</li>
+<li>&quot;Anonymous&quot; - &quot;Can post comments&quot; - &quot;yes&quot;</li>
+<li>Apply modifications</li>
+</ul>
+To change the settings by album (above steps must have been made):
+<ul>
+<li>log in as admin</li>
+<li>admin mode</li>
+<li>In Category view, click on the album</li>
+<li>Properties</li>
+<li>&quot;Permissions for this album&quot; - &quot;Visitors can post comments&quot; - &quot;Yes&quot;</li>
+<li>&quot;Update album&quot;</li>
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="httpUpload"></a>
+<h3>I <b>can&#39;t upload</b> with the upload feature. What&#39;s wrong?</h3>
+<p>If you get the error message <tt class="code">No picture was uploaded. If you have really selected a picture to upload, check that the server allows file uploads...</tt>, check if there&#39;s a problem with HTTP uploads on your server - they may have been disabled or improperly configured. In <a href="#VersionPHP">phpinfo()</a>, check that "file_uploads" is ON, "upload_max_filesize" is something like 2M and "upload_tmp_dir" is a valid directory!<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="ordercategories"></a>
+<h3>How do I change the <b>order of categories</b>?</h3>
+<p><ul>
+<li>log in as admin</li>
+<li>admin mode</li>
+<li>categories</li>
+<li>use the &quot;arrow up&quot;- and &quot;arrow down&quot;-buttons to change the order of categories</li>
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="cantDeletePic"></a>
+<h3>I <b>can&#39;t delete a certain picture</b> with ftp. What can I do?</h3>
+<p>It is not Coppermine that doesn&#39;t let you delete the picture, it is your FTP server. The problem is due to the configuration of your server. Try to delete your picture from within the script.<br />
+If PHP on your server runs under the user nobody then all files created by any PHP script (this is not specific to Coppermine) will be owned by nobody. There is no way to change that.<br />&nbsp;<br />
+<table border="0" cellspacing="2" cellpadding="2" class="bordl"><tr><td valign="top" align="left"><p class="fliess"> 0777 should not be the default mode for directories because it may be completely unsafe, if your gallery is running on a shared server and PHP safe mode is not enabled, anybody having an account on the server can possibly delete your pictures. There have been several threads on this issue on the Menalto Gallery forum and several users have seen their gallery hacked and destoyed because of that. This issue is not specific to Photo galleries, it applies to all PHP scripts that create directories. Provided you have write access to a directory, you can delete any file it contains, even if you don&#39;t have write access to the file itself.<br />&nbsp;<br />
+I prefer to have 20 persons complaining LOUDLY and REPEATINGLY that they have to contact their sysadmin to uninstal Coppermine, that this is an issue and possibly switching to another gallery because of that rather than 1 person complaining that all his pictures have been erased.<br />&nbsp;<br />
+If you disagree spend you time reading :<br />
+<a href="http://www.zend.com/manual/function.mkdir.php" class="external">http://www.zend.com/manual/function.mkdir.php</a><br />
+<a href="http://www.zend.com/manual/function.chmod.php" class="external">http://www.zend.com/manual/function.chmod.php</a><br />
+rather than posting in this forum.<br />&nbsp;
+<br />It is the decision of the sysadmin to run PHP as an Apache module and the fact that all files/dir created by PHP be owned by nobody for instance is the result of this decision. So sysadmins should not complain when you ask them to remove some files or directory.<br />&nbsp;<br />
+On the webhost this site is running on, everything works fine when directory are created with mode 755 and all files/dir created by PHP are owned by the chezgreg user which is the user I use when connecting by FTP. Also if one of the file/directory on my site has a mode of 777, the server will shutdown my site and send me an email warning me that this is unsafe.<br />&nbsp;<br />
+Greg</p></td></tr></table><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="cantUploadBigPics"></a>
+<h3>I <b>can&#39;t upload big pics</b>. What&#39;s wrong?</h3>
+<p>The max. size of pics is limited by various settings - to find out why you can&#39;t upload big picks, check the following:
+<ul>
+<li>make sure you have enough webspace left (remember that you need space for the full size pic, the intermediate size pic and the thumbnail!)</li>
+<li>when logged in as admin check your &quot;Group&quot; settings: the groups (even the admin group!) have limits that can be configured there</li>
+<li>Browser time-out: commonly-used Internet Explorer has a time-out function: if your upload isn&#39;t finished within a certain period, the browser will time-out (applies especially to dial-up connections)</li>
+<li>There&#39;s a maximum limit set up in the PHP config of your server. If you&#39;re with a webhost there&#39;s little you can do, but if you&#39;re running your own server, check php.ini and look for <tt class="code">LimitRequestBody</tt> - this value (in bytes) in the max upload allowed by php/html</li>
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="cookie"></a>
+<h3>I can&#39;t <b>login</b> to Coppermine. What&#39;s wrong?</h3>
+<p>This is most likely a cookie issue:
+<ul>
+<li>If you&#39;re running Internet Explorer 6, you&#39;ll have to enable the acceptance of cookies. Click on &quot;Tools&quot; - &quot;Internet Options&quot; - &quot;Privacy&quot; and add your site to the list of sites that are trusted, or set the slider to a lower level.</li>
+<li>Sometimes IE will not handle Cookies properly. Close your browser, try deleting all local cookies manually and start your browser again</li>
+<li>Check if you&#39;re running a software that interferes with acceptance of cookies like personal firewalls (ZoneAlarm, Tiny, Cookie Washer etc.) and turn them off to see if cookies are accepted then</li>
+<li>Try using another browser (like <a href="http://www.opera.com/" class="external">Opera</a>, which is rather small to download and can be removed easily). It&#39;s a generally a good idea to have some different browsers on your local machine to check if your site is displayed correctly not only in your favourite browser</li>
+<li>If you&#39;re using subdomains and the dev version of coppermine or some mod on a different subdomain (like gallery.yoursite.com and board.yoursite.com) this could also cause problems: a subdomain is a different domain (in fact foo.com and bar.com are subdomains of the <acronym class="tool" title="top level domain">tld</acronym> &quot;.com&quot;, so regarding cookies they are as different domains as bbs.yoursite.com and comics.yoursite.com). Of course you can &quot;hack some sense&quot; into the scripts, but usually bbs are hard to trick to make them more hack-proof.</li>
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="moveAlbum"></a>
+<h3>How can I <b>move an album</b> from one category to another?</h3>
+<p><ul>
+<li>log in as admin</li>
+<li>admin mode</li>
+<li>click on a category</li>
+<li>click &quot;Properties&quot; of the album you want to move</li>
+<li>in the dropdown box next to &quot;Album category&quot;, choose the category you want to move the album to</li>
+<li>click &quot;Update album&quot;</li>
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="sortAlbum"></a>
+<h3>How can I change the <b>sorting order of the albums</b>?</h3>
+<p>By default the album appear in the order they were created. If you want to adjust the sorting order, do this:
+<ul>
+<li>log in as admin</li>
+<li>&quot;admin mode&quot;</li>
+<li>&quot;Albums&quot;</li>
+<li>choose a category in the dropdown list</li>
+<li>highlight an album by clicking on it once</li>
+<li>use the up <img src="http://coppermine.sourceforge.net/images/move_up.gif" width="13" height="11" border="0" alt="" /> and down <img src="http://coppermine.sourceforge.net/images/move_down.gif" width="13" height="11" border="0" alt="" /> buttons to change the position </li>
+<li>click &quot;apply modifications&quot;</li>
+<li>Confirm the message &quot;Are you sure you want to make these modifications ?&quot; with &quot;OK&quot;</li>
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="deleteIntermediates"></a>
+<h3>I don't use the <b>intermediate pictures</b> anymore. How can I <b>delete</b> them to gain disk space?</h3>
+<p></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="howAlbumsFolderWork"></a>
+<h3>How do <b>albums and folders</b> work in coppermine?</h3>
+<ol>
+<li>When you create an album, it is a 'virtual' album.  Coppermine doesn't create a folder for this album on the server's hard drive, it leaves the pictures where they are on the server, and uses the database to know which pic belongs in which album. You can move pics from album to album, but this is all done in the database, the pics are never moved on the server.</li>
+<li>When you upload by html, using the 'upload' link, coppermine places the pic (and the thumb and normal size copies) in the 'userpics' directory.</li>
+<li>When you upload by ftp, you should place the pics in a folder you create, within the 'albums' folder, but not in the 'userpics' folder.  You can create as many folders/sub-folders here as you want. You can call these folders anything you want, but we recommend mirroring the category/album structure you have created on the site, for eae of use.</li>
+<li>When you batch add, coppermine asks you what album you want to put the pics in, but it leaves the pics where they are on the server.</li>
+</ol>
+<br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="howMoveAlbum"></a>
+<h3>How can I <b>move albums from one category to another</b>?</h3>
+<ul>
+<li>log in as admin</li>
+<li>admin mode</li>
+<li>create categories (using category manager from admin menu)</li>
+<li>go to the index page of your gallery</li>
+<li>click "Properties" next to the album thumbnail</li>
+<li>From the dropdown list &quot;Album category&quot;, choose the category the album should go to</li>
+<li>Click &quot;Update Album&quot;</li>
+</ul>
+
+<br />&nbsp;<br />
+<h2>Add-ons / Modifications / Hacks</h2><a name="letUserSelectTheme"></a>
+<a name="changeOrderEdit"></a>
+<h3>How can I change the order of the pics when <b>editing</b> them?</h3>
+<p>By default, the pics are shown alphabetically when you edit them. To change the sorting order to &quot;by date&quot;, edit <tt class="code">editpics.php</tt> and change<br />
+<tt class="code">$result = db_query(&quot;SELECT * FROM {$CONFIG[&#39;TABLE_PICTURES&#39;]} WHERE aid = &#39;$album_id&#39; ORDER BY filename LIMIT $start, $count&quot;);</tt><br />
+to<br />
+<tt class="code">$result = db_query(&quot;SELECT * FROM {$CONFIG[&#39;TABLE_PICTURES&#39;]} WHERE aid = &#39;$album_id&#39; ORDER BY pid LIMIT $start, $count&quot;);</tt><br /></p><br />
+<div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="rightHandMenu"></a>
+<h3>How can I create a menu that&#39;s shown on the <b>right side</b> of the gallery?</h3>
+<p>When the template.html is read, it is split in 2. What is before the {GALLERY} tag is output by the pageheader function, what is after by the pagefooter function.<br />
+If your menu is in the &quot;footer&quot; you need to modify your theme.php file <br />
+<pre>   $template_vars = array(
+      &#39;{LANG_DIR}&#39; => $lang_text_dir,
+      &#39;{TITLE}&#39; => $CONFIG[&#39;gallery_name&#39;].&#39; - &#39;.$section,
+      &#39;{CHARSET}&#39; => $CONFIG[&#39;charset&#39;] == &#39;language file&#39; ? $lang_charset : $CONFIG[&#39;charset&#39;],
+      &#39;{META}&#39; => $meta,
+      &#39;{GAL_NAME}&#39; => $CONFIG[&#39;gallery_name&#39;],
+      &#39;{GAL_DESCRIPTION}&#39; => $CONFIG[&#39;gallery_description&#39;],
+      &#39;{MAIN_MENU}&#39; => theme_main_menu(),
+      &#39;{ADMIN_MENU}&#39; => theme_admin_mode_menu()
+   );
+
+   echo template_eval($template_header, $template_vars);</pre>
+   will become
+<pre>   $template_vars = array(
+      &#39;{LANG_DIR}&#39; => $lang_text_dir,
+      &#39;{TITLE}&#39; => $CONFIG[&#39;gallery_name&#39;].&#39; - &#39;.$section,
+      &#39;{CHARSET}&#39; => $CONFIG[&#39;charset&#39;] == &#39;language file&#39; ? $lang_charset : $CONFIG[&#39;charset&#39;],
+      &#39;{META}&#39; => $meta,
+      &#39;{GAL_NAME}&#39; => $CONFIG[&#39;gallery_name&#39;],
+      &#39;{GAL_DESCRIPTION}&#39; => $CONFIG[&#39;gallery_description&#39;],
+   );
+
+   echo template_eval($template_header, $template_vars);</pre>
+and<br /><tt class="code">echo $template_footer;</tt><br />
+will become<br />
+<pre>   $template_vars = array(
+      &#39;{MAIN_MENU}&#39; => theme_main_menu(),
+      &#39;{ADMIN_MENU}&#39; => theme_admin_mode_menu()
+   );
+
+   echo template_eval($template_footer, $template_vars);</pre>
+<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="jumpToPrivateAlbum"></a>
+<h3>How can I send a user <b>directly to his private album</b> once he logs in?</h3>
+<p>edit<br /><tt class="code">login.php</tt><br />and search for<br />
+<tt class="code">pageheader($lang_login_php[&#39;login&#39;],&quot;&lt;META http-equiv=\&quot;refresh\&quot; content=\&quot;3;url=$referer\&quot;&gt;&quot;);</tt><br />
+<br />and add <b>before</b> it<br />
+<tt class="code">$referer = &#39;index.php?cat=&#39;.(FIRST_USER_CAT+$USER_DATA[&#39;user_id&#39;]); </tt><br /><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="registeredUsersOnly"></a>
+<h3>How can I <b>prevent unregistered user</b> from viewing the gallery?</h3>
+<p>edit<br /><tt class="code">displayimage.php</tt><br />and search for<br />
+<pre>/**************************************************************************
+* Local functions definition
+**************************************************************************/</pre>
+<br />and add <b>before</b> it<br />
+<tt class="code">if (!USER_ID) cpg_die(ERROR, &#39;You need to register to access this page&#39;, __FILE__, __LINE__);</tt><br /><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="displayUploaderName"></a>
+<h3>How can I <b>display the name of the uploader</b> with the picture info?</h3>
+<p><b>Warning</b>: this is quite a complicated hack for a newbie to perform!<br />Edit displayimage.php and search for:<br />
+<tt class="code">   $info[$lang_picinfo[&#39;Filename&#39;]]   = htmlspecialchars($CURRENT_PIC_DATA[&#39;filename&#39;]);</tt><br />add after it:<br />
+<tt class="code">   $info[$lang_picinfo[&#39;Username&#39;]]   = htmlspecialchars($CURRENT_PIC_DATA[&#39;user_name&#39;]);</tt>.<br />
+Then open /include/functions.inc.php and search for following in function get_pic_data():<br />
+<tt class="code">      if($select_columns != &#39;*&#39;) $select_columns .= &#39;, title, caption&#39;;</tt><br />and replace it with:<br />
+<tt class="code">      if($select_columns != &#39;*&#39;) $select_columns .= &#39;, title, caption, user_name&#39;;</tt>.<br />
+After that search for:<br />
+<tt class="code">      $result = db_query("SELECT $select_columns from {$CONFIG[&#39;TABLE_PICTURES&#39;]} WHERE aid=&#39;$album&#39; $approved $ALBUM_SET ORDER BY $sort_order $limit");</tt><br />
+and replace it with:<br />
+<tt class="code">      $result = db_query("SELECT $select_columns from {$CONFIG[&#39;TABLE_PICTURES&#39;]} AS p LEFT JOIN {$CONFIG[&#39;TABLE_USERS&#39;]} AS u ON u.user_id = p.owner_id WHERE p.aid=&#39;$album&#39; $approved $ALBUM_SET ORDER BY $sort_order $limit");</tt><br />Then you have to add the language string for the username. Open /lang/yourlang.php and search for:<br />
+<tt class="code">$lang_picinfo = array(</tt><br />
+and add after that:<br />
+<tt class="code">        &#39;Username&#39; => &#39;Username&#39;,</tt><br />
+Also you need to execute this query in MySQL (with a tool like <a href="http://www.phpmyadmin.net">phpMyAdmin</a>):<br />
+<tt class="code">ALTER TABLE `cpg11d_pictures` ADD INDEX ( `owner_id` );</tt><br />
+(If your table_prefix is not cpg11d_ then you need to change it in the query)<br /><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="linksInCustomFields"></a>
+<h3>How do I enable clickable <b>links in custom user fields</b>?</h3>
+<p>edit displayimage.php and change<br />
+<tt class="code">$info[$CONFIG[&#39;user_field&#39;.$i.&#39;_name&#39;]] = make_clickable($CURRENT_PIC_DATA[&#39;user&#39;.$i]); </tt><br />
+into<br />
+<tt class="code">$info[$CONFIG[&#39;user_field&#39;.$i.&#39;_name&#39;]] = bb_decode($CURRENT_PIC_DATA[&#39;user&#39;.$i]); </tt><br />&nbsp;<br />
+In order to allow the use of BBCodes in custom fields: you can then have something like<br />
+<tt class="code">[url]http://www.somesite.com/foo/bar.php?whatever=42[/url]</tt><br />
+or<br />
+<tt class="code">[url=http://www.somesite.com/foo/bar.php?whatever=42]link to some site![/url]</tt><br />in your custom user fields (which of course have to be enabled first in the config page)<br /><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="sortThumbsByCustomField"></a>
+<h3>How can I <b>sort the thumbnails by user defined (custom) fields</b>?</h3>
+<p><ol>
+<li>edit /includes/functions.inc.php<br />
+change<br />
+<pre>$sort_array = array(&#39;na&#39; => &#39;filename ASC&#39;, &#39;nd&#39; => &#39;filename DESC&#39;, &#39;da&#39; => &#39;pid ASC&#39;, &#39;dd&#39; => &#39;pid DESC&#39;); </pre>
+to<br />
+<pre>   $sort_array = array(
+      &#39;na&#39; => &#39;filename ASC&#39;,
+      &#39;nd&#39; => &#39;filename DESC&#39;,
+      &#39;da&#39; => &#39;pid ASC&#39;,
+      &#39;dd&#39; => &#39;pid DESC&#39;,
+      &#39;f1a&#39; => &#39;user1 ASC&#39;,
+      &#39;f1d&#39; => &#39;user1 DESC&#39;,
+      &#39;f2a&#39; => &#39;user2 ASC&#39;,
+      &#39;f2d&#39; => &#39;user2 DESC&#39;,
+      &#39;f3a&#39; => &#39;user3 ASC&#39;,
+      &#39;f3d&#39; => &#39;user3 DESC&#39;,
+      &#39;f4a&#39; => &#39;user1 ASC&#39;,
+      &#39;f4d&#39; => &#39;user1 DESC&#39;
+   );
+</pre></li>
+<li>edit /themes/yourtheme/theme.php<br />
+<ul>
+<li>change<br />
+<pre>   // The sort order options are not available for meta albums
+   if ($sort_options){
+
+      $param = array(
+         &#39;{ALBUM_NAME}&#39; => $album_name,
+         &#39;{AID}&#39; => $aid,
+         &#39;{PAGE}&#39; => $page,
+         &#39;{NAME}&#39; => $lang_thumb_view[&#39;name&#39;],
+         &#39;{DATE}&#39; => $lang_thumb_view[&#39;date&#39;],
+         &#39;{SORT_NA}&#39; => $lang_thumb_view[&#39;sort_na&#39;],
+         &#39;{SORT_ND}&#39; => $lang_thumb_view[&#39;sort_nd&#39;],
+         &#39;{SORT_DA}&#39; => $lang_thumb_view[&#39;sort_da&#39;],
+         &#39;{SORT_DD}&#39; => $lang_thumb_view[&#39;sort_dd&#39;],
+         );</pre>
+<br />
+to<br />
+<pre>   // The sort order options are not available for meta albums
+   if ($sort_options){
+
+      $param = array(
+         &#39;{ALBUM_NAME}&#39; => $album_name,
+         &#39;{AID}&#39; => $aid,
+         &#39;{PAGE}&#39; => $page,
+         &#39;{NAME}&#39; => $lang_thumb_view[&#39;name&#39;],
+         &#39;{DATE}&#39; => $lang_thumb_view[&#39;date&#39;],
+         &#39;{SORT_NA}&#39; => $lang_thumb_view[&#39;sort_na&#39;],
+         &#39;{SORT_ND}&#39; => $lang_thumb_view[&#39;sort_nd&#39;],
+         &#39;{SORT_DA}&#39; => $lang_thumb_view[&#39;sort_da&#39;],
+         &#39;{SORT_DD}&#39; => $lang_thumb_view[&#39;sort_dd&#39;],
+         // Exxodus Sorting
+         &#39;{FIELD1}&#39; => $CONFIG[&#39;user_field1_name&#39;],
+         &#39;{FIELD2}&#39; => $CONFIG[&#39;user_field2_name&#39;],
+         &#39;{FIELD3}&#39; => $CONFIG[&#39;user_field3_name&#39;],
+         &#39;{FIELD4}&#39; => $CONFIG[&#39;user_field4_name&#39;],
+         // Exxodus Sorting
+         );</pre>&nbsp;
+</li>
+<li>modify the lines after <tt class="code">$template_thumb_view_title_row </tt> like this:<br />
+<pre>// HTML template for title row of the thumbnail view (album title + sort options)
+// Exxodus (Adding Sorting by UserField)
+$template_thumb_view_title_row = &lt;&lt;&lt;EOT
+
+         &lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+         &lt;tr&gt;
+            &lt;td width=&quot;100%&quot; class=&quot;statlink&quot;&gt;&lt;h2&gt;{ALBUM_NAME}&lt;/h2&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;img src=&quot;images/spacer.gif&quot; width=&quot;1&quot;&gt;&lt;/td&gt;
+            &lt;td class=&quot;sortorder_cell&quot;&gt;
+               &lt;table height=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+               &lt;tr&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;{NAME}&lt;/td&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;&lt;span class=&quot;statlink&quot;&gt;
+                  &lt;a href=&quot;thumbnails.php?album={AID}&page={PAGE}&sort=na&quot; title=&quot;{SORT_NA}&quot;&gt;&+&&lt;/a&gt;/&lt;/span&gt;&lt;/td&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;&lt;span class=&quot;statlink&quot;&gt;
+                  &lt;a href=&quot;thumbnails.php?album={AID}&page={PAGE}&sort=nd&quot; title=&quot;{SORT_ND}&quot;&gt;&-&&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+               &lt;/tr&gt;
+               &lt;tr&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;{DATE}&lt;/td&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;&lt;span class=&quot;statlink&quot;&gt;
+                  &lt;a href=&quot;thumbnails.php?album={AID}&page={PAGE}&sort=da&quot; title=&quot;{SORT_DA}&quot;&gt;&+&&lt;/a&gt;/&lt;/span&gt;&lt;/td&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;&lt;span class=&quot;statlink&quot;&gt;
+                  &lt;a href=&quot;thumbnails.php?album={AID}&page={PAGE}&sort=dd&quot; title=&quot;{SORT_DD}&quot;&gt;&-&&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+               &lt;/tr&gt;
+               &lt;/table&gt;
+            &lt;/td&gt;
+            &lt;td&gt;&lt;img src=&quot;images/spacer.gif&quot; width=&quot;10&quot;&gt;&lt;/td&gt;
+            &lt;td class=&quot;sortorder_cell&quot;&gt;
+               &lt;table height=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+               &lt;tr&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;{FIELD1}&lt;/td&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;&lt;span class=&quot;statlink&quot;&gt;
+                  &lt;a href=&quot;thumbnails.php?album={AID}&page={PAGE}&sort=f1a&quot;&gt;&+&&lt;/a&gt;/&lt;/span&gt;&lt;/td&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;&lt;span class=&quot;statlink&quot;&gt;
+                  &lt;a href=&quot;thumbnails.php?album={AID}&page={PAGE}&sort=f1d&quot;&gt;&-&&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+               &lt;/tr&gt;
+               &lt;tr&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;{FIELD2}&lt;/td&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;&lt;span class=&quot;statlink&quot;&gt;
+                  &lt;a href=&quot;thumbnails.php?album={AID}&page={PAGE}&sort=f2a&quot;&gt;&+&&lt;/a&gt;/&lt;/span&gt;&lt;/td&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;&lt;span class=&quot;statlink&quot;&gt;
+                  &lt;a href=&quot;thumbnails.php?album={AID}&page={PAGE}&sort=f2d&quot;&gt;&-&&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+               &lt;/tr&gt;
+               &lt;/table&gt;
+            &lt;/td&gt;
+            &lt;td&gt;&lt;img src=&quot;images/spacer.gif&quot; width=&quot;10&quot;&gt;&lt;/td&gt;
+            &lt;td class=&quot;sortorder_cell&quot;&gt;
+               &lt;table height=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+               &lt;tr&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;{FIELD3}&lt;/td&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;&lt;span class=&quot;statlink&quot;&gt;
+                  &lt;a href=&quot;thumbnails.php?album={AID}&page={PAGE}&sort=f3a&quot;&gt;&+&&lt;/a&gt;/&lt;/span&gt;&lt;/td&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;&lt;span class=&quot;statlink&quot;&gt;
+                  &lt;a href=&quot;thumbnails.php?album={AID}&page={PAGE}&sort=f3d&quot;&gt;&-&&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+               &lt;/tr&gt;
+               &lt;tr&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;{FIELD4}&lt;/td&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;&lt;span class=&quot;statlink&quot;&gt;
+                  &lt;a href=&quot;thumbnails.php?album={AID}&page={PAGE}&sort=f4a&quot;&gt;&+&&lt;/a&gt;/&lt;/span&gt;&lt;/td&gt;
+                  &lt;td class=&quot;sortorder_options&quot;&gt;&lt;span class=&quot;statlink&quot;&gt;
+                  &lt;a href=&quot;thumbnails.php?album={AID}&page={PAGE}&sort=f4d&quot;&gt;&-&&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+               &lt;/tr&gt;
+               &lt;/table&gt;
+            &lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;/table&gt;
+
+EOT;</pre>
+
+</li>
+</ul>
+</li>
+</ol><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="iptcSupport"></a>
+<h3>How do I <b>enable IPTC support</b>?</h3>
+<p>edit <tt class="code">/includes/picmgmt.inc.php</tt> and search for<br />
+<tt class="code">        $imagesize = getimagesize($image);</tt><br />
+replace with:<br />
+<pre>$imagesize = getimagesize($image,&$info);
+$iptc = iptcparse($info["APP13"]);
+if (is_array($iptc)) {
+$caption.=$iptc[&#39;2#120&#39;][0];
+$title.=$iptc[&#39;2#105&#39;][0];
+(is_array($iptc[&#39;2#025&#39;])) && ($keywords.=implode(" ", $iptc[&#39;2#025&#39;]));
+}</pre>
+This hack hasn&#39;t been tested, use at your own risk...!<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+
+
+
+
+<a name="addFooterBeforePoweredBy"></a>
+<h3>How can I <b>add</b> some output <b>directly before</b> the line &quot;Powered by Coppermine&quot;?</h3>
+<p>Edit /themes/yourtheme/theme.php, look for <tt class="code">echo $template_footer</tt> and add the stuff you want to output in a line <b>before</b> it, like <tt class="code">print &#39;&lt;span class=&quot;footer&quot;&gt;&lt;a href=&quot;http://www.mylink.com/foo.htm&quot;&gt;My Link&lt;/a&gt;&lt;/span&gt;&#39;;</tt><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="commonPHPerrors"></a>
+<h3>Common PHP errors and how to get rid of them...</h3>
+<p>There are a lot of people (especially PHP newbies) that post questions like <tt class="code">I get the error &quot;Parse error: parse error in XXX&quot;</tt> and don&#39;t know what to do about it. That&#39;s why I translated this list of common errors (and a solution how to fix them) from the original german article in <a href="http://www.drweb.de" class="external">Dr. Web</a> :<br />
+<ul>
+<li><tt class="code">Parse error: parse error in C:\Apache\htdocs\read.php on line 8</tt> - This error message refers to an error in the PHP syntax. You probably forgot to end a line with <tt class="code">;</tt> or you have too many brackets opened or closed (<tt class="code">{</tt>).</li>
+<li><tt class="code">Fatal error: Call to unsupported/undefined function ... in C:\Apache\htdocs\read.php on line 8</tt> - This error means that the function your script was going to use isn&#39;t defined in the current PHP version with modules, or if yo&#39;re using user-defined functions that your function hasn&#39;t been defined yet (this is usually caused if you forgot to include the function definition).</li>
+<li><tt class="code">Warning: Wrong parameter ... for ... in C:\Apache\htdocs\read.php on line 8</tt> - you have handed over too many (or the wrong) parameters to the function. If it&#39;s a built-in php-function, check the <a href="http://www.php.net/manual/en/funcref.php" class="external">manual</a>; if it&#39;s a user-defined function, check your code.</li>
+<li><tt class="code">Warning: Cannot add header information - header was already sent ... in C:\Apache\htdocs\read.php on line 4</tt> - you had some text output first (e.g. the doctype declaration or <tt class="code">&lt;html&gt;</tt>) and called the function header() afterwards. This is most often the case when using cookie stuff. Remember you can not use header() twice!</li>
+<li><tt class="code">Parse error: parser stack overflow in C:\Apache\htdocs\read.php</tt> - PHP is out of memory - this usually happens if you built an eternal loop, especially when using include statements.</li>
+<li><tt class="code">Warning: fopen("file.txt","r+") - No such file or directory</tt> - the requested file or directory doesn&#39;t exist. Check the spelling (accuracy counts here).</li>
+<li><tt class="code">SAFE MODE Restriction in effect. The script whose uid is 531 is not allowed to access...</tt> - The safe mode is switched on. Some functions in the upload systems can&#39;t be used. Usually your webhost has put safe mode in place (often not correctly configured). Try switching silly_safe_mode on.</li>
+</ul>
+<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+
+<a name="renameTemplateHtml"></a>
+<h3>Can I rename template.html to template.php to include PHP code in my template?</h3>
+<p>No, this is simply not the way coppermine works; for &quot;normal&quot; pages the name of the extension tells the webserver wether the file should be parsed by the PHP interpreter. The template files within the themes folder are not being parsed this way - the extension .html was just chosen to make editing easier. You can not have PHP code in the template file, no matter how you name it - that's it!</p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="preventPictureStealing"></a>
+<h3>How can I prevent users from saving (stealing) my pictures?</h3>
+<p>You can not completely prevent users from stealing your pics - that's the way the www works: if a picture is being displayed in the browser, the user already has a copy of it on his hard drive. There are however some methods to make it harder for newbie users to steal your pics:
+<ul>
+<li>Add a watermark to your images before you upload them</li>
+<li>Apply one of the watermark-hacks: <a href="http://coppermine.sourceforge.net/board/index.php?topic=1467.0">Coppermine support board / mods / Watermarking hack (w/ ImageMagick)</a>, <a href="http://coppermine.sourceforge.net/board/index.php?topic=3269.0">Coppermine support board / mods / Watermark on a per image basis (GD)</a>, <a href="http://coppermine.sourceforge.net/board/index.php?topic=7160.0">Coppermine support board / mods / Permanent Watermark with GD2</a>. Please note that those hacks will result in a high server load, as the watermark is applied to a picture each time a users views the picture in his browser.</li>
+<li>Prevent Internet Explorer to show the image toolbar when a user hovers over a pic with the mouse. Edit themes/yourtheme/template.html, find <tt class="code">&lt;meta http-equiv="Pragma" content="no-cache" /&gt;</tt> and add after it <tt class="code">&lt;meta http-equiv="imagetoolbar" content="no" /&gt;</tt></li>
+<li>Use one of the many &quot;no right-click&quot; scripts that are available (e.g. <a href="http://coppermine.sourceforge.net/board/index.php?topic=2450.0">Coppermine support board / mods / no right-click</a> or <a href="http://www.codelifter.com/main/javascript/norightclick1.html" class="external">codelifter.com: no right-click</a>)</li>
+</ul>
+<br /></p>
+<br />
+<div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+
+
+<br />&nbsp;<br />
+<h2>I&#39;m running my own server</h2><a name="enableGD"></a>
+<h3>How do I <b>enable gd</b> on my Windows server?</h3>
+<p>GD 1.x 2.x are normally part of all standard PHP distributions under Windows<br />
+To check if you have it, go to the directory where you installed PHP, go to the &quot;extensions&quot; subdir and see if you have a file named "php_gd2.dll".<br />
+Sometimes you also need to edit your php.ini file (located in windows directory normally) and remove the &quot;;&quot; that is at the beggining of the line:<br />
+<tt class="code">extension=php_gd2.dll</tt> (at the end of the file). This will cause PHP to load the GD2 extension.<br />
+Whenever you make changes to php.ini, remember that you may need to restart your webserver.<br />
+ImageMagick it quite complicated to use under Windows<br />
+Greg<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+<a name="enableIMonWindows"></a>
+<h3>How do I <b>enable ImageMagick</b> on my Windows server?</h3>
+<p>ImageMagick is quite complicated to set up on Windows. There are several things to be taken into account. The Coppermine support board is <b>not</b> the right place to ask for help on installing it, as it deals with Coppermine, not &quot;How to set up a server&quot; (most people on the Coppermine boards don&#39;t run their own webserver, but they have webspace by a webhost). Instead, try to find support boards on the internet that deal with this special topic.<br /><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<br />&nbsp;<br />
+<h2>Coppermine Support board</h2>These are (alas) not-so-frequently-asked-questions on the support board. Before posting on the Support board (or, in fact, any board), please read this:
+<a name="phpNewbie"></a>
+<h3>I <b>don&#39;t know</b> PHP/mySQL...</h3>
+<p>No problem with that, everyone has been a newbie once he started, <b>but</b>: please don&#39;t start each and every posting by stating &quot;I&#39;m a newbie&quot;, &quot;I don&#39;t know anything about PHP&quot; etc.<br />Mostly, one can tell that by your question itself, no need to apologize...<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="lamesupport"></a>
+<h3>I&#39;ve posted my question a while ago, but <b>nobody answers</b>. What the...?</h3>
+<p>The support board is <b>not</b> a hotline. Although there are many visitors to the site, only a few do actually support - on a free, voluntary base. We don&#39;t get paid for it, we have a life, a job, a family. We are away sometimes.<br />If you don&#39;t get an answer to your question:
+<ul>
+<li>make sure you have given us enough time to react (days, not hours!)</li>
+<li>maybe nobody knows the answer to your problem</li>
+<li>maybe your question has been asked very often</li>
+<li>maybe your posting has been rude or impolite and you&#39;re ignored for that reason</li>
+<li>maybe you requested a feature that requires a lot of coding, and none of those who are able to do it have a need for the feature</li>
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="howtoask"></a>
+<h3>How should I write my <b>question</b>?</h3>
+<p>If you have a question, make sure you provide as much information as possible:
+<ul>
+<li>a link to your gallery is most often the only way to help - provide it with your question, or even better: edit your profile on the support board and enter the url of your page there!</li>
+<li>when addressing server issues, make sure to provide information on your server (<acronym class="tool" title="operation system">OS</acronym>, server, PHP version, mySQL version, gd lib version, safe mode on/off?). Most information can be retrieved by <a href="#VersionGD">phpinfo()</a></li>
+<li>if it&#39;s a client issue, give us information at least to your client&#39;s <acronym class="tool" title="operation system">OS</acronym> and browser</li>
+<li>Give us a screenshot, if necessary</li>
+<li>use a proper subject line: state in the subject line what your question is actually about! Most supporters are reluctant to answer to a posting that has a silly subject line like &quot;I have a question&quot; or &quot;Install problem&quot; or &quot;feature request&quot; or &quot;help me pleeeeaaaase&quot;</li>
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="firstSteps"></a>
+<h3>I&#39;ve run into trouble. What should I do first (<b>before posting</b> on the board)?</h3>
+<p><ul>
+<li>read the readme that comes with the coppermine distribution</li>
+<li>read the documentation</li>
+<li>read this FAQ</li>
+<li><a href="http://coppermine.sourceforge.net/board/index.php?action=search">Search</a> the support board</li>
+<li>enable debug mode (log in as admin, admin mode, config, debug mode)</li>
+<li>choose the right support board: if you&#39;re running the phpnuke-port of coppermine, don&#39;t post in the support board for the standalone version and vice versa</li>
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="nonEnglishPosting"></a>
+<h3>Hey, by looking at your profile I can see you&#39;re German/French/Whatever. Can I post a question in that <b>language</b>?</h3>
+<p>Please do not post in another language than English - this way, others may benefit from your question (and the answer), too. Don&#39;t be afraid to write &quot;bad english&quot; - no one will laugh at you, and most visitor&#39;s first language isn&#39;t english either! There&#39;s a german support board available at <a href="http://forum.the-service.de/" class="external">http://forum.the-service.de/</a> - use it if you&#39; not able to write in English!<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="emailSupport"></a>
+<h3>May I email/<acronym title="private message" class="tool">pm</acronym>/<acronym title="instant message" class="tool">im</acronym> you for <b>support</b>?</h3>
+<p>No you mustn&#39;t! Post your question on the <a href="http://coppermine.sourceforge.net/board/">Coppermine support board</a> (publicly) - if we (the community) don&#39;t find a solution <b>and</b> <i>I</i> have the time <b>and</b> <i>I</i> want to <i>I</i>&#39;ll email/pm/im <i>you</i>!<br />
+</p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="aboutTeam"></a>
+<h3><b>Who</b> are you anyway?</h3>
+<p>We are a group of people who decided to form a team to develop Coppermine further - check the <a href="http://coppermine.sourceforge.net/team/">team</a> page for details...<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+
+<br />&nbsp;<br />
+
+This FAQ is a work in progress, please contribute in the <a href="http://coppermine.sourceforge.net/board/">Coppermine Photo Gallery Support Board</a> (don't contact me to ask for fixes of your Coppermine install). Please report any bugs, typos etc.<br />Check the <a href="http://coppermine.sourceforge.net/faq.php">online-version of this document</a> for updates!<br />Have fun!<br />
+<br />
+GauGau (aka Joachim Mueller) - coppermine dev team
+
+
+
+
+
+<a name=""></a>
+<h3></h3>
+<p>
+<br /></p>
+<br />
+<div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+
+
+<hr />
+<a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=89658&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" align="left" /><span class="small">Powered by Sourceforge.net</span></a>
+</body>
+</html>

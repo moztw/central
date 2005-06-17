@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html dir="{LANG_DIR}">
+<head>
+<title>{TITLE}</title>
+<meta http-equiv="Content-Type" content="text/html; charset={CHARSET}" />
+<meta http-equiv="Pragma" content="no-cache" />
+{META}
+<link rel="stylesheet" href="themes/project_vii/style.css" />
+<script type="text/javascript" src="scripts.js"></script>
+<!--
+$Id: template.html,v 1.4 2004/07/24 15:04:22 gaugau Exp $
+-->
+</head>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_showHideLayers() { //v6.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v=='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</script>
+<body>
+<div id="Menu1" style="position:absolute; width:800px; height:30px; z-index:1; left: 20px; top: 100px; visibility: hidden;">
+                <span class="topmenu">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                        <td>
+                                        {MAIN_MENU1}
+                                        </td>
+                                </tr>
+                        </table>
+                </span>
+</div>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="top_panel">
+  <!-- fwtable fwsrc="top_panel.png" fwbase="top_panel" fwstyle="Dreamweaver" fwdocid = "742308039" fwnested="1" -->
+  <tr>
+    <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td background="themes/project_vii/images/top_panel_r1_c1.jpg">
+            <h1>{GAL_NAME}</h1>
+            <h3>{GAL_DESCRIPTION}</h3></td>
+          <td width="100%" background="themes/project_vii/images/top_panel_r1_c4.jpg"><img name="top_panel_r1_c4" src="themes/project_vii/images/top_panel_r1_c4.jpg" height="65" border="0" id="top_panel_r1_c4" alt="" /></td>
+          <td background="themes/project_vii/images/top_panel_r1_c5.jpg"><img name="top_panel_r1_c5" src="themes/project_vii/images/top_panel_r1_c5.jpg" width="410" height="65" border="0" id="top_panel_r1_c5" alt="" /></td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+          <td><img name="top_panel_r2_c1" src="themes/project_vii/images/top_panel_r2_c1.jpg" width="20" height="35" border="0" id="top_panel_r2_c1" alt="" /></td>
+          <td background="themes/project_vii/images/top_panel_r2_c2.jpg">{MAIN_MENU2}</td>
+          <td width="100%" background="themes/project_vii/images/top_panel_r2_c3.jpg" style="background-repeat : no-repeat;
+background-position : right;
+">&nbsp;</td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="20">
+  <tr>
+    <td align="center">{ADMIN_MENU} {GALLERY} </td>
+  </tr>
+  <tr>
+    <td align="center">{THEME_SELECT_LIST}&nbsp;{LANGUAGE_SELECT_LIST}&nbsp;{LANGUAGE_SELECT_FLAGS}</td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+</body>
+</html>

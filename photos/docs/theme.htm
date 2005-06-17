@@ -1,0 +1,513 @@
+<!doctype html public "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Coppermine Photo Gallery - Thme upgrade guide</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="language"    content="en">
+<meta name="author"      content="Coppermine dev team">
+<meta name="copyright"   content="Coppermine dev team">
+<meta name="description" content="Coppermine Photo Gallery project - Coppermine is an easily set-up, fast, feature-rich photo gallery script with mySQL database, user management, private galleries, automatic thumbnail creation, ecard feature and a template system for easy customization to match the rest of a site.">
+<meta name="keywords"    content="photo,gallery,galery,image,coppermine,php,mysql,easy,feature,phpnuke,thumbnail,automatic,creation,gd,Image Magick,ecard">
+<meta name="page-topic"    content="photo,gallery,galery,image,coppermine,php,mysql,easy,feature,phpnuke,thumbnail,automatic,creation,gd,Image Magick,ecard">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="MSSmartTagsPreventParsing" content="true">
+<meta http-equiv="imagetoolbar" content="no">
+<!--
+CVS version info:
+$Id: theme.htm,v 1.6 2004/08/16 09:47:17 gaugau Exp $
+-->
+<style type=text/css>
+
+body {
+        font-size: 12px; background: #F7F7F7; margin: 2%; color: black; font-family: verdana, arial, helvetica, sans-serif;
+        scrollbar-face-color: #DEE3E7;
+        scrollbar-highlight-color: #FFFFFF;
+        scrollbar-shadow-color: #DEE3E7;
+        scrollbar-3dlight-color: #D1D7DC;
+        scrollbar-arrow-color:  #006699;
+        scrollbar-track-color: #EFEFEF;
+        scrollbar-darkshadow-color: #98AAB1;
+}
+td {
+        font-size: 12px
+}
+h1 {
+        font-weight: bolder; font-size: 24px; color: #0E72A4; line-height: 120%; font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; text-decoration: none
+}
+h2 {
+        font-size: 20px; color: #0E72A4; font-family: Arial, Helvetica, sans-serif; text-decoration: none;
+}
+h3 {
+        font-weight: bolder; font-size: 16px; font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none; color: #0E72A4;
+}
+h4 {
+        font-weight: bold; font-size: 14px; font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none; color: #0E72A4;
+}
+p {
+        font-size: 12px; margin: 10px 10px 0px 0px; font-family: Verdana, Arial, Helvetica, sans-serif
+}
+pre {
+        border-right: #999999 1px solid; padding-right: 5px; border-top: #999999 1px solid; padding-left: 5px; font-size: 12px; padding-bottom: 5px; margin: 10px 10px 0px 0px; border-left: #999999 1px solid; padding-top: 5px; border-bottom: #999999 1px solid; font-style: normal; font-family: "Courier New", Courier, mono; background-color: #E0E0E0
+}
+ul {
+        padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 10px 0px 10px 5px; padding-top: 0px
+}
+ul.content {
+        padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 5px 5px 0px 0px; padding-top: 0px
+}
+li {
+        padding-right: 0px; margin-top: 4px; padding-left: 0px; list-style-position: outside; margin-bottom: 4px; padding-bottom: 0px; margin-left: 10px; padding-top: 0px;
+}
+li.content {
+        padding-right: 0px; margin-top: 0px; padding-left: 0px; list-style-position: outside; margin-bottom: 5px; padding-bottom: 0px; margin-left: 10px; padding-top: 0px; list-style-type: none;
+}
+hr {
+        border-right: #000000 0px solid; border-top: #000000 1px solid; border-left: #000000 0px solid; border-bottom: #000000 0px solid; height: 0px
+}
+.navbar {
+        font-weight: bold; font-size: 10px; background: url(/coppermine/themes/pixel-rave-blue100/images/nav-bar-button.gif) #72a5cc no-repeat; vertical-align: middle; color: #A5C6DF; font-family: Arial, Helvetica, sans-serif
+}
+a.navbar {
+        display: block; vertical-align: middle; width: 100px; color: #A5C6DF; line-height: 25px; position: relative; height: 25px; text-align: center; text-decoration: none
+}
+a.navbar:hover {
+        color: #ffffff; text-decoration: none
+}
+
+.back {
+        margin-top: 10px; font-size: 10px; margin-bottom: 10px
+}
+.important { color: red }
+.menu1 {font-weight:bolder;font-stretch:expanded;font-size:120%}
+.menu2 {font-weight:bold;font-stretch:normal;font-size:100%}
+.menu3 {font-weight:normal;font-stretch:condensed }
+</style>
+</head>
+<body>
+<h1>Converting cpg1.2.x themes to cpg1.3.2</h1>
+<p>To make your custom made theme from cpg1.2.0 work with cpg1.3.2, you'll have to change some places.<br />
+Remember to back up your original files, so you can go back to a working version in case something goes wrong with the modifications.</p>
+<ol>
+<li>Create a new css class for the properties of the html around the intermediate sized pic (visible in displayimage.php):<br />
+Edit style.css and find
+<pre>.image {
+        border-style: solid;
+        border-width:1px;
+        border-color: #000000;
+        margin: 2px;
+}
+</pre>
+Add after it
+<pre>.imageborder {
+        border: 1px solid #000000;
+        background-color: #FFFFFF;
+        margin-top: 30px;
+        margin-bottom: 30px;
+}
+</pre>
+</li>
+<li>Create a new css class for the debug output:<br />
+Edit style.css, go to the very end of the file and add this code:
+<pre>.debug_text {
+        border: #BDBEBD;
+        background-color: #EFEFEF;
+        width : 100%;
+        margin : 0px;
+}</pre></li>
+<li>Create a new css class for the clickable options in the config:<br />
+Edit style.css, go to the very end of the file and add this code:
+<pre>.clickable_option {
+        border-bottom : 1px dotted blue;
+        cursor : hand;
+}</pre></li>
+<li>Create a new css class for the dropdown boxes for theme and language selection:<br />
+Edit style.css, go to the very end of the file and add this code:
+<pre>.listbox_lang {
+        color: #000000;
+        background-color: #D1D7DC;
+        border: 1px solid #D1D7DC;
+        font-size: 80%;
+        font-family: Arial, Helvetica, sans-serif;
+        vertical-align : middle;
+}</pre></li>
+<li>Choose a place where the language and theme selection should be located on your coppermine pages. It's recommended to do this even if you're not planning to actually use the language and theme selection options, since they can be enable/disabled at any time in Coppermine config:<br />
+Edit template.html and find a place anywhere between <tt class="code">&lt;body&gt;</tt> and <tt class="code">&lt;/body&gt;</tt> where you want the selectors to appear. Add <tt class="code">{LANGUAGE_SELECT_LIST}</tt> for the language selection dropdown, <tt class="code">{LANGUAGE_SELECT_FLAGS}</tt> for the language-by-flag selector and <tt class="code">{THEME_SELECT_LIST}</tt> for the theme selection dropdown.</li>
+<li>Make the header information of your local file match the version you have updated to.<br />
+Edit theme.php and find
+<pre>// Coppermine Photo Gallery 1.2.0                                            //</pre>
+and change it to
+<pre>// Coppermine Photo Gallery 1.3.2                                            //</pre>
+</li>
+<li>Find a place where the memberlist list should appear in your coppermine navigation. It's recommended to do this even if you're not planning to actually use the feature, since it can be enable/disabled at any time in Coppermine config.<br />
+Edit theme.php and find
+<pre>&lt;!-- END my_gallery --&gt;</pre>
+and add after it
+<pre>&lt;!-- BEGIN allow_memberlist --&gt;
+                &lt;a href="{MEMBERLIST_TGT}" title="{MEMBERLIST_TITLE}"&gt;{MEMBERLIST_LNK}&lt;/a&gt;  ::
+&lt;!-- END allow_memberlist --&gt;</pre>. You may have to adopt the html that is usually wrapped around your menu items for the memberlist menu item as well.</li>
+<li>Find a place where the user FAQ should appear in your coppermine navigation. It's recommended to do this even if you're not planning to actually use the feature, since it can be enable/disabled at any time in Coppermine config.<br />
+Edit theme.php and find
+<pre>&lt;!-- END my_profile --&gt;</pre>
+and add after it
+<pre>&lt;!-- BEGIN faq --&gt;
+                    &lt;a href="{FAQ_TGT}" title="{FAQ_TITLE}"&gt;{FAQ_LNK}&lt;/a&gt; ::
+&lt;!-- END faq --&gt;</pre>. You may have to adopt the html that is usually wrapped around your menu items for the user faq menu item as well.</li>
+<li>Find a place where the Ecards-Log should appear in your admin menu.<br />
+Edit theme.php and find
+<pre>&lt;td class="admin_menu"&gt;&lt;a href="banning.php" title=""&gt;{BAN_LNK}&lt;/a&gt;&lt;/td&gt;</pre> Add after it
+<pre>&lt;td class="admin_menu"&gt;&lt;a href="db_ecard.php" title=""&gt;{DB_ECARD_LNK}&lt;/a&gt;&lt;/td&gt;</pre></li>
+<li>Add clickable album feature:<br />
+Edit theme.php and find
+<pre>&lt;b&gt;{ALBUM_TITLE}&lt;/b&gt;</pre>
+. Replace it with
+<pre>&lt;a href="{ALB_LINK_TGT}" class="alblink"&gt;&lt;b&gt;{ALBUM_TITLE}&lt;/b&gt;&lt;/a&gt;</pre>
+(This code is twice in theme.php, so you will have to replace it two times).
+</li>
+<li>Correct the missing link to tile.gif in the fimstrip display:<br />
+Edit theme.php and find<br />
+<pre>&lt;td valign="top" background='themes/igames/images/tile.gif' align="center" height='30'&gt;&amp;nbsp;&lt;/td&gt;</pre>.<br />
+Replace <tt class="code">igames</tt> in this line with the name of your theme. This line exists twice in your theme.php - you'll have to change both times the reference from <tt class="code">igames</tt> to <tt class="code">your_theme</tt>.
+</li>
+<li>Copy the file <i>tile.gif</i> from any theme that comes with coppermine (e.g. <i>themes/default/images/tile.gif</i>) into them images-folder of your own custom theme (e.g. <i>themes/your_theme/images/</i>)</li>
+<li>Add the Downloadable favorites option:<br />
+Edit theme.php and find
+<pre>// HTML template for thumbnails display</pre>
+and add before it
+<pre>// HTML template for title row of the fav thumbnail view (album title + download)
+$template_fav_thumb_view_title_row = &lt;&lt;&lt;EOT
+
+                        &lt;table width="100%" cellpadding="0" cellspacing="0"&gt;
+                        &lt;tr&gt;
+                                &lt;td width="100%" class="statlink"&gt;&lt;h2&gt;{ALBUM_NAME}&lt;/h2&gt;&lt;/td&gt;
+                                &lt;td&gt;&lt;img src="images/spacer.gif" width="1"&gt;&lt;/td&gt;
+                                &lt;td class="sortorder_cell"&gt;
+                                        &lt;table height="100%" cellpadding="0" cellspacing="0"&gt;
+                                                &lt;tr&gt;
+                                                        &lt;td class="sortorder_options"&gt;&lt;span class="statlink"&gt;&lt;a href="zipdownload.php"&gt;{DOWNLOAD_ZIP}&lt;/a&gt;&lt;/span&gt;&lt;/td&gt;
+                                                &lt;/tr&gt;
+                                                &lt;/table&gt;
+                                &lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;/table&gt;
+
+EOT;</pre>
+Make sure there are no spaces in front of or after the <tt class="code">EOT;</tt> in the last line.</li>
+<li>Replace hardcoded format of intermediate pic with css format: <br />
+Edit theme.php and find
+<pre>          &lt;table cellspacing="2" cellpadding="0" style="border: 1px solid #000000; background-color: #FFFFFF; margin-top: 30px; margin-bottom: 30px;"&gt;
+                                &lt;tr&gt;
+                                        &lt;td&gt;</pre>
+and replace with
+<pre>                        &lt;table cellspacing="2" cellpadding="0" class="imageborder"&gt;
+                                &lt;tr&gt;
+                                        &lt;td align="center"&gt;</pre>
+</li>
+<li>Move debug output from theme to functions:<br />
+Edit theme.php and find
+<pre>    if ($CONFIG['debug_mode']) {
+        $time_end = getmicrotime();
+        $time = round($time_end - $time_start, 3);
+
+        $query_count = count($query_stats);
+        $query_times = '';
+        $total_query_time = 0;
+        foreach ($query_stats as $qtime) {
+            $query_times .= round($qtime, 3) . "s ";
+            $total_query_time += $qtime;
+        }
+        $total_query_time = round($total_query_time, 3);
+
+        starttable('100%', 'Debug info');
+        echo "&lt;tr&gt;&lt;td class=\"tableb\"&gt;";
+        echo "USER: &lt;pre&gt;";
+        print_r($USER);
+        echo "&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;td class=\"tableb\"&gt;";
+        echo "&lt;tr&gt;&lt;td class=\"tableb\"&gt;";
+        echo "USER DATA: &lt;pre&gt;";
+        print_r($USER_DATA);
+        echo "&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;td class=\"tableb\"&gt;";
+        echo "&lt;tr&gt;&lt;td class=\"tableb\"&gt;";
+        echo "Queries: &lt;pre&gt;";
+        print_r($queries);
+        echo "&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;td class=\"tableb\"&gt;";
+        echo "GET :&lt;pre&gt;";
+        print_r($HTTP_GET_VARS);
+        echo "&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;td class=\"tableb\"&gt;";
+        echo "POST :&lt;pre&gt;";
+        print_r($HTTP_POST_VARS);
+        echo "&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;td class=\"tableb\" &gt;";
+        echo &lt;&lt;&lt;EOT
+                Page generated in &lt;b&gt;$time&lt;/b&gt; seconds - &lt;b&gt;$query_count&lt;/b&gt; queries in &lt;b&gt;$total_query_time&lt;/b&gt; seconds - Album set : $ALBUM_SET
+EOT;
+        echo "&lt;/td&gt;&lt;/tr&gt;";
+        echo "&lt;tr&gt;&lt;td class=\"tableb\"&gt;";
+        echo "&lt;a href=\"phpinfo.php\"&gt;Advanced debug mode&lt;/a&gt; (phpinfo)";
+        echo "&lt;/td&gt;&lt;/tr&gt;";
+        endtable();
+    }</pre>
+and replace with
+<pre>    if ($CONFIG['debug_mode']==1 || ($CONFIG['debug_mode']==2 && GALLERY_ADMIN_MODE)) {
+    cpg_debug_output();
+    }</pre>
+</li>
+<li>Add switches for memberlist and faq:<br />
+Edit theme.php and find
+<pre>    if (USER_ID || !$CONFIG['allow_user_registration']) {
+        template_extract_block($template_main_menu, 'register');
+    }</pre>and add after it
+<pre>    if (!USER_ID || !$CONFIG['allow_memberlist']) {
+        template_extract_block($template_main_menu, 'allow_memberlist');
+    }
+
+    if (!$CONFIG['display_faq']) {
+        template_extract_block($template_main_menu, 'faq');
+    }</pre>
+</li>
+<li>Enable new coppermine menu entries:<br />
+Edit theme.php and find
+<pre>        '{MY_GAL_LNK}' => $lang_main_menu['my_gal_lnk'],</pre>
+and add after it
+<pre>        '{MEMBERLIST_TGT}' => "usermgr.php",
+        '{MEMBERLIST_TITLE}' => $lang_main_menu['memberlist_title'],
+        '{MEMBERLIST_LNK}' => $lang_main_menu['memberlist_lnk'],
+        '{FAQ_TGT}' => "faq.php",
+        '{FAQ_TITLE}' => $lang_main_menu['faq_title'],
+        '{FAQ_LNK}' => $lang_main_menu['faq_lnk'],</pre>
+</li>
+<li>Enable new admin menu entries:<br />
+<pre>            '{BAN_LNK}' => $lang_gallery_admin_menu['ban_lnk'],</pre>
+and add after it
+<pre>            '{DB_ECARD_LNK}' => $lang_gallery_admin_menu['db_ecard_lnk'],</pre>
+</li>
+<li>Enable category thumbnail:<br />
+Edit theme.php and find
+<pre>    $template_noabl = template_extract_block($template_cat_list, 'catrow_noalb');
+    $template = template_extract_block($template_cat_list, 'catrow');
+    foreach($cat_data as $category) {
+        if (count($category) == 2) {
+            $params = array('{CAT_TITLE}' => $category[0],
+                '{CAT_DESC}' => $category[1]
+                );
+            echo template_eval($template_noabl, $params);
+        } elseif (isset($category['cat_albums']) && ($category['cat_albums'] != '')) {
+            $params = array('{CAT_TITLE}' => $category[0],
+                '{CAT_DESC}' => $category[1],
+                '{CAT_ALBUMS}' => $category['cat_albums'],
+                '{ALB_COUNT}' => $category[2],
+                '{PIC_COUNT}' => $category[3],
+                );
+            echo template_eval($template, $params);
+        } else {
+            $params = array('{CAT_TITLE}' => $category[0],
+                '{CAT_DESC}' => $category[1],
+                '{CAT_ALBUMS}' => '',
+                '{ALB_COUNT}' => $category[2],
+                '{PIC_COUNT}' => $category[3],
+                );
+            echo template_eval($template, $params);
+        }
+    }</pre>
+and replace with
+<pre>    $template_noabl = template_extract_block($template_cat_list, 'catrow_noalb');
+    $template = template_extract_block($template_cat_list, 'catrow');
+    foreach($cat_data as $category) {
+        if (count($category) == 3) {
+            $params = array('{CAT_TITLE}' => $category[0],
+                    '{CAT_THUMB}' => $category['cat_thumb'],
+                '{CAT_DESC}' => $category[1]
+                );
+            echo template_eval($template_noabl, $params);
+        } elseif (isset($category['cat_albums']) && ($category['cat_albums'] != '')) {
+            $params = array('{CAT_TITLE}' => $category[0],
+                '{CAT_THUMB}' => $category['cat_thumb'],
+                '{CAT_DESC}' => $category[1],
+                '{CAT_ALBUMS}' => $category['cat_albums'],
+                '{ALB_COUNT}' => $category[2],
+                '{PIC_COUNT}' => $category[3],
+                );
+            echo template_eval($template, $params);
+        } else {
+            $params = array('{CAT_TITLE}' => $category[0],
+                '{CAT_THUMB}' => $category['cat_thumb'],
+                '{CAT_DESC}' => $category[1],
+                '{CAT_ALBUMS}' => '',
+                '{ALB_COUNT}' => $category[2],
+                '{PIC_COUNT}' => $category[3],
+                );
+            echo template_eval($template, $params);
+        }
+    }</pre>
+</li>
+<li>Enable favorites - global settings:<br>
+Edit theme.php and find
+<pre>    global $template_thumb_view_title_row, $lang_thumb_view, $template_tab_display, $template_thumbnail_view;</pre>
+and replace with
+<pre>    global $template_thumb_view_title_row,$template_fav_thumb_view_title_row, $lang_thumb_view, $template_tab_display, $template_thumbnail_view;
+</pre>
+</li>
+<li>Enable favorites - switch:<br />
+Edit theme.php and find
+<pre>    $tabs_html = $display_tabs ? create_tabs($nbThumb, $page, $total_pages, $theme_thumb_tab_tmpl) : '';
+    // The sort order options are not available for meta albums
+    if ($sort_options) {
+        $param = array('{ALBUM_NAME}' => $album_name,
+            '{AID}' => $aid,
+            '{PAGE}' => $page,
+            '{NAME}' => $lang_thumb_view['name'],
+            '{TITLE}' => $lang_thumb_view['title'],
+            '{DATE}' => $lang_thumb_view['date'],
+            '{SORT_TA}' => $lang_thumb_view['sort_ta'],
+            '{SORT_TD}' => $lang_thumb_view['sort_td'],
+            '{SORT_NA}' => $lang_thumb_view['sort_na'],
+            '{SORT_ND}' => $lang_thumb_view['sort_nd'],
+            '{SORT_DA}' => $lang_thumb_view['sort_da'],
+            '{SORT_DD}' => $lang_thumb_view['sort_dd'],
+            );
+        $title = template_eval($template_thumb_view_title_row, $param);
+    } else {
+        $title = $album_name;
+    }
+
+    if ($mode == 'thumb') {
+        starttable('100%', $title, $thumbcols);
+    } else {
+        starttable('100%');
+    }
+
+    echo $header;</pre>
+and replace with
+<pre>    $tabs_html = $display_tabs ? create_tabs($nbThumb, $page, $total_pages, $theme_thumb_tab_tmpl) : '';
+    // The sort order options are not available for meta albums
+    if ($sort_options) {
+        $param = array('{ALBUM_NAME}' => $album_name,
+            '{AID}' => $aid,
+            '{PAGE}' => $page,
+            '{NAME}' => $lang_thumb_view['name'],
+            '{TITLE}' => $lang_thumb_view['title'],
+            '{DATE}' => $lang_thumb_view['date'],
+            '{SORT_TA}' => $lang_thumb_view['sort_ta'],
+            '{SORT_TD}' => $lang_thumb_view['sort_td'],
+            '{SORT_NA}' => $lang_thumb_view['sort_na'],
+            '{SORT_ND}' => $lang_thumb_view['sort_nd'],
+            '{SORT_DA}' => $lang_thumb_view['sort_da'],
+            '{SORT_DD}' => $lang_thumb_view['sort_dd'],
+            );
+        $title = template_eval($template_thumb_view_title_row, $param);
+    } else if ($aid == 'favpics' && $CONFIG['enable_zipdownload'] == 1) { //Lots of stuff can be added here later
+       $param = array('{ALBUM_NAME}' => $album_name,
+                             '{DOWNLOAD_ZIP}'=>$lang_thumb_view['download_zip']
+                               );
+       $title = template_eval($template_fav_thumb_view_title_row, $param);
+    }else{
+        $title = $album_name;
+    }
+
+
+    if ($mode == 'thumb') {
+        starttable('100%', $title, $thumbcols);
+    } else {
+        starttable('100%');
+    }
+
+    echo $header;</pre>
+</li>
+<li>Clean up:<br />
+Edit theme.php and find
+<pre>    if ((!$template)) {
+        $template = $template_film_strip;
+        $thumb_cell = template_extract_block($template, 'thumb_cell');
+        $empty_cell = template_extract_block($template, 'empty_cell');
+        // $spacer = template_extract_block($template, 'spacer');
+    }
+    // if ($header == '') {}
+    $cat_link = is_numeric($aid) ? '' : '&cat=' . $cat;
+
+    $theme_thumb_tab_tmpl = $template_tab_display;
+
+    if ($mode == 'thumb') {
+        $theme_thumb_tab_tmpl['left_text'] = strtr($theme_thumb_tab_tmpl['left_text'], array('{LEFT_TEXT}' => $lang_thumb_view['pic_on_page']));
+        $theme_thumb_tab_tmpl['inactive_tab'] = strtr($theme_thumb_tab_tmpl['inactive_tab'], array('{LINK}' => 'thumbnails.php?album=' . $aid . $cat_link . '&page=%d'));
+    } else {
+        $theme_thumb_tab_tmpl['left_text'] = strtr($theme_thumb_tab_tmpl['left_text'], array('{LEFT_TEXT}' => $lang_thumb_view['user_on_page']));
+        $theme_thumb_tab_tmpl['inactive_tab'] = strtr($theme_thumb_tab_tmpl['inactive_tab'], array('{LINK}' => 'index.php?cat=' . $cat . '&page=%d'));
+    }
+</pre>and replace with
+<pre>    if ((!$template)) {
+        $template = $template_film_strip;
+        $thumb_cell = template_extract_block($template, 'thumb_cell');
+        $empty_cell = template_extract_block($template, 'empty_cell');
+    }
+
+    $cat_link = is_numeric($aid) ? '' : '&cat=' . $cat;</pre>
+</li>
+<li>gain some room for the admin menu to display the additional entries:<br />
+Edit style.css and find
+<pre>.admin_menu a {
+        color: #000000;
+        text-decoration: none;
+        display: block;
+        position: relative;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 10px;
+        padding-right: 10px;
+}</pre>Replace it with
+<pre>.admin_menu a {
+        color: #000000;
+        text-decoration: none;
+        display: block;
+        position: relative;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 2px;
+        padding-right: 2px;
+}</pre></li>
+<li>Replace some missing/wrong formating:<br />
+Edit theme.php and find
+<pre>
+&lt;td class="tableh2" colspan="3"&gt;&lt;span class="catlink"&gt;&lt;b&gt;{CAT_TITLE}&lt;/b&gt;&lt;/span&gt;{CAT_DESC}&lt;/td&gt;</pre>. Replace it with
+<pre>&lt;td class="tableh2" colspan="3"&gt;&lt;table border=0 &gt;&lt;tr&gt;&lt;td&gt;{CAT_THUMB}&lt;/td&gt;&lt;td&gt;&lt;span class="catlink"&gt;&lt;b&gt;{CAT_TITLE}&lt;/b&gt;&lt;/span&gt;{CAT_DESC}&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;</pre>
+</li>
+<li>Replace some missing/wrong formating:<br />
+Edit theme.php and find
+<pre>&lt;td class="tableb"&gt;&lt;span class="catlink"&gt;&lt;b&gt;{CAT_TITLE}&lt;/b&gt;&lt;/span&gt;{CAT_DESC}&lt;/td&gt;</pre>. Replace it with
+<pre>&lt;td class="tableb"&gt;&lt;table border=0 &gt;&lt;tr&gt;&lt;td&gt;{CAT_THUMB}&lt;/td&gt;&lt;td&gt;&lt;span class="catlink"&gt;&lt;b&gt;{CAT_TITLE}&lt;/b&gt;&lt;/span&gt;{CAT_DESC}&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;</pre>
+</li>
+<li>Add closing table to fix a bug:<br />
+Edit theme.php and find
+<pre>function theme_display_breadcrumb($breadcrumb, &$cat_data)
+{
+    /**
+     * ** added breadcrumb as a seperate element
+     */
+    global $template_breadcrumb, $lang_breadcrumb;
+
+    starttable('100%');
+    if ($breadcrumb) {
+        $template = template_extract_block($template_breadcrumb, 'breadcrumb');
+        $params = array('{BREADCRUMB}' => $breadcrumb
+            );
+        echo template_eval($template, $params);
+    }
+}</pre>. Replace it with
+<pre>function theme_display_breadcrumb($breadcrumb, &$cat_data)
+{
+    /**
+     * ** added breadcrumb as a seperate element
+     */
+    global $template_breadcrumb, $lang_breadcrumb;
+
+    starttable('100%');
+    if ($breadcrumb) {
+        $template = template_extract_block($template_breadcrumb, 'breadcrumb');
+        $params = array('{BREADCRUMB}' => $breadcrumb
+            );
+        echo template_eval($template, $params);
+    }
+    endtable();
+}</pre>
+</li>
+</ol>
+<p>Save all your open files and upload them to your webserver; test-drive both as admin and as "regular" user.</p>
+</body>
+</html>

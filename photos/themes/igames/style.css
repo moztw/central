@@ -1,0 +1,562 @@
+/*
+$Id: style.css,v 1.2 2004/06/11 09:20:09 tarique Exp $
+*/
+
+/* Foreground color definition */
+body { color : #C6B78E; }
+.topmenu, .topmenu a { color : #E6E6E6; }
+.topmenu a:hover { color : #FFFFCC; }
+.tableh1, .tableh1a, .tableh1_compact, .navmenu, .navmenu a, .sortorder_cell, .sortorder_options, .statlink, .statlink a, .statlink a:hover { color : #C6B78E; }
+.tableh2, .tableh2_compact { color : #FFFFCC; }
+.textinput, .listbox, .radio, .checkbox { color: #FFFFCC; }
+.alblink, .alblink a, .catlink, .catlink a { color : #FFFFCC; }
+a,  .bblink a, .user_thumb_infobox a  { color: #FFFFCC; }
+a:hover, .bblink a:hover, .user_thumb_infobox a:hover, .alblink a:hover, .catlink a:hover { color : #E6E6E6; }
+.button, .comment_button, .admin_menu_thumb, .admin_menu_thumb a, .admin_menu_thumb a:hover, .admin_menu, .admin_menu a, .admin_menu a:hover { color : #FFFFFF; }
+.comment_date { color : #5F5F5F; }
+.footer, .footer a, .footer a:hover { color : #666666; }
+
+/* Background colors definition */
+body { background-color: #4A4A4A; }
+.textinput, .listbox, .radio, .checkbox { background-color: #4A4A4A; }
+.tableh1, .tableh1_compact, .navmenu, .navmenu a, .navmenu a:hover  {         background : #3F3F3F ; }
+.tableh2, .tableh2_compact, .tablef, .img_caption_table th {         background : #343333 ; }
+.tableb, .tableb_compact, .thumbnails, .img_caption_table td { background : #454444 ; }
+
+/* Borders for input controls */
+.textinput, .listbox, .button, .comment_button, .admin_menu, .admin_menu_thumb  {        border: 1px solid #666666; }
+.image { border: 1px solid #000000; }
+.imageborder { border: 1px solid #000000; background-color:#000000; margin-top: 30px; margin-bottom: 30px; }
+.image1 { border: 1px solid #ff0000; }
+
+.maintable, .maintablea, .maintableb {        background-color: #222222; }
+.img_caption_table th, .img_caption_table td { border-top : 1px solid #000000; }
+
+/* Fonts definition */
+body { font-family: "Trebuchet MS", Verdana, Geneva, Arial, sans-serif; }
+.tableh1, .tableh1a, .catlink, .tableh2 { font-family: Verdana, Geneva, Arial, sans-serif; }
+.textinput, .listbox, .radio, .checkbox { font-family: "Trebuchet MS", Verdana, Geneva, Arial, sans-serif; }
+.button, .comment_button, .sortorder_options, .admin_menu_thumb { font-family: Arial, Helvetica, sans-serif; }
+
+table {
+        font-size : 12px;
+}
+
+body {
+        font-size : 12px;
+        margin: 0px;
+}
+
+h1{
+        font-weight: normal;
+        font-size: 28px;
+        font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        padding-left : 20px;
+        color: #FFFFFF;
+        margin: 2px;
+}
+
+h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        background-image : url(images/box_left_icon.gif);
+        background-repeat : no-repeat;
+        background-position : left;
+        padding-left : 18px;
+        font-size: 18px;
+        margin: 0px;
+}
+
+h3 {
+        font-weight: normal;
+        font-family: "Trebuchet MS", Verdana, Geneva, Arial, sans-serif;
+        font-size: 14px;
+        padding-left : 20px;
+        color: #F0AF00;
+        margin: 2px;
+}
+
+p {
+        font-size: 100%;
+        margin: 2px 0px;
+}
+
+ul {
+        margin-left: 5px;
+        padding: 0px;
+}
+
+li {
+        margin-left: 10px;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        padding: 0px;
+        list-style-position: outside;
+        list-style-type: disc;
+}
+
+.top_panel td {
+        white-space: nowrap;
+}
+
+.top_menu_left_bttn a {
+        background-image : url(images/left_menu_button.gif);
+        background-repeat : no-repeat;
+        background-position : left;
+        padding-left : 12px;
+        padding-right : 6px;
+        position: relative;
+        display: block;
+        height : 35px;
+        line-height : 35px;
+        text-decoration: none;
+        color: #C6B78E;
+        font-size: 14px;
+}
+
+.top_menu_left_bttn a:hover {
+        background-image : url(images/left_menu_button_over.gif);
+        background-position : left;
+        background-repeat : no-repeat;
+        text-decoration: none;
+        color: #F0AF00;
+}
+
+.top_menu_right_bttn a {
+        background-image : url(images/right_menu_button.gif);
+        background-repeat : no-repeat;
+        background-position : right;
+        padding-right : 22px;
+        padding-left : 6px;
+        position: relative;
+        display: block;
+        height : 35px;
+        line-height : 35px;
+        text-decoration: none;
+        color: #C6B78E;
+        font-size: 14px;
+}
+
+.top_menu_right_bttn a:hover {
+        background-image : url(images/right_menu_button_over.gif);
+        background-position : right;
+        background-repeat : no-repeat;
+        text-decoration: none;
+        color: #F0AF00;
+}
+
+.top_menu_bttn a {
+        background-image : url(images/menu_button.gif);
+        background-position : left;
+        padding-left : 6px;
+        padding-right : 6px;
+        position: relative;
+        display: block;
+        height : 35px;
+        line-height : 35px;
+        text-decoration: none;
+        color: #C6B78E;
+        font-size: 14px;
+}
+
+.top_menu_bttn a:hover {
+        background-image : url(images/menu_button_over.gif);
+        text-decoration: none;
+        color:         #F0AF00;
+}
+
+.textinput {
+        font-size: 100%;
+        padding-right: 3px;
+        padding-left: 3px;
+}
+
+.listbox {
+        font-size: 100%;
+        vertical-align : middle;
+}
+
+.button {
+        font-size: 100%;
+        background-image : url(images/button_bg.gif);
+        background-position : bottom;
+}
+
+.comment_button {
+        font-size: 100%;
+        background-image : url(images/button_bg.gif);
+        background-position : bottom;
+        padding-left: 3px;
+        padding-right: 3px;
+}
+
+.radio {
+        font-size: 100%;
+        vertical-align : middle;
+}
+
+.checkbox {
+        font-size: 100%;
+        vertical-align : middle;
+}
+
+a {
+        text-decoration: none;
+}
+
+a:hover {
+        text-decoration: underline;
+}
+
+.bblink a {
+        text-decoration: none;
+}
+
+.bblink a:hover {
+        text-decoration: underline;
+}
+
+.maintable {
+        margin-top: 2px;
+        margin-bottom: 2px;
+/*        border: 1px solid #000000; */
+}
+
+.maintablea {
+        margin-top: 5px;
+}
+
+.maintableb {
+        margin-bottom: 2px;
+/*        border: 1px solid #000000; */
+}
+
+.tableh1 {
+        padding-right: 10px;
+        padding-left: 10px;
+        border-bottom: 1px solid #000000;
+        border-right: 1px solid #000000;
+        height: 25px;
+        background-image: url(images/tableh1_bg.gif);
+}
+
+.tableh1a {
+        border-bottom: 1px solid #000000;
+        color: #C6B78E;
+}
+
+.tableh1a td {
+        border: none;
+        height: 30px;
+        font-size: 120%;
+        font-weight: bold;
+        color: #C6B78E;
+        background-image: url(images/tableh1a_bg_middle.gif);
+}
+
+.tableh1a img {
+        display: block;
+}
+
+.tableh1_compact {
+        padding-top: 2px;
+        padding-right: 5px;
+        padding-bottom: 2px;
+        padding-left: 5px;
+        border-bottom: 1px solid #000000;
+        border-right: 1px solid #000000;
+        height: 25px;
+        background-image: url(images/tableh1_bg.gif);
+}
+
+.tableh2 {
+        padding-top: 3px;
+        padding-right: 10px;
+        padding-bottom: 3px;
+        padding-left: 10px;
+}
+
+.tableh2_compact {
+        padding-top: 2px;
+        padding-right: 5px;
+        padding-bottom: 2px;
+        padding-left: 5px;
+}
+
+.tableb {
+        padding-top: 3px;
+        padding-right: 10px;
+        padding-bottom: 3px;
+        padding-left: 10px;
+}
+
+.tableb_compact {
+        padding-top: 2px;
+        padding-right: 5px;
+        padding-bottom: 2px;
+        padding-left: 5px;
+}
+
+.tablef {
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+}
+
+.album_stat {
+        font-size : 85%;
+        margin: 5px 0px;
+}
+
+.thumb_title {
+        font-weight : bold;
+        font-size: 80%;
+        padding: 2px;
+        display : block;
+}
+
+.thumb_caption {
+        font-size: 80%;
+        padding: 1px;
+        display : block;
+}
+
+.thumb_caption a {
+        text-decoration: underline;
+}
+
+
+.thumb_num_comments {
+        font-weight: normal;
+        font-size: 85%;
+        padding: 2px;
+        font-style : italic;
+        display : block;
+}
+
+.user_thumb_infobox {
+        margin-top: 1px;
+        margin-bottom: 1px;
+}
+
+.user_thumb_infobox th {
+        font-weight : bold;
+        font-size: 100%;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        text-align : center;
+}
+
+.user_thumb_infobox td {
+        font-size: 85%;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        text-align : center;
+}
+
+.user_thumb_infobox a {
+        text-decoration: none;
+}
+
+.user_thumb_infobox a:hover {
+        text-decoration: underline;
+}
+
+.sortorder_options {
+        padding: 0px;
+        margin: 0px;
+        font-weight: normal;
+        font-size: 80%;
+        white-space: nowrap;
+}
+
+.navmenu {
+        font-weight: bold;
+        border: none;
+        background-image: url(images/tableh1_bg.gif);
+}
+
+.navmenu img {
+        display: block;
+}
+
+.navmenu a {
+        position: relative;
+        display: block;
+        padding-left: 5px;
+        padding-right: 5px;
+        text-decoration: none;
+        border-bottom: 1px solid #000000;
+        border-left: 1px solid #838383;
+        border-right: 1px solid #000000;
+        background-image: url(images/tableh1_bg.gif);
+        line-height: 25px;
+        height : 25px;
+}
+
+.navmenu a:hover {
+        text-decoration: none;
+        border-bottom: 1px solid #3F3F3F;
+        border-left: 1px solid #3F3F3F;
+        border-right: 1px solid #3F3F3F;
+}
+
+.admin_menu_thumb {
+        font-size: 90%;
+        background-image : url(images/button_bg.gif);
+        background-position : bottom;
+        font-weight: bold;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        width: 85px;
+}
+
+.admin_menu_thumb a {
+        text-decoration: none;
+        display: block;
+        position: relative;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 10px;
+        padding-right: 10px;
+}
+
+
+.admin_menu_thumb a:hover {
+        text-decoration: underline;
+}
+
+.admin_menu {
+        font-size: 90%;
+        background-image : url(images/button_bg.gif);
+        background-position : bottom;
+        background-repeat: repeat-x;
+        background-color: #BFC0C3;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        text-align: center;
+}
+
+.admin_menu a {
+        text-decoration: none;
+        display: block;
+        position: relative;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        padding-left: 2px;
+        padding-right: 2px;
+}
+
+.admin_menu a:hover {
+        text-decoration: underline;
+}
+
+.comment_date{
+        font-size: 90%;
+        vertical-align : middle;
+}
+
+.image {
+        margin: 2px;
+}
+
+.thumbnails {
+        padding: 5px;
+}
+
+.footer {
+        font-size : 9px;
+}
+
+.footer a {
+        text-decoration: none;
+}
+
+.footer a:hover {
+        text-decoration: underline;
+}
+
+.statlink a {
+        text-decoration: none;
+}
+
+.statlink a:hover {
+        text-decoration: underline;
+}
+
+.alblink a {
+        text-decoration: underline;
+}
+
+.alblink a:hover {
+        text-decoration: underline;
+}
+
+.catlink {
+        display: block;
+        margin-bottom: 2px;
+}
+
+.catlink a {
+        text-decoration: underline;
+}
+
+.catlink a:hover {
+        text-decoration: underline;
+}
+
+.topmenu {
+        line-height : 130%;
+        font-size : 110%;
+}
+
+.topmenu a {
+        text-decoration : underline;
+}
+
+.topmenu a:hover  {
+        text-decoration : underline;
+}
+
+.img_caption_table {
+        border: none;
+        width : 100%;
+        margin : 0px;
+}
+
+.img_caption_table th {
+        font-size : 100%;
+        padding-top: 4px;
+        padding-right: 10px;
+        padding-bottom: 4px;
+        padding-left: 10px;
+}
+
+.img_caption_table td {
+        padding-top: 6px;
+        padding-right: 10px;
+        padding-bottom: 6px;
+        padding-left: 10px;
+}
+
+.debug_text {
+        border: #BDBEBD;
+        background-color: #EFEFEF;
+        width : 100%;
+        margin : 0px;
+}
+
+.clickable_option {
+        font-weight: bold;
+        cursor : hand;
+}
+
+.listbox_lang {
+        color: #C6B78E;
+        background-color: #4A4A4A;
+        border: 1px solid #4A4A4A;
+        font-size: 80%;
+        font-family: Arial, Helvetica, sans-serif;
+        vertical-align : middle;
+}
