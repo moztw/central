@@ -5,7 +5,7 @@
 $CONFIG['dbserver'] =                       'localhost';        // Your database server
 $CONFIG['dbuser'] =                         'web';        // Your mysql username
 $CONFIG['dbpass'] =                         '';                // Your mysql password
-$CONFIG['dbname'] =                         'wikidb';        // Your mysql database name
+$CONFIG['dbname'] =                         'photos';        // Your mysql database name
 
 
 // MySQL TABLE NAMES PREFIX
