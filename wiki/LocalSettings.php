@@ -43,7 +43,7 @@ $wgPasswordSender	= "nobody@moztw.org";
 
 $wgDBserver         = "localhost";
 $wgDBname           = "wikidb";
-$wgDBuser           = "root";
+$wgDBuser           = "web";
 $wgDBpassword       = "";
 $wgDBprefix         = "";
 
