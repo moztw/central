@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // ------------------------------------------------------------------------- //
 // Coppermine Photo Gallery 1.3.2                                            //
 // ------------------------------------------------------------------------- //
@@ -14,18 +14,20 @@
 // the Free Software Foundation; either version 2 of the License, or         //
 // (at your option) any later version.                                       //
 // ------------------------------------------------------------------------- //
-// CVS version: $Id: chinese_gb-utf-8.php,v 1.7 2004/07/24 15:04:01 gaugau Exp $
+// ENCODING CHECK; SHOULD BE YEN BETA MU: ¥ ß µ
+// ------------------------------------------------------------------------- //
+// CVS version: $Id: chinese_gb-utf-8.php,v 1.12 2005/01/01 11:55:33 chtito Exp $
 // ------------------------------------------------------------------------- //
 
 // info about translators and translated language
 $lang_translation_info = array(
   'lang_name_english' => 'Chinese',
-  'lang_name_native' => 'ÖÐÎÄ(¼òÌå)',
+  'lang_name_native' => '简体中文(GB2312)',
   'lang_country_code' => 'zh',
-  'trans_name'=> 'Neil Gerstenberg',
-  'trans_email' => 'info@yellowriverarts.com',
-  'trans_website' => 'http://yellowriverarts.com/',
-  'trans_date' => '2004-04-20',
+  'trans_name'=> 'Cheng Dong',
+  'trans_email' => 'ccdong@gmail.com',
+  'trans_website' => 'http://www.thirdclassroom.com/',
+  'trans_date' => '2004-11-14',
 );
 
 $lang_charset = 'utf-8';
@@ -73,27 +75,27 @@ $lang_meta_album_names = array(
 $lang_errors = array(
   'access_denied' => '你没有使用本页的权限.',
   'perm_denied' => '你没有权限执行此动作.',
-  'param_missing' => '程式被呼叫而没有需要的参数.',
+  'param_missing' => '程序被呼叫而没有需要的参数.',
   'non_exist_ap' => '所选择的 相簿/图片 不存在 !', //cpg1.3.0
-  'quota_exceeded' => '超过磁碟配额<br /><br />你的配额有 [quota]K, 已使用的有 [space]K, 加入此图片会超过配额.', //cpg1.3.0
-  'gd_file_type_err' => '当使用 GD 图像程式库只容许 JPEG / PNG 图档.',
-  'invalid_image' => '你上传的档案己经损坏, 或是 GD 图像程式库不能处理',
+  'quota_exceeded' => '超过空间配额<br /><br />你的配额有 [quota]K, 已使用的有 [space]K, 加入此图片会超过配额.', //cpg1.3.0
+  'gd_file_type_err' => '当使用 GD 图像程序库只容许 JPEG / PNG 图档.',
+  'invalid_image' => '你上传的文档己经损坏, 或是 GD 图像程序库不能处理',
   'resize_failed' => '无法建立缩图或变更图档尺寸.',
   'no_img_to_display' => '没有图片可以显示.',
-  'non_exist_cat' => '所选择的类别並不存在.',
+  'non_exist_cat' => '所选择的类别并不存在.',
   'orphan_cat' => '这个子类别存于一个不存在的父类别, 请先至类别管理修正这个问题.', //cpg1.3.0
   'directory_ro' => '目录 \'%s\' 无法写入, 导致图片无法删除', //cpg1.3.0
-  'non_exist_comment' => '所选择的留言並不存在.',
+  'non_exist_comment' => '所选择的留言并不存在.',
   'pic_in_invalid_album' => '此图片存于不存在的相簿 (%s)!?', //cpg1.3.0
   'banned' => '你目前被禁止使用本站.',
 
-  'not_with_udb' => '由于本相簿已和论坛程式整合, 此功能停止使用. 可能是目前设定不支援, 或已由论坛处理.', 
+  'not_with_udb' => '由于本相簿已和论坛程序整合, 此功能停止使用. 可能是目前设定不支援, 或已由论坛处理.', 
   'offline_title' => '离线', //cpg1.3.0
   'offline_text' => '相簿目前离线- 请稍后再试', //cpg1.3.0
-  'ecards_empty' => '目前没有电子卡片的纪录可显示. 请检查相簿设定中是否启用电子卡片日誌!', //cpg1.3.0
+  'ecards_empty' => '目前没有电子卡片的纪录可显示. 请检查相簿设定中是否启用电子卡片日志!', //cpg1.3.0
   'action_failed' => '动作失败.  Coppermine 无法执行你的要求.', //cpg1.3.0
-  'no_zip' => '无法执行ZIP压缩档.  请联络你的相簿管理员.', //cpg1.3.0
-  'zip_type' => '你没有权限上传ZIP压缩档.', //cpg1.3.0
+  'no_zip' => '无法执行ZIP压缩文件.  请联络你的相簿管理员.', //cpg1.3.0
+  'zip_type' => '你没有权限上传ZIP压缩文件.', //cpg1.3.0
 );
 
 $lang_bbcode_help = '参考编码: <li>[b]<b>Bold</b>[/b]</li> <li>[i]<i>Italic</i>[/i]</li> <li>[url=http://yoursite.com/]Url Text[/url]</li> <li>[email]user@domain.com[/email]</li>'; //cpg1.3.0
@@ -197,7 +199,7 @@ $lang_rate_pic = array(
   'fair' => '普普通通',
   'good' => '很好',
   'excellent' => '非常出色',
-  'great' => '叫我第一名',
+  'great' => '最佳图片',
 );
 
 // ------------------------------------------------------------------------- //
@@ -214,13 +216,13 @@ $lang_cpg_die = array(
   INFORMATION => $lang_info,
   ERROR => $lang_error,
   CRITICAL_ERROR => '紧急错误',
-  'file' => '档案: ',
+  'file' => '文档: ',
   'line' => '行数: ',
 );
 
 $lang_display_thumbnails = array(
-  'filename' => '档案名称 : ',
-  'filesize' => '档案大小 : ',
+  'filename' => '文档名称 : ',
+  'filesize' => '文档大小 : ',
   'dimensions' => '影像尺寸 : ',
   'date_added' => '加入日期 : ', //cpg1.3.0
 );
@@ -234,7 +236,7 @@ $lang_get_pic_data = array(
 $lang_cpg_debug_output = array(
   'debug_info' => '除错讯息', //cpg1.3.0
   'select_all' => '全选', //cpg1.3.0
-  'copy_and_paste_instructions' => '如果你要在Coppermine支援论坛上要求协助, 复制並贴上 这个除错讯息到你的发表文章内. 发表文章前请确定用***取代你的密码.', //cpg1.3.0
+  'copy_and_paste_instructions' => '如果你要在Coppermine支援论坛上要求协助, 复制并贴上 这个除错讯息到你的发表文章内. 发表文章前请确定用***取代你的密码.', //cpg1.3.0
   'phpinfo' => '显示php讯息', //cpg1.3.0
 );
 
@@ -244,8 +246,8 @@ $lang_language_selection = array(
 );
 
 $lang_theme_selection = array(
-  'reset_theme' => '预设佈景主题', //cpg1.3.0
-  'choose_theme' => '选择佈景主题', //cpg1.3.0
+  'reset_theme' => '预设布景主题', //cpg1.3.0
+  'choose_theme' => '选择布景主题', //cpg1.3.0
 );
 
 // ------------------------------------------------------------------------- //
@@ -265,7 +267,7 @@ $lang_theme_selection = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('SMILIES_PHP')) $lang_smilies_inc_php = array(
-  'Exclamation' => '感歎',
+  'Exclamation' => '感叹',
   'Question' => '疑问',
   'Very Happy' => '很高兴',
   'Smile' => '微笑',
@@ -330,8 +332,8 @@ if (defined('ALBMGR_PHP')) $lang_albmgr_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('CATMGR_PHP')) $lang_catmgr_php = array(
-  'miss_param' => '\'%s\'操作所需要的参数並未提供 !',
-  'unknown_cat' => '所选择的类别並不存在于资料库',
+  'miss_param' => '\'%s\'操作所需要的参数并未提供 !',
+  'unknown_cat' => '所选择的类别并不存在于资料库',
   'usergal_cat_ro' => '会员相簿类别不能删除 !',
   'manage_cat' => '类别管理',
   'confirm_delete' => '确定要删除此类别吗', //js-alert
@@ -367,7 +369,7 @@ if (defined('CONFIG_PHP')) $lang_config_php = array(
   'th_any' => '最大外观',
   'th_ht' => '高度',
   'th_wd' => '宽度',
-  'label' => '标籤', //cpg1.3.0
+  'label' => '标签', //cpg1.3.0
   'item' => '项目', //cpg1.3.0
   'debug_everyone' => '任何人', //cpg1.3.0
   'debug_admin' => '管理员专用', //cpg1.3.0
@@ -380,17 +382,17 @@ if (defined('CONFIG_PHP')) $lang_config_data = array(
   array('相簿管理员电子邮件', 'gallery_admin_email', 0),
   array('在电子卡片内显示\'观看更多图片\'的网址', 'ecards_more_pic_target', 0),
   array('相簿目前离线中', 'offline', 1), //cpg1.3.0
-  array('电子卡片日誌', 'log_ecards', 1), //cpg1.3.0
+  array('电子卡片日志', 'log_ecards', 1), //cpg1.3.0
   array('允许将最爱的图片下载成ZIP档', 'enable_zipdownload', 1), //cpg1.3.0
 
-  '语系, 佈景 &amp; 文字编码设定',
+  '语系, 布景 &amp; 文字编码设定',
   array('语言', 'lang', 5),
-  array('佈景', 'theme', 6),
+  array('布景', 'theme', 6),
   array('显示语言列表', 'language_list', 1), //cpg1.3.0
   array('显示语言国旗', 'language_flags', 8), //cpg1.3.0
   array('显示 &quot;重设&quot; 在语言选择', 'language_reset', 1), //cpg1.3.0
-  array('显示佈景列表', 'theme_list', 1), //cpg1.3.0
-  array('显示 &quot;重设&quot; 在佈景选择', 'theme_reset', 1), //cpg1.3.0
+  array('显示布景列表', 'theme_list', 1), //cpg1.3.0
+  array('显示 &quot;重设&quot; 在布景选择', 'theme_reset', 1), //cpg1.3.0
   array('显示 FAQ', 'display_faq', 1), //cpg1.3.0
   array('显示 bbcode help', 'show_bbcode_help', 1), //cpg1.3.0
   array('文字编码', 'charset', 4), //cpg1.3.0
@@ -418,7 +420,7 @@ if (defined('CONFIG_PHP')) $lang_config_data = array(
   '图片显示 &amp; 留言设定',
   array('图片显示的表格宽度 (像素或 %)', 'picture_table_width', 0), //cpg1.3.0
   array('图片资讯预设显示', 'display_pic_info', 1), //cpg1.3.0
-  array('留言内过滤不良词彙', 'filter_bad_words', 1),
+  array('留言内过滤不良词语', 'filter_bad_words', 1),
   array('留言可以使用笑脸图示', 'enable_smilies', 1),
   array('允许会员在同一张图片 连续发表留言(关闭灌水保护)', 'disable_comment_flood_protect', 1), //cpg1.3.0
   array('图片描述内容的最大长度', 'max_img_desc_length', 0),
@@ -441,18 +443,18 @@ if (defined('CONFIG_PHP')) $lang_config_data = array(
 
   '图片和缩图的进阶设定', //cpg1.3.0
   array('显示私人相簿图片给未登入会员','show_private',1), //cpg1.3.0
-  array('档案名称不接受的字符', 'forbiden_fname_char',0), //cpg1.3.0
-  //array('上传图档可接受的副档名', 'allowed_file_extensions',0), //cpg1.3.0
+  array('文档名称不接受的字符', 'forbiden_fname_char',0), //cpg1.3.0
+  //array('上传图档可接受的扩展名', 'allowed_file_extensions',0), //cpg1.3.0
   array('可接受的图片档类型', 'allowed_img_types',0), //cpg1.3.0
   array('可接受的影片档类型', 'allowed_mov_types',0), //cpg1.3.0
   array('可接受的声音档类型', 'allowed_snd_types',0), //cpg1.3.0
   array('可接受的文件档类型', 'allowed_doc_types',0), //cpg1.3.0
   array('建立缩图的方法','thumb_method',2), //cpg1.3.0
-  array('ImageMagick \'convert\' 程式的路径 (例如 /usr/bin/X11/)', 'impath', 0), //cpg1.3.0
+  array('ImageMagick \'convert\' 程序的路径 (例如 /usr/bin/X11/)', 'impath', 0), //cpg1.3.0
   //array('可接受的图档类型(只对 ImageMagick 有效)', 'allowed_img_types',0), //cpg1.3.0
   array('ImageMagick 的命令列选项', 'im_options', 0), //cpg1.3.0
-  array('读取 JPEG 档案的 EXIF 资料', 'read_exif_data', 1), //cpg1.3.0
-  array('读取 JPEG 档案的 IPTC 资料', 'read_iptc_data', 1), //cpg1.3.0
+  array('读取 JPEG 文档的 EXIF 资料', 'read_exif_data', 1), //cpg1.3.0
+  array('读取 JPEG 文档的 IPTC 资料', 'read_iptc_data', 1), //cpg1.3.0
   array('相簿路径 <a href="#notice1" class="clickable_option">*</a>', 'fullpath', 0), //cpg1.3.0
   array('会员图档路径 <a href="#notice1" class="clickable_option">*</a>', 'userpics', 0), //cpg1.3.0
   array('中级图档的前置字元 <a href="#notice1" class="clickable_option">*</a>', 'normal_pfx', 0), //cpg1.3.0
@@ -466,7 +468,7 @@ if (defined('CONFIG_PHP')) $lang_config_data = array(
   array('有使用者注册时 用电子邮件通知管理员', 'reg_notify_admin_email', 1), //cpg1.3.0
   array('允许两个会员使用同一个电子邮件地址', 'allow_duplicate_emails_addr', 1),
   array('会员可以有私人的相簿 (注意: 如果你切换 是到否 任何目前私人相簿将变成公开相簿)', 'allow_private_albums', 1), //cpg1.3.0
-  array('有会员上传档案等待核准时 通知管理员', 'upl_notify_admin_email', 1), //cpg1.3.0
+  array('有会员上传文档等待核准时 通知管理员', 'upl_notify_admin_email', 1), //cpg1.3.0
   array('允许登入的会员查看会员列表', 'allow_memberlist', 1), //cpg1.3.0
 
   '影像描述的自订栏位 (如果不使用请留下空白)',
@@ -476,7 +478,7 @@ if (defined('CONFIG_PHP')) $lang_config_data = array(
   array('栏位 4 名称', 'user_field4_name', 0),
 
   'Cookies settings',
-  array('使用的 cookie 名称 (与论坛程式整合时, 确定它和论坛的cookie不同)', 'cookie_name', 0),
+  array('使用的 cookie 名称 (与论坛程序整合时, 确定它和论坛的cookie不同)', 'cookie_name', 0),
   array('使用的 cookie 路径', 'cookie_path', 0),
 
   '其他设定',
@@ -484,7 +486,7 @@ if (defined('CONFIG_PHP')) $lang_config_data = array(
   array('在除错模式时显示提示', 'debug_notice', 1), //cpg1.3.0
 
   '<br /><div align="left"><a name="notice1"></a>(*) 若相簿内有图片, 标示有 * 的栏位表示不可更改.<br />
-  <a name="notice2"></a>(**) 改变这个设定只影响已经加入的档案, 如果那些档案已经在相簿内了,这个设定不必改变. 无论如何,你可以从 管理员功能选单里 调整既有的档案,从 &quot;<a href="util.php">管理员工具箱</a> (调整图片尺寸)&quot; </div><br />', //cpg1.3.0
+  <a name="notice2"></a>(**) 改变这个设定只影响已经加入的文档, 如果那些文档已经在相簿内了,这个设定不必改变. 无论如何,你可以从 管理员功能选单里 调整既有的文档,从 &quot;<a href="util.php">管理员工具箱</a> (调整图片尺寸)&quot; </div><br />', //cpg1.3.0
 );
 
 // ------------------------------------------------------------------------- //
@@ -493,22 +495,22 @@ if (defined('CONFIG_PHP')) $lang_config_data = array(
 
 if (defined('DB_ECARD_PHP')) $lang_db_ecard_php = array(
   'title' => '寄出电子卡片', //cpg1.3.0
-  'ecard_sender' => '寄件者', //cpg1.3.0
-  'ecard_recipient' => '收件者', //cpg1.3.0
+  'ecard_sender' => '发信人', //cpg1.3.0
+  'ecard_recipient' => '收信人', //cpg1.3.0
   'ecard_date' => '日期', //cpg1.3.0
   'ecard_display' => '显示电子卡片', //cpg1.3.0
   'ecard_name' => '名称', //cpg1.3.0
   'ecard_email' => '电子邮件地址', //cpg1.3.0
   'ecard_ip' => 'IP #', //cpg1.3.0
-  'ecard_ascending' => '升幂', //cpg1.3.0
-  'ecard_descending' => '降幂', //cpg1.3.0
+  'ecard_ascending' => '升序', //cpg1.3.0
+  'ecard_descending' => '降序', //cpg1.3.0
   'ecard_sorted' => '排序', //cpg1.3.0
-  'ecard_by_date' => '依日期', //cpg1.3.0
-  'ecard_by_sender_name' => '依寄件者名称', //cpg1.3.0
-  'ecard_by_sender_email' => '依寄件者邮件', //cpg1.3.0
-  'ecard_by_sender_ip' => '依寄件者的 IP 位址', //cpg1.3.0
-  'ecard_by_recipient_name' => '依收件者名称', //cpg1.3.0
-  'ecard_by_recipient_email' => '依收件者邮件', //cpg1.3.0
+  'ecard_by_date' => '按日期', //cpg1.3.0
+  'ecard_by_sender_name' => '按发信人名称', //cpg1.3.0
+  'ecard_by_sender_email' => '按发信人邮件', //cpg1.3.0
+  'ecard_by_sender_ip' => '按发信人的 IP 位址', //cpg1.3.0
+  'ecard_by_recipient_name' => '按收信人名称', //cpg1.3.0
+  'ecard_by_recipient_email' => '按收信人邮件', //cpg1.3.0
   'ecard_number' => '显示纪录 %s 到 %s 在 %s', //cpg1.3.0
   'ecard_goto_page' => '到页次', //cpg1.3.0
   'ecard_records_per_page' => '页次纪录', //cpg1.3.0
@@ -530,24 +532,24 @@ if (defined('DB_INPUT_PHP')) $lang_db_input_php = array(
   'alb_need_title' => '您必须为相簿提供一个标题 !',
   'no_udp_needed' => '没有更新的必要',
   'alb_updated' => '相簿已经更新',
-  'unknown_album' => '所选择的相簿不存在或您没有权限上传档案到此相簿',
-  'no_pic_uploaded' => '没有档案被上传 !<br /><br />如果您确定有选择档案上传, 请检查伺服器是否允许上传档案...', //cpg1.3.0
+  'unknown_album' => '所选择的相簿不存在或您没有权限上传文档到此相簿',
+  'no_pic_uploaded' => '没有文档被上传 !<br /><br />如果您确定有选择文档上传, 请检查服务器是否允许上传文档...', //cpg1.3.0
   'err_mkdir' => '无法建立目录 %s !',
   'dest_dir_ro' => '目录 %s 无法写入 !',
   'err_move' => '无法搬移 %s 到 %s !',
   'err_fsize_too_large' => '您上传的图片太大 (不能超过 %s x %s) !', //cpg1.3.0
   'err_imgsize_too_large' => '您上传的图档太大 (不能超过 %s KB) !',
-  'err_invalid_img' => '上传的档案並不是容许的图片格式 !',
+  'err_invalid_img' => '上传的文档并不是容许的图片格式 !',
   'allowed_img_types' => '您只可以上传 %s 张图片.',
-  'err_insert_pic' => '档案 \'%s\' 无法加入此相簿 ', //cpg1.3.0
-  'upload_success' => '档案上传完成!<br /><br />当管理者核准后就可以看到档案了.', //cpg1.3.0
-  'notify_admin_email_subject' => '%s - 上传档案通知', //cpg1.3.0
-  'notify_admin_email_body' => '%s有上传档案 需要你的核准. 请查阅 %s', //cpg1.3.0
+  'err_insert_pic' => '文档 \'%s\' 无法加入此相簿 ', //cpg1.3.0
+  'upload_success' => '文档上传完成!<br /><br />当管理者核准后就可以看到文档了.', //cpg1.3.0
+  'notify_admin_email_subject' => '%s - 上传文档通知', //cpg1.3.0
+  'notify_admin_email_body' => '%s有上传文档 需要你的核准. 请查阅 %s', //cpg1.3.0
   'info' => '讯息',
   'com_added' => '留言已加入',
   'alb_updated' => '相簿已经更新',
   'err_comment_empty' => '留言是空的 !',
-  'err_invalid_fext' => '只有下列的副档名才容许 : <br /><br />%s.',
+  'err_invalid_fext' => '只有下列的扩展名才容许 : <br /><br />%s.',
   'no_flood' => '抱歉, 此图片最后一个留言是您提供<br /><br />您可以修改您的留言', //cpg1.3.0
   'redirect_msg' => '页面转移中.<br /><br /><br />按 \'继续\' 如果页面没有自动刷新',
   'upl_success' => '已经加入您的图片', //cpg1.3.0
@@ -606,11 +608,11 @@ $lang_display_image_php = array(
 
 $lang_picinfo = array(
   'title' =>'图片资讯', //cpg1.3.0
-  'Filename' => '档案名称',
+  'Filename' => '文档名称',
   'Album name' => '相簿名称',
   'Rating' => '评分 (%s 次投票)',
   'Keywords' => '关键字',
-  'File Size' => '档案大小',
+  'File Size' => '文档大小',
   'Dimensions' => '尺寸',
   'Displayed' => '显示',
   'Camera' => '相机',
@@ -657,13 +659,13 @@ if (defined('ECARDS_PHP') || defined('DISPLAYECARD_PHP')) $lang_ecard_php =array
   'view_ecard' => '如果 电子卡片 无法正确显示, 请按此连结',
   'view_more_pics' => '按此连结看更多图片 !',
   'send_success' => '你的 电子卡片 寄出',
-  'send_failed' => '抱歉, 本伺服器无法为你寄出 电子卡片...',
+  'send_failed' => '抱歉, 本服务器无法为你寄出 电子卡片...',
   'from' => '由',
   'your_name' => '你的名称',
   'your_email' => '你的电子邮件地址',
   'to' => '给',
-  'rcpt_name' => '收件者名称',
-  'rcpt_email' => '收件者电子邮件地址',
+  'rcpt_name' => '收信人名称',
+  'rcpt_email' => '收信人电子邮件地址',
   'greetings' => '问候语',
   'message' => '讯息内容',
 );
@@ -713,16 +715,16 @@ if (defined('FAQ_PHP')) $lang_faq_php = array(
 
 if (defined('FAQ_PHP')) $lang_faq_data = array(
   '一般性问题与解答', //cpg1.3.0
-  array('为什么要注册?', '管理员决定使用者是否需要注册. 注册成为会员可获得额外的功能,如 上传档案,有 我的最爱列表, 对影像评分及发表留言 等等.', 'allow_user_registration', '0'), //cpg1.3.0
+  array('为什么要注册?', '管理员决定使用者是否需要注册. 注册成为会员可获得额外的功能,如 上传文档,有 我的最爱列表, 对影像评分及发表留言 等等.', 'allow_user_registration', '0'), //cpg1.3.0
   array('如何注册?', '到 &quot;注册&quot; 去填写栏位内的资料 (部分栏位是选填的).<br />如果管理员开启Email 启用功能 ,在你确认送出注册资料后 你会收到一封认证信 寄到你所填写的信箱内, 里面会说明如何启用你的会员资格. 会员登入前 必须先完成启用动作.', 'allow_user_registration', '1'), //cpg1.3.0
   array('如何登入?', '到 &quot;登入&quot;, 填入你的会员名称及密码 且勾选 &quot;记住我&quot; 下次你再来的时候就会自动登入了.<br /><b>注意:如果你点选 &quot;记住我 Me&quot; ,Cookies 功能必须开启,且本站的cookie存在你的电脑中..</b>', 'offline', 0), //cpg1.3.0
   array('为何无法登入?', '你已经注册並启用帐号了吗(回复认证邮件的连结)?. 那个连结将会启用你的帐号. 其他登入问题 请联络网站管理员.', 'offline', 0), //cpg1.3.0
   array('忘记密码了怎么办 ?', '如果这个网站有 &quot;忘记密码了&quot; 的连结,就按它. 不然就联络网站管理员 请他给你一个新的密码.', 'offline', 0), //cpg1.3.0
   array('我的email变更了怎么办 ?', '只要登入 並且到 &quot;我的个人资料&quot; 变更你的电子邮件地址就可以了', 'offline', 0), //cpg1.3.0
-  array('如何把图片存到  &quot;我的最爱 &quot;?', '点选图片並且点按 &quot;影像资讯&quot; 连结 (<img src="images/info.gif" width="16" height="16" border="0" alt="Picture information" />); 在影像资讯设定里面按 &quot;加入我的最爱&quot;.<br />管理员可能有预设&quot;影像资讯; .<br />注意:Cookies 功能必须开启,且本站的cookie存在你的电脑中.', 'offline', 0), //cpg1.3.0
+  array('如何把图片存到  &quot;我的最爱 &quot;?', '点选图片并且点按 &quot;影像资讯&quot; 连结 (<img src="images/info.gif" width="16" height="16" border="0" alt="Picture information" />); 在影像资讯设定里面按 &quot;加入我的最爱&quot;.<br />管理员可能有预设&quot;影像资讯; .<br />注意:Cookies 功能必须开启,且本站的cookie存在你的电脑中.', 'offline', 0), //cpg1.3.0
   array('如何对图片评分 ?', '点按该影像缩图,在影像底下可以点选你的评分.', 'offline', 0), //cpg1.3.0
   array('如何发表留言 ?', '点按该影像缩图,在影像底下可以发表留言.', 'offline', 0), //cpg1.3.0
-  array('如何上传图片 ?', '到 &quot;上传图片&quot;並选择你要上传到哪一个相簿,按 &quot;浏览&quot; 且点选要上传的图片 按 &quot;开启&quot; (你可以加入影像标题及描述) 然后按 &quot;确认&quot;', 'allow_private_albums', 0), //cpg1.3.0
+  array('如何上传图片 ?', '到 &quot;上传图片&quot;并选择你要上传到哪一个相簿,按 &quot;浏览&quot; 且点选要上传的图片 按 &quot;开启&quot; (你可以加入影像标题及描述) 然后按 &quot;确认&quot;', 'allow_private_albums', 0), //cpg1.3.0
   array('要从哪里上传图片 ?', '你可以上传图片在 &quot;我的相簿&quot;. 管理员可能允许你上传图片到主相簿内.', 'allow_private_albums', 0), //cpg1.3.0
   array('哪种格式或大小的影像可以上传?', '格式跟大小 (jpg,gif,..etc.) 根据管理员的设定.', 'offline', 0), //cpg1.3.0
   array('什么是 &quot;我的相簿&quot;?', '&quot;我的相簿&quot; 是个人的相簿,让会员可以上传及管里影像.', 'allow_private_albums', 0), //cpg1.3.0
@@ -730,14 +732,14 @@ if (defined('FAQ_PHP')) $lang_faq_data = array(
   array('我要如何禁止其他会员看我的相簿?', '你必须在 &quot;管理模式&quot;<br />到 &quot;变更我的相簿. 在 &quot;更新相簿&quot; 栏位, 选择你要变更的相簿.<br />在这里, 你可以变更相簿名称 描述 缩图 ,及限制观看 留言 评分 的权限.<br />按 &quot;更新相簿&quot;.', 'allow_private_albums', 0), //cpg1.3.0
   array('如何观看其他会员的相簿?', '到 &quot;相簿目录&quot; 选择 &quot;会员相簿&quot;.', 'allow_private_albums', 0), //cpg1.3.0
   array('什么是 cookies?', 'Cookies 是网站放在你电脑中的文字资料.<br />Cookies 通常让使用者再次回到网站时自动登入 並记录其他设定资料.', 'offline', 0), //cpg1.3.0
-  array('在哪里可以取得这个相簿程式?', 'Coppermine 是基于GNU GPL的免费多媒体相簿. 它是全功能的 且支援不同的平台. 请到<a href="http://coppermine.sf.net/">Coppermine 的网站</a> 取得更多的资讯 或是下载它.', 'offline', 0), //cpg1.3.0
+  array('在哪里可以取得这个相簿程序?', 'Coppermine 是基于GNU GPL的免费多媒体相簿. 它是全功能的 且支援不同的平台. 请到<a href="http://coppermine.sf.net/">Coppermine 的网站</a> 取得更多的资讯 或是下载它.', 'offline', 0), //cpg1.3.0
 
   '网站导引', //cpg1.3.0
   array('什么是 &quot;相簿目录 &quot;?', '这将显示整个相簿 包含每一个分类. 缩图可以连结到类别中.', 'offline', 0), //cpg1.3.0
-  array('什么是 &quot;我的相簿 &quot;?', '这项功能让会员建立自己的相簿,可增加,删除,修改相簿. 並且可上传档案到相簿里.', 'allow_private_albums', 0), //cpg1.3.0
+  array('什么是 &quot;我的相簿 &quot;?', '这项功能让会员建立自己的相簿,可增加,删除,修改相簿. 並且可上传文档到相簿里.', 'allow_private_albums', 0), //cpg1.3.0
   array('有什么差异在 &quot;管理模式&quot; 和 &quot;会员模式&quot;?', '这项功能, 在管理模式时, 允许会员修改他们自己的相簿 (如果管理员允许的话).', 'allow_private_albums', 0), //cpg1.3.0
-  array('什么是 &quot;上传图片 &quot;?', '这项功能允许会员上传影像(档案大小及格式依管理员设定) 到指定的相簿.', 'allow_private_albums', 0), //cpg1.3.0
-  array('什么是 &quot;最新上传 &quot;?', '这项功能显示最新上传到相簿的档案.', 'offline', 0), //cpg1.3.0
+  array('什么是 &quot;上传图片 &quot;?', '这项功能允许会员上传影像(文档大小及格式依管理员设定) 到指定的相簿.', 'allow_private_albums', 0), //cpg1.3.0
+  array('什么是 &quot;最新上传 &quot;?', '这项功能显示最新上传到相簿的文档.', 'offline', 0), //cpg1.3.0
   array('什么是 &quot;最新留言 &quot;?', '这项功能会员对影像发表的最新留言.', 'offline', 0), //cpg1.3.0
   array('什么是 &quot;热门图片 &quot;?', '这项功能显示被观看最多次的影像,不论是会员或访客.', 'offline', 0), //cpg1.3.0
   array('什么是 &quot;最高评分 &quot;?', '这项功能显示会员评分最高的影像, 显示平均分数(例如: 五个会员各给一个评分 <img src="images/rating3.gif" width="65" height="14" border="0" alt="" />: 影像将有平均评分 <img src="images/rating3.gif" width="65" height="14" border="0" alt="" /> ;五个会员评分从 1 到 5 (1,2,3,4,5) 平均结果将是 <img src="images/rating3.gif" width="65" height="14" border="0" alt="" /> .)<br />评分从 <img src="images/rating5.gif" width="65" height="14" border="0" alt="best" /> (最佳) 到 <img src="images/rating0.gif" width="65" height="14" border="0" alt="worst" /> (最差).', 'offline', 0), //cpg1.3.0
@@ -770,11 +772,11 @@ Password: %s
 
 if (defined('GROUPMGR_PHP')) $lang_groupmgr_php = array(
   'group_name' => '群组名称',
-  'disk_quota' => '磁碟配额',
+  'disk_quota' => '空间配额',
   'can_rate' => '容许为图片评分', //cpg1.3.0
   'can_send_ecards' => '容许寄出卡片',
   'can_post_com' => '容许贴出留言',
-  'can_upload' => '容许上传档案', //cpg1.3.0
+  'can_upload' => '容许上传文档', //cpg1.3.0
   'can_have_gallery' => '容许有个人相簿',
   'apply' => '修改',
   'create_new_group' => '建立新群组',
@@ -784,9 +786,9 @@ if (defined('GROUPMGR_PHP')) $lang_groupmgr_php = array(
   'approval_1' => '公开相簿上传核准 (1)',
   'approval_2' => '私人相簿上传核准 (2)',
   'upload_form_config' => '上传格式设定', //cpg1.3.0
-  'upload_form_config_values' => array( '上传一个档案', '多档上传', '只上传URI ', '只上传ZIP ', 'File-URI', 'File-ZIP', 'URI-ZIP', 'File-URI-ZIP'), //cpg1.3.0
+  'upload_form_config_values' => array( '上传一个文档', '多档上传', '只上传URI ', '只上传ZIP ', 'File-URI', 'File-ZIP', 'URI-ZIP', 'File-URI-ZIP'), //cpg1.3.0
   'custom_user_upload'=>'会员可用的上传框数量?', //cpg1.3.0
-  'num_file_upload'=>'最大/实际 档案 上传框数量', //cpg1.3.0
+  'num_file_upload'=>'最大/实际 文档 上传框数量', //cpg1.3.0
   'num_URI_upload'=>'最大/实际 URI 上传框数量', //cpg1.3.0
   'note1' => '<b>(1)</b> 上传图片至公开相簿需管理员核准',
   'note2' => '<b>(2)</b> 上传图片至私人相簿需管理员核准',
@@ -930,8 +932,8 @@ $lang_register_php = array(
   'submit' => '确认注册',
   'err_user_exists' => '您所填写的会员名称已被人使用, 请重选一个',
   'err_password_mismatch' => '两个密码不合, 请重填一次',
-  'err_uname_short' => '会员名称至少需 2 个字元',
-  'err_password_short' => '密码至少需 2 个字元',
+  'err_uname_short' => '会员名称至少需 2 个字节',
+  'err_password_short' => '密码至少需 2 个字节',
   'err_uname_pass_diff' => '会员名称和密码不可以相同',
   'err_invalid_email' => '电子邮件地址不正确',
   'err_duplicate_email' => '这个电子邮件地址已经被其他人使用过了',
@@ -955,11 +957,11 @@ $lang_register_php = array(
   'acct_active' => '您的帐号已经启用, 现在您可以登入',
   'acct_already_act' => '您的帐号已经启用 !',
   'acct_act_failed' => '此帐号无法启用 !',
-  'err_unk_user' => '所选择的会员並不存在 !',
+  'err_unk_user' => '所选择的会员并不存在 !',
   'x_s_profile' => '%s\'的个人资料',
   'group' => '群组',
   'reg_date' => '加入',
-  'disk_usage' => '磁碟使用量',
+  'disk_usage' => '空间使用量',
   'change_pass' => '修改密码',
   'current_pass' => '现行密码',
   'new_pass' => '新密码',
@@ -1027,7 +1029,7 @@ if (defined('SEARCHNEW_PHP')) $lang_search_new_php = array(
   'no_pic_to_add' => '没有图片可以加入', //cpg1.3.0
   'need_one_album' => '使用此功能必需少要有一个相簿',
   'warning' => '警告',
-  'change_perm' => '程式无法写入这个目录, 请修改权限至 755 或r 777 后再试一次 !', //cpg1.3.0
+  'change_perm' => '程序无法写入这个目录, 请修改权限至 755 或r 777 后再试一次 !', //cpg1.3.0
   'target_album' => '<b>把图片由 &quot;</b>%s<b>&quot; 到 </b>%s', //cpg1.3.0
   'folder' => '资料夹',
   'image' => '图片',
@@ -1039,13 +1041,13 @@ if (defined('SEARCHNEW_PHP')) $lang_search_new_php = array(
   'list_new_pic' => '列出新图片', //cpg1.3.0
   'insert_selected' => '加入所选择的图片', //cpg1.3.0
   'no_pic_found' => '没有找到新图片', //cpg1.3.0
-  'be_patient' => '请耐心等候, 程式需要一点时间来加入所选图片', //cpg1.3.0
+  'be_patient' => '请耐心等候, 程序需要一点时间来加入所选图片', //cpg1.3.0
   'no_album' => '没有相簿被选择',  //cpg1.3.0
   'notes' =>  '<ul>'.
                           '<li><b>OK</b> : 表示图片已成功被加入'.
                           '<li><b>DP</b> : 表示图片重复或已存在资料库'.
                           '<li><b>PB</b> : 表示图片无法加入, 请检查设定或图片存放目录的权限'.
-                          '<li><b>NA</b> : 表示你还没有选择图片的相簿, 按 \'<a href="javascript:history.back(1)">返回</a>\' 並选择相簿. 如果你没有相簿 <a href="albmgr.php">请先建立一个</a></li>'.
+                          '<li><b>NA</b> : 表示你还没有选择图片的相簿, 按 \'<a href="javascript:history.back(1)">返回</a>\' 并选择相簿. 如果你没有相簿 <a href="albmgr.php">请先建立一个</a></li>'.
                           '<li>如果 OK, DP, PB \'符号\' 没有显示请按坏掉的图片查看 PHP 显示的错误讯息'.
                           '<li>如果浏览器逾时, 请按重新整理'.
                           '</ul>', //cpg1.3.0
@@ -1078,7 +1080,7 @@ if (defined('BANNING_PHP')) $lang_banning_php = array(
   'error_specify' => '你需要具体指明使用者名称或IP位址', //cpg1.3.0
   'error_ban_id' => '无效的 ID!', //cpg1.3.0
   'error_admin_ban' => '别闹了 你无法将自己停权!', //cpg1.3.0
-  'error_server_ban' => '你要将自己的伺服器停权? 哎..不要再耍宝了...', //cpg1.3.0
+  'error_server_ban' => '你要将自己的服务器停权? 哎..不要再开玩笑了...', //cpg1.3.0
   'error_ip_forbidden' => '你无法禁止这个 IP - 它是 non-routable!', //cpg1.3.0
   'lookup_ip' => '查看IP 位址', //cpg1.3.0
   'submit' => '执行!', //cpg1.3.0
@@ -1089,39 +1091,39 @@ if (defined('BANNING_PHP')) $lang_banning_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('UPLOAD_PHP')) $lang_upload_php = array(
-  'title' => '上传档案', //cpg1.3.0
+  'title' => '上传文档', //cpg1.3.0
   'custom_title' => '上传选项表', //cpg1.3.0
   'cust_instr_1' => '你可以从下列 选择一个上传框 进行上传.', //cpg1.3.0
   'cust_instr_2' => '选择上传框号', //cpg1.3.0
-  'cust_instr_3' => '档案上传框: %s', //cpg1.3.0
+  'cust_instr_3' => '文档上传框: %s', //cpg1.3.0
   'cust_instr_4' => 'URI/URL 上传框: %s', //cpg1.3.0
   'cust_instr_5' => 'URI/URL 上传框:', //cpg1.3.0
-  'cust_instr_6' => '档案上传框:', //cpg1.3.0
+  'cust_instr_6' => '文档上传框:', //cpg1.3.0
   'cust_instr_7' => '请输入您目前需要的 每一种上传框的数量. 然后按 \'继续\'. ', //cpg1.3.0
   'reg_instr_1' => '无效的选项表动作.', //cpg1.3.0
-  'reg_instr_2' => '现在 你可以用以下的上传框 上传你的档案. 每一个上传档案的大小不可以超过 %s KB . ZIP 档案上传在 \'档案上传\' and \'URI/URL 上传\' 区 .', //cpg1.3.0
-  'reg_instr_3' => '如果你要上传压缩档或要解压缩, 必须使用档案上传框 \'解压缩ZIP 上传\' 区.', //cpg1.3.0
-  'reg_instr_4' => '如果选择以 URI/URL 上传, 请输入档案连结路径 如: http://www.mysite.com/images/example.jpg', //cpg1.3.0
+  'reg_instr_2' => '现在 你可以用以下的上传框 上传你的文档. 每一个上传文档的大小不可以超过 %s KB . ZIP 文档上传在 \'文档上传\' and \'URI/URL 上传\' 区 .', //cpg1.3.0
+  'reg_instr_3' => '如果你要上传压缩文件或要解压缩, 必须使用文档上传框 \'解压缩ZIP 上传\' 区.', //cpg1.3.0
+  'reg_instr_4' => '如果选择以 URI/URL 上传, 请输入文档连结路径 如: http://www.mysite.com/images/example.jpg', //cpg1.3.0
   'reg_instr_5' => '完成选项表后,请按 \'继续\'.', //cpg1.3.0
   'reg_instr_6' => '解压缩ZIP 上传:', //cpg1.3.0
-  'reg_instr_7' => '档案 上传:', //cpg1.3.0
+  'reg_instr_7' => '文档 上传:', //cpg1.3.0
   'reg_instr_8' => 'URI/URL 上传:', //cpg1.3.0
   'error_report' => '错误报告', //cpg1.3.0
   'error_instr' => '下列上传遇到错误:', //cpg1.3.0
-  'file_name_url' => '档案 名称/URL', //cpg1.3.0
+  'file_name_url' => '文档 名称/URL', //cpg1.3.0
   'error_message' => '错误讯息', //cpg1.3.0
-  'no_post' => '档案没有被上传.', //cpg1.3.0
-  'forb_ext' => '不允许的副档名.', //cpg1.3.0
-  'exc_php_ini' => '档案超过php.ini允许的大小.', //cpg1.3.0
-  'exc_file_size' => '档案超过CPG允许的大小.', //cpg1.3.0
+  'no_post' => '文档没有被上传.', //cpg1.3.0
+  'forb_ext' => '不允许的扩展名.', //cpg1.3.0
+  'exc_php_ini' => '文档超过php.ini允许的大小.', //cpg1.3.0
+  'exc_file_size' => '文档超过CPG允许的大小.', //cpg1.3.0
   'partial_upload' => '只有部分上传.', //cpg1.3.0
   'no_upload' => '没有上传.', //cpg1.3.0
   'unknown_code' => '未知的 PHP 上传错误码.', //cpg1.3.0
   'no_temp_name' => '没有上传 - 无暂存档名.', //cpg1.3.0
   'no_file_size' => '没有内容', //cpg1.3.0
   'impossible' => '无法传档.', //cpg1.3.0
-  'not_image' => '这不是标准影像档', //cpg1.3.0
-  'not_GD' => '这不是 GD 副档名.', //cpg1.3.0
+  'not_image' => '这不是标准影像文件', //cpg1.3.0
+  'not_GD' => '这不是 GD 扩展名.', //cpg1.3.0
   'pixel_allowance' => '影像尺寸太大了.', //cpg1.3.0
   'incorrect_prefix' => '不正确的 URI/URL 前缀', //cpg1.3.0
   'could_not_open_URI' => '无法开启URI.', //cpg1.3.0
@@ -1130,12 +1132,12 @@ if (defined('UPLOAD_PHP')) $lang_upload_php = array(
   'http_401' => '401 未被授权浏览', //cpg1.3.0
   'http_402' => '402 此处需付费浏览', //cpg1.3.0
   'http_403' => '403 目前此处关闭禁止浏览', //cpg1.3.0
-  'http_404' => '404 伺服器没有回应', //cpg1.3.0
-  'http_500' => '500 内部伺服器错误', //cpg1.3.0
-  'http_503' => '503 伺服器等待过久 停止服务', //cpg1.3.0
+  'http_404' => '404 服务器没有回应', //cpg1.3.0
+  'http_500' => '500 内部服务器错误', //cpg1.3.0
+  'http_503' => '503 服务器等待过久 停止服务', //cpg1.3.0
   'MIME_extraction_failure' => 'MIME 无法被测定.', //cpg1.3.0
   'MIME_type_unknown' => '未知的 MIME type', //cpg1.3.0
-  'cant_create_write' => '无法新增写入档案.', //cpg1.3.0
+  'cant_create_write' => '无法新增写入文档.', //cpg1.3.0
   'not_writable' => '无法写入.', //cpg1.3.0
   'cant_read_URI' => '无法读取 URI/URL', //cpg1.3.0
   'cant_open_write_file' => '无法开启URI .', //cpg1.3.0
@@ -1144,21 +1146,21 @@ if (defined('UPLOAD_PHP')) $lang_upload_php = array(
   'unknown' => '未知的错误', //cpg1.3.0
   'succ' => '成功上传', //cpg1.3.0
   'success' => '%s 上传已经成功.', //cpg1.3.0
-  'add' => '请按 \'继续\' 增加档案到相簿.', //cpg1.3.0
+  'add' => '请按 \'继续\' 增加文档到相簿.', //cpg1.3.0
   'failure' => '上传失败', //cpg1.3.0
-  'f_info' => '档案资讯', //cpg1.3.0
-  'no_place' => '先前的档案无法被配置.', //cpg1.3.0
-  'yes_place' => '先前的档案已经配置成功.', //cpg1.3.0
-  'max_fsize' => '最大允许档案大小是 %s KB',
+  'f_info' => '文档资讯', //cpg1.3.0
+  'no_place' => '先前的文档无法被配置.', //cpg1.3.0
+  'yes_place' => '先前的文档已经配置成功.', //cpg1.3.0
+  'max_fsize' => '最大允许文档大小是 %s KB',
   'album' => '相簿',
   'picture' => '图片', //cpg1.3.0
   'pic_title' => '图片标题', //cpg1.3.0
   'description' => '图片描述', //cpg1.3.0
   'keywords' => '关键字 (以空格区隔)',
   'err_no_alb_uploadables' => '目前尚未有相簿可以上传图片', //cpg1.3.0
-  'place_instr_1' => '现在 请将图片放到相簿.  你现在可以输入这个档案的相关资讯.', //cpg1.3.0
+  'place_instr_1' => '现在 请将图片放到相簿.  你现在可以输入这个文档的相关资讯.', //cpg1.3.0
   'place_instr_2' => '更多的图片需要配置. 请按 \'继续\'.', //cpg1.3.0
-  'process_complete' => '恭喜  你已经将全部的成功档案上传了.', //cpg1.3.0
+  'process_complete' => '恭喜  你已经将全部的成功文档上传了.', //cpg1.3.0
 );
 
 // ------------------------------------------------------------------------- //
@@ -1175,8 +1177,8 @@ if (defined('USERMGR_PHP')) $lang_usermgr_php = array(
   'reg_d' => '注册日期 由近至远',
   'pic_a' => '图片数 由小至大',
   'pic_d' => '图片数 由大至小',
-  'disku_a' => '磁碟用量 由小至大',
-  'disku_d' => '磁碟用量 由大至小',
+  'disku_a' => '已用配额 由小至大',
+  'disku_d' => '已用配额 由大至小',
   'lv_a' => '最近来访 由近至远', //cpg1.3.0
   'lv_d' => '最近来访 由远至近', //cpg1.3.0
   'sort_by' => '会员排序依',
@@ -1195,7 +1197,7 @@ if (defined('USERMGR_PHP')) $lang_usermgr_php = array(
   'u_user_on_p_pages' => '%d 个会员于 %d 页',
   'confirm_del' => '确定要删除这个会员吗? \\n所有他的相簿及图片都会被删除.', //js-alert //cpg1.3.0
   'mail' => '电子邮件',
-  'err_unknown_user' => '所选择的会员並不存在 !',
+  'err_unknown_user' => '所选择的会员并不存在 !',
   'modify_user' => '编辑会员',
   'notes' => '注意',
   'note_list' => '<li>如果不想改变现行密码, 请将 "密码" 位留下空白',
@@ -1219,25 +1221,25 @@ if (defined('USERMGR_PHP')) $lang_usermgr_php = array(
 if (defined('UTIL_PHP')) $lang_util_php = array(
   'title' => '管理员工具 (调整图片大小)', //cpg1.3.0
   'what_it_does' => '功能',
-  'what_update_titles' => '从档案名称更新图片标题',
+  'what_update_titles' => '从文档名称更新图片标题',
   'what_delete_title' => '删除标题',
   'what_rebuild' => '重建缩图及调整图片大小',
   'what_delete_originals' => '重新调整后的图片将 取代原有的图片',
-  'file' => '档案',
+  'file' => '文档',
   'title_set_to' => '标题变更为',
   'submit_form' => '确认',
   'updated_succesfully' => '更新 已经成功',
   'error_create' => '产生错误',
   'continue' => '继续执行其他的影像',
-  'main_success' => '档案 %s 已设为主图',  //cpg1.3.0
+  'main_success' => '文档 %s 已设为主图',  //cpg1.3.0
   'error_rename' => '错误 %s 改名为 %s', 
-  'error_not_found' => '找不到档案 %s ',
+  'error_not_found' => '找不到文档 %s ',
   'back' => '回主页',
-  'thumbs_wait' => '更新缩图 且/或 调整影像尺寸, 请稍待...',
+  'thumbs_wait' => '更新缩图 且/或 调整影像尺寸, 请稍候...',
   'thumbs_continue_wait' => '继续 更新缩图 且/或 调整影像尺寸...',
-  'titles_wait' => '更新标题, 请稍待...',
-  'delete_wait' => '删除标题, 请稍待...',
-  'replace_wait' => '重新调整后的图片将 取代原有的图片中, 请稍待...',
+  'titles_wait' => '更新标题, 请稍候...',
+  'delete_wait' => '删除标题, 请稍候...',
+  'replace_wait' => '重新调整后的图片将 取代原有的图片中, 请稍候...',
   'instruction' => '简易操作说明',
   'instruction_action' => '请选择操作',
   'instruction_parameter' => '设定参数',
@@ -1250,9 +1252,9 @@ if (defined('UTIL_PHP')) $lang_util_php = array(
   'update_both' => '更新缩图且调整图片尺寸',
   'update_number' => '每点选一次要处理的图片数目',
   'update_option' => '(如果您遇到操作程序逾时的问题,请试着降低此设定)',
-  'filename_title' => '档案名称 &rArr; 图片标题', //cpg1.3.0
+  'filename_title' => '文档名称 &rArr; 图片标题', //cpg1.3.0
   'filename_how' => '如何修改档名', 
-  'filename_remove' => '删除 .jpg 並将 _ (底线) 用空格取代', 
+  'filename_remove' => '删除 .jpg 并将 _ (底线) 用空格取代', 
   'filename_euro' => '将 2003_11_23_13_20_20.jpg 改为 23/11/2003 13:20', 
   'filename_us' => '将 2003_11_23_13_20_20.jpg 改为 11/23/2003 13:20', 
   'filename_time' => '将 2003_11_23_13_20_20.jpg 改为 13:20', 
@@ -1266,10 +1268,10 @@ if (defined('UTIL_PHP')) $lang_util_php = array(
   'delete' => '删除', //cpg1.3.0
   'delete_all' => '全部删除', //cpg1.3.0
   'comment' => '留言: ', //cpg1.3.0
-  'nonexist' => '要附加的档案不存在 # ', //cpg1.3.0
+  'nonexist' => '要附加的文档不存在 # ', //cpg1.3.0
   'phpinfo' => '显示php资讯', //cpg1.3.0
   'update_db' => '更新资料库', //cpg1.3.0
-  'update_db_explanation' => '如果妳有更新 coppermine 档案, 加入修改或由以前的版本升级, 请确定执行一次资料库更新. 这将会在coppermine资料库新增必要的资料表 及/或 设定值.', //cpg1.3.0
+  'update_db_explanation' => '如果您有更新 coppermine 文档, 加入修改或由以前的版本升级, 请确定执行一次资料库更新. 这将会在coppermine资料库新增必要的资料表 及/或 设定值.', //cpg1.3.0
 );
 
 ?>

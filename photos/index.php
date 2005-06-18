@@ -1,21 +1,21 @@
 <?php
-// ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
-// ------------------------------------------------------------------------- //
-// Copyright (C) 2002-2004 Gregory DEMAR                                     //
-// http://www.chezgreg.net/coppermine/                                       //
-// ------------------------------------------------------------------------- //
-// Updated by the Coppermine Dev Team                                        //
-// (http://coppermine.sf.net/team/)                                          //
-// see /docs/credits.html for details                                        //
-// ------------------------------------------------------------------------- //
-// This program is free software; you can redistribute it and/or modify      //
-// it under the terms of the GNU General Public License as published by      //
-// the Free Software Foundation; either version 2 of the License, or         //
-// (at your option) any later version.                                       //
-// ------------------------------------------------------------------------- //
-// CVS version: $Id: index.php,v 1.13 2004/07/28 09:58:14 tarique Exp $
-// ------------------------------------------------------------------------- //
+/*************************
+  Coppermine Photo Gallery
+  ************************
+  Copyright (c) 2003-2005 Coppermine Dev Team
+  v1.1 originaly written by Gregory DEMAR
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  ********************************************
+  Coppermine version: 1.3.3
+  $Source: /cvsroot/coppermine/stable/index.php,v $
+  $Revision: 1.17 $
+  $Author: gaugau $
+  $Date: 2005/04/19 03:17:11 $
+**********************************************/
 
 // Check if standalone is installed in a portal like phpNuke (added by DJMaze)
 $DIR=preg_split("/[\/\\\]/",dirname($_SERVER['PATH_TRANSLATED']));
@@ -84,7 +84,7 @@ function get_subcat_data($parent, &$cat_data, &$album_set_array, $level, $ident 
                 $pic_count = $nbEnr[0];
 
                 $subcat['description'] = preg_replace("/<br.*?>[\r\n]*/i", '<br />' . $ident , bb_decode($subcat['description']));
-                $link = $ident . "<a href=index.php?cat={$subcat['cid']}>{$subcat['name']}</a>";
+                $link = $ident . "<a href=\"index.php?cat={$subcat['cid']}\">{$subcat['name']}</a>";
                 if ($album_count) {
                     $cat_data[] = array($link, $ident . $subcat['description'], $album_count, $pic_count);
                     $HIDE_USER_CAT = 0;
@@ -130,7 +130,7 @@ function get_subcat_data($parent, &$cat_data, &$album_set_array, $level, $ident 
                 $link = "<a href=\"index.php?cat={$subcat['cid']}\">{$subcat['name']}</a>";
                 $user_thumb = $ident.$user_thumb;
                 if ($pic_count == 0 && $album_count == 0) {
-					$user_thumb = $ident;
+                                        $user_thumb = $ident;
                     $cat_data[] = array($link, $subcat['description'],'cat_thumb' =>$user_thumb);
                 } else {
                     // Check if you need to show subcat_level
@@ -291,7 +291,7 @@ function list_users()
                "FROM {$CONFIG['TABLE_USERS']} AS u " .
                "INNER JOIN {$CONFIG['TABLE_ALBUMS']} AS a ON category = " . FIRST_USER_CAT . " + user_id " .
                "LEFT JOIN {$CONFIG['TABLE_PICTURES']} AS p ON (p.aid = a.aid AND approved = 'YES') ";
-        if ($FORBIDDEN_SET != "" && !$cpg_show_private_album) $sql .= "WHERE $FORBIDDEN_SET ";
+        if ($FORBIDDEN_SET != "") $sql .= "WHERE $FORBIDDEN_SET ";
         $sql .= "GROUP BY user_id " .
                 "ORDER BY user_name";
 
@@ -331,8 +331,14 @@ function list_users()
         $user_album_count = $user['alb_count'];
 
         if ($user_pic_count) {
+
+                        if ($CONFIG['show_private']){
+                                $image_size = compute_img_size(100, 75, $CONFIG['alb_list_thumb_size']);
+                                $user_thumb = "<img src=\"images/private.jpg\" {$image_size['geom']} alt=\"\" border=\"0\" class=\"image\" />";
+                        }
             $sql = "SELECT filepath, filename, url_prefix, pwidth, pheight " . "FROM {$CONFIG['TABLE_PICTURES']} " . "WHERE pid='$user_thumb_pid'";
             $result = db_query($sql);
+
             if (mysql_num_rows($result)) {
                 $picture = mysql_fetch_array($result);
                 mysql_free_result($result);
@@ -344,9 +350,10 @@ function list_users()
                 }
                 $image_size = compute_img_size($picture['pwidth'], $picture['pheight'], $CONFIG['alb_list_thumb_size']);
                     $user_thumb = "<img src=\"" . get_pic_url($picture, 'thumb') . "\" class=\"image\" {$image_size['geom']} border=\"0\" alt=\"\">";
-            }
-        }
 
+            }
+
+                }
         $albums_txt = sprintf($lang_list_users['n_albums'], $user_album_count);
         $pictures_txt = sprintf($lang_list_users['n_pics'], $user_pic_count);
 

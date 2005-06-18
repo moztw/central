@@ -1,21 +1,21 @@
 <?php
-// ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
-// ------------------------------------------------------------------------- //
-// Copyright (C) 2002-2004 Gregory DEMAR                                     //
-// http://www.chezgreg.net/coppermine/                                       //
-// ------------------------------------------------------------------------- //
-// Updated by the Coppermine Dev Team                                        //
-// (http://coppermine.sf.net/team/)                                          //
-// see /docs/credits.html for details                                        //
-// ------------------------------------------------------------------------- //
-// This program is free software; you can redistribute it and/or modify      //
-// it under the terms of the GNU General Public License as published by      //
-// the Free Software Foundation; either version 2 of the License, or         //
-// (at your option) any later version.                                       //
-// ------------------------------------------------------------------------- //
-// CVS version: $Id: db_input.php,v 1.6 2004/07/30 15:53:01 nibbler999 Exp $
-// ------------------------------------------------------------------------- //
+/*************************
+  Coppermine Photo Gallery
+  ************************
+  Copyright (c) 2003-2005 Coppermine Dev Team
+  v1.1 originaly written by Gregory DEMAR
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  ********************************************
+  Coppermine version: 1.3.3
+  $Source: /cvsroot/coppermine/stable/db_input.php,v $
+  $Revision: 1.9 $
+  $Author: gaugau $
+  $Date: 2005/04/19 03:17:10 $
+**********************************************/
 
 define('IN_COPPERMINE', true);
 define('DB_INPUT_PHP', true);
@@ -97,6 +97,7 @@ switch ($event) {
         if (!(USER_CAN_POST_COMMENTS)) cpg_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
 
         check_comment($HTTP_POST_VARS['msg_body']);
+                check_comment($HTTP_POST_VARS['msg_author']);
         $msg_author = addslashes(trim($HTTP_POST_VARS['msg_author']));
         $msg_body = addslashes(trim($HTTP_POST_VARS['msg_body']));
         $pid = (int)$HTTP_POST_VARS['pid'];
@@ -305,7 +306,7 @@ switch ($event) {
         } elseif ($PIC_NEED_APPROVAL) {
             pageheader($lang_info);
             msg_box($lang_info, $lang_db_input_php['upload_success'], $lang_continue, 'index.php');
-            // start: send admin approval mail added by gaugau: 03-11-09
+            // start: send admin approval mail
             if ($CONFIG['upl_notify_admin_email'])
             {
                 include_once('include/mailer.inc.php');

@@ -1,6 +1,6 @@
 <?php
 // ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
+// Coppermine Photo Gallery 1.3.0                                            //
 // ------------------------------------------------------------------------- //
 // Copyright (C) 2002-2004 Gregory DEMAR                                     //
 // http://www.chezgreg.net/coppermine/                                       //
@@ -14,7 +14,7 @@
 // the Free Software Foundation; either version 2 of the License, or         //
 // (at your option) any later version.                                       //
 // ------------------------------------------------------------------------- //
-// CVS version: $Id: bulgarian.php,v 1.4 2004/07/24 15:04:00 gaugau Exp $
+// $Id: bulgarian.php,v 1.6 2004/12/29 23:06:37 chtito Exp $
 // ------------------------------------------------------------------------- //
 
 // info about translators and translated language

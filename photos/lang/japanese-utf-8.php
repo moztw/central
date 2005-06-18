@@ -1,6 +1,6 @@
-﻿<?php
+<?php
 // ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
+// Coppermine Photo Gallery 1.3.0                                            //
 // ------------------------------------------------------------------------- //
 // Copyright (C) 2002-2004 Gregory DEMAR                                     //
 // http://www.chezgreg.net/coppermine/                                       //
@@ -14,7 +14,9 @@
 // the Free Software Foundation; either version 2 of the License, or         //
 // (at your option) any later version.                                       //
 // ------------------------------------------------------------------------- //
-// CVS version: $Id: japanese-utf-8.php,v 1.8 2004/07/24 15:04:05 gaugau Exp $
+// ENCODING CHECK; SHOULD BE YEN BETA MU: ¥ ß µ
+// ------------------------------------------------------------------------- //
+// $Id: japanese-utf-8.php,v 1.10 2004/12/29 23:03:30 chtito Exp $
 // ------------------------------------------------------------------------- //
 
 // info about translators and translated language
@@ -32,171 +34,171 @@ $lang_charset = 'utf-8';
 $lang_text_dir = 'ltr'; // ('ltr' for left to right, 'rtl' for right to left)
 
 // shortcuts for Byte, Kilo, Mega
-$lang_byte_units = array('ãƒã‚¤ãƒˆ', 'KB', 'MB');
+$lang_byte_units = array('バイト', 'KB', 'MB');
 
 // Day of weeks and months
-$lang_day_of_week = array('æ—¥', 'æœˆ', 'ç«', 'æ°´', 'æœ¨', 'é‡‘', 'åœŸ');
+$lang_day_of_week = array('日', '月', '火', '水', '木', '金', '土');
 $lang_month = array('01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
 
 // Some common strings
 $lang_yes = 'Yes';
 $lang_no  = 'No';
-$lang_back = 'æˆ»ã‚‹';
-$lang_continue = 'ç¶šã‘ã‚‹';
-$lang_info = 'æƒ…å ±';
-$lang_error = 'ã‚¨ãƒ©ãƒ¼';
+$lang_back = '戻る';
+$lang_continue = '続ける';
+$lang_info = '情報';
+$lang_error = 'エラー';
 
 // The various date formats
 // See http://www.php.net/manual/en/function.strftime.php to define the variable below
-$album_date_fmt =    '%Yå¹´%Bæœˆ%dæ—¥';
+$album_date_fmt =    '%Y年%B月%d日';
 $lastcom_date_fmt =  '%y/%m/%d/ %H:%M';
-$lastup_date_fmt =   '%Yå¹´%Bæœˆ%dæ—¥';
-$register_date_fmt = '%Yå¹´%Bæœˆ%dæ—¥';
-$lasthit_date_fmt =  '%Yå¹´%Bæœˆ%dæ—¥ %I:%M %p';
-$comment_date_fmt =  '%Yå¹´%Bæœˆ%dæ—¥ %I:%M %p';
+$lastup_date_fmt =   '%Y年%B月%d日';
+$register_date_fmt = '%Y年%B月%d日';
+$lasthit_date_fmt =  '%Y年%B月%d日 %I:%M %p';
+$comment_date_fmt =  '%Y年%B月%d日 %I:%M %p';
 
 // For the word censor
 $lang_bad_words = array('*fuck*', 'asshole', 'assramer', 'bitch*', 'c0ck', 'clits', 'Cock', 'cum', 'cunt*', 'dago', 'daygo', 'dego', 'dick*', 'dildo', 'fanculo', 'feces', 'foreskin', 'Fu\(*', 'fuk*', 'honkey', 'hore', 'injun', 'kike', 'lesbo', 'masturbat*', 'motherfucker', 'nazis', 'nigger*', 'nutsack', 'penis', 'phuck', 'poop', 'pussy', 'scrotum', 'shit', 'slut', 'titties', 'titty', 'twaty', 'wank*', 'whore', 'wop*');
 
 $lang_meta_album_names = array(
-  'random' => 'ãƒ©ãƒ³ãƒ€ãƒ ãƒ•ã‚¡ã‚¤ãƒ«',
-  'lastup' => 'æ–°ç€å†™çœŸ',
-  'lastalb'=> 'æœ€æ–°ã‚¢ãƒ«ãƒãƒ ',
-  'lastcom' => 'æœ€æ–°ã‚³ãƒ¡ãƒ³ãƒˆ',
-  'topn' => 'æœ€å¤šé–²è¦§',
-  'toprated' => 'ãƒˆãƒƒãƒ—ãƒ¬ãƒ¼ãƒˆ',
-  'lasthits' => 'æœ€çµ‚é–²è¦§',
-  'search' => 'æ¤œç´¢çµæžœ',
-  'favpics'=> 'ãŠæ°—ã«å…¥ã‚Š'
+  'random' => 'ランダムファイル',
+  'lastup' => '新着写真',
+  'lastalb'=> '最新アルバム',
+  'lastcom' => '最新コメント',
+  'topn' => '最多閲覧',
+  'toprated' => 'トップレート',
+  'lasthits' => '最終閲覧',
+  'search' => '検索結果',
+  'favpics'=> 'お気に入り'
 );
 
 $lang_errors = array(
-  'access_denied' => 'ã“ã®ãƒšãƒ¼ã‚¸ã«å¯¾ã™ã‚‹ã‚¢ã‚¯ã‚»ã‚¹æ¨©ãŒã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'perm_denied' => 'ã“ã®æ“ä½œã‚’è¡Œã†æ¨©é™ãŒã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'param_missing' => 'å¿…è¦ãªãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ç„¡ã—ã§ã‚¹ã‚¯ãƒªãƒ—ãƒˆãŒå®Ÿè¡Œã•ã‚Œã¾ã—ãŸã€‚',
-  'non_exist_ap' => 'é¸æŠžã•ã‚ŒãŸã‚¢ãƒ«ãƒãƒ ã¯å­˜åœ¨ã—ã¾ã›ã‚“!', 
-  'quota_exceeded' => 'ãƒ‡ã‚£ã‚¹ã‚¯ä½¿ç”¨é‡ã‚ªãƒ¼ãƒãƒ¼<br /><br />ã‚ãªãŸãŒä½¿ç”¨ã§ãã‚‹ãƒ‡ã‚£ã‚¹ã‚¯å®¹é‡ã¯ [quota]Kã§ã™ã€‚ç¾åœ¨ [space]Kã‚’ä½¿ç”¨ã—ã¦ã„ã¾ã™ã€‚ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¿½åŠ ã™ã‚‹ã¨ãƒ‡ã‚£ã‚¹ã‚¯å®¹é‡ãŒã‚ªãƒ¼ãƒãƒ¼ã—ã¾ã™ã€‚',
-  'gd_file_type_err' => 'GDã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãƒ¼ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã€JPEGã¨PNGå½¢å¼ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿ä½¿ç”¨å¯èƒ½ã§ã™ã€‚',
-  'invalid_image' => 'ã‚ãªãŸãŒã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã—ãŸç”»åƒã¯ç ´æã—ãŸã‹ã€GDãƒ©ã‚¤ãƒ–ãƒ©ãƒªãƒ¼ã§å‡¦ç†ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã›ã‚“ã€‚',
-  'resize_failed' => 'ç”»åƒã‚µã‚¤ã‚ºãŒå°ã•ã„ãŸã‚ã€ã‚µãƒ ãƒã‚¤ãƒ«ã‚’ä½œæˆå‡ºæ¥ã¾ã›ã‚“ã€‚',
-  'no_img_to_display' => 'è¡¨ç¤ºã™ã‚‹ç”»åƒã¯ã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'non_exist_cat' => 'é¸æŠžã—ãŸã‚«ãƒ†ã‚´ãƒªã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚',
-  'orphan_cat' => 'å­˜åœ¨ã—ãªã„è¦ªã‚«ãƒ†ã‚´ãƒªã‚’æŒã£ã¦ã„ã¾ã™ã€‚ã‚«ãƒ†ã‚´ãƒªãƒžãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã‚’ä½¿ã£ã¦å•é¡Œã‚’è§£æ±ºã—ã¦ãã ã•ã„!',
-  'directory_ro' => 'ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª \'%s\' ã«æ›¸è¾¼ã¿æ¨©ãŒã‚ã‚Šã¾ã›ã‚“ã€‚ãƒ•ã‚¡ã‚¤ãƒ«ã®å‰Šé™¤ã¯å‡ºæ¥ã¾ã›ã‚“ã€‚',
-  'non_exist_comment' => 'é¸æŠžã—ãŸã‚³ãƒ¡ãƒ³ãƒˆã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚',
-  'pic_in_invalid_album' => 'å­˜åœ¨ã—ãªã„ã‚¢ãƒ«ãƒãƒ (%s)å†…ã«ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ã‚Šã¾ã™ !?',
-  'banned' => 'ã‚ãªãŸã¯ç¾åœ¨ã“ã®ã‚µã‚¤ãƒˆã¸ã®ã‚¢ã‚¯ã‚»ã‚¹ã‚’ç¦æ­¢ã•ã‚Œã¦ã„ã¾ã™ã€‚',
-  'not_with_udb' => 'ãƒ•ã‚©ãƒ¼ãƒ©ãƒ ã‚½ãƒ•ãƒˆã«çµ±åˆã•ã‚ŒãŸç‚ºã€ã“ã®æ©Ÿèƒ½ã¯Coppermineã§ç„¡åŠ¹ã«ã•ã‚Œã¦ã„ã¾ã™ã€‚ãƒ•ã‚©ãƒ¼ãƒ©ãƒ ã‚½ãƒ•ãƒˆã§ç®¡ç†ã•ã‚Œã‚‹ç‚ºã€ã“ã®æ©Ÿèƒ½ã«é–¢ã™ã‚‹è¨­å®šã¯ã€ã“ã“ã§ã‚µãƒãƒ¼ãƒˆã•ã‚Œã¾ã›ã‚“ã€‚',
-  'offline_title' => 'ã‚ªãƒ•ãƒ©ã‚¤ãƒ³', 
-  'offline_text' => 'ç¾åœ¨ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã¯ã‚ªãƒ•ãƒ©ã‚¤ãƒ³ã§ã™ - ã‚‚ã†æš«ããŠå¾…ã¡ãã ã•ã„',
-  'ecards_empty' => 'è¡¨ç¤ºã™ã‚‹eã‚«ãƒ¼ãƒ‰ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒã‚ã‚Šã¾ã›ã‚“ã€‚eã‚«ãƒ¼ãƒ‰ã‚’ä½¿ç”¨å¯ã«ã—ã¦ã„ã‚‹ã‹è¨­å®šç”»é¢ã§ç¢ºèªã—ã¦ãã ã•ã„!',
-  'action_failed' => 'ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚Coppermineã¯å‡¦ç†ã‚’æ­£å¸¸ã«çµ‚äº†å‡ºæ¥ã¾ã›ã‚“ã§ã—ãŸã€‚', 
-  'no_zip' => 'ZIPãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç”Ÿæˆã™ã‚‹ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒä½¿ç”¨å‡ºæ¥ã¾ã›ã‚“ã€‚Coppermineç®¡ç†è€…ã«é€£çµ¡ã—ã¦ãã ã•ã„ã€‚', 
-  'zip_type' => 'ZIPãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹æ¨©é™ãŒã‚ã‚Šã¾ã›ã‚“ã€‚',
+  'access_denied' => 'このページに対するアクセス権がありません。',
+  'perm_denied' => 'この操作を行う権限がありません。',
+  'param_missing' => '必要なパラメータ無しでスクリプトが実行されました。',
+  'non_exist_ap' => '選択されたアルバムは存在しません!', 
+  'quota_exceeded' => 'ディスク使用量オーバー<br /><br />あなたが使用できるディスク容量は [quota]Kです。現在 [space]Kを使用しています。このファイルを追加するとディスク容量がオーバーします。',
+  'gd_file_type_err' => 'GDイメージライブラリーを使用する場合、JPEGとPNG形式のファイルのみ使用可能です。',
+  'invalid_image' => 'あなたがアップロードした画像は破損したか、GDライブラリーで処理することが出来ません。',
+  'resize_failed' => '画像サイズが小さいため、サムネイルを作成出来ません。',
+  'no_img_to_display' => '表示する画像はありません。',
+  'non_exist_cat' => '選択したカテゴリは存在しません。',
+  'orphan_cat' => '存在しない親カテゴリを持っています。カテゴリマネージャーを使って問題を解決してください!',
+  'directory_ro' => 'ディレクトリ \'%s\' に書込み権がありません。ファイルの削除は出来ません。',
+  'non_exist_comment' => '選択したコメントは存在しません。',
+  'pic_in_invalid_album' => '存在しないアルバム(%s)内にファイルがあります !?',
+  'banned' => 'あなたは現在このサイトへのアクセスを禁止されています。',
+  'not_with_udb' => 'フォーラムソフトに統合された為、この機能はCoppermineで無効にされています。フォーラムソフトで管理される為、この機能に関する設定は、ここでサポートされません。',
+  'offline_title' => 'オフライン', 
+  'offline_text' => '現在ギャラリーはオフラインです - もう暫くお待ちください',
+  'ecards_empty' => '表示するeカードレコードがありません。eカードを使用可にしているか設定画面で確認してください!',
+  'action_failed' => 'エラーが発生しました。Coppermineは処理を正常に終了出来ませんでした。', 
+  'no_zip' => 'ZIPファイルを生成するライブラリが使用出来ません。Coppermine管理者に連絡してください。', 
+  'zip_type' => 'ZIPファイルをアップロードする権限がありません。',
 );
 
-$lang_bbcode_help = 'bbcodeè¨˜è¿°æ–¹æ³•: <li>[b]<b>å¤ªå­—</b>[/b]</li> <li>[i]<i>æ–œä½“</i>[/i]</li> <li>[url=http://yoursite.com/]Url Text[/url]</li> <li>[email]user@domain.com[/email]</li>';
+$lang_bbcode_help = 'bbcode記述方法: <li>[b]<b>太字</b>[/b]</li> <li>[i]<i>斜体</i>[/i]</li> <li>[url=http://yoursite.com/]Url Text[/url]</li> <li>[email]user@domain.com[/email]</li>';
 
 // ------------------------------------------------------------------------- //
 // File theme.php
 // ------------------------------------------------------------------------- //
 
 $lang_main_menu = array(
-  'alb_list_title' => 'ã‚¢ãƒ«ãƒãƒ ãƒªã‚¹ãƒˆã¸ç§»å‹•',
-  'alb_list_lnk' => 'ã‚¢ãƒ«ãƒãƒ ãƒªã‚¹ãƒˆ',
-  'my_gal_title' => 'ãƒ‘ãƒ¼ã‚½ãƒŠãƒ«ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã¸ç§»å‹•',
-  'my_gal_lnk' => 'ãƒžã‚¤ã‚®ãƒ£ãƒ©ãƒªãƒ¼',
-  'my_prof_lnk' => 'ãƒžã‚¤ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«',
-  'adm_mode_title' => 'ç®¡ç†è€…ãƒ¢ãƒ¼ãƒ‰ã«å¤‰æ›´',
-  'adm_mode_lnk' => 'ç®¡ç†è€…ãƒ¢ãƒ¼ãƒ‰',
-  'usr_mode_title' => 'ãƒ¦ãƒ¼ã‚¶ãƒ¢ãƒ¼ãƒ‰ã«å¤‰æ›´',
-  'usr_mode_lnk' => 'ãƒ¦ãƒ¼ã‚¶ãƒ¢ãƒ¼ãƒ‰',
-  'upload_pic_title' => 'ã‚¢ãƒ«ãƒãƒ ã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰', 
-  'upload_pic_lnk' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰',
-  'register_title' => 'ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®ä½œæˆ',
-  'register_lnk' => 'ãƒ¦ãƒ¼ã‚¶ç™»éŒ²',
-  'login_lnk' => 'ãƒ­ã‚°ã‚¤ãƒ³',
-  'logout_lnk' => 'ãƒ­ã‚°ã‚¢ã‚¦ãƒˆ',
-  'lastup_lnk' => 'æœ€æ–°ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰',
-  'lastcom_lnk' => 'æœ€æ–°ã‚³ãƒ¡ãƒ³ãƒˆ',
-  'topn_lnk' => 'é–²è¦§æœ€å¤š',
-  'toprated_lnk' => 'ãƒˆãƒƒãƒ—ãƒ¬ãƒ¼ãƒˆ',
-  'search_lnk' => 'æ¤œç´¢',
-  'fav_lnk' => 'ãŠæ°—ã«å…¥ã‚Š',
-  'memberlist_title' => 'ãƒ¡ãƒ³ãƒãƒ¼ãƒªã‚¹ãƒˆã®è¡¨ç¤º',
-  'memberlist_lnk' => 'ãƒ¡ãƒ³ãƒãƒ¼ãƒªã‚¹ãƒˆ',
-  'faq_title' => 'å†™çœŸã‚®ãƒ£ãƒ©ãƒªãƒ¼&quot;Coppermine&quot;ã«é–¢ã™ã‚‹ã‚ˆãã‚ã‚‹è³ªå•ã¨ç­”ãˆ', 
+  'alb_list_title' => 'アルバムリストへ移動',
+  'alb_list_lnk' => 'アルバムリスト',
+  'my_gal_title' => 'パーソナルギャラリーへ移動',
+  'my_gal_lnk' => 'マイギャラリー',
+  'my_prof_lnk' => 'マイプロフィール',
+  'adm_mode_title' => '管理者モードに変更',
+  'adm_mode_lnk' => '管理者モード',
+  'usr_mode_title' => 'ユーザモードに変更',
+  'usr_mode_lnk' => 'ユーザモード',
+  'upload_pic_title' => 'アルバムにファイルをアップロード', 
+  'upload_pic_lnk' => 'ファイルのアップロード',
+  'register_title' => 'アカウントの作成',
+  'register_lnk' => 'ユーザ登録',
+  'login_lnk' => 'ログイン',
+  'logout_lnk' => 'ログアウト',
+  'lastup_lnk' => '最新アップロード',
+  'lastcom_lnk' => '最新コメント',
+  'topn_lnk' => '閲覧最多',
+  'toprated_lnk' => 'トップレート',
+  'search_lnk' => '検索',
+  'fav_lnk' => 'お気に入り',
+  'memberlist_title' => 'メンバーリストの表示',
+  'memberlist_lnk' => 'メンバーリスト',
+  'faq_title' => '写真ギャラリー&quot;Coppermine&quot;に関するよくある質問と答え', 
   'faq_lnk' => 'FAQ',
 );
 
 $lang_gallery_admin_menu = array(
-  'upl_app_lnk' => 'ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰æ‰¿èª',
-  'config_lnk' => 'è¨­å®š',
-  'albums_lnk' => 'ã‚¢ãƒ«ãƒãƒ ',
-  'categories_lnk' => 'ã‚«ãƒ†ã‚´ãƒª',
-  'users_lnk' => 'ãƒ¦ãƒ¼ã‚¶',
-  'groups_lnk' => 'ã‚°ãƒ«ãƒ¼ãƒ—',
-  'comments_lnk' => 'ã‚³ãƒ¡ãƒ³ãƒˆã®ãƒ¬ãƒ“ãƒ¥ãƒ¼',
-  'searchnew_lnk' => 'ãƒ•ã‚¡ã‚¤ãƒ«ä¸€æ‹¬ç™»éŒ²',
-  'util_lnk' => 'ç®¡ç†ãƒ„ãƒ¼ãƒ«',
-  'ban_lnk' => 'ã‚¢ã‚¯ã‚»ã‚¹ç¦æ­¢ãƒ¦ãƒ¼ã‚¶',
-  'db_ecard_lnk' => 'eã‚«ãƒ¼ãƒ‰ã®è¡¨ç¤º',
+  'upl_app_lnk' => 'アップロード承認',
+  'config_lnk' => '設定',
+  'albums_lnk' => 'アルバム',
+  'categories_lnk' => 'カテゴリ',
+  'users_lnk' => 'ユーザ',
+  'groups_lnk' => 'グループ',
+  'comments_lnk' => 'コメントのレビュー',
+  'searchnew_lnk' => 'ファイル一括登録',
+  'util_lnk' => '管理ツール',
+  'ban_lnk' => 'アクセス禁止ユーザ',
+  'db_ecard_lnk' => 'eカードの表示',
 );
 
 $lang_user_admin_menu = array(
-  'albmgr_lnk' => 'ãƒžã‚¤ã‚¢ãƒ«ãƒãƒ ã®ä½œæˆ / æ•´ç†',
-  'modifyalb_lnk' => 'ãƒžã‚¤ã‚¢ãƒ«ãƒãƒ ã®ä¿®æ­£',
-  'my_prof_lnk' => 'ãƒžã‚¤ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«',
+  'albmgr_lnk' => 'マイアルバムの作成 / 整理',
+  'modifyalb_lnk' => 'マイアルバムの修正',
+  'my_prof_lnk' => 'マイプロフィール',
 );
 
 $lang_cat_list = array(
-  'category' => 'ã‚«ãƒ†ã‚´ãƒª',
-  'albums' => 'ã‚¢ãƒ«ãƒãƒ ',
-  'pictures' => 'ãƒ•ã‚¡ã‚¤ãƒ«',
+  'category' => 'カテゴリ',
+  'albums' => 'アルバム',
+  'pictures' => 'ファイル',
 );
 
 $lang_album_list = array(
-  'album_on_page' => 'ã‚¢ãƒ«ãƒãƒ æ•° %d / %dãƒšãƒ¼ã‚¸ä¸­'
+  'album_on_page' => 'アルバム数 %d / %dページ中'
 );
 
 $lang_thumb_view = array(
-  'date' => 'æ—¥ä»˜',
+  'date' => '日付',
   //Sort by filename and title
-  'name' => 'ãƒ•ã‚¡ã‚¤ãƒ«å',
-  'title' => 'ã‚¿ã‚¤ãƒˆãƒ«',
-  'sort_da' => 'æ—¥ä»˜ã®æ˜‡é †ã§ä¸¦ã³æ›¿ãˆ',
-  'sort_dd' => 'æ—¥ä»˜ã®é™é †ã§ä¸¦ã³æ›¿ãˆ',
-  'sort_na' => 'ãƒ•ã‚¡ã‚¤ãƒ«åã®æ˜‡é †ã§ä¸¦ã³æ›¿ãˆ',
-  'sort_nd' => 'ãƒ•ã‚¡ã‚¤ãƒ«åã®é™é †ã§ä¸¦ã³æ›¿ãˆ',
-  'sort_ta' => 'å†™çœŸã‚¿ã‚¤ãƒˆãƒ«ã®æ˜‡é †ã§ä¸¦ã³æ›¿ãˆ',
-  'sort_td' => 'å†™çœŸã‚¿ã‚¤ãƒˆãƒ«ã®é™é †ã§ä¸¦ã³æ›¿ãˆ',
-  'download_zip' => 'ZIPãƒ•ã‚¡ã‚¤ãƒ«ã¨ã—ã¦ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹',
-  'pic_on_page' => 'ãƒ•ã‚¡ã‚¤ãƒ«æ•° %d / %dãƒšãƒ¼ã‚¸ä¸­',
-  'user_on_page' => 'ãƒ¦ãƒ¼ã‚¶æ•° %d / %dãƒšãƒ¼ã‚¸ä¸­'
+  'name' => 'ファイル名',
+  'title' => 'タイトル',
+  'sort_da' => '日付の昇順で並び替え',
+  'sort_dd' => '日付の降順で並び替え',
+  'sort_na' => 'ファイル名の昇順で並び替え',
+  'sort_nd' => 'ファイル名の降順で並び替え',
+  'sort_ta' => '写真タイトルの昇順で並び替え',
+  'sort_td' => '写真タイトルの降順で並び替え',
+  'download_zip' => 'ZIPファイルとしてダウンロードする',
+  'pic_on_page' => 'ファイル数 %d / %dページ中',
+  'user_on_page' => 'ユーザ数 %d / %dページ中'
 );
 
 $lang_img_nav_bar = array(
-  'thumb_title' => 'ã‚µãƒ ãƒã‚¤ãƒ«ãƒšãƒ¼ã‚¸ã«æˆ»ã‚‹',
-  'pic_info_title' => 'ãƒ•ã‚¡ã‚¤ãƒ«æƒ…å ±ã®è¡¨ç¤º/éžè¡¨ç¤º',
-  'slideshow_title' => 'ã‚¹ãƒ©ã‚¤ãƒ‰ã‚·ãƒ§ãƒ¼',
-  'ecard_title' => 'ã“ã®å†™çœŸã‚’eã‚«ãƒ¼ãƒ‰ã¨ã—ã¦é€ä¿¡ã™ã‚‹',
-  'ecard_disabled' => 'eã‚«ãƒ¼ãƒ‰ã¯é€ä¿¡å‡ºæ¥ã¾ã›ã‚“ã€‚',
-  'ecard_disabled_msg' => 'eã‚«ãƒ¼ãƒ‰ã‚’é€ä¿¡ã™ã‚‹æ¨©é™ãŒã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'prev_title' => 'å‰ã¸',
-  'next_title' => 'æ¬¡ã¸',
-  'pic_pos' => 'ãƒ•ã‚¡ã‚¤ãƒ« %s/%s',
+  'thumb_title' => 'サムネイルページに戻る',
+  'pic_info_title' => 'ファイル情報の表示/非表示',
+  'slideshow_title' => 'スライドショー',
+  'ecard_title' => 'この写真をeカードとして送信する',
+  'ecard_disabled' => 'eカードは送信出来ません。',
+  'ecard_disabled_msg' => 'eカードを送信する権限がありません。',
+  'prev_title' => '前へ',
+  'next_title' => '次へ',
+  'pic_pos' => 'ファイル %s/%s',
 );
 
 $lang_rate_pic = array(
-  'rate_this_pic' => 'ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è©•ä¾¡ã™ã‚‹',
-  'no_votes' => '(æœªæŠ•ç¥¨)',
-  'rating' => '(ç¾åœ¨ã®ãƒ¬ãƒ¼ãƒ†ã‚£ãƒ³ã‚°: %s/5&nbsp;&nbsp;&nbsp;æŠ•ç¥¨æ•° %sä»¶)',
-  'rubbish' => 'é…·ã„',
-  'poor' => 'æ‚ªã„',
-  'fair' => 'æ™®é€š',
-  'good' => 'è‰¯ã„',
-  'excellent' => 'ç´ æ™´ã‚‰ã—ã„',
-  'great' => 'å‡„ã„',
+  'rate_this_pic' => 'このファイルを評価する',
+  'no_votes' => '(未投票)',
+  'rating' => '(現在のレーティング: %s/5&nbsp;&nbsp;&nbsp;投票数 %s件)',
+  'rubbish' => '酷い',
+  'poor' => '悪い',
+  'fair' => '普通',
+  'good' => '良い',
+  'excellent' => '素晴らしい',
+  'great' => '凄い',
 );
 
 // ------------------------------------------------------------------------- //
@@ -212,39 +214,39 @@ $lang_rate_pic = array(
 $lang_cpg_die = array(
   INFORMATION => $lang_info,
   ERROR => $lang_error,
-  CRITICAL_ERROR => 'è‡´å‘½çš„ãªã‚¨ãƒ©ãƒ¼',
-  'file' => 'ãƒ•ã‚¡ã‚¤ãƒ«: ',
-  'line' => 'è¡Œ: ',
+  CRITICAL_ERROR => '致命的なエラー',
+  'file' => 'ファイル: ',
+  'line' => '行: ',
 );
 
 $lang_display_thumbnails = array(
-  'filename' => 'ãƒ•ã‚¡ã‚¤ãƒ«å : ',
-  'filesize' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚º : ',
-  'dimensions' => 'å¤§ãã• : ',
-  'date_added' => 'ç™»éŒ²æ—¥ : '
+  'filename' => 'ファイル名 : ',
+  'filesize' => 'ファイルサイズ : ',
+  'dimensions' => '大きさ : ',
+  'date_added' => '登録日 : '
 );
 
 $lang_get_pic_data = array(
-  'n_comments' => 'ã‚³ãƒ¡ãƒ³ãƒˆæ•° %s',
-  'n_views' => 'é–²è¦§å›žæ•° %s',
-  'n_votes' => '(æŠ•ç¥¨æ•° %s)'
+  'n_comments' => 'コメント数 %s',
+  'n_views' => '閲覧回数 %s',
+  'n_votes' => '(投票数 %s)'
 );
 
 $lang_cpg_debug_output = array(
-  'debug_info' => 'ãƒ‡ãƒãƒƒã‚°æƒ…å ±',
-  'select_all' => 'å…¨ã¦ã‚’é¸æŠž',
-  'copy_and_paste_instructions' => 'coppermineã®ã‚µãƒãƒ¼ãƒˆæŽ²ç¤ºæ¿ã«ã‚µãƒãƒ¼ãƒˆã®ä¾é ¼ã‚’æŠ•ç¨¿ã™ã‚‹å ´åˆã¯ã€ã“ã®ãƒ‡ãƒãƒƒã‚°è¡¨ç¤ºã‚’ã‚³ãƒ”ãƒ¼&ãƒšãƒ¼ã‚¹ãƒˆã—ã¦ãã ã•ã„ã€‚æŠ•ç¨¿å‰ã«ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’***ã«æ›¸æ›ãˆã¦ãã ã•ã„ã€‚',
-  'phpinfo' => 'phpinfoã‚’è¡¨ç¤º',
+  'debug_info' => 'デバッグ情報',
+  'select_all' => '全てを選択',
+  'copy_and_paste_instructions' => 'coppermineのサポート掲示板にサポートの依頼を投稿する場合は、このデバッグ表示をコピー&ペーストしてください。投稿前にパスワードを***に書換えてください。',
+  'phpinfo' => 'phpinfoを表示',
 );
 
 $lang_language_selection = array(
-  'reset_language' => 'ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆè¨€èªž',
-  'choose_language' => 'è¨€èªžã‚’é¸æŠžã—ã¦ãã ã•ã„',
+  'reset_language' => 'デフォルト言語',
+  'choose_language' => '言語を選択してください',
 );
 
 $lang_theme_selection = array(
-  'reset_theme' => 'ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ†ãƒ¼ãƒž',
-  'choose_theme' => 'ãƒ†ãƒ¼ãƒžã‚’é¸æŠžã—ã¦ãã ã•ã„',
+  'reset_theme' => 'デフォルトテーマ',
+  'choose_theme' => 'テーマを選択してください',
 );
 
 // ------------------------------------------------------------------------- //
@@ -264,28 +266,28 @@ $lang_theme_selection = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('SMILIES_PHP')) $lang_smilies_inc_php = array(
-  'Exclamation' => 'ãƒ“ãƒƒã‚¯ãƒª',
-  'Question' => 'è³ªå•',
-  'Very Happy' => 'ã¨ã¦ã‚‚å¹¸ã›',
-  'Smile' => 'ã‚¹ãƒžã‚¤ãƒ«',
-  'Sad' => 'æ‚²ã—ã„',
-  'Surprised' => 'é©šã',
-  'Shocked' => 'ã‚·ãƒ§ãƒƒã‚¯',
-  'Confused' => 'æ··ä¹±',
-  'Cool' => 'ã‚¯ãƒ¼ãƒ«',
-  'Laughing' => 'ç¬‘ã„',
-  'Mad' => 'æ€’ã‚Š',
-  'Razz' => 'è‹¦ç¬‘ã„',
-  'Embarassed' => 'æ¥ãšã‹ã—ã„',
-  'Crying or Very sad' => 'æ³£ãåˆã¯ã¨ã¦ã‚‚æ‚²ã—ã„',
-  'Evil or Very Mad' => 'æ‚ªã„åˆã¯ã¨ã¦ã‚‚æ€’ã£ãŸ',
-  'Twisted Evil' => 'æ„åœ°æ‚ªã„',
-  'Rolling Eyes' => 'è»¢ãŒã‚‹ç›®',
-  'Wink' => 'ã‚¦ã‚¤ãƒ³ã‚¯',
-  'Idea' => 'ã‚¢ã‚¤ãƒ‡ã‚£ã‚¢',
-  'Arrow' => 'è¨±å¯',
-  'Neutral' => 'ä¸­ç«‹',
-  'Mr. Green' => 'ãƒŸã‚¹ã‚¿ãƒ¼ãƒ»ã‚°ãƒªãƒ¼ãƒ³',
+  'Exclamation' => 'ビックリ',
+  'Question' => '質問',
+  'Very Happy' => 'とても幸せ',
+  'Smile' => 'スマイル',
+  'Sad' => '悲しい',
+  'Surprised' => '驚き',
+  'Shocked' => 'ショック',
+  'Confused' => '混乱',
+  'Cool' => 'クール',
+  'Laughing' => '笑い',
+  'Mad' => '怒り',
+  'Razz' => '苦笑い',
+  'Embarassed' => '恥ずかしい',
+  'Crying or Very sad' => '泣く又はとても悲しい',
+  'Evil or Very Mad' => '悪い又はとても怒った',
+  'Twisted Evil' => '意地悪い',
+  'Rolling Eyes' => '転がる目',
+  'Wink' => 'ウインク',
+  'Idea' => 'アイディア',
+  'Arrow' => '許可',
+  'Neutral' => '中立',
+  'Mr. Green' => 'ミスター・グリーン',
 );
 
 // ------------------------------------------------------------------------- //
@@ -299,8 +301,8 @@ if (defined('SMILIES_PHP')) $lang_smilies_inc_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('ADMIN_PHP')) $lang_admin_php = array(
-  0 => 'ç®¡ç†è€…ãƒ¢ãƒ¼ãƒ‰ã‚’çµ‚äº†ä¸­ ...',
-  1 => 'ç®¡ç†è€…ãƒ¢ãƒ¼ãƒ‰ã«ç§»è¡Œä¸­ ...',
+  0 => '管理者モードを終了中 ...',
+  1 => '管理者モードに移行中 ...',
 );
 
 // ------------------------------------------------------------------------- //
@@ -308,20 +310,20 @@ if (defined('ADMIN_PHP')) $lang_admin_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('ALBMGR_PHP')) $lang_albmgr_php = array(
-  'alb_need_name' => 'ã‚¢ãƒ«ãƒãƒ ã«ã¯ã‚¢ãƒ«ãƒãƒ åãŒå¿…è¦ã§ã™ !',
-  'confirm_modifs' => 'æœ¬å½“ã«æ›´æ–°ã—ã¦ã‚‚å®œã—ã„ã§ã™ã‹ ?',
-  'no_change' => 'ä½•ã‚‚å¤‰æ›´ã•ã‚Œã¦ã„ã¾ã›ã‚“ !',
-  'new_album' => 'æ–°ã—ã„ã‚¢ãƒ«ãƒãƒ ',
-  'confirm_delete1' => 'æœ¬å½“ã«ã“ã®ã‚¢ãƒ«ãƒãƒ ã‚’å‰Šé™¤ã—ã¦ã‚‚å®œã—ã„ã§ã™ã‹ ?',
-  'confirm_delete2' => '\nã‚¢ãƒ«ãƒãƒ ã«å«ã¾ã‚Œã‚‹å…¨ã¦ã®å†™çœŸã¨ã‚³ãƒ¡ãƒ³ãƒˆã¯å‰Šé™¤ã•ã‚Œã¾ã™ !',
-  'select_first' => 'æœ€åˆã«ã‚¢ãƒ«ãƒãƒ ã‚’é¸æŠžã—ã¦ãã ã•ã„ã€‚',
-  'alb_mrg' => 'ã‚¢ãƒ«ãƒãƒ ç®¡ç†',
-  'my_gallery' => '* ãƒžã‚¤ã‚®ãƒ£ãƒ©ãƒªãƒ¼ *',
-  'no_category' => '* ã‚«ãƒ†ã‚´ãƒªç„¡ã— *',
-  'delete' => 'å‰Šé™¤',
-  'new' => 'æ–°è¦ä½œæˆ',
-  'apply_modifs' => 'æ›´æ–°ã®é©ç”¨',
-  'select_category' => 'ã‚«ãƒ†ã‚´ãƒªé¸æŠž',
+  'alb_need_name' => 'アルバムにはアルバム名が必要です !',
+  'confirm_modifs' => '本当に更新しても宜しいですか ?',
+  'no_change' => '何も変更されていません !',
+  'new_album' => '新しいアルバム',
+  'confirm_delete1' => '本当にこのアルバムを削除しても宜しいですか ?',
+  'confirm_delete2' => '\nアルバムに含まれる全ての写真とコメントは削除されます !',
+  'select_first' => '最初にアルバムを選択してください。',
+  'alb_mrg' => 'アルバム管理',
+  'my_gallery' => '* マイギャラリー *',
+  'no_category' => '* カテゴリ無し *',
+  'delete' => '削除',
+  'new' => '新規作成',
+  'apply_modifs' => '更新の適用',
+  'select_category' => 'カテゴリ選択',
 );
 
 // ------------------------------------------------------------------------- //
@@ -329,19 +331,19 @@ if (defined('ALBMGR_PHP')) $lang_albmgr_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('CATMGR_PHP')) $lang_catmgr_php = array(
-  'miss_param' => 'ã€Œ%sã€ã®æ“ä½œã«å¿…è¦ãªãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒæ¸¡ã•ã‚Œã¦ã„ã¾ã›ã‚“ !',
-  'unknown_cat' => 'é¸æŠžã—ãŸã‚«ãƒ†ã‚´ãƒªã¯ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«å­˜åœ¨ã—ã¾ã›ã‚“ã€‚',
-  'usergal_cat_ro' => 'ãƒ¦ãƒ¼ã‚¶ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã®ã‚«ãƒ†ã‚´ãƒªã¯å‰Šé™¤å‡ºæ¥ã¾ã›ã‚“ !',
-  'manage_cat' => 'ã‚«ãƒ†ã‚´ãƒªã®ç®¡ç†',
-  'confirm_delete' => 'æœ¬å½“ã«ã“ã®ã‚«ãƒ†ã‚´ãƒªã‚’å‰Šé™¤ã—ã¦ã‚‚å®œã—ã„ã§ã™ã‹ ?',
-  'category' => 'ã‚«ãƒ†ã‚´ãƒª',
-  'operations' => 'æ“ä½œ',
-  'move_into' => 'ç§»å‹•å…ˆ',
-  'update_create' => 'ã‚«ãƒ†ã‚´ãƒªã®ä½œæˆ/æ›´æ–°',
-  'parent_cat' => 'è¦ªã‚«ãƒ†ã‚´ãƒª',
-  'cat_title' => 'ã‚«ãƒ†ã‚´ãƒªå',
-  'cat_thumb' => 'ã‚«ãƒ†ã‚´ãƒªã‚µãƒ ãƒã‚¤ãƒ«',
-  'cat_desc' => 'ã‚«ãƒ†ã‚´ãƒªèª¬æ˜Ž'
+  'miss_param' => '「%s」の操作に必要なパラメータが渡されていません !',
+  'unknown_cat' => '選択したカテゴリはデータベースに存在しません。',
+  'usergal_cat_ro' => 'ユーザギャラリーのカテゴリは削除出来ません !',
+  'manage_cat' => 'カテゴリの管理',
+  'confirm_delete' => '本当にこのカテゴリを削除しても宜しいですか ?',
+  'category' => 'カテゴリ',
+  'operations' => '操作',
+  'move_into' => '移動先',
+  'update_create' => 'カテゴリの作成/更新',
+  'parent_cat' => '親カテゴリ',
+  'cat_title' => 'カテゴリ名',
+  'cat_thumb' => 'カテゴリサムネイル',
+  'cat_desc' => 'カテゴリ説明'
 );
 
 // ------------------------------------------------------------------------- //
@@ -349,142 +351,142 @@ if (defined('CATMGR_PHP')) $lang_catmgr_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('CONFIG_PHP')) $lang_config_php = array(
-  'title' => 'è¨­å®š',
-  'restore_cfg' => 'ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ç›´å¾Œã®çŠ¶æ…‹ã«æˆ»ã™',
-  'save_cfg' => 'æ–°ã—ã„è¨­å®šã‚’ä¿å­˜ã™ã‚‹',
+  'title' => '設定',
+  'restore_cfg' => 'インストール直後の状態に戻す',
+  'save_cfg' => '新しい設定を保存する',
   'notes' => 'Notes',
-  'info' => 'æƒ…å ±',
-  'upd_success' => 'Coppermineã®è¨­å®šãŒæ›´æ–°ã•ã‚Œã¾ã—ãŸã€‚',
-  'restore_success' => 'Coppermineãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®è¨­å®šã«ãƒªã‚¹ãƒˆã‚¢ã•ã‚Œã¾ã—ãŸã€‚',
-  'name_a' => 'å†™çœŸåã®æ˜‡é †',
-  'name_d' => 'å†™çœŸåã®é™é †',
-  'title_a' => 'ã‚¿ã‚¤ãƒˆãƒ«ã®æ˜‡é †',
-  'title_d' => 'ã‚¿ã‚¤ãƒˆãƒ«ã®é™é †',
-  'date_a' => 'æ—¥ä»˜ã®æ˜‡é †',
-  'date_d' => 'æ—¥ä»˜ã®é™é †',
-  'th_any' => 'ã‚µãƒ ãƒã‚¤ãƒ«ã®æœ€å¤§ã‚µã‚¤ã‚º',
-  'th_ht' => 'é«˜ã•',
-  'th_wd' => 'å¹…',
-  'label' => 'ãƒ©ãƒ™ãƒ«',
-  'item' => 'é …ç›®',
-  'debug_everyone' => 'å…¨å“¡',
-  'debug_admin' => 'ç®¡ç†è€…ã®ã¿',
+  'info' => '情報',
+  'upd_success' => 'Coppermineの設定が更新されました。',
+  'restore_success' => 'Coppermineデフォルトの設定にリストアされました。',
+  'name_a' => '写真名の昇順',
+  'name_d' => '写真名の降順',
+  'title_a' => 'タイトルの昇順',
+  'title_d' => 'タイトルの降順',
+  'date_a' => '日付の昇順',
+  'date_d' => '日付の降順',
+  'th_any' => 'サムネイルの最大サイズ',
+  'th_ht' => '高さ',
+  'th_wd' => '幅',
+  'label' => 'ラベル',
+  'item' => '項目',
+  'debug_everyone' => '全員',
+  'debug_admin' => '管理者のみ',
 );
 
 if (defined('CONFIG_PHP')) $lang_config_data = array(
-  'ä¸€èˆ¬è¨­å®š',
-  array('ã‚®ãƒ£ãƒ©ãƒªãƒ¼å', 'gallery_name', 0),
-  array('ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã®èª¬æ˜Ž', 'gallery_description', 0),
-  array('ç®¡ç†è€…ã®ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹', 'gallery_admin_email', 0),
-  array('eã‚«ãƒ¼ãƒ‰ã®ã€Œã‚‚ã£ã¨å†™çœŸã‚’è¦‹ã‚‹ã€ãƒªãƒ³ã‚¯ã®ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚¢ãƒ‰ãƒ¬ã‚¹', 'ecards_more_pic_target', 0),
-  array('ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã‚’ã‚ªãƒ•ãƒ©ã‚¤ãƒ³ã«ã™ã‚‹', 'offline', 1), 
-  array('eã‚«ãƒ¼ãƒ‰ã‚’è¨˜éŒ²ã™ã‚‹', 'log_ecards', 1),
-  array('ãŠæ°—ã«å…¥ã‚Šã®ZIPãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã‚’è¨±å¯ã™ã‚‹', 'enable_zipdownload', 1),
+  '一般設定',
+  array('ギャラリー名', 'gallery_name', 0),
+  array('ギャラリーの説明', 'gallery_description', 0),
+  array('管理者のメールアドレス', 'gallery_admin_email', 0),
+  array('eカードの「もっと写真を見る」リンクのターゲットアドレス', 'ecards_more_pic_target', 0),
+  array('ギャラリーをオフラインにする', 'offline', 1), 
+  array('eカードを記録する', 'log_ecards', 1),
+  array('お気に入りのZIPファイルのダウンロードを許可する', 'enable_zipdownload', 1),
 
-  'è¨€èªžã€ãƒ†ãƒ¼ãƒž &amp; Charsetè¨­å®š',
-  array('è¨€èªž', 'lang', 5),
-  array('ãƒ†ãƒ¼ãƒž', 'theme', 6),
-  array('è¨€èªžãƒªã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹', 'language_list', 1),
-  array('å›½æ——ã‚’è¡¨ç¤ºã™ã‚‹', 'language_flags', 8),
-  array('è¨€èªžé¸æŠžã«&quot;ãƒªã‚»ãƒƒãƒˆ&quot;ã‚’è¡¨ç¤ºã™ã‚‹', 'language_reset', 1),
-  array('ãƒ†ãƒ¼ãƒžãƒªã‚¹ãƒˆã‚’è¡¨ç¤º', 'theme_list', 1),
-  array('ãƒ†ãƒ¼ãƒžé¸æŠžã«&quot;ãƒªã‚»ãƒƒãƒˆ&quot;ã‚’è¡¨ç¤ºã™ã‚‹', 'theme_reset', 1), 
-  array('FAQã‚’è¡¨ç¤ºã™ã‚‹', 'display_faq', 1),
-  array('bbcodeãƒ˜ãƒ«ãƒ—ã‚’è¡¨ç¤ºã™ã‚‹', 'show_bbcode_help', 1),
-  array('ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰', 'charset', 4),
+  '言語、テーマ &amp; Charset設定',
+  array('言語', 'lang', 5),
+  array('テーマ', 'theme', 6),
+  array('言語リストを表示する', 'language_list', 1),
+  array('国旗を表示する', 'language_flags', 8),
+  array('言語選択に&quot;リセット&quot;を表示する', 'language_reset', 1),
+  array('テーマリストを表示', 'theme_list', 1),
+  array('テーマ選択に&quot;リセット&quot;を表示する', 'theme_reset', 1), 
+  array('FAQを表示する', 'display_faq', 1),
+  array('bbcodeヘルプを表示する', 'show_bbcode_help', 1),
+  array('エンコード', 'charset', 4),
 
-  'ã‚¢ãƒ«ãƒãƒ ãƒªã‚¹ãƒˆè¡¨ç¤º',
-  array('ãƒ¡ã‚¤ãƒ³ãƒ†ãƒ¼ãƒ–ãƒ«ã®å¹… (ãƒ”ã‚¯ã‚»ãƒ«åˆã¯%)', 'main_table_width', 0),
-  array('ã‚«ãƒ†ã‚´ãƒªéšŽå±¤ã®è¡¨ç¤ºæ•°', 'subcat_level', 0),
-  array('ã‚¢ãƒ«ãƒãƒ ã®è¡¨ç¤ºæ•°', 'albums_per_page', 0),
-  array('ã‚¢ãƒ«ãƒãƒ ãƒªã‚¹ãƒˆã®åˆ—æ•°', 'album_list_cols', 0),
-  array('ã‚µãƒ ãƒã‚¤ãƒ«ã®ã‚µã‚¤ã‚º (ãƒ”ã‚¯ã‚»ãƒ«)', 'alb_list_thumb_size', 0),
-  array('ãƒ¡ã‚¤ãƒ³ãƒšãƒ¼ã‚¸ã®ã‚³ãƒ³ãƒ†ãƒ³ãƒ„', 'main_page_layout', 0),
-  array('ã‚«ãƒ†ã‚´ãƒªã«ç¬¬ä¸€ãƒ¬ãƒ™ãƒ«ã®ã‚µãƒ ãƒã‚¤ãƒ«ã‚’è¡¨ç¤ºã™ã‚‹','first_level',1),
+  'アルバムリスト表示',
+  array('メインテーブルの幅 (ピクセル又は%)', 'main_table_width', 0),
+  array('カテゴリ階層の表示数', 'subcat_level', 0),
+  array('アルバムの表示数', 'albums_per_page', 0),
+  array('アルバムリストの列数', 'album_list_cols', 0),
+  array('サムネイルのサイズ (ピクセル)', 'alb_list_thumb_size', 0),
+  array('メインページのコンテンツ', 'main_page_layout', 0),
+  array('カテゴリに第一レベルのサムネイルを表示する','first_level',1),
 
-  'ã‚µãƒ ãƒã‚¤ãƒ«è¡¨ç¤º',
-  array('ã‚µãƒ ãƒã‚¤ãƒ«ãƒšãƒ¼ã‚¸ã®åˆ—æ•°', 'thumbcols', 0),
-  array('ã‚µãƒ ãƒã‚¤ãƒ«ãƒšãƒ¼ã‚¸ã®è¡Œæ•°', 'thumbrows', 0),
-  array('ã‚¿ãƒ–ã®æœ€å¤§è¡¨ç¤ºæ•°', 'max_tabs', 10), 
-  array('ã‚µãƒ ãƒã‚¤ãƒ«ã®ä¸‹ã«ãƒ•ã‚¡ã‚¤ãƒ«èª¬æ˜Žã‚’è¡¨ç¤ºã™ã‚‹ (å†™çœŸåã«è¿½åŠ )', 'caption_in_thumbview', 1), 
-  array('ã‚µãƒ ãƒã‚¤ãƒ«ã®ä¸‹ã«é–²è¦§æ•°ã‚’è¡¨ç¤ºã™ã‚‹', 'views_in_thumbview', 1), 
-  array('ã‚µãƒ ãƒã‚¤ãƒ«ã®ä¸‹ã«ã‚³ãƒ¡ãƒ³ãƒˆæ•°ã‚’è¡¨ç¤ºã™ã‚‹', 'display_comment_count', 1),
-  array('ã‚µãƒ ãƒã‚¤ãƒ«ã®ä¸‹ã«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã—ãŸäººã®åå‰ã‚’è¡¨ç¤ºã™ã‚‹', 'display_uploader', 1),
-  array('ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆä¸¦ã³é †', 'default_sort_order', 3),
-  array('ã€Œãƒˆãƒƒãƒ—ãƒ¬ãƒ¼ãƒˆã€ãƒªã‚¹ãƒˆã«ãƒ•ã‚¡ã‚¤ãƒ«ãŒè¡¨ç¤ºã•ã‚Œã‚‹ç‚ºã®æœ€å°æŠ•ç¥¨æ•°', 'min_votes_for_rating', 0),
+  'サムネイル表示',
+  array('サムネイルページの列数', 'thumbcols', 0),
+  array('サムネイルページの行数', 'thumbrows', 0),
+  array('タブの最大表示数', 'max_tabs', 10), 
+  array('サムネイルの下にファイル説明を表示する (写真名に追加)', 'caption_in_thumbview', 1), 
+  array('サムネイルの下に閲覧数を表示する', 'views_in_thumbview', 1), 
+  array('サムネイルの下にコメント数を表示する', 'display_comment_count', 1),
+  array('サムネイルの下にアップロードした人の名前を表示する', 'display_uploader', 1),
+  array('ファイルのデフォルト並び順', 'default_sort_order', 3),
+  array('「トップレート」リストにファイルが表示される為の最小投票数', 'min_votes_for_rating', 0),
 
-  'ç”»åƒè¡¨ç¤ºã¨ã‚³ãƒ¡ãƒ³ãƒˆè¨­å®š',
-  array('å†™çœŸè¡¨ç¤ºã®ãƒ†ãƒ¼ãƒ–ãƒ«å¹… (ãƒ”ã‚¯ã‚»ãƒ«åˆã¯%)', 'picture_table_width', 0),
-  array('å†™çœŸæƒ…å ±ã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§è¡¨ç¤ºã™ã‚‹', 'display_pic_info', 1),
-  array('ã‚³ãƒ¡ãƒ³ãƒˆä¸­ã®ä½¿ç”¨ç¦æ­¢ç”¨èªžã‚’å–é™¤ã', 'filter_bad_words', 1),
-  array('ã‚³ãƒ¡ãƒ³ãƒˆä¸­ã®ã‚¹ãƒžã‚¤ãƒªãƒ¼ä½¿ç”¨ã‚’è¨±å¯ã™ã‚‹', 'enable_smilies', 1),
-  array('1ã¤ã®å†™çœŸã«å¯¾ã—ã¦åŒä¸€ãƒ¦ãƒ¼ã‚¶ã‚ˆã‚Šè¤‡æ•°ã®é€£ç¶šã—ãŸã‚³ãƒ¡ãƒ³ãƒˆè¨±å¯ã™ã‚‹ (flood protectionã‚’ä½¿ç”¨åœæ­¢ã«ã™ã‚‹)', 'disable_comment_flood_protect', 1),
-  array('å†™çœŸèª¬æ˜Žã®æœ€å¤§é•·', 'max_img_desc_length', 0),
-  array('1èªžã‚ãŸã‚Šã®æœ€å¤§æ–‡å­—æ•° (æ³¨æ„: æ—¥æœ¬èªžã®å ´åˆã€ã‚³ãƒ¡ãƒ³ãƒˆã®æœ€å¤§é•·ã¨åŒå€¤)', 'max_com_wlength', 0),
-  array('ã‚³ãƒ¡ãƒ³ãƒˆã®æœ€å¤§è¡Œæ•°', 'max_com_lines', 0),
-  array('ã‚³ãƒ¡ãƒ³ãƒˆã®æœ€å¤§é•· (åŠè§’æ›ç®—)', 'max_com_size', 0),
-  array('ãƒ•ã‚£ãƒ«ãƒ ã‚¹ãƒˆãƒªãƒƒãƒ—ã‚’è¡¨ç¤ºã™ã‚‹', 'display_film_strip', 1),
-  array('ãƒ•ã‚£ãƒ«ãƒ ã‚¹ãƒˆãƒªãƒƒãƒ—å†…ã®é …ç›®è¡¨ç¤ºæ•°', 'max_film_strip_items', 0),
-  array('ã‚³ãƒ¡ãƒ³ãƒˆæŠ•ç¨¿æ™‚ã«ç®¡ç†è€…ã«ãƒ¡ãƒ¼ãƒ«é€šçŸ¥ã™ã‚‹', 'email_comment_notification', 1), 
-  array('ã‚¹ãƒ©ã‚¤ãƒ‰ã‚·ãƒ§ãƒ¼ã®é–“éš” (1/1000ç§’å˜ä½)', 'slideshow_interval', 0), 
+  '画像表示とコメント設定',
+  array('写真表示のテーブル幅 (ピクセル又は%)', 'picture_table_width', 0),
+  array('写真情報をデフォルトで表示する', 'display_pic_info', 1),
+  array('コメント中の使用禁止用語を取除く', 'filter_bad_words', 1),
+  array('コメント中のスマイリー使用を許可する', 'enable_smilies', 1),
+  array('1つの写真に対して同一ユーザより複数の連続したコメント許可する (flood protectionを使用停止にする)', 'disable_comment_flood_protect', 1),
+  array('写真説明の最大長', 'max_img_desc_length', 0),
+  array('1語あたりの最大文字数 (注意: 日本語の場合、コメントの最大長と同値)', 'max_com_wlength', 0),
+  array('コメントの最大行数', 'max_com_lines', 0),
+  array('コメントの最大長 (半角換算)', 'max_com_size', 0),
+  array('フィルムストリップを表示する', 'display_film_strip', 1),
+  array('フィルムストリップ内の項目表示数', 'max_film_strip_items', 0),
+  array('コメント投稿時に管理者にメール通知する', 'email_comment_notification', 1), 
+  array('スライドショーの間隔 (1/1000秒単位)', 'slideshow_interval', 0), 
 
-  'ãƒ•ã‚¡ã‚¤ãƒ«ã¨ã‚µãƒ ãƒã‚¤ãƒ«è¨­å®š',
-  array('JPEGãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¯ã‚ªãƒªãƒ†ã‚£ãƒ¼', 'jpeg_qual', 0),
-  array('ã‚µãƒ ãƒã‚¤ãƒ«ã®æœ€å¤§å¹…åˆã¯é«˜ã• <a href="#notice2" class="clickable_option">**</a>', 'thumb_width', 0),
-  array('ä½¿ç”¨ã™ã‚‹å¯¸æ³• ( å¹… åˆã¯ é«˜ã• åˆã¯ ã‚µãƒ ãƒã‚¤ãƒ«ã®æœ€å¤§ã‚µã‚¤ã‚º )<b>*</b>', 'thumb_use', 7),
-  array('ä¸­é–“å†™çœŸã‚’ä½œæˆã™ã‚‹','make_intermediate',1),
-  array('ä¸­é–“å†™çœŸã®æœ€å¤§å¹…åˆã¯é«˜ã• <b>*</b>', 'picture_width', 0),
-  array('ä¸­é–“å†™çœŸ/ãƒ“ãƒ‡ã‚ªã®æœ€å¤§å¹…åˆã¯é«˜ã• <a href="#notice2" class="clickable_option">**</a>', 'picture_width', 0),
-  array('ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ã®æœ€å¤§ã‚µã‚¤ã‚º (KB)', 'max_upl_size', 0),
-  array('ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å†™çœŸ/ãƒ“ãƒ‡ã‚ªã®æœ€å¤§å¹…åˆã¯é«˜ã• (ãƒ”ã‚¯ã‚»ãƒ«)', 'max_upl_width_height', 0),
+  'ファイルとサムネイル設定',
+  array('JPEGファイルのクオリティー', 'jpeg_qual', 0),
+  array('サムネイルの最大幅又は高さ <a href="#notice2" class="clickable_option">**</a>', 'thumb_width', 0),
+  array('使用する寸法 ( 幅 又は 高さ 又は サムネイルの最大サイズ )<b>*</b>', 'thumb_use', 7),
+  array('中間写真を作成する','make_intermediate',1),
+  array('中間写真の最大幅又は高さ <b>*</b>', 'picture_width', 0),
+  array('中間写真/ビデオの最大幅又は高さ <a href="#notice2" class="clickable_option">**</a>', 'picture_width', 0),
+  array('アップロードファイルの最大サイズ (KB)', 'max_upl_size', 0),
+  array('アップロード写真/ビデオの最大幅又は高さ (ピクセル)', 'max_upl_width_height', 0),
 
-  'ãƒ•ã‚¡ã‚¤ãƒ«ã¨ã‚µãƒ ãƒã‚¤ãƒ«è¨­å®šã®é«˜åº¦ãªè¨­å®š',
-  array('ãƒ­ã‚°ã‚¤ãƒ³ã—ã¦ã„ãªã„ãƒ¦ãƒ¼ã‚¶ã«ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆã‚¢ãƒ«ãƒãƒ ã‚¢ã‚¤ã‚³ãƒ³ã‚’è¡¨ç¤ºã™ã‚‹','show_private',1),
-  array('ãƒ•ã‚¡ã‚¤ãƒ«åã®ä½¿ç”¨ç¦æ­¢æ–‡å­—', 'forbiden_fname_char',0),
-  //array('ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã®ä½¿ç”¨å¯èƒ½æ‹¡å¼µå­', 'allowed_file_extensions',0),
-  array('ä½¿ç”¨å¯èƒ½ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚¿ã‚¤ãƒ—', 'allowed_img_types',0),
-  array('ä½¿ç”¨å¯èƒ½ãƒ ãƒ¼ãƒ“ãƒ¼ã‚¿ã‚¤ãƒ—', 'allowed_mov_types',0),
-  array('ä½¿ç”¨å¯èƒ½ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã‚¿ã‚¤ãƒ—', 'allowed_snd_types',0),
-  array('ä½¿ç”¨å¯èƒ½ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚¿ã‚¤ãƒ—', 'allowed_doc_types',0),
-  array('ã‚¤ãƒ¡ãƒ¼ã‚¸ã®ãƒªã‚µã‚¤ã‚ºæ–¹æ³•','thumb_method',2),
-  array('ImageMagickã®ãƒ‘ã‚¹ (ä¾‹ /usr/bin/X11/)', 'impath', 0),
-  //array('ä½¿ç”¨å¯èƒ½ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚¿ã‚¤ãƒ— (ImageMagickã®ã¿)', 'allowed_img_types',0),
-  array('ImageMagickã®ã‚³ãƒžãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã‚ªãƒ—ã‚·ãƒ§ãƒ³', 'im_options', 0),
-  array('JPEGãƒ•ã‚¡ã‚¤ãƒ«ã®EXIFãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹', 'read_exif_data', 1),
-  array('JPEGãƒ•ã‚¡ã‚¤ãƒ«ã®IPTCãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹', 'read_iptc_data', 1),
-  array('ã‚¢ãƒ«ãƒãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª <a href="#notice1" class="clickable_option">*</a>', 'fullpath', 0),
-  array('ãƒ¦ãƒ¼ã‚¶ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª <a href="#notice1" class="clickable_option">*</a>', 'userpics', 0),
-  array('ä¸­é–“å†™çœŸã®æŽ¥é ­è¾ž <a href="#notice1" class="clickable_option">*</a>', 'normal_pfx', 0),
-  array('ã‚µãƒ ãƒã‚¤ãƒ«ã®æŽ¥é ­è¾ž <a href="#notice1" class="clickable_option">*</a>', 'thumb_pfx', 0),
-  array('ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³', 'default_dir_mode', 0),
-  array('ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³', 'default_file_mode', 0),
+  'ファイルとサムネイル設定の高度な設定',
+  array('ログインしていないユーザにプライベートアルバムアイコンを表示する','show_private',1),
+  array('ファイル名の使用禁止文字', 'forbiden_fname_char',0),
+  //array('アップロードの使用可能拡張子', 'allowed_file_extensions',0),
+  array('使用可能イメージタイプ', 'allowed_img_types',0),
+  array('使用可能ムービータイプ', 'allowed_mov_types',0),
+  array('使用可能オーディオタイプ', 'allowed_snd_types',0),
+  array('使用可能ドキュメントタイプ', 'allowed_doc_types',0),
+  array('イメージのリサイズ方法','thumb_method',2),
+  array('ImageMagickのパス (例 /usr/bin/X11/)', 'impath', 0),
+  //array('使用可能イメージタイプ (ImageMagickのみ)', 'allowed_img_types',0),
+  array('ImageMagickのコマンドラインオプション', 'im_options', 0),
+  array('JPEGファイルのEXIFデータを取得する', 'read_exif_data', 1),
+  array('JPEGファイルのIPTCデータを取得する', 'read_iptc_data', 1),
+  array('アルバムディレクトリ <a href="#notice1" class="clickable_option">*</a>', 'fullpath', 0),
+  array('ユーザファイルディレクトリ <a href="#notice1" class="clickable_option">*</a>', 'userpics', 0),
+  array('中間写真の接頭辞 <a href="#notice1" class="clickable_option">*</a>', 'normal_pfx', 0),
+  array('サムネイルの接頭辞 <a href="#notice1" class="clickable_option">*</a>', 'thumb_pfx', 0),
+  array('ディレクトリのデフォルトパーミッション', 'default_dir_mode', 0),
+  array('ファイルのデフォルトパーミッション', 'default_file_mode', 0),
 
-  'ãƒ¦ãƒ¼ã‚¶è¨­å®š',
-  array('ãƒ¦ãƒ¼ã‚¶ç™»éŒ²ã‚’è¨±å¯ã™ã‚‹', 'allow_user_registration', 1),
-  array('ãƒ¦ãƒ¼ã‚¶ç™»éŒ²ã«ãƒ¡ãƒ¼ãƒ«æ‰¿èªã‚’å¿…è¦ã¨ã™ã‚‹', 'reg_requires_valid_email', 1),
-  array('ç®¡ç†è€…ã«ãƒ¦ãƒ¼ã‚¶ç™»éŒ²ã‚’ãƒ¡ãƒ¼ãƒ«é€šçŸ¥ã™ã‚‹', 'reg_notify_admin_email', 1),
-  array('2äººã®ãƒ¦ãƒ¼ã‚¶ã«ã‚ˆã‚‹åŒä¸€ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã®ç™»éŒ²ã‚’è¨±å¯ã™ã‚‹', 'allow_duplicate_emails_addr', 1),
-  array('ãƒ¦ãƒ¼ã‚¶ãŒãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆã‚¢ãƒ«ãƒãƒ ã‚’ä½œæˆå‡ºæ¥ã‚‹', 'allow_private_albums', 1),
-  array('ãƒ¦ãƒ¼ã‚¶ãŒãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆã‚¢ãƒ«ãƒãƒ ã‚’ä½œæˆå‡ºæ¥ã‚‹ (æ³¨æ„: \'yes\' ã‹ã‚‰ \'no\' ã«å¤‰æ›´ã—ãŸå ´åˆã€ç¾å­˜ã™ã‚‹å…¨ã¦ã®ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆã¯å…¬é–‹ã•ã‚Œã¾ã™)', 'allow_private_albums', 1),
-  array('ç®¡ç†è€…ã«ãƒ¦ãƒ¼ã‚¶ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰æ‰¿èªå¾…ã¡ã‚’ãƒ¡ãƒ¼ãƒ«é€šçŸ¥ã™ã‚‹', 'upl_notify_admin_email', 1),
-  array('ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶ã«ãƒ¡ãƒ³ãƒãƒ¼ãƒªã‚¹ãƒˆã®é–²è¦§ã‚’è¨±å¯ã™ã‚‹', 'allow_memberlist', 1),
+  'ユーザ設定',
+  array('ユーザ登録を許可する', 'allow_user_registration', 1),
+  array('ユーザ登録にメール承認を必要とする', 'reg_requires_valid_email', 1),
+  array('管理者にユーザ登録をメール通知する', 'reg_notify_admin_email', 1),
+  array('2人のユーザによる同一メールアドレスの登録を許可する', 'allow_duplicate_emails_addr', 1),
+  array('ユーザがプライベートアルバムを作成出来る', 'allow_private_albums', 1),
+  array('ユーザがプライベートアルバムを作成出来る (注意: \'yes\' から \'no\' に変更した場合、現存する全てのプライベートは公開されます)', 'allow_private_albums', 1),
+  array('管理者にユーザのアップロード承認待ちをメール通知する', 'upl_notify_admin_email', 1),
+  array('ログインユーザにメンバーリストの閲覧を許可する', 'allow_memberlist', 1),
 
-  'ç”»åƒèª¬æ˜Žã®ãŸã‚ã®ã‚«ã‚¹ã‚¿ãƒ ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ (ä½¿ç”¨ã—ãªã„å ´åˆã¯ç©ºç™½)',
-  array('ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å 1', 'user_field1_name', 0),
-  array('ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å 2', 'user_field2_name', 0),
-  array('ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å 3', 'user_field3_name', 0),
-  array('ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰å 4', 'user_field4_name', 0),
+  '画像説明のためのカスタムフィールド (使用しない場合は空白)',
+  array('フィールド名 1', 'user_field1_name', 0),
+  array('フィールド名 2', 'user_field2_name', 0),
+  array('フィールド名 3', 'user_field3_name', 0),
+  array('フィールド名 4', 'user_field4_name', 0),
 
-  'ã‚¯ãƒƒã‚­ãƒ¼è¨­å®š',
-  array('ã‚¹ã‚¯ãƒªãƒ—ãƒˆã§ä½¿ç”¨ã™ã‚‹ã‚¯ãƒƒã‚­ãƒ¼å (çµ±åˆç’°å¢ƒã§BBSã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€bbsã®ã‚¯ãƒƒã‚­ãƒ¼åã¨é•ã†åç§°ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„)', 'cookie_name', 0),
-  array('ã‚¹ã‚¯ãƒªãƒ—ãƒˆã§ä½¿ç”¨ã™ã‚‹ã‚¯ãƒƒã‚­ãƒ¼ã®ä¿å­˜å…ˆ', 'cookie_path', 0),
+  'クッキー設定',
+  array('スクリプトで使用するクッキー名 (統合環境でBBSを使用する場合は、bbsのクッキー名と違う名称を使用してください)', 'cookie_name', 0),
+  array('スクリプトで使用するクッキーの保存先', 'cookie_path', 0),
 
-  'ãã®ä»–ã®è¨­å®š',
-  array('ãƒ‡ãƒãƒƒã‚°ãƒ¢ãƒ¼ãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹', 'debug_mode', 9),
-  array('ãƒ‡ãƒãƒƒã‚°ãƒ¢ãƒ¼ãƒ‰ã§è­¦å‘Šã‚’è¡¨ç¤ºã™ã‚‹', 'debug_notice', 1),
+  'その他の設定',
+  array('デバッグモードを使用する', 'debug_mode', 9),
+  array('デバッグモードで警告を表示する', 'debug_notice', 1),
 
-        '<br /><div align="center">(*) æ—¢ã«ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã«å†™çœŸãŒç™»éŒ²ã•ã‚Œã¦ã„ã‚‹å ´åˆã¯ã€*ãƒžãƒ¼ã‚¯ãŒä»˜ã„ã¦ã„ã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã¯å¤‰æ›´ã—ãªã„ã§ãã ã•ã„</div><br />
-  <a name="notice2"></a>(**) ã“ã®è¨­å®šã‚’å¤‰æ›´ã™ã‚‹å ´åˆã¯ã€å¤‰æ›´å¾Œã«è¿½åŠ ã•ã‚Œã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿ãŒå½±éŸ¿ã‚’å—ã‘ã¾ã™ã€‚ã‚®ãƒ£ãƒ©ãƒªãƒ¼å†…ã«ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ã‚‹å ´åˆã¯ã€ã“ã®è¨­å®šã‚’å¤‰æ›´ã—ãªã„ã“ã¨ã‚’ãŠå‹§ã‚ã—ã¾ã™ã€‚ç®¡ç†ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®&quot;<a href="util.php">ç®¡ç†ãƒ„ãƒ¼ãƒ«</a>(å†™çœŸã®ãƒªã‚µã‚¤ã‚º)&quot;ã‚’ä½¿ç”¨ã—ã¦ã€ç™»éŒ²æ¸ˆã¿ãƒ•ã‚¡ã‚¤ãƒ«ã«å¤‰æ›´ã‚’é©ç”¨ã™ã‚‹ã“ã¨ã‚‚å‡ºæ¥ã¾ã™ã€‚</div><br />',
+        '<br /><div align="center">(*) 既にギャラリーに写真が登録されている場合は、*マークが付いているフィールドは変更しないでください</div><br />
+  <a name="notice2"></a>(**) この設定を変更する場合は、変更後に追加されるファイルのみが影響を受けます。ギャラリー内にファイルがある場合は、この設定を変更しないことをお勧めします。管理メニューの&quot;<a href="util.php">管理ツール</a>(写真のリサイズ)&quot;を使用して、登録済みファイルに変更を適用することも出来ます。</div><br />',
 );
 
 // ------------------------------------------------------------------------- //
@@ -492,31 +494,31 @@ if (defined('CONFIG_PHP')) $lang_config_data = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('DB_ECARD_PHP')) $lang_db_ecard_php = array(
-  'title' => 'é€ä¿¡æ¸ˆã¿eã‚«ãƒ¼ãƒ‰',
-  'ecard_sender' => 'é€ä¿¡è€…',
-  'ecard_recipient' => 'å—å–äºº',
-  'ecard_date' => 'é€ä¿¡æ—¥æ™‚',
-  'ecard_display' => 'eã‚«ãƒ¼ãƒ‰ã®è¡¨ç¤º',
-  'ecard_name' => 'åå‰',
-  'ecard_email' => 'ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹',
+  'title' => '送信済みeカード',
+  'ecard_sender' => '送信者',
+  'ecard_recipient' => '受取人',
+  'ecard_date' => '送信日時',
+  'ecard_display' => 'eカードの表示',
+  'ecard_name' => '名前',
+  'ecard_email' => 'メールアドレス',
   'ecard_ip' => 'IP #',
-  'ecard_ascending' => 'æ˜‡é †',
-  'ecard_descending' => 'é™é †',
-  'ecard_sorted' => 'ä¸¦ã³æ›¿ãˆ:',
-  'ecard_by_date' => 'æ—¥ä»˜',
-  'ecard_by_sender_name' => 'é€ä¿¡è€…å',
-  'ecard_by_sender_email' => 'é€ä¿¡è€…ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹',
-  'ecard_by_sender_ip' => 'é€ä¿¡è€…IPã‚¢ãƒ‰ãƒ¬ã‚¹',
-  'ecard_by_recipient_name' => 'å—å–äººå',
-  'ecard_by_recipient_email' => 'å—å–äººãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹',
-  'ecard_number' => 'è¡¨ç¤ºãƒ¬ã‚³ãƒ¼ãƒ‰ %s - %s (%s ä»¶ä¸­)',
-  'ecard_goto_page' => 'ãƒšãƒ¼ã‚¸ç§»å‹•',
-  'ecard_records_per_page' => '1ãƒšãƒ¼ã‚¸å½“ãŸã‚Šã®ãƒ¬ã‚³ãƒ¼ãƒ‰æ•°',
-  'check_all' => 'å…¨ã¦ã‚’é¸æŠž',
-  'uncheck_all' => 'ã™ã¹ã¦ã®é¸æŠžã‚’è§£é™¤ ',
-  'ecards_delete_selected' => 'é¸æŠžã—ãŸeã‚«ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹',
-  'ecards_delete_confirm' => 'æœ¬å½“ã«ãƒ¬ã‚³ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã—ã¦ã‚‚å®œã—ã„ã§ã™ã‹? ãƒã‚§ãƒƒã‚¯ãƒœãƒƒã‚¯ã‚¹ã‚’ãƒã‚§ãƒƒã‚¯ã—ã¦ãã ã•ã„!',
-  'ecards_delete_sure' => 'å‰Šé™¤ç¢ºèª',
+  'ecard_ascending' => '昇順',
+  'ecard_descending' => '降順',
+  'ecard_sorted' => '並び替え:',
+  'ecard_by_date' => '日付',
+  'ecard_by_sender_name' => '送信者名',
+  'ecard_by_sender_email' => '送信者メールアドレス',
+  'ecard_by_sender_ip' => '送信者IPアドレス',
+  'ecard_by_recipient_name' => '受取人名',
+  'ecard_by_recipient_email' => '受取人メールアドレス',
+  'ecard_number' => '表示レコード %s - %s (%s 件中)',
+  'ecard_goto_page' => 'ページ移動',
+  'ecard_records_per_page' => '1ページ当たりのレコード数',
+  'check_all' => '全てを選択',
+  'uncheck_all' => 'すべての選択を解除 ',
+  'ecards_delete_selected' => '選択したeカードを削除する',
+  'ecards_delete_confirm' => '本当にレコードを削除しても宜しいですか? チェックボックスをチェックしてください!',
+  'ecards_delete_sure' => '削除確認',
 );
 
 
@@ -525,34 +527,34 @@ if (defined('DB_ECARD_PHP')) $lang_db_ecard_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('DB_INPUT_PHP')) $lang_db_input_php = array(
-  'empty_name_or_com' => 'ãŠåå‰ã¨ã‚³ãƒ¡ãƒ³ãƒˆã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚',
-  'com_added' => 'ã‚ãªãŸã®ã‚³ãƒ¡ãƒ³ãƒˆã¯è¿½åŠ ã•ã‚Œã¾ã—ãŸã€‚',
-  'alb_need_title' => 'ã‚¢ãƒ«ãƒãƒ åã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ !',
-  'no_udp_needed' => 'æ›´æ–°ã¯å¿…è¦ã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'alb_updated' => 'ã‚¢ãƒ«ãƒãƒ ãŒæ›´æ–°ã•ã‚Œã¾ã—ãŸã€‚',
-  'unknown_album' => 'é¸æŠžã—ãŸã‚¢ãƒ«ãƒãƒ ãŒå­˜åœ¨ã—ãªã„ã€åˆã¯ã“ã®ã‚¢ãƒ«ãƒãƒ ã«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹æ¨©é™ãŒã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'no_pic_uploaded' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¾ã›ã‚“ã§ã—ãŸ !<br /><br />ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ­£ã—ãé¸æŠžã—ã¦ã„ã‚‹å ´åˆã¯ã€ã‚µãƒ¼ãƒãŒ</br>ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã‚’è¨±å¯ã—ã¦ã„ã‚‹ã‹ç¢ºèªã—ã¦ãã ã•ã„ ...',
-  'err_mkdir' => 'ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª %s ã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸ !',
-  'dest_dir_ro' => 'å¯¾è±¡ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª %s ã¯ã‚¹ã‚¯ãƒªãƒ—ãƒˆã«ã‚ˆã‚‹æ›¸è¾¼ã¿ãŒå‡ºæ¥ã¾ã›ã‚“ !',
-  'err_move' => '%s ã‚’ %s ã«ç§»å‹•ã§ãã¾ã›ã‚“ !',
-  'err_fsize_too_large' => 'ã‚ãªãŸãŒã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚µã‚¤ã‚ºã¯å¤§ãéŽãŽã¾ã™ (æœ€å¤§ã‚µã‚¤ã‚ºã¯%sx%sã§ã™) !',
-  'err_imgsize_too_large' => 'ã‚ãªãŸãŒã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚µã‚¤ã‚ºã¯å¤§ãéŽãŽã¾ã™ (æœ€å¤§ã‚µã‚¤ã‚ºã¯%sKBã§ã™) !',
-  'err_invalid_img' => 'ã‚ãªãŸãŒã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã¯æœ‰åŠ¹ãªç”»åƒã§ã¯ã‚ã‚Šã¾ã›ã‚“ !',
-  'allowed_img_types' => '%s ã®ç”»åƒã®ã¿ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å‡ºæ¥ã¾ã™ã€‚',
-  'err_insert_pic' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã€Œ%sã€ã¯ã‚¢ãƒ«ãƒãƒ ã«ç™»éŒ²ã§ãã¾ã›ã‚“ã€‚ ',
-  'upload_success' => 'ã‚ãªãŸã®ãƒ•ã‚¡ã‚¤ãƒ«ã¯æ­£å¸¸ã«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¾ã—ãŸ<br /><br />ç®¡ç†è€…ã®æ‰¿èªå¾Œã«è¡¨ç¤ºã•ã‚Œã¾ã™ã€‚',
+  'empty_name_or_com' => 'お名前とコメントを入力してください。',
+  'com_added' => 'あなたのコメントは追加されました。',
+  'alb_need_title' => 'アルバム名を入力してください !',
+  'no_udp_needed' => '更新は必要ありません。',
+  'alb_updated' => 'アルバムが更新されました。',
+  'unknown_album' => '選択したアルバムが存在しない、又はこのアルバムにアップロードする権限がありません。',
+  'no_pic_uploaded' => 'ファイルはアップロードされませんでした !<br /><br />アップロードするファイルを正しく選択している場合は、サーバが</br>ファイルのアップロードを許可しているか確認してください ...',
+  'err_mkdir' => 'ディレクトリ %s の作成に失敗しました !',
+  'dest_dir_ro' => '対象ディレクトリ %s はスクリプトによる書込みが出来ません !',
+  'err_move' => '%s を %s に移動できません !',
+  'err_fsize_too_large' => 'あなたがアップロードしたファイルのサイズは大き過ぎます (最大サイズは%sx%sです) !',
+  'err_imgsize_too_large' => 'あなたがアップロードしたファイルのサイズは大き過ぎます (最大サイズは%sKBです) !',
+  'err_invalid_img' => 'あなたがアップロードしたファイルは有効な画像ではありません !',
+  'allowed_img_types' => '%s の画像のみアップロード出来ます。',
+  'err_insert_pic' => 'ファイル「%s」はアルバムに登録できません。 ',
+  'upload_success' => 'あなたのファイルは正常にアップロードされました<br /><br />管理者の承認後に表示されます。',
   'notify_admin_email_subject' => '%s - Upload notification',
-  'notify_admin_email_body' => '%s ã«ã‚ˆã£ã¦å†™çœŸãŒã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¾ã—ãŸã€‚èªè¨¼ã™ã‚‹å ´åˆã¯ã€æ¬¡ã®ãƒªãƒ³ã‚¯ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚ %s',
-  'info' => 'æƒ…å ±',
-  'com_added' => 'ã‚³ãƒ¡ãƒ³ãƒˆãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸã€‚',
-  'alb_updated' => 'ã‚¢ãƒ«ãƒãƒ ãŒæ›´æ–°ã•ã‚Œã¾ã—ãŸã€‚',
-  'err_comment_empty' => 'ã‚³ãƒ¡ãƒ³ãƒˆãŒç©ºç™½ã§ã™ !',
-  'err_invalid_fext' => 'æ¬¡ã®æ‹¡å¼µå­ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®ã¿ä½¿ç”¨ã§ãã¾ã™: <br /><br />%s.',
-  'no_flood' => 'ç”³ã—è¨³ã”ã–ã„ã¾ã›ã‚“ã€ã‚ãªãŸã¯æ—¢ã«ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚³ãƒ¡ãƒ³ãƒˆã‚’æŠ•ç¨¿ã—ã¦ã„ã¾ã™<br /><br />ä¿®æ­£ã—ãŸã„å ´åˆã¯ã€ã‚³ãƒ¡ãƒ³ãƒˆã‚’ç·¨é›†ã—ã¦ãã ã•ã„ã€‚',
-  'redirect_msg' => 'ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆã•ã‚Œã¾ã—ãŸã€‚<br /><br /><br />ãƒšãƒ¼ã‚¸ãŒè‡ªå‹•çš„ã«æ›´æ–°ã•ã‚Œãªã„å ´åˆã¯ã€ã€Œç¶šãã€ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚',
-  'upl_success' => 'ã‚ãªãŸã®ãƒ•ã‚¡ã‚¤ãƒ«ã¯æ­£å¸¸ã«ç™»éŒ²ã•ã‚Œã¾ã—ãŸã€‚',
+  'notify_admin_email_body' => '%s によって写真がアップロードされました。認証する場合は、次のリンクをクリックしてください。 %s',
+  'info' => '情報',
+  'com_added' => 'コメントが追加されました。',
+  'alb_updated' => 'アルバムが更新されました。',
+  'err_comment_empty' => 'コメントが空白です !',
+  'err_invalid_fext' => '次の拡張子のファイルのみ使用できます: <br /><br />%s.',
+  'no_flood' => '申し訳ございません、あなたは既にこのファイルにコメントを投稿しています<br /><br />修正したい場合は、コメントを編集してください。',
+  'redirect_msg' => 'リダイレクトされました。<br /><br /><br />ページが自動的に更新されない場合は、「続く」をクリックしてください。',
+  'upl_success' => 'あなたのファイルは正常に登録されました。',
   'email_comment_subject' => 'Comment posted on Coppermine Photo Gallery',
-  'email_comment_body' => 'ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã«ã‚³ãƒ¡ãƒ³ãƒˆãŒæŠ•ç¨¿ã•ã‚Œã¾ã—ãŸã€‚ã“ã¡ã‚‰ã‚’ã”è¦§ãã ã•ã„:',
+  'email_comment_body' => 'ギャラリーにコメントが投稿されました。こちらをご覧ください:',
 );
 
 // ------------------------------------------------------------------------- //
@@ -560,24 +562,24 @@ if (defined('DB_INPUT_PHP')) $lang_db_input_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('DELETE_PHP')) $lang_delete_php = array(
-  'caption' => 'ã‚­ãƒ£ãƒ—ã‚·ãƒ§ãƒ³',
-  'fs_pic' => 'ãƒ•ãƒ«ã‚µã‚¤ã‚ºç”»åƒ',
-  'del_success' => 'å‰Šé™¤æˆåŠŸ',
-  'ns_pic' => 'ãƒŽãƒ¼ãƒžãƒ«ã‚µã‚¤ã‚ºç”»åƒ',
-  'err_del' => 'å‰Šé™¤ä¸å¯',
-  'thumb_pic' => 'ã‚µãƒ ãƒã‚¤ãƒ«',
-  'comment' => 'ã‚³ãƒ¡ãƒ³ãƒˆ',
-  'im_in_alb' => 'ã‚¢ãƒ«ãƒãƒ å†…ã®ç”»åƒ',
-  'alb_del_success' => 'ã‚¢ãƒ«ãƒãƒ ã€Œ%sã€ãŒå‰Šé™¤ã•ã‚Œã¾ã—ãŸã€‚',
-  'alb_mgr' => 'ã‚¢ãƒ«ãƒãƒ ãƒžãƒãƒ¼ã‚¸ãƒ£ãƒ¼',
-  'err_invalid_data' => 'ã€Œ%sã€ã«ä¸æ­£ãªãƒ‡ãƒ¼ã‚¿ãŒç™ºç”Ÿã—ã¾ã—ãŸã€‚',
-  'create_alb' => 'ã‚¢ãƒ«ãƒãƒ ã€Œ%sã€ã®ä½œæˆä¸­',
-  'update_alb' => 'ã‚¢ãƒ«ãƒãƒ ã€Œ%sã€ ã‚¢ãƒ«ãƒãƒ åã€Œ%sã€ ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã€Œ%s\ã€ã‚’æ›´æ–°ã—ã¦ã„ã¾ã™ã€‚',
-  'del_pic' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã®å‰Šé™¤',
-  'del_alb' => 'ã‚¢ãƒ«ãƒãƒ ã®å‰Šé™¤',
-  'del_user' => 'ãƒ¦ãƒ¼ã‚¶ã®å‰Šé™¤',
-  'err_unknown_user' => 'é¸æŠžã—ãŸãƒ¦ãƒ¼ã‚¶ã¯å­˜åœ¨ã—ã¦ã„ã¾ã›ã‚“ !',
-  'comment_deleted' => 'ã‚³ãƒ¡ãƒ³ãƒˆãŒå‰Šé™¤ã•ã‚Œã¾ã—ãŸã€‚',
+  'caption' => 'キャプション',
+  'fs_pic' => 'フルサイズ画像',
+  'del_success' => '削除成功',
+  'ns_pic' => 'ノーマルサイズ画像',
+  'err_del' => '削除不可',
+  'thumb_pic' => 'サムネイル',
+  'comment' => 'コメント',
+  'im_in_alb' => 'アルバム内の画像',
+  'alb_del_success' => 'アルバム「%s」が削除されました。',
+  'alb_mgr' => 'アルバムマネージャー',
+  'err_invalid_data' => '「%s」に不正なデータが発生しました。',
+  'create_alb' => 'アルバム「%s」の作成中',
+  'update_alb' => 'アルバム「%s」 アルバム名「%s」 インデックス「%s\」を更新しています。',
+  'del_pic' => 'ファイルの削除',
+  'del_alb' => 'アルバムの削除',
+  'del_user' => 'ユーザの削除',
+  'err_unknown_user' => '選択したユーザは存在していません !',
+  'comment_deleted' => 'コメントが削除されました。',
 );
 
 // ------------------------------------------------------------------------- //
@@ -593,54 +595,54 @@ if (defined('DELETE_PHP')) $lang_delete_php = array(
 if (defined('DISPLAYIMAGE_PHP')){
 
 $lang_display_image_php = array(
-  'confirm_del' => 'æœ¬å½“ã«ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å‰Šé™¤ã—ã¦ã‚‚å®œã—ã„ã§ã™ã‹ ? \\nåŒæ™‚ã«ã‚³ãƒ¡ãƒ³ãƒˆã‚‚å‰Šé™¤ã•ã‚Œã¾ã™ã€‚',
-  'del_pic' => 'ã“ã®å†™çœŸã‚’å‰Šé™¤',
-  'size' => '%s x %s ãƒ”ã‚¯ã‚»ãƒ«',
-  'views' => '%s å›ž',
-  'slideshow' => 'ã‚¹ãƒ©ã‚¤ãƒ‰ã‚·ãƒ§ãƒ¼',
-  'stop_slideshow' => 'ã‚¹ãƒ©ã‚¤ãƒ‰ã‚·ãƒ§ãƒ¼ã‚’åœæ­¢',
-  'view_fs' => 'ã‚¯ãƒªãƒƒã‚¯ã§ãƒ•ãƒ«ã‚µã‚¤ã‚ºã®ç”»åƒã‚’è¡¨ç¤º',
-  'edit_pic' => 'èª¬æ˜Žã®ç·¨é›†',
-  'crop_pic' => 'ã‚¯ãƒ­ãƒƒãƒ—åŠã³å›žè»¢',
+  'confirm_del' => '本当にこのファイルを削除しても宜しいですか ? \\n同時にコメントも削除されます。',
+  'del_pic' => 'この写真を削除',
+  'size' => '%s x %s ピクセル',
+  'views' => '%s 回',
+  'slideshow' => 'スライドショー',
+  'stop_slideshow' => 'スライドショーを停止',
+  'view_fs' => 'クリックでフルサイズの画像を表示',
+  'edit_pic' => '説明の編集',
+  'crop_pic' => 'クロップ及び回転',
 );
 
 $lang_picinfo = array(
-  'title' =>'ãƒ•ã‚¡ã‚¤ãƒ«æƒ…å ±',
-  'Filename' => 'ãƒ•ã‚¡ã‚¤ãƒ«å',
-  'Album name' => 'ã‚¢ãƒ«ãƒãƒ å',
-  'Rating' => 'ãƒ¬ãƒ¼ãƒ†ã‚£ãƒ³ã‚° (æŠ•ç¥¨æ•° %sä»¶)',
-  'Keywords' => 'ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰',
-  'File Size' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚º',
-  'Dimensions' => 'å¤§ãã•',
-  'Displayed' => 'è¡¨ç¤º',
-  'Camera' => 'ã‚«ãƒ¡ãƒ©',
-  'Date taken' => 'æ’®å½±æ—¥',
-  'Aperture' => 'ãƒ¬ãƒ³ã‚º',
-  'Exposure time' => 'éœ²å‡ºæ™‚é–“',
-  'Focal length' => 'ç„¦ç‚¹è·é›¢',
-  'Comment' => 'ã‚³ãƒ¡ãƒ³ãƒˆ',
-  'addFav'=>'ãŠæ°—ã«å…¥ã‚Šã«è¿½åŠ ',
-  'addFavPhrase'=>'ãŠæ°—ã«å…¥ã‚Š',
-  'remFav'=>'ãŠæ°—ã«å…¥ã‚Šã‹ã‚‰å‰Šé™¤',
-  'iptcTitle'=>'IPTCã‚¿ã‚¤ãƒˆãƒ«',
-  'iptcCopyright'=>'IPTCè‘—ä½œæ¨©',
-  'iptcKeywords'=>'IPTCã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰',
-  'iptcCategory'=>'IPTCã‚«ãƒ†ã‚´ãƒª',
-  'iptcSubCategories'=>'IPTCã‚µãƒ–ã‚«ãƒ†ã‚´ãƒª',
+  'title' =>'ファイル情報',
+  'Filename' => 'ファイル名',
+  'Album name' => 'アルバム名',
+  'Rating' => 'レーティング (投票数 %s件)',
+  'Keywords' => 'キーワード',
+  'File Size' => 'ファイルサイズ',
+  'Dimensions' => '大きさ',
+  'Displayed' => '表示',
+  'Camera' => 'カメラ',
+  'Date taken' => '撮影日',
+  'Aperture' => 'レンズ',
+  'Exposure time' => '露出時間',
+  'Focal length' => '焦点距離',
+  'Comment' => 'コメント',
+  'addFav'=>'お気に入りに追加',
+  'addFavPhrase'=>'お気に入り',
+  'remFav'=>'お気に入りから削除',
+  'iptcTitle'=>'IPTCタイトル',
+  'iptcCopyright'=>'IPTC著作権',
+  'iptcKeywords'=>'IPTCキーワード',
+  'iptcCategory'=>'IPTCカテゴリ',
+  'iptcSubCategories'=>'IPTCサブカテゴリ',
 );
 
 $lang_display_comments = array(
   'OK' => 'OK',
-  'edit_title' => 'ã“ã®ã‚³ãƒ¡ãƒ³ãƒˆã‚’ç·¨é›†ã™ã‚‹',
-  'confirm_delete' => 'æœ¬å½“ã«ã“ã®ã‚³ãƒ¡ãƒ³ãƒˆã‚’å‰Šé™¤ã—ã¦ã‚‚å®œã—ã„ã§ã™ã‹ ?',
-  'add_your_comment' => 'ã‚³ãƒ¡ãƒ³ãƒˆã‚’è¿½åŠ ã™ã‚‹',
-  'name'=>'åå‰',
-  'comment'=>'ã‚³ãƒ¡ãƒ³ãƒˆ',
-  'your_name' => 'ãŠåå‰',
+  'edit_title' => 'このコメントを編集する',
+  'confirm_delete' => '本当にこのコメントを削除しても宜しいですか ?',
+  'add_your_comment' => 'コメントを追加する',
+  'name'=>'名前',
+  'comment'=>'コメント',
+  'your_name' => 'お名前',
 );
 
 $lang_fullsize_popup = array(
-  'click_to_close' => 'ç”»åƒã®ã‚¯ãƒªãƒƒã‚¯ã§ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã‚’é–‰ã˜ã‚‹',
+  'click_to_close' => '画像のクリックでウインドウを閉じる',
 );
 
 }
@@ -650,22 +652,22 @@ $lang_fullsize_popup = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('ECARDS_PHP') || defined('DISPLAYECARD_PHP')) $lang_ecard_php =array(
-  'title' => 'eã‚«ãƒ¼ãƒ‰ã®é€ä¿¡',
-  'invalid_email' => '<b>è­¦å‘Š</b> : ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ãŒæ­£ã—ãã‚ã‚Šã¾ã›ã‚“ !',
+  'title' => 'eカードの送信',
+  'invalid_email' => '<b>警告</b> : メールアドレスが正しくありません !',
   'ecard_title' => 'An e-card from %s for you',
-  'error_not_image' => 'ç”»åƒä»¥å¤–ã¯eã‚«ãƒ¼ãƒ‰ã¨ã—ã¦é€ä¿¡å‡ºæ¥ã¾ã›ã‚“ã€‚',
-  'view_ecard' => 'eã‚«ãƒ¼ãƒ‰ãŒæ­£å¸¸ã«è¡¨ç¤ºã•ã‚Œãªã„å ´åˆã¯ã€ã“ã®ãƒªãƒ³ã‚¯ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚',
-  'view_more_pics' => 'ã‚‚ã£ã¨å†™çœŸã‚’è¦‹ã‚‹å ´åˆã¯ã€ã“ã®ãƒªãƒ³ã‚¯ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ !',
-  'send_success' => 'eã‚«ãƒ¼ãƒ‰ãŒé€ä¿¡ã•ã‚Œã¾ã—ãŸã€‚',
-  'send_failed' => 'ç”³ã—è¨³ã”ã–ã„ã¾ã›ã‚“ã€eã‚«ãƒ¼ãƒ‰ã‚’é€ä¿¡å‡ºæ¥ã¾ã›ã‚“ã§ã—ãŸ ...',
+  'error_not_image' => '画像以外はeカードとして送信出来ません。',
+  'view_ecard' => 'eカードが正常に表示されない場合は、このリンクをクリックしてください。',
+  'view_more_pics' => 'もっと写真を見る場合は、このリンクをクリックしてください !',
+  'send_success' => 'eカードが送信されました。',
+  'send_failed' => '申し訳ございません、eカードを送信出来ませんでした ...',
   'from' => 'From',
-  'your_name' => 'ãŠåå‰',
-  'your_email' => 'ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹',
+  'your_name' => 'お名前',
+  'your_email' => 'メールアドレス',
   'to' => 'To',
-  'rcpt_name' => 'å—å–äººã®ãŠåå‰',
-  'rcpt_email' => 'å—å–äººã®ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹',
-  'greetings' => 'ã‚ã„ã•ã¤',
-  'message' => 'ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸',
+  'rcpt_name' => '受取人のお名前',
+  'rcpt_email' => '受取人のメールアドレス',
+  'greetings' => 'あいさつ',
+  'message' => 'メッセージ',
 );
 
 // ------------------------------------------------------------------------- //
@@ -673,31 +675,31 @@ if (defined('ECARDS_PHP') || defined('DISPLAYECARD_PHP')) $lang_ecard_php =array
 // ------------------------------------------------------------------------- //
 
 if (defined('EDITPICS_PHP')) $lang_editpics_php = array(
-  'pic_info' => 'ãƒ•ã‚¡ã‚¤ãƒ«æƒ…å ±',
-  'album' => 'ã‚¢ãƒ«ãƒãƒ ',
-  'title' => 'å†™çœŸå',
-  'desc' => 'èª¬æ˜Ž',
-  'keywords' => 'ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰',
-  'pic_info_str' => '%s&times;%s - %sKB - é–²è¦§å›žæ•° %s - æŠ•ç¥¨æ•° %s',
-  'approve' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã®æ‰¿èª',
-  'postpone_app' => 'æ‰¿èªã®å»¶æœŸ',
-  'del_pic' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã®å‰Šé™¤',
-  'read_exif' => 'EXIFæƒ…å ±ã‚’å†åº¦å–å¾—ã™ã‚‹',
-  'reset_view_count' => 'é–²è¦§ã‚«ã‚¦ãƒ³ã‚¿ã®ãƒªã‚»ãƒƒãƒˆ',
-  'reset_votes' => 'æŠ•ç¥¨ã®ãƒªã‚»ãƒƒãƒˆ',
-  'del_comm' => 'ã‚³ãƒ¡ãƒ³ãƒˆã®å‰Šé™¤',
-  'upl_approval' => 'ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰æ‰¿èª',
-  'edit_pics' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã®ç·¨é›†',
-  'see_next' => 'å‰ã¸',
-  'see_prev' => 'æ¬¡ã¸',
-  'n_pic' => 'ãƒ•ã‚¡ã‚¤ãƒ«æ•° %s',
-  'n_of_pic_to_disp' => 'ãƒ•ã‚¡ã‚¤ãƒ«è¡¨ç¤ºæ•°',
-  'apply' => 'æ›´æ–°ã®é©ç”¨',
-  'crop_title' => 'Coppermineãƒ”ã‚¯ãƒãƒ£ãƒ¼ã‚¨ãƒ‡ã‚£ã‚¿',
-  'preview' => 'ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼',
-  'save' => 'å†™çœŸã®ä¿å­˜',
-  'save_thumb' =>'ã‚µãƒ ãƒã‚¤ãƒ«ã¨ã—ã¦ä¿å­˜',
-  'sel_on_img' =>'é¸æŠžã¯ç”»åƒå†…ã§è¡Œã£ã¦ãã ã•ã„!',
+  'pic_info' => 'ファイル情報',
+  'album' => 'アルバム',
+  'title' => '写真名',
+  'desc' => '説明',
+  'keywords' => 'キーワード',
+  'pic_info_str' => '%s&times;%s - %sKB - 閲覧回数 %s - 投票数 %s',
+  'approve' => 'ファイルの承認',
+  'postpone_app' => '承認の延期',
+  'del_pic' => 'ファイルの削除',
+  'read_exif' => 'EXIF情報を再度取得する',
+  'reset_view_count' => '閲覧カウンタのリセット',
+  'reset_votes' => '投票のリセット',
+  'del_comm' => 'コメントの削除',
+  'upl_approval' => 'アップロード承認',
+  'edit_pics' => 'ファイルの編集',
+  'see_next' => '前へ',
+  'see_prev' => '次へ',
+  'n_pic' => 'ファイル数 %s',
+  'n_of_pic_to_disp' => 'ファイル表示数',
+  'apply' => '更新の適用',
+  'crop_title' => 'Coppermineピクチャーエディタ',
+  'preview' => 'プレビュー',
+  'save' => '写真の保存',
+  'save_thumb' =>'サムネイルとして保存',
+  'sel_on_img' =>'選択は画像内で行ってください!',
 );
 
 // ------------------------------------------------------------------------- //
@@ -705,43 +707,43 @@ if (defined('EDITPICS_PHP')) $lang_editpics_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('FAQ_PHP')) $lang_faq_php = array(
-  'faq' => 'ã‚ˆãã‚ã‚‹è³ªå•ã¨ç­”ãˆ ',
-  'toc' => 'ç›®æ¬¡',
-  'question' => 'è³ªå•: ',
-  'answer' => 'ç­”ãˆ: ', 
+  'faq' => 'よくある質問と答え ',
+  'toc' => '目次',
+  'question' => '質問: ',
+  'answer' => '答え: ', 
 );
 
 if (defined('FAQ_PHP')) $lang_faq_data = array(
-  'ä¸€èˆ¬çš„ãªFAQ', //
-  array('ãªãœãƒ¦ãƒ¼ã‚¶ç™»éŒ²ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã‹?', 'ãƒ¦ãƒ¼ã‚¶ç™»éŒ²ã®è¦å¦ã¯ç®¡ç†è€…ã«ã‚ˆã£ã¦æ±ºå®šã•ã‚Œã¾ã™ã€‚ãƒ¦ãƒ¼ã‚¶ç™»éŒ²ã™ã‚‹ã“ã¨ã§ã€ãƒ¡ãƒ³ãƒãƒ¼ã¯ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã€ãŠæ°—ã«å…¥ã‚Šã®è¿½åŠ ã€å†™çœŸã®è©•ä¾¡ã€ã‚³ãƒ¡ãƒ³ãƒˆã®æŠ•ç¨¿ç­‰ã®æ©Ÿèƒ½ã‚’ä½¿ç”¨ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚', 'allow_user_registration', '0'),
-  array('ãƒ¦ãƒ¼ã‚¶ç™»éŒ²æ–¹æ³•ã¯?', '&quot;ãƒ¦ãƒ¼ã‚¶ç™»éŒ²&quot;ã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¦å¿…é ˆé …ç›®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã«å¿…è¦äº‹é …ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„(å¿…è¦ã§ã‚ã‚Œã°ä»»æ„é …ç›®ã‚‚)ã€‚<br />ç®¡ç†è€…ãŒãƒ¡ãƒ¼ãƒ«æ‰¿èªã‚’åˆ©ç”¨å¯ã«ã—ã¦ã„ã‚‹å ´åˆã¯å€‹äººæƒ…å ±ã‚’é€ä¿¡ã—ãŸå¾Œã€ç™»éŒ²ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹å®›ã«ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®æ´»æ€§åŒ–ã«é–¢ã™ã‚‹èª¬æ˜ŽãŒè¨˜è¼‰ã•ã‚ŒãŸãƒ¡ãƒ¼ãƒ«ãŒé€ä¿¡ã•ã‚Œã¾ã™ã€‚ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹ç‚ºã«ã¯ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®æ´»æ€§åŒ–ã‚’è¡Œã£ã¦ãã ã•ã„ã€‚', 'allow_user_registration', '1'),
-  array('ãƒ­ã‚°ã‚¤ãƒ³ã®æ–¹æ³•ã¯?', '&quot;ãƒ­ã‚°ã‚¤ãƒ³&quot;ç”»é¢ã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¦ãƒ¦ãƒ¼ã‚¶åã¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚&quot;ãƒ¦ãƒ¼ã‚¶åãƒ»ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨˜æ†¶&quot;ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã¨ä»¥å¾Œè‡ªå‹•çš„ã«ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚ <br /><b>é‡è¦:ã‚¯ãƒƒã‚­ãƒ¼ã¯åˆ©ç”¨å¯ã«ã—ã¦ãã ã•ã„ã€‚&quot;ãƒ¦ãƒ¼ã‚¶åãƒ»ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨˜æ†¶&quot;ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯ã€ã“ã®ã‚µã‚¤ãƒˆç™ºè¡Œã®ã‚¯ãƒƒã‚­ãƒ¼ã‚’å‰Šé™¤ã—ãªã„ã§ãã ã•ã„ã€‚</b>', 'offline', 0),
-  array('ãªãœãƒ­ã‚°ã‚¤ãƒ³å‡ºæ¥ãªã„ã®ã§ã™ã‹?', 'ãƒ¦ãƒ¼ã‚¶ç™»éŒ²å¾Œã«é€ä¿¡ã•ã‚Œã‚‹ãƒ¡ãƒ¼ãƒ«ã«è¨˜è¼‰ã•ã‚Œã¦ã„ãŸãƒªãƒ³ã‚¯ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¾ã—ãŸã‹? ãƒªãƒ³ã‚¯ã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã“ã¨ã§ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã‚’æ´»æ€§åŒ–ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚ä»–ã®ãƒ­ã‚°ã‚¤ãƒ³ã«é–¢ã™ã‚‹ãƒˆãƒ©ãƒ–ãƒ«ã¯ç®¡ç†è€…ã«ãŠå•åˆã›ãã ã•ã„ã€‚', 'offline', 0),
-  array('ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å¿˜ã‚ŒãŸã‚‰?', 'ã“ã®ã‚µã‚¤ãƒˆã«&quot;ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å¿˜ã‚Œã¾ã—ãŸ&quot;ãƒªãƒ³ã‚¯ãŒã‚ã‚‹å ´åˆã¯ãŠä½¿ã„ãã ã•ã„ã€‚ãã®ä»–ã®å ´åˆã¯ã‚µã‚¤ãƒˆç®¡ç†è€…ã«æ–°ã—ã„ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®ç™ºè¡Œã‚’ä¾é ¼ã—ã¦ãã ã•ã„ã€‚', 'offline', 0),
-  array('æ™®æ®µä½¿ç”¨ã—ã¦ã„ã‚‹ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å¤‰æ›´ã—ãŸã‚‰?', 'ãƒ­ã‚°ã‚¤ãƒ³å¾Œã€&quot;ãƒžã‚¤ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«&quot;ã§å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚', 'offline', 0),
-  array('&quot;ãŠæ°—ã«å…¥ã‚Š&quot;ã«å†™çœŸã‚’ä¿å­˜ã™ã‚‹æ–¹æ³•ã¯?', 'å†™çœŸã‚’ã‚¯ãƒªãƒƒã‚¯ã—ãŸå¾Œã€&quot;å†™çœŸæƒ…å ±&quot;ãƒªãƒ³ã‚¯(<img src="images/info.gif" width="16" height="16" border="0" alt="Picture information" />)ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚å†™çœŸæƒ…å ±ã®ä¸‹æ–¹ã«ã‚ã‚‹&quot;ãŠæ°—ã«å…¥ã‚Šã«è¿½åŠ &quot;ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚<br />ç®¡ç†è€…ã«ã¯&quot;å†™çœŸæƒ…å ±&quot;ãŒãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§è¡¨ç¤ºã•ã‚Œã¦ã„ã¾ã™ã€‚<br /><b>é‡è¦:ã‚¯ãƒƒã‚­ãƒ¼ã‚’ä½¿ç”¨å¯ã«ã—ã¦ã€ã“ã®ã‚µã‚¤ãƒˆç™ºè¡Œã®ã‚¯ãƒƒã‚­ãƒ¼ã‚’å‰Šé™¤ã—ãªã„ã§ãã ã•ã„ã€‚', 'offline', 0),
-  array('å†™çœŸã®è©•ä¾¡æ–¹æ³•ã¯?', 'å†™çœŸã®ã‚µãƒ ãƒã‚¤ãƒ«ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ã€ä¸‹æ–¹ã«è¡¨ç¤ºã•ã‚Œã‚‹ãƒ¬ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã‚’é¸æŠžã—ã¦ãã ã•ã„ã€‚', 'offline', 0),
-  array('å†™çœŸã¸ã®ã‚³ãƒ¡ãƒ³ãƒˆæŠ•ç¨¿æ–¹æ³•ã¯?', 'å†™çœŸã®ã‚µãƒ ãƒã‚¤ãƒ«ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ã€ä¸‹æ–¹ã«è¡¨ç¤ºã•ã‚Œã‚‹ã‚³ãƒ¡ãƒ³ãƒˆæ¬„ã«æŠ•ç¨¿ã—ã¦ãã ã•ã„ã€‚', 'offline', 0),
-  array('å†™çœŸã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰æ–¹æ³•ã¯?', '&quot;ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰&quot;ã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¦ã€ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã—ãŸã„ã‚¢ãƒ«ãƒãƒ ã‚’é¸æŠžã—ã¦ãã ã•ã„ã€‚&quot;å‚ç…§&quot;ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ãŸå¾Œã€ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã—ãŸã„ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é¸æŠžã—ã¦&quot;é–‹ã&quot;ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¾ã™ã€‚(å¿…è¦ã«å¿œã˜ã¦ã‚¿ã‚¤ãƒˆãƒ«ã€èª¬æ˜Žæ–‡ã‚’ä»˜åŠ ãˆã¦ãã ã•ã„) æœ€å¾Œã«&quot;ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰&quot;ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚', 'allow_private_albums', 0),
-  array('ã©ã“ã«å†™çœŸã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚Œã°è‰¯ã„ã§ã™ã‹?', '&quot;ãƒžã‚¤ã‚®ãƒ£ãƒ©ãƒªãƒ¼&quot;å†…ã®ã‚¢ãƒ«ãƒãƒ ã«å†™çœŸã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚ç®¡ç†è€…ã®è¨­å®šã«ã‚ˆã‚Šã€ãƒ¡ã‚¤ãƒ³ã‚®ãƒ£ãƒ©ãƒªãƒ¼å†…ã®ã‚¢ãƒ«ãƒãƒ ã«å†™çœŸã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã“ã¨ã‚‚å‡ºæ¥ã¾ã™ã€‚', 'allow_private_albums', 0),
-  array('ã©ã®ã‚ˆã†ãªç¨®é¡žã¨ã‚µã‚¤ã‚ºã®å†™çœŸã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å‡ºæ¥ã¾ã™ã‹?', 'ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å‡ºæ¥ã‚‹ã‚µã‚¤ã‚ºã¨ç¨®é¡ž(jpg,gif,ç­‰)ã¯ç®¡ç†è€…ã«ã‚ˆã‚Šæ±ºå®šã•ã‚Œã¾ã™ã€‚', 'offline', 0),
-  array('&quot;ãƒžã‚¤ã‚®ãƒ£ãƒ©ãƒªãƒ¼&quot;ã¨ã¯?', '&quot;ãƒžã‚¤ã‚®ãƒ£ãƒ©ãƒªãƒ¼&quot;ã¯ãƒ¦ãƒ¼ã‚¶ãŒå†™çœŸã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰åŠã³ç®¡ç†ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã‚‹å€‹äººç”¨ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã§ã™ã€‚', 'allow_private_albums', 0),
-  array('&quot;ãƒžã‚¤ã‚®ãƒ£ãƒ©ãƒªãƒ¼&quot;å†…ã®ã‚¢ãƒ«ãƒãƒ ä½œæˆãƒ»ãƒªãƒãƒ¼ãƒ ãƒ»å‰Šé™¤æ–¹æ³•ã¯?', 'ã¾ãšã€&quot;ç®¡ç†è€…ãƒ¢ãƒ¼ãƒ‰&quot;ã«ã—ã¦ãã ã•ã„ã€‚<br />&quot;ã‚¢ãƒ«ãƒãƒ &quot;ã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¦&quot;æ–°è¦ä½œæˆ&quot;ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚ &quot;æ–°ã—ã„ã‚¢ãƒ«ãƒãƒ &quot;ã‚’å¥½ããªåç§°ã«å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚<br />ã‚®ãƒ£ãƒ©ãƒªãƒ¼å†…ã®å…¨ã¦ã®ã‚¢ãƒ«ãƒãƒ ã®åç§°ã‚’å¤‰æ›´ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚<br />&quot;æ›´æ–°ã®é©ç”¨&quot;ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚', 'allow_private_albums', 0),
-  array('ãƒžã‚¤ã‚¢ãƒ«ãƒãƒ ã®ä¿®æ­£åŠã³é–²è¦§ã®åˆ¶é™æ–¹æ³•ã¯?', 'ã¾ãšã€&quot;ç®¡ç†è€…ãƒ¢ãƒ¼ãƒ‰&quot;ã«ã—ã¦ãã ã•ã„ã€‚<br />&quot;ã‚¢ãƒ«ãƒãƒ ã®æ›´æ–°&quot;ãƒãƒ¼ã«ã‚ã‚‹&quot;ãƒžã‚¤ã‚¢ãƒ«ãƒãƒ ã®ä¿®æ­£&quot;ã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¦ã€ä¿®æ­£ã—ãŸã„ã‚¢ãƒ«ãƒãƒ ã‚’é¸æŠžã—ã¦ãã ã•ã„ã€‚<br />ã“ã“ã§ã‚¢ãƒ«ãƒãƒ åã€èª¬æ˜Žã€ã‚µãƒ ãƒã‚¤ãƒ«ã€é–²è¦§åˆ¶é™ã€ã‚³ãƒ¡ãƒ³ãƒˆ/ãƒ¬ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã®ãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ã‚’å¤‰æ›´ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚<br />&quot;ã‚¢ãƒ«ãƒãƒ ã®æ›´æ–°&quot;ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚', 'allow_private_albums', 0),
-  array('ä»–ã®ãƒ¦ãƒ¼ã‚¶ã®ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã‚’é–²è¦§ã™ã‚‹æ–¹æ³•ã¯?', '&quot;ã‚¢ãƒ«ãƒãƒ ãƒªã‚¹ãƒˆ&quot;ã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¦ã€&quot;ãƒ¦ãƒ¼ã‚¶ã‚®ãƒ£ãƒ©ãƒªãƒ¼&quot;ã‚’é¸æŠžã—ã¦ãã ã•ã„ã€‚', 'allow_private_albums', 0),
-  array('ã‚¯ãƒƒã‚­ãƒ¼ã¨ã¯?', 'ã‚¯ãƒƒã‚­ãƒ¼ã¯ã€ã‚¦ã‚§ãƒ–ã‚µã‚¤ãƒˆã‹ã‚‰ã‚ãªãŸã®ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ã«ä¿å­˜ã•ã‚Œã‚‹ãƒ—ãƒ¬ã‚¤ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ãƒ‡ãƒ¼ã‚¿ã§ã™ã€‚<br />é€šå¸¸ã€ã‚¯ãƒƒã‚­ãƒ¼ã¯ãƒ¦ãƒ¼ã‚¶ãŒã‚µã‚¤ãƒˆã«æˆ»ã£ã¦æ¥ãŸæ™‚ã«ã€å†åº¦ãƒ­ã‚°ã‚¤ãƒ³ã—ãªãã¦ã‚‚æ¸ˆã‚€ã‚ˆã†ã«åˆ©ç”¨ã•ã‚Œã¾ã™ã€‚ã¾ãŸã€ä»–ã®å¤šãã®å½¹å‰²ã‚’æŒã£ã¦ã„ã¾ã™ã€‚', 'offline', 0),
-  array('ã“ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®å…¥æ‰‹æ–¹æ³•ã¯?', 'Coppermineã¯ã€GNU GPLã«ã‚ˆã‚Šãƒªãƒªãƒ¼ã‚¹ã•ã‚ŒãŸãƒ•ãƒªãƒ¼ã®ãƒžãƒ«ãƒãƒ¡ãƒ‡ã‚£ã‚¢ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã§ã™ã€‚Coppermineã¯ã€å¤šæ©Ÿèƒ½ãªã‚·ã‚¹ãƒ†ãƒ ã§ã‚ã‚Šã€æ§˜ã€…ãªãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã«ç§»æ¤ã•ã‚Œã¦ã„ã¾ã™ã€‚è©³ç´°æƒ…å ±ã®é–²è¦§ã€ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã¯<a href="http://coppermine.sf.net/">Coppermineãƒ›ãƒ¼ãƒ ãƒšãƒ¼ã‚¸</a>ã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã¦è¡Œã£ã¦ãã ã•ã„ã€‚', 'offline', 0),
+  '一般的なFAQ', //
+  array('なぜユーザ登録する必要がありますか?', 'ユーザ登録の要否は管理者によって決定されます。ユーザ登録することで、メンバーはファイルのアップロード、お気に入りの追加、写真の評価、コメントの投稿等の機能を使用することが出来ます。', 'allow_user_registration', '0'),
+  array('ユーザ登録方法は?', '&quot;ユーザ登録&quot;にアクセスして必須項目フィールドに必要事項を入力してください(必要であれば任意項目も)。<br />管理者がメール承認を利用可にしている場合は個人情報を送信した後、登録メールアドレス宛にアカウントの活性化に関する説明が記載されたメールが送信されます。ログインする為にはアカウントの活性化を行ってください。', 'allow_user_registration', '1'),
+  array('ログインの方法は?', '&quot;ログイン&quot;画面にアクセスしてユーザ名とパスワードを入力してください。&quot;ユーザ名・パスワードを記憶&quot;をチェックすると以後自動的にログインすることが出来ます。 <br /><b>重要:クッキーは利用可にしてください。&quot;ユーザ名・パスワードを記憶&quot;を使用する場合は、このサイト発行のクッキーを削除しないでください。</b>', 'offline', 0),
+  array('なぜログイン出来ないのですか?', 'ユーザ登録後に送信されるメールに記載されていたリンクをクリックしましたか? リンクをクリックすることでアカウントを活性化することが出来ます。他のログインに関するトラブルは管理者にお問合せください。', 'offline', 0),
+  array('パスワードを忘れたら?', 'このサイトに&quot;パスワードを忘れました&quot;リンクがある場合はお使いください。その他の場合はサイト管理者に新しいパスワードの発行を依頼してください。', 'offline', 0),
+  array('普段使用しているメールアドレスを変更したら?', 'ログイン後、&quot;マイプロフィール&quot;で変更してください。', 'offline', 0),
+  array('&quot;お気に入り&quot;に写真を保存する方法は?', '写真をクリックした後、&quot;写真情報&quot;リンク(<img src="images/info.gif" width="16" height="16" border="0" alt="Picture information" />)をクリックしてください。写真情報の下方にある&quot;お気に入りに追加&quot;をクリックしてください。<br />管理者には&quot;写真情報&quot;がデフォルトで表示されています。<br /><b>重要:クッキーを使用可にして、このサイト発行のクッキーを削除しないでください。', 'offline', 0),
+  array('写真の評価方法は?', '写真のサムネイルをクリックして、下方に表示されるレーティングを選択してください。', 'offline', 0),
+  array('写真へのコメント投稿方法は?', '写真のサムネイルをクリックして、下方に表示されるコメント欄に投稿してください。', 'offline', 0),
+  array('写真のアップロード方法は?', '&quot;ファイルのアップロード&quot;にアクセスして、ファイルをアップロードしたいアルバムを選択してください。&quot;参照&quot;をクリックした後、アップロードしたいファイルを選択して&quot;開く&quot;をクリックします。(必要に応じてタイトル、説明文を付加えてください) 最後に&quot;ファイルのアップロード&quot;をクリックしてください。', 'allow_private_albums', 0),
+  array('どこに写真をアップロードすれば良いですか?', '&quot;マイギャラリー&quot;内のアルバムに写真をアップロードすることが出来ます。管理者の設定により、メインギャラリー内のアルバムに写真をアップロードすることも出来ます。', 'allow_private_albums', 0),
+  array('どのような種類とサイズの写真をアップロード出来ますか?', 'アップロード出来るサイズと種類(jpg,gif,等)は管理者により決定されます。', 'offline', 0),
+  array('&quot;マイギャラリー&quot;とは?', '&quot;マイギャラリー&quot;はユーザが写真をアップロード及び管理することが出来る個人用ギャラリーです。', 'allow_private_albums', 0),
+  array('&quot;マイギャラリー&quot;内のアルバム作成・リネーム・削除方法は?', 'まず、&quot;管理者モード&quot;にしてください。<br />&quot;アルバム&quot;にアクセスして&quot;新規作成&quot;をクリックしてください。 &quot;新しいアルバム&quot;を好きな名称に変更してください。<br />ギャラリー内の全てのアルバムの名称を変更することが出来ます。<br />&quot;更新の適用&quot;をクリックしてください。', 'allow_private_albums', 0),
+  array('マイアルバムの修正及び閲覧の制限方法は?', 'まず、&quot;管理者モード&quot;にしてください。<br />&quot;アルバムの更新&quot;バーにある&quot;マイアルバムの修正&quot;にアクセスして、修正したいアルバムを選択してください。<br />ここでアルバム名、説明、サムネイル、閲覧制限、コメント/レーティングのパーミッションを変更することが出来ます。<br />&quot;アルバムの更新&quot;をクリックしてください。', 'allow_private_albums', 0),
+  array('他のユーザのギャラリーを閲覧する方法は?', '&quot;アルバムリスト&quot;にアクセスして、&quot;ユーザギャラリー&quot;を選択してください。', 'allow_private_albums', 0),
+  array('クッキーとは?', 'クッキーは、ウェブサイトからあなたのコンピュータに保存されるプレインテキストのデータです。<br />通常、クッキーはユーザがサイトに戻って来た時に、再度ログインしなくても済むように利用されます。また、他の多くの役割を持っています。', 'offline', 0),
+  array('このプログラムの入手方法は?', 'Coppermineは、GNU GPLによりリリースされたフリーのマルチメディアギャラリーです。Coppermineは、多機能なシステムであり、様々なプラットフォームに移植されています。詳細情報の閲覧、ダウンロードは<a href="http://coppermine.sf.net/">Coppermineホームページ</a>にアクセスして行ってください。', 'offline', 0),
 
-  'ã‚µã‚¤ãƒˆé‹ç”¨',
-  array('&quot;ã‚¢ãƒ«ãƒãƒ ãƒªã‚¹ãƒˆ&quot;ã¨ã¯?', 'ã‚¢ãƒ«ãƒãƒ ãƒªã‚¹ãƒˆã§ã¯ã€ã‚®ãƒ£ãƒ©ãƒªãƒ¼å…¨ã¦ã‚’ãã‚Œãžã‚Œã®ã‚«ãƒ†ã‚´ãƒªã¸ã®ãƒªãƒ³ã‚¯ã¨å…±ã«è¡¨ç¤ºã—ã¾ã™ã€‚ã‚µãƒ ãƒã‚¤ãƒ«ã¯ã€ã‚«ãƒ†ã‚´ãƒªã¸ãƒªãƒ³ã‚¯ã•ã‚Œã¦ã„ã¾ã™ã€‚', 'offline', 0),
-  array('&quot;ãƒžã‚¤ã‚®ãƒ£ãƒ©ãƒªãƒ¼&quot;ã¨ã¯?', 'ãƒžã‚¤ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã§ã¯ã€ãƒ¦ãƒ¼ã‚¶ãŒè‡ªèº«ã®ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã‚’ä½œæˆã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚ãƒ¦ãƒ¼ã‚¶ã¯ã€å†™çœŸã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã¨åŒæ§˜ã«ã€ã‚¢ãƒ«ãƒãƒ ã®è¿½åŠ ã€å‰Šé™¤ã€ä¿®æ­£ã‚’è¡Œã†ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚', 'allow_private_albums', 0),
-  array('&quot;ç®¡ç†è€…ãƒ¢ãƒ¼ãƒ‰&quot;ã¨&quot;ãƒ¦ãƒ¼ã‚¶ãƒ¢ãƒ¼ãƒ‰&quot;ã®é•ã„ã¯?', 'ç®¡ç†è€…ãƒ¢ãƒ¼ãƒ‰ã§ã¯ã€ãƒ¦ãƒ¼ã‚¶ãŒè‡ªåˆ†ã®ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã‚’(ç®¡ç†è€…ãŒè¨±å¯ã—ã¦ã„ã‚‹å ´åˆã¯ä»–ã®äººã®ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã‚‚)ä¿®æ­£ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚', 'allow_private_albums', 0),
-  array('&quot;ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰&quot;ã¨ã¯?', 'ãƒ¦ãƒ¼ã‚¶ã¯è‡ªåˆ†åˆã¯ç®¡ç†è€…ãŒé¸æŠžã—ãŸã‚®ãƒ£ãƒ©ãƒªãƒ¼ã«å†™çœŸã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚ (ã‚µã‚¤ã‚ºã¨ç¨®é¡žã¯ç®¡ç†è€…ã«ã‚ˆã‚Šè¨­å®šã•ã‚Œã¾ã™)', 'allow_private_albums', 0),
-  array('&quot;æœ€æ–°ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰&quot;ã¨ã¯?', 'æœ€æ–°ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã§ã¯ã€ã‚µã‚¤ãƒˆã«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸç›´è¿‘ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚', 'offline', 0),
-  array('&quot;æœ€æ–°ã‚³ãƒ¡ãƒ³ãƒˆ&quot;ã¨ã¯?', 'æœ€æ–°ã‚³ãƒ¡ãƒ³ãƒˆã§ã¯ã€å†™çœŸã«æŠ•ç¨¿ã•ã‚ŒãŸç›´è¿‘ã®ã‚³ãƒ¡ãƒ³ãƒˆãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚', 'offline', 0),
-  array('&quot;é–²è¦§æœ€å¤š&quot;ã¨ã¯?', 'é–²è¦§æœ€å¤šã§ã¯ã€ãƒ­ã‚°ã‚¤ãƒ³ã®æœ‰ç„¡ã«ä¿‚ã‚ã‚‰ãšå…¨ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰æœ€ã‚‚é–²è¦§ã•ã‚ŒãŸå†™çœŸãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚', 'offline', 0),
-  array('&quot;ãƒˆãƒƒãƒ—ãƒ¬ãƒ¼ãƒˆ&quot;ã¨ã¯?', 'ãƒˆãƒƒãƒ—ãƒ¬ãƒ¼ãƒˆã§ã¯ã€ãƒ¦ãƒ¼ã‚¶ã«ã‚ˆã‚Šãƒ¬ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã•ã‚ŒãŸãƒˆãƒƒãƒ—ãƒ¬ãƒ¼ãƒˆã®å†™çœŸãŒã€å¹³å‡ãƒ¬ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã¨å…±ã«è¡¨ç¤ºã•ã‚Œã¾ã™ã€‚(ä¾‹: 5åã®ãƒ¦ãƒ¼ã‚¶ãŒ<img src="images/rating3.gif" width="65" height="14" border="0" alt="" />ã®ãƒ¬ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã‚’è¡Œã£ãŸå ´åˆã€å†™çœŸã®å¹³å‡ãƒ¬ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã¯<img src="images/rating3.gif" width="65" height="14" border="0" alt="" />ã¨ãªã‚Šã¾ã™ã€‚5åã®ãƒ¦ãƒ¼ã‚¶ãŒ1ã‹ã‚‰5ã®ãƒ¬ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã‚’è¡Œã£ãŸå ´åˆ(1,2,3,4,5)ã€å¹³å‡ãƒ¬ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã¯<img src="images/rating3.gif" width="65" height="14" border="0" alt="" /> ã«ãªã‚Šã¾ã™ã€‚)<br />ãƒ¬ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã®ç¯„å›²ã¯ã€<img src="images/rating5.gif" width="65" height="14" border="0" alt="best" /> (æœ€é«˜) ã‹ã‚‰ <img src="images/rating0.gif" width="65" height="14" border="0" alt="worst" /> (æœ€ä½Ž)ã®é–“ã§ã™ã€‚', 'offline', 0),
-  array('&quot;ãŠæ°—ã«å…¥ã‚Š&quot;ã¨ã¯?', 'ãŠæ°—ã«å…¥ã‚Šã§ã¯ã€ãŠæ°—ã«å…¥ã‚Šã®å†™çœŸæƒ…å ±ã‚’ã€ã‚ãªãŸã®ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ã«ã‚¯ãƒƒã‚­ãƒ¼ã§ä¿å­˜ã—ã¾ã™ã€‚', 'offline', 0),
+  'サイト運用',
+  array('&quot;アルバムリスト&quot;とは?', 'アルバムリストでは、ギャラリー全てをそれぞれのカテゴリへのリンクと共に表示します。サムネイルは、カテゴリへリンクされています。', 'offline', 0),
+  array('&quot;マイギャラリー&quot;とは?', 'マイギャラリーでは、ユーザが自身のギャラリーを作成することが出来ます。ユーザは、写真のアップロードと同様に、アルバムの追加、削除、修正を行うことが出来ます。', 'allow_private_albums', 0),
+  array('&quot;管理者モード&quot;と&quot;ユーザモード&quot;の違いは?', '管理者モードでは、ユーザが自分のギャラリーを(管理者が許可している場合は他の人のギャラリーも)修正することが出来ます。', 'allow_private_albums', 0),
+  array('&quot;ファイルのアップロード&quot;とは?', 'ユーザは自分又は管理者が選択したギャラリーに写真をアップロードすることが出来ます。 (サイズと種類は管理者により設定されます)', 'allow_private_albums', 0),
+  array('&quot;最新アップロード&quot;とは?', '最新アップロードでは、サイトにアップロードされた直近のファイルが表示されます。', 'offline', 0),
+  array('&quot;最新コメント&quot;とは?', '最新コメントでは、写真に投稿された直近のコメントが表示されます。', 'offline', 0),
+  array('&quot;閲覧最多&quot;とは?', '閲覧最多では、ログインの有無に係わらず全ユーザから最も閲覧された写真が表示されます。', 'offline', 0),
+  array('&quot;トップレート&quot;とは?', 'トップレートでは、ユーザによりレーティングされたトップレートの写真が、平均レーティングと共に表示されます。(例: 5名のユーザが<img src="images/rating3.gif" width="65" height="14" border="0" alt="" />のレーティングを行った場合、写真の平均レーティングは<img src="images/rating3.gif" width="65" height="14" border="0" alt="" />となります。5名のユーザが1から5のレーティングを行った場合(1,2,3,4,5)、平均レーティングは<img src="images/rating3.gif" width="65" height="14" border="0" alt="" /> になります。)<br />レーティングの範囲は、<img src="images/rating5.gif" width="65" height="14" border="0" alt="best" /> (最高) から <img src="images/rating0.gif" width="65" height="14" border="0" alt="worst" /> (最低)の間です。', 'offline', 0),
+  array('&quot;お気に入り&quot;とは?', 'お気に入りでは、お気に入りの写真情報を、あなたのコンピュータにクッキーで保存します。', 'offline', 0),
 );
 
 
@@ -750,18 +752,18 @@ if (defined('FAQ_PHP')) $lang_faq_data = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('FORGOT_PASSWD_PHP')) $lang_forgot_passwd_php = array(
-  'forgot_passwd' => 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãƒªãƒžã‚¤ãƒ³ãƒ€', 
-  'err_already_logged_in' => 'æ—¢ã«ãƒ­ã‚°ã‚¤ãƒ³ã—ã¦ã„ã¾ã™ !',
-  'enter_username_email' => 'ãƒ¦ãƒ¼ã‚¶ååˆã¯ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„',
+  'forgot_passwd' => 'パスワードリマインダ', 
+  'err_already_logged_in' => '既にログインしています !',
+  'enter_username_email' => 'ユーザ名又はメールアドレスを入力してください',
   'submit' => 'go',
-  'failed_sending_email' => 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãƒªãƒžã‚¤ãƒ³ãƒ€ã«ã‚ˆã‚‹ãƒ¡ãƒ¼ãƒ«ã¯é€ä¿¡å‡ºæ¥ã¾ã›ã‚“!',
-  'email_sent' => 'ãƒ¦ãƒ¼ã‚¶åã¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨˜è¼‰ã—ãŸãƒ¡ãƒ¼ãƒ«ãŒ %s å®›ã«é€ä¿¡ã•ã‚Œã¾ã—ãŸ',
-  'err_unk_user' => 'é¸æŠžã—ãŸãƒ¦ãƒ¼ã‚¶ã¯ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã›ã‚“!',
+  'failed_sending_email' => 'パスワードリマインダによるメールは送信出来ません!',
+  'email_sent' => 'ユーザ名とパスワードを記載したメールが %s 宛に送信されました',
+  'err_unk_user' => '選択したユーザは登録されていません!',
   'passwd_reminder_subject' => '%s - Password reminder',
-  'passwd_reminder_body' => 'ãƒ­ã‚°ã‚¤ãƒ³ãƒ‡ãƒ¼ã‚¿ãŒè«‹æ±‚ã•ã‚Œã¾ã—ãŸ:
-ãƒ¦ãƒ¼ã‚¶å: %s
-ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰: %s
-ãƒ­ã‚°ã‚¤ãƒ³ã¯ã“ã¡ã‚‰ %s ',
+  'passwd_reminder_body' => 'ログインデータが請求されました:
+ユーザ名: %s
+パスワード: %s
+ログインはこちら %s ',
 );
 
 // ------------------------------------------------------------------------- //
@@ -769,28 +771,28 @@ if (defined('FORGOT_PASSWD_PHP')) $lang_forgot_passwd_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('GROUPMGR_PHP')) $lang_groupmgr_php = array(
-  'group_name' => 'ã‚°ãƒ«ãƒ¼ãƒ—å',
-  'disk_quota' => 'ãƒ‡ã‚£ã‚¹ã‚¯å®¹é‡',
-  'can_rate' => 'ãƒ•ã‚¡ã‚¤ãƒ«å†™çœŸã‚’è©•ä¾¡å¯èƒ½',
-  'can_send_ecards' => 'e-ã‚«ãƒ¼ãƒ‰ã‚’é€ä¿¡å¯èƒ½',
-  'can_post_com' => 'ã‚³ãƒ¡ãƒ³ãƒˆã‚’æŠ•ç¨¿å¯èƒ½',
-  'can_upload' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å¯èƒ½',
-  'can_have_gallery' => 'ãƒ‘ãƒ¼ã‚½ãƒŠãƒ«ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã‚’ä½œæˆå¯èƒ½',
-  'apply' => 'æ›´æ–°ã®é©ç”¨',
-  'create_new_group' => 'æ–°è¦ã‚°ãƒ«ãƒ¼ãƒ—ã®ä½œæˆ',
-  'del_groups' => 'é¸æŠžã—ãŸã‚°ãƒ«ãƒ¼ãƒ—ã®å‰Šé™¤',
-  'confirm_del' => 'è­¦å‘Šã€ã‚°ãƒ«ãƒ¼ãƒ—ã‚’å‰Šé™¤ã—ãŸå ´åˆã€ã‚°ãƒ«ãƒ¼ãƒ—ã«å±žã—ã¦ã„ãŸãƒ¦ãƒ¼ã‚¶ã¯\'Registered\'ã‚°ãƒ«ãƒ¼ãƒ—ã«ç§»å‹•ã•ã‚Œã¾ã™ !\n\nå‡¦ç†ã‚’ç¶šã‘ã¾ã™ã‹ ?',
-  'title' => 'ãƒ¦ãƒ¼ã‚¶ã‚°ãƒ«ãƒ¼ãƒ—ã®ç®¡ç†',
-  'approval_1' => 'ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰æ‰¿èª (1)',
-  'approval_2' => 'ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰æ‰¿èª (2)',
-  'upload_form_config' => 'ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒ•ã‚©ãƒ¼ãƒ è¨­å®š',
-  'upload_form_config_values' => array( 'å˜ä¸€ãƒ•ã‚¡ã‚¤ãƒ«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã®ã¿', 'è¤‡æ•°ãƒ•ã‚¡ã‚¤ãƒ«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã®ã¿', 'URLã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã®ã¿', 'ZIPã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã®ã¿', 'ãƒ•ã‚¡ã‚¤ãƒ«-URL', 'ãƒ•ã‚¡ã‚¤ãƒ«-ZIP', 'URL-ZIP', 'ãƒ•ã‚¡ã‚¤ãƒ«-URL-ZIP'),
-  'custom_user_upload'=>'ãƒ¦ãƒ¼ã‚¶ã¯ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒœãƒƒã‚¯ã‚¹ã®æ•°ã‚’å¤‰æ›´å‡ºæ¥ã¾ã™ã‹?',
-  'num_file_upload'=>'ãƒ•ã‚¡ã‚¤ãƒ«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒœãƒƒã‚¯ã‚¹ã®æœ€å¤§æ•°',
-  'num_URI_upload'=>'URLã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒœãƒƒã‚¯ã‚¹ã®æœ€å¤§æ•°',
-  'note1' => '<b>(1)</b> ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¢ãƒ«ãƒãƒ ã¸ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸå†™çœŸã¯ç®¡ç†è€…ã®æ‰¿èªãŒå¿…è¦ã§ã™ã€‚',
-  'note2' => '<b>(2)</b> ãƒ¦ãƒ¼ã‚¶ã®ã‚¢ãƒ«ãƒãƒ ã¸ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸå†™çœŸã¯ç®¡ç†è€…ã®æ‰¿èªãŒå¿…è¦ã§ã™ã€‚',
-  'notes' => 'æ³¨æ„'
+  'group_name' => 'グループ名',
+  'disk_quota' => 'ディスク容量',
+  'can_rate' => 'ファイル写真を評価可能',
+  'can_send_ecards' => 'e-カードを送信可能',
+  'can_post_com' => 'コメントを投稿可能',
+  'can_upload' => 'ファイルをアップロード可能',
+  'can_have_gallery' => 'パーソナルギャラリーを作成可能',
+  'apply' => '更新の適用',
+  'create_new_group' => '新規グループの作成',
+  'del_groups' => '選択したグループの削除',
+  'confirm_del' => '警告、グループを削除した場合、グループに属していたユーザは\'Registered\'グループに移動されます !\n\n処理を続けますか ?',
+  'title' => 'ユーザグループの管理',
+  'approval_1' => 'パブリックアップロード承認 (1)',
+  'approval_2' => 'プライベートアップロード承認 (2)',
+  'upload_form_config' => 'アップロードフォーム設定',
+  'upload_form_config_values' => array( '単一ファイルアップロードのみ', '複数ファイルアップロードのみ', 'URLアップロードのみ', 'ZIPアップロードのみ', 'ファイル-URL', 'ファイル-ZIP', 'URL-ZIP', 'ファイル-URL-ZIP'),
+  'custom_user_upload'=>'ユーザはアップロードボックスの数を変更出来ますか?',
+  'num_file_upload'=>'ファイルアップロードボックスの最大数',
+  'num_URI_upload'=>'URLアップロードボックスの最大数',
+  'note1' => '<b>(1)</b> パブリックアルバムへアップロードされた写真は管理者の承認が必要です。',
+  'note2' => '<b>(2)</b> ユーザのアルバムへアップロードされた写真は管理者の承認が必要です。',
+  'notes' => '注意'
 );
 
 // ------------------------------------------------------------------------- //
@@ -804,30 +806,30 @@ $lang_index_php = array(
 );
 
 $lang_album_admin_menu = array(
-  'confirm_delete' => 'æœ¬å½“ã«ã“ã®ã‚¢ãƒ«ãƒãƒ ã‚’å‰Šé™¤ã—ã¦ã‚‚å®œã—ã„ã§ã™ã‹ ? \\nåŒæ™‚ã«å…¨ã¦ã®å†™çœŸã¨ã‚³ãƒ¡ãƒ³ãƒˆã¯å‰Šé™¤ã•ã‚Œã¾ã™ã€‚',
-  'delete' => 'å‰Šé™¤',
-  'modify' => 'ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£',
-  'edit_pics' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã®ç·¨é›†',
+  'confirm_delete' => '本当にこのアルバムを削除しても宜しいですか ? \\n同時に全ての写真とコメントは削除されます。',
+  'delete' => '削除',
+  'modify' => 'プロパティ',
+  'edit_pics' => 'ファイルの編集',
 );
 
 $lang_list_categories = array(
   'home' => 'Home',
-  'stat1' => 'ã‚«ãƒ†ã‚´ãƒªæ•°:<b>[cat]</b>&nbsp;&nbsp;&nbsp;ã‚¢ãƒ«ãƒãƒ æ•°:<b>[albums]</b>&nbsp;&nbsp;&nbsp;å†™çœŸæžšæ•°:<b>[pictures]</b>&nbsp;&nbsp;&nbsp;ã‚³ãƒ¡ãƒ³ãƒˆæ•°:<b>[comments]</b>&nbsp;&nbsp;&nbsp;é–²è¦§å›žæ•°:<b>[views]</b>',
-  'stat2' => 'ã‚¢ãƒ«ãƒãƒ æ•°:<b>[albums]</b>&nbsp;&nbsp;&nbsp;å†™çœŸæžšæ•°:<b>[pictures]</b>&nbsp;&nbsp;&nbsp;é–²è¦§å›žæ•°:<b>[views]</b>',
-  'xx_s_gallery' => '%sã®ã‚®ãƒ£ãƒ©ãƒªãƒ¼',
-  'stat3' => 'ã‚¢ãƒ«ãƒãƒ æ•°:<b>[albums]</b>&nbsp;&nbsp;&nbsp;å†™çœŸæžšæ•°:<b>[pictures]</b>&nbsp;&nbsp;&nbsp;ã‚³ãƒ¡ãƒ³ãƒˆæ•°:<b>[comments]</b>&nbsp;&nbsp;&nbsp;é–²è¦§å›žæ•°:<b>[views]</b>'
+  'stat1' => 'カテゴリ数:<b>[cat]</b>&nbsp;&nbsp;&nbsp;アルバム数:<b>[albums]</b>&nbsp;&nbsp;&nbsp;写真枚数:<b>[pictures]</b>&nbsp;&nbsp;&nbsp;コメント数:<b>[comments]</b>&nbsp;&nbsp;&nbsp;閲覧回数:<b>[views]</b>',
+  'stat2' => 'アルバム数:<b>[albums]</b>&nbsp;&nbsp;&nbsp;写真枚数:<b>[pictures]</b>&nbsp;&nbsp;&nbsp;閲覧回数:<b>[views]</b>',
+  'xx_s_gallery' => '%sのギャラリー',
+  'stat3' => 'アルバム数:<b>[albums]</b>&nbsp;&nbsp;&nbsp;写真枚数:<b>[pictures]</b>&nbsp;&nbsp;&nbsp;コメント数:<b>[comments]</b>&nbsp;&nbsp;&nbsp;閲覧回数:<b>[views]</b>'
 );
 
 $lang_list_users = array(
-  'user_list' => 'ãƒ¦ãƒ¼ã‚¶ãƒªã‚¹ãƒˆ',
-  'no_user_gal' => 'ãƒ¦ãƒ¼ã‚¶ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'n_albums' => 'ã‚¢ãƒ«ãƒãƒ æ•° %s',
-  'n_pics' => 'ãƒ•ã‚¡ã‚¤ãƒ«æ•° %s'
+  'user_list' => 'ユーザリスト',
+  'no_user_gal' => 'ユーザギャラリーはありません。',
+  'n_albums' => 'アルバム数 %s',
+  'n_pics' => 'ファイル数 %s'
 );
 
 $lang_list_albums = array(
-  'n_pictures' => 'ãƒ•ã‚¡ã‚¤ãƒ«æ•° %s',
-  'last_added' => 'ã€æœ€çµ‚è¿½åŠ æ—¥:%s'
+  'n_pictures' => 'ファイル数 %s',
+  'last_added' => '、最終追加日:%s'
 );
 
 }
@@ -837,15 +839,15 @@ $lang_list_albums = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('LOGIN_PHP')) $lang_login_php = array(
-  'login' => 'ãƒ­ã‚°ã‚¤ãƒ³',
-  'enter_login_pswd' => 'ãƒ¦ãƒ¼ã‚¶åã¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„',
-  'username' => 'ãƒ¦ãƒ¼ã‚¶å',
-  'password' => 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰',
-  'remember_me' => 'ãƒ¦ãƒ¼ã‚¶åãƒ»ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’è¨˜æ†¶',
-  'welcome' => 'ã‚ˆã†ã“ã %sã•ã‚“...',
-  'err_login' => '*** ãƒ­ã‚°ã‚¤ãƒ³å‡ºæ¥ã¾ã›ã‚“ã§ã—ãŸã€‚å†åº¦ãƒ­ã‚°ã‚¤ãƒ³ã—ã¦ãã ã•ã„ ***',
-  'err_already_logged_in' => 'æ—¢ã«ãƒ­ã‚°ã‚¤ãƒ³ã—ã¦ã„ã¾ã™ !',
-  'forgot_password_link' => 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å¿˜ã‚Œã¾ã—ãŸ',
+  'login' => 'ログイン',
+  'enter_login_pswd' => 'ユーザ名とパスワードを入力してください',
+  'username' => 'ユーザ名',
+  'password' => 'パスワード',
+  'remember_me' => 'ユーザ名・パスワードを記憶',
+  'welcome' => 'ようこそ %sさん...',
+  'err_login' => '*** ログイン出来ませんでした。再度ログインしてください ***',
+  'err_already_logged_in' => '既にログインしています !',
+  'forgot_password_link' => 'パスワードを忘れました',
 );
 
 // ------------------------------------------------------------------------- //
@@ -853,9 +855,9 @@ if (defined('LOGIN_PHP')) $lang_login_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('LOGOUT_PHP')) $lang_logout_php = array(
-  'logout' => 'ãƒ­ã‚°ã‚¢ã‚¦ãƒˆ',
-  'bye' => '%sã•ã‚“ã€ã•ã‚ˆã†ãªã‚‰...',
-  'err_not_loged_in' => 'ãƒ­ã‚°ã‚¤ãƒ³ã—ã¦ã„ã¾ã›ã‚“ !',
+  'logout' => 'ログアウト',
+  'bye' => '%sさん、さようなら...',
+  'err_not_loged_in' => 'ログインしていません !',
 );
 
 // ------------------------------------------------------------------------- //
@@ -863,9 +865,9 @@ if (defined('LOGOUT_PHP')) $lang_logout_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('PHPINFO_PHP')) $lang_phpinfo_php = array(
-  'php_info' => 'PHPæƒ…å ±',
-  'explanation' => 'ã“ã®å†…å®¹ã¯PHPé–¢æ•°<a href="http://www.php.net/phpinfo">phpinfo()</a>ã«ã‚ˆã£ã¦ç”Ÿæˆã•ã‚Œã€Copermineå†…ã«è¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§ã™ã€‚ (å³å´ã®ä½™ç™½ã‚’ãƒˆãƒªãƒŸãƒ³ã‚°ã—ã¦ã„ã¾ã™ã€‚)',
-  'no_link' => 'ä»–ã®äººã«phpinfoã‚’è¦‹ã‚‰ã‚Œã‚‹ã“ã¨ã§ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£ä¸Šã®ãƒªã‚¹ã‚¯ãŒç”Ÿã˜ã¾ã™ã€‚ã“ã®ãƒšãƒ¼ã‚¸ã¯ç®¡ç†è€…ã¨ã—ã¦ãƒ­ã‚°ã‚¤ãƒ³ã—ãŸæ™‚ã®ã¿é–²è¦§ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚ã“ã®ãƒšãƒ¼ã‚¸ã¸ã®ãƒªãƒ³ã‚¯ã‚’ä»–ã®ãƒšãƒ¼ã‚¸ã«å¼µã£ã¦ã‚‚ã€ç®¡ç†è€…ã¨ã—ã¦ãƒ­ã‚°ã‚¤ãƒ³ã—ãªã„é™ã‚Šã‚¢ã‚¯ã‚»ã‚¹ã¯æ‹’å¦ã•ã‚Œã¾ã™ã€‚',
+  'php_info' => 'PHP情報',
+  'explanation' => 'この内容はPHP関数<a href="http://www.php.net/phpinfo">phpinfo()</a>によって生成され、Copermine内に表示されているものです。 (右側の余白をトリミングしています。)',
+  'no_link' => '他の人にphpinfoを見られることでセキュリティ上のリスクが生じます。このページは管理者としてログインした時のみ閲覧することが出来ます。このページへのリンクを他のページに張っても、管理者としてログインしない限りアクセスは拒否されます。',
 );
 
 // ------------------------------------------------------------------------- //
@@ -873,28 +875,28 @@ if (defined('PHPINFO_PHP')) $lang_phpinfo_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('MODIFYALB_PHP')) $lang_modifyalb_php = array(
-  'upd_alb_n' => 'ã‚¢ãƒ«ãƒãƒ ã®æ›´æ–° %s',
-  'general_settings' => 'ä¸€èˆ¬è¨­å®š',
-  'alb_title' => 'ã‚¢ãƒ«ãƒãƒ å',
-  'alb_cat' => 'ã‚«ãƒ†ã‚´ãƒª',
-  'alb_desc' => 'èª¬æ˜Ž',
-  'alb_thumb' => 'ã‚µãƒ ãƒã‚¤ãƒ«',
-  'alb_perm' => 'ã“ã®ã‚¢ãƒ«ãƒãƒ ã«å¯¾ã™ã‚‹ãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³',
-  'can_view' => 'ã‚¢ãƒ«ãƒãƒ é–²è¦§å¯èƒ½',
-  'can_upload' => 'ãƒ“ã‚¸ã‚¿ãƒ¼ã¯å†™çœŸã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å‡ºæ¥ã‚‹',
-  'can_post_comments' => 'ãƒ“ã‚¸ã‚¿ãƒ¼ã¯ã‚³ãƒ¡ãƒ³ãƒˆã‚’æŠ•ç¨¿ã§ãã‚‹',
-  'can_rate' => 'ãƒ“ã‚¸ã‚¿ãƒ¼ã¯å†™çœŸã‚’è©•ä¾¡å‡ºæ¥ã‚‹',
-  'user_gal' => 'ãƒ¦ãƒ¼ã‚¶ã‚®ãƒ£ãƒ©ãƒªãƒ¼',
-  'no_cat' => '* ã‚«ãƒ†ã‚´ãƒªç„¡ã— *',
-  'alb_empty' => 'ã‚¢ãƒ«ãƒãƒ ã«ã¯ä½•ã‚‚å…¥ã£ã¦ã„ã¾ã›ã‚“',
-  'last_uploaded' => 'æœ€æ–°ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰',
-  'public_alb' => 'å…¨å“¡ (ãƒ‘ãƒ–ãƒªãƒƒã‚¯ã‚¢ãƒ«ãƒãƒ )',
-  'me_only' => 'ç§ã®ã¿',
-  'owner_only' => 'ã‚¢ãƒ«ãƒãƒ ã®æ‰€æœ‰è€… (%s) ã®ã¿',
-  'groupp_only' => '%sã‚°ãƒ«ãƒ¼ãƒ—ãƒ¡ãƒ³ãƒãƒ¼ã®ã¿',
-  'err_no_alb_to_modify' => 'ä¿®æ­£ã§ãã‚‹ã‚¢ãƒ«ãƒãƒ ãŒãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'update' => 'ã‚¢ãƒ«ãƒãƒ ã®æ›´æ–°',
-  'notice1' => '(*) %sã‚°ãƒ«ãƒ¼ãƒ—%s è¨­å®šã«ã‚ˆã‚‹',
+  'upd_alb_n' => 'アルバムの更新 %s',
+  'general_settings' => '一般設定',
+  'alb_title' => 'アルバム名',
+  'alb_cat' => 'カテゴリ',
+  'alb_desc' => '説明',
+  'alb_thumb' => 'サムネイル',
+  'alb_perm' => 'このアルバムに対するパーミッション',
+  'can_view' => 'アルバム閲覧可能',
+  'can_upload' => 'ビジターは写真をアップロード出来る',
+  'can_post_comments' => 'ビジターはコメントを投稿できる',
+  'can_rate' => 'ビジターは写真を評価出来る',
+  'user_gal' => 'ユーザギャラリー',
+  'no_cat' => '* カテゴリ無し *',
+  'alb_empty' => 'アルバムには何も入っていません',
+  'last_uploaded' => '最新アップロード',
+  'public_alb' => '全員 (パブリックアルバム)',
+  'me_only' => '私のみ',
+  'owner_only' => 'アルバムの所有者 (%s) のみ',
+  'groupp_only' => '%sグループメンバーのみ',
+  'err_no_alb_to_modify' => '修正できるアルバムがデータベースにありません。',
+  'update' => 'アルバムの更新',
+  'notice1' => '(*) %sグループ%s 設定による',
 );
 
 // ------------------------------------------------------------------------- //
@@ -902,9 +904,9 @@ if (defined('MODIFYALB_PHP')) $lang_modifyalb_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('RATEPIC_PHP')) $lang_rate_pic_php = array(
-  'already_rated' => 'ç”³ã—è¨³ã”ã–ã„ã¾ã›ã‚“ã€ã‚ãªãŸã¯æ—¢ã«ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è©•ä¾¡ã—ã¦ã„ã¾ã™ã€‚',
-  'rate_ok' => 'ã‚ãªãŸã®æŠ•ç¥¨ã¯å—ç†ã•ã‚Œã¾ã—ãŸã€‚',
-  'forbidden' => 'è‡ªåˆ†ã®å†™çœŸã‚’è©•ä¾¡ã™ã‚‹ã“ã¨ã¯å‡ºæ¥ã¾ã›ã‚“ã€‚',
+  'already_rated' => '申し訳ございません、あなたは既にこのファイルを評価しています。',
+  'rate_ok' => 'あなたの投票は受理されました。',
+  'forbidden' => '自分の写真を評価することは出来ません。',
 );
 
 // ------------------------------------------------------------------------- //
@@ -914,80 +916,80 @@ if (defined('RATEPIC_PHP')) $lang_rate_pic_php = array(
 if (defined('REGISTER_PHP') || defined('PROFILE_PHP')) {
 
 $lang_register_disclamer = <<<EOT
-{SITE_NAME}ã®ç®¡ç†è€…ã¯ã€ä¸€èˆ¬çš„ã«å¥½ã¾ã—ããªã„æŠ•ç¨¿ã‚’å‡ºæ¥ã‚‹ã ã‘é€Ÿã‚„ã‹ã«å‰Šé™¤ã™ã‚‹ã‚ˆã†è©¦ã¿ã¾ã™ãŒã€å…¨ã¦ã®æŠ•ç¨¿ã‚’é–²è¦§ã™ã‚‹ã“ã¨ã¯ä¸å¯èƒ½ã§ã™ã€‚å¾“ã£ã¦ã€ã“ã®ã‚µã‚¤ãƒˆã«å¯¾ã™ã‚‹å…¨æŠ•ç¨¿ã®è¦‹è§£ãŒæŠ•ç¨¿è€…ã«ã‚ˆã‚‹ã‚‚ã®ã§ã‚ã‚Šã€ç®¡ç†è€…ã‚„ã‚¦ã‚§ãƒ–ãƒžã‚¹ã‚¿ãƒ¼ã®ã‚‚ã®ã§ç„¡ã(ã“ã‚Œã‚‰ã®äººã€…ã®æŠ•ç¨¿ã¯é™¤ã)ã€ç®¡ç†è€…ã‚„ã‚¦ã‚§ãƒ–ãƒžã‚¹ã‚¿ãƒ¼ã«æŠ•ç¨¿ã®è²¬ä»»ãŒç„¡ã„ã“ã¨ã‚’ã‚ãªãŸã¯èªã‚ã¾ã™ã€‚
+{SITE_NAME}の管理者は、一般的に好ましくない投稿を出来るだけ速やかに削除するよう試みますが、全ての投稿を閲覧することは不可能です。従って、このサイトに対する全投稿の見解が投稿者によるものであり、管理者やウェブマスターのもので無く(これらの人々の投稿は除く)、管理者やウェブマスターに投稿の責任が無いことをあなたは認めます。
 <br>
 <br>
-ã‚ãªãŸã¯ã€å…¬åºè‰¯ä¿—ã«åã™ã‚‹æŠ•ç¨¿ã‚„ã€å€‹äººã¸ã®èª¹è¬—ä¸­å‚·ã®æŠ•ç¨¿ã€æ€§çš„ãªæŠ•ç¨¿ã€ãã®ä»–æ³•ã«åã™ã‚‹æŠ•ç¨¿ã‚’ã—ãªã„äº‹ã«åŒæ„ã—ã¾ã™ã€‚
-ã‚ãªãŸã¯ã€{SITE_NAME}ã®ç®¡ç†è€…ã€ã‚¦ã‚§ãƒ–ãƒžã‚¹ã‚¿ãƒ¼ã€ãƒ¢ãƒ‡ãƒ¬ãƒ¼ã‚¿ãƒ¼ãŒå¦‚ä½•ãªã‚‹æ™‚ã‚‚æŠ•ç¨¿å†…å®¹ã‚’ç·¨é›†ãƒ»å‰Šé™¤ã™ã‚‹æ¨©åˆ©ã‚’æœ‰ã™ã‚‹ã“ã¨ã«åŒæ„ã—ã¾ã™ã€‚ã‚ãªãŸã¯ã€ãƒ¦ãƒ¼ã‚¶ã¨ã—ã¦ã‚ãªãŸãŒæŠ•ç¨¿ã—ãŸæƒ…å ±ãŒãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ä¿å­˜ã•ã‚Œã‚‹ã“ã¨ã«åŒæ„ã—ã¾ã™ã€‚ã“ã®æƒ…å ±ã¯ã€ã‚ãªãŸã®åŒæ„ç„¡ã—ã«ç®¡ç†è€…ã€ã‚¦ã‚§ãƒ–ãƒžã‚¹ã‚¿ãƒ¼ã‚ˆã‚Šç¬¬ä¸‰è€…ã«é–‹ç¤ºã•ã‚Œã‚‹ã“ã¨ã¯ã‚ã‚Šã¾ã›ã‚“ãŒã€ãƒ‡ãƒ¼ã‚¿ãŒæµå‡ºã™ã‚‹æã‚Œã®ã‚ã‚‹ãƒãƒƒã‚­ãƒ³ã‚°ç­‰ã®è¡Œç‚ºã«å¯¾ã—ã¦ç®¡ç†è€…ã€ã‚¦ã‚§ãƒ–ãƒžã‚¹ã‚¿ãƒ¼ã¯è²¬ä»»ã‚’è² ã†ã“ã¨ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
+あなたは、公序良俗に反する投稿や、個人への誹謗中傷の投稿、性的な投稿、その他法に反する投稿をしない事に同意します。
+あなたは、{SITE_NAME}の管理者、ウェブマスター、モデレーターが如何なる時も投稿内容を編集・削除する権利を有することに同意します。あなたは、ユーザとしてあなたが投稿した情報がデータベースに保存されることに同意します。この情報は、あなたの同意無しに管理者、ウェブマスターより第三者に開示されることはありませんが、データが流出する恐れのあるハッキング等の行為に対して管理者、ウェブマスターは責任を負うことはありません。
 <br>
 <br>
-ã“ã®ã‚µã‚¤ãƒˆã§ã¯ã€ã‚ãªãŸã®ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ã‚¿ã«æƒ…å ±ã‚’ä¿å­˜ã™ã‚‹ãŸã‚ã«ã‚¯ãƒƒã‚­ãƒ¼ã‚’ä½¿ç”¨ã—ã¾ã™ã€‚ã‚¯ãƒƒã‚­ãƒ¼ã¯ã‚ãªãŸã®é–²è¦§ã‚’å¿«é©ã«ã™ã‚‹ç‚ºã ã‘ã«ä½¿ç”¨ã•ã‚Œã¾ã™ã€‚ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã¯ã€ã‚ãªãŸã®ç™»éŒ²ã«é–¢ã™ã‚‹è©³ç´°åŠã³ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®èªè¨¼ã®ç‚ºã ã‘ã«ä½¿ç”¨ã•ã‚Œã¾ã™ã€‚ 
+このサイトでは、あなたのコンピュータに情報を保存するためにクッキーを使用します。クッキーはあなたの閲覧を快適にする為だけに使用されます。メールアドレスは、あなたの登録に関する詳細及びパスワードの認証の為だけに使用されます。 
 <br>
 <br>
-ã€ŒåŒæ„ã—ã¾ã™ã€ã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã“ã¨ã§ã€ã‚ãªãŸã¯ä¸Šè¨˜ã®åˆ©ç”¨è¦ç´„ã«åŒæ„ã—ã¾ã™ã€‚
+「同意します」をクリックすることで、あなたは上記の利用規約に同意します。
 EOT;
 
 $lang_register_php = array(
-  'page_title' => 'ãƒ¦ãƒ¼ã‚¶ç™»éŒ²',
-  'term_cond' => 'åˆ©ç”¨è¦ç´„',
-  'i_agree' => 'åŒæ„ã—ã¾ã™',
-  'submit' => 'ç™»éŒ²å®Ÿè¡Œ',
-  'err_user_exists' => 'å…¥åŠ›ã•ã‚ŒãŸãƒ¦ãƒ¼ã‚¶åã¯æ—¢ã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã™ã€åˆ¥ã®ãƒ¦ãƒ¼ã‚¶åã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚',
-  'err_password_mismatch' => 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒä¸€è‡´ã—ã¾ã›ã‚“ã€å†åº¦å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚',
-  'err_uname_short' => 'ãƒ¦ãƒ¼ã‚¶åã¯2æ–‡å­—ä»¥ä¸Šã«ã—ã¦ãã ã•ã„ã€‚',
-  'err_password_short' => 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¯2æ–‡å­—ä»¥ä¸Šã«ã—ã¦ãã ã•ã„ã€‚',
-  'err_uname_pass_diff' => 'ãƒ¦ãƒ¼ã‚¶åã¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¯ç•°ãªã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚',
-  'err_invalid_email' => 'ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ãŒæ­£ã—ãã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'err_duplicate_email' => 'ä»–ã®ãƒ¦ãƒ¼ã‚¶ãŒæ—¢ã«åŒã˜ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ç™»éŒ²ã—ã¦ã„ã¾ã™ã€‚',
-  'enter_info' => 'ç™»éŒ²æƒ…å ±ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„',
-  'required_info' => 'å¿…é ˆé …ç›®',
-  'optional_info' => 'ä»»æ„é …ç›®',
-  'username' => 'ãƒ¦ãƒ¼ã‚¶å',
-  'password' => 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰',
-  'password_again' => 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ã‚‚ã†ä¸€åº¦',
-  'email' => 'ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹',
-  'location' => 'å±…ä½åœ°',
-  'interests' => 'èˆˆå‘³ã®ã‚ã‚‹ã“ã¨',
-  'website' => 'ãƒ›ãƒ¼ãƒ ãƒšãƒ¼ã‚¸',
-  'occupation' => 'è·æ¥­',
-  'error' => 'ã‚¨ãƒ©ãƒ¼',
+  'page_title' => 'ユーザ登録',
+  'term_cond' => '利用規約',
+  'i_agree' => '同意します',
+  'submit' => '登録実行',
+  'err_user_exists' => '入力されたユーザ名は既に登録されています、別のユーザ名を入力してください。',
+  'err_password_mismatch' => 'パスワードが一致しません、再度入力してください。',
+  'err_uname_short' => 'ユーザ名は2文字以上にしてください。',
+  'err_password_short' => 'パスワードは2文字以上にしてください。',
+  'err_uname_pass_diff' => 'ユーザ名とパスワードは異なる必要があります。',
+  'err_invalid_email' => 'メールアドレスが正しくありません。',
+  'err_duplicate_email' => '他のユーザが既に同じメールアドレスを登録しています。',
+  'enter_info' => '登録情報を入力してください',
+  'required_info' => '必須項目',
+  'optional_info' => '任意項目',
+  'username' => 'ユーザ名',
+  'password' => 'パスワード',
+  'password_again' => 'パスワードをもう一度',
+  'email' => 'メールアドレス',
+  'location' => '居住地',
+  'interests' => '興味のあること',
+  'website' => 'ホームページ',
+  'occupation' => '職業',
+  'error' => 'エラー',
   'confirm_email_subject' => '%s - Registration confirmation',
-  'information' => 'æƒ…å ±',
-  'failed_sending_email' => 'ç™»éŒ²ç¢ºèªãƒ¡ãƒ¼ãƒ«ãŒé€ä¿¡ã§ãã¾ã›ã‚“ !',
-  'thank_you' => 'ã”ç™»éŒ²ã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã™ã€‚<br /><br />ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®æ´»æ€§åŒ–ã«é–¢ã™ã‚‹æƒ…å ±ãŒç™»éŒ²ã•ã‚ŒãŸãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹å®›ã«é€ä¿¡ã•ã‚Œã¾ã—ãŸã€‚',
-  'acct_created' => 'ã‚ãªãŸã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆãŒä½œæˆã•ã‚Œã¾ã—ãŸã€‚ãƒ¦ãƒ¼ã‚¶åã¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã§ãƒ­ã‚°ã‚¤ãƒ³å‡ºæ¥ã¾ã™ã€‚',
-  'acct_active' => 'ã‚ãªãŸã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆãŒæ´»æ€§åŒ–ã•ã‚Œã¾ã—ãŸã€‚ãƒ¦ãƒ¼ã‚¶åã¨ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã§ãƒ­ã‚°ã‚¤ãƒ³å‡ºæ¥ã¾ã™ã€‚',
-  'acct_already_act' => 'ã‚ãªãŸã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã¯æ—¢ã«æ´»æ€§åŒ–ã•ã‚Œã¦ã„ã¾ã™ !',
-  'acct_act_failed' => 'ã“ã®ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã¯æ´»æ€§åŒ–å‡ºæ¥ã¾ã›ã‚“ !',
-  'err_unk_user' => 'é¸æŠžã—ãŸãƒ¦ãƒ¼ã‚¶ã¯å­˜åœ¨ã—ã¾ã›ã‚“ !',
-  'x_s_profile' => '%s ã®ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«',
-  'group' => 'ã‚°ãƒ«ãƒ¼ãƒ—',
-  'reg_date' => 'ç™»éŒ²å¹´æœˆæ—¥',
-  'disk_usage' => 'ãƒ‡ã‚£ã‚¹ã‚¯ä½¿ç”¨é‡',
-  'change_pass' => 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®å¤‰æ›´',
-  'current_pass' => 'ç¾åœ¨ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰',
-  'new_pass' => 'æ–°ã—ã„ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰',
-  'new_pass_again' => 'æ–°ã—ã„ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’ã‚‚ã†ä¸€åº¦',
-  'err_curr_pass' => 'ç¾åœ¨ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒæ­£ã—ãã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'apply_modif' => 'æ›´æ–°ã®é©ç”¨',
-  'change_pass' => 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®å¤‰æ›´',
-  'update_success' => 'ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ãŒæ›´æ–°ã•ã‚Œã¾ã—ãŸã€‚',
-  'pass_chg_success' => 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒå¤‰æ›´ã•ã‚Œã¾ã—ãŸã€‚',
-  'pass_chg_error' => 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ãŒå¤‰æ›´ã•ã‚Œã¾ã›ã‚“ã§ã—ãŸã€‚',
+  'information' => '情報',
+  'failed_sending_email' => '登録確認メールが送信できません !',
+  'thank_you' => 'ご登録ありがとうございます。<br /><br />アカウントの活性化に関する情報が登録されたメールアドレス宛に送信されました。',
+  'acct_created' => 'あなたのアカウントが作成されました。ユーザ名とパスワードでログイン出来ます。',
+  'acct_active' => 'あなたのアカウントが活性化されました。ユーザ名とパスワードでログイン出来ます。',
+  'acct_already_act' => 'あなたのアカウントは既に活性化されています !',
+  'acct_act_failed' => 'このアカウントは活性化出来ません !',
+  'err_unk_user' => '選択したユーザは存在しません !',
+  'x_s_profile' => '%s のプロフィール',
+  'group' => 'グループ',
+  'reg_date' => '登録年月日',
+  'disk_usage' => 'ディスク使用量',
+  'change_pass' => 'パスワードの変更',
+  'current_pass' => '現在のパスワード',
+  'new_pass' => '新しいパスワード',
+  'new_pass_again' => '新しいパスワードをもう一度',
+  'err_curr_pass' => '現在のパスワードが正しくありません。',
+  'apply_modif' => '更新の適用',
+  'change_pass' => 'パスワードの変更',
+  'update_success' => 'プロフィールが更新されました。',
+  'pass_chg_success' => 'パスワードが変更されました。',
+  'pass_chg_error' => 'パスワードが変更されませんでした。',
   'notify_admin_email_subject' => '%s - Registration notification',
-  'notify_admin_email_body' => 'ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã«ãƒ¦ãƒ¼ã‚¶å "%s" ã®æ–°ã—ã„ãƒ¦ãƒ¼ã‚¶ãŒç™»éŒ²ã•ã‚Œã¾ã—ãŸ',
+  'notify_admin_email_body' => 'ギャラリーにユーザ名 "%s" の新しいユーザが登録されました',
 );
 
 $lang_register_confirm_email = <<<EOT
-{SITE_NAME} ã¸ã®ã”ç™»éŒ²ã‚ã‚ŠãŒã¨ã†ã”ã–ã„ã¾ã™ã€‚
+{SITE_NAME} へのご登録ありがとうございます。
 
-ã‚ãªãŸã®ãƒ¦ãƒ¼ã‚¶åã¯ "{USER_NAME}" ã§ã™ã€‚
-ã‚ãªãŸã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¯ "{PASSWORD}" ã§ã™ã€‚
+あなたのユーザ名は "{USER_NAME}" です。
+あなたのパスワードは "{PASSWORD}" です。
 
-ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®æ´»æ€§åŒ–ã‚’ã™ã‚‹ã«ã¯ä¸‹è¨˜ã®ãƒªãƒ³ã‚¯ã‚’ã‚¯ãƒªãƒƒã‚¯åˆã¯
-ãƒ–ãƒ©ã‚¦ã‚¶ã®ã‚¢ãƒ‰ãƒ¬ã‚¹æ¬„ã«ã‚³ãƒ”ãƒ¼ã—ã¦ãã ã•ã„ã€‚
+アカウントの活性化をするには下記のリンクをクリック又は
+ブラウザのアドレス欄にコピーしてください。
 
-{ACT_LINK}ç®¡ç†è€…
+{ACT_LINK}管理者
 
 {SITE_NAME}
 
@@ -1000,13 +1002,13 @@ EOT;
 // ------------------------------------------------------------------------- //
 
 if (defined('REVIEWCOM_PHP')) $lang_reviewcom_php = array(
-  'title' => 'ã‚³ãƒ¡ãƒ³ãƒˆã®ãƒ¬ãƒ“ãƒ¥ãƒ¼',
-  'no_comment' => 'ãƒ¬ãƒ“ãƒ¥ãƒ¼ã™ã‚‹ã‚³ãƒ¡ãƒ³ãƒˆã¯ã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'n_comm_del' => '%sä»¶ã®ã‚³ãƒ¡ãƒ³ãƒˆãŒå‰Šé™¤ã•ã‚Œã¾ã—ãŸã€‚',
-  'n_comm_disp' => 'è¡¨ç¤ºã™ã‚‹ã‚³ãƒ¡ãƒ³ãƒˆæ•°',
-  'see_prev' => 'å‰ã¸',
-  'see_next' => 'æ¬¡ã¸',
-  'del_comm' => 'é¸æŠžã—ãŸã‚³ãƒ¡ãƒ³ãƒˆã‚’å‰Šé™¤',
+  'title' => 'コメントのレビュー',
+  'no_comment' => 'レビューするコメントはありません。',
+  'n_comm_del' => '%s件のコメントが削除されました。',
+  'n_comm_disp' => '表示するコメント数',
+  'see_prev' => '前へ',
+  'see_next' => '次へ',
+  'del_comm' => '選択したコメントを削除',
 );
 
 // ------------------------------------------------------------------------- //
@@ -1014,7 +1016,7 @@ if (defined('REVIEWCOM_PHP')) $lang_reviewcom_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('SEARCH_PHP')) $lang_search_php = array(
-  0 => 'å†™çœŸã®æ¤œç´¢',
+  0 => '写真の検索',
 );
 
 // ------------------------------------------------------------------------- //
@@ -1022,37 +1024,37 @@ if (defined('SEARCH_PHP')) $lang_search_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('SEARCHNEW_PHP')) $lang_search_new_php = array(
-  'page_title' => 'æ–°ã—ã„ãƒ•ã‚¡ã‚¤ãƒ«ã®æ¤œç´¢',
-  'select_dir' => 'ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªé¸æŠž',
-  'select_dir_msg' => 'ã“ã“ã§ã¯FTPã«ã‚ˆã‚Šã‚µãƒ¼ãƒã«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¢ãƒ«ãƒãƒ ã«ä¸€æ‹¬ç™»éŒ²ã—ã¾ã™ã€‚<br /><br />ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã—ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’é¸æŠžã—ã¦ãã ã•ã„ã€‚',
-  'no_pic_to_add' => 'è¿½åŠ ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'need_one_album' => 'ã“ã®æ©Ÿèƒ½ã‚’ä½¿ã†ãŸã‚ã«ã¯1ã¤ä»¥ä¸Šã®ã‚¢ãƒ«ãƒãƒ ãŒå¿…è¦ã§ã™ã€‚',
-  'warning' => 'è­¦å‘Š',
-  'change_perm' => 'ã‚¹ã‚¯ãƒªãƒ—ãƒˆãŒã“ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«æ›¸è¾¼ã‚ã¾ã›ã‚“ã§ã—ãŸã€‚ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¿½åŠ ã™ã‚‹å‰ã«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ãƒ¢ãƒ¼ãƒ‰ã‚’755åˆã¯777ã«å¤‰æ›´ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ !',
-  'target_album' => '<b>ã€Œ</b>%s<b>ã€å†…ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’</b>%s<b>ã«è¿½åŠ ã™ã‚‹</b>',
-  'folder' => 'ãƒ•ã‚©ãƒ«ãƒ€',
-  'image' => 'ç”»åƒ',
-  'album' => 'ã‚¢ãƒ«ãƒãƒ ',
-  'result' => 'çµæžœ',
-  'dir_ro' => 'æ›¸è¾¼ã¿æ¨©ãŒã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'dir_cant_read' => 'èª­å–ã‚Šæ¨©ãŒã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'insert' => 'æ–°è¦ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚®ãƒ£ãƒ©ãƒªãƒ¼ã¸ã®è¿½åŠ ',
-  'list_new_pic' => 'æ–°è¦ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§',
-  'insert_selected' => 'é¸æŠžã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®è¿½åŠ ',
-  'no_pic_found' => 'æ–°ã—ã„ãƒ•ã‚¡ã‚¤ãƒ«ã¯è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚',
-  'be_patient' => 'æš«ããŠå¾…ã¡ãã ã•ã„ã€‚',
-  'no_album' => 'ã‚¢ãƒ«ãƒãƒ ãŒé¸æŠžã•ã‚Œã¦ã„ã¾ã›ã‚“',
+  'page_title' => '新しいファイルの検索',
+  'select_dir' => 'ディレクトリ選択',
+  'select_dir_msg' => 'ここではFTPによりサーバにアップロードしたファイルをアルバムに一括登録します。<br /><br />ファイルをアップロードしたディレクトリを選択してください。',
+  'no_pic_to_add' => '追加するファイルはありません。',
+  'need_one_album' => 'この機能を使うためには1つ以上のアルバムが必要です。',
+  'warning' => '警告',
+  'change_perm' => 'スクリプトがこのディレクトリに書込めませんでした。ファイルを追加する前にディレクトリのパーミッションモードを755又は777に変更する必要があります !',
+  'target_album' => '<b>「</b>%s<b>」内のファイルを</b>%s<b>に追加する</b>',
+  'folder' => 'フォルダ',
+  'image' => '画像',
+  'album' => 'アルバム',
+  'result' => '結果',
+  'dir_ro' => '書込み権がありません。',
+  'dir_cant_read' => '読取り権がありません。',
+  'insert' => '新規ファイルのギャラリーへの追加',
+  'list_new_pic' => '新規ファイル一覧',
+  'insert_selected' => '選択したファイルの追加',
+  'no_pic_found' => '新しいファイルは見つかりませんでした。',
+  'be_patient' => '暫くお待ちください。',
+  'no_album' => 'アルバムが選択されていません',
   'notes' =>  '<ul>'.
-                         '<li><b>OK</b> : æ­£å¸¸ã«ãƒ•ã‚¡ã‚¤ãƒ«ãŒè¿½åŠ ã•ã‚Œã¾ã—ãŸã€‚'.
-                         '<li><b>DP</b> : ãƒ•ã‚¡ã‚¤ãƒ«ãŒé‡è¤‡ã—ã¦æ—¢ã«ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã™ã€‚'.
-                         '<li><b>PB</b> : ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¿½åŠ å‡ºæ¥ã¾ã›ã‚“ã§ã—ãŸã€è¨­å®šåŠã³ãƒ•ã‚¡ã‚¤ãƒ«ãŒç™»éŒ²ã•ã‚Œã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ‘ãƒ¼ãƒŸãƒƒã‚·ãƒ§ãƒ³ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚'.
-                         '<li><b>NA</b> : ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¿½åŠ ã™ã‚‹ã‚¢ãƒ«ãƒãƒ ãŒé¸æŠžã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚\'<a href="javascript:history.back(1)">æˆ»ã‚‹</a>\'ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ã‚¢ãƒ«ãƒãƒ ã‚’é¸æŠžã—ã¦ãã ã•ã„ã€‚ã‚¢ãƒ«ãƒãƒ ã‚’ä½œæˆã—ã¦ã„ãªã„å ´åˆã¯ã€<a href="albmgr.php">æœ€åˆã«ä½œæˆã—ã¦ãã ã•ã„ã€‚</a></li>'.
-                          '<li>OKã€DPã€PBã‚µã‚¤ãƒ³ã®ã„ãšã‚Œã‚‚è¡¨ç¤ºã•ã‚Œãªã‹ã£ãŸå ´åˆã¯ã€PHPã‚¨ãƒ©ãƒ¼ã‚’è¡¨ç¤ºã™ã‚‹ãŸã‚ã«ç ´æã—ãŸå†™çœŸã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚'.
-                         '<li>ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆãŒç™ºç”Ÿã—ãŸå ´åˆã€ãƒ–ãƒ©ã‚¦ã‚¶ã®æ›´æ–°ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚'.
+                         '<li><b>OK</b> : 正常にファイルが追加されました。'.
+                         '<li><b>DP</b> : ファイルが重複して既にデータベースに登録されています。'.
+                         '<li><b>PB</b> : ファイルを追加出来ませんでした、設定及びファイルが登録されるディレクトリのパーミッションを確認してください。'.
+                         '<li><b>NA</b> : ファイルを追加するアルバムが選択されていません。\'<a href="javascript:history.back(1)">戻る</a>\'をクリックしてアルバムを選択してください。アルバムを作成していない場合は、<a href="albmgr.php">最初に作成してください。</a></li>'.
+                          '<li>OK、DP、PBサインのいずれも表示されなかった場合は、PHPエラーを表示するために破損した写真をクリックしてください。'.
+                         '<li>タイムアウトが発生した場合、ブラウザの更新ボタンをクリックしてください。'.
                          '</ul>',
-  'select_album' => 'ã‚¢ãƒ«ãƒãƒ ã‚’é¸æŠžã—ã¦ãã ã•ã„',
-  'check_all' => 'å…¨ã¦ã‚’é¸æŠž',
-  'uncheck_all' => 'å…¨ã¦ã‚’é¸æŠžè§£é™¤',
+  'select_album' => 'アルバムを選択してください',
+  'check_all' => '全てを選択',
+  'uncheck_all' => '全てを選択解除',
 );
 
 
@@ -1067,21 +1069,21 @@ if (defined('SEARCHNEW_PHP')) $lang_search_new_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('BANNING_PHP')) $lang_banning_php = array(
-  'title' => 'ã‚¢ã‚¯ã‚»ã‚¹ç¦æ­¢ãƒ¦ãƒ¼ã‚¶',
-  'user_name' => 'ãƒ¦ãƒ¼ã‚¶å',
-  'ip_address' => 'IPã‚¢ãƒ‰ãƒ¬ã‚¹',
-  'expiry' => 'ç¦æ­¢çµ‚äº† (ç©ºç™½ã¯æ°¸ä¹…)',
-  'edit_ban' => 'å¤‰æ›´ã‚’ä¿å­˜',
-  'delete_ban' => 'å‰Šé™¤',
-  'add_new' => 'æ–°ã—ã„ç¦æ­¢ãƒ¦ãƒ¼ã‚¶ã‚’è¿½åŠ ',
-  'add_ban' => 'è¿½åŠ ',
-  'error_user' => 'ãƒ¦ãƒ¼ã‚¶ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“',
-  'error_specify' => 'ãƒ¦ãƒ¼ã‚¶ååˆã¯IPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ç‰¹å®šã—ã¦ãã ã•ã„',
-  'error_ban_id' => 'ã‚¢ã‚¯ã‚»ã‚¹ç¦æ­¢IDãŒé•ã„ã¾ã™!',
-  'error_admin_ban' => 'è‡ªåˆ†è‡ªèº«ã‚’ã‚¢ã‚¯ã‚»ã‚¹ç¦æ­¢ã«å‡ºæ¥ã¾ã›ã‚“!',
-  'error_server_ban' => 'è‡ªåˆ†è‡ªèº«ã®ã‚µãƒ¼ãƒã‚’ã‚¢ã‚¯ã‚»ã‚¹ç¦æ­¢ã«ã—ã¾ã™ã‹? ãã‚Œã¯å‡ºæ¥ã¾ã›ã‚“...',
-  'error_ip_forbidden' => 'ã“ã®IPã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ã‚¢ã‚¯ã‚»ã‚¹ç¦æ­¢ã«å‡ºæ¥ã¾ã›ã‚“ - ãƒ«ãƒ¼ãƒ†ã‚£ãƒ³ã‚°å‡ºæ¥ãªã„IPã‚¢ãƒ‰ãƒ¬ã‚¹ã§ã™!',
-  'lookup_ip' => 'IPã‚¢ãƒ‰ãƒ¬ã‚¹ã®ãƒ«ãƒƒã‚¯ã‚¢ãƒƒãƒ—',
+  'title' => 'アクセス禁止ユーザ',
+  'user_name' => 'ユーザ名',
+  'ip_address' => 'IPアドレス',
+  'expiry' => '禁止終了 (空白は永久)',
+  'edit_ban' => '変更を保存',
+  'delete_ban' => '削除',
+  'add_new' => '新しい禁止ユーザを追加',
+  'add_ban' => '追加',
+  'error_user' => 'ユーザが見つかりません',
+  'error_specify' => 'ユーザ名又はIPアドレスを特定してください',
+  'error_ban_id' => 'アクセス禁止IDが違います!',
+  'error_admin_ban' => '自分自身をアクセス禁止に出来ません!',
+  'error_server_ban' => '自分自身のサーバをアクセス禁止にしますか? それは出来ません...',
+  'error_ip_forbidden' => 'このIPアドレスをアクセス禁止に出来ません - ルーティング出来ないIPアドレスです!',
+  'lookup_ip' => 'IPアドレスのルックアップ',
   'submit' => 'go!',
 );
 
@@ -1090,76 +1092,76 @@ if (defined('BANNING_PHP')) $lang_banning_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('UPLOAD_PHP')) $lang_upload_php = array(
-  'title' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰',
-  'custom_title' => 'ã‚«ã‚¹ã‚¿ãƒžã‚¤ã‚ºãƒ»ãƒªã‚¯ã‚¨ã‚¹ãƒˆãƒ•ã‚©ãƒ¼ãƒ ',
-  'cust_instr_1' => 'ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒœãƒƒã‚¯ã‚¹æ•°ã‚’é¸æŠžã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚ä¸‹è¨˜ã®åˆ¶é™å€¤ä»¥ä¸Šã«é¸æŠžã™ã‚‹ã“ã¨ã¯å‡ºæ¥ã¾ã›ã‚“ã€‚',
-  'cust_instr_2' => 'ãƒœãƒƒã‚¯ã‚¹æ•°ãƒªã‚¯ã‚¨ã‚¹ãƒˆ',
-  'cust_instr_3' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒœãƒƒã‚¯ã‚¹: %s',
-  'cust_instr_4' => 'URI/URL ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒœãƒƒã‚¯ã‚¹: %s',
-  'cust_instr_5' => 'URI/URL ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒœãƒƒã‚¯ã‚¹:',
-  'cust_instr_6' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒœãƒƒã‚¯ã‚¹:',
-  'cust_instr_7' => 'ä½œæˆã—ãŸã„ãã‚Œãžã‚Œã®ç¨®é¡žã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒœãƒƒã‚¯ã‚¹æ•°ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚ãã®å¾Œã€Œç¶šãã€ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚ ',
-  'reg_instr_1' => 'ãƒ•ã‚©ãƒ¼ãƒ ã®ä½œæˆã«é–“é•ã„ãŒã‚ã‚Šã¾ã™ã€‚',
-  'reg_instr_2' => 'ä¸‹è¨˜ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒœãƒƒã‚¯ã‚¹ã‚’ä½¿ç”¨ã—ã¦ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã“ã¨ãŒå‡ºæ¥ã¾ã™ã€‚ã‚µãƒ¼ãƒã«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚µã‚¤ã‚ºã¯ã€%s KBã‚’è¶…ãˆãªã„ã‚ˆã†ã«ã—ã¦ãã ã•ã„ã€‚ZIPãƒ•ã‚¡ã‚¤ãƒ«ã¯ã€Œãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã€åŠã³ã€ŒURI/URLã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã€ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚ˆã‚Šåœ§ç¸®ã•ã‚ŒãŸã¾ã¾ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¾ã™ã€‚',
-  'reg_instr_3' => 'ZIPåœ§ç¸®ã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«åˆã¯åœ§ç¸®ã•ã‚ŒãŸã‚¢ãƒ¼ã‚«ã‚¤ãƒ–ã‚’å±•é–‹ã—ãŸã„å ´åˆã¯ã€ZIPãƒ•ã‚¡ã‚¤ãƒ«ã®å±•é–‹ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã€ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚',
-  'reg_instr_4' => 'URI/URLã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚’ä½¿ç”¨ã™ã‚‹ã¨ãã¯ã€http://www.mysite.com/images/example.jpg ã®ã‚ˆã†ã«ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚',
-  'reg_instr_5' => 'ãƒ•ã‚©ãƒ¼ãƒ ã®å…¥åŠ›å®Œäº†å¾Œã€ã€Œç¶šãã€ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚',
-  'reg_instr_6' => 'ZIPãƒ•ã‚¡ã‚¤ãƒ«ã®å±•é–‹ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰:',
-  'reg_instr_7' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰:',
-  'reg_instr_8' => 'URI/URLã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰:',
-  'error_report' => 'ã‚¨ãƒ©ãƒ¼ãƒ¬ãƒãƒ¼ãƒˆ',
-  'error_instr' => 'æ¬¡ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ:',
-  'file_name_url' => 'ãƒ•ã‚¡ã‚¤ãƒ«å/URL',
-  'error_message' => 'ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸',
-  'no_post' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã®æŠ•ç¨¿ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'forb_ext' => 'è¨±å¯ã•ã‚Œã¦ã„ãªã„ãƒ•ã‚¡ã‚¤ãƒ«æ‹¡å¼µå­ã§ã™ã€‚',
-  'exc_php_ini' => 'php.iniã§è¨±å¯ã•ã‚Œã¦ã„ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚ºã‚’è¶…ãˆã¾ã—ãŸã€‚',
-  'exc_file_size' => 'CPGã§è¨±å¯ã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚ºã‚’è¶…ãˆã¾ã—ãŸã€‚', 
-  'partial_upload' => 'ä¸€éƒ¨ã®ã¿ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¾ã—ãŸã€‚',
-  'no_upload' => 'ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¾ã›ã‚“ã§ã—ãŸã€‚',
-  'unknown_code' => 'ä¸æ˜ŽãªPHPã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã§ã™ã€‚',
-  'no_temp_name' => 'ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¾ã›ã‚“ã§ã—ãŸ - ãƒ†ãƒ³ãƒãƒ©ãƒªåç§°ãŒã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'no_file_size' => 'ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'impossible' => 'ç§»å‹•ã§ãã¾ã›ã‚“ã€‚',
-  'not_image' => 'ã‚¤ãƒ¡ãƒ¼ã‚¸ãŒã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'not_GD' => 'GD extensionã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'pixel_allowance' => 'è¨±å¯ã•ã‚ŒãŸãƒ”ã‚¯ã‚»ãƒ«ã®ç¯„å›²ã‚’è¶…ãˆã¾ã—ãŸã€‚',
-  'incorrect_prefix' => 'é–“é•ã£ãŸURI/URLæŽ¥é ­è¾žã§ã™ã€‚',
-  'could_not_open_URI' => 'URIã‚’ã‚ªãƒ¼ãƒ—ãƒ³å‡ºæ¥ã¾ã›ã‚“ã€‚',
-  'unsafe_URI' => 'å®‰å…¨æ€§ãŒæ¤œè¨¼å‡ºæ¥ã¾ã›ã‚“ã€‚',
-  'meta_data_failure' => 'ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚¨ãƒ©ãƒ¼',
+  'title' => 'ファイルのアップロード',
+  'custom_title' => 'カスタマイズ・リクエストフォーム',
+  'cust_instr_1' => 'アップロードボックス数を選択することが出来ます。下記の制限値以上に選択することは出来ません。',
+  'cust_instr_2' => 'ボックス数リクエスト',
+  'cust_instr_3' => 'ファイルアップロードボックス: %s',
+  'cust_instr_4' => 'URI/URL アップロードボックス: %s',
+  'cust_instr_5' => 'URI/URL アップロードボックス:',
+  'cust_instr_6' => 'ファイルアップロードボックス:',
+  'cust_instr_7' => '作成したいそれぞれの種類のアップロードボックス数を入力してください。その後「続く」をクリックしてください。 ',
+  'reg_instr_1' => 'フォームの作成に間違いがあります。',
+  'reg_instr_2' => '下記のアップロードボックスを使用してファイルをアップロードすることが出来ます。サーバにアップロードするファイルのサイズは、%s KBを超えないようにしてください。ZIPファイルは「ファイルのアップロード」及び「URI/URLのアップロード」セクションより圧縮されたままアップロードされます。',
+  'reg_instr_3' => 'ZIP圧縮されたファイル又は圧縮されたアーカイブを展開したい場合は、ZIPファイルの展開アップロード」を使用してください。',
+  'reg_instr_4' => 'URI/URLアップロードセクションを使用するときは、http://www.mysite.com/images/example.jpg のようにファイルのパスを入力してください。',
+  'reg_instr_5' => 'フォームの入力完了後、「続く」をクリックしてください。',
+  'reg_instr_6' => 'ZIPファイルの展開アップロード:',
+  'reg_instr_7' => 'ファイルのアップロード:',
+  'reg_instr_8' => 'URI/URLアップロード:',
+  'error_report' => 'エラーレポート',
+  'error_instr' => '次のアップロードファイルにエラーが発生しました:',
+  'file_name_url' => 'ファイル名/URL',
+  'error_message' => 'エラーメッセージ',
+  'no_post' => 'ファイルの投稿はありません。',
+  'forb_ext' => '許可されていないファイル拡張子です。',
+  'exc_php_ini' => 'php.iniで許可されているファイルサイズを超えました。',
+  'exc_file_size' => 'CPGで許可されたファイルサイズを超えました。', 
+  'partial_upload' => '一部のみアップロードされました。',
+  'no_upload' => 'アップロードされませんでした。',
+  'unknown_code' => '不明なPHPアップロードエラーコードです。',
+  'no_temp_name' => 'アップロードされませんでした - テンポラリ名称がありません。',
+  'no_file_size' => 'データがありません。',
+  'impossible' => '移動できません。',
+  'not_image' => 'イメージがありません。',
+  'not_GD' => 'GD extensionではありません。',
+  'pixel_allowance' => '許可されたピクセルの範囲を超えました。',
+  'incorrect_prefix' => '間違ったURI/URL接頭辞です。',
+  'could_not_open_URI' => 'URIをオープン出来ません。',
+  'unsafe_URI' => '安全性が検証出来ません。',
+  'meta_data_failure' => 'メタデータエラー',
   'http_401' => '401 Unauthorized',
   'http_402' => '402 Payment Required',
   'http_403' => '403 Forbidden',
   'http_404' => '404 Not Found',
   'http_500' => '500 Internal Server Error',
   'http_503' => '503 Service Unavailable',
-  'MIME_extraction_failure' => 'MIMEã‚¿ã‚¤ãƒ—ã‚’æ±ºå®šå‡ºæ¥ã¾ã›ã‚“ã€‚',
-  'MIME_type_unknown' => 'ä¸æ˜ŽãªMIMEã‚¿ã‚¤ãƒ—ã§ã™ã€‚',
-  'cant_create_write' => 'æ›¸è¾¼ã¿ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆå‡ºæ¥ã¾ã›ã‚“ã€‚',
-  'not_writable' => 'æ›¸è¾¼ã¿ãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ãè¾¼ã‚ã¾ã›ã‚“ã€‚',
-  'cant_read_URI' => 'URI/URLã‚’èª­ã¿è¾¼ã‚ã¾ã›ã‚“ã€‚',
-  'cant_open_write_file' => 'URIæ›¸è¾¼ã¿ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚ªãƒ¼ãƒ—ãƒ³å‡ºæ¥ã¾ã›ã‚“ã€‚',
-  'cant_write_write_file' => 'URIæ›¸è¾¼ã¿ãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ãè¾¼ã‚ã¾ã›ã‚“ã€‚',
-  'cant_unzip' => 'ZIPãƒ•ã‚¡ã‚¤ãƒ«ã®å±•é–‹ãŒå‡ºæ¥ã¾ã›ã‚“ã€‚',
-  'unknown' => 'ä¸æ˜Žãªã‚¨ãƒ©ãƒ¼',
-  'succ' => 'ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å®Œäº†',
-  'success' => '%s ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãŒæ­£å¸¸ã«å®Œäº†ã—ã¾ã—ãŸã€‚',
-  'add' => 'ã‚¢ãƒ«ãƒãƒ ã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’è¿½åŠ ã™ã‚‹å ´åˆã¯ã€ã€Œç¶šãã€ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚',
-  'failure' => 'ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã‚¨ãƒ©ãƒ¼',
-  'f_info' => 'ãƒ•ã‚¡ã‚¤ãƒ«æƒ…å ±',
-  'no_place' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã¯ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¾ã›ã‚“ã§ã—ãŸã€‚',
-  'yes_place' => 'ãƒ•ã‚¡ã‚¤ãƒ«ãŒæ­£å¸¸ã«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¾ã—ãŸã€‚',
-  'max_fsize' => 'ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰å¯èƒ½ãªæœ€å¤§ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚ºã¯ %sKB ã§ã™ã€‚',
-  'album' => 'ã‚¢ãƒ«ãƒãƒ ',
-  'picture' => 'ãƒ•ã‚¡ã‚¤ãƒ«',
-  'pic_title' => 'ãƒ•ã‚¡ã‚¤ãƒ«å',
-  'description' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã®èª¬æ˜Ž',
-  'keywords' => 'ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ (åŠè§’ã‚¹ãƒšãƒ¼ã‚¹ã§åŒºåˆ‡ã‚‹)',
-  'err_no_alb_uploadables' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ãŒè¨±å¯ã•ã‚ŒãŸã‚¢ãƒ«ãƒãƒ ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚',
-  'place_instr_1' => 'ã‚¢ãƒ«ãƒãƒ ã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã—ã¦ãã ã•ã„ã€‚å„ãƒ•ã‚¡ã‚¤ãƒ«ã«é–¢é€£æƒ…å ±ã‚’å…¥åŠ›ã™ã‚‹ã“ã¨ã‚‚å‡ºæ¥ã¾ã™ã€‚',
-  'place_instr_2' => 'æ›´ã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚ã€Œç¶šãã€ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãã ã•ã„ã€‚',
-  'process_complete' => 'å…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒæ­£å¸¸ã«ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¾ã—ãŸã€‚',
+  'MIME_extraction_failure' => 'MIMEタイプを決定出来ません。',
+  'MIME_type_unknown' => '不明なMIMEタイプです。',
+  'cant_create_write' => '書込みファイルを作成出来ません。',
+  'not_writable' => '書込みファイルに書き込めません。',
+  'cant_read_URI' => 'URI/URLを読み込めません。',
+  'cant_open_write_file' => 'URI書込みファイルをオープン出来ません。',
+  'cant_write_write_file' => 'URI書込みファイルに書き込めません。',
+  'cant_unzip' => 'ZIPファイルの展開が出来ません。',
+  'unknown' => '不明なエラー',
+  'succ' => 'アップロード完了',
+  'success' => '%s のファイルアップロードが正常に完了しました。',
+  'add' => 'アルバムにファイルを追加する場合は、「続く」をクリックしてください。',
+  'failure' => 'アップロードエラー',
+  'f_info' => 'ファイル情報',
+  'no_place' => 'ファイルはアップロードされませんでした。',
+  'yes_place' => 'ファイルが正常にアップロードされました。',
+  'max_fsize' => 'アップロード可能な最大ファイルサイズは %sKB です。',
+  'album' => 'アルバム',
+  'picture' => 'ファイル',
+  'pic_title' => 'ファイル名',
+  'description' => 'ファイルの説明',
+  'keywords' => 'キーワード (半角スペースで区切る)',
+  'err_no_alb_uploadables' => 'ファイルのアップロードが許可されたアルバムはありません。',
+  'place_instr_1' => 'アルバムにファイルをアップロードしてください。各ファイルに関連情報を入力することも出来ます。',
+  'place_instr_2' => '更にファイルをアップロードする必要があります。「続く」をクリックしてください。',
+  'process_complete' => '全てのファイルが正常にアップロードされました。',
 );
 
 // ------------------------------------------------------------------------- //
@@ -1167,50 +1169,50 @@ if (defined('UPLOAD_PHP')) $lang_upload_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('USERMGR_PHP')) $lang_usermgr_php = array(
-  'title' => 'ãƒ¦ãƒ¼ã‚¶ã®ç®¡ç†',
-  'name_a' => 'ãƒ¦ãƒ¼ã‚¶åã®æ˜‡é †',
-  'name_d' => 'ãƒ¦ãƒ¼ã‚¶åã®é™é †',
-  'group_a' => 'ã‚°ãƒ«ãƒ¼ãƒ—åã®æ˜‡é †',
-  'group_d' => 'ã‚°ãƒ«ãƒ¼ãƒ—åã®é™é †',
-  'reg_a' => 'ç™»éŒ²æ—¥ã®æ˜‡é †',
-  'reg_d' => 'ç™»éŒ²æ—¥ã®é™é †',
-  'pic_a' => 'å†™çœŸæžšæ•°ã®æ˜‡é †',
-  'pic_d' => 'å†™çœŸæžšæ•°ã®é™é †',
-  'disku_a' => 'ãƒ‡ã‚£ã‚¹ã‚¯ä½¿ç”¨é‡ã®æ˜‡é †',
-  'disku_d' => 'ãƒ‡ã‚£ã‚¹ã‚¯ä½¿ç”¨é‡ã®é™é †',
-  'lv_a' => 'æœ€çµ‚ã‚¢ã‚¯ã‚»ã‚¹ã®æ˜‡é †',
-  'lv_d' => 'æœ€çµ‚ã‚¢ã‚¯ã‚»ã‚¹ã®é™é †',
-  'sort_by' => 'ãƒ¦ãƒ¼ã‚¶ã®ä¸¦ã³æ›¿ãˆ',
-  'err_no_users' => 'ãƒ¦ãƒ¼ã‚¶ãƒ†ãƒ¼ãƒ–ãƒ«ãŒç©ºã§ã™ !',
-  'err_edit_self' => 'è‡ªåˆ†è‡ªèº«ã®ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ã¯ç·¨é›†ã§ãã¾ã›ã‚“ã€‚ã€Œãƒžã‚¤ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ã€ã‚’ä½¿ç”¨ã—ã¦ãã ã•ã„ã€‚',
-  'edit' => 'ç·¨é›†',
-  'delete' => 'å‰Šé™¤',
-  'name' => 'ãƒ¦ãƒ¼ã‚¶å',
-  'group' => 'ã‚°ãƒ«ãƒ¼ãƒ—',
-  'inactive' => 'éžæ´»æ€§',
-  'operations' => 'æ“ä½œ',
-  'pictures' => 'ãƒ•ã‚¡ã‚¤ãƒ«',
-  'disk_space' => 'ä½¿ç”¨æ¸ˆã¿å®¹é‡ / å®¹é‡',
-  'registered_on' => 'ç™»éŒ²å¹´æœˆæ—¥',
-  'last_visit' => 'æœ€çµ‚ã‚¢ã‚¯ã‚»ã‚¹',
-  'u_user_on_p_pages' => 'ãƒ¦ãƒ¼ã‚¶æ•° %d / %dãƒšãƒ¼ã‚¸ä¸­',
-  'confirm_del' => 'æœ¬å½“ã«ã“ã®ãƒ¦ãƒ¼ã‚¶ã‚’å‰Šé™¤ã—ã¦ã‚‚å®œã—ã„ã§ã™ã‹ ? \\ãƒ¦ãƒ¼ã‚¶ã«å±žã™ã‚‹å…¨ã¦ã®ãƒ•ã‚¡ã‚¤ãƒ«ã¨ã‚¢ãƒ«ãƒãƒ ã¯å‰Šé™¤ã•ã‚Œã¾ã™ã€‚',
-  'mail' => 'ãƒ¡ãƒ¼ãƒ«',
-  'err_unknown_user' => 'é¸æŠžã—ãŸãƒ¦ãƒ¼ã‚¶ã¯å­˜åœ¨ã—ã¾ã›ã‚“ !',
-  'modify_user' => 'ãƒ¦ãƒ¼ã‚¶ã®å¤‰æ›´',
-  'notes' => 'æ³¨æ„',
-  'note_list' => '<li>ç¾åœ¨ã®ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã‚’å¤‰æ›´ã—ãŸããªã„å ´åˆã¯ã€ã€Œãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã€ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’ç©ºç™½ã«ã—ã¦ãã ã•ã„ã€‚',
-  'password' => 'ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰',
-  'user_active' => 'ãƒ¦ãƒ¼ã‚¶ã‚’æ´»æ€§åŒ–ã™ã‚‹',
-  'user_group' => 'ã‚°ãƒ«ãƒ¼ãƒ—',
-  'user_email' => 'ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹',
-  'user_web_site' => 'ãƒ›ãƒ¼ãƒ ãƒšãƒ¼ã‚¸',
-  'create_new_user' => 'æ–°è¦ãƒ¦ãƒ¼ã‚¶ã®ä½œæˆ',
-  'user_location' => 'å±…ä½åœ°',
-  'user_interests' => 'èˆˆå‘³ã®ã‚ã‚‹ã“ã¨',
-  'user_occupation' => 'è·æ¥­',
-  'latest_upload' => 'æœ€æ–°ã‚¢ãƒƒãƒ—ãƒ­ãƒ¼ãƒ‰',
-  'never' => 'ç„¡ã—',
+  'title' => 'ユーザの管理',
+  'name_a' => 'ユーザ名の昇順',
+  'name_d' => 'ユーザ名の降順',
+  'group_a' => 'グループ名の昇順',
+  'group_d' => 'グループ名の降順',
+  'reg_a' => '登録日の昇順',
+  'reg_d' => '登録日の降順',
+  'pic_a' => '写真枚数の昇順',
+  'pic_d' => '写真枚数の降順',
+  'disku_a' => 'ディスク使用量の昇順',
+  'disku_d' => 'ディスク使用量の降順',
+  'lv_a' => '最終アクセスの昇順',
+  'lv_d' => '最終アクセスの降順',
+  'sort_by' => 'ユーザの並び替え',
+  'err_no_users' => 'ユーザテーブルが空です !',
+  'err_edit_self' => '自分自身のプロフィールは編集できません。「マイプロフィール」を使用してください。',
+  'edit' => '編集',
+  'delete' => '削除',
+  'name' => 'ユーザ名',
+  'group' => 'グループ',
+  'inactive' => '非活性',
+  'operations' => '操作',
+  'pictures' => 'ファイル',
+  'disk_space' => '使用済み容量 / 容量',
+  'registered_on' => '登録年月日',
+  'last_visit' => '最終アクセス',
+  'u_user_on_p_pages' => 'ユーザ数 %d / %dページ中',
+  'confirm_del' => '本当にこのユーザを削除しても宜しいですか ? \\ユーザに属する全てのファイルとアルバムは削除されます。',
+  'mail' => 'メール',
+  'err_unknown_user' => '選択したユーザは存在しません !',
+  'modify_user' => 'ユーザの変更',
+  'notes' => '注意',
+  'note_list' => '<li>現在のパスワードを変更したくない場合は、「パスワード」フィールドを空白にしてください。',
+  'password' => 'パスワード',
+  'user_active' => 'ユーザを活性化する',
+  'user_group' => 'グループ',
+  'user_email' => 'メールアドレス',
+  'user_web_site' => 'ホームページ',
+  'create_new_user' => '新規ユーザの作成',
+  'user_location' => '居住地',
+  'user_interests' => '興味のあること',
+  'user_occupation' => '職業',
+  'latest_upload' => '最新アップロード',
+  'never' => '無し',
 );
 
 // ------------------------------------------------------------------------- //
@@ -1218,59 +1220,59 @@ if (defined('USERMGR_PHP')) $lang_usermgr_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('UTIL_PHP')) $lang_util_php = array(
-  'title' => 'ç®¡ç†ãƒ„ãƒ¼ãƒ« (å†™çœŸã®ãƒªã‚µã‚¤ã‚º)',
-  'what_it_does' => 'å‡¦ç†å†…å®¹',
-  'what_update_titles' => 'ã‚¿ã‚¤ãƒˆãƒ«ã‚’ãƒ•ã‚¡ã‚¤ãƒ«åã§æ›´æ–°ã™ã‚‹',
-  'what_delete_title' => 'ã‚¿ã‚¤ãƒˆãƒ«ã®å‰Šé™¤',
-  'what_rebuild' => 'ã‚µãƒ ãƒã‚¤ãƒ«ã®å†æ§‹ç¯‰åŠã³å†™çœŸã®ãƒªã‚µã‚¤ã‚º',
-  'what_delete_originals' => 'ã‚ªãƒªã‚¸ãƒŠãƒ«ã‚µã‚¤ã‚ºã®ç”»åƒã‚’å‰Šé™¤ã—ã¦ã€ã‚µã‚¤ã‚ºå¤‰æ›´å¾Œã®ç”»åƒã¨å…¥ã‚Œæ›¿ãˆã‚‹',
-  'file' => 'ãƒ•ã‚¡ã‚¤ãƒ«',
-  'title_set_to' => 'ã‚¿ã‚¤ãƒˆãƒ«è¨­å®š',
-  'submit_form' => 'é€ä¿¡',
-  'updated_succesfully' => 'æ›´æ–°å®Œäº†',
-  'error_create' => 'ä½œæˆä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ',
-  'continue' => 'ã•ã‚‰ã«ç”»åƒã‚’å‡¦ç†ã™ã‚‹',
-  'main_success' => 'ãƒ•ã‚¡ã‚¤ãƒ« %s ãŒãƒ¡ã‚¤ãƒ³ãƒ•ã‚¡ã‚¤ãƒ«ã«è¨­å®šã•ã‚Œã¾ã—ãŸ',
-  'error_rename' => '%s ã‚’ %s ã«ãƒªãƒãƒ¼ãƒ ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ',
-  'error_not_found' => 'ãƒ•ã‚¡ã‚¤ãƒ« %s ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸ',
-  'back' => 'ãƒ¡ã‚¤ãƒ³ã«æˆ»ã‚‹',
-  'thumbs_wait' => 'ã‚µãƒ ãƒã‚¤ãƒ«ã®æ›´æ–° åŠã³/åˆã¯ å†™çœŸã®ãƒªã‚µã‚¤ã‚ºã‚’è¡Œã£ã¦ã„ã¾ã™ã€ãŠå¾…ã¡ãã ã•ã„...',
-  'thumbs_continue_wait' => 'ã‚µãƒ ãƒã‚¤ãƒ«ã®æ›´æ–° åŠã³/åˆã¯ å†™çœŸã®ãƒªã‚µã‚¤ã‚ºã‚’è¡Œã£ã¦ã„ã¾ã™...',
-  'titles_wait' => 'ã‚¿ã‚¤ãƒˆãƒ«ã®æ›´æ–°ã‚’è¡Œã£ã¦ã„ã¾ã™ã€ãŠå¾…ã¡ãã ã•ã„...',
-  'delete_wait' => 'ã‚¿ã‚¤ãƒˆãƒ«ã‚’å‰Šé™¤ã—ã¦ã„ã¾ã™ã€ãŠå¾…ã¡ãã ã•ã„...',
-  'replace_wait' => 'ã‚ªãƒªã‚¸ãƒŠãƒ«ã‚µã‚¤ã‚ºã®ç”»åƒã‚’å‰Šé™¤ã—ã¦å¤‰æ›´å¾Œã®ç”»åƒã¨å…¥ã‚Œæ›¿ãˆã‚’è¡Œã£ã¦ã„ã¾ã™ã€ãŠå¾…ã¡ãã ã•ã„..',
-  'instruction' => 'ã‚¯ã‚¤ãƒƒã‚¯ã‚¤ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³',
-  'instruction_action' => 'ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®é¸æŠž',
-  'instruction_parameter' => 'ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®è¨­å®š',
-  'instruction_album' => 'ã‚¢ãƒ«ãƒãƒ ã®é¸æŠž',
-  'instruction_press' => '%s ã‚’æŠ¼ã™',
-  'update' => 'ã‚µãƒ ãƒã‚¤ãƒ«ã®æ›´æ–° åŠã³/åˆã¯ å†™çœŸã®ãƒªã‚µã‚¤ã‚º',
-  'update_what' => 'æ›´æ–°å¯¾è±¡',
-  'update_thumb' => 'ã‚µãƒ ãƒã‚¤ãƒ«ã®ä½œæˆã®ã¿',
-  'update_pic' => 'å†™çœŸã®ãƒªã‚µã‚¤ã‚ºã®ã¿',
-  'update_both' => 'ã‚µãƒ ãƒã‚¤ãƒ«ã®ä½œæˆåŠã³å†™çœŸã®ãƒªã‚µã‚¤ã‚º',
-  'update_number' => 'ã‚¯ãƒªãƒƒã‚¯ã‚ãŸã‚Šã®ç”»åƒå‡¦ç†æ•°',
-  'update_option' => '(ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã™ã‚‹æ™‚ã¯ã€ã“ã®æ•°å€¤ã‚’ä½Žã‚ã«è¨­å®šã—ã¦ãã ã•ã„)',
-  'filename_title' => 'ãƒ•ã‚¡ã‚¤ãƒ«å &rArr; ãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒˆãƒ«',
-  'filename_how' => 'ãƒ•ã‚¡ã‚¤ãƒ«åã®å¤‰æ›´æ–¹æ³•',
-  'filename_remove' => '.jpgã‚’ç©ºç™½ä»˜ãã® _ (ã‚¢ãƒ³ãƒ€ãƒ¼ã‚¹ã‚³ã‚¢)ã«å¤‰æ›´ã™ã‚‹',
-  'filename_euro' => '2003_11_23_13_20_20.jpg ã‚’ 23/11/2003 13:20 ã«å¤‰æ›´ã™ã‚‹',
-  'filename_us' => '2003_11_23_13_20_20.jpg ã‚’ 11/23/2003 13:20 ã«å¤‰æ›´ã™ã‚‹',
-  'filename_time' => '2003_11_23_13_20_20.jpg ã‚’ 13:20 ã«å¤‰æ›´ã™ã‚‹',
-  'delete' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒˆãƒ«åˆã¯ã‚ªãƒªã‚¸ãƒŠãƒ«ã‚µã‚¤ã‚ºã®å†™çœŸã‚’å‰Šé™¤ã™ã‚‹',
-  'delete_title' => 'ãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒˆãƒ«ã‚’å‰Šé™¤ã™ã‚‹',
-  'delete_original' => 'ã‚ªãƒªã‚¸ãƒŠãƒ«ã‚µã‚¤ã‚ºã®å†™çœŸã‚’å‰Šé™¤ã™ã‚‹',
-  'delete_replace' => 'ã‚ªãƒªã‚¸ãƒŠãƒ«ã‚µã‚¤ã‚ºã®ç”»åƒã‚’å‰Šé™¤ã—ã¦ã€ã‚µã‚¤ã‚ºå¤‰æ›´å¾Œã®ç”»åƒã¨å…¥ã‚Œæ›¿ãˆã‚‹',
-  'select_album' => 'ã‚¢ãƒ«ãƒãƒ ã®é¸æŠž',
-  'delete_orphans' => 'è¿·å­ã‚³ãƒ¡ãƒ³ãƒˆã®å‰Šé™¤ (å…¨ã‚¢ãƒ«ãƒãƒ å¯¾è±¡)',
-  'orphan_comment' => 'ä»¶ã®è¿·å­ã‚³ãƒ¡ãƒ³ãƒˆãŒè¦‹ã¤ã‹ã‚Šã¾ã—ãŸ',
-  'delete' => 'å‰Šé™¤',
-  'delete_all' => 'å…¨ã¦ã‚’å‰Šé™¤ã™ã‚‹',
-  'comment' => 'ã‚³ãƒ¡ãƒ³ãƒˆ: ',
-  'nonexist' => 'å­˜åœ¨ã—ãªã„ãƒ•ã‚¡ã‚¤ãƒ« # ã«å‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¦ã„ã¾ã™',
-  'phpinfo' => 'phpæƒ…å ±ã®è¡¨ç¤º',
-  'update_db' => 'ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã®æ›´æ–°',
-  'update_db_explanation' => 'coppermineã®å…¥ã‚Œæ›¿ãˆã€ä¿®æ­£ã®è¿½åŠ ã€ä»¥å‰ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚ˆã‚Šã‚¢ãƒƒãƒ—ã‚°ãƒ¬ãƒ¼ãƒ‰ã‚’è¡Œã£ãŸå ´åˆã¯ã€ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã®æ›´æ–°ã‚’å¿…ãš1åº¦å®Ÿè¡Œã—ã¦ãã ã•ã„ã€‚ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã®æ›´æ–°ã§ã¯å¿…è¦ãªãƒ†ãƒ¼ãƒ–ãƒ«ã®è¿½åŠ åŠã³coppermineãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã®è¨­å®šã‚’è¡Œã„ã¾ã™ã€‚',
+  'title' => '管理ツール (写真のリサイズ)',
+  'what_it_does' => '処理内容',
+  'what_update_titles' => 'タイトルをファイル名で更新する',
+  'what_delete_title' => 'タイトルの削除',
+  'what_rebuild' => 'サムネイルの再構築及び写真のリサイズ',
+  'what_delete_originals' => 'オリジナルサイズの画像を削除して、サイズ変更後の画像と入れ替える',
+  'file' => 'ファイル',
+  'title_set_to' => 'タイトル設定',
+  'submit_form' => '送信',
+  'updated_succesfully' => '更新完了',
+  'error_create' => '作成中にエラーが発生しました',
+  'continue' => 'さらに画像を処理する',
+  'main_success' => 'ファイル %s がメインファイルに設定されました',
+  'error_rename' => '%s を %s にリネーム中にエラーが発生しました',
+  'error_not_found' => 'ファイル %s が見つかりませんでした',
+  'back' => 'メインに戻る',
+  'thumbs_wait' => 'サムネイルの更新 及び/又は 写真のリサイズを行っています、お待ちください...',
+  'thumbs_continue_wait' => 'サムネイルの更新 及び/又は 写真のリサイズを行っています...',
+  'titles_wait' => 'タイトルの更新を行っています、お待ちください...',
+  'delete_wait' => 'タイトルを削除しています、お待ちください...',
+  'replace_wait' => 'オリジナルサイズの画像を削除して変更後の画像と入れ替えを行っています、お待ちください..',
+  'instruction' => 'クイックインストラクション',
+  'instruction_action' => 'アクションの選択',
+  'instruction_parameter' => 'パラメータの設定',
+  'instruction_album' => 'アルバムの選択',
+  'instruction_press' => '%s を押す',
+  'update' => 'サムネイルの更新 及び/又は 写真のリサイズ',
+  'update_what' => '更新対象',
+  'update_thumb' => 'サムネイルの作成のみ',
+  'update_pic' => '写真のリサイズのみ',
+  'update_both' => 'サムネイルの作成及び写真のリサイズ',
+  'update_number' => 'クリックあたりの画像処理数',
+  'update_option' => '(タイムアウトする時は、この数値を低めに設定してください)',
+  'filename_title' => 'ファイル名 &rArr; ファイルタイトル',
+  'filename_how' => 'ファイル名の変更方法',
+  'filename_remove' => '.jpgを空白付きの _ (アンダースコア)に変更する',
+  'filename_euro' => '2003_11_23_13_20_20.jpg を 23/11/2003 13:20 に変更する',
+  'filename_us' => '2003_11_23_13_20_20.jpg を 11/23/2003 13:20 に変更する',
+  'filename_time' => '2003_11_23_13_20_20.jpg を 13:20 に変更する',
+  'delete' => 'ファイルタイトル又はオリジナルサイズの写真を削除する',
+  'delete_title' => 'ファイルタイトルを削除する',
+  'delete_original' => 'オリジナルサイズの写真を削除する',
+  'delete_replace' => 'オリジナルサイズの画像を削除して、サイズ変更後の画像と入れ替える',
+  'select_album' => 'アルバムの選択',
+  'delete_orphans' => '迷子コメントの削除 (全アルバム対象)',
+  'orphan_comment' => '件の迷子コメントが見つかりました',
+  'delete' => '削除',
+  'delete_all' => '全てを削除する',
+  'comment' => 'コメント: ',
+  'nonexist' => '存在しないファイル # に割り当てられています',
+  'phpinfo' => 'php情報の表示',
+  'update_db' => 'データベースの更新',
+  'update_db_explanation' => 'coppermineの入れ替え、修正の追加、以前のバージョンよりアップグレードを行った場合は、データベースの更新を必ず1度実行してください。データベースの更新では必要なテーブルの追加及びcoppermineデータベースの設定を行います。',
 );
 
 ?>

@@ -1,20 +1,22 @@
 <?php
-// ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
-// ------------------------------------------------------------------------- //
-// Copyright (C) 2002-2004 Gregory DEMAR                                     //
-// http://www.chezgreg.net/coppermine/                                       //
-// ------------------------------------------------------------------------- //
-// Updated by the Coppermine Dev Team                                        //
-// (http://coppermine.sf.net/team/)                                          //
-// see /docs/credits.html for details                                        //
-// ------------------------------------------------------------------------- //
-// This program is free software; you can redistribute it and/or modify      //
-// it under the terms of the GNU General Public License as published by      //
-// the Free Software Foundation; either version 2 of the License, or         //
-// (at your option) any later version.                                       //
-// ------------------------------------------------------------------------- //
-// CVS version: $Id: punbb.inc.php,v 1.2 2004/08/15 00:44:06 nibbler999 Exp $
+/*************************
+  Coppermine Photo Gallery
+  ************************
+  Copyright (c) 2003-2005 Coppermine Dev Team
+  v1.1 originaly written by Gregory DEMAR
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  ********************************************
+  Coppermine version: 1.3.3
+  $Source: /cvsroot/coppermine/stable/bridge/punbb.inc.php,v $
+  $Revision: 1.3 $
+  $Author: gaugau $
+  $Date: 2005/04/19 03:17:13 $
+**********************************************/
+
 // ------------------------------------------------------------------------- //
 // PunBB 1.1.5 Integration for Coppermine                                    //
 // ------------------------------------------------------------------------- //
@@ -52,93 +54,93 @@ define('PUNBB_ADMIN_GROUP', 1);
 function udb_authenticate()
 {
     global $USER_DATA, $CONFIG, $cookie_name, $UDB_DB_LINK_ID, $UDB_DB_NAME_PREFIX;
- 
+
     // For error checking
     $CONFIG['TABLE_USERS'] = '**ERROR**';
-    
+
     function unescape($str)
-	{
-		return (get_magic_quotes_gpc() == 1) ? stripslashes($str) : $str;
-	}
+        {
+                return (get_magic_quotes_gpc() == 1) ? stripslashes($str) : $str;
+        }
 
     // Retrieve cookie stored login information
-    
+
     // default user info
-	$USER_DATA['user_id'] = 0;
-	$USER_DATA['status'] = -1;
-	$USER_DATA['user_name'] = 'Guest';
-		
-	if (isset($_COOKIE[$cookie_name]))
-	{	
-		list($cookie['username'], $cookie['password_hash']) = unserialize(unescape($_COOKIE[$cookie_name]));
+        $USER_DATA['user_id'] = 0;
+        $USER_DATA['status'] = -1;
+        $USER_DATA['user_name'] = 'Guest';
 
-		if (strcasecmp($cookie['username'], 'Guest'))
-		{
-			$result = db_query("SELECT id AS user_id, username AS user_name, status FROM ". $UDB_DB_NAME_PREFIX . PUNBB_TABLE_PREFIX . PUNBB_USER_TABLE ." WHERE username='" . addslashes($cookie['username']). "' AND password='". addslashes($cookie['password_hash'])."'",$UDB_DB_LINK_ID);	
-			$USER_DATA = mysql_fetch_assoc($result);	
-		}
-	} 
+        if (isset($_COOKIE[$cookie_name]))
+        {
+                list($cookie['username'], $cookie['password_hash']) = unserialize(unescape($_COOKIE[$cookie_name]));
 
-	$USER_DATA['groups'] = array();
+                if (strcasecmp($cookie['username'], 'Guest'))
+                {
+                        $result = db_query("SELECT id AS user_id, username AS user_name, status FROM ". $UDB_DB_NAME_PREFIX . PUNBB_TABLE_PREFIX . PUNBB_USER_TABLE ." WHERE username='" . addslashes($cookie['username']). "' AND password='". addslashes($cookie['password_hash'])."'",$UDB_DB_LINK_ID);
+                        $USER_DATA = mysql_fetch_assoc($result);
+                }
+        }
 
-	// Define the basic groups
-	        
-	switch ($USER_DATA['status']) {
-	
-		case 0:
-			$USER_DATA['groups'][0] = PUNBB_MEMBERS_GROUP;
-			break;
-		case 1:
-			$USER_DATA['groups'][0] = PUNBB_MOD_GROUP;
-			break;
-		case 2:
-			$USER_DATA['groups'][0] = PUNBB_ADMIN_GROUP;
-			break;
-		default:
-			$USER_DATA['groups'][0] = PUNBB_GUEST_GROUP;
-			break;	
-	}
-	
-	if ($USER_DATA['status'] == -1) {
-		define('USER_ID', 0);
-	} else {
-		define('USER_ID', (int)$USER_DATA['user_id']);
-	}
+        $USER_DATA['groups'] = array();
 
-	$user_group_set = '(' . implode(',', $USER_DATA['groups']) . ')';
+        // Define the basic groups
 
-	// Default group data
-	$USER_DATA['group_quota'] = 1;
-	$USER_DATA['can_rate_pictures'] = 0;
-	$USER_DATA['can_send_ecards'] = 0;
-	$USER_DATA['can_post_comments'] = 0;
-	$USER_DATA['can_upload_pictures'] = 0;
-	$USER_DATA['can_create_albums'] = 0;
-	$USER_DATA['pub_upl_need_approval'] = 1;
-	$USER_DATA['priv_upl_need_approval'] = 1;
-	$USER_DATA['upload_form_config'] = 0;
-	$USER_DATA['num_file_upload'] = 0; 
-	$USER_DATA['num_URI_upload'] = 0;
-	$USER_DATA['custom_user_upload'] = 0;
+        switch ($USER_DATA['status']) {
 
-	$USER_DATA = array_merge($USER_DATA, cpgGetUserData($USER_DATA['groups'][0], $USER_DATA['groups'], PUNBB_GUEST_GROUP));
-	
-	$USER_DATA['has_admin_access'] = (($USER_DATA['status'] == 2) || (($USER_DATA['status'] == 1) && MOD_IS_ADMIN)) ? 1 : 0;
-	$USER_DATA['can_see_all_albums'] = $USER_DATA['has_admin_access'];
-	
-	define('USER_NAME', $USER_DATA['user_name']);
-	define('USER_GROUP', $USER_DATA['group_name']);
-	define('USER_GROUP_SET', $user_group_set);
-	define('USER_IS_ADMIN', $USER_DATA['has_admin_access']);
-	define('USER_CAN_SEND_ECARDS', (int)$USER_DATA['can_send_ecards']);
-	define('USER_CAN_RATE_PICTURES', (int)$USER_DATA['can_rate_pictures']);
-	define('USER_CAN_POST_COMMENTS', (int)$USER_DATA['can_post_comments']);
-	define('USER_CAN_UPLOAD_PICTURES', (int)$USER_DATA['can_upload_pictures']);
-	define('USER_CAN_CREATE_ALBUMS', (int)$USER_DATA['can_create_albums']);
-	define('USER_UPLOAD_FORM', (int)$USER_DATA['upload_form_config']);
-	define('CUSTOMIZE_UPLOAD_FORM', (int)$USER_DATA['custom_user_upload']);
-	define('NUM_FILE_BOXES', (int)$USER_DATA['num_file_upload']);
-	define('NUM_URI_BOXES', (int)$USER_DATA['num_URI_upload']);
+                case 0:
+                        $USER_DATA['groups'][0] = PUNBB_MEMBERS_GROUP;
+                        break;
+                case 1:
+                        $USER_DATA['groups'][0] = PUNBB_MOD_GROUP;
+                        break;
+                case 2:
+                        $USER_DATA['groups'][0] = PUNBB_ADMIN_GROUP;
+                        break;
+                default:
+                        $USER_DATA['groups'][0] = PUNBB_GUEST_GROUP;
+                        break;
+        }
+
+        if ($USER_DATA['status'] == -1) {
+                define('USER_ID', 0);
+        } else {
+                define('USER_ID', (int)$USER_DATA['user_id']);
+        }
+
+        $user_group_set = '(' . implode(',', $USER_DATA['groups']) . ')';
+
+        // Default group data
+        $USER_DATA['group_quota'] = 1;
+        $USER_DATA['can_rate_pictures'] = 0;
+        $USER_DATA['can_send_ecards'] = 0;
+        $USER_DATA['can_post_comments'] = 0;
+        $USER_DATA['can_upload_pictures'] = 0;
+        $USER_DATA['can_create_albums'] = 0;
+        $USER_DATA['pub_upl_need_approval'] = 1;
+        $USER_DATA['priv_upl_need_approval'] = 1;
+        $USER_DATA['upload_form_config'] = 0;
+        $USER_DATA['num_file_upload'] = 0;
+        $USER_DATA['num_URI_upload'] = 0;
+        $USER_DATA['custom_user_upload'] = 0;
+
+        $USER_DATA = array_merge($USER_DATA, cpgGetUserData($USER_DATA['groups'][0], $USER_DATA['groups'], PUNBB_GUEST_GROUP));
+
+        $USER_DATA['has_admin_access'] = (($USER_DATA['status'] == 2) || (($USER_DATA['status'] == 1) && MOD_IS_ADMIN)) ? 1 : 0;
+        $USER_DATA['can_see_all_albums'] = $USER_DATA['has_admin_access'];
+
+        define('USER_NAME', $USER_DATA['user_name']);
+        define('USER_GROUP', $USER_DATA['group_name']);
+        define('USER_GROUP_SET', $user_group_set);
+        define('USER_IS_ADMIN', $USER_DATA['has_admin_access']);
+        define('USER_CAN_SEND_ECARDS', (int)$USER_DATA['can_send_ecards']);
+        define('USER_CAN_RATE_PICTURES', (int)$USER_DATA['can_rate_pictures']);
+        define('USER_CAN_POST_COMMENTS', (int)$USER_DATA['can_post_comments']);
+        define('USER_CAN_UPLOAD_PICTURES', (int)$USER_DATA['can_upload_pictures']);
+        define('USER_CAN_CREATE_ALBUMS', (int)$USER_DATA['can_create_albums']);
+        define('USER_UPLOAD_FORM', (int)$USER_DATA['upload_form_config']);
+        define('CUSTOMIZE_UPLOAD_FORM', (int)$USER_DATA['custom_user_upload']);
+        define('NUM_FILE_BOXES', (int)$USER_DATA['num_file_upload']);
+        define('NUM_URI_BOXES', (int)$USER_DATA['num_URI_upload']);
 }
 
 // Retrieve the name of a user
@@ -194,18 +196,18 @@ function udb_register_page()
 // Login
 function udb_login_page()
 {
-	global $path;
-	
-	echo '<html><body onload="document.redir.submit();"><form name="redir" method="post" action="'.$path.'/redir.php"><input type="hidden" name="redir" value="login.php" /></form></body></html>';
-	exit;
+        global $path;
+
+        echo '<html><body onload="document.redir.submit();"><form name="redir" method="post" action="'.$path.'/redir.php"><input type="hidden" name="redir" value="login.php" /></form></body></html>';
+        exit;
 }
 // Logout
 function udb_logout_page()
 {
-	global $path;
-	
-	echo '<html><body onload="document.redir.submit();"><form name="redir" method="post" action="'.$path.'/redir.php"><input type="hidden" name="redir" value="login.php?action=out" /></form></body></html>';
-	exit;
+        global $path;
+
+        echo '<html><body onload="document.redir.submit();"><form name="redir" method="post" action="'.$path.'/redir.php"><input type="hidden" name="redir" value="login.php?action=out" /></form></body></html>';
+        exit;
 }
 // Edit users
 function udb_edit_users()
@@ -216,7 +218,7 @@ function udb_edit_users()
 // Get user information
 function udb_get_user_infos($uid)
 {
-	global $UDB_DB_NAME_PREFIX, $UDB_DB_LINK_ID, $lang_register_php;
+        global $UDB_DB_NAME_PREFIX, $UDB_DB_LINK_ID, $lang_register_php;
 
     $sql = "SELECT username AS user_name, email AS user_email, registered AS user_regdate, location AS user_location, url AS user_website FROM " . $UDB_DB_NAME_PREFIX . PUNBB_TABLE_PREFIX . PUNBB_USER_TABLE . " WHERE id = '$uid'";
     $result = db_query($sql, $UDB_DB_LINK_ID);
@@ -285,8 +287,8 @@ function udb_synchronize_groups()
     global $CONFIG ;
 
     $PUNBB_groups = array(
-    	PUNBB_GUEST_GROUP => 'Guests',
-    	PUNBB_MEMBERS_GROUP => 'Members',
+            PUNBB_GUEST_GROUP => 'Guests',
+            PUNBB_MEMBERS_GROUP => 'Members',
         PUNBB_ADMIN_GROUP => 'Administrators',
         PUNBB_MOD_GROUP => 'Moderators'
         );
@@ -470,7 +472,7 @@ $UDB_DB_LINK_ID = 0;
 $UDB_DB_NAME_PREFIX = PUNBB_DB_NAME ? '`' . PUNBB_DB_NAME . '`.' : '';
 if (!UDB_CAN_JOIN_TABLES) {
     $UDB_DB_LINK_ID = @mysql_connect(PUNBB_DB_HOST, PUNBB_DB_USERNAME, PUNBB_DB_PASSWORD);
-    
+
     if (!$UDB_DB_LINK_ID) die("<b>Coppermine critical error</b>:<br />Unable to connect to PunBB database !<br /><br />MySQL said: <b>" . mysql_error() . "</b>");
     mysql_select_db (PUNBB_DB_NAME, $UDB_DB_LINK_ID);
 }

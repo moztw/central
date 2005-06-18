@@ -1,6 +1,6 @@
 <?php
 // ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
+// Coppermine Photo Gallery 1.4.0                                            //
 // ------------------------------------------------------------------------- //
 // Copyright (C) 2002-2004 Gregory DEMAR                                     //
 // http://www.chezgreg.net/coppermine/                                       //
@@ -14,10 +14,10 @@
 // the Free Software Foundation; either version 2 of the License, or         //
 // (at your option) any later version.                                       //
 // ------------------------------------------------------------------------- //
-// $Id: romanian.php,v 1.6 2004/08/07 09:22:19 gaugau Exp $
+// $Id: romanian.php,v 1.7 2004/12/29 23:03:46 chtito Exp $
 // ------------------------------------------------------------------------- //
 
-// info about translators and translated language
+// informaþii despre traducere ºi traducãtor
 $lang_translation_info = array(
         'lang_name_english' => 'Romanian',
         'lang_name_native' => 'Românã',

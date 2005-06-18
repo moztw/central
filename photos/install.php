@@ -1,21 +1,21 @@
 <?php
-// ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
-// ------------------------------------------------------------------------- //
-// Copyright (C) 2002-2004 Gregory DEMAR                                     //
-// http://www.chezgreg.net/coppermine/                                       //
-// ------------------------------------------------------------------------- //
-// Updated by the Coppermine Dev Team                                        //
-// (http://coppermine.sf.net/team/)                                          //
-// see /docs/credits.html for details                                        //
-// ------------------------------------------------------------------------- //
-// This program is free software; you can redistribute it and/or modify      //
-// it under the terms of the GNU General Public License as published by      //
-// the Free Software Foundation; either version 2 of the License, or         //
-// (at your option) any later version.                                       //
-// ------------------------------------------------------------------------- //
-// CVS version: $Id: install.php,v 1.10 2004/07/31 19:33:22 nibbler999 Exp $
-// ------------------------------------------------------------------------- //
+/*************************
+  Coppermine Photo Gallery
+  ************************
+  Copyright (c) 2003-2005 Coppermine Dev Team
+  v1.1 originaly written by Gregory DEMAR
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  ********************************************
+  Coppermine version: 1.3.3
+  $Source: /cvsroot/coppermine/stable/install.php,v $
+  $Revision: 1.14 $
+  $Author: gaugau $
+  $Date: 2005/04/19 03:17:11 $
+**********************************************/
 
 // Check if standalone is installed in a portal like phpNuke (added by DJMaze)
 $DIR=preg_split("/[\/\\\]/",dirname($_SERVER['PATH_TRANSLATED']));
@@ -163,7 +163,7 @@ function detect_img_package()
     } else {
         $HTTP_POST_VARS['thumb_method'] = 'gd2';
         $no_img_package_detected = true;
-        $note .= "<hr /><br />Your installation of PHP does not seem to include the 'GD' graphic library extension and you have not indicated that you want to use ImageMagick. Coppermine has been configured to use GD2 because the automatic GD detection sometimes fail. If GD is installed on your system, the script should work else you will need to install ImageMagick.<br /><br />";
+        $notes .= "<hr /><br />Your installation of PHP does not seem to include the 'GD' graphic library extension and you have not indicated that you want to use ImageMagick. Coppermine has been configured to use GD2 because the automatic GD detection sometimes fail. If GD is installed on your system, the script should work else you will need to install ImageMagick.<br /><br />";
     }
 
     if (!$no_img_package_detected) $notes .= "<br /><br />Your server supports the following image package(s): " . ($im_installed ? ' ImageMagick (im),':'') . ($gd1_installed ? ' GD Library version 1.x (gd1),':'') . ($gd2_installed ? ' GD Library version 2.x (gd2),':'') . " the installer selected '" . $HTTP_POST_VARS['thumb_method'] . "'.";
@@ -345,7 +345,7 @@ function html_input_config($error_msg = '')
         <td width="40%" class="tableb"><b>MySQL table prefix</b><br />(default value is OK; do not use dots!)
         </td>
         <td width="60%" class="tableb" valign="top">
-                <input type='text' class='textinput' name='table_prefix' value='<?php echo ($HTTP_POST_VARS['table_prefix'] ? $HTTP_POST_VARS['table_prefix'] : 'cpg132_') ?>'>
+                <input type='text' class='textinput' name='table_prefix' value='<?php echo ($HTTP_POST_VARS['table_prefix'] ? $HTTP_POST_VARS['table_prefix'] : 'cpg133_') ?>'>
         </td>
        </tr>
        <tr>
@@ -446,8 +446,8 @@ function create_tables()
     $sql_query = split_sql_file($sql_query, ';');
 
     foreach($sql_query as $q) {
-        if (! mysql_query($q)) {
-            $errors .= "mySQL Error: " . mysql_error() . "<br /><br />";
+        if (!mysql_query($q)) {
+            $errors .= "mySQL Error: " . mysql_error() . "on query '$q'<br /><br />";
             return;
         }
     }

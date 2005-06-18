@@ -1,25 +1,23 @@
 <?php
-// ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
-// ------------------------------------------------------------------------- //
-// Copyright (C) 2002-2004 Gregory DEMAR                                     //
-// http://www.chezgreg.net/coppermine/                                       //
-// ------------------------------------------------------------------------- //
-// Updated by the Coppermine Dev Team                                        //
-// (http://coppermine.sf.net/team/)                                          //
-// see /docs/credits.html for details                                        //
-// ------------------------------------------------------------------------- //
-// This program is free software; you can redistribute it and/or modify      //
-// it under the terms of the GNU General Public License as published by      //
-// the Free Software Foundation; either version 2 of the License, or         //
-// (at your option) any later version.                                       //
-// ------------------------------------------------------------------------- //
+/*************************
+  Coppermine Photo Gallery
+  ************************
+  Copyright (c) 2003-2005 Coppermine Dev Team
+  v1.1 originaly written by Gregory DEMAR
 
-/*
-$Id: mailer.inc.php,v 1.5 2004/07/24 15:04:09 gaugau Exp $
-*/
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  ********************************************
+  Coppermine version: 1.3.3
+  $Source: /cvsroot/coppermine/stable/include/mailer.inc.php,v $
+  $Revision: 1.6 $
+  $Author: gaugau $
+  $Date: 2005/04/19 03:17:11 $
+**********************************************/
 
-$CONFIG['smtp_host'] = 'localhost';
+$CONFIG['smtp_host'] = '';
 $CONFIG['smtp_username'] = '';
 $CONFIG['smtp_password'] = '';
 // Custom mail function
@@ -52,7 +50,7 @@ function cpg_mail($to, $subject, $msg_body, $type = 'text/plain', $sender_name =
  *    copyright            : (C) 2001 The phpBB Group
  *    email                : support@phpbb.com
  *
- *    $Id: mailer.inc.php,v 1.5 2004/07/24 15:04:09 gaugau Exp $
+ *    $Id: mailer.inc.php,v 1.6 2005/04/19 03:17:11 gaugau Exp $
  */
 
 /**

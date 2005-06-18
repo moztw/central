@@ -1,6 +1,6 @@
 <?php
 // ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
+// Coppermine Photo Gallery 1.3.0                                            //
 // ------------------------------------------------------------------------- //
 // Copyright (C) 2002-2004 Gregory DEMAR                                     //
 // http://www.chezgreg.net/coppermine/                                       //
@@ -14,7 +14,7 @@
 // the Free Software Foundation; either version 2 of the License, or         //
 // (at your option) any later version.                                       //
 // ------------------------------------------------------------------------- //
-// CVS version: $Id: latvian.php,v 1.8 2004/07/24 15:04:07 gaugau Exp $
+// $Id: latvian.php,v 1.10 2004/12/29 23:03:46 chtito Exp $
 // ------------------------------------------------------------------------- //
 
 // info about translators and translated language
@@ -23,9 +23,9 @@ $lang_translation_info = array(
 'lang_name_native' => 'Latviski', //the name of your language in your mother tongue (for non-latin alphabets, use unicode), e.g. '&#917;&#955;&#955;&#951;&#957;&#953;&#954;&#940;' or 'Espa&ntilde;ol'
 'lang_country_code' => 'lv', //the two-letter code for the country your language is most-often spoken (refer to http://www.iana.org/cctld/cctld-whois.htm), e.g. 'gr' or 'es'
 'trans_name'=> 'Kaspars Priedols', //the name of the translator - can be a nickname
-'trans_email' => 'house@tvertne.nu', //translator's email address (optional)
+'trans_email' => 'kaspars.priedols@gmail.com', //translator's email address (optional)
 'trans_website' => 'http://foto.tvertne.nu/', //translator's website (optional) //.lv ONLY
-'trans_date' => '2004-06-28', //the date the translation was created / last modified
+'trans_date' => '2004-11-06', //the date the translation was created / last modified
 );
 
 $lang_charset = 'ISO-8859-4';

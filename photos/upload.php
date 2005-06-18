@@ -1,21 +1,21 @@
 <?php
-// ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
-// ------------------------------------------------------------------------- //
-// Copyright (C) 2002-2004 Gregory DEMAR                                     //
-// http://www.chezgreg.net/coppermine/                                       //
-// ------------------------------------------------------------------------- //
-// Updated by the Coppermine Dev Team                                        //
-// (http://coppermine.sf.net/team/)                                          //
-// see /docs/credits.html for details                                        //
-// ------------------------------------------------------------------------- //
-// This program is free software; you can redistribute it and/or modify      //
-// it under the terms of the GNU General Public License as published by      //
-// the Free Software Foundation; either version 2 of the License, or         //
-// (at your option) any later version.                                       //
-// ------------------------------------------------------------------------- //
-// CVS version: $Id: upload.php,v 1.9 2004/07/28 08:25:25 gaugau Exp $
-// ------------------------------------------------------------------------- //
+/*************************
+  Coppermine Photo Gallery
+  ************************
+  Copyright (c) 2003-2005 Coppermine Dev Team
+  v1.1 originaly written by Gregory DEMAR
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  ********************************************
+  Coppermine version: 1.3.3
+  $Source: /cvsroot/coppermine/stable/upload.php,v $
+  $Revision: 1.14 $
+  $Author: gaugau $
+  $Date: 2005/04/19 03:17:11 $
+**********************************************/
 
 // Confirm we are in Coppermine and set the language blocks.
 define('IN_COPPERMINE', true);
@@ -187,12 +187,12 @@ EOT;
 
         //Query the database to determine the category the album belongs to.
         $vQuery = "SELECT category FROM " . $CONFIG['TABLE_ALBUMS'] . " WHERE aid='" . $album_id . "'";
-        $vRes = mysql_query($vQuery);
+        $vRes = db_query($vQuery);
         $vRes = mysql_fetch_array($vRes);
 
         // Query the database to get the category name.
         $vQuery = "SELECT name FROM " . $CONFIG['TABLE_CATEGORIES'] . " WHERE cid='" . $vRes['category'] . "'";
-        $vRes = mysql_query($vQuery);
+        $vRes = db_query($vQuery);
         $vRes = mysql_fetch_array($vRes);
 
         // Create the option for the drop down list.
@@ -207,12 +207,12 @@ EOT;
 
         //Query the database to determine the category the album belongs to.
         $vQuery = "SELECT category FROM " . $CONFIG['TABLE_ALBUMS'] . " WHERE aid='" . $album_id . "'";
-        $vRes = mysql_query($vQuery);
+        $vRes = db_query($vQuery);
         $vRes = mysql_fetch_array($vRes);
 
         // Query the database to get the category name.
         $vQuery = "SELECT name FROM " . $CONFIG['TABLE_CATEGORIES'] . " WHERE cid='" . $vRes['category'] . "'";
-        $vRes = mysql_query($vQuery);
+        $vRes = db_query($vQuery);
         $vRes = mysql_fetch_array($vRes);
 
         // Create the option for the drop down list.
@@ -471,7 +471,7 @@ function create_record($encoded_string) {
     $generic_array = array();
 
     // Get all IDs from the table.
-    $result = mysql_query("SELECT unique_ID FROM {$CONFIG['TABLE_TEMPDATA']}");
+    $result = db_query("SELECT unique_ID FROM {$CONFIG['TABLE_TEMPDATA']}");
 
     // Create unique ID array.
     if (mysql_num_rows($result)) {
@@ -506,7 +506,7 @@ function create_record($encoded_string) {
     $timestamp = time();
 
     // Insert the new record.
-    $result = mysql_query("INSERT INTO {$CONFIG['TABLE_TEMPDATA']} VALUES ('$unique_ID', '$encoded_string', '$timestamp')");
+    $result = db_query("INSERT INTO {$CONFIG['TABLE_TEMPDATA']} VALUES ('$unique_ID', '$encoded_string', '$timestamp')");
 
     // Return the unique ID if insertion was successful. Otherwise, return false.
     if ($result) {
@@ -528,7 +528,7 @@ function update_record($unique_ID, $encoded_string) {
     global $CONFIG;
 
     // Update record.
-    $result = mysql_query("UPDATE {$CONFIG['TABLE_TEMPDATA']} SET encoded_string = '$encoded_string' WHERE unique_ID = '$unique_ID'");
+    $result = db_query("UPDATE {$CONFIG['TABLE_TEMPDATA']} SET encoded_string = '$encoded_string' WHERE unique_ID = '$unique_ID'");
 
     // Return true if successful.
     if ($result) {
@@ -550,7 +550,7 @@ function delete_record($unique_ID) {
     global $CONFIG;
 
     // Delete record.
-    $result = mysql_query("DELETE FROM {$CONFIG['TABLE_TEMPDATA']} WHERE unique_ID = '$unique_ID'");
+    $result = db_query("DELETE FROM {$CONFIG['TABLE_TEMPDATA']} WHERE unique_ID = '$unique_ID'");
 
     // Return true if successful.
     if ($result) {
@@ -572,7 +572,7 @@ function retrieve_record($unique_ID) {
     global $CONFIG;
 
     // Retrieve record.
-    $result = mysql_query("SELECT encoded_string FROM {$CONFIG['TABLE_TEMPDATA']} WHERE unique_ID = '$unique_ID'");
+    $result = db_query("SELECT encoded_string FROM {$CONFIG['TABLE_TEMPDATA']} WHERE unique_ID = '$unique_ID'");
 
     // Return string if successful.
     if (mysql_num_rows($result)) {
@@ -611,7 +611,7 @@ function clean_table() {
     $comparative_timestamp = time() - 3600;
 
     // Delete record.
-    $result = mysql_query("DELETE FROM {$CONFIG['TABLE_TEMPDATA']} WHERE timestamp < $comparative_timestamp");
+    $result = db_query("DELETE FROM {$CONFIG['TABLE_TEMPDATA']} WHERE timestamp < $comparative_timestamp");
 
     // Return true if successful.
     if ($result) {
@@ -820,9 +820,9 @@ if ((CUSTOMIZE_UPLOAD_FORM) and (!isset($_REQUEST['file_upload_request'])) and (
 // Get public and private albums, and set maximum individual file size.
 
 if (GALLERY_ADMIN_MODE) {
-    $public_albums = mysql_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category < " . FIRST_USER_CAT . " ORDER BY title");
+    $public_albums = db_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category < " . FIRST_USER_CAT . " ORDER BY title");
 } else {
-    $public_albums = mysql_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category < " . FIRST_USER_CAT . " AND uploads='YES' ORDER BY title");
+    $public_albums = db_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category < " . FIRST_USER_CAT . " AND uploads='YES' ORDER BY title");
 }
 if (mysql_num_rows($public_albums)) {
     $public_albums_list = db_fetch_rowset($public_albums);
@@ -831,7 +831,7 @@ if (mysql_num_rows($public_albums)) {
 }
 
 if (USER_ID) {
-    $user_albums = mysql_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category='" . (FIRST_USER_CAT + USER_ID) . "' ORDER BY title");
+    $user_albums = db_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category='" . (FIRST_USER_CAT + USER_ID) . "' ORDER BY title");
     if (mysql_num_rows($user_albums)) {
         $user_albums_list = db_fetch_rowset($user_albums);
     } else {
@@ -853,7 +853,7 @@ $max_file_size = $CONFIG['max_upl_size'] << 10;
 if (!isset($_REQUEST['control'])) {
 
     // Do some cleanup in the edit directory.
-    spring_cleaning('./albums/edit',3600);
+    spring_cleaning("./{$CONFIG['fullpath']}edit",3600);
 
     // Do some cleaning in the temp data table.
     clean_table();
@@ -1186,7 +1186,7 @@ if ((isset($_POST['control'])) and ($_POST['control'] == 'phase_1')) {
                 $seed = substr(md5(microtime().getmypid()), 0, 8);
 
                 // Assemble the file path.
-                $path_to_image = './albums/edit/'. $prefix . $seed . '.' . $suffix;
+                $path_to_image = "./{$CONFIG['fullpath']}edit/". $prefix . $seed . '.' . $suffix;
 
             } while (file_exists($path_to_image));
 
@@ -1615,7 +1615,7 @@ if ((isset($_POST['control'])) and ($_POST['control'] == 'phase_1')) {
                 $seed = substr(md5(microtime().getmypid()), 0, 8);
 
                 // Assemble the file path.
-                $path_to_image = './albums/edit/'. $prefix . $seed . '.' . $suffix;
+                $path_to_image = "./{$CONFIG['fullpath']}/edit/". $prefix . $seed . '.' . $suffix;
 
             } while (file_exists($path_to_image));
 
@@ -1961,7 +1961,7 @@ if ((isset($_POST['control'])) and ($_POST['control'] == 'phase_1')) {
         }
 
         // Prepare success data for user.
-        starttable("100%", 'Successful Uploads', 2);
+        starttable("100%", $lang_upload_php['succ'], 2);
         echo "<tr><td colspan=\"2\">";
         printf ($lang_upload_php['success'], $escrow_array_count);
         echo "<br /><br />";
@@ -2220,7 +2220,10 @@ if ((isset($_POST['control'])) and ($_POST['control'] == 'phase_2')) {
         $uploaded_pic = $dest_dir . $picture_name;
 
         // Form path to temporary image.
-        $path_to_image = './albums/edit/'.$file_set[1];
+        $path_to_image = "./{$CONFIG['fullpath']}edit/".$file_set[1];
+
+                // prevent moving the edit directory...
+                if (is_dir($path_to_image)) cpg_die(CRITICAL_ERROR, $lang_upload_php['failure'] . " - '$path_to_image'", __FILE__, __LINE__, true);
 
         // Move the picture into its final location
         if (rename($path_to_image, $uploaded_pic)) {
@@ -2369,7 +2372,7 @@ if ((isset($_POST['control'])) and ($_POST['control'] == 'phase_2')) {
     // Create preview image.
 
     // Create path to image.
-    $path_to_image = './albums/edit/'.$file_set[1];
+    $path_to_image = "./{$CONFIG['fullpath']}edit/".$file_set[1];
 
     // Create the preview function.
 
@@ -2392,7 +2395,7 @@ if ((isset($_POST['control'])) and ($_POST['control'] == 'phase_2')) {
             $seed = substr(md5(microtime().getmypid()), 0, 8);
 
             // Assemble the file path.
-            $path_to_preview = './albums/edit/preview_' . $seed . '.' . $extension;
+            $path_to_preview = "./{$CONFIG['fullpath']}edit/preview_" . $seed . '.' . $extension;
 
         } while (file_exists($path_to_preview));
 

@@ -1,6 +1,6 @@
 <?php
 // ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
+// Coppermine Photo Gallery 1.4.0                                            //
 // ------------------------------------------------------------------------- //
 // Copyright (C) 2002-2004 Gregory DEMAR                                     //
 // http://www.chezgreg.net/coppermine/                                       //
@@ -14,10 +14,12 @@
 // the Free Software Foundation; either version 2 of the License, or         //
 // (at your option) any later version.                                       //
 // ------------------------------------------------------------------------- //
-// $Id: romanian_no_diacritics-utf-8.php,v 1.1 2004/08/07 09:22:19 gaugau Exp $
+// ENCODING CHECK; SHOULD BE YEN BETA MU: ¥ ß µ
+// ------------------------------------------------------------------------- //
+// $Id: romanian_no_diacritics-utf-8.php,v 1.3 2004/12/29 23:03:46 chtito Exp $
 // ------------------------------------------------------------------------- //
 
-// info about translators and translated language
+// informatii despre traducere si traducator
 $lang_translation_info = array(
         'lang_name_english' => 'Romanian',
         'lang_name_native' => 'Romana',
@@ -28,7 +30,7 @@ $lang_translation_info = array(
         'trans_date' => '2004-08-01',
 );
 
-$lang_charset = 'iso-8859-2';
+$lang_charset = 'utf-8';
 $lang_text_dir = 'ltr'; // ('ltr' stanga la dreapta, 'rtl' dreapta la stanga)
 
 // prescurtari pentru Byte, Kilo, Mega

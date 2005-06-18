@@ -1,32 +1,32 @@
 <?php
-// ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
-// ------------------------------------------------------------------------- //
-// Copyright (C) 2002-2004 Gregory DEMAR                                     //
-// http://www.chezgreg.net/coppermine/                                       //
-// ------------------------------------------------------------------------- //
-// Updated by the Coppermine Dev Team                                        //
-// (http://coppermine.sf.net/team/)                                          //
-// see /docs/credits.html for details                                        //
-// ------------------------------------------------------------------------- //
-// This program is free software; you can redistribute it and/or modify      //
-// it under the terms of the GNU General Public License as published by      //
-// the Free Software Foundation; either version 2 of the License, or         //
-// (at your option) any later version.                                       //
-// ------------------------------------------------------------------------- //
-// CVS version: $Id: xp_publish.php,v 1.5 2004/07/24 15:03:53 gaugau Exp $
-// ------------------------------------------------------------------------- //
-// Coppermine Windows XP Web Publishing Wizard Client                        //
-// Based on the article posted by Sebastian Delmont                          //
-// http://www.zonageek.com/code/misc/wizards/                                //
-// ------------------------------------------------------------------------- //
-// Other information can be found on Microsoft web site                      //
-// http://www.microsoft.com/whdc/hwdev/tech/WIA/imaging/webwizard.mspx       //
-// http://msdn.microsoft.com/library/default.asp?url=/library/en-us/shellcc/platform/shell/programmersguide/shell_basics/shell_basics_extending/publishing_wizard/pubwiz_intro.asp
-// ------------------------------------------------------------------------- //
-// Original implementation comes from Gallery                                //
-// http://gallery.menalto.com                                                //
-// ------------------------------------------------------------------------- //
+/*************************
+  Coppermine Photo Gallery
+  ************************
+  Copyright (c) 2003-2005 Coppermine Dev Team
+  v1.1 originaly written by Gregory DEMAR
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  ********************************************
+  Coppermine version: 1.3.3
+  $Source: /cvsroot/coppermine/stable/xp_publish.php,v $
+  $Revision: 1.8 $
+  $Author: gaugau $
+  $Date: 2005/04/19 03:17:11 $
+  **********************************************
+  Coppermine Windows XP Web Publishing Wizard Client
+  Based on the article posted by Sebastian Delmont
+  http://www.zonageek.com/code/misc/wizards/
+  **********************************************
+  Other information can be found on Microsoft web site
+  http://www.microsoft.com/whdc/hwdev/tech/WIA/imaging/webwizard.mspx
+  http://msdn.microsoft.com/library/default.asp?url=/library/en-us/shellcc/platform/shell/programmersguide/shell_basics/shell_basics_extending/publishing_wizard/pubwiz_intro.asp
+  **********************************************
+  Original implementation comes from Gallery
+  http://gallery.menalto.com
+  **********************************************/
 
 // Declare we are in Coppermine.
 define('IN_COPPERMINE', true);
@@ -205,7 +205,7 @@ function html_album_list(&$alb_count)
     global $CONFIG;
 
     if (USER_IS_ADMIN) {
-        $public_albums = mysql_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category < " . FIRST_USER_CAT . " ORDER BY title");
+        $public_albums = db_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category < " . FIRST_USER_CAT . " ORDER BY title");
         if (mysql_num_rows($public_albums)) {
             $public_albums_list = db_fetch_rowset($public_albums);
         } else {
@@ -216,7 +216,7 @@ function html_album_list(&$alb_count)
     }
 
     if (USER_ID) {
-        $user_albums = mysql_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category='" . (FIRST_USER_CAT + USER_ID) . "' ORDER BY title");
+        $user_albums = db_query("SELECT aid, title FROM {$CONFIG['TABLE_ALBUMS']} WHERE category='" . (FIRST_USER_CAT + USER_ID) . "' ORDER BY title");
         if (mysql_num_rows($user_albums)) {
             $user_albums_list = db_fetch_rowset($user_albums);
         } else {
@@ -333,7 +333,7 @@ li {
 }
 -->
 </style>
-<!-- $Id: xp_publish.php,v 1.5 2004/07/24 15:03:53 gaugau Exp $ -->
+<!-- $Id: xp_publish.php,v 1.8 2005/04/19 03:17:11 gaugau Exp $ -->
 </head>
 
 <body>
@@ -571,7 +571,6 @@ function send_reg_file()
         header("Content-Disposition: attachment; filename=cpg_".$time_stamp.".reg");
 
     $lines[] = 'Windows Registry Editor Version 5.00';
-    $lines[] = '';
     //$lines[] = '[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\PublishingWizard\PublishingWizard\Providers\CopperminePhotoGallery]';
         $lines[] = '[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\PublishingWizard\PublishingWizard\Providers\\'. $CONFIG['gallery_name'] .']';
     $lines[] = '"displayname"="' . $CONFIG['gallery_name'] . '"';

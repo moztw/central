@@ -1,21 +1,21 @@
 <?php
-// ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
-// ------------------------------------------------------------------------- //
-// Copyright (C) 2002-2004 Gregory DEMAR                                     //
-// http://www.chezgreg.net/coppermine/                                       //
-// ------------------------------------------------------------------------- //
-// Updated by the Coppermine Dev Team                                        //
-// (http://coppermine.sf.net/team/)                                          //
-// see /docs/credits.html for details                                        //
-// ------------------------------------------------------------------------- //
-// This program is free software; you can redistribute it and/or modify      //
-// it under the terms of the GNU General Public License as published by      //
-// the Free Software Foundation; either version 2 of the License, or         //
-// (at your option) any later version.                                       //
-// ------------------------------------------------------------------------- //
-// CVS version: $Id: config.php,v 1.9 2004/07/24 15:03:52 gaugau Exp $
-// ------------------------------------------------------------------------- //
+/*************************
+  Coppermine Photo Gallery
+  ************************
+  Copyright (c) 2003-2005 Coppermine Dev Team
+  v1.1 originaly written by Gregory DEMAR
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  ********************************************
+  Coppermine version: 1.3.3
+  $Source: /cvsroot/coppermine/stable/config.php,v $
+  $Revision: 1.13 $
+  $Author: gaugau $
+  $Date: 2005/04/19 03:17:10 $
+**********************************************/
 
 define('IN_COPPERMINE', true);
 define('CONFIG_PHP', true);
@@ -49,7 +49,7 @@ function form_input($text, $name)
                         $text
         </td>
         <td width="40%" class="tableb" valign="top">
-                <input type="text" class="textinput" style="width: 100%" name="$name" value="$value">
+                <input type="text" maxlength="255" class="textinput" style="width: 100%" name="$name" value="$value">
                 </td>
         </tr>
 
@@ -224,7 +224,10 @@ function form_theme($text, $name)
 {
     global $CONFIG;
 
-    $value = $CONFIG[$name];
+    $result = db_query("SELECT value FROM {$CONFIG['TABLE_CONFIG']} WHERE name = 'theme'");
+    list($value) = mysql_fetch_row($result);
+    mysql_free_result($result);
+
     $theme_dir = 'themes/';
 
     $dir = opendir($theme_dir);
@@ -450,8 +453,7 @@ if (count($HTTP_POST_VARS) > 0) {
         }
         pageheader($lang_config_php['title']);
         msg_box($lang_config_php['info'], $lang_config_php['upd_success'], $lang_continue, 'index.php');
-        pagefooter();
-        exit;
+
     } elseif (isset($HTTP_POST_VARS['restore_config'])) {
         $default_config = 'sql/basic.sql';
         $sql_query = fread(fopen($default_config, 'r'), filesize($default_config));
@@ -463,10 +465,11 @@ if (count($HTTP_POST_VARS) > 0) {
 
         $sql_count = count($sql_query);
         for($i = 0; $i < $sql_count; $i++) if (strpos($sql_query[$i],'_config') || strpos($sql_query[$i],'_filetypes')) db_query($sql_query[$i]);
+              pageheader($lang_config_php['title']);
+            msg_box($lang_config_php['info'], $lang_config_php['restore_success'], $lang_continue, $PHP_SELF);
     }
-    pageheader($lang_config_php['title']);
-    msg_box($lang_config_php['info'], $lang_config_php['restore_success'], $lang_continue, $PHP_SELF);
     pagefooter();
+    exit;
 }
 
 pageheader($lang_config_php['title']);

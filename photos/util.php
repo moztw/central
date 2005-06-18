@@ -1,26 +1,21 @@
 <?php
-// ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
-// ------------------------------------------------------------------------- //
-// Copyright (C) 2002-2004 Gregory DEMAR                                     //
-// http://www.chezgreg.net/coppermine/                                       //
-// ------------------------------------------------------------------------- //
-// Updated by the Coppermine Dev Team                                        //
-// (http://coppermine.sf.net/team/)                                          //
-// see /docs/credits.html for details                                        //
-// ------------------------------------------------------------------------- //
-// This program is free software; you can redistribute it and/or modify      //
-// it under the terms of the GNU General Public License as published by      //
-// the Free Software Foundation; either version 2 of the License, or         //
-// (at your option) any later version.                                       //
-// ------------------------------------------------------------------------- //
-// CVS version: $Id: util.php,v 1.8 2004/08/08 22:11:17 caspershadow Exp $
-// ------------------------------------------------------------------------- //
+/*************************
+  Coppermine Photo Gallery
+  ************************
+  Copyright (c) 2003-2005 Coppermine Dev Team
+  v1.1 originaly written by Gregory DEMAR
 
-// USER CONFIGURATION
-// Default number of pictures to process at a time when rebuilding thumbs or normals:
-$defpicnum = 45;
-// END USER CONFIGURATION
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  ********************************************
+  Coppermine version: 1.3.3
+  $Source: /cvsroot/coppermine/stable/util.php,v $
+  $Revision: 1.13 $
+  $Author: gaugau $
+  $Date: 2005/04/19 03:17:11 $
+**********************************************/
 
 define('IN_COPPERMINE', true);
 define('UTIL_PHP', true);
@@ -29,6 +24,11 @@ require('include/init.inc.php');
 require('include/picmgmt.inc.php');
 
 pageheader($lang_util_php['title']);
+
+// USER CONFIGURATION
+// Default number of pictures to process at a time when rebuilding thumbs or normals:
+$defpicnum = 45;
+// END USER CONFIGURATION
 
 if (!GALLERY_ADMIN_MODE) die('Access denied');
 
@@ -59,7 +59,7 @@ function filenametotitle($delete)
     global $picturetbl, $lang_util_php;
 
     $query = "SELECT * FROM $picturetbl WHERE aid = '$albumid'";
-    $result = MYSQL_QUERY($query);
+    $result = db_query($query);
     $num = mysql_numrows($result);
 
     $i = 0;
@@ -100,7 +100,7 @@ function filenametotitle($delete)
         my_flush();
 
         $query = "UPDATE $picturetbl SET title='$newtitle' WHERE pid='$pid' ";
-        MYSQL_QUERY($query);
+        db_query($query);
 
         ++$i;
     }
@@ -124,7 +124,7 @@ function filloptions()
     }
 
     print '</select> (3)';
-    print '&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="'.$lang_util_php['submit_form'].'" class="submit" /> (4)';
+    print '&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="'.$lang_util_php['submit_form'].'" class="button" /> (4)';
     print '</form>';
 }
 
@@ -139,7 +139,7 @@ function updatethumbs()
     $startpic = $_POST['startpic'];
 
     $query = "SELECT * FROM $picturetbl WHERE aid = '$albumid'";
-    $result = MYSQL_QUERY($query);
+    $result = db_query($query);
     $totalpics = mysql_numrows($result);
 
     if ($startpic == 0) {
@@ -191,15 +191,14 @@ function updatethumbs()
     if ($startpic < $totalpics) {
 
         ?>
-            <form action=<?php echo $phpself;
-        ?> method="post">
+            <form action="<?php echo $phpself; ?>" method="post">
                     <input type="hidden" name="action" value="continuethumbs" />
                     <input type="hidden" name="numpics" value="<?php echo $numpics?>" />
                     <input type="hidden" name="startpic" value="<?php echo $startpic?>" />
                     <input type="hidden" name="updatetype" value="<?php echo $updatetype?>" />
             <input type="hidden" name="albumid" value="<?php echo $albumid?>" />
             <input type="submit" value="<?php print $lang_util_php['continue'];
-        ?>" class="submit" /></form>
+        ?>" class="button" /></form>
                     <?php
     }
 }
@@ -210,7 +209,7 @@ function deleteorig()
     $albumid = $_POST['albumid'];
 
     $query = "SELECT * FROM $picturetbl WHERE aid = '$albumid'";
-    $result = MYSQL_QUERY($query);
+    $result = db_query($query);
     $num = mysql_numrows($result);
 
     $i = 0;
@@ -221,24 +220,24 @@ function deleteorig()
         $thumb = $CONFIG['fullpath'] . mysql_result($result, $i, "filepath") . $CONFIG['thumb_pfx'] . mysql_result($result, $i, "filename");
 
         if (file_exists($normal)) {
-			unlink($image);
-			$test = rename($normal, $image);
+                        unlink($image);
+                        $test = rename($normal, $image);
             if ($test == true) {
                 $imagesize = getimagesize($image);
                 $image_filesize = filesize($image);
                 $total_filesize = $image_filesize + filesize($thumb);
 
                 $query = "UPDATE $picturetbl SET filesize='$image_filesize' WHERE pid='$pid' ";
-                MYSQL_QUERY($query);
+                db_query($query);
 
                 $query = "UPDATE $picturetbl SET total_filesize='$total_filesize' WHERE pid='$pid' ";
-                MYSQL_QUERY($query);
+                db_query($query);
 
                 $query = "UPDATE $picturetbl SET pwidth='{$imagesize[0]}' WHERE pid='$pid' ";
-                MYSQL_QUERY($query);
+                db_query($query);
 
                 $query = "UPDATE $picturetbl SET pheight='{$imagesize[1]}' WHERE pid='$pid' ";
-                MYSQL_QUERY($query);
+                db_query($query);
                 printf($lang_util_php['main_success'], $normal);
                 print '!<br>';
             } else {
@@ -279,11 +278,11 @@ function deleteorphans()
                         } else {
                                 $count++;
                                 ?>
-                                <form action=<?php echo $phpself;?> method="post">
+                                <form action="<?php echo $phpself;?>" method="post">
                                 <input type="hidden" name="action" value="delorphans" />
                                 <input type="hidden" name="single" value="<?php echo $msg_id; ?>" />
                                 <?php echo $lang_util_php['comment'].' "'.$msg_body.'" '.$lang_util_php['nonexist'].' '.$pid; ?>
-                                <input type="submit" value="<?php print $lang_util_php['delete'];?>" class="submit" /></form>
+                                <input type="submit" value="<?php print $lang_util_php['delete'];?>" class="button" /></form>
                                  <?php
                         }
                 }
@@ -293,11 +292,11 @@ function deleteorphans()
         echo '<br>'.$count.' '.$lang_util_php['orphan_comment'].'<br><br>';
         if ($count>=1) {
         ?>
-        <form action=<?php echo $phpself;?> method="post">
+        <form action="<?php echo $phpself;?>" method="post">
         <input type="hidden" name="action" value="delorphans" />
         <input type="hidden" name="del" value="all" />
         Delete all orphans?
-        <input type="submit" value="<?php print $lang_util_php['delete_all'];?>" class="submit" /></form>
+        <input type="submit" value="<?php print $lang_util_php['delete_all'];?>" class="button" /></form>
          <?php
         }
 }

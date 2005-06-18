@@ -1,6 +1,6 @@
 <?php
 // ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
+// Coppermine Photo Gallery 1.4.0                                            //
 // ------------------------------------------------------------------------- //
 // Copyright (C) 2002-2004 Gregory DEMAR                                     //
 // http://www.chezgreg.net/coppermine/                                       //
@@ -14,7 +14,9 @@
 // the Free Software Foundation; either version 2 of the License, or         //
 // (at your option) any later version.                                       //
 // ------------------------------------------------------------------------- //
-// CVS version: $Id: norwegian.php,v 1.8 2004/07/24 15:04:07 gaugau Exp $
+// ENCODING CHECK; SHOULD BE YEN BETA MU: ¥ ß µ
+// ------------------------------------------------------------------------- //
+// $Id: norwegian.php,v 1.9 2004/12/29 23:06:34 chtito Exp $
 // ------------------------------------------------------------------------- //
 
 // info about translators and translated language
@@ -54,6 +56,7 @@ $lastup_date_fmt = '%d. %B, %Y';
 $register_date_fmt = '%d. %B, %Y';
 $lasthit_date_fmt = '%Y-%m-%d kl. %H:%M %p'; //cpg1.3.0
 $comment_date_fmt =  '%Y-%m-%d kl. %H:%M %p'; //cpg1.3.0
+$log_date_fmt = '%B %d, %Y at %I:%M %p'; //cpg 1.4.0
 
 // For the word censor
 $lang_bad_words = array('*fuck*', 'asshole', 'assramer', 'bitch*', 'c0ck', 'clits', 'Cock', 'cum', 'cunt*', 'dago', 'daygo', 'dego', 'dick*', 'dildo', 'fanculo', 'feces', 'foreskin', 'Fu\(*', 'fuk*', 'honkey', 'hore', 'injun', 'kike', 'lesbo', 'masturbat*', 'motherfucker', 'nazis', 'nigger*', 'nutsack', 'penis', 'phuck', 'poop', 'pussy', 'scrotum', 'shit', 'slut', 'titties', 'titty', 'twaty', 'wank*', 'whore', 'wop*');
@@ -75,16 +78,16 @@ $lang_errors = array(
   'perm_denied' => 'Du kan ikke utføre denne handlingen.',
   'param_missing' => 'Scriptet ble kalt uten nødvendige parametere.',
   'non_exist_ap' => 'Det valgte album/bilde eksisterer ikke!', //cpg1.3.0
-  'quota_exceeded' => 'Din diskkvote er oppbrukt<br /><br />Du har plass til [quota]K, dine bilder bruker [space]K. Legger du inn flere bilder overskrider du denne kvoten.', //cpg1.3.0
+  'quota_exceeded' => 'Din diskkvote er oppbrukt<br /><br />Du har plass til [quota]K, dine filer bruker [space]K. Legger du inn flere filer overskrider du denne kvoten.', //cpg1.3.0
   'gd_file_type_err' => 'Når albumet bruker GD Graphics- teknikk er det kun tillatt å bruke JPEG eller PNG bilder.',
   'invalid_image' => 'Bildet du lastet opp er defekt eller støttes ikke av GD.',
   'resize_failed' => 'Kunne ikke forandre størrelsen på bildet eller opprette miniatyrbilde.',
-  'no_img_to_display' => 'Ingen bilder',
+  'no_img_to_display' => 'Ingen filer',
   'non_exist_cat' => 'Den valgte kategorien eksisterer ikke',
   'orphan_cat' => 'En kategori er -foreldreløs-. Oppdater i kategoriadministrasjonen.', //cpg1.3.0
   'directory_ro' => 'Mappen \'%s\' er skrivebeskyttet. Bildet kan ikke slettes.', //cpg1.3.0
   'non_exist_comment' => 'Den valgte kommentaren finnes ikke.',
-  'pic_in_invalid_album' => 'Det finnes bilder i et album som ikke eksisterer (%s)!?', //cpg1.3.0
+  'pic_in_invalid_album' => 'Det finnes filer i et album som ikke eksisterer (%s)!?', //cpg1.3.0
   'banned' => 'Du har mistet retten til å bruke dette internettstedet.',
   'not_with_udb' => 'Funksjonen er deaktivert fordi Coppermine kjører sammen med et diskusjonsforum.',
   'offline_title' => 'Offline', //cpg1.3.0
@@ -139,6 +142,7 @@ $lang_gallery_admin_menu = array(
   'comments_lnk' => 'Godkjenne kommentarer', //cpg1.3.0
   'searchnew_lnk' => 'Masseinnlegging av filer', //cpg1.3.0
   'util_lnk' => 'Administrasjonsverktøy', //cpg1.3.0
+  'key_lnk' => 'Nøkkelordbok',
   'ban_lnk' => 'Utvis brukere',
   'db_ecard_lnk' => 'Vis ekort', //cpg1.3.0
 );
@@ -173,6 +177,10 @@ $lang_thumb_view = array(
   'download_zip' => 'Last ned som Zipfil', //cpg1.3.0
   'pic_on_page' => '%d filer over %d side(r)',
   'user_on_page' => '%d brukere over %d side(r)', //cpg1.3.0
+  'enter_alb_pass' => 'Skriv inn Albumpassord',
+  'invalid_pass' => 'Ugyldig passord',
+  'pass' => 'Passord',
+  'submit' => 'Submit'
 );
 
 $lang_img_nav_bar = array(
@@ -247,6 +255,11 @@ $lang_theme_selection = array(
   'choose_theme' => 'Velg utseende', //cpg1.3.0
 );
 
+$lang_version_alert = array(
+  'version_alert' => 'Usupportert versjon!',
+  'no_stable_version' => 'Du kjører Coppermine  %s (%s) som er beregnet på svært erfarne brukere - denne versjonen kommer uten noen form for support eller garantier. Bruk den på egen risiko, eller nedgrader til siste stabile versjon dersom du trenger support!',
+);
+
 // ------------------------------------------------------------------------- //
 // File include/init.inc.php
 // ------------------------------------------------------------------------- //
@@ -313,7 +326,7 @@ if (defined('ALBMGR_PHP')) $lang_albmgr_php = array(
   'no_change' => 'Du gjorde ingen endringer !', //js-alert
   'new_album' => 'Nytt album',
   'confirm_delete1' => 'Er du sikker på at du vil slette dette albumet?', //js-alert
-  'confirm_delete2' => '\nAlle bilder og kommentarer vil forsvinne!', //js-alert
+  'confirm_delete2' => '\nAlle filer og kommentarer vil forsvinne!', //js-alert
   'select_first' => 'Velg et album først', //js-alert
   'alb_mrg' => 'Albumadministrasjon',
   'my_gallery' => '* Mitt galleri *',
@@ -323,6 +336,40 @@ if (defined('ALBMGR_PHP')) $lang_albmgr_php = array(
   'apply_modifs' => 'Lagre endringer',
   'select_category' => 'Velg kategori',
 );
+
+// ------------------------------------------------------------------------- //
+// File banning.php
+// ------------------------------------------------------------------------- //
+
+if (defined('BANNING_PHP')) $lang_banning_php = array(
+  'title' => 'Utvis brukere',
+  'user_name' => 'Brukernavn',
+  'ip_address' => 'IP-adresse',
+  'expiry' => 'Utløper (blank er permanent)',
+  'edit_ban' => 'Lagre endringer',
+  'delete_ban' => 'Slett',
+  'add_new' => 'Ny utvisning',
+  'add_ban' => 'Utvis bruker',
+  'error_user' => 'Finner ikke bruker',
+  'error_specify' => 'Du må spesifisere enten et brukernavn eller en IP-adresse',
+  'error_ban_id' => 'Ugyldig utvisningsID!',
+  'error_admin_ban' => 'Du kan ikke utvise deg selv!',
+  'error_server_ban' => 'Tenkte du å utvise din egen server? Tsk tsk...',
+  'error_ip_forbidden' => 'Du kan ikke utvise denne IP. Den er ikke rutbar!',
+  'lookup_ip' => 'Slå opp en IP-adresse',
+  'submit' => 'OK!',
+  'select_date' => 'velg dato',
+);
+
+// ------------------------------------------------------------------------- //
+// File calendar.php
+// ------------------------------------------------------------------------- //
+
+if (defined('CALENDAR_PHP')) $lang_calendar_php = array(
+  'close' => 'close',
+  'clear_date' => 'clear date',
+);
+
 
 // ------------------------------------------------------------------------- //
 // File catmgr.php
@@ -369,6 +416,10 @@ if (defined('CONFIG_PHP')) $lang_config_php = array(
   'item' => 'emne', //cpg1.3.0 // Translatorcomment: Have to see this one in context
   'debug_everyone' => 'Alle', //cpg1.3.0
   'debug_admin' => 'Kun Administratorer', //cpg1.3.0
+  'no_logs'=> 'Av', //cpg1.4.0
+  'log_normal'=> 'Normal', //cpg1.4.0
+  'log_all' => 'Alle', //cpg1.4.0
+  'view_logs' => 'Se logger', //cpg1.4.0
         );
 
 if (defined('CONFIG_PHP')) $lang_config_data = array(
@@ -376,13 +427,15 @@ if (defined('CONFIG_PHP')) $lang_config_data = array(
   array('Gallerinavn', 'gallery_name', 0),
   array('Galleribeskrivelse', 'gallery_description', 0),
   array('Galleriadministrators epostadresse', 'gallery_admin_email', 0),
-  array('Addresse for \'Se flere bilder\' linken i ekortene', 'ecards_more_pic_target', 0),
+  array('Addresse for \'Se flere filer\' linken i ekortene', 'ecards_more_pic_target', 0),
   array('Galleriet er offline', 'offline', 1), //cpg1.3.0
   array('Logg ekort', 'log_ecards', 1), //cpg1.3.0
   array('Tillat ZIP-nedlastning av favoritter', 'enable_zipdownload', 1), //cpg1.3.0
+  array('Tidssoneforskjell relativt til GMT','time_offset',0),
 
   'Språk, Utseende &amp; Tegnsettinnstillinger',
   array('Språk', 'lang', 5),
+  array('Fall tilbake til Engelsk hvis oversettelse ikke finnes?', 'language_fallback', 1),
   array('Utseende', 'theme', 6),
   array('Vis språkliste', 'language_list', 8), //cpg1.3.0
   array('Vis språkflag', 'language_flags', 8), //cpg1.3.0
@@ -414,7 +467,7 @@ if (defined('CONFIG_PHP')) $lang_config_data = array(
   array('Minimum antall stemmer på bilde før visning i \'beste karakter\' listen', 'min_votes_for_rating', 0), //cpg1.3.0
 
   'Bildevisning og kommentarinnstillinger',
-  array('Bredde på tabell ved visning av bilder (piksler eller %)', 'picture_table_width', 0), //cpg1.3.0
+  array('Bredde på tabell ved visning av filer (piksler eller %)', 'picture_table_width', 0), //cpg1.3.0
   array('Bildeinformasjon er synlig som standard', 'display_pic_info', 1), //cpg1.3.0
   array('Filtrer ufine ord i kommentarer', 'filter_bad_words', 1),
   array('Tillat smilefjes i kommentarer', 'enable_smilies', 1),
@@ -449,14 +502,17 @@ if (defined('CONFIG_PHP')) $lang_config_data = array(
   array('Adresse(sti) til ImageMagick \'konverterings\' verktøy (eksempel /usr/bin/X11/)', 'impath', 0), //cpg1.3.0
   //array('Tillatte bildeformater (kun for ImageMagick)', 'allowed_img_types',0), //cpg1.3.0
   array('Kommandolinjeparametre ved bruk av ImageMagick ', 'im_options', 0), //cpg1.3.0
-  array('Les EXIF data i JPEG filer', 'read_exif_data', 1), //cpg1.3.0
-  array('Les IPTC data i JPEG filer', 'read_iptc_data', 1), //cpg1.3.0
+  array('Les EXIF-data i JPEG filer', 'read_exif_data', 1), //cpg1.3.0
+  array('Les IPTC-data i JPEG filer', 'read_iptc_data', 1), //cpg1.3.0
   array('Albumkatalog <a href="#notice1" class="clickable_option">*</a>', 'fullpath', 0), //cpg1.3.0
   array('Brukerkatalog <a href="#notice1" class="clickable_option">*</a>', 'userpics', 0), //cpg1.3.0
   array('Prefiks for mellomstore bilder/filmer <a href="#notice1" class="clickable_option">*</a>', 'normal_pfx', 0), //cpg1.3.0
   array('Prefiks for miniatyrbilder <a href="#notice1" class="clickable_option">*</a>', 'thumb_pfx', 0), //cpg1.3.0
   array('Standardrettigheter på kataloger', 'default_dir_mode', 0), //cpg1.3.0
   array('Standardrettigheter på filer', 'default_file_mode', 0), //cpg1.3.0
+
+  'Filmvisningsinnstillinger (Ingen effekt på flashfiler)',
+  array('Autostart', 'media_autostart',1),
 
   'Brukerinnstillinger',
   array('Tillat nye brukerregistreringer', 'allow_user_registration', 1),
@@ -466,6 +522,16 @@ if (defined('CONFIG_PHP')) $lang_config_data = array(
   array('Brukere kan ha private album (Merk: dersom du skifter fra \'ja\' til \'nei\' vil alle private album bli offentlige)', 'allow_private_albums', 1), //cpg1.3.0
   array('Varsle administrator pr. epost når filer blir lastet opp til godkjennelse', 'upl_notify_admin_email', 1), //cpg1.3.0
   array('La innloggede brukere se medlemslisten', 'allow_memberlist', 1), //cpg1.3.0
+
+// custom profile fields, (casper) 1.4 devel
+  'Spesialfelt for bildebeskrivelse (la disse være tomme hvis de ikke skal brukes).
+  Bruk Profil 6 for lange tekster, som beskrivelse o.l.',
+  array('Profil 1 navn', 'user_profile1_name', 0),
+  array('Profil 2 navn', 'user_profile2_name', 0),
+  array('Profil 3 navn', 'user_profile3_name', 0),
+  array('Profil 4 navn', 'user_profile4_name', 0),
+  array('Profil 5 navn', 'user_profile5_name', 0),
+  array('Profil 6 navn', 'user_profile6_name', 0),
 
   'Spesialfelt for bildebeskrivelse (la disse være tomme hvis de ikke skal brukes)',
   array('Navn spesialfelt 1', 'user_field1_name', 0),
@@ -480,9 +546,12 @@ if (defined('CONFIG_PHP')) $lang_config_data = array(
   'Diverse innstillinger',
   array('Aktiver debugmodus', 'debug_mode', 9), //cpg1.3.0
   array('Vis notiser i debugmodus', 'debug_notice', 1), //cpg1.3.0
+  array('Loggmodus <a href="#notice3" class="clickable_option">***</a>', 'log_mode', 11), //cpg1.4.0
 
   '<br /><div align="left"><a name="notice1"></a>(*) Denne innstillingen må IKKE endres dersom det allerede eksisterer filer i databasen.<br />
-  <a name="notice2"></a>(**) Dersom denne innstillingen endres vil bare filer som er lagt til etter dette bli berørt, slik at det er anbefalt å la denne være urørt dersom det allerede eksister filer i Coppermine. Du kan imidlertid gjøre disse endringene på de eksisterende filene i &quot;<a href="util.php">administrasjonsverktøyet</a>&quot; på administrasjonemenyen.</div><br />', //cpg1.3.0
+  <a name="notice2"></a>(**) Dersom denne innstillingen endres vil bare filer som er lagt til etter dette bli berørt, slik at det er anbefalt å la denne være urørt dersom det allerede eksister filer i Coppermine. Du kan imidlertid gjøre disse endringene på de eksisterende filene i &quot;<a href="util.php">administrasjonsverktøyet</a>&quot; på administrasjonemenyen.<br />
+  <a name="notice3"></a>(***) Alle loggfiler er på engelsk.
+  </div><br />',
 );
 
 // ------------------------------------------------------------------------- //
@@ -528,7 +597,7 @@ if (defined('DB_INPUT_PHP')) $lang_db_input_php = array(
   'alb_need_title' => 'Du må legge inn en tittel på albumet!',
   'no_udp_needed' => 'Ingen oppdatering nødvendig.',
   'alb_updated' => 'Albumet ble oppdatert',
-  'unknown_album' => 'Det valgte albumet eksisterer ikke, eller du har ikke tillatelse til å laste opp bilder i dette albumet',
+  'unknown_album' => 'Det valgte albumet eksisterer ikke, eller du har ikke tillatelse til å laste opp filer i dette albumet',
   'no_pic_uploaded' => 'Det ble ikke lastet opp noen fil!<br /><br />Hvis du virkelig valgte en fil så sjekk om serveren tillater opplasting', //cpg1.3.0
   'err_mkdir' => 'Klarte ikke å lage en katalog %s !',
   'dest_dir_ro' => 'Katalogen %s kan ikke skrives til av dette skriptet !',
@@ -536,7 +605,7 @@ if (defined('DB_INPUT_PHP')) $lang_db_input_php = array(
   'err_fsize_too_large' => 'Filen du lastet opp er for stor (maksimalt tillatt størrelse er %s x %s). !', //cpg1.3.0 //translcomment`: switch these?
   'err_imgsize_too_large' => 'Filen du lastet opp er for stor (maksimalt tillatt størrelse er %s KB) !',             //translcomment`: switch these?
   'err_invalid_img' => 'Filen du har lastet opp er ikke en gyldig bildefil !',
-  'allowed_img_types' => 'Du kan bare laste opp %s bilder.',
+  'allowed_img_types' => 'Du kan bare laste opp %s filer.',
   'err_insert_pic' => 'Bildet \'%s\' kan ikke legges inn i albumet', //cpg1.3.0
   'upload_success' => 'Opplastingen av bildet ditt var vellykket<br /><br />Det vil bli tilgjengelig etter at administrator har godkjent det.', //cpg1.3.0
   'notify_admin_email_subject' => '%s - Opplastningsvarsel', //cpg1.3.0
@@ -613,6 +682,7 @@ $lang_picinfo = array(
   'Displayed' => 'Visninger',
   'Camera' => 'Kamera',
   'Date taken' => 'Tatt dato',
+  'ISO'=>'ISO',
   'Aperture' => 'Blenderåpning',
   'Exposure time' => 'Eksponeringstid',
   'Focal length' => 'Brennvidde',
@@ -620,11 +690,11 @@ $lang_picinfo = array(
   'addFav'=>'Legg til i favoritter', //cpg1.3.0
   'addFavPhrase'=>'Favoritter', //cpg1.3.0
   'remFav'=>'Fjern fra favoritter', //cpg1.3.0
-  'iptcTitle'=>'IPTC Tittel', //cpg1.3.0
-  'iptcCopyright'=>'IPTC Opphavsrett', //cpg1.3.0
-  'iptcKeywords'=>'IPTC Nøkkelord', //cpg1.3.0
-  'iptcCategory'=>'IPTC Kategori', //cpg1.3.0
-  'iptcSubCategories'=>'IPTC Underkategorier', //cpg1.3.0
+  'iptcTitle'=>'IPTC-Tittel', //cpg1.3.0
+  'iptcCopyright'=>'IPTC-Opphavsrett', //cpg1.3.0
+  'iptcKeywords'=>'IPTC-Nøkkelord', //cpg1.3.0
+  'iptcCategory'=>'IPTC-Kategori', //cpg1.3.0
+  'iptcSubCategories'=>'IPTC-Underkategorier', //cpg1.3.0
 );
 
 $lang_display_comments = array(
@@ -676,13 +746,13 @@ if (defined('EDITPICS_PHP')) $lang_editpics_php = array(
   'title' => 'Tittel',
   'desc' => 'Beskrivelse',
   'keywords' => 'Nøkkelord',
-  'pic_info_str' => '%s &ganger; %s - %s KB - %s visninger - %s stemmer',
+  'pic_info_str' => '%s &times; %s - %s KB - %s visninger - %s stemmer',
   'approve' => 'Godkjenn fil', //cpg1.3.0
   'postpone_app' => 'Utsett godkjennelse',
   'del_pic' => 'Slett fil', //cpg1.3.0
-  'read_exif' => 'Les EXIF info på nytt', //cpg1.3.0
+  'read_exif' => 'Les EXIF-info på nytt', //cpg1.3.0
   'reset_view_count' => 'Tilbakestill visningsteller',
-  'reset_votes' => 'Tilakestill avstemmning',
+  'reset_votes' => 'Tilbakestill avstemmning',
   'del_comm' => 'Slett kommentarer',
   'upl_approval' => 'Opplastingsgodkjennelse',
   'edit_pics' => 'Rediger filer', //cpg1.3.0
@@ -710,7 +780,7 @@ if (defined('FAQ_PHP')) $lang_faq_php = array(
 );
 
 if (defined('FAQ_PHP')) $lang_faq_data = array(
-  'General FAQ', //cpg1.3.0
+  'Generelle Spørsmål og Svar', //cpg1.3.0
   array('Hvorfor må jeg registrere meg?', 'Registrering kan være påkrevd av administrator. Registrering gir medlemmene utvidede rettigheter som opplastning av egne filer, registrering av egne favoritter, karaktergivning og kommentering av andres filer etc.', 'allow_user_registration', '0'), //cpg1.3.0
   array('Hvordan registrerer jeg meg?', 'Gå til &quot;Registrer&quot; og fyll inn de nødvendige feltene (alle dersom du ønsker det).<br />Har Administrator aktivert funksjonen for epost aktivering skal du motta en epost til den adressen du oppga med instruksjoner om hvordan du kan aktivere medlemskapet ditt. Medlemskapet må da aktiveres før du kan logge inn.', 'allow_user_registration', '1'), //cpg1.3.0
   array('Hvordan logger jeg inn?', 'Gå til &quot;Logg inn&quot;, legg inn ditt brukernavn og passord og marker &quot;Husk meg&quot; slik at du automatisk blir logget inn neste gang dersom du forlater dette nettstedet.<br /><b>VIKTIG:Cookies må være aktivert og cookien fra denne siten kan ikke slettes dersom du vil bruke &quot;Husk meg&quot; funksjonen.</b>', 'offline', 0), //cpg1.3.0
@@ -730,7 +800,7 @@ if (defined('FAQ_PHP')) $lang_faq_data = array(
   array('Hva er cookies?', 'Cookies er tekstdata som blir sendt fra et nettsted som blir lagret på din datamaskin.<br />Cookies sørger normalt for at en bruker kan returnere til nettstedet uten å måtte logge inn igjen m.m.', 'offline', 0), //cpg1.3.0
   array('Hvor kan jeg finne dette programmet til mitt eget nettsted?', 'Coppermine er et gratis multimediagalleri, utgitt under GNU GPL lisens. Det er full av funksjoner, og har blitt oversatt til diverse andre platformer. Besøk <a href="http://coppermine.sf.net/">Copperminea hjemmeside</a> for å finne ut mer, og for å laste ned.', 'offline', 0), //cpg1.3.0
 
-  'Navigating the Site', //cpg1.3.0
+  'Navigering', //cpg1.3.0
   array('Hva er &quot;Albumliste&quot;?', 'Dette vil vise deg hele kategorien du befinner deg i, med en link til hvert album. Dersom du ikke er i en kategori viser det hele galleriet med en link til hver kategori. Miniatyrbilder kan være en link til kategorien.', 'offline', 0), //cpg1.3.0
   array('Hva er &quot;Mitt Galleri&quot;?', 'Dette lar brukere lage deres egne gallerier og legge til, slette eller endre album.', 'allow_private_albums', 0), //cpg1.3.0
   array('Hva er forskjellen mellom &quot;Adminmodus&quot; og &quot;Brukermodus&quot;?', 'I adminmodus las brukeren endre deres egne gallerier (eller andres dersom brukeren er en administrator).', 'allow_private_albums', 0), //cpg1.3.0
@@ -876,6 +946,7 @@ if (defined('MODIFYALB_PHP')) $lang_modifyalb_php = array(
   'alb_title' => 'Albumtittel',
   'alb_cat' => 'Albumkategori',
   'alb_desc' => 'Albumbeskrivelse',
+  'alb_keyword' => 'Albumnøkkelord (brukt til å vise bilder fra andre album i dette albumet)',
   'alb_thumb' => 'Miniatyrbilde for album',
   'alb_perm' => 'Tillatelser for dette album',
   'can_view' => 'Dette album kan ses av',
@@ -893,6 +964,7 @@ if (defined('MODIFYALB_PHP')) $lang_modifyalb_php = array(
   'err_no_alb_to_modify' => 'Det er ingen tilgjengelige album du kan redigere.',
   'update' => 'Oppdater album', //cpg1.3.0
   'notice1' => '(*) avhengig av %sgroups%s innstillinger', //cpg1.3.0 (do not translate %s!)
+  'alb_password' => 'Albumpassord (dersom du ønsker å passordbesytte albumet)',
 );
 
 // ------------------------------------------------------------------------- //
@@ -969,6 +1041,8 @@ $lang_register_php = array(
   'pass_chg_success' => 'Ditt passord ble endret',
   'pass_chg_error' => 'Ditt passord ble ikke endret',
   'notify_admin_email_subject' => '%s - Registreringsvarsling', //cpg1.3.0
+  'last_uploads' => 'Siste opplastninger av ',
+  'last_comments' => 'Siste kommentarer av',
   'notify_admin_email_body' => 'En ny bruker med brukernavn "%s" er registrert i ditt galleri', //cpg1.3.0
 );
 
@@ -978,7 +1052,8 @@ Takk for din registrering hos {SITE_NAME}
 Ditt brukernavn er : "{USER_NAME}"
 Ditt passord er : "{PASSWORD}"
 
-For å aktivere din konto må du klikke på linken under eller lime den inn i din nettleser.
+For å aktivere din konto må du klikke på linken under 
+eller lime den inn i din nettleser.
 
 {ACT_LINK}
 
@@ -1025,7 +1100,7 @@ if (defined('SEARCHNEW_PHP')) $lang_search_new_php = array(
   'need_one_album' => 'Du må ha minst ett album for å bruke denne funksjonen',
   'warning' => 'Advarsel',
   'change_perm' => 'systemet kan ikke skrive til denne katalogen, du må endre rettigheter med CHMOD 755 eller 777 før du prøver igjen!', //cpg1.3.0
-  'target_album' => '<b>Flytt bilder av &quot;</b>%s<b>&quot; til </b>%s', //cpg1.3.0
+  'target_album' => '<b>Flytt filer av &quot;</b>%s<b>&quot; til </b>%s', //cpg1.3.0
   'folder' => 'Katalog',
   'image' => 'fil',
   'album' => 'Album',
@@ -1035,7 +1110,7 @@ if (defined('SEARCHNEW_PHP')) $lang_search_new_php = array(
   'insert' => 'Legger inn nye filer i galleriet', //cpg1.3.0
   'list_new_pic' => 'Liste over nye filer', //cpg1.3.0
   'insert_selected' => 'Sett inn valgte filer', //cpg1.3.0
-  'no_pic_found' => 'Ingen nye fileR ble funnet', //cpg1.3.0
+  'no_pic_found' => 'Ingen nye filer ble funnet', //cpg1.3.0
   'be_patient' => 'Ha litt tålmodighet, systemet arbeider nå med å legge inn bildene', //cpg1.3.0
   'no_album' => 'ingen album valgt',  //cpg1.3.0
   'notes' =>  '<ul>'.
@@ -1049,6 +1124,7 @@ if (defined('SEARCHNEW_PHP')) $lang_search_new_php = array(
   'select_album' => 'velg album', //cpg1.3.0
   'check_all' => 'Marker alle', //cpg1.3.0
   'uncheck_all' => 'Avmarker alle', //cpg1.3.0
+  'no_folders' => 'Det er ingen mapper i "album" mappen. Lag minst en mappe i denne mappen og ftp-upload dine filer dit. Du må ikke laste opp til "userpics" eller "edit" mappene, de er reserverte for http opplastninger og for internt bruk.', //cpg1.4.0
 );
 
 
@@ -1057,29 +1133,6 @@ if (defined('SEARCHNEW_PHP')) $lang_search_new_php = array(
 // ------------------------------------------------------------------------- //
 
 // Void
-
-// ------------------------------------------------------------------------- //
-// File banning.php
-// ------------------------------------------------------------------------- //
-
-if (defined('BANNING_PHP')) $lang_banning_php = array(
-  'title' => 'Utvis brukere',
-  'user_name' => 'Brukernavn',
-  'ip_address' => 'IPadresse',
-  'expiry' => 'Utgår (blankt felt er permanent)',
-  'edit_ban' => 'Lagre endringer',
-  'delete_ban' => 'Slett',
-  'add_new' => 'Utvis ny bruker',
-  'add_ban' => 'Utvis bruker',
-  'error_user' => 'Finner ikke bruker', //cpg1.3.0
-  'error_specify' => 'Du må spesifisere enten en bruker, eller en IPadresse', //cpg1.3.0
-  'error_ban_id' => 'Ugyldig utvisningsID!', //cpg1.3.0
-  'error_admin_ban' => 'Du kan ikke vise ut deg selv!', //cpg1.3.0
-  'error_server_ban' => 'Du holdt på å vise ut din egen server. Tsk tsk, det kan du jo ikke gjøre...', //cpg1.3.0
-  'error_ip_forbidden' => 'Du kan ikke vise ut denne IPadressen. Den er ikke rutbar!', //cpg1.3.0
-  'lookup_ip' => 'Slå opp en IPadresse', //cpg1.3.0
-  'submit' => 'OK!', //cpg1.3.0
-);
 
 // ------------------------------------------------------------------------- //
 // File upload.php
@@ -1152,6 +1205,7 @@ if (defined('UPLOAD_PHP')) $lang_upload_php = array(
   'pic_title' => 'Filtittel', //cpg1.3.0
   'description' => 'Filbeskrivelse', //cpg1.3.0
   'keywords' => 'Nøkkelord (separate ord med mellomrom)',
+  'keywords_sel' =>'Velg et nøkkelord',
   'err_no_alb_uploadables' => 'Beklager, det er ingen tilgjengelige album du kan laste opp filer i', //cpg1.3.0
   'place_instr_1' => 'Legg filene i album. Du kan også legge inn relevant informasjon om hver fil.', //cpg1.3.0
   'place_instr_2' => 'Flere filer trenger plassering. Klikk \'Fortsett\'.', //cpg1.3.0
@@ -1205,6 +1259,12 @@ if (defined('USERMGR_PHP')) $lang_usermgr_php = array(
   'user_location' => 'Brukerens plassering',
   'user_interests' => 'Brukerens interesser',
   'user_occupation' => 'Brukerens yrke',
+  'user_profile1' => '$user_profile1',
+  'user_profile2' => '$user_profile2',
+  'user_profile3' => '$user_profile3',
+  'user_profile4' => '$user_profile4',
+  'user_profile5' => '$user_profile5',
+  'user_profile6' => '$user_profile6',
   'latest_upload' => 'Siste opplastninger', //cpg1.3.0
   'never' => 'aldri', //cpg1.3.0
 );
@@ -1225,7 +1285,7 @@ if (defined('UTIL_PHP')) $lang_util_php = array(
   'submit_form' => 'Send',
   'updated_succesfully' => 'oppdateringen var vellykket',
   'error_create' => 'FEIL under opprettelse av',
-  'continue' => 'Fortsett å behandle bilder',
+  'continue' => 'Fortsett å behandle filer',
   'main_success' => 'Filen %s ble brukt som hovedbilde', //cpg1.3.0
   'error_rename' => 'Feil ved navnebytte av %s til %s',
   'error_not_found' => 'Filen %s ble ikke funnet',
@@ -1240,7 +1300,7 @@ if (defined('UTIL_PHP')) $lang_util_php = array(
   'instruction_parameter' => 'Sett parameter',
   'instruction_album' => 'Velg album',
   'instruction_press' => 'Trykk %s',
-  'update' => 'Oppdater bilder',
+  'update' => 'Oppdater filer',
   'update_what' => 'Hva skal oppdateres',
   'update_thumb' => 'Kun miniatyrbilder',
   'update_pic' => 'Kun endrede bilder',
@@ -1258,8 +1318,8 @@ if (defined('UTIL_PHP')) $lang_util_php = array(
   'delete_original' => 'Slett bilder i originalstørrelse',
   'delete_replace' => 'Sletter de originale bildene og bytter dem ut med de endrede utgavene',
   'select_album' => 'Velg album',
-  'delete_orphans' => 'Slett kommentarer som ikke lenger er linket til bilder (gjelder alle album)', //cpg1.3.0
-  'orphan_comment' => 'kommentarer som ikke lenger er linket til bilder ble funnet', //cpg1.3.0
+  'delete_orphans' => 'Slett kommentarer som ikke lenger er linket til filer (gjelder alle album)', //cpg1.3.0
+  'orphan_comment' => 'kommentarer som ikke lenger er linket til filer ble funnet', //cpg1.3.0
   'delete' => 'Slett', //cpg1.3.0
   'delete_all' => 'Slett alle', //cpg1.3.0
   'comment' => 'Kommetar: ', //cpg1.3.0
@@ -1267,6 +1327,18 @@ if (defined('UTIL_PHP')) $lang_util_php = array(
   'phpinfo' => 'Vis phpinfo', //cpg1.3.0
   'update_db' => 'Oppdater database', //cpg1.3.0
   'update_db_explanation' => 'Dersom du har byttet ut Copperminefiler, lagt til endringer eller oppgradert fra en tidligere versjon av Coppermine, pass på å kjøre databaseoppdateringen én gang. Dette vil opprette de nødvendige tabeller og/eller konfigurasjonsverdier i din database.', //cpg1.3.0
+  'view_log' => 'Se loggfiler', //cpg 1.4.0
+);
+
+// ------------------------------------------------------------------------- //
+// File view_log.php - OK
+// ------------------------------------------------------------------------- //
+
+if (defined('VIEWLOG_PHP')) $lang_viewlog_php = array(
+  'delete_all' => 'Slett alle logger',
+  'delete_this' => 'Slett denne loggen',
+  'view_logs' => 'Se logger',
+  'no_logs' => 'Ingen logger generert.',
 );
 
 ?>

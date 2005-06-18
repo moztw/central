@@ -1,21 +1,21 @@
 <?php
-// ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
-// ------------------------------------------------------------------------- //
-// Copyright (C) 2002-2004 Gregory DEMAR                                     //
-// http://www.chezgreg.net/coppermine/                                       //
-// ------------------------------------------------------------------------- //
-// Updated by the Coppermine Dev Team                                        //
-// (http://coppermine.sf.net/team/)                                          //
-// see /docs/credits.html for details                                        //
-// ------------------------------------------------------------------------- //
-// This program is free software; you can redistribute it and/or modify      //
-// it under the terms of the GNU General Public License as published by      //
-// the Free Software Foundation; either version 2 of the License, or         //
-// (at your option) any later version.                                       //
-// ------------------------------------------------------------------------- //
-// CVS version: $Id: register.php,v 1.8 2004/07/30 14:49:31 caspershadow Exp $
-// ------------------------------------------------------------------------- //
+/*************************
+  Coppermine Photo Gallery
+  ************************
+  Copyright (c) 2003-2005 Coppermine Dev Team
+  v1.1 originaly written by Gregory DEMAR
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  ********************************************
+  Coppermine version: 1.3.3
+  $Source: /cvsroot/coppermine/stable/register.php,v $
+  $Revision: 1.11 $
+  $Author: gaugau $
+  $Date: 2005/04/19 03:17:11 $
+**********************************************/
 
 define('IN_COPPERMINE', true);
 define('REGISTER_PHP', true);
@@ -187,10 +187,22 @@ function check_user_info(&$error)
     }
     mysql_free_result($result);
 
-    if (strlen($user_name) < 2) $error .= '<li>' . $lang_register_php['err_uname_short'];
-    if (strlen($password) < 2) $error .= '<li>' . $lang_register_php['err_password_short'];
-    if ($password == $user_name) $error .= '<li>' . $lang_register_php['err_uname_pass_diff'];
-    if ($password != $password_again) $error .= '<li>' . $lang_register_php['err_password_mismatch'];
+    if (strlen($user_name) < 2) {
+        $error .= '<li>' . $lang_register_php['err_uname_short'];
+    }
+    if (strlen($password) < 2) {
+        $error .= '<li>' . $lang_register_php['err_password_short'];
+    }
+    if ($password == $user_name) {
+        $error .= '<li>' . $lang_register_php['err_uname_pass_diff'];
+    }
+    if ($password != $password_again) {
+        $error .= '<li>' . $lang_register_php['err_password_mismatch'];
+    }
+    if (strlen(htmlspecialchars($user_name)) > 25)
+    {
+        $error .= '<li>Your name is to long to be stored in the database. Choose a shorter one.';
+    }
 
     if (!eregi("^[_\.0-9a-z\-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,6}$", $email)) $error .= '<li>' . $lang_register_php['err_invalid_email'];
 

@@ -1,4 +1,20 @@
-# $Id: update.sql,v 1.8 2004/07/09 06:57:56 gaugau Exp $
+#*************************
+#  Coppermine Photo Gallery
+#  ************************
+#  Copyright (c) 2003-2005 Coppermine Dev Team
+#  v1.1 originaly written by Gregory DEMAR
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#  ********************************************
+#  Coppermine version: 1.3.3
+#  $Source: /cvsroot/coppermine/stable/sql/update.sql,v $
+#  $Revision: 1.14 $
+#  $Author: gaugau $
+#  $Date: 2005/04/19 03:17:12 $
+#**********************************************
 
 #
 # Table structure for table `CPG_filetypes`
@@ -83,7 +99,6 @@ INSERT INTO CPG_config VALUES ('max_film_strip_items', '5');
 INSERT INTO CPG_config VALUES ('comment_email_notification', '0');
 INSERT INTO CPG_config VALUES ('read_iptc_data', '0');
 INSERT INTO CPG_config VALUES ('display_uploader', '0');
-INSERT INTO CPG_config VALUES ('offline', '0');
 
 #gtroll wil implement
 #INSERT INTO CPG_config VALUES ('picinfo_display_filename', '1');
@@ -199,7 +214,11 @@ ALTER TABLE `CPG_users` CHANGE user_lang user_group_list varchar(255) NOT NULL d
 #
 # Fix usermgr timing out with 1k+ users -Omni
 #
-ALTER TABLE CPG_pictures ADD INDEX ( `owner_id` );
+ALTER TABLE CPG_pictures DROP INDEX `owner_id`;
+ALTER TABLE CPG_pictures DROP INDEX `owner_id_2`;
+ALTER TABLE CPG_pictures DROP INDEX `owner_id_3`;
+ALTER TABLE CPG_pictures DROP INDEX `owner_id_4`;
+ALTER TABLE CPG_pictures ADD INDEX owner_id( `owner_id` );
 
 
 #
@@ -207,9 +226,3 @@ ALTER TABLE CPG_pictures ADD INDEX ( `owner_id` );
 #
 
 ALTER TABLE `CPG_pictures` ADD `lasthit_ip` TINYTEXT ;
-
-#
-# Store favpics in DB
-#
-
-ALTER TABLE `CPG_users` ADD `user_favpics` TEXT ;

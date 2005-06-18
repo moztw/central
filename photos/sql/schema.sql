@@ -1,4 +1,20 @@
-# $Id: schema.sql,v 1.3 2004/06/30 10:55:30 oddeveloper Exp $
+#*************************
+#  Coppermine Photo Gallery
+#  ************************
+#  Copyright (c) 2003-2005 Coppermine Dev Team
+#  v1.1 originaly written by Gregory DEMAR
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#  ********************************************
+#  Coppermine version: 1.3.3
+#  $Source: /cvsroot/coppermine/stable/sql/schema.sql,v $
+#  $Revision: 1.4 $
+#  $Author: gaugau $
+#  $Date: 2005/04/19 03:17:12 $
+#**********************************************
 
 #
 # Table structure for table `CPG_albums`
@@ -242,5 +258,5 @@ CREATE TABLE IF NOT EXISTS `CPG_temp_data` (
 `unique_ID` CHAR( 8 ) NOT NULL ,
 `encoded_string` BLOB NOT NULL ,
 `timestamp` INT( 11 ) UNSIGNED NOT NULL ,
-PRIMARY KEY ( `unique_ID` ) 
+PRIMARY KEY ( `unique_ID` )
 ) TYPE = MYISAM COMMENT = 'Holds temporary file data for multiple file uploads';

@@ -1,4 +1,4 @@
-Coppermine Gallery 1.21 and vBulletin 3.0.0 Integration
+Coppermine Gallery 1.3.3 and vBulletin 3.0.0 Integration
 Version 1.0
 Compiled by SpeedStreet
 
@@ -24,7 +24,7 @@ Coppermine Gamma Thread (original thread): http://coppermine.sourceforge.net/boa
 vBulletin.org Hack Thread:
 Coppermine vB 3.0.0 Thread:
 
-FINAL WARNINGS:  
+FINAL WARNINGS:
 
 There are seem to be some issues with people integrating this with forums located on subdomains (e.g. subaruforums.speedstreet.org).  Please reference the Coppermine Gamma Thread above for more info.
 Please ensure that Coppermine and vBulletin cookies are NOT named the same thing.
@@ -55,8 +55,7 @@ Remove the double slashes in front of the line to uncomment
 5. Save init.inc.php to the include directory of your Coppermine installation
 6. Point your browser to your Coppermine installation and verify integration is complete.
 
-That should do it.  I tried it on a fresh install of both, and a custom install to an existing board.  Both worked fine.  
-
+That should do it.  I tried it on a fresh install of both, and a custom install to an existing board.  Both worked fine.
 
 
 

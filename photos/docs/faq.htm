@@ -16,7 +16,7 @@
 <meta http-equiv="imagetoolbar" content="no" />
 <!--
 CVS version info:
-$Id: faq.htm,v 1.7 2004/08/16 07:44:09 gaugau Exp $
+$Id: faq.htm,v 1.12 2005/04/19 03:17:12 gaugau Exp $
 -->
 <style type="text/css">
 <!--
@@ -101,7 +101,7 @@ a.external {
 </style>
 </head>
 <body>
-<h1>Coppermine 1.3.0 FAQ</h1>
+<h1>Coppermine 1.3.3 FAQ</h1>
 <p>FAQ for <a href="http://coppermine.sourceforge.net/">Coppermine Photo Gallery v1.3.0</a><br />
 For credits and copyrights, see <a href="index.htm#credits">Coppermine documentation</a></p>
 
@@ -136,7 +136,8 @@ For credits and copyrights, see <a href="index.htm#credits">Coppermine documenta
 <li><a class="content" href="#EmptyDelimiter">I get the <b>error</b> &quot;<tt class="code">Warning: Empty Delimiter in search.inc.php line 33&quot;</tt>. What can I do?</a></li>
 <li><a class="content" href="#zerosizedreply">I get the <b>error</b> <tt class="code">Zero Sized Reply</tt> during install. What can I do?</a></li>
 <li><a class="content" href="#ErrorUndefinedIndex">I have the error message <tt class="code">Warning: Undefined index: SCRIPT_NAME in /www.your-domain.com/include/init.inc.php on line 90</tt>. What can I do?</a></li>
-<li><a class="content" href="#ErrorCantMovePic">When a user tries to upload a picture I get the error message <tt class="code">Impossible to move somepic.jpg to albums/userpics/ | Warning: move_uploaded_file(/tmp/phpezCYKr) [function.move-uploaded-file]: failed to create stream: Operation not permitted</tt>. What&#39;s wrong?</a></li>
+<li><a class="content" href="#ErrorCantMovePic">When I try to upload a picture I get the error message <tt class="code">Impossible to move somepic.jpg to albums/userpics/ | Warning: move_uploaded_file(/tmp/phpezCYKr) [function.move-uploaded-file]: failed to create stream: Operation not permitted</tt>. What&#39;s wrong?</a></li>
+<li><a class="content" href="#ErrorFailedToOpenDir">When I try to upload a picture I get the error message <tt class="code">Warning: opendir(./albums/edit): failed to open dir: No such file or directory</tt>. What&#39;s wrong?</a></li>
 <li><a class="content" href="#httpPostVars">When uploading I get the error <tt class="code">Warning: Undefined variable: HTTP_POST_VARS in include/init.inc.php on line 43</tt>. What can I do?</a></li>
 </ul>
 
@@ -381,9 +382,17 @@ to<br />
 </p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
 
 <a name="ErrorCantMovePic"></a>
-<h3>When a user tries to upload a picture I get the error message <tt class="code">Impossible to move somepic.jpg to albums/userpics/ | Warning: move_uploaded_file(/tmp/phpezCYKr) [function.move-uploaded-file]: failed to create stream: Operation not permitted</tt>. What&#39;s wrong?</h3>
+<h3>When I try to upload a picture I get the error message <tt class="code">Impossible to move somepic.jpg to albums/userpics/ | Warning: move_uploaded_file(/tmp/phpezCYKr) [function.move-uploaded-file]: failed to create stream: Operation not permitted</tt>. What&#39;s wrong?</h3>
 <p>You should contact the admin of your webhost because usually you can&#39;t change the location of the temporary directory for file uploads yourself (it is part of PHP configuration) .<br />
 If the open basedir restriction is in effect on your site then the temp directory for file uploads should be one that you can access.<br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
+
+<a name="ErrorFailedToOpenDir"></a>
+<h3>When I try to upload a picture I get the error message <tt class="code">Warning: opendir(./albums/edit): failed to open dir: No such file or directory</tt>. What&#39;s wrong?</h3>
+<ul>
+<li>Make sure you have a folder named 'edit' in your albums folder.</li>
+<li>Make sure the 'edit' directory has been chmod to 777 or 755.</li>
+<li>Make sure you have completely upgraded to Coppermine 1.3.3.</li>
+</ul><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr />
 
 <a name="httpPostVars"></a>
 <h3>When uploading I get the error <tt class="code">Warning: Undefined variable: HTTP_POST_VARS in include/init.inc.php on line 43</tt>. What can I do?</h3>
@@ -429,6 +438,7 @@ Replace it with<br />
       <li>'<b>toprated</b>': top rated
       <li>'<b>lastcom</b>': last comments </li>
       <li>'<b>lasthits</b>': last viewed </li>
+      <li>'<b>lastalb</b>': last created albums</li>
       <li>'<b>anycontent</b>': inserts php-generated content that has to reside within the file 'anycontent.php' into the index page. Can be used to include banner-rotation scripts or similar.</li>
     </ul>
     (e.g. <tt class="code">catlist/alblist/random,2/lastup,2</tt> means &quot;category list, album list, 2 rows of random pics, 2 rows of last uploads&quot;)</li>
@@ -703,14 +713,22 @@ will become<br />
 <p>edit<br /><tt class="code">login.php</tt><br />and search for<br />
 <tt class="code">pageheader($lang_login_php[&#39;login&#39;],&quot;&lt;META http-equiv=\&quot;refresh\&quot; content=\&quot;3;url=$referer\&quot;&gt;&quot;);</tt><br />
 <br />and add <b>before</b> it<br />
-<tt class="code">$referer = &#39;index.php?cat=&#39;.(FIRST_USER_CAT+$USER_DATA[&#39;user_id&#39;]); </tt><br /><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="registeredUsersOnly"></a>
+<tt class="code">$referer = &#39;index.php?cat=&#39;.(FIRST_USER_CAT+$USER_DATA[&#39;user_id&#39;]); </tt><br /><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div>
+<hr /><a name="registeredUsersOnly"></a>
 <h3>How can I <b>prevent unregistered user</b> from viewing the gallery?</h3>
-<p>edit<br /><tt class="code">displayimage.php</tt><br />and search for<br />
-<pre>/**************************************************************************
-* Local functions definition
-**************************************************************************/</pre>
-<br />and add <b>before</b> it<br />
-<tt class="code">if (!USER_ID) cpg_die(ERROR, &#39;You need to register to access this page&#39;, __FILE__, __LINE__);</tt><br /><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="displayUploaderName"></a>
+<p>edit<br /><tt class="code">displayimage.php</tt> and <tt class="code">index.php</tt> and <tt class="code">search.php</tt> and <tt class="code">thumbnails.php</tt><br />and search for<br />
+<pre>require('include/init.inc.php');</pre>
+<br />and add <b>after</b> it<br />
+<pre>if (USER_ID){
+
+} else {
+{
+   $redirect = $redirect . "login.php";
+   header("Location: $redirect");
+
+   exit();
+        }
+}</pre><br /><br /></p><br /><div class="totop">[<a href="#top" class="nodeco">top of page</a>]</div><hr /><a name="displayUploaderName"></a>
 <h3>How can I <b>display the name of the uploader</b> with the picture info?</h3>
 <p><b>Warning</b>: this is quite a complicated hack for a newbie to perform!<br />Edit displayimage.php and search for:<br />
 <tt class="code">   $info[$lang_picinfo[&#39;Filename&#39;]]   = htmlspecialchars($CURRENT_PIC_DATA[&#39;filename&#39;]);</tt><br />add after it:<br />

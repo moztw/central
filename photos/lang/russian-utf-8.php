@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // ------------------------------------------------------------------------- //
 // Coppermine Photo Gallery 1.3.2                                            //
 // ------------------------------------------------------------------------- //
@@ -14,7 +14,9 @@
 // the Free Software Foundation; either version 2 of the License, or         //
 // (at your option) any later version.                                       //
 // ------------------------------------------------------------------------- //
-// CVS version: $Id: russian-utf-8.php,v 1.11 2004/07/24 15:04:07 gaugau Exp $
+// ENCODING CHECK; SHOULD BE YEN BETA MU: ¥ ß µ
+// ------------------------------------------------------------------------- //
+// $Id: russian-utf-8.php,v 1.14 2004/12/29 23:03:51 chtito Exp $
 // ------------------------------------------------------------------------- //
 
 // info about translators and translated language
@@ -22,181 +24,181 @@ $lang_translation_info = array(
   'lang_name_english' => 'Russian',
   'lang_name_native' => 'Русский',
   'lang_country_code' => 'ru',
-  'trans_name'=> 'Anton',
-  'trans_email' => 'lonestar95@hotmail.ru',
-  'trans_website' => 'http://www.anton-amy.com/',
-  'trans_date' => '2004-07-21',
+  'trans_name'=> 'Makc666',
+  'trans_email' => 'makc666@newmail.ru',
+  'trans_website' => 'http://makc666.starnet.ru/',
+  'trans_date' => '2004-09-19',
 );
 
 $lang_charset = 'utf-8';
 $lang_text_dir = 'ltr'; // ('ltr' for left to right, 'rtl' for right to left)
 
 // shortcuts for Byte, Kilo, Mega
-$lang_byte_units = array('Байт', 'KB', 'MB');
+$lang_byte_units = array('Байты', 'КБ', 'МБ');
 
 // Day of weeks and months
-$lang_day_of_week = array('Вск', 'Пон', 'Втор', 'Среда', 'Чет', 'Пят', 'Суб');
-$lang_month = array('Янв', 'Февр', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Ноябрь', 'Дек');
+$lang_day_of_week = array('Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб');
+$lang_month = array('Янв', 'Фев', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Нояб', 'Дек');
 
 // Some common strings
 $lang_yes = 'Да';
 $lang_no  = 'Нет';
 $lang_back = 'НАЗАД';
-$lang_continue = 'ВПЕРЕД';
+$lang_continue = 'ПРОДОЛЖИТЬ';
 $lang_info = 'Информация';
 $lang_error = 'Ошибка';
 
 // The various date formats
 // See http://www.php.net/manual/en/function.strftime.php to define the variable below
 $album_date_fmt =    '%B %d, %Y';
-$lastcom_date_fmt = '%d %B %Yг. в %H:%M'; //cpg1.3.0
-$lastup_date_fmt = '%d.%m.%Yг.';
-$register_date_fmt = '%d %B %Yг.';
-$lasthit_date_fmt = '%d %B %Yг. в %I:%M'; //cpg1.3.0
-$comment_date_fmt =  '%d %B %Yг. в %H:%M'; //cpg1.3.0
+$lastcom_date_fmt =  '%m/%d/%y at %H:%M'; //cpg1.3.0
+$lastup_date_fmt = '%B %d, %Y';
+$register_date_fmt = '%B %d, %Y';
+$lasthit_date_fmt = '%B %d, %Y at %I:%M %p'; //cpg1.3.0
+$comment_date_fmt =  '%B %d, %Y at %I:%M %p'; //cpg1.3.0
 
 // For the word censor
-$lang_bad_words = array('*fuck*', 'asshole', 'assramer', 'bitch*', 'c0ck', 'clits', 'Cock', 'cum', 'cunt*', 'dago', 'daygo', 'dego', 'dick*', 'dildo', 'fanculo', 'feces', 'foreskin', 'Fu\(*', 'fuk*', 'honkey', 'hore', 'injun', 'kike', 'lesbo', 'masturbat*', 'motherfucker', 'nazis', 'nigger*', 'nutsack', 'penis', 'phuck', 'poop', 'pussy', 'scrotum', 'shit', 'slut', 'titties', 'titty', 'twaty', 'wank*', 'whore', 'wop*', '*пизд*', '*хуй*', '*заеб*', '*пидар*', '*жопа*', '*урод*','*козл*','*бля*','*хуе*');
+$lang_bad_words = array('*fuck*', 'asshole', 'assramer', 'bitch*', 'c0ck', 'clits', 'Cock', 'cum', 'cunt*', 'dago', 'daygo', 'dego', 'dick*', 'dildo', 'fanculo', 'feces', 'foreskin', 'Fu\(*', 'fuk*', 'honkey', 'hore', 'injun', 'kike', 'lesbo', 'masturbat*', 'motherfucker', 'nazis', 'nigger*', 'nutsack', 'penis', 'phuck', 'poop', 'pussy', 'scrotum', 'shit', 'slut', 'titties', 'titty', 'twaty', 'wank*', 'whore', 'wop*');
 
 $lang_meta_album_names = array(
-  'random' => 'Случайные фото', //cpg1.3.0
+  'random' => 'Случайные файлы', //cpg1.3.0
   'lastup' => 'Последние добавления',
-  'lastalb'=> 'Последние обновленные альбомы', 
+  'lastalb'=> 'Последнее изменения альбомов',
   'lastcom' => 'Последние комментарии',
   'topn' => 'Часто просматриваемые',
   'toprated' => 'Лучшие по рейтингу',
   'lasthits' => 'Последние просмотренные',
-  'search' => 'Поиск', 
-  'favpics'=> 'Избранные Файлы', //cpg1.3.0
+  'search' => 'Результаты поиска',
+  'favpics'=> 'Избранные файлы', //cpg1.3.0
 );
 
 $lang_errors = array(
   'access_denied' => 'У Вас нет прав для просмотра этой страницы.',
   'perm_denied' => 'У Вас нет прав на выполнение этой операции.',
   'param_missing' => 'Скрипт вызван без требуемых параметров.',
-  'non_exist_ap' => 'Выбранный альбом/файл не существует !', //cpg1.3.0
-  'quota_exceeded' => 'Дисковая квота превышена<br /><br />Для Вас дисковая квота составляет [quota]Kб. Ваши файлы сейчас занимают [space]Kб. Добавление этого файла превысят Вашу квоту.', //cpg1.3.0
-  'gd_file_type_err' => 'Когда используете библиотеку GD - разрешенные типы изображений только JPEG и PNG.',
-  'invalid_image' => 'Загруженное Вами фото испорчено или не может быть обработано библиотекой GD',
-  'resize_failed' => 'Невозможно создать эскиз или уменьшить размер фото.',
+  'non_exist_ap' => 'Выбранный альбом/фото не существует!', //cpg1.3.0
+  'quota_exceeded' => 'Дисковая квота превышена<br /><br />Для Вас дисковая квота составляет [quota]К, ваши файлы сейчас занимают [space]К, добавление этого файла приведет к привышению вашей квоты.', //cpg1.3.0
+  'gd_file_type_err' => 'Когда используется библиотека GD, разрешенные типы файлов только JPEG и PNG.',
+  'invalid_image' => 'Изображение, которое Вы загрузили, повреждено или не может быть обработано библиотекой GD',
+  'resize_failed' => 'Не могу создать миниатюру или уменьшить размер изображения.',
   'no_img_to_display' => 'Нет фото',
   'non_exist_cat' => 'Выбранная категория не существует',
-  'orphan_cat' => 'Категория имеет не существующего \'головного каталога\'. Запустите Менеджер каталогов для исправления проблемы!', //cpg1.3.0
-  'directory_ro' => 'Папка \'%s\' только для чтения, фотографии не могут быть удалены', //cpg1.3.0
+  'orphan_cat' => 'У категории нет соответствующей категории верхнего уровня, запустите менеджер категорий, чтобы исправить эту проблему!', //cpg1.3.0
+  'directory_ro' => 'Директория \'%s\' не имеет прав на запись, файлы не могут быть удалены', //cpg1.3.0
   'non_exist_comment' => 'Выбранный комментарий не существует.',
-  'pic_in_invalid_album' => 'Файл из несуществующего альбома (%s)!?', //cpg1.3.0
-  'banned' => 'Вы в настоящее время забанены на этом сайте.',
-  'not_with_udb' => 'Эта функция выключена в Coppermine, потому что объединена с форумом. Или то, что вы пытаетесь сделать, не поддерживается в этой конфигурации, или эта функция должны быть обработана форумом.',
-  'offline_title' => 'Недоступно-offline', //cpg1.3.0
-  'offline_text' => 'Галерея временно недоступна.  Вернитесь через некоторое время.', //cpg1.3.0
-  'ecards_empty' => 'Записей об открытках в настоящее время нет. Проверьте, что у Вас включено протколирование открыток в настройках coppermine!', //cpg1.3.0
-  'action_failed' => 'Действие не выполнено.  Coppermine не может обработать Ваш запрос.', //cpg1.3.0
-  'no_zip' => 'Необходимые библиотеки для работы с ZIP архивами недоступны.  Свяжитесь с администратором Вашего Coppermine.', //cpg1.3.0
-  'zip_type' => 'У Вас не разрешения выгрузить ZIP файлы.', //cpg1.3.0
+  'pic_in_invalid_album' => 'Файл находится в несуществующем альбоме (%s)!?', //cpg1.3.0
+  'banned' => 'В данный момент Вы забанены на данном сайте.',
+  'not_with_udb' => 'Эта функция отключена в Coppermine, потому что она интегрирована с движком форума. То, что Вы пытаетесь сделать, или недоступно в данной конфигурации, или должно изменяться с помощью движка форума.',
+  'offline_title' => 'Выключена', //cpg1.3.0
+  'offline_text' => 'Извините, галерея отключена. Попробуйте зайти попозже', //cpg1.3.0
+  'ecards_empty' => 'В данный момент отсутствуют открытки занесенные в логи. Проверьте, что Вы включили лог открыток в настройках сайта!', //cpg1.3.0
+  'action_failed' => 'Действие не удалось. Coppermine не смог выполнить ваш запрос.', //cpg1.3.0
+  'no_zip' => 'Необходимые библиотеки для обработки ZIP файлов недоступны. Пожалуйста, свяжитесь с администрацией сайта.', //cpg1.3.0
+  'zip_type' => 'У вас нет прав для загрузги ZIP файлов.', //cpg1.3.0
 );
 
-$lang_bbcode_help = 'Следующие коды могут пригодиться: <li>[b]<b>Выделенный</b>[/b]</li> <li>[i]<i>Наклонный</i>[/i]</li> <li>[url=http://yoursite.com/]Текст ссылки[/url]</li> <li>[email]user@domain.com[/email]</li>'; //cpg1.3.0
+$lang_bbcode_help = 'Данные коды могут быть полезны: <li>[b]<b>Жирный</b>[/b]</li> <li>[i]<i>Курсив</i>[/i]</li> <li>[url=http://ваш_сайт.ru/]Описание сайта[/url]</li> <li>[email]user@domain.ru[/email]</li>'; //cpg1.3.0
 
 // ------------------------------------------------------------------------- //
 // File theme.php
 // ------------------------------------------------------------------------- //
 
 $lang_main_menu = array(
-  'alb_list_title' => 'К списку альбома',
-  'alb_list_lnk' => 'Список Альбомов',
-  'my_gal_title' => 'В мою персональную галерею',
+  'alb_list_title' => 'Перейти к списку альбомов',
+  'alb_list_lnk' => 'Список альбомов',
+  'my_gal_title' => 'В персональную галерею',
   'my_gal_lnk' => 'Моя галерея',
-  'my_prof_lnk' => 'Профиль',
+  'my_prof_lnk' => 'Мой профиль',
   'adm_mode_title' => 'Переключиться в режим администратора',
   'adm_mode_lnk' => 'Режим администратора',
   'usr_mode_title' => 'Переключиться в режим пользователя',
   'usr_mode_lnk' => 'Режим пользователя',
-  'upload_pic_title' => 'Добавление файла в альбом', //cpg1.3.0
-  'upload_pic_lnk' => 'Добавить файл', //cpg1.3.0
-  'register_title' => 'Зарегистрироваться',
+  'upload_pic_title' => 'Загрузить файл в альбом', //cpg1.3.0
+  'upload_pic_lnk' => 'Загрузить файл', //cpg1.3.0
+  'register_title' => 'Создать аккаунт',
   'register_lnk' => 'Регистрация',
-  'login_lnk' => 'Войти',
-  'logout_lnk' => 'Выйти',
+  'login_lnk' => 'Вход',
+  'logout_lnk' => 'Выход',
   'lastup_lnk' => 'Последние добавления',
   'lastcom_lnk' => 'Последние комментарии',
-  'topn_lnk' => 'Самые просматриваемые',
+  'topn_lnk' => 'Часто просматриваемые',
   'toprated_lnk' => 'Лучшие по рейтингу',
   'search_lnk' => 'Поиск',
   'fav_lnk' => 'Избранные',
-  'memberlist_title' => 'Показать участников', //cpg1.3.0
-  'memberlist_lnk' => 'Участники', //cpg1.3.0
-  'faq_title' => 'Часто задаваемые вопросы о галерее &quot;Coppermine&quot;', //cpg1.3.0
+  'memberlist_title' => 'Показать список пользователей', //cpg1.3.0
+  'memberlist_lnk' => 'Пользователи', //cpg1.3.0
+  'faq_title' => 'Часто задаваемые вопросы о галереи &quot;Coppermine&quot;', //cpg1.3.0
   'faq_lnk' => 'FAQ', //cpg1.3.0
 );
 
 $lang_gallery_admin_menu = array(
-  'upl_app_lnk' => 'Проверка добавлений',
-  'config_lnk' => 'Настройки',
+  'upl_app_lnk' => 'Подтверждение закачки',
+  'config_lnk' => 'Конфиг',
   'albums_lnk' => 'Альбомы',
   'categories_lnk' => 'Категории',
   'users_lnk' => 'Пользователи',
   'groups_lnk' => 'Группы',
-  'comments_lnk' => 'Обзор комментариев', //cpg1.3.0
-  'searchnew_lnk' => 'Авто добавление', //cpg1.3.0
-  'util_lnk' => 'Администрирование', //cpg1.3.0
+  'comments_lnk' => 'Просмотр комментариев', //cpg1.3.0
+  'searchnew_lnk' => 'Групповое добавление файлов', //cpg1.3.0
+  'util_lnk' => 'Инструмент администратора', //cpg1.3.0
   'ban_lnk' => 'Бан пользователей',
   'db_ecard_lnk' => 'Показать открытки', //cpg1.3.0
 );
 
 $lang_user_admin_menu = array(
-  'albmgr_lnk' => 'Создать/упорядочить мои альбомы',
-  'modifyalb_lnk' => 'Исправить мои альбомы',
+  'albmgr_lnk' => 'Создать / упорядочить мои альбомы',
+  'modifyalb_lnk' => 'Изменить мои альбомы',
   'my_prof_lnk' => 'Профиль',
 );
 
 $lang_cat_list = array(
   'category' => 'Категория',
-  'albums' => 'Альбомов',
-  'pictures' => 'Файлов', //cpg1.3.0
+  'albums' => 'Альбомы',
+  'pictures' => 'Файлы', //cpg1.3.0
 );
 
 $lang_album_list = array(
-  'album_on_page' => '%d альбомов на %d страницах',
+  'album_on_page' => 'Альбомов: %d / Страниц: %d',
 );
 
 $lang_thumb_view = array(
-  'date' => 'Дата',
+  'date' => 'ДАТА',
   //Sort by filename and title
-  'name' => 'Имя файла',
-  'title' => 'Название',
-  'sort_da' => 'Сорт. по дате [возрастание]',
-  'sort_dd' => 'Сорт. по дате [убывание]',
-  'sort_na' => 'Сорт. по имени [возрастание]',
-  'sort_nd' => 'Сорт. по имени [убывание]',
-  'sort_ta' => 'Сорт. по названию [возврастание]',
-  'sort_td' => 'Сорт. по названию [убывание]',
-  'download_zip' => 'Загрузить в виде Zip файла', //cpg1.3.0
-  'pic_on_page' => '%d фото на %d странице(ах) ',
-  'user_on_page' => '%d пользователей на %d странице(ах)', //cpg1.3.0
+  'name' => 'ИМЯ ФАЙЛА',
+  'title' => 'НАЗВАНИЕ',
+  'sort_da' => 'Сортировать по дате [возрастание]',
+  'sort_dd' => 'Сортировать по дате [убывание]',
+  'sort_na' => 'Сортировать по имени [возрастание]',
+  'sort_nd' => 'Сортировать по имени [убывание]',
+  'sort_ta' => 'Сортировать по названию [возрастание]',
+  'sort_td' => 'Сортировать по названию [убывание]',
+  'download_zip' => 'Скачать как Zip файл', //cpg1.3.0
+  'pic_on_page' => 'Файлов: %d / Страниц: %d',
+  'user_on_page' => '%d пользователей на %d страницах', //cpg1.3.0
 );
 
 $lang_img_nav_bar = array(
-  'thumb_title' => 'Вернуться на страницу с эскизом',
-  'pic_info_title' => 'Показать/скрыть информацию о фото', //cpg1.3.0
+  'thumb_title' => 'Вернуться на страницу с миниатюрами',
+  'pic_info_title' => 'Показать/спрятать информацию о файле', //cpg1.3.0
   'slideshow_title' => 'Слайд-шоу',
-  'ecard_title' => 'Послать это фото как открытку', //cpg1.3.0
+  'ecard_title' => 'Послать этот файл как открытку', //cpg1.3.0
   'ecard_disabled' => 'Открытки отключены',
   'ecard_disabled_msg' => 'У Вас нет прав на отправку открыток', //js-alert //cpg1.3.0
-  'prev_title' => 'Смотреть предыдующий файл', //cpg1.3.0
+  'prev_title' => 'Смотреть предыдущий файл', //cpg1.3.0
   'next_title' => 'Смотреть следующий файл', //cpg1.3.0
-  'pic_pos' => 'ФАЙЛ %s из %s', //cpg1.3.0
+  'pic_pos' => 'ФАЙЛОВ %s/%s', //cpg1.3.0
 );
 
 $lang_rate_pic = array(
-  'rate_this_pic' => 'Оценить этот файл', //cpg1.3.0
-  'no_votes' => '(Не голосовали)',
-  'rating' => '(текущий рейтинг: %s из 5 с %s голосами)',
-  'rubbish' => 'Никак',
+  'rate_this_pic' => 'Оценить этот файл ', //cpg1.3.0
+  'no_votes' => '(Голосов ещё нет)',
+  'rating' => '(Текущий рейтинг: %s / 5 - Голосов: %s)',
+  'rubbish' => 'Мусор',
   'poor' => 'Плохо',
-  'fair' => 'Так себе',
+  'fair' => 'Средне',
   'good' => 'Хорошо',
   'excellent' => 'Отлично',
-  'great' => 'Наилучшее',
+  'great' => 'Супер',
 );
 
 // ------------------------------------------------------------------------- //
@@ -218,33 +220,33 @@ $lang_cpg_die = array(
 );
 
 $lang_display_thumbnails = array(
-  'filename' => 'Файл : ',
-  'filesize' => 'Размер файла : ',
-  'dimensions' => 'Размеры : ',
-  'date_added' => 'Дата добавления : ', //cpg1.3.0
+  'filename' => 'Файл: ',
+  'filesize' => 'Объем: ',
+  'dimensions' => 'Размеры: ',
+  'date_added' => 'Дата: ', //cpg1.3.0
 );
 
 $lang_get_pic_data = array(
-  'n_comments' => '%s комментариев',
-  'n_views' => '%s просмотров',
+  'n_comments' => 'Комментариев: %s ',
+  'n_views' => 'Просмотров: %s',
   'n_votes' => '(%s голосов)',
 );
 
 $lang_cpg_debug_output = array(
-  'debug_info' => 'Информация об отладке', //cpg1.3.0
-  'select_all' => 'Выбрать все', //cpg1.3.0
-  'copy_and_paste_instructions' => 'Если Вы собираетесь обратиться за помощью в coppermine форум, скопируйте и вставьте информацию об отладке в ваше сообщение.  Не забудьте заменить все пароли на  *** в Вашем сообщении.', //cpg1.3.0
-  'phpinfo' => 'показать phpinfo', //cpg1.3.0
+  'debug_info' => 'Отладочная информация', //cpg1.3.0
+  'select_all' => 'Выбрать всё', //cpg1.3.0
+  'copy_and_paste_instructions' => 'Если Вы собираетесь просить о помощи на форумах coppermine, скопируйте и вставьте эту отладочную информацию в ваше сообщение. Убедитесь, что Вы заменили пароли на *** перед созданием своего сообщения.', //cpg1.3.0
+  'phpinfo' => 'отобразить phpinfo', //cpg1.3.0
 );
 
 $lang_language_selection = array(
   'reset_language' => 'Язык по умолчанию', //cpg1.3.0
-  'choose_language' => 'Выбрать язык', //cpg1.3.0
+  'choose_language' => 'Выберите Ваш язык', //cpg1.3.0
 );
 
 $lang_theme_selection = array(
   'reset_theme' => 'Тема по умолчанию', //cpg1.3.0
-  'choose_theme' => 'Выбрать тему', //cpg1.3.0
+  'choose_theme' => 'Выберите тему', //cpg1.3.0
 );
 
 // ------------------------------------------------------------------------- //
@@ -264,27 +266,27 @@ $lang_theme_selection = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('SMILIES_PHP')) $lang_smilies_inc_php = array(
-  'Exclamation' => 'Восклицание',
-  'Question' => 'Вопрос',
-  'Very Happy' => 'Очень счастлив',
-  'Smile' => 'Улыбка',
-  'Sad' => 'Грусть',
-  'Surprised' => 'Сюрприз',
-  'Shocked' => 'Шок',
-  'Confused' => 'Не понял',
-  'Cool' => 'Круто',
-  'Laughing' => 'Смех',
-  'Mad' => 'Безумие',
-  'Razz' => 'Дразним',
-  'Embarassed' => 'Стыдно',
-  'Crying or Very sad' => 'Плачим',
-  'Evil or Very Mad' => 'Злимся',
-  'Twisted Evil' => 'Совсем зол',
-  'Rolling Eyes' => 'Закатываем глазки',
-  'Wink' => 'Подморгнул',
-  'Idea' => 'Идея',
-  'Arrow' => 'Стрелка',
-  'Neutral' => 'Нейтрально',
+  'Exclamation' => 'Exclamation',
+  'Question' => 'Question',
+  'Very Happy' => 'Very Happy',
+  'Smile' => 'Smile',
+  'Sad' => 'Sad',
+  'Surprised' => 'Surprised',
+  'Shocked' => 'Shocked',
+  'Confused' => 'Confused',
+  'Cool' => 'Cool',
+  'Laughing' => 'Laughing',
+  'Mad' => 'Mad',
+  'Razz' => 'Razz',
+  'Embarassed' => 'Embarassed',
+  'Crying or Very sad' => 'Crying or Very sad',
+  'Evil or Very Mad' => 'Evil or Very Mad',
+  'Twisted Evil' => 'Twisted Evil',
+  'Rolling Eyes' => 'Rolling Eyes',
+  'Wink' => 'Wink',
+  'Idea' => 'Idea',
+  'Arrow' => 'Arrow',
+  'Neutral' => 'Neutral',
   'Mr. Green' => 'Mr. Green',
 );
 
@@ -299,8 +301,8 @@ if (defined('SMILIES_PHP')) $lang_smilies_inc_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('ADMIN_PHP')) $lang_admin_php = array(
-  0 => 'Выход из режима администратора ...',
-  1 => 'Вход в режим администратора...',
+  0 => 'Покидаю режим администратора...',
+  1 => 'Вхожу в режим администратора...',
 );
 
 // ------------------------------------------------------------------------- //
@@ -308,20 +310,20 @@ if (defined('ADMIN_PHP')) $lang_admin_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('ALBMGR_PHP')) $lang_albmgr_php = array(
-  'alb_need_name' => 'Альбом должен иметь название!', //js-alert
+  'alb_need_name' => 'Альбомы должны иметь название!', //js-alert
   'confirm_modifs' => 'Вы уверены, что хотите сделать эти изменения?', //js-alert
-  'no_change' => 'Вы ничего не изменили!', //js-alert
+  'no_change' => 'Вы не сделали никаких изменений!', //js-alert
   'new_album' => 'Новый альбом',
-  'confirm_delete1' => 'Вы действительно хотите удалить этот альбом?', //js-alert
-  'confirm_delete2' => '\nВсе фото и комментарии исчезнут!', //js-alert
+  'confirm_delete1' => 'Вы уверены, что хотите удалить этот альбом?', //js-alert
+  'confirm_delete2' => '\nВсе файлы и комментарии к ним будут утеряны!', //js-alert
   'select_first' => 'Сначала выберите альбом', //js-alert
-  'alb_mrg' => 'Управление альбомами',
+  'alb_mrg' => 'Менеджер альбомов',
   'my_gallery' => '* Моя галерея *',
   'no_category' => '* Нет категории *',
   'delete' => 'Удалить',
   'new' => 'Новый',
   'apply_modifs' => 'Применить изменения',
-  'select_category' => 'Выбрать категорию',
+  'select_category' => 'Выберите категорию',
 );
 
 // ------------------------------------------------------------------------- //
@@ -329,17 +331,18 @@ if (defined('ALBMGR_PHP')) $lang_albmgr_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('CATMGR_PHP')) $lang_catmgr_php = array(
-  'miss_param' => 'Параметры, требуемые для выполнения операции \'%s\', не предоставлены!',  'unknown_cat' => 'Выбранная категория не существует в базе данных',
-  'usergal_cat_ro' => 'Категория пользовательских галерей не может быть удалена!',
-  'manage_cat' => 'Manage categories',
-  'confirm_delete' => 'Вы действительно хотите УДАЛИТЬ эту категорию?', //js-alert
+  'miss_param' => 'Параметры, требуемые для выполнения операции \'%s\', не предоставлены!',
+  'unknown_cat' => 'Выбранная категория не существует в базе',
+  'usergal_cat_ro' => 'Категория альбомов пользователей не может быть удалена!',
+  'manage_cat' => 'Управление категориями',
+  'confirm_delete' => 'Вы уверены, что хотите УДАЛИТЬ эту категорию?', //js-alert
   'category' => 'Категория',
-  'operations' => 'Действия',
-  'move_into' => 'Переместить в',
+  'operations' => 'Операции',
+  'move_into' => 'Перенести в',
   'update_create' => 'Обновить/Создать категорию',
   'parent_cat' => 'Категория верхнего уровня',
-  'cat_title' => 'Заголовок категории',
-  'cat_thumb' => 'Эскиз категории', //cpg1.3.0
+  'cat_title' => 'Название категории',
+  'cat_thumb' => 'Миниатюра категории', //cpg1.3.0
   'cat_desc' => 'Описание категории',
 );
 
@@ -349,139 +352,139 @@ if (defined('CATMGR_PHP')) $lang_catmgr_php = array(
 
 if (defined('CONFIG_PHP')) $lang_config_php = array(
   'title' => 'Конфигурация',
-  'restore_cfg' => 'Восстановить значения по умолчанию',
+  'restore_cfg' => 'Восстановить настройки по умолчанию',
   'save_cfg' => 'Сохранить новую конфигурацию',
-  'notes' => 'Примечания',
+  'notes' => 'Заметки',
   'info' => 'Информация',
-  'upd_success' => 'Конфигурация обновлена',
-  'restore_success' => 'Конфигурация по умолчанию восстановлена',
-  'name_a' => 'имени [возрастание]',
-  'name_d' => 'имени [убывание]',
-  'title_a' => 'Название [возврастание]', 
-  'title_d' => 'Название [уывание]',
-  'date_a' => 'дате [возрастание]',
-  'date_d' => 'дате [убывание]',
-  'th_any' => 'Максимальное соотношение',
+  'upd_success' => 'Конфигурация галереи была обновлена',
+  'restore_success' => 'Настройки галереи по умолчанию были восстановлены',
+  'name_a' => 'Имя [возрастание]',
+  'name_d' => 'Имя [убывание]',
+  'title_a' => 'Название [возрастание]',
+  'title_d' => 'Название [убывание]',
+  'date_a' => 'Дата [возрастание]',
+  'date_d' => 'Дата  [убывание]',
+  'th_any' => 'Макс. размер',
   'th_ht' => 'Высота',
   'th_wd' => 'Ширина',
-  'label' => 'пометка', //cpg1.3.0
-  'item' => 'элемент', //cpg1.3.0
-  'debug_everyone' => 'Все', //cpg1.3.0
-  'debug_admin' => 'Только администратор', //cpg1.3.0
+  'label' => 'описание', //cpg1.3.0
+  'item' => 'флаг', //cpg1.3.0
+  'debug_everyone' => 'Всем', //cpg1.3.0
+  'debug_admin' => 'Только админы', //cpg1.3.0
         );
 
 if (defined('CONFIG_PHP')) $lang_config_data = array(
-  'Общие настройки',
+  'Общий настройки',
   array('Название галереи', 'gallery_name', 0),
   array('Описание галереи', 'gallery_description', 0),
-  array('e-mail администратора галереи', 'gallery_admin_email', 0),
-  array('Адрес для ссылки \'См. дополнительные фото\' в Открытках', 'ecards_more_pic_target', 0),
-  array('Галерея отключена', 'offline', 1), //cpg1.3.0
-  array('Протоколирование открыток', 'log_ecards', 1), //cpg1.3.0
-  array('Разрешить загрузку Избранных в формате ZIP', 'enable_zipdownload', 1), //cpg1.3.0
+  array('E-mail адрес администратора', 'gallery_admin_email', 0),
+  array('Начальный адресс для ссылки \'Посмотреть остальные картинки!\' в открытках', 'ecards_more_pic_target', 0),
+  array('Галерея выключена', 'offline', 1), //cpg1.3.0
+  array('Вести лог открыток', 'log_ecards', 1), //cpg1.3.0
+  array('Разрешить ZIP-скачивание в избранном', 'enable_zipdownload', 1), //cpg1.3.0
 
-  'Языки, Темы &amp; Набор Символов',
+  'Языки, Темы и Кодировка',
   array('Язык', 'lang', 5),
   array('Тема', 'theme', 6),
-  array('Показывать список языков', 'language_list', 8), //cpg1.3.0
-  array('Показывать флаги языков', 'language_flags', 8), //cpg1.3.0
-  array('Показывать &quot;сброс&quot; в выборе языков', 'language_reset', 1), //cpg1.3.0
-  array('Показывать список тем', 'theme_list', 8), //cpg1.3.0
-  array('Показывать &quot;сброс&quot; в списке тем', 'theme_reset', 1), //cpg1.3.0
-  array('Показывать FAQ', 'display_faq', 1), //cpg1.3.0
-  array('Показывать bbcode помощь', 'show_bbcode_help', 1), //cpg1.3.0
+  array('Отображать список языков', 'language_list', 1), //cpg1.3.0
+  array('Отображать флаги языков', 'language_flags', 8), //cpg1.3.0
+  array('Отображать &quot;Язык по умолчанию&quot; в выборе языков', 'language_reset', 1), //cpg1.3.0
+  array('Отображать список тем', 'theme_list', 1), //cpg1.3.0
+  array('Отображать &quot;Тема по умолчанюю&quot; в выборе тем', 'theme_reset', 1), //cpg1.3.0
+  array('Отображать FAQ', 'display_faq', 1), //cpg1.3.0
+  array('Отображать помощь по bbcode', 'show_bbcode_help', 1), //cpg1.3.0
   array('Кодировка символов', 'charset', 4), //cpg1.3.0
 
-  'Просмотр списка альбомов',
-  array('Ширина главной таблицы (пикселов или %)', 'main_table_width', 0),
-  array('Количество уровней категорий для показа', 'subcat_level', 0),
-  array('Количество альбомов для показа', 'albums_per_page', 0),
+  'Отображение списка альбомов',
+  array('Ширина главной таблицы (пиксели или %)', 'main_table_width', 0),
+  array('Количество отображаемых уровней категорий', 'subcat_level', 0),
+  array('Количество отображаемых альбомов', 'albums_per_page', 0),
   array('Количество колонок для списка альбомов', 'album_list_cols', 0),
-  array('Размер эскизов в пикселах', 'alb_list_thumb_size', 0),
-  array('Содержимое главной страницы', 'main_page_layout', 0),
-  array('Показать сначала первый уровень эксиза в категориях','first_level',1), 
+  array('Размер миниатюр в пикселях', 'alb_list_thumb_size', 0),
+  array('Содержание главной страницы', 'main_page_layout', 0),
+  array('Отображать миниатюры альбомов первого уровня в категориях','first_level',1),
 
-  'Просмотр эскизов',
-  array('Количество колонок на странице с эскизами', 'thumbcols', 0),
-  array('Количество строк на странице с эскизами', 'thumbrows', 0),
-  array('Макс. кол-во показываемых закладок', 'max_tabs', 10), //cpg1.3.0
-  array('Показывать надпись фото (в дополнение к заголовку) под эскизом', 'caption_in_thumbview', 1), //cpg1.3.0
-  array('Показывать кол-во просмотров под эскизом', 'views_in_thumbview', 1), //cpg1.3.0
-  array('Показывать кол-во комментариев под эскизом', 'display_comment_count', 1),
-  array('Показывать имя выгрузившего под эскизом', 'display_uploader', 1), //cpg1.3.0
-  array('Порядок сортировки для фото по умолчанию', 'default_sort_order', 3), //cpg1.3.0
-  array('Минимальное кол-во голосов для фото для появления в списке \'лучших по рейтингу\'', 'min_votes_for_rating', 0), //cpg1.3.0
+  'Отображение миниатюр',
+  array('Количество колонок на странице с миниатюрами', 'thumbcols', 0),
+  array('Количество строк на странице с миниатюрами', 'thumbrows', 0),
+  array('Максимальное количество отображаемых вкладок', 'max_tabs', 10), //cpg1.3.0
+  array('Отображать под миниатюрой описание файла (в дополнение к названию)', 'caption_in_thumbview', 1), //cpg1.3.0
+  array('Отображать под миниатюрой количество просмотров', 'views_in_thumbview', 1), //cpg1.3.0
+  array('Отображать под миниатюрой количество комментариев', 'display_comment_count', 1),
+  array('Отображать под миниатюрой имя пользователя загрузившего файл', 'display_uploader', 1), //cpg1.3.0
+  array('Порядок сортировки по умолчанию для файлов', 'default_sort_order', 3), //cpg1.3.0
+  array('Минимальное количество голосов для файла, чтобы он появился в списке \'Лучшие по рейтингу\'', 'min_votes_for_rating', 0), //cpg1.3.0
 
-  'Просмотр фото &amp; Настройки комментария',
-  array('Длина таблицы для показа фото (пикселов или %)', 'picture_table_width', 0), //cpg1.3.0
-  array('По умолчанию информация о фото видна', 'display_pic_info', 1), //cpg1.3.0
+  'Отображение изображений и настройки комментариев',
+  array('Ширина таблицы для отображения файла (пиксели или %)', 'picture_table_width', 0), //cpg1.3.0
+  array('Информация о файле видна по умолчанию', 'display_pic_info', 1), //cpg1.3.0
   array('Фильтровать плохие слова в комментариях', 'filter_bad_words', 1),
-  array('Разрешить смайлики в комментариях', 'enable_smilies', 1),
-  array('Разрешить несколько комментариев подряд от одного пользователя к одному и тому же файлу', 'disable_comment_flood_protect', 1), //cpg1.3.0
-  array('Макс. длина для описания фото', 'max_img_desc_length', 0),
-  array('Макс. количество символов в слове', 'max_com_wlength', 0),
-  array('Макс. количество строк в комментарии', 'max_com_lines', 0),
-  array('Макс. длинна комментария', 'max_com_size', 0),
-  array('Показывать ленту картинок', 'display_film_strip', 1),
-  array('Количество картинок в ленте', 'max_film_strip_items', 0),
-  array('Оповещать адиминистратора о комментариях по e-mail', 'email_comment_notification', 1), //cpg1.3.0
-  array('Интервал Слайд-шоу в миллисекундах (1 секунда = 1000 миллисекунд)', 'slideshow_interval', 0), //cpg1.3.0
+  array('Разрешить смайлы в комментариях', 'enable_smilies', 1),
+  array('Разрешить несколько последовательных комментариев к одному файлу от одного и того же пользователя (отключить защиту от флуда)', 'disable_comment_flood_protect', 1), //cpg1.3.0
+  array('Максимальная длина описания файла', 'max_img_desc_length', 0),
+  array('Максимальное количество символов в слове', 'max_com_wlength', 0),
+  array('Максимальное количество строк в комментарие', 'max_com_lines', 0),
+  array('Максимальная длина комментария', 'max_com_size', 0),
+  array('Показывать диафильм', 'display_film_strip', 1),
+  array('Количество кадров в диафильме', 'max_film_strip_items', 0),
+  array('Уведомлять админа по email о добавленных комментариях', 'email_comment_notification', 1), //cpg1.3.0
+  array('Интервал слайд-шой в миллисекундах (1 секунда = 1000 миллисекунд)', 'slideshow_interval', 0), //cpg1.3.0
 
-  'Настройки фото и эскизов', //cpg1.3.0
+  'Настройки файлов и миниатюр', //cpg1.3.0
   array('Качество для JPEG файлов', 'jpeg_qual', 0),
-  array('Макс. размер эскиза <a href="#notice2" class="clickable_option">**</a>', 'thumb_width', 0), //cpg1.3.0
-  array('Использовать размер (ширина или высота или Макс. соотношение для эскиза)<b>**</b>', 'thumb_use', 7),
-  array('Создавать промежуточное фото','make_intermediate',1),
-  array('Макс. длина или высота промежуточного фото или видео <a href="#notice2" class="clickable_option">**</a>', 'picture_width', 0), //cpg1.3.0
-  array('Макс. размер для добавляемых файлов (KB)', 'max_upl_size', 0), //cpg1.3.0
-  array('Макс. длина или высота для добавляемых фото (пикселов)', 'max_upl_width_height', 0), //cpg1.3.0
+  array('Максимальный размер миниатюры <a href="#notice2" class="clickable_option">**</a>', 'thumb_width', 0), //cpg1.3.0
+  array('Использовать размер (ширина или высота или Макс. размер для миниатюры) <a href="#notice2" class="clickable_option">**</a>', 'thumb_use', 7),
+  array('Создавать промежуточные картинки','make_intermediate',1),
+  array('Максимальная ширина и высота для промежуточных картинок/видео <a href="#notice2" class="clickable_option">**</a>', 'picture_width', 0), //cpg1.3.0
+  array('Максимальных размер загружаемых файлов (KB)', 'max_upl_size', 0), //cpg1.3.0
+  array('Максимальная ширина или высота для загруженных картинок/видео (пиксели)', 'max_upl_width_height', 0), //cpg1.3.0
 
-  'Дополнительные настройки файлов и эскизов', //cpg1.3.0
-  array('Показывать невошедшим пользователям значек Частный Альбом','show_private',1), //cpg1.3.0
-  array('Символы запрещенные в именах файлов', 'forbiden_fname_char',0), //cpg1.3.0
-  //array('Разрешенные расширения файлов для добавленных фото', 'allowed_file_extensions',0), //cpg1.3.0
-  array('Разрешенные типы фото', 'allowed_img_types',0), //cpg1.3.0
-  array('Разрешенные типы видео', 'allowed_mov_types',0), //cpg1.3.0
-  array('Разрешенные типы аудио', 'allowed_snd_types',0), //cpg1.3.0
+  'Дополнительные настройки файлов и миниатюр', //cpg1.3.0
+  array('Показывать иконку приватного альбома для гостя','show_private',1), //cpg1.3.0
+  array('Символы, запрещенные в именах файлов', 'forbiden_fname_char',0), //cpg1.3.0
+  //array(Разрешенные типы файлов для загрузки картинок', 'allowed_file_extensions',0), //cpg1.3.0
+  array('Разрешенные типы изображений', 'allowed_img_types',0), //cpg1.3.0
+  array('Разрешенные типы видео файлов', 'allowed_mov_types',0), //cpg1.3.0
+  array('Разрешенные типы аудио файлов', 'allowed_snd_types',0), //cpg1.3.0
   array('Разрешенные типы документов', 'allowed_doc_types',0), //cpg1.3.0
-  array('Метод изменения размера фото','thumb_method',2), //cpg1.3.0
-  array('Путь до утилиты \'convert\' от ImageMagick (пример: /usr/bin/X11/)', 'impath', 0), //cpg1.3.0
-  //array('Разрешенные типы фото (подходит только для ImageMagick)', 'allowed_img_types',0), //cpg1.3.0
-  array('Опции командной строки для ImageMagick', 'im_options', 0), //cpg1.3.0
-  array('Читать EXIF-данные в файлах JPEG', 'read_exif_data', 1), //cpg1.3.0
-  array('Читать IPTC-данные в файлах JPEG', 'read_iptc_data', 1), //cpg1.3.0
-  array('Папка для альбома <a href="#notice1" class="clickable_option">*</a>', 'fullpath', 0), //cpg1.3.0
-  array('Папка для пользовательских фото <a href="#notice1" class="clickable_option">*</a>', 'userpics', 0), //cpg1.3.0
-  array('Префикс для промежуточных фото <a href="#notice1" class="clickable_option">*</a>', 'normal_pfx', 0), //cpg1.3.0
-  array('Префикс для эскизов <a href="#notice1" class="clickable_option">*</a>', 'thumb_pfx', 0), //cpg1.3.0
-  array('Режим для папок по умолчанию', 'default_dir_mode', 0), //cpg1.3.0
-  array('Режим для фaйлов по умолчанию', 'default_file_mode', 0), //cpg1.3.0
+  array('Метод изменения размеров изображений','thumb_method',2), //cpg1.3.0
+  array('Путь к утилите ImageMagick \'convert\' (пример /usr/bin/X11/)', 'impath', 0), //cpg1.3.0
+  //array('Разрешенные типы изображений (действительно только для ImageMagick)', 'allowed_img_types',0), //cpg1.3.0
+  array('Параметры командной строки для ImageMagick', 'im_options', 0), //cpg1.3.0
+  array('Считывать EXIF информацию в JPEG файлах', 'read_exif_data', 1), //cpg1.3.0
+  array('Считывать IPTC информацию в JPEG файлах', 'read_iptc_data', 1), //cpg1.3.0
+  array('Директория альбома <a href="#notice1" class="clickable_option">*</a>', 'fullpath', 0), //cpg1.3.0
+  array('Директория для файлов пользователей <a href="#notice1" class="clickable_option">*</a>', 'userpics', 0), //cpg1.3.0
+  array('Префикс для промежуточных картинок <a href="#notice1" class="clickable_option">*</a>', 'normal_pfx', 0), //cpg1.3.0
+  array('Префикс для миниатюр <a href="#notice1" class="clickable_option">*</a>', 'thumb_pfx', 0), //cpg1.3.0
+  array('Режим по умолчанию для папок', 'default_dir_mode', 0), //cpg1.3.0
+  array('Режим по умолчанию для файлов', 'default_file_mode', 0), //cpg1.3.0
 
-  'Настройки пользователя',
+  'Настройки пользователей',
   array('Разрешить регистрацию новых пользователей', 'allow_user_registration', 1),
-  array('Регистрация пользователя требует проверки е-mail', 'reg_requires_valid_email', 1),
-  array('Сообщить администратору по e-mail о регистрации пользователя', 'reg_notify_admin_email', 1), //cpg1.3.0
-  array('Разрешить двум пользователям иметь одинаковые e-mail адреса', 'allow_duplicate_emails_addr', 1),
-  array('Пользователи могут иметь собственные альбомы (Заметка: если Вы переключите с \'да\' на \'нет\' все альбомы которые были собственными станут доступны всем)', 'allow_private_albums', 1), //cpg1.3.0
-  array('Сообщить администратору о пользователе ожидающем разрешение на добавление', 'upl_notify_admin_email', 1), //cpg1.3.0
-  array('Разрешить вошедшим пользователям смотреть список участников', 'allow_memberlist', 1), //cpg1.3.0
+  array('Регистрация требует проверку подлинности через email', 'reg_requires_valid_email', 1),
+  array('Уведомлять админа о регистрации нового пользователя по email', 'reg_notify_admin_email', 1), //cpg1.3.0
+  array('Разрешить двум пользователям иметь один и тот же email адрес', 'allow_duplicate_emails_addr', 1),
+  array('Пользователи могут иметь приватные альбомы (Внимание: если Вы переключите с \'Да\' на \'Нет\', текущие приватные альбомы станут публичными)', 'allow_private_albums', 1), //cpg1.3.0
+  array('Уведомлять амдина об ожидании пользователем подтверждения загрузки', 'upl_notify_admin_email', 1), //cpg1.3.0
+  array('Разрешить вошедшим пользователям просматривать список пользователей', 'allow_memberlist', 1), //cpg1.3.0
 
-  'Произвольные поля для описания фото (оставьте пустыми, если не используете)',
-  array('Имя Поля 1', 'user_field1_name', 0),
-  array('Имя Поля 2', 'user_field2_name', 0),
-  array('Имя Поля 3', 'user_field3_name', 0),
-  array('Имя Поля 4', 'user_field4_name', 0),
+  'Дополнительные поля для описания изображений (оставьте пустыми, если не хотите использовать)',
+  array('Имя поля 1', 'user_field1_name', 0),
+  array('Имя поля 2', 'user_field2_name', 0),
+  array('Имя поля 3', 'user_field3_name', 0),
+  array('Имя поля 4', 'user_field4_name', 0),
 
-  'Cookies настройки',
-  array('Имя cookie, используемое скриптом (при интеграции с bbs, удостоверьтесь что не совпадает с именем cookie в bbs)', 'cookie_name', 0),
-  array('Путь для cookie, используемый скриптом', 'cookie_path', 0),
+  'Настройки cookie',
+  array('Имя куки используемое скриптом (когда используете bbs интеграцию, убедитесь, что оно отличается от имени куки bbs\'s)', 'cookie_name', 0),
+  array('Путь куки используемый скриптом', 'cookie_path', 0),
 
-  'Разные установки',
+  'Разнообразные настройки',
   array('Включить режим отладки', 'debug_mode', 9), //cpg1.3.0
-  array('Включить оповещания в режиме отладки', 'debug_notice', 1), //cpg1.3.0
+  array('Отображать сообщения в режиме отладки', 'debug_notice', 1), //cpg1.3.0
 
-  '<br /><div align="left"><a name="notice1"></a>(*) Поля, помеченные * не должны изменяться, если у Вас уже есть файлы в базе данных.<br />
-  <a name="notice2"></a>(**) При смене установок помеченных **, лишь файлы добавленные в последствии будут изменены.  Рекомендуется не менять установки если уже есть файлы в галерее.  В тоже время, Вы можете изменить установки для уже существующих файлов через &quot;<a href="util.php">Администрирование</a> (изменить размер)&quot; из меню Администратора.</div><br />', //cpg1.3.0
+  '<br /><div align="left"><a name="notice1"></a>(*) Эти настройки недолжны изменяться, если у Вас уже есть файлы в базе данных.<br />
+  <a name="notice2"></a>(**) Когда изменяете эти настройки, то будут затронуты файлы добавленные после данного изменения, поэтому не рекомендуется изменять эти настройки, если у вас уже есть файлы в галереи. Несмотря на это Вы можете применить изменения к существующим файлам с помощью &quot;<a href="util.php">Инструмент администратора</a>&quot;.</div><br />', //cpg1.3.0
 );
 
 // ------------------------------------------------------------------------- //
@@ -489,31 +492,31 @@ if (defined('CONFIG_PHP')) $lang_config_data = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('DB_ECARD_PHP')) $lang_db_ecard_php = array(
-  'title' => 'Послать открытку', //cpg1.3.0
-  'ecard_sender' => 'От кого', //cpg1.3.0
-  'ecard_recipient' => 'Кому', //cpg1.3.0
+  'title' => 'Послать открытки', //cpg1.3.0
+  'ecard_sender' => 'Отправитель', //cpg1.3.0
+  'ecard_recipient' => 'Получатель', //cpg1.3.0
   'ecard_date' => 'Дата', //cpg1.3.0
-  'ecard_display' => 'Показать открытку', //cpg1.3.0
-  'ecard_name' => 'Название открытки', //cpg1.3.0
-  'ecard_email' => 'Е-mail адрес открытки', //cpg1.3.0
+  'ecard_display' => 'Показать ecard', //cpg1.3.0
+  'ecard_name' => 'Имя', //cpg1.3.0
+  'ecard_email' => 'Email', //cpg1.3.0
   'ecard_ip' => 'IP #', //cpg1.3.0
-  'ecard_ascending' => 'по возростанию', //cpg1.3.0
-  'ecard_descending' => 'по убыванию', //cpg1.3.0
-  'ecard_sorted' => 'Сортировать', //cpg1.3.0
+  'ecard_ascending' => '[по возрастанию]', //cpg1.3.0
+  'ecard_descending' => '[по убыванию]', //cpg1.3.0
+  'ecard_sorted' => 'Отсортированы', //cpg1.3.0
   'ecard_by_date' => 'по дате', //cpg1.3.0
   'ecard_by_sender_name' => 'по имени отправителя', //cpg1.3.0
-  'ecard_by_sender_email' => 'по e-mail отправителя', //cpg1.3.0
-  'ecard_by_sender_ip' => 'по IP адресу отправителя', //cpg1.3.0
+  'ecard_by_sender_email' => 'по email отправителя', //cpg1.3.0
+  'ecard_by_sender_ip' => 'по IP отправителя', //cpg1.3.0
   'ecard_by_recipient_name' => 'по имени получателя', //cpg1.3.0
-  'ecard_by_recipient_email' => 'по e-mail получателя', //cpg1.3.0
-  'ecard_number' => 'показана запись с %s до %s из %s', //cpg1.3.0
+  'ecard_by_recipient_email' => 'по email получателя', //cpg1.3.0
+  'ecard_number' => 'отображаю записи от %s до %s из %s', //cpg1.3.0
   'ecard_goto_page' => 'перейти на страницу', //cpg1.3.0
   'ecard_records_per_page' => 'Записей на странице', //cpg1.3.0
-  'check_all' => 'Ометить все', //cpg1.3.0
-  'uncheck_all' => 'Снять все отметки', //cpg1.3.0
-  'ecards_delete_selected' => 'Стереть отмеченные открытки', //cpg1.3.0
-  'ecards_delete_confirm' => 'Вы уверенны, что хотите стереть эти записи? Если да, то отметьте!', //cpg1.3.0
-  'ecards_delete_sure' => 'Я уверен(а)', //cpg1.3.0
+  'check_all' => 'Отметить все', //cpg1.3.0
+  'uncheck_all' => 'Снять отметки', //cpg1.3.0
+  'ecards_delete_selected' => 'Удалить выбранные открытки', //cpg1.3.0
+  'ecards_delete_confirm' => 'Вы уверены, что хотите записи? Отметьте галкой!', //cpg1.3.0
+  'ecards_delete_sure' => 'Я уверен', //cpg1.3.0
 );
 
 
@@ -522,34 +525,34 @@ if (defined('DB_ECARD_PHP')) $lang_db_ecard_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('DB_INPUT_PHP')) $lang_db_input_php = array(
-  'empty_name_or_com' => 'Вам нужно набрать Ваше имя и комментарий',
-  'com_added' => 'Ваш комментарий добавлен',
-  'alb_need_title' => 'Вы должны указать заголовок альбома!',
+  'empty_name_or_com' => 'Вы должны ввести своё имя и комментарий',
+  'com_added' => 'Ваш комментарий был добавлен',
+  'alb_need_title' => 'Вы должны задать название альбому!',
   'no_udp_needed' => 'Обновление не требуется.',
-  'alb_updated' => 'Альбом обновлен',
-  'unknown_album' => 'Выбранный альбом не существует или у Вас нет прав для добавления в этот альбом',
-  'no_pic_uploaded' => 'Фото не добавлены!<br /><br />Если Вы действительно выбрали фото для добавления, проверьте сервер на возможность добавления фото ...', //cpg1.3.0
-  'err_mkdir' => 'Ошибка при создании папки %s !',
-  'dest_dir_ro' => 'Папка назначения %s только для чтения (для скрипта)!',
-  'err_move' => 'Невозможно переместить %s в %s !',
-  'err_fsize_too_large' => 'Размер фото, которое Вы хотите добавить, слишком большой (максимально допустимый: %s x %s) !', //cpg1.3.0
-  'err_imgsize_too_large' => 'Размер файла, который Вы хотите добавить, слишком большой (максимально допустимый: %s Kб) !',
-  'err_invalid_img' => 'Файл, который Вы хотите добавить является неправильной картинкой !',
-  'allowed_img_types' => 'Вы можете добавить только %s фото.',
-  'err_insert_pic' => 'Фото \'%s\' не может быть добавлено в альбом ', //cpg1.3.0
-  'upload_success' => 'Ваше фото успешно добавлено<br /><br />Оно будет видно после проверки администратором.', //cpg1.3.0
-  'notify_admin_email_subject' => '%s - Оповещение о добавлении', //cpg1.3.0
-  'notify_admin_email_body' => 'Фото было загружено пользователем %s и нуждается в Вашем одобрении. Посетите %s', //cpg1.3.0
+  'alb_updated' => 'Альбом был обновлен',
+  'unknown_album' => 'Выбранный альбом не существует или у Вас нет прав добавлять в этот альбом',
+  'no_pic_uploaded' => 'Ни один файл не был загружен!<br /><br />Если Вы действительно выбрали файл для закачки, проверьте, разрешает ли сервер производить закачки...', //cpg1.3.0
+  'err_mkdir' => 'Ошибка в создании директории %s !',
+  'dest_dir_ro' => 'Указанная директория %s не имеет прав на запись!',
+  'err_move' => 'Не могу перенести %s в %s !',
+  'err_fsize_too_large' => 'Размер файла, который Вы загрузили, слишком большой (максимально разрешено %s x %s) !', //cpg1.3.0
+  'err_imgsize_too_large' => 'Объем файла, который Вы загрузили, слишком большой (максимально разрешено %s КБ) !',
+  'err_invalid_img' => 'Файл, который Вы загрузили, не является правильным изображением!',
+  'allowed_img_types' => 'Вы можете загружать только %s изображения.',
+  'err_insert_pic' => 'Файл \'%s\' не может быть добавлен в альбом ', //cpg1.3.0
+  'upload_success' => 'Ваш файл был успешно добавлен.<br /><br />Он станет доступным после подтверждения администрацией сайта.', //cpg1.3.0
+  'notify_admin_email_subject' => '%s - Уведомление о загрузке файла', //cpg1.3.0
+  'notify_admin_email_body' => 'Было загружено изображение пользователем %s, которое трубует подтверждения. Посетите %s', //cpg1.3.0
   'info' => 'Информация',
-  'com_added' => 'Комментарий добавлен',
+  'com_added' => 'Добавлен комментарий',
   'alb_updated' => 'Альбом обновлен',
-  'err_comment_empty' => 'Ваш комментарий пустой !',
-  'err_invalid_fext' => 'Принимаются файлы только с этими расширениями: <br /><br />%s.',
-  'no_flood' => 'Извините, но Вы уже являетесь автором последнего комментария для этого фото<br /><br />Отредактируйте комментарий, который Вы послали, если хотите его исправить.', //cpg1.3.0
-  'redirect_msg' => 'Вы будете перенаправлены.<br /><br /><br />Нажмите \'Вперед\' если страница не обновится автоматически',
-  'upl_success' => 'Ваш файл успешно добавлен', //cpg1.3.0
-  'email_comment_subject' => 'На Фото галерее Coppermine добавлен комментарий', //cpg1.3.0
-  'email_comment_body' => 'Есть новый комментарий на Вашей галерее.  Посмотреть его можно здесь', //cpg1.3.0
+  'err_comment_empty' => 'Ваш комментарий пуст!',
+  'err_invalid_fext' => 'Разрешены только файлы с расширениями: <br /><br />%s.',
+  'no_flood' => 'Простите, но Вы являетесь автором последнего комментария для данного файла.<br /><br />Отредактируйте ваш комментарий, если Вы хотите его изменить.', //cpg1.3.0
+  'redirect_msg' => 'Вы перенаправляетесь.<br /><br /><br />Нажмите \'ПРОДОЛЖИТЬ\', если страница не обновится автоматически.',
+  'upl_success' => 'Ваш файл был успешно добавлен', //cpg1.3.0
+  'email_comment_subject' => 'Добавлен комментарий в Coppermine Photo Gallery', //cpg1.3.0
+  'email_comment_body' => 'Кто-то разместил комментарий в вашей галереи. Просмотрите его.', //cpg1.3.0
 );
 
 // ------------------------------------------------------------------------- //
@@ -557,23 +560,23 @@ if (defined('DB_INPUT_PHP')) $lang_db_input_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('DELETE_PHP')) $lang_delete_php = array(
-  'caption' => 'Надпись',
-  'fs_pic' => 'полный размер фото',
+  'caption' => 'Описание',
+  'fs_pic' => 'полный размер изображения',
   'del_success' => 'успешно удалено',
-  'ns_pic' => 'нормальный размер фото',
+  'ns_pic' => 'нормальный размер изображения',
   'err_del' => 'не может быть удалено',
-  'thumb_pic' => 'эскиз',
+  'thumb_pic' => 'миниатюра',
   'comment' => 'комментарий',
-  'im_in_alb' => 'фото в альбоме',
+  'im_in_alb' => 'изображение в альбоме',
   'alb_del_success' => 'Альбом \'%s\' удален',
-  'alb_mgr' => 'Управление альбомом',
-  'err_invalid_data' => 'Неверные данные получены в \'%s\'',
-  'create_alb' => 'Создание альбома \'%s\'',
-  'update_alb' => 'Обновление альбома \'%s\' с заголовком \'%s\' и индексом \'%s\'',
+  'alb_mgr' => 'Менеджер альбома',
+  'err_invalid_data' => 'Получена неправильная информация в \'%s\'',
+  'create_alb' => 'Создаю альбом \'%s\'',
+  'update_alb' => 'Обновляю альбом \'%s\' с названием \'%s\' и индексом \'%s\'',
   'del_pic' => 'Удалить файл', //cpg1.3.0
   'del_alb' => 'Удалить альбом',
   'del_user' => 'Удалить пользователя',
-  'err_unknown_user' => 'Выбранный пользователь не существует !',
+  'err_unknown_user' => 'Выбранный пользователь не существует!',
   'comment_deleted' => 'Комментарий был успешно удален',
 );
 
@@ -590,53 +593,56 @@ if (defined('DELETE_PHP')) $lang_delete_php = array(
 if (defined('DISPLAYIMAGE_PHP')){
 
 $lang_display_image_php = array(
-  'confirm_del' => 'Вы уверены, что хотите удалить это фото? \\nКомментарии также удалятся.', //js-alert //cpg1.3.0
-  'del_pic' => 'УДАЛИТЬ ФАЙЛ', //cpg1.3.0
-  'size' => '%s x %s пикселов',
-  'views' => '%s раз',
+  'confirm_del' => 'Вы уверены что хотите УДАЛИТЬ этот файл?\\nКомментарии тоже будут удалены.', //js-alert //cpg1.3.0
+  'del_pic' => 'УДАЛИТЬ ЭТОТ ФАЙЛ', //cpg1.3.0
+  'size' => '%s x %s пикселей',
+  'views' => '%s раз(а)',
   'slideshow' => 'Слайд-шоу',
   'stop_slideshow' => 'ОСТАНОВИТЬ СЛАЙД-ШОУ',
-  'view_fs' => 'Нажать для просмотра полного размера',
-  'edit_pic' => 'Отредактировать описание', //cpg1.3.0
-  'crop_pic' => 'Уменьшить и повернуть', //cpg1.3.0
+  'view_fs' => 'Нажмите, чтобы посмотреть в полный размер',
+  'edit_pic' => 'Изменить свойства', //cpg1.3.0
+  'crop_pic' => 'Обрезать и Повернуть', //cpg1.3.0
 );
 
 $lang_picinfo = array(
   'title' =>'Информация о файле', //cpg1.3.0
   'Filename' => 'Имя файла',
-  'Album name' => 'Имя альбома',
-  'Rating' => 'Рейтинг (%s голосов)',
+  'Album name' => 'Альбом',
+  'Rating' => 'Рейтинг (голосов: %s)',
   'Keywords' => 'Ключевые слова',
-  'File Size' => 'Размер файла',
+  'File Size' => 'Объем',
+  'URL' => 'Ссылка',
   'Dimensions' => 'Размеры',
-  'Displayed' => 'Просмотров',
-  'Camera' => 'Камера',
-  'Date taken' => 'Когда снято',
-  'Aperture' => 'Диафрагма',
-  'Exposure time' => 'Экспозиция',
+  'Displayed' => 'Отображена',
+  'Camera' => 'Фотоаппарат',
+  'Date taken' => 'Дата',
+  'ISO'=>'ISO',
+  'Aperture' => 'Апертура',
+  'Exposure time' => 'Выдержка',
   'Focal length' => 'Фокусное расстояние',
-  'Comment' => 'Коментарий',
-  'addFav'=>'Добавить в избранные', //cpg1.3.0
+  'Comment' => 'Комментарий',
+  'addFav'=>'Добавить в Избранное', //cpg1.3.0
   'addFavPhrase'=>'Избранные', //cpg1.3.0
-  'remFav'=>'Удалить из избранных', //cpg1.3.0
-  'iptcTitle'=>'IPTC Название', //cpg1.3.0
-  'iptcCopyright'=>'IPTC Copyright', //cpg1.3.0
-  'iptcKeywords'=>'Ключевые слова', //cpg1.3.0
-  'iptcCategory'=>'Категория IPTC', //cpg1.3.0
-  'iptcSubCategories'=>'Подкатегория IPTC', //cpg1.3.0
+  'remFav'=>'Удалить из Избранного', //cpg1.3.0
+  'iptcTitle'=>'IPTC название', //cpg1.3.0
+  'iptcCopyright'=>'IPTC авторское право', //cpg1.3.0
+  'iptcKeywords'=>'IPTC ключевые слова', //cpg1.3.0
+  'iptcCategory'=>'IPTC категория', //cpg1.3.0
+  'iptcSubCategories'=>'IPTC под категория', //cpg1.3.0
 );
 
 $lang_display_comments = array(
   'OK' => 'OK',
-  'edit_title' => 'Отредактировать',
-  'confirm_delete' => 'Точно удалить ?', //js-alert
-  'add_your_comment' => 'Прокомментировать',
+  'edit_title' => 'Изменить этот комментарий',
+  'confirm_delete' => 'Вы уверены, что хотите удалить этот комментарий?', //js-alert
+  'add_your_comment' => 'Добавить ваш комментарий',
   'name'=>'Имя',
   'comment'=>'Комментарий',
-  'your_name' => 'Анонимно',
+  'your_name' => 'Гость',
 );
+
 $lang_fullsize_popup = array(
-  'click_to_close' => 'Нажмите на картинку, чтобы закрыть окно',
+  'click_to_close' => 'Нажмите на изображение, чтобы закрыть окно',
 );
 
 }
@@ -646,20 +652,21 @@ $lang_fullsize_popup = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('ECARDS_PHP') || defined('DISPLAYECARD_PHP')) $lang_ecard_php =array(
-	'title' => 'Послать Открытку',
-	'invalid_email' => '<b>Внимание</b> : неправильный e-mail адрес !',
-	'ecard_title' => 'Открытка от %s для Вас',
-  'error_not_image' => 'Только фото можно посылать открыткой.', //cpg1.3.0
-  'view_ecard' => 'Если eCard показывается некорректно, нажмите на эту ссылку',
-  'view_more_pics' => 'Нажмите на эту ссылку для просмотра остальных фото!',
-  'send_success' => 'Ваша eСard послана',
-  'send_failed' => 'Извините, но сервер не может послать Вашу eCard...',
+  'title' => 'Послать открытку',
+  'invalid_email' => '<b>Внимание</b>: неправильный формат email адреса!',
+  'invalid_emaildomen' => 'Регистрация разрешена только в домене "%s"',
+  'ecard_title' => 'Для вас есть открытка от %s',
+  'error_not_image' => 'Только изображения могут быть посланы в качестве открытки.', //cpg1.3.0
+  'view_ecard' => 'Если открытка не отображается корректно, пройдите по этой ссылке',
+  'view_more_pics' => 'Посмотреть остальные картинки!',
+  'send_success' => 'Ваша открытка была отправить',
+  'send_failed' => 'Извините, но сервер не может отправить вашу открытку...',
   'from' => 'От',
   'your_name' => 'Ваше имя',
-  'your_email' => 'Ваш eMail адрес',
+  'your_email' => 'Ваш адрес email',
   'to' => 'Кому',
   'rcpt_name' => 'Имя получателя',
-  'rcpt_email' => 'eMail адрес получателя',
+  'rcpt_email' => 'Email адрес получателя',
   'greetings' => 'Приветствие',
   'message' => 'Сообщение',
 );
@@ -669,32 +676,31 @@ if (defined('ECARDS_PHP') || defined('DISPLAYECARD_PHP')) $lang_ecard_php =array
 // ------------------------------------------------------------------------- //
 
 if (defined('EDITPICS_PHP')) $lang_editpics_php = array(
-  'pic_info' => 'Информация&nbsp;файла', //cpg1.3.0
-  
+  'pic_info' => 'Информация', //cpg1.3.0
   'album' => 'Альбом',
-  'title' => 'Заголовок',
+  'title' => 'Название',
   'desc' => 'Описание',
   'keywords' => 'Ключевые слова',
-  'pic_info_str' => '%sx%s - %sКб - %s просмотров - %s голосов',
+  'pic_info_str' => '%s &times; %s - %s КБ - просмотров %s - голосов %s',
   'approve' => 'Одобрить файл', //cpg1.3.0
-  'postpone_app' => 'Задержать одобрение',
+  'postpone_app' => 'Отложить одобрение',
   'del_pic' => 'Удалить файл', //cpg1.3.0
-  'read_exif' => 'Прочитать снова информацию EXIF', //cpg1.3.0
+  'read_exif' => 'Считать EXIF данные снова', //cpg1.3.0
   'reset_view_count' => 'Сбросить счетчик просмотров',
   'reset_votes' => 'Сбросить голоса',
   'del_comm' => 'Удалить комментарии',
-  'upl_approval' => 'Проверка добавлений',
-  'edit_pics' => 'Исправить файл', //cpg1.3.0
-  'see_next' => 'Смотреть следующие файлы', //cpg1.3.0
-  'see_prev' => 'Смотреть предыдующие файлы', //cpg1.3.0
-  'n_pic' => '%s файлов', //cpg1.3.0
-  'n_of_pic_to_disp' => 'Кол-во файлов на экран', //cpg1.3.0
+  'upl_approval' => 'Одобрение загрузки',
+  'edit_pics' => 'Изменить файлы', //cpg1.3.0
+  'see_next' => 'Посмотреть следующие файлы', //cpg1.3.0
+  'see_prev' => 'Посмотреть предыдущие файлы', //cpg1.3.0
+  'n_pic' => 'файлов %s', //cpg1.3.0
+  'n_of_pic_to_disp' => 'Количество файлов для просмотра', //cpg1.3.0
   'apply' => 'Применить изменения', //cpg1.3.0
-  'crop_title' => 'Coppermine Picture Editor', //cpg1.3.0
-  'preview' => 'Предпросмотр', //cpg1.3.0
-  'save' => 'Сохранить картинку', //cpg1.3.0
-  'save_thumb' =>'Сохранить как эскиз', //cpg1.3.0
-  'sel_on_img' =>'Выбранная часть должна быть полностью на картинке!', //js-alert //cpg1.3.0
+  'crop_title' => 'Coppermine Редактор Изображений', //cpg1.3.0
+  'preview' => 'Предварительный просмотр', //cpg1.3.0
+  'save' => 'Сохранить изображение', //cpg1.3.0
+  'save_thumb' =>'Сохранить как миниатюру', //cpg1.3.0
+  'sel_on_img' =>'Выбор должен быть целиком расположен на изображении!', //js-alert //cpg1.3.0
 );
 
 // ------------------------------------------------------------------------- //
@@ -703,42 +709,41 @@ if (defined('EDITPICS_PHP')) $lang_editpics_php = array(
 
 if (defined('FAQ_PHP')) $lang_faq_php = array(
   'faq' => 'Часто Задаваемые Вопросы', //cpg1.3.0
-  'toc' => 'Содержание', //cpg1.3.0
+  'toc' => 'Оглавление', //cpg1.3.0
   'question' => 'Вопрос: ', //cpg1.3.0
   'answer' => 'Ответ: ', //cpg1.3.0
 );
 
 if (defined('FAQ_PHP')) $lang_faq_data = array(
-  'Общие FAQ', //cpg1.3.0
-  array('Зачем мне регистрироваться?', 'Администратор может либо требовать, либо не требовать регистрации.  Регистрация дает участникам дополнительные возможности, например: добавлять свои файлы, иметь список избранных, оценивать фото, делать комментарии и т.д.', 'allow_user_registration', '0'), //cpg1.3.0
-  array('Как мне зарегистрироваться?', 'Перейти в &quot;Регистрацию&quot; и заполнить требуемые поля (по желанию, можно дать и выборочную информацию).<br />Если администратор требует проверки e-mail адреса, тогда после отправки регистрационной формы Вы получите сообщение в Вашем ящике e-mail.  Там будут инструкции о том, как заактивировать Ваше членство. Обязательно надо пройти активизацию для того, чтобы можно было войти и воспользоваться всеми приумуществами.', 'allow_user_registration', '1'), //cpg1.3.0
-  array('Как мне входить?', 'Перейти во &quot;Вход&quot;, ввести имя и пароль.  Для последущего входа без ввода имени и пароля можно воспользоваться функцией &quot;Запомнить меня&quot;.<br /><b>ВНИМАНИЕ: Cookies должны быть включены, и не удалены с Вашего компьютера для функциональности &quot;Запомнить меня&quot;.</b>', 'offline', 0), //cpg1.3.0
-  array('Почему я не могу войти?', 'Удостоверьтесь, что Вы следовали инструкциям об активизации, полученными по е-mail. Если все же есть проблемы, свяжитесь с администратором.', 'offline', 0), //cpg1.3.0
-  array('Что делать, если не помню пароль?', 'Если на этом сайте есть ссылка &quot;Я потерял(а) пароль&quot; пользуйтесь ею. Если нет, тогда администратор поможет Вам с паролем.', 'offline', 0), //cpg1.3.0
-  //array('Что делать, если мой e-mail адрес изменился?', 'Войдите и поменяйте его в &quot;Профиле&quot;', 'offline', 0), //cpg1.3.0
-  array('Как добавлять фото в &quot;Избранные&quot;?', 'Нажмите на фото и потом на &quot;информацию о фото&quot; (<img src="images/info.gif" width="16" height="16" border="0" alt="Информация о фото" />); наидите информацию под фото и нажмите на &quot;Добавить в Избранные&quot;.<br />Администратор может по умолчанию включить &quot;информацию о фото&quot;.<br />ВНИМАНИЕ: Cookies должны быть включены и сохранены на Вашем компьютере.', 'offline', 0), //cpg1.3.0
-  array('Как оценить файл (рейтинг)?', 'Нажать на эскиз, рейтинг внизу.', 'offline', 0), //cpg1.3.0
-  array('Как комментировать фото?', 'Нажать на эскиз, комментарии можно добавить под ним.', 'offline', 0), //cpg1.3.0
-array('Как добавить (выгрузить) файл?', 'Перейти в &quot;Добавление&quot; и выбрать альбом куда добавлять. Нажать на &quot;Просмотр&quot; и найти нужный файл.  Нажать  &quot;открыть&quot; (добавив название и описание) и нажать  &quot;Послать&quot;', 'allow_private_albums', 0), //cpg1.3.0
-  array('Куда выгружаются фото?', 'Вы сможете добавлять файл в один из Ваших альбомов в &quot;Моей Галерее&quot;. Администратор так же может Вам разрешить добавлять фото в главную галерею.', 'allow_private_albums', 0), //cpg1.3.0
-  array('Какие типы файлов можно добавлять?', 'Размер и тим (jpg, png, и т.д.) зависит от администратора.', 'offline', 0), //cpg1.3.0
-  array('Что такое &quot;Моя Галерея&quot;?', '&quot;Моя Галерея&quot; это персональная галерея, куда Вы можете добавлять файлы, и управлять ею же.', 'allow_private_albums', 0), //cpg1.3.0
-  array('Как создавать, переименовать или удалять альбом в &quot;Моей Галереейquot;?', 'Вы должны быть в &quot;Режиме Администратора&quot;<br />Перейти в &quot;Управление Моими Альбомами&quot;и нажать на &quot;Новый&quot;. Поменять &quot;Новый Альбом&quot; на название которое Вам хочется.<br />Так же Вы можете переименовать альбомы в Вашей категории.<br />Нажмите &quot;Применить Изменения&quot;.', 'allow_private_albums', 0), //cpg1.3.0
-  array('Как контролировать участников смотрящих мои альбомы?', 'Вы должны быть в &quot;Режиме Администратора&quot;<br />Перейти в &quot;Исправить Мои Альбомы&quot;. В режиме &quot;Обновить альбомquot; выбрать альбом.<br />Здесь можно поменять заголовок, описание, эскиз, и ограничить просмотр, комментарии и голосование.<br />Потом нажать  &quot;Обновить альбом&quot;.', 'allow_private_albums', 0), //cpg1.3.0
-  array('Как мне смотреть галереи других участников?', 'Перейти в &quot;Список Альбомов&quot; и найти  &quot;Галереии Участников&quot;.', 'allow_private_albums', 0), //cpg1.3.0
-  array('Что такое cookies?', 'Cookies содержат данные посланные с сайта на Ваш компьютер.<br />Cookies позволяют Вам вернуться на сайт и войти автоматически, без введения имени и пароля.  Так же помогают с рядом вещей на галерее, например сохраняют содержание &quot;Избранного&quot;.', 'offline', 0), //cpg1.3.0
-  array('Как мне сделать такую галерею на моем сайте?', 'Coppermine бесплатная галерея, выпущенная под лицензией GNU GPL. Множесто функций работающих на разных платформах. Все можно узнать на <a href="http://coppermine.sf.net/">Coppermine Home Page</a>.', 'offline', 0), //cpg1.3.0
+  'Основной FAQ', //cpg1.3.0
+  array('Почему я должен регистрироваться?', 'Регистрация может быть затребована или нет администрацией сайта. Регистрация предоставляет пользователю дополнительные возможности: загрузка файлов, свой список избранных файлов, возможность оценивать изображения, оставлять к ним комментарии и т.п.', 'allow_user_registration', '1'), //cpg1.3.0
+  array('Как я могу зарегистрироваться?', 'Пройдите в пункт &quot;Регистрация&quot; и заполните необходимые данные (так же, если хотите, можете заполнить дополнительную информацию о себе).<br />Если Администрация требует подтверждения регистрации через email, то после заполнения вашей информации, Вы должны получить электронное письмо на указанный при регистрации в ваших данных email адрес с инструкциями как активизировать вашего пользователя на сайте. Ваш аккаунт должен быть подтвержден, чтобы Вы могли войти на сайт.', 'allow_user_registration', '1'), //cpg1.3.0
+  array('Как осуществить вход?', 'Пройдите в пункт &quot;Вход&quot;, введите ваше имя пользователя и пароль и, если хотите, отметьте &quot;Автоматически входить при каждом посещении &quot;, чтобы Вам не приходилось каждый раз заново вводить имя пользователя и пароль при входе на сайт.<br /><b>ВАЖНО: У Вас должны быть включены cookies/куки для данного сайта. И впоследствии cookies/куки с данного сайта не должны удаляться, чтобы Вы могли использовать эту возможность &quot;Автоматически входить при каждом посещении&quot;.</b>', 'offline', 0), //cpg1.3.0
+  array('Почему я не могу войти?', 'Вы зарегистрировались и открыли ссылку присланную вам по email?. Данная ссылка активирует ваш аккаунт. В случае других проблем входа на сайт свяжитесь с администрацией сайта.', 'offline', 0), //cpg1.3.0
+  array('Что делать, если я забыл пароль?', 'Если при входе на сайт по ссылке (&quot;Вход&quot;) есть ссылка &quot;Забыли пароль?&quot;, тогда воспользуйтесь ей. В противном случае свяжитесь с администрацией сайта для получения нового пароля.', 'offline', 0), //cpg1.3.0
+  //array('Чтобы будет, если я изменю адрес email?', 'Просто войдите на сайт и измените ваш email адрес через кнопку &quot;Профиль&quot;. Вы должны находиться в режиме администратора.', 'offline', 0), //cpg1.3.0
+  array('Как я могу добавить картинку в &quot;Избранные&quot;?', 'Кликните на изображение, затем на значок-ссылку &quot;Показать/спрятать информацию о файле&quot; (<img src="images/info.gif" width="16" height="16" border="0" alt="Показать/спрятать информацию о файле" />), прокрутите информацию об изображении вниз и выберите &quot;Добавить в Избранное&quot;.<br />Администрация может включить отображение информации о файл с самого начала, тогда вам не нужно будет нажимать этот значок-ссылку.<br /><b>ВАЖНО: У Вас должны быть включены cookies/куки для данного сайта. И впоследствии cookies/куки с данного сайта не должны удаляться, так как в них будет хранится информация о тех файлах, которые Вы добавили в избранное.</b>', 'offline', 0), //cpg1.3.0
+  array('Как оценить файл (рейтинг)?', 'Кликните по миниатюре, проследуйте вниз изображения и выберите желаемую оценку/рейтинг.', 'offline', 0), //cpg1.3.0
+  array('Как добавить комментарий к изображению?', 'Кликните по миниатюре, проследуйте вниз изображения и добавьте комментарий.', 'offline', 0), //cpg1.3.0
+  array('Как загрузить файл?', 'Пройдите в пункт &quot;Загрузить файл&quot;, нажмите &quot;Browse&quot;, найдите необходимый для загрузки файл, нажмите &quot;Открыть&quot; и нажмите &quot;ПРОДОЛЖИТЬ&quot;. После предварительной загрузки выберите альбом куда Вы хотите загрузить файл и нажмите &quot;ПРОДОЛЖИТЬ&quot;. Также при желании можете добавить название и описание.', 'offline', 0), //cpg1.3.0
+  array('Куда я должен загружать изображения?', 'Вы можете загружать файлы в ваши альбомы в &quot;Моя галерея&quot;. Также Администрация можете разрешить Вам загружать файлы в один или несколько альбомов Основной Галереи.', 'offline', 0), //cpg1.3.0
+  array('Какие типы и размер файлов я могу загружать?', 'Какой размер и тип файлов (jpg, png, и т.д.) можно загружать решает администратор.', 'offline', 0), //cpg1.3.0
+  array('Как я могу создавать, переименовывать или удалять альбомы в &quot;Моя галерея&quot;?', 'Вы должны перейти в &quot;Режим администратора&quot;.<br />Пройдите в &quot;Создать / упорядочить мои альбомы&quot; и нажать &quot;Новый&quot;. Измените в списке &quot;Новый альбом&quot; на желаемое название.<br />Вы также можете переименовать любой альбом в вашей галереи.<br />Нажмите &quot;Применить изменения&quot;.', 'allow_private_albums', 1), //cpg1.3.0
+  array('Как я могу изменять и ограничивать пользователей от просмотра моих альбомов?', 'Вы должны перейти в &quot;Режим администратора&quot;.<br />Пройдите в &quot;Изменить мои альбомы&quot;. На панели &quot;Обновить альбом&quot; выберите нужный альбом.<br />Теперь Вы можете изменить название, описание, миниатюру альбома. Ограничить пользователей от просмотра, оставления комментариев и оценки файлов.<br />Нажмите &quot;Обновить альбом&quot;.', 'allow_private_albums', 1), //cpg1.3.0
+  array('Как я могу просмотреть галереи других пользователей?', 'Перейдите в корневую часть сайта, нажмите &quot;Список альбомов&quot; и выберите &quot;Галереи пользователей&quot;.', 'allow_private_albums', 1), //cpg1.3.0
+  array('Что такое cookies/куки?', 'Cookies/куки - это кусок текста с данными, который посылается с сайта и сохраняется у вас на компьютере.<br />Cookies/куки обычно позволяют пользователю покидать и возвращаться на сайт без необходимости каждый раз вводить логин и пароль, плюс некоторые другие возможности.', 'offline', 0), //cpg1.3.0
+  array('Где я могу взять эту программу для своего сайта?', 'Coppermine - это бесплатная Мультимедийная Галерея, распространяемая по GNU GPL лицензии. В ней много разнообразных функций и она была портирована на различные платформы. Посетите <a href="http://coppermine.sf.net/">домашнюю страницу Coppermine</a>, чтобы узнать больше или скачать данную галерею.', 'offline', 0), //cpg1.3.0
 
-  'Навигация', //cpg1.3.0
-  array('Что такое &quot;Список альбомов&quot;?', 'Показывяет все альбомы в категории со ссылками на эти альбомы. Если Вы вне определенной категории, показывает всю галерею со ссылками на все категории.  Если установлены эскизы, они так же работают как ссылки.', 'offline', 0), //cpg1.3.0
-  array('Что такое &quot;Моя галерея&quot;?', 'Здесь участники могут создавать свои галереи, управлять альбомами, и добавлять в них файлы.', 'allow_private_albums', 0), //cpg1.3.0
-  array('Какая разница между &quot;Режимом администратора&quot; и &quot;Режимом пользователя&quot;?', 'В режиме администратора, участники могут управлять своими галереями.', 'allow_private_albums', 0), //cpg1.3.0
-  array('Что такое &quot;Добавка&quot;?', 'Участники могут выгружать файлы (размер и тип установлен администратором) в галерею, которая выбрана ими или администратором.', 'allow_private_albums', 0), //cpg1.3.0
-  array('Что такое &quot;Последние добавления&quot;?', 'Новые файлы выгруженные в галерею.', 'offline', 0), //cpg1.3.0
-  array('Что такое &quot;Последние комментарии&quot;?', 'Самые последние комментарии оставленные участниками.', 'offline', 0), //cpg1.3.0
-  array('Что такое &quot;Полулярные&quot;?', 'Файлы с наибольшим количеством просмотров (всех посетителей, не только участников.)', 'offline', 0), //cpg1.3.0
-  array('Что такое &quot;Лучшие&quot;?', 'Лучшие по результатам голосования.  Учитывается среднее число (например, если 5 участников дали каждый <img src="images/rating3.gif" width="65" height="14" border="0" alt="" /> у файлы будет средний результат <img src="images/rating3.gif" width="65" height="14" border="0" alt="" /> ; пять участников  дали от 1 до 5 (1,2,3,4,5) тогда будет <img src="images/rating3.gif" width="65" height="14" border="0" alt="" /> .)<br />Шкала такая: от <img src="images/rating5.gif" width="65" height="14" border="0" alt="лучшее" /> (лучшее) до <img src="images/rating0.gif" width="65" height="14" border="0" alt="худшее" /> (худшее).', 'offline', 0), //cpg1.3.0
-  array('Что такое &quot;Избранные&quot;?', 'Туда можно добавлять Ваши любимые файлы.  Информация сохраняется в cookie.', 'offline', 0), //cpg1.3.0
+  'Управление сайтом', //cpg1.3.0
+  array('Что такое &quot;Список альбомов&quot;?', 'При нажатии &quot;Список альбомов&quot; в той категории, в которой Вы находились в данный момент, открывается основная страница категории со ссылками на каждый альбом. Если Вы не находитесь в какой-либо категории, Вы попадете на основную страницу галереи со ссылками на категории. Миниатюры могут являться ссылками в категории.', 'offline', 0), //cpg1.3.0
+  array('Что такое &quot;Моя галерея&quot;?', 'Эта возможность позволяет пользователю создавать свою галерею - добавлять, удалять или изменять альбомы по своему усмотрению и загружать в них файлы.', 'allow_private_albums', 1), //cpg1.3.0
+  array('Какая разница между &quot;Режим администратора&quot; и &quot;Режим пользователя&quot;?', 'Находясь в режиме администратора, Вы можете изменять Вашу галерею (также можете изменять галереи других пользователей, если это разрешено администратором).', 'allow_private_albums', 1), //cpg1.3.0
+  array('Что такое &quot;Загрузить файл&quot;?', 'При нажатии позволяет пользователю загрузить файл в галерею выбранную им или администратором сайта. Размер и тип файлов устанавливается администратором.', 'offline', 0), //cpg1.3.0
+  array('Что такое &quot;Последние добавления&quot;?', 'При нажатии отображает последние загруженные файлы на сайт.', 'offline', 0), //cpg1.3.0
+  array('Что такое &quot;Последние комментарии&quot;?', 'При нажатии отображает последние добавленные комментарии и файлы, к которым они были добавлены.', 'offline', 0), //cpg1.3.0
+  array('Что такое &quot;Часто просматриваемые&quot;?', 'При нажатии отображает наиболее просматриваемые файлы всеми пользователями на сайте (в независимости от того, вошли они на сайт или нет).', 'offline', 0), //cpg1.3.0
+  array('Что такое &quot;Лучшие по рейтингу&quot;?', 'При нажатии отображает самые высокие по рейтингу/оценке пользователей файлы. Также отображает средний рейтинг/оценку.<br />К примеру, пять пользователей оценили файл по <img src="images/rating4.gif" width="65" height="14" border="0" alt="" />: файл будет иметь рейтинг/оценку <img src="images/rating4.gif" width="65" height="14" border="0" alt="" />.<br />Или пять пользователей оценили файл от 1 до 5 (1,2,3,4,5), тогда общий рейтинг/оценка файла будет <img src="images/rating3.gif" width="65" height="14" border="0" alt="" />. 1+2+3+4+5=15 15/5=3<br />Значение рейтинга/оценки идёт от <img src="images/rating5.gif" width="65" height="14" border="0" alt="best" /> (самая лучшая) к <img src="images/rating0.gif" width="65" height="14" border="0" alt="worst" /> (самая плохая).', 'offline', 0), //cpg1.3.0
+  array('Что такое &quot;Избранные&quot;?', 'При нажатии отображает те файлы, которые пользователь добавил в избранное на данном компьютере.<br /><b>ВАЖНО: Так как записи об избранных файлах сохраняются в cookie/куки текущего компьютера пользователя, то на другом компьютере Вы не сможете увидеть те файлы, которые Вы добавили в избранное на первом компьютере.', 'offline', 0), //cpg1.3.0
 );
 
 
@@ -748,17 +753,20 @@ array('Как добавить (выгрузить) файл?', 'Перейти 
 
 if (defined('FORGOT_PASSWD_PHP')) $lang_forgot_passwd_php = array(
   'forgot_passwd' => 'Напомнить пароль', //cpg1.3.0
-  'err_already_logged_in' => 'Вы уже вошли !', //cpg1.3.0
-  'enter_username_email' => 'Ввести имя или e-mail адрес', //cpg1.3.0
-  'submit' => 'Вперед', //cpg1.3.0
-  'failed_sending_email' => 'Е-mail с паролем не отослан !', //cpg1.3.0
-  'email_sent' => 'Е-mail с именем и паролем отослан на %s', //cpg1.3.0
-  'err_unk_user' => 'Нет такого участника!', //cpg1.3.0
-  'passwd_reminder_subject' => '%s - напоминание о пароле', //cpg1.3.0
-  'passwd_reminder_body' => 'Вы запросили помощь со входом в галерею:
-Username: %s
-Password: %s
-Нажать %s для входа.', //cpg1.3.0
+  'err_already_logged_in' => 'Вы уже вошли в систему!', //cpg1.3.0
+  'enter_username_email' => 'Введите имя или адрес email', //cpg1.3.0
+  'submit' => 'Выполнить', //cpg1.3.0
+  'failed_sending_email' => 'Письмо с напоминанием пароля не может быть послано!', //cpg1.3.0
+  'email_sent' => 'Письмо с вашим именем пользователя и паролем было послано на %s', //cpg1.3.0
+  'err_unk_user' => 'Выбранный пользователь не существует!', //cpg1.3.0
+  'passwd_reminder_subject' => '%s - Напоминание пароля', //cpg1.3.0
+  'passwd_reminder_body' => 'Вы получили это письмо потому, что Вы (либо кто-то, выдающий себя за вас) попросили выслать новый пароль к вашей учётной записи.
+==============================
+   Имя: %s
+Пароль: %s
+==============================
+
+Нажмите %s, чтобы войти в галерею.', //cpg1.3.0
 );
 
 // ------------------------------------------------------------------------- //
@@ -768,26 +776,26 @@ Password: %s
 if (defined('GROUPMGR_PHP')) $lang_groupmgr_php = array(
   'group_name' => 'Имя группы',
   'disk_quota' => 'Дисковая квота',
-  'can_rate' => 'Голосование разрешено', //cpg1.3.0
-  'can_send_ecards' => 'Открытки разрешены',
-  'can_post_com' => 'Комментарии разрешены',
-  'can_upload' => 'Добавка разрешена', //cpg1.3.0
-  'can_have_gallery' => 'Персональная галерея разрешена',
+  'can_rate' => 'Может голосовать', //cpg1.3.0
+  'can_send_ecards' => 'Может посылать открытки',
+  'can_post_com' => 'Может комментировать',
+  'can_upload' => 'Может загружать файлы', //cpg1.3.0
+  'can_have_gallery' => 'Есть персональная галерея',
   'apply' => 'Применить изменения',
   'create_new_group' => 'Создать новую группу',
   'del_groups' => 'Удалить выбранные группы',
-  'confirm_del' => 'ВНИМАНИЕ: При удалении группы, участники этой группы будут перемещенны в группу \'Зарегестрированных\' !\n\nХотите продолжать ?', //js-alert //cpg1.3.0
-  'title' => 'Управлять группами участников',
-  'approval_1' => 'Одобрение админа: общ. альбом? (1)',
-  'approval_2' => 'Одобрение админа: частный. альбом?  (2)',
-  'upload_form_config' => 'Конфигурация формы для добавки', //cpg1.3.0
-  'upload_form_config_values' => array( 'Выгружать только одиночные файлы', 'Выгружать только группы файлов', 'Выгружать только URI', 'Выгружать только ZIP', 'File-URI', 'File-ZIP', 'URI-ZIP', 'File-URI-ZIP'), //cpg1.3.0
-  'custom_user_upload'=>'Участники могут менять кол-во окошек выгрузки?', //cpg1.3.0
-  'num_file_upload'=>'Maкс/точное кол-во окошек выгрузки', //cpg1.3.0
-  'num_URI_upload'=>'Maкс/точное кол-во окошек выгрузки URI', //cpg1.3.0
-  'note1' => '<b>(1)</b> Выгрузка в общественный альбом требует одобрения от администратора',
-  'note2' => '<b>(2)</b> Выгрузка в частный альбом требует одобрения от администратора',
-  'notes' => 'Примечания',
+  'confirm_del' => 'Внимание, когда Вы удаляете группу, пользователи из этой группы будут автоматически переведены в группу \'Registered\'!\n\nВы хотите продолжить?', //js-alert //cpg1.3.0
+  'title' => 'Управлять группами',
+  'approval_1' => 'Одобрение публичной загрузки (1)',
+  'approval_2' => 'Одобрение личной загрузки (2)',
+  'upload_form_config' => 'Формат страницы загрузки', //cpg1.3.0
+  'upload_form_config_values' => array( 'Загрузка по одному файлу', 'Загрузка только файлов', 'Загрузка только ссылок', 'Только ZIP загрузки', 'Файл-Ссылка', 'Файл-ZIP', 'Ссылка-ZIP', 'Файл-Ссылка-ZIP'), //cpg1.3.0
+  'custom_user_upload'=>'Может изменять количество строк для загрузки?', //cpg1.3.0
+  'num_file_upload'=>'Макс. число строк для загрузки файлов', //cpg1.3.0
+  'num_URI_upload'=>'Макс. число строк для загрузки по ссылкам', //cpg1.3.0
+  'note1' => '<b>(1)</b> Загрузка в публичный альбом требует одобрения администрации',
+  'note2' => '<b>(2)</b> Загрузка в личный альбом требует одобрения администрации',
+  'notes' => 'Заметки',
 );
 
 // ------------------------------------------------------------------------- //
@@ -797,34 +805,34 @@ if (defined('GROUPMGR_PHP')) $lang_groupmgr_php = array(
 if (defined('INDEX_PHP')){
 
 $lang_index_php = array(
-  'welcome' => 'Привет!',
+  'welcome' => 'Добро пожаловать!',
 );
 
 $lang_album_admin_menu = array(
-  'confirm_delete' => 'Вы уверены что хотите УДАЛИТЬ этот альбом? \\nВсе файли и комментарии будут удалены.', //js-alert //cpg1.3.0
+  'confirm_delete' => 'Вы уверены, что хотите УДАЛИТЬ этот альбом? \\nВсе файлы и комментарии также будут удалены.', //js-alert //cpg1.3.0
   'delete' => 'УДАЛИТЬ',
   'modify' => 'СВОЙСТВА',
   'edit_pics' => 'РЕДАКТИРОВАТЬ ФАЙЛЫ', //cpg1.3.0
 );
 
 $lang_list_categories = array(
-  'home' => 'Начало',
-  'stat1' => '<b>[pictures]</b> файлов в <b>[albums]</b> альбомах и <b>[cat]</b> категориях с <b>[comments]</b> комментариями просмотренно <b>[views]</b> раз', //cpg1.3.0
-  'stat2' => '<b>[pictures]</b> файлов в <b>[albums]</b>  альбомах просмотренно <b>[views]</b> раз', //cpg1.3.0
-  'xx_s_gallery' => 'Галерея %s\'а',
-  'stat3' => '<b>[pictures]</b> файлов в <b>[albums]</b> альбомах с <b>[comments]</b> комментариями просмотренно <b>[views]</b> раз', //cpg1.3.0
+  'home' => 'Главная',
+  'stat1' => '<b>[pictures]</b> файлов в <b>[albums]</b> альбомах и <b>[cat]</b> категориях просмотренных <b>[views]</b> раз / комментариев всего <b>[comments]</b> ', //cpg1.3.0
+  'stat2' => '<b>[pictures]</b> файлов в <b>[albums]</b> альбомах просмотренных <b>[views]</b> раз', //cpg1.3.0
+  'xx_s_gallery' => '%s\'s Gallery',
+  'stat3' => '<b>[pictures]</b> файлов в <b>[albums]</b> альбомах с <b>[comments]</b> комментариями просмотренных <b>[views]</b> раз', //cpg1.3.0
 );
 
 $lang_list_users = array(
   'user_list' => 'Список пользователей',
-  'no_user_gal' => 'Здесь нет галерей пользователей',
-  'n_albums' => '%s альбомов',
-  'n_pics' => '%s файлов', //cpg1.3.0
+  'no_user_gal' => 'Отсутствуют галереи пользователей',
+  'n_albums' => 'Альбомов: %s',
+  'n_pics' => 'Файлов: %s', //cpg1.3.0
 );
 
 $lang_list_albums = array(
-  'n_pictures' => '%s файлов', //cpg1.3.0
-  'last_added' => ', оследнее добавлено %s',
+  'n_pictures' => 'Файлов: %s', //cpg1.3.0
+  'last_added' => '. Последний добавлен: %s',
 );
 
 }
@@ -835,14 +843,14 @@ $lang_list_albums = array(
 
 if (defined('LOGIN_PHP')) $lang_login_php = array(
   'login' => 'Вход',
-  'enter_login_pswd' => 'Введите имя и пароль для входа',
-  'username' => 'Имя',
+  'enter_login_pswd' => 'Введите имя пользователя и пароль для входа',
+  'username' => 'Имя (ник)',
   'password' => 'Пароль',
-  'remember_me' => 'Запомнить меня',
-  'welcome' => 'Привет, %s ...',
-  'err_login' => '*** Невозможно войти. Попробуйте снова ***',
-  'err_already_logged_in' => 'Вы уже вошли!',
-  'forgot_password_link' => 'Я забыл(а) пароль', //cpg1.3.0
+  'remember_me' => 'Автоматически входить при каждом посещении',
+  'welcome' => 'Добро пожаловать %s',
+  'err_login' => 'Вы ввели неверное/неактивное имя пользователя или неверный пароль.<br />Попробуйте снова.',
+  'err_already_logged_in' => 'Вы уже осуществили вход в систему!',
+  'forgot_password_link' => 'Забыли пароль?', //cpg1.3.0
 );
 
 // ------------------------------------------------------------------------- //
@@ -850,9 +858,9 @@ if (defined('LOGIN_PHP')) $lang_login_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('LOGOUT_PHP')) $lang_logout_php = array(
-  'logout' => 'Выход',
-  'bye' => 'Пока, %s ...',
-  'err_not_loged_in' => 'Вы не вошли!',
+  'logout' => 'Выйти',
+  'bye' => 'Досвидание %s',
+  'err_not_loged_in' => 'Вы не осуществили вход в систему!',
 );
 
 // ------------------------------------------------------------------------- //
@@ -860,9 +868,9 @@ if (defined('LOGOUT_PHP')) $lang_logout_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('PHPINFO_PHP')) $lang_phpinfo_php = array(
-  'php_info' => 'PHP info', //cpg1.3.0
-  'explanation' => 'Это информация из PHP-function <a href="http://www.php.net/phpinfo">phpinfo()</a>, показанная внутри Copermine (укорочено с правой стороны).', //cpg1.3.0
-  'no_link' => 'Рисковано делать phpinfo доступным всем, поэтому страница видна лишь в режиме администратора. Ссылки на эту страницу не давать, им будет запрещен доступ.', //cpg1.3.0
+  'php_info' => 'PHP информация', //cpg1.3.0
+  'explanation' => 'Это страница сгенерирована функцией PHP <a href="http://www.php.net/phpinfo">phpinfo()</a> и отображается внутри Copermine.', //cpg1.3.0
+  'no_link' => 'Просмотр информации phpinfo другими людьми может быть очень опасно, поэтому данная страница видима только для вас и только в момент, когда Вы вошли в систему в качестве администратора. Вы не может давать ссылку на эту страницу кому-либо ещё. Они всё равно получат отказ при попытке просмотреть данную страницу.', //cpg1.3.0
 );
 
 // ------------------------------------------------------------------------- //
@@ -870,28 +878,28 @@ if (defined('PHPINFO_PHP')) $lang_phpinfo_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('MODIFYALB_PHP')) $lang_modifyalb_php = array(
-  'upd_alb_n' => 'Обновление альбома %s',
-  'general_settings' => 'Общие настройки',
-  'alb_title' => 'Заголовок',
-  'alb_cat' => 'Категория',
-  'alb_desc' => 'Описание',
-  'alb_thumb' => 'Эскиз',
-  'alb_perm' => 'Разрешения для этого альбома',
-  'can_view' => 'Альбом может быть просмотрен',
-  'can_upload' => 'Гости могут добавлять фото',
-  'can_post_comments' => 'Гости могут оставлять комментарии',
-  'can_rate' => 'Гости могут оценивать фото',
-  'user_gal' => 'Пользовательская галерея',
+  'upd_alb_n' => 'Обновление альбома -> %s',
+  'general_settings' => 'Общий настройки',
+  'alb_title' => 'Название альбома',
+  'alb_cat' => 'Категория альбома',
+  'alb_desc' => 'Описание альбома',
+  'alb_thumb' => 'Миниатюра альбома',
+  'alb_perm' => 'Права доступа для данного альбома',
+  'can_view' => 'Альбом могут просматривать',
+  'can_upload' => 'Посетители могут загружать файлы',
+  'can_post_comments' => 'Посетители могу делать комментарии',
+  'can_rate' => 'Посетители могут голосовать',
+  'user_gal' => 'Галерея пользователя',
   'no_cat' => '* Нет категории *',
-  'alb_empty' => 'Альбом пустой',
-  'last_uploaded' => 'Последние обновления',
-  'public_alb' => 'Все (общий альбом)',
+  'alb_empty' => 'Альбом пуст',
+  'last_uploaded' => 'Последний загруженный файл',
+  'public_alb' => 'Все (публичный альбом)',
   'me_only' => 'Только я',
-  'owner_only' => 'Только хозяин альбома (%s)',
-  'groupp_only' => 'Члены группы \'%s\'',
-  'err_no_alb_to_modify' => 'В базе нету альбомов, которые Вы можете радактировать.',
+  'owner_only' => 'Только владелец альбома (%s)',
+  'groupp_only' => 'Участники группы \'%s\'',
+  'err_no_alb_to_modify' => 'Нет альбома в базе данных, который Вы можете изменять.',
   'update' => 'Обновить альбом', //cpg1.3.0
-  'notice1' => '(*) зависит от установок %sgroups%s', //cpg1.3.0 (do not translate %s!)
+  'notice1' => '(*) в зависимости от настроек %sгрупп%s', //cpg1.3.0 (do not translate %s!)
 );
 
 // ------------------------------------------------------------------------- //
@@ -899,9 +907,9 @@ if (defined('MODIFYALB_PHP')) $lang_modifyalb_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('RATEPIC_PHP')) $lang_rate_pic_php = array(
-  'already_rated' => 'Вы уже оценили этот файл', //cpg1.3.0
-  'rate_ok' => 'Ваш голос принят',
-  'forbidden' => 'За себя нельзя голосовать.', //cpg1.3.0
+  'already_rated' => 'Простите, но Вы уже проголосовали за этот файл', //cpg1.3.0
+  'rate_ok' => 'Ваш голос был учтен',
+  'forbidden' => 'Вы не можете голосовать за свои файлы.', //cpg1.3.0
 );
 
 // ------------------------------------------------------------------------- //
@@ -911,79 +919,81 @@ if (defined('RATEPIC_PHP')) $lang_rate_pic_php = array(
 if (defined('REGISTER_PHP') || defined('PROFILE_PHP')) {
 
 $lang_register_disclamer = <<<EOT
-Пока администраторы сайта '<b>{SITE_NAME}</b>' будут пытаться удалить или редактировать любой нежелательный материал настолько быстро, насколько возможно (потому что невозможно рассмотреть каждое сообщение), Вы подтверждаете, что все сообщения, сделанные на этом сайту выражают взгляды и мнения автора, а не администраторов или вебмастера (исключение составляют сообщения, отправленные непосредственно этими людьми) и следовательно не будут поддержаны ответственными лицами. <br />
+Хотя администраторы {SITE_NAME} стараются удалять или редактировать неприемлемую информацию как можно быстрее, все сообщения просмотреть невозможно. Таким образом Вы признаёте, что сообщения на этом сайте отражают точки зрения и мнения их авторов, а не администрации сайта (кроме сообщений, размещённых её представителями) и администрация не может быть ответственна за их содержание.<br />
 <br />
-Вы обещаете не посылать оскорбительный, непристойный, вульгарный, клеветнический, ненавистный, угрожающий, сексуально-ориентируемый или любой другой материал, который может нарушить любые применимые законы. Вы соглашаетесь с тем, что вебмастер, администратор и модераторы сайта '<b>{SITE_NAME}</b>' имеют право удалять или редактировать любое содержимое. Как пользователь Вы соглашаетесь с тем, что любая информация, введенная Вами будет записана в базу данных. Эта информация не будет раскрыта третьим лицам без Вашего согласия. Вебмастер и администратор не несет ответственности за любые попытки взлома, которые могут привести к компрометируемым данным.<br />
+Вы соглашаетесь не размещать оскорбительных, угрожающих, клеветнических, порнографических и прочих материалов, а так же призывов к национальной розни, способных нарушить соответствующие законы. Попытки размещения таких материалов могут привести к вашему немедленному отключению от сайта (при этом ваш провайдер будет поставлен в известность). IP адреса всех сообщений сохраняются для возможности проведения такой политики. Вы соглашаетесь с тем, что администраторы {SITE_NAME} имеют право удалить, отредактировать, перенести или закрыть любую информацию в любое время по своему усмотрению. Как пользователь Вы согласны с тем, что введённая вами информация будет храниться в базе данных. Хотя эта информация не будет открыта третьим лицам без вашего разрешения, администрация сайта не может быть ответственна за действия хакеров, которые могут привести к несанкционированному доступу к ней.<br /><br /> Этот сайт использует cookies для хранения информации на вашем компьютере.<br />
+Эти cookie не содержат никакой информации из введённой вами и служат лишь для улучшения качества работы сайта.<br />
 <br />
-Этот сайт использует 'cookies' для хранения информации на Вашем компьютере. Эти 'cookies' служат только для улучшения Вашего просмотра. Адрес E-mail используется только для подтверждения Ваших регистрационных данных и пароля.<br />
+Ваш e-mail адрес используется лишь для подтверждения вашей регистрации и для высылки нового пароля если вы забудете текущий.<br />
 <br />
-Нажав ниже на 'Согласен' Вы подтверждаете согласие со всеми вышенаписанными условиями.
+Нажимая 'Я согласен', Вы соглашаетесь быть ограниченными этими условиями.<br />
 EOT;
 
 $lang_register_php = array(
-	'page_title' => 'Регистрация пользователя',
-	'term_cond' => 'Условия и термины',
-	'i_agree' => 'Согласен',
-	'submit' => 'Вперед регистрацию',
-	'err_user_exists' => 'Имя пользователя, которые Вы ввели, уже существует в базе, пожалуйста, выберите другое имя',
-	'err_password_mismatch' => 'Пароли не совпадают, пожалуйста, введите их снова',
-	'err_uname_short' => 'В имени пользователя должно быть минимум 2 символа',
-	'err_password_short' => 'Пароль должен быть минимум 2 символа',
-	'err_uname_pass_diff' => 'Имя пользователя и пароль должны быть разными',
-	'err_invalid_email' => 'Адрес Email указан неверно',
-	'err_duplicate_email' => 'Кто-то уже зарегистрировался с e-mail адресом, который Вы указали',
-	'enter_info' => 'Введите регистрационную информацию',
-	'required_info' => 'Необходимая информация',
-	'optional_info' => 'Дополнительная информация',
-	'username' => 'Имя',
-	'password' => 'Пароль',
-	'password_again' => 'Повтор пароля',
-	'email' => 'Email',
-	'location' => 'Откуда',
-	'interests' => 'Увлечения',
-	'website' => 'Сайт',
-	'occupation' => 'Род занятий',
-	'error' => 'ОШИБКА',
-	'confirm_email_subject' => '%s - Подтверждение регистрации',
-	'information' => 'Информация',
-	'failed_sending_email' => 'E-mail о подтверждении регистрации не может быть отправлен!',
-	'thank_you' => 'Спасибо за регистрацию.<br /><br />An email with information on how to activate your account was sent to the email address your provided.',
-	'acct_created' => 'Ваша учетная запись создана. Вы можете войти, используя Ваше имя и пароль',
-	'acct_active' => 'Ваша учетная запись активна и Вы можете войти, используя Ваше имя и пароль',
-	'acct_already_act' => 'Ваша учетная запись уже активна!',
-	'acct_act_failed' => 'Эта учетная запись не может быть активирована!',
-	'err_unk_user' => 'Выбранный пользователь не существует!',
-	'x_s_profile' => 'Профиль %s',
-	'group' => 'Группа',
-	'reg_date' => 'Дата регистрации',
-	'disk_usage' => 'Использ. диска',
-	'change_pass' => 'Сменить пароль',
-	'current_pass' => 'Текущий пароль',
-	'new_pass' => 'Новый пароль',
-	'new_pass_again' => 'Новый пароль (повтор)',
-	'err_curr_pass' => 'Текущий пароль неверный',
-	'apply_modif' => 'Применить изменения',
-	'change_pass' => 'Сменить мой пароль',
-	'update_success' => 'Ваш профиль обновлен',
-	'pass_chg_success' => 'Ваш пароль изменён',
-	'pass_chg_error' => 'Ваш пароль не изменён',
-  'notify_admin_email_subject' => '%s - Оповещание о регистрации', //cpg1.3.0
-  'notify_admin_email_body' => 'Новый пользователь под именем "%s" зарегисрирован на Вашей галерее', //cpg1.3.0
+  'page_title' => 'Регистрация пользователей',
+  'term_cond' => 'Условия регистрации',
+  'i_agree' => 'Я согласен',
+  'submit' => 'Подтвердить регистрацию',
+  'err_user_exists' => 'Имя (ник) пользователя, которое Вы выбрали, уже существует, пожалуйста, выберите другое',
+  'err_password_mismatch' => 'Пароли не совпадают, пожалуйста, введите их ещё раз.',
+  'err_uname_short' => 'Имя (ник) пользователя должно быть более двух символов длиной',
+  'err_password_short' => 'Пароль должен быть более двух символов длиной',
+  'err_uname_pass_diff' => 'Имя (ник) пользователя и пароль должны быть разные',
+  'err_invalid_email' => 'Неправильный формат email адреса',
+  'err_invalid_emaildomen' => 'Регистрация разрешена только в домене "%s"',
+  'err_duplicate_email' => 'Этот адрес email уже занят другим пользователем',
+  'enter_info' => 'Регистрационная информация',
+  'required_info' => 'Поля обязательные к заполнению',
+  'optional_info' => 'Поля необязательные к заполнению',
+  'username' => 'Имя (ник) пользователя',
+  'password' => 'Пароль',
+  'password_again' => 'Подтвердите пароль',
+  'email' => 'Адрес email',
+  'location' => 'Расположение',
+  'interests' => 'Интересы',
+  'website' => 'Домашняя страница',
+  'occupation' => 'Род занятий',
+  'error' => 'ОШИБКА',
+  'confirm_email_subject' => '%s - Подтверждение регистрации',
+  'information' => 'Информация',
+  'failed_sending_email' => 'Email с подтверждением регистрации не может быть отправлено!',
+  'thank_you' => 'Спасибо за регистрацию.<br /><br />Письмо с информацией, как активировать ваш аккаунт, было отправлено по указанному вами email адресу.',
+  'acct_created' => 'Ваша учётная запись была создана. Вы можете войти в систему, используя ваше имя и пароль.',
+  'acct_active' => 'Ваша учётная запись была активизирована. Вы можете войти в систему, используя ваше имя и пароль.',
+  'acct_already_act' => 'Вы уже активизировали свою учётную запись!',
+  'acct_act_failed' => 'Эта учётная запись не может быть активирована!',
+  'err_unk_user' => 'Выбранный пользователь не существует!',
+  'x_s_profile' => 'Профиль пользователя %s',
+  'group' => 'Группа',
+  'reg_date' => 'Зарегистрирован',
+  'disk_usage' => 'Использование места',
+  'change_pass' => 'Изменить пароль',
+  'current_pass' => 'Текущий пароль',
+  'new_pass' => 'Новый пароль',
+  'new_pass_again' => 'Подтвердите новый пароль',
+  'err_curr_pass' => 'Текущий пароль неправильный',
+  'apply_modif' => 'Применить изменения',
+  'change_pass' => 'Изменить мой пароль',
+  'update_success' => 'Ваш профиль был изменён',
+  'pass_chg_success' => 'Ваш пароль был изменен',
+  'pass_chg_error' => 'Ваш пароль не был изменен',
+  'notify_admin_email_subject' => '%s - Уведомление о регистрации', //cpg1.3.0
+  'notify_admin_email_body' => 'Новый пользователь "%s" зарегистрировался в вашей галерее', //cpg1.3.0
 );
 
 $lang_register_confirm_email = <<<EOT
-Благодарим Вас за регистрацию на {SITE_NAME}
-
-Ваше имя : "{USER_NAME}"
-Ваш пароль : "{PASSWORD}"
-
-Для активации Вашей учетной записи, Вы должны нажать на ссылку ниже или
-скопировать и вставить ее в веб-браузер.
-
+Спасибо за регистрацию в {SITE_NAME}
+----------------------------
+Ваш логин: "{USER_NAME}"
+Ваш пароль: "{PASSWORD}"
+----------------------------
+Ваша учётная запись пока не активна.
+Вы не сможете ей пользоваться, пока не перейдёте по следующей ссылке:
 {ACT_LINK}
 
-С уважением,
+Не забывайте свой пароль: он хранится в нашей базе в зашифрованном виде, и мы не сможем вам его выслать. Если вы всё же забудете свой пароль, то вы сможете запросить новый, который будет активизирован таким же образом, как и ваша учётная запись.
 
+С уважением,
 Администрация {SITE_NAME}
 
 EOT;
@@ -995,13 +1005,13 @@ EOT;
 // ------------------------------------------------------------------------- //
 
 if (defined('REVIEWCOM_PHP')) $lang_reviewcom_php = array(
- 'title' => 'Проверка комментариев',
- 'no_comment' => 'Здесь нет комментариев для проверки',
- 'n_comm_del' => '%s комментариев удалено',
- 'n_comm_disp' => 'Количество комментариев для показа',
- 'see_prev' => 'Смотреть предыдущий',
- 'see_next' => 'Смотреть следующий',
- 'del_comm' => 'Удалить выбранные комментарии',
+  'title' => 'Просмотреть комментарии',
+  'no_comment' => 'Отсутствуют комментарии для просмотра',
+  'n_comm_del' => 'Комментариев удалено: %s',
+  'n_comm_disp' => 'Количество комментариев для отображения',
+  'see_prev' => 'Посмотреть предыдущий',
+  'see_next' => 'Посмотреть следующий',
+  'del_comm' => 'Удалить выбранные комментарии',
 );
 
 
@@ -1010,7 +1020,7 @@ if (defined('REVIEWCOM_PHP')) $lang_reviewcom_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('SEARCH_PHP')) $lang_search_php = array(
-  0 => 'Поиск коллекции файлов',
+  0 => 'Поиск по коллекции файлов',
 );
 
 // ------------------------------------------------------------------------- //
@@ -1019,36 +1029,36 @@ if (defined('SEARCH_PHP')) $lang_search_php = array(
 
 if (defined('SEARCHNEW_PHP')) $lang_search_new_php = array(
   'page_title' => 'Искать новые файлы', //cpg1.3.0
-  'select_dir' => 'Выбрать папку',
-  'select_dir_msg' => 'Эта функция позволяет добавлять файлы в \'пакетном режиме\'.<br /><br />Выберите папку, куда Вы хотите добавить Ваши файлы',//cpg1.3.0
-  'no_pic_to_add' => 'Здесь нет файла для добавления', //cpg1.3.0
-  'need_one_album' => 'You need at least one album to use this function',
+  'select_dir' => 'Искать директорию',
+  'select_dir_msg' => 'Эта функция позволяет вам добавлять группу файлов, которую Вы закачали на ваш сервер по FTP протоколу.<br /><br />Выберите директорию, куда Вы закачали ваши файлы.', //cpg1.3.0
+  'no_pic_to_add' => 'Отсутствуют файлы для добавления', //cpg1.3.0
+  'need_one_album' => 'Вам необходим хотя бы один альбом, чтобы использовать эту функцию',
   'warning' => 'Внимание',
-  'change_perm' => 'скрипт не может записать в эту папку, Вам надо сменить режим на 755 или 777 перед попыткой добавить файлы!', //cpg1.3.0
-  'target_album' => '<b>Положить фото из &quot;</b>%s<b>&quot; в </b>%s',
+  'change_perm' => 'скрипт не может записать в эту директорию, вам нужно изменить её права на 755 или 777, чтобы добавить файлы!', //cpg1.3.0
+  'target_album' => '<b>Поместить файлы из &quot;</b>%s<b>&quot; в </b>%s', //cpg1.3.0
   'folder' => 'Папка',
   'image' => 'Файл',
   'album' => 'Альбом',
   'result' => 'Результат',
-  'dir_ro' => 'только для чтения. ',
-  'dir_cant_read' => 'Нечитаемый. ',
-  'insert' => 'Добавление новых файлов в галерею', //cpg1.3.0
+  'dir_ro' => 'Нет прав на запись. ',
+  'dir_cant_read' => 'Нет прав на чтение. ',
+  'insert' => 'Идёт добавление новых файлов в галерею', //cpg1.3.0
   'list_new_pic' => 'Список новых файлов', //cpg1.3.0
   'insert_selected' => 'Вставить выбранные файлы', //cpg1.3.0
-  'no_pic_found' => 'Новых файлов не найдено', //cpg1.3.0
-  'be_patient' => 'Успокойтесь, требуется какое-то время для добавления файлов', //cpg1.3.0
-  'no_album' => 'Альбом не выбран',  //cpg1.3.0
+  'no_pic_found' => 'Новые файлы не найдены', //cpg1.3.0
+  'be_patient' => 'Пожалуйста подождите, скрипту нужно время, чтобы добавить файлы', //cpg1.3.0
+  'no_album' => 'не выбран альбом',  //cpg1.3.0
   'notes' =>  '<ul>'.
-                          '<li><b>OK</b> : значит, что файл добавлен успешно'.
-                          '<li><b>DP</b> : значит, что файл дублируется и уже имеется в базе'.
-                          '<li><b>PB</b> : значит, что файл не добавлен. Проверьте Ваши настройки и разрешения в папках, где находятся файлы'.
-                          '<li><b>NA</b> : значит, что Вы не указали альбом куда добавлять файлы.  Вернитесь \'<a href="javascript:history.back(1)">назад</a>\' и выбирите альбом. Если нет альбома, <a href="albmgr.php">сначала его создайте</a></li>'.
-                          '<li>Если \'знаки\' OK, DP, PB не появляются, нажмите на плохом фото для просмотра сообщения об ошибке, сделанной PHP'.
-                          '<li>Если броузер timeout, нажмите кнопку \'Обновить\''.
+                          '<li><b>OK</b> : означает что файл успешно добавлен'.
+                          '<li><b>DP</b> : означает что файл дубликат и уже есть в базе данных'.
+                          '<li><b>PB</b> : означает что файл не был добавлен, проверьте ваши настройки и права директории, где расположены файлы'.
+                          '<li><b>NA</b> : означает что Вы не выбрали альбом для файлов, нажмите \'<a href="javascript:history.back(1)">назад</a>\' и выберите альбом. Если у вас нет альбома, <a href="albmgr.php">сначала создайте хотя бы один</a></li>'.
+                          '<li>Если OK, DP, PB \'значки\' не появились, нажмите на сломанном файле, чтобы увидеть сообщение об ошибке выдаваемое PHP'.
+                          '<li>Если ваш браузер показал таймаут, нажмите кнопку обновить'.
                           '</ul>', //cpg1.3.0
-  'select_album' => 'Выбрать альбом', //cpg1.3.0
+  'select_album' => 'выберите альбом', //cpg1.3.0
   'check_all' => 'Отметить все', //cpg1.3.0
-  'uncheck_all' => 'Снять все отметки', //cpg1.3.0
+  'uncheck_all' => 'Снять выделение', //cpg1.3.0
 );
 
 
@@ -1062,23 +1072,23 @@ if (defined('SEARCHNEW_PHP')) $lang_search_new_php = array(
 // File banning.php
 // ------------------------------------------------------------------------- //
 
-if (defined('BANNING_PHP')) $lang_banning_php = array( 
-  'title' => 'Бан пользователей', 
-  'user_name' => 'Ваше имя', 
-  'ip_address' => 'IP адресс', 
-  'expiry' => 'Истекает (если пусто - навсегда)', 
-  'edit_ban' => 'Сохранить изменения', 
-  'delete_ban' => 'Удалить', 
-  'add_new' => 'Добавить новый бан', 
-  'add_ban' => 'Добавить', 
-  'error_user' => 'Пользователя не найти', //cpg1.3.0
-  'error_specify' => 'Укажите либо имя либо IP пользователя', //cpg1.3.0
-  'error_ban_id' => 'Направильный ban ID!', //cpg1.3.0
-  'error_admin_ban' => 'Себя нельзя банить!', //cpg1.3.0
-  'error_server_ban' => 'Собрался забанить свой сервер?  Да ты, чо!', //cpg1.3.0
-  'error_ip_forbidden' => 'Нельзя банить этот IP - не зараутить!', //cpg1.3.0
-  'lookup_ip' => 'Узнать IP', //cpg1.3.0
-  'submit' => 'вперед!', //cpg1.3.0
+if (defined('BANNING_PHP')) $lang_banning_php = array(
+  'title' => 'Бан пользователей',
+  'user_name' => 'Имя пользователя',
+  'ip_address' => 'IP адрес',
+  'expiry' => 'Истекает (пустой = навсегда)',
+  'edit_ban' => 'Сохранить изменения',
+  'delete_ban' => 'Удалить',
+  'add_new' => 'Добавить новый бан',
+  'add_ban' => 'Добавить',
+  'error_user' => 'Не могу найти пользователя', //cpg1.3.0
+  'error_specify' => 'Вам нужно указать или имя пользователя или IP адрес', //cpg1.3.0
+  'error_ban_id' => 'Неправильный ID бана!', //cpg1.3.0
+  'error_admin_ban' => 'Вы не можете забанить самого себя!', //cpg1.3.0
+  'error_server_ban' => 'Вы собираетесь забанить свой личный сервер? Не могу сделать это...', //cpg1.3.0
+  'error_ip_forbidden' => 'Вы не можете забанить этот IP адрес - он не может быть обработан маршрутизаторами!<br /><br />Этот IP адрес маршрутизируется только в приватных сетях.<br />Если вам нужно добавить этот IP адрес, откройте файл "banning.php", найдите строку "$illegal_ip = array(" и удалите нужную маску IP.', //cpg1.3.0
+  'lookup_ip' => 'WHOIS для IP адреса', //cpg1.3.0
+  'submit' => 'Выполнить!', //cpg1.3.0
 );
 
 // ------------------------------------------------------------------------- //
@@ -1086,76 +1096,76 @@ if (defined('BANNING_PHP')) $lang_banning_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('UPLOAD_PHP')) $lang_upload_php = array(
-  'title' => 'Добавить файл', //cpg1.3.0
-  'custom_title' => 'Настроенная форма запроса', //cpg1.3.0
-  'cust_instr_1' => 'Вы можете указать кол-во окошек для выгрузки. Заметьте, это число будет ограничено параметрами ниже.', //cpg1.3.0
-  'cust_instr_2' => 'Число запросов окошек', //cpg1.3.0
-  'cust_instr_3' => 'Окошек выгрузки: %s', //cpg1.3.0
-  'cust_instr_4' => 'Окошек выгрузки URI/URL: %s', //cpg1.3.0
-  'cust_instr_5' => 'Окошек выгрузки URI/URL:', //cpg1.3.0
-  'cust_instr_6' => 'Окошек выгрузки:', //cpg1.3.0
-  'cust_instr_7' => 'Введите кол-во каждого типа окошек выгрузки.  Потом нажмите \'Вперед\'. ', //cpg1.3.0
-  'reg_instr_1' => 'Неправильное действие при создании формы.', //cpg1.3.0
-  'reg_instr_2' => 'Вы можете выгружать файлы используя окошки ниже. Размер каждого файла, выгруженного на сайт, не может превышать %s KB. ZIP файлы выгружанные в  \'Добавление файлов\' и \'URI/URL Выгрузка\' остануться архивированными.', //cpg1.3.0
-  'reg_instr_3' => 'Если хотите zip файл в распакованном, не архивированном виде, Вы должны использовать окошко в разделе \'Выгрузка ZIP файлов с распаковкой\' .', //cpg1.3.0
-  'reg_instr_4' => 'При использовании секции выгрузки URI/URL, дайте адрес для файла, типа: http://www.mysite.com/images/example.jpg', //cpg1.3.0
-  'reg_instr_5' => 'Когда форма заполнена, жмите \'Вперед\'.', //cpg1.3.0
-  'reg_instr_6' => 'Выгрузка ZIP файлов с распаковкой:', //cpg1.3.0
-  'reg_instr_7' => 'Выгрузка файлов:', //cpg1.3.0
-  'reg_instr_8' => 'Выгрузка URI/URL:', //cpg1.3.0
-  'error_report' => 'Ошибки', //cpg1.3.0
-  'error_instr' => 'В следующих выгрузках ошибки:', //cpg1.3.0
-  'file_name_url' => 'Имя файла/URL', //cpg1.3.0
-  'error_message' => 'Ошибка', //cpg1.3.0
-  'no_post' => 'Файл не выгружен POSTом.', //cpg1.3.0
+  'title' => 'Загрузить файл', //cpg1.3.0
+  'custom_title' => 'Изменяемая форма запроса', //cpg1.3.0
+  'cust_instr_1' => 'Вы можете выбрать изменяемое число строк для загрузки файлов.<br />Тем не менее, Вы не можете выбирать больше, чем лимиты указанные ниже.', //cpg1.3.0
+  'cust_instr_2' => 'Запрос количества строк', //cpg1.3.0
+  'cust_instr_3' => 'Строк для загрузки файлов: %s', //cpg1.3.0
+  'cust_instr_4' => 'Строк для загрузки ссылок: %s', //cpg1.3.0
+  'cust_instr_5' => 'Загрузка ссылок:', //cpg1.3.0
+  'cust_instr_6' => 'Загрузка файлов:', //cpg1.3.0
+  'cust_instr_7' => 'Пожалуйста, введите количество строк для каждого типа необходимое вам на этот раз. Потом нажмите \'ПРОДОЛЖИТЬ\'. ', //cpg1.3.0
+  'reg_instr_1' => 'Неправильное действие для создания формы.', //cpg1.3.0
+  'reg_instr_2' => 'Теперь Вы можете загрузить файлы, используя соответствующие строчки ниже. Объем файлов загружаемых из под вашего пользователя на сервер не должен привышать %s КБ каждый. ZIP файлы загруженные в \'Загрузка файлов\' и \'Загрузка ссылок\' секции останутся запакованными.', //cpg1.3.0
+  'reg_instr_3' => 'Если Вы хотите, чтобы ZIP файлы или архивы была распакованы после загрузки, Вы должны использовать строчки для загрузки в секции \'ZIP загрузки для распаковки\'.', //cpg1.3.0
+  'reg_instr_4' => 'Когда используете загрузку ссылок, пожалуйста, указывайте путь к файлу в виде: http://www.mysite.com/images/example.jpg', //cpg1.3.0
+  'reg_instr_5' => 'Когда Вы заполнили форму, пожалуйста, нажмите \'ПРОДОЛЖИТЬ\'.', //cpg1.3.0
+  'reg_instr_6' => 'ZIP загрузки для распаковки:', //cpg1.3.0
+  'reg_instr_7' => 'Загрузка файлов:', //cpg1.3.0
+  'reg_instr_8' => 'Загрузка ссылок:', //cpg1.3.0
+  'error_report' => 'Отчет об ошибке', //cpg1.3.0
+  'error_instr' => 'Следующие загрузки вызвали ошибки:', //cpg1.3.0
+  'file_name_url' => 'Имя файла/Ссылка', //cpg1.3.0
+  'error_message' => 'Сообщение об ошибке', //cpg1.3.0
+  'no_post' => 'Файл не был загружен с POST.', //cpg1.3.0
   'forb_ext' => 'Запрещенное расширение файла.', //cpg1.3.0
-  'exc_php_ini' => 'Превышен размер файла указанный в php.ini.', //cpg1.3.0
-  'exc_file_size' => 'Превышен размер файла указанный в CPG.', //cpg1.3.0
-  'partial_upload' => 'Только часть выгруженаOnly a partial upload.', //cpg1.3.0
-  'no_upload' => 'Выгрузки не произошло.', //cpg1.3.0
-  'unknown_code' => 'Неизвестный код ошибке PHP.', //cpg1.3.0
-  'no_temp_name' => 'Выгрузки не произошло - No temp name.', //cpg1.3.0
-  'no_file_size' => 'Не содержит данных/запорчен', //cpg1.3.0
-  'impossible' => 'Нельзя перенести.', //cpg1.3.0
-  'not_image' => 'Это не картинка/запорчен', //cpg1.3.0
-  'not_GD' => 'Расширенее не GD.', //cpg1.3.0
-  'pixel_allowance' => 'Слишком много пикселей.', //cpg1.3.0
-  'incorrect_prefix' => 'Неправильный префикс URI/URL', //cpg1.3.0
-  'could_not_open_URI' => 'URI не открылось.', //cpg1.3.0
-  'unsafe_URI' => 'Нет защиты.', //cpg1.3.0
-  'meta_data_failure' => 'Meta data failure', //cpg1.3.0
-  'http_401' => '401 Нет разрешения', //cpg1.3.0
-  'http_402' => '402 Требуется оплата ', //cpg1.3.0
-  'http_403' => '403 Доступ запрещен', //cpg1.3.0
-  'http_404' => '404 Страница не найдена', //cpg1.3.0
-  'http_500' => '500 Внутренняя ошибка сервера', //cpg1.3.0
-  'http_503' => '503 Сервис недоступен', //cpg1.3.0
-  'MIME_extraction_failure' => 'MIME не определен.', //cpg1.3.0
+  'exc_php_ini' => 'Превышен разрешенный размер для файлов в php.ini.', //cpg1.3.0
+  'exc_file_size' => 'Превышен разрешенный размер для файлов в галерее.', //cpg1.3.0
+  'partial_upload' => 'Неполная загрузка.', //cpg1.3.0
+  'no_upload' => 'Загрузка не удалась.', //cpg1.3.0
+  'unknown_code' => 'Неизвестный код ошибки PHP.', //cpg1.3.0
+  'no_temp_name' => 'Нет загрузки - Нет временного названия.', //cpg1.3.0
+  'no_file_size' => 'Не содержит данных/Поврежден', //cpg1.3.0
+  'impossible' => 'Невозможно переместить.', //cpg1.3.0
+  'not_image' => 'Не изображение/поврежден', //cpg1.3.0
+  'not_GD' => 'Не GD расширение.', //cpg1.3.0
+  'pixel_allowance' => 'Превышен размер в пикселях.', //cpg1.3.0
+  'incorrect_prefix' => 'Неправильный префикс ссылки', //cpg1.3.0
+  'could_not_open_URI' => 'Не могу открыть ссылку URI.', //cpg1.3.0
+  'unsafe_URI' => 'Безопасность не поддаётся проверке.', //cpg1.3.0
+  'meta_data_failure' => 'Ошибка мета данных', //cpg1.3.0
+  'http_401' => '401 Unauthorized', //cpg1.3.0
+  'http_402' => '402 Payment Required', //cpg1.3.0
+  'http_403' => '403 Forbidden', //cpg1.3.0
+  'http_404' => '404 Not Found', //cpg1.3.0
+  'http_500' => '500 Internal Server Error', //cpg1.3.0
+  'http_503' => '503 Service Unavailable', //cpg1.3.0
+  'MIME_extraction_failure' => 'Тип MIME не может быть определен.', //cpg1.3.0
   'MIME_type_unknown' => 'Неизвестный тип MIME', //cpg1.3.0
-  'cant_create_write' => 'Не создается файл написания.', //cpg1.3.0
-  'not_writable' => 'Не пишется в файл написания.', //cpg1.3.0
-  'cant_read_URI' => 'Не читается URI/URL', //cpg1.3.0
-  'cant_open_write_file' => 'Не открывается файл написания URI.', //cpg1.3.0
-  'cant_write_write_file' => 'Не пишется в файл написания URI.', //cpg1.3.0
-  'cant_unzip' => 'ZIP не распаковывается.', //cpg1.3.0
+  'cant_create_write' => 'Не могу создать записываемый файл.', //cpg1.3.0
+  'not_writable' => 'Не могу записать в записываемый файл.', //cpg1.3.0
+  'cant_read_URI' => 'Не могу прочитать ссылку', //cpg1.3.0
+  'cant_open_write_file' => 'Не могу открыть URI записываемый файл.', //cpg1.3.0
+  'cant_write_write_file' => 'Не могу записать в URI записываемый файл.', //cpg1.3.0
+  'cant_unzip' => 'Не могу распаковать.', //cpg1.3.0
   'unknown' => 'Неизвестная ошибка', //cpg1.3.0
-  'succ' => 'Сработавшие выгрузки', //cpg1.3.0
-  'success' => '%s выгрузок сработало.', //cpg1.3.0
-  'add' => 'Нажмите \'Вперед\' для добавления файлов в альбомы.', //cpg1.3.0
-  'failure' => 'Выгрузка не сработала', //cpg1.3.0
-  'f_info' => 'Информация файла', //cpg1.3.0
-  'no_place' => 'Предыдущий файл не помещен.', //cpg1.3.0
-  'yes_place' => 'TПредыдущий файл помещен.', //cpg1.3.0
-  'max_fsize' => 'Макс. размер файла %s KB',
+  'succ' => 'Удачная загрузка', //cpg1.3.0
+  'success' => 'Удачных загрузок: %s.', //cpg1.3.0
+  'add' => 'Пожалуйста, нажмите \'ПРОДОЛЖИТЬ\', чтобы добавить файлы в альбомы.', //cpg1.3.0
+  'failure' => 'Загрузка не удалась', //cpg1.3.0
+  'f_info' => 'Информация о файле', //cpg1.3.0
+  'no_place' => 'Предыдущий файл не может быть добавлен.', //cpg1.3.0
+  'yes_place' => 'Предыдущий файл успешно добавлен.', //cpg1.3.0
+  'max_fsize' => 'Максимально разрешенный объем %s КБ',
   'album' => 'Альбом',
   'picture' => 'Файл', //cpg1.3.0
   'pic_title' => 'Название файла', //cpg1.3.0
   'description' => 'Описание файла', //cpg1.3.0
-  'keywords' => 'Ключевые слова (разделенные пробелом)',
-  'err_no_alb_uploadables' => 'Извините, нет альбома куда Вам разрешено добавлять файлы.', //cpg1.3.0
-  'place_instr_1' => 'А сейчас, поместите файлы в альбомы.  Так же можете ввести нужную информацию о каждом файле.', //cpg1.3.0
-  'place_instr_2' => 'Еще остались файлы которые нужно поместить. Нажмите \'Вперед\'.', //cpg1.3.0
-  'process_complete' => 'Вы успешно поместили все файлы.', //cpg1.3.0
+  'keywords' => 'Ключевые слова (отделяются пробелами)',
+  'err_no_alb_uploadables' => 'Извините, но нет ни одного альбома, куда вам разрешено загружать файлы', //cpg1.3.0
+  'place_instr_1' => 'Пожалуйста, расположите файлы по альбомам. Вы так же можете заполнить соответствующую информацию для каждого файла.', //cpg1.3.0
+  'place_instr_2' => 'Есть ещё файлы, которые требуют размещения. Пожалуйста, нажмите \'ПРОДОЛЖИТЬ\'.', //cpg1.3.0
+  'process_complete' => 'Вы успешно разместили все файлы.', //cpg1.3.0
 );
 
 // ------------------------------------------------------------------------- //
@@ -1164,47 +1174,47 @@ if (defined('UPLOAD_PHP')) $lang_upload_php = array(
 
 if (defined('USERMGR_PHP')) $lang_usermgr_php = array(
   'title' => 'Управление пользователями',
-  'name_a' => 'Имени [возрастание]',
-  'name_d' => 'Имени [убывание]',
-  'group_a' => 'Группе [возрастание]',
-  'group_d' => 'Группе [убывание]',
-  'reg_a' => 'Дате регистрации [возрастание]',
-  'reg_d' => 'Дате регистрации [убывание]',
-  'pic_a' => 'Кол-ву картинок [возрастание]',
-  'pic_d' => 'Кол-ву картинок [убывание]',
-  'disku_a' => 'Месту на диске [возрастание]',
-  'disku_d' => 'Месту на диске [убывание]',
-  'lv_a' => 'Последнему посещению [возрастание]', //cpg1.3.0
-  'lv_d' => 'Последнему посещению [убывание]', //cpg1.3.0
-  'sort_by' => 'Сортировать пользователей по',
-  'err_no_users' => 'Таблица пользователей пустая!',
-  'err_edit_self' => 'Вы не можете править свой профиль, используйте ссылку \'Профиль\' для этого',
-  'edit' => 'ПРАВИТЬ',
+  'name_a' => 'Имя [возрастание]',
+  'name_d' => 'Имя [убывание]',
+  'group_a' => 'Группа [возрастание]',
+  'group_d' => 'Группа [убывание]',
+  'reg_a' => 'Дата регистрации [возрастание]',
+  'reg_d' => 'Дата регистрации [убывание]',
+  'pic_a' => 'Количество файлов [возрастание]',
+  'pic_d' => 'Количество файлов [убывание]',
+  'disku_a' => 'Использование места [возрастание]',
+  'disku_d' => 'Использование места [убывание]',
+  'lv_a' => 'Последний визит [возрастание]', //cpg1.3.0
+  'lv_d' => 'Последний визит [убывание]', //cpg1.3.0
+  'sort_by' => 'Сортировать пользователей',
+  'err_no_users' => 'Таблица пользователей пуста!',
+  'err_edit_self' => 'Вы не можете изменять ваш личный профиль, используйте ссылку \'Профиль\' для этого',
+  'edit' => 'РЕДАКТИРОВАТЬ',
   'delete' => 'УДАЛИТЬ',
   'name' => 'Имя пользователя',
   'group' => 'Группа',
-  'inactive' => 'Неактивный',
+  'inactive' => 'Неактивен',
   'operations' => 'Действия',
   'pictures' => 'Файлы', //cpg1.3.0
-  'disk_space' => 'Объем занят/квота',
+  'disk_space' => 'Использование места / Квота',
   'registered_on' => 'Зарегистрирован',
-  'last_visit' => 'Последнее посещение', //cpg1.3.0
-  'u_user_on_p_pages' => '%d пользователя(ей) на %d странице(ах)',
-  'confirm_del' => 'Вы действительно хотите УДАЛИТЬ этого пользователя? \\nВсе его картинки и альбомы также будут удалены.', //js-alert //cpg1.3.0
-  'mail' => 'ПОЧТА',
-  'err_unknown_user' => 'Выбранный пользователь не существует !',
-  'modify_user' => 'Изменение пользователя',
-  'notes' => 'Примечания',
-  'note_list' => '<li>Если Вы не хотите менять текущий пароль пользователя, оставьте поле "пароль" пустым',
+  'last_visit' => 'Последний визит', //cpg1.3.0
+  'u_user_on_p_pages' => 'Пользователей: %d / Страниц: %d',
+  'confirm_del' => 'Вы уверены, что хотите УДАЛИТЬ этого пользователя? \\nВсе его файлы и альбомы также будут удалены.', //js-alert //cpg1.3.0
+  'mail' => 'MAIL',
+  'err_unknown_user' => 'Выбранный пользователь не существует',
+  'modify_user' => 'Изменить пользователя',
+  'notes' => 'Заметки',
+  'note_list' => '<li>Если Вы не хотите менять текущий пароль, оставьте поле "Пароль" пустым',
   'password' => 'Пароль',
   'user_active' => 'Пользователь активен',
-  'user_group' => 'Группа',
-  'user_email' => 'Email',
-  'user_web_site' => 'Вебсайт',
+  'user_group' => 'Группа пользователя',
+  'user_email' => 'Email пользователя',
+  'user_web_site' => 'Домашняя страница',
   'create_new_user' => 'Создать нового пользователя',
-  'user_location' => 'Откуда',
-  'user_interests' => 'Интересы',
-  'user_occupation' => 'Занятия/Профессия',
+  'user_location' => 'Расположение пользователя',
+  'user_interests' => 'Интересы пользователя',
+  'user_occupation' => 'Род занятий пользователя',
   'latest_upload' => 'Последние добавления', //cpg1.3.0
   'never' => 'никогда', //cpg1.3.0
 );
@@ -1214,59 +1224,59 @@ if (defined('USERMGR_PHP')) $lang_usermgr_php = array(
 // ------------------------------------------------------------------------- //
 
 if (defined('UTIL_PHP')) $lang_util_php = array(
-  'title' => 'Администрирование', //cpg1.3.0
-   'what_it_does' => 'Что здесь можно сделать', 
-   'what_update_titles' => 'Обновить название из имени файла', 
-   'what_delete_title' => 'Удалить названия', 
-   'what_rebuild' => 'Перестроить эксизы и изменить размер фото', 
-   'what_delete_originals' => 'Заменить оригинальных фото, фотками с измененным размером', 
-   'file' => 'Файл', 
-   'title_set_to' => 'установлено название в', 
-   'submit_form' => 'отправить', 
-   'updated_succesfully' => 'обновление прошло успешно', 
-   'error_create' => 'ОШИБКА создания', 
-  'continue' => 'Обработать еще несколько картинок',
-  'main_success' => 'Файл %s успешно использовался как главный файл', //cpg1.3.0 
-  'error_rename' => 'Ошибка переменования %s в %s', 
-  'error_not_found' => 'Фаил %s не найден', 
-  'back' => 'назад на главную', 
-  'thumbs_wait' => 'Обновление эксизов и/или изменения размеров картинки, пожалуйста подождите...', 
-  'thumbs_continue_wait' => 'Проболжение обновления эксиза и/или изменения размеров картинки...', 
-  'titles_wait' => 'Обновление заголовков, пожалуйста подождите...', 
-  'delete_wait' => 'Кдаление заголовков, пожалуйста подождите...', 
-  'replace_wait' => 'Удаление оригинальных и замена измененными картинками, пожалуйста подождите..', 
-  'instruction' => 'Быстрые инструкции', 
-  'instruction_action' => 'Выберите действие', 
-  'instruction_parameter' => 'Установите параметры', 
-  'instruction_album' => 'Выбирите альбом', 
-  'instruction_press' => 'Нажмите %s', 
-  'update' => 'Обновление эксизов и/или размеров файлов', 
-  'update_what' => 'Что должно быть обновлено', 
-  'update_thumb' => 'Только эксизы', 
-  'update_pic' => 'Только изменение размеров', 
-  'update_both' => 'Эксизы и изменения размеров', 
-  'update_number' => 'Число обработанных изображений', 
-  'update_option' => '(Попробуйте настроить опцию ниже, если у вас проблемы с timeout)', 
-  'filename_title' => 'Имя файла &rArr; название файла', //cpg1.3.0
-  'filename_how' => 'Как должно быть изменено имя фаила', 
-  'filename_remove' => 'Удалить в конце .jpg и заменить _ (подчеркивание) с пробелами', 
-  'filename_euro' => 'Изменить 2003_11_23_13_20_20.jpg на 23/11/2003 13:20', 
-  'filename_us' => 'Изменить 2003_11_23_13_20_20.jpg на 11/23/2003 13:20', 
-  'filename_time' => 'Изменить 2003_11_23_13_20_20.jpg на 13:20', 
-  'delete' => 'Удалить название файла и оригинальный размер фото', //cpg1.3.0
-  'delete_title' => 'Удалить название файла', //cpg1.3.0
-  'delete_original' => 'Удалить оригинальный размер картинки',
-  'delete_replace' => 'Замена оригинальных фото, фотками с измененным размером',
-  'select_album' => 'Выбрать альбом',
-  'delete_orphans' => 'Удалить комментарии к фото которых больше нет (срабатывает на всех альбомах)', //cpg1.3.0
-  'orphan_comment' => 'Найдено комментариев к фото которых больше нет', //cpg1.3.0
+  'title' => 'Утилита администратора (Изменение размера изображений)', //cpg1.3.0
+  'what_it_does' => 'Что она делает',
+  'what_update_titles' => 'Обновляет названия файлов из имен файлов',
+  'what_delete_title' => 'Удаляет файлы',
+  'what_rebuild' => 'Восстанавливает миниатюры и изменяет размеры фотографий',
+  'what_delete_originals' => 'Удаляет оригинальные фотографии, заменяя их измененными в размерах версиями',
+  'file' => 'Файл',
+  'title_set_to' => 'установить название на',
+  'submit_form' => 'выполнить',
+  'updated_succesfully' => 'обновлено успешно',
+  'error_create' => 'ОШИБКА при создании',
+  'continue' => 'Обработать изображения дальше',
+  'main_success' => 'Файл %s был успешно использован как главный файл', //cpg1.3.0
+  'error_rename' => 'Ошибка при переименовании %s в %s',
+  'error_not_found' => 'Файл %s не был найден',
+  'back' => 'назад на главную',
+  'thumbs_wait' => 'Обновляю миниатюры и/или измененные изображения, пожалуйста подождите...',
+  'thumbs_continue_wait' => 'Продолжаю обновлять миниатюры и/или измененные изображения...',
+  'titles_wait' => 'Обновляю название, пожалуйста подождите...',
+  'delete_wait' => 'Удаляю файлы, пожалуйста подождите...',
+  'replace_wait' => 'Удаляю оригинальные файлы и заменяю их на измененные изображение, пожалуйста подождите...',
+  'instruction' => 'Быстрые инструкции',
+  'instruction_action' => 'Выберите действие',
+  'instruction_parameter' => 'Установите параметры',
+  'instruction_album' => 'Выберите альбом',
+  'instruction_press' => 'Нажмите %s',
+  'update' => 'Обновить миниатюры и/или измененные изображения',
+  'update_what' => 'Что должно быть заменено',
+  'update_thumb' => 'Только миниатюры',
+  'update_pic' => 'Только измененные изображения',
+  'update_both' => 'Как миниатюры, так и измененные изображения',
+  'update_number' => 'Количество обрабатываемых изображений по одному клику',
+  'update_option' => '(Попробуйте установить это значение ниже, если возникают проблемы с таймаутами)',
+  'filename_title' => 'Имя файла &rArr; Название файла', //cpg1.3.0
+  'filename_how' => 'Как должно быть изменено имя файла?',
+  'filename_remove' => 'Удалить окончание .jpg и заменить _ (подчеркивание) на пробелы',
+  'filename_euro' => 'Изменить 2003_11_23_13_20_20.jpg на 23/11/2003 13:20',
+  'filename_us' => 'Изменить 2003_11_23_13_20_20.jpg на 11/23/2003 13:20',
+  'filename_time' => 'Изменить 2003_11_23_13_20_20.jpg на 13:20',
+  'delete' => 'Удалить названия файлов или изображения исходного размера', //cpg1.3.0
+  'delete_title' => 'Удалить названия файлов', //cpg1.3.0
+  'delete_original' => 'Удалить изображения исходного размера',
+  'delete_replace' => 'Удалить оригинальные изображения, заменяя их на измененные версии',
+  'select_album' => 'Выберите альбом',
+  'delete_orphans' => 'Удалить осиротевшие комментарии (отработает во всех альбомах)', //cpg1.3.0
+  'orphan_comment' => 'осиротевших комментариев найдено', //cpg1.3.0
   'delete' => 'Удалить', //cpg1.3.0
   'delete_all' => 'Удалить все', //cpg1.3.0
   'comment' => 'Комментарий: ', //cpg1.3.0
-  'nonexist' => 'присоединен к несуществующему файлу # ', //cpg1.3.0
-  'phpinfo' => 'Показать phpinfo', //cpg1.3.0
+  'nonexist' => 'прикреплен к несуществующему файлу # ', //cpg1.3.0
+  'phpinfo' => 'Отобразить phpinfo', //cpg1.3.0
   'update_db' => 'Обновить базу данных', //cpg1.3.0
-  'update_db_explanation' => 'Если Вы заменили файлы в coppermine, добавили модификаций или обновили версию coppermine, запустите обновление базы данных один раз. Это создаст необходимые таблицы и/или параметры кофнигурации в базе coppermine.', //cpg1.3.0
+  'update_db_explanation' => 'Если Вы заменили системные файлы галереи, добавили модификации или обновили старую версию галереи на новую, убедитесь, что Вы обновили базу данных один раз. Это создаст необходимые таблицы и/или значения настроек в базе данных галереи.', //cpg1.3.0
 );
 
 ?>

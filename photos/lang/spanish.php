@@ -1,6 +1,6 @@
 <?php
 // ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
+// Coppermine Photo Gallery 1.3.0                                            //
 // ------------------------------------------------------------------------- //
 // Copyright (C) 2002-2004 Gregory DEMAR                                     //
 //  http://www.chezgreg.net/coppermine/                                      //
@@ -14,7 +14,9 @@
 //  the Free Software Foundation; either version 2 of the License, or        //
 //  (at your option) any later version.                                      //
 // ------------------------------------------------------------------------- //
-// CVS version: $Id: spanish.php,v 1.6 2004/07/24 15:04:07 gaugau Exp $
+// ENCODING CHECK; SHOULD BE YEN BETA MU: ¥ ß µ
+// ------------------------------------------------------------------------- //
+// $Id: spanish.php,v 1.7 2004/12/29 23:03:46 chtito Exp $
 // ------------------------------------------------------------------------- //
 
 // info about translators and translated language

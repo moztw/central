@@ -1,23 +1,23 @@
 <?php
-// ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
-// ------------------------------------------------------------------------- //
-// Copyright (C) 2002-2004 Gregory DEMAR                                     //
-// http://www.chezgreg.net/coppermine/                                       //
-// ------------------------------------------------------------------------- //
-// Updated by the Coppermine Dev Team                                        //
-// (http://coppermine.sf.net/team/)                                          //
-// see /docs/credits.html for details                                        //
-// ------------------------------------------------------------------------- //
-// This program is free software; you can redistribute it and/or modify      //
-// it under the terms of the GNU General Public License as published by      //
-// the Free Software Foundation; either version 2 of the License, or         //
-// (at your option) any later version.                                       //
-// ------------------------------------------------------------------------- //
-// CVS version: $Id: init.inc.php,v 1.10 2004/08/10 15:24:47 nibbler999 Exp $
-// ------------------------------------------------------------------------- //
+/*************************
+  Coppermine Photo Gallery
+  ************************
+  Copyright (c) 2003-2005 Coppermine Dev Team
+  v1.1 originaly written by Gregory DEMAR
 
-define('COPPERMINE_VERSION', '1.3.2');
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  ********************************************
+  Coppermine version: 1.3.3
+  $Source: /cvsroot/coppermine/stable/include/init.inc.php,v $
+  $Revision: 1.15 $
+  $Author: gaugau $
+  $Date: 2005/04/19 21:54:31 $
+**********************************************/
+
+define('COPPERMINE_VERSION', '1.3.3');
 // User database integration
 // Uncomment the applicable line if you want to use it
 // define('UDB_INTEGRATION', 'phpbb');
@@ -186,6 +186,10 @@ if (isset($HTTP_SERVER_VARS['HTTP_CLIENT_IP'])) {
         $hdr_ip = $raw_ip;
     }
 }
+
+if (!preg_match('/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/', $raw_ip)) $raw_ip = '0.0.0.0';
+if (!preg_match('/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/', $hdr_ip)) $hdr_ip = '0.0.0.0';
+
 // Define some constants
 define('USER_GAL_CAT', 1);
 define('FIRST_USER_CAT', 10000);
@@ -357,14 +361,17 @@ require "lang/{$CONFIG['lang']}.php";
 // See if the fav cookie is set else set it
 if (isset($HTTP_COOKIE_VARS[$CONFIG['cookie_name'] . '_fav'])) {
     $FAVPICS = @unserialize(@base64_decode($HTTP_COOKIE_VARS[$CONFIG['cookie_name'] . '_fav']));
+    foreach ($FAVPICS as $key => $id ){
+        $FAVPICS[$key] = (int)$id; //protect against sql injection attacks
+    }
 } else {
     $FAVPICS = array();
 }
 // load the main template
 load_template();
 // Remove expired bans
-$now = time();
-db_query("DELETE FROM {$CONFIG['TABLE_BANNED']} WHERE expiry < $now");
+$now = date('Y-m-d H:i:s');
+db_query("DELETE FROM {$CONFIG['TABLE_BANNED']} WHERE expiry < '$now'");
 // Check if the user is banned
 $user_id = USER_ID;
 $result = db_query("SELECT * FROM {$CONFIG['TABLE_BANNED']} WHERE ip_addr='$raw_ip' OR ip_addr='$hdr_ip' OR user_id=$user_id");

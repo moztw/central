@@ -14,7 +14,9 @@
 // the Free Software Foundation; either version 2 of the License, or         //
 // (at your option) any later version.                                       //
 // ------------------------------------------------------------------------- //
-// $Id: vietnamese.php,v 1.4 2004/08/14 17:05:06 gaugau Exp $
+// ENCODING CHECK; SHOULD BE YEN BETA MU: ¥ ß µ
+// ------------------------------------------------------------------------- //
+// $Id: vietnamese.php,v 1.5 2004/12/29 23:03:52 chtito Exp $
 // ------------------------------------------------------------------------- //
 // Kyo's temp: /random,2/lastup,1
 // Kyo's note: bản dịch đựoc hướng tới các tác phẩm tự vẽ, tự làm, nên nhiều khi bị gọi là "tranh" hay "phòng tranh" - thành ra nếu bạn dùng bản dịch cho ảnh chụp hay gì khác, hãy sửa lại 1 chút nhé. Be fun! Kyo//

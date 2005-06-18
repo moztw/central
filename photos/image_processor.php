@@ -1,21 +1,21 @@
 <?php
-// ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
-// ------------------------------------------------------------------------- //
-// Copyright (C) 2002-2004 Gregory DEMAR                                     //
-// http://www.chezgreg.net/coppermine/                                       //
-// ------------------------------------------------------------------------- //
-// Updated by the Coppermine Dev Team                                        //
-// (http://coppermine.sf.net/team/)                                          //
-// see /docs/credits.html for details                                        //
-// ------------------------------------------------------------------------- //
-// This program is free software; you can redistribute it and/or modify      //
-// it under the terms of the GNU General Public License as published by      //
-// the Free Software Foundation; either version 2 of the License, or         //
-// (at your option) any later version.                                       //
-// ------------------------------------------------------------------------- //
-// CVS version: $Id: image_processor.php,v 1.3 2004/07/24 15:03:53 gaugau Exp $
-// ------------------------------------------------------------------------- //
+/*************************
+  Coppermine Photo Gallery
+  ************************
+  Copyright (c) 2003-2005 Coppermine Dev Team
+  v1.1 originaly written by Gregory DEMAR
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  ********************************************
+  Coppermine version: 1.3.3
+  $Source: /cvsroot/coppermine/stable/image_processor.php,v $
+  $Revision: 1.5 $
+  $Author: gaugau $
+  $Date: 2005/04/19 03:17:10 $
+**********************************************/
 
 // To use this module, one must place a transitory directory in the primary
 // CPG folder. Then one must change the form action of upload.php to this
@@ -668,8 +668,8 @@ if (!USER_CAN_UPLOAD_PICTURES) cpg_die(ERROR, $lang_errors['perm_denied'], __FIL
 
 // Let us define the directories where images will be temporarily stored.
 
-$transitory_file_directory = "./albums/manipulation/transitory/";
-$preview_image_directory = "./albums/manipulation/transitory/previews/";
+$transitory_file_directory = "./{$CONFIG['fullpath']}manipulation/transitory/";
+$preview_image_directory = "./{$CONFIG['fullpath']}transitory/previews/";
 
 // We can also create a rudimentary language array to make integration into CPG easier at a later date.
 $lang_image_processor_php = array('finished_manipulation'=>'You have finished manipulating the image. Please click the Proceed button to finish uploading the image.',

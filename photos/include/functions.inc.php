@@ -1,21 +1,21 @@
 <?php
-// ------------------------------------------------------------------------- //
-// Coppermine Photo Gallery 1.3.2                                            //
-// ------------------------------------------------------------------------- //
-// Copyright (C) 2002-2004 Gregory DEMAR                                     //
-// http://www.chezgreg.net/coppermine/                                       //
-// ------------------------------------------------------------------------- //
-// Updated by the Coppermine Dev Team                                        //
-// (http://coppermine.sf.net/team/)                                          //
-// see /docs/credits.html for details                                        //
-// ------------------------------------------------------------------------- //
-// This program is free software; you can redistribute it and/or modify      //
-// it under the terms of the GNU General Public License as published by      //
-// the Free Software Foundation; either version 2 of the License, or         //
-// (at your option) any later version.                                       //
-// ------------------------------------------------------------------------- //
-// CVS version: $Id: functions.inc.php,v 1.14 2004/08/14 17:30:15 gaugau Exp $
-// ------------------------------------------------------------------------- //
+/*************************
+  Coppermine Photo Gallery
+  ************************
+  Copyright (c) 2003-2005 Coppermine Dev Team
+  v1.1 originaly written by Gregory DEMAR
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  ********************************************
+  Coppermine version: 1.3.3
+  $Source: /cvsroot/coppermine/stable/include/functions.inc.php,v $
+  $Revision: 1.24 $
+  $Author: gaugau $
+  $Date: 2005/04/19 03:17:11 $
+**********************************************/
 
 /**************************************************************************
    Function for managing cookie saved user profile
@@ -700,7 +700,7 @@ function get_pic_data($album, &$count, &$album_name, $limit1=-1, $limit2=-1, $se
 
                 if($select_columns != '*') $select_columns .= ', pic_rating, votes, aid';
 
-                $result = db_query("SELECT $select_columns FROM {$CONFIG['TABLE_PICTURES']} WHERE approved = 'YES' AND votes >= '{$CONFIG['min_votes_for_rating']}' $ALBUM_SET ORDER BY ROUND((pic_rating+1)/2000) DESC, votes DESC $limit");
+                $result = db_query("SELECT $select_columns FROM {$CONFIG['TABLE_PICTURES']} WHERE approved = 'YES' AND votes >= '{$CONFIG['min_votes_for_rating']}' $ALBUM_SET ORDER BY ROUND((pic_rating+1)/2000) DESC, votes DESC, filename $limit");
                 $rowset = db_fetch_rowset($result);
                 mysql_free_result($result);
 
@@ -976,22 +976,22 @@ function breadcrumb($cat, &$breadcrumb, &$BREADCRUMB_TEXT)
                 } // while
 
                 $breadcrumb_array = array_reverse($breadcrumb_array);
-                $breadcrumb = '<a href=index.php>'.$lang_list_categories['home'].'</a>';
+                $breadcrumb = '<a href="index.php">'.$lang_list_categories['home'].'</a>';
                 $BREADCRUMB_TEXT = $lang_list_categories['home'];
 
                 foreach ($breadcrumb_array as $category){
-                        $link = "<a href=index.php?cat={$category[0]}>{$category[1]}</a>";
+                        $link = "<a href=\"index.php?cat={$category[0]}\">{$category[1]}</a>";
                         $breadcrumb .= ' > ' . $link;
                         $BREADCRUMB_TEXT .= ' > ' . $category[1];
                 }
 
         }else{ //Dont bother just add the Home link  to breadcrumb
-                $breadcrumb = '<a href=index.php>'.$lang_list_categories['home'].'</a>';
+                $breadcrumb = '<a href="index.php">'.$lang_list_categories['home'].'</a>';
                 $BREADCRUMB_TEXT = $lang_list_categories['home'];
         }
         //Add Link for album if aid is set
         if (isset($CURRENT_ALBUM_DATA['aid'])){
-                $link = "<a href=thumbnails.php?album=".$CURRENT_ALBUM_DATA['aid'].">".$CURRENT_ALBUM_DATA['title']."</a>";
+                $link = "<a href=\"thumbnails.php?album=".$CURRENT_ALBUM_DATA['aid']."\">".$CURRENT_ALBUM_DATA['title']."</a>";
                 $breadcrumb .= ' > ' . $link;
                 $BREADCRUMB_TEXT .= ' > ' . $CURRENT_ALBUM_DATA['title'];
         }
@@ -1025,7 +1025,7 @@ function compute_img_size($width, $height, $max)
         $image_size['height'] = ceil($height / $ratio);
         $image_size['whole'] = 'width="'.$image_size['width'].'" height="'.$image_size['height'].'"';
         if($thumb_use=='ht') {
-          $image_size['geom'] = '" height="'.$image_size['height'].'"';
+          $image_size['geom'] = ' height="'.$image_size['height'].'"';
         } elseif($thumb_use=='wd') {
           $image_size['geom'] = 'width="'.$image_size['width'].'"';
         } else {
@@ -1516,7 +1516,7 @@ function cpg_phpinfo_mod_output($search,$output_type)
 
 function cpg_phpinfo_mysql_version()
 {
-    $result = mysql_query("SELECT VERSION() as version");
+    $result = db_query("SELECT VERSION() as version");
     $row = mysql_fetch_row($result);
     return $row[0];
 }
@@ -1596,9 +1596,11 @@ if ($CONFIG['language_flags'] == 0 && $parameter == 'flags'){
 // get an array of english and native language names and flags
 // for now, use a static array definition here - this could later be made into a true database query
 $lang_language_data['arabic'] = array('Arabic','&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;','sa');
+$lang_language_data['basque'] = array('Basque','Euskera','baq');
 $lang_language_data['bosnian'] = array('Bosnian','Bosanski','ba');
 $lang_language_data['brazilian_portuguese'] = array('Portuguese [Brazilian]','Portugu&ecirc;s Brasileiro','br');
 $lang_language_data['bulgarian'] = array('Bulgarian','&#1041;&#1098;&#1083;&#1075;&#1072;&#1088;&#1089;&#1082;&#1080;','bg');
+$lang_language_data['catalan'] = array('Catalan','Catal&agrave;','ct');
 $lang_language_data['chinese_big5'] = array('Chinese-Big5','&#21488;&#28771;','tw');
 $lang_language_data['chinese_gb'] = array('Chinese-GB2312','&#20013;&#22269;','cn');
 $lang_language_data['croatian'] = array('Croatian','Hrvatski','hr');
@@ -1617,6 +1619,7 @@ $lang_language_data['indonesian'] = array('Indonesian','Bahasa Indonesia','id');
 $lang_language_data['italian'] = array('Italian','Italiano','it');
 $lang_language_data['japanese'] = array('Japanese','&#26085;&#26412;&#35486;','jp');
 $lang_language_data['korean'] = array('Korean','&#54620;&#44397;&#50612;','kr');
+$lang_language_data['kurdish'] = array('Kurdish','&#1603;&#1608;&#1585;&#1583;&#1740;','ku');
 $lang_language_data['latvian'] = array('Latvian','Latvian','lv');
 $lang_language_data['malay'] = array('Malay','Bahasa Melayu','my');
 $lang_language_data['norwegian'] = array('Norwegian','Norsk','no');
@@ -1630,7 +1633,9 @@ $lang_language_data['spanish'] = array('Spanish','Espa&ntilde;ol','es');
 $lang_language_data['swedish'] = array('Swedish','Svenska','se');
 $lang_language_data['thai'] = array('Thai','&#3652;&#3607;&#3618;','th');
 $lang_language_data['turkish'] = array('Turkish','T&uuml;rk&ccedil;e','tr');
+$lang_language_data['uighur'] = array('Uighur','Uighur','cn-xj');
 $lang_language_data['vietnamese'] = array('Vietnamese','Tieng Viet','vn');
+$lang_language_data['welsh'] = array('Welsh','Cymraeg','gb-cm');
 
 // get list of available languages
   $value = strtolower($CONFIG['lang']);

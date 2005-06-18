@@ -1,4 +1,20 @@
-# $Id: basic.sql,v 1.5 2004/07/24 15:04:09 gaugau Exp $
+#*************************
+#  Coppermine Photo Gallery
+#  ************************
+#  Copyright (c) 2003-2005 Coppermine Dev Team
+#  v1.1 originaly written by Gregory DEMAR
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#  ********************************************
+#  Coppermine version: 1.3.3
+#  $Source: /cvsroot/coppermine/stable/sql/basic.sql,v $
+#  $Revision: 1.8 $
+#  $Author: gaugau $
+#  $Date: 2005/04/19 03:17:11 $
+#**********************************************
 
 #
 # Dumping data for table `CPG_config`
@@ -25,7 +41,7 @@ INSERT INTO CPG_config VALUES ('allow_duplicate_emails_addr', '0');
 INSERT INTO CPG_config VALUES ('caption_in_thumbview', '1');
 INSERT INTO CPG_config VALUES ('views_in_thumbview', '1');
 INSERT INTO CPG_config VALUES ('charset', 'language file');
-INSERT INTO CPG_config VALUES ('cookie_name', 'cpg132');
+INSERT INTO CPG_config VALUES ('cookie_name', 'cpg133');
 INSERT INTO CPG_config VALUES ('cookie_path', '/');
 INSERT INTO CPG_config VALUES ('debug_mode', '0');
 INSERT INTO CPG_config VALUES ('debug_notice', '0');
@@ -57,6 +73,7 @@ INSERT INTO CPG_config VALUES ('max_upl_size', '1024');
 INSERT INTO CPG_config VALUES ('max_upl_width_height', '2048');
 INSERT INTO CPG_config VALUES ('min_votes_for_rating', '1');
 INSERT INTO CPG_config VALUES ('normal_pfx', 'normal_');
+INSERT INTO CPG_config VALUES ('offline', '0');
 INSERT INTO CPG_config VALUES ('picture_table_width', '600');
 INSERT INTO CPG_config VALUES ('picture_width', '400');
 INSERT INTO CPG_config VALUES ('randpos_interval', '1063623637');
@@ -79,7 +96,7 @@ INSERT INTO CPG_config VALUES ('show_private', '0');
 INSERT INTO CPG_config VALUES ('first_level', '1');
 INSERT INTO CPG_config VALUES ('display_film_strip', '1');
 INSERT INTO CPG_config VALUES ('max_film_strip_items', '5');
-INSERT INTO CPG_config VALUES ('thumb_use', 'ht');
+INSERT INTO CPG_config VALUES ('thumb_use', 'any');
 INSERT INTO CPG_config VALUES ('comment_email_notification', '0');
 #INSERT INTO CPG_config VALUES ('disable_popup_rightclick', '0');
 #INSERT INTO CPG_config VALUES ('disable_gallery_rightclick', '0');
@@ -110,7 +127,7 @@ INSERT INTO CPG_config VALUES ('slideshow_interval', '5000');
 
 INSERT INTO CPG_filetypes VALUES ('jpg', 'image/jpg', 'image');
 INSERT INTO CPG_filetypes VALUES ('jpeg', 'image/jpeg', 'image');
-INSERT INTO CPG_filetypes VALUES ('jpe', 'image/jpg', 'image');
+INSERT INTO CPG_filetypes VALUES ('jpe', 'image/jpe', 'image');
 INSERT INTO CPG_filetypes VALUES ('gif', 'image/gif', 'image');
 INSERT INTO CPG_filetypes VALUES ('png', 'image/png', 'image');
 INSERT INTO CPG_filetypes VALUES ('bmp', 'image/bmp', 'image');
@@ -137,7 +154,7 @@ INSERT INTO CPG_filetypes VALUES ('wma', 'audio/x-ms-wma', 'audio');
 INSERT INTO CPG_filetypes VALUES ('wav', 'audio/wav', 'audio');
 INSERT INTO CPG_filetypes VALUES ('ogg', 'audio/ogg', 'audio');
 
-INSERT INTO CPG_filetypes VALUES ('psd', 'image/psd', 'document');
+INSERT INTO CPG_filetypes VALUES ('psd', 'image/psd', 'image');
 INSERT INTO CPG_filetypes VALUES ('ram', 'audio/x-pn-realaudio', 'document');
 INSERT INTO CPG_filetypes VALUES ('ra', 'audio/x-realaudio', 'document');
 INSERT INTO CPG_filetypes VALUES ('rm', 'audio/x-realmedia', 'document');
