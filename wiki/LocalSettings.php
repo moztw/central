@@ -27,8 +27,9 @@ $wgScript           = "$wgScriptPath/index.php";
 $wgRedirectScript   = "$wgScriptPath/redirect.php";
 
 ## If using PHP as a CGI module, use the ugly URLs
-# $wgArticlePath      = "$wgScript/$1";
-$wgArticlePath      = "$wgScript?title=$1";
+$wgArticlePath      = "$wgScript/$1";
+#$wgArticlePath      = "$wgScript?title=$1";
+#$wgArticlePath      = "/page/$1";
 
 $wgStylePath        = "$wgScriptPath/skins";
 $wgStyleDirectory   = "$IP/skins";
@@ -42,7 +43,7 @@ $wgPasswordSender	= "nobody@moztw.org";
 
 $wgDBserver         = "localhost";
 $wgDBname           = "wikidb";
-$wgDBuser           = "web";
+$wgDBuser           = "root";
 $wgDBpassword       = "";
 $wgDBprefix         = "";
 

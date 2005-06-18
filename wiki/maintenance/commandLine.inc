@@ -26,6 +26,8 @@ if ( !isset( $optionsWithArgs ) ) {
 
 $self = array_shift( $argv );
 $IP = realpath( dirname( $self ) . "/.." );
+if ($IP == '/' || $IP == '')
+	$IP = "/home/moztw/wiki";
 chdir( $IP );
 
 $options = array();
