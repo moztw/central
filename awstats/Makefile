@@ -4,7 +4,9 @@ MM	!=	date -v -1d +%m
 CONF 	?= moztw.org
 AWROOT	= /home/moztw/awstats
 DIR	= $(AWROOT)/$(CONF)/$(YYYY)/$(MM)
-PROG	= ./prog/awstats.pl
+#PROG	= ./prog/awstats.pl
+PROG	= /usr/local/www/awstats/cgi-bin/awstats.pl
+PROG2	= /usr/local/www/awstats/tools/awstats_buildstaticpages.pl
 INDEXFN = $(AWROOT)/$(CONF)/index.shtml
 
 all:
@@ -21,7 +23,7 @@ output:
 	cd $(AWROOT)/$(CONF) && find 2*/* -type d | sed -e 's#\(.*\)#<li><a href="\1/">\1</a></li>#g' >> $(INDEXFN)
 	echo "</ul>" >> $(INDEXFN)
 	echo "<!--#include virtual='/footer.shtml'-->" >> $(INDEXFN)
-	nice -n 20 /usr/local/bin/awstats_buildstaticpages.pl -config=$(CONF) -dir=$(DIR) -awstatsprog=$(PROG) -year=$(YYYY) -month=$(MM)
+	nice -n 20 $(PROG2) -config=$(CONF) -dir=$(DIR) -awstatsprog=$(PROG) -year=$(YYYY) -month=$(MM)
 	cd $(DIR) && ln -sf awstats.$(CONF).html index.html
 
 #cleannoise:

@@ -1,0 +1,17 @@
+To install awstats support:
+
+* because we've changed to lighttpd and it does have some problem
+  generating multiple vhost access logs, so we use a single log file now.
+  log rotation is now achieved by logrotate.sh (w/crontab)
+
+(1) update awstats.moztw.org.conf
+    - cgidir should be /awstats
+    - icon dir should be /awstats/icons
+(2) install awstats (for FreeBSD, /usr/ports/www/awstats)
+(3) cd /usr/local/etc; ln -s ~moztw/awstats .
+(4) update awstats scripts path in Makefile
+(5) touch logs, mkdir data, and ./rebuild.sh
+(6) chdir to generated output directory and 
+    ln -s /usr/local/www/awstats/icons .
+
+							-- piaip
