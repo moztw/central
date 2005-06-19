@@ -6,7 +6,7 @@
  *   copyright            : (C) 2002 Meik Sievertsen
  *   email                : acyd.burn@gmx.de
  *
- *   $Id: pm_attachments.php,v 1.24 2004/07/31 15:15:53 acydburn Exp $
+ *   $Id: pm_attachments.php,v 1.25 2004/10/31 16:46:58 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -169,16 +169,14 @@ class attach_pm extends attach_parent
 	{
 		global $folder, $attach_config, $board_config, $template, $lang, $userdata, $db;
 
+		if (!$attach_config['allow_pm_attach'] && $userdata['user_level'] != ADMIN)
+		{
+			return;
+		}
+
 		$this->get_quota_limits($userdata);
 
-		if ( intval($attach_config['pm_filesize_limit']) == 0 )
-		{
-			$pm_filesize_limit = intval($attach_config['attachment_quota']);
-		}
-		else
-		{
-			$pm_filesize_limit = intval($attach_config['pm_filesize_limit']);
-		}
+		$pm_filesize_limit = (!$attach_config['pm_filesize_limit']) ? $attach_config['attachment_quota'] : $attach_config['pm_filesize_limit'];
 
 		$pm_filesize_total = get_total_attach_pm_filesize('to_user', $userdata['user_id']);
 

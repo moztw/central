@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: functions.php,v 1.133.2.34 2005/02/21 18:37:33 acydburn Exp $
+ *   $Id: functions.php,v 1.1 2005/02/28 18:24:08 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -78,8 +78,8 @@ function get_db_stat($mode)
 function phpbb_clean_username($username)
 {
 	$username = substr(htmlspecialchars(str_replace("\'", "'", trim($username))), 0, 25);
-	$username = phpbb_rtrim($username, "\\");   
-	$username = str_replace("'", "\'", $username); 
+	$username = phpbb_rtrim($username, "\\");	
+	$username = str_replace("'", "\'", $username);
 
 	return $username;
 }
@@ -87,28 +87,29 @@ function phpbb_clean_username($username)
 // added at phpBB 2.0.12 to fix a bug in PHP 4.3.10 (only supporting charlist in php >= 4.1.0)
 function phpbb_rtrim($str, $charlist = false)
 {
-   if ($charlist === false)
-   {
-      return rtrim($str);
-   }
-   
-   $php_version = explode('.', PHP_VERSION);
+	if ($charlist === false)
+	{
+		return rtrim($str);
+	}
+	
+	$php_version = explode('.', PHP_VERSION);
 
-   // php version < 4.1.0
-   if ((int) $php_version[0] < 4 || ((int) $php_version[0] == 4 && (int) $php_version[1] < 1))
-   {
-      while ($str{strlen($str)-1} == $charlist)
-      {
-         $str = substr($str, 0, strlen($str)-1);
-      }
-   }
-   else
-   {
-      $str = rtrim($str, $charlist);
-   }
+	// php version < 4.1.0
+	if ((int) $php_version[0] < 4 || ((int) $php_version[0] == 4 && (int) $php_version[1] < 1))
+	{
+		while ($str{strlen($str)-1} == $charlist)
+		{
+			$str = substr($str, 0, strlen($str)-1);
+		}
+	}
+	else
+	{
+		$str = rtrim($str, $charlist);
+	}
 
-   return $str;
+	return $str;
 }
+
 //
 // Get Userdata, $user can be username or user_id. If force_str is true, the username will be forced.
 //
@@ -795,7 +796,7 @@ function redirect($url)
 	if (@preg_match('/Microsoft|WebSTAR|Xitami/', getenv('SERVER_SOFTWARE')))
 	{
 		header('Refresh: 0; URL=' . $server_protocol . $server_name . $server_port . $script_name . $url);
-		echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head><meta http-equiv="Content-Type" content="text/html; charset=Big5"><meta http-equiv="refresh" content="0; url=' . $server_protocol . $server_name . $server_port . $script_name . $url . '"><title>Redirect</title></head><body><div align="center">If your browser does not support meta redirection please click <a href="' . $server_protocol . $server_name . $server_port . $script_name . $url . '">HERE</a> to be redirected</div></body></html>';
+		echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><meta http-equiv="refresh" content="0; url=' . $server_protocol . $server_name . $server_port . $script_name . $url . '"><title>Redirect</title></head><body><div align="center">If your browser does not support meta redirection please click <a href="' . $server_protocol . $server_name . $server_port . $script_name . $url . '">HERE</a> to be redirected</div></body></html>';
 		exit;
 	}
 

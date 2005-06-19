@@ -57,6 +57,4 @@
 
 <!-- BEGIN url --><a href="{URL}" target="_blank" class="postlink">{DESCRIPTION}</a><!-- END url -->
 
-<!-- BEGIN xpi --><a href="#" onClick="javascript:InstallTrigger.startSoftwareUpdate('{URL}');" class="postlink">{URL}</a><!-- END xpi -->
-
 <!-- BEGIN email --><a href="mailto:{EMAIL}">{EMAIL}</A><!-- END email -->

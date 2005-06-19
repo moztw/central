@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: groupcp.php,v 1.58.2.22 2004/11/18 17:49:34 acydburn Exp $
+ *   $Id: groupcp.php,v 1.58.2.23 2005/05/06 20:50:10 acydburn Exp $
  *
  *
  ***************************************************************************/

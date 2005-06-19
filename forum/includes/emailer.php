@@ -107,15 +107,15 @@ class emailer
 				$tpl_file = $phpbb_root_path . 'language/lang_' . $board_config['default_lang'] . '/email/' . $template_file . '.tpl';
 
 				if (!@file_exists(@phpbb_realpath($tpl_file)))
-		{
+				{
 					message_die(GENERAL_ERROR, 'Could not find email template file :: ' . $template_file, '', __LINE__, __FILE__);
-		}
-	}
+				}
+			}
 
 			if (!($fd = @fopen($tpl_file, 'r')))
-		{
+			{
 				message_die(GENERAL_ERROR, 'Failed opening template file :: ' . $tpl_file, '', __LINE__, __FILE__);
-		}
+			}
 
 			$this->tpl_msg[$template_lang . $template_file] = fread($fd, filesize($tpl_file));
 			fclose($fd);
@@ -134,7 +134,7 @@ class emailer
 
 	// Send the mail out to the recipients set previously in var $this->address
 	function send()
-		{
+	{
 		global $board_config, $lang, $phpEx, $phpbb_root_path, $db;
 
     	// Escape all quotes, else the eval will fail.
@@ -166,11 +166,19 @@ class emailer
 			$this->subject = (trim($match[2]) != '') ? trim($match[2]) : (($this->subject != '') ? $this->subject : 'No Subject');
 			$drop_header .= '[\r\n]*?' . phpbb_preg_quote($match[1], '#');
 		}
+		else
+		{
+			$this->subject = (($this->subject != '') ? $this->subject : 'No Subject');
+		}
 
 		if (preg_match('#^(Charset:(.*?))$#m', $this->msg, $match))
 		{
 			$this->encoding = (trim($match[2]) != '') ? trim($match[2]) : trim($lang['ENCODING']);
 			$drop_header .= '[\r\n]*?' . phpbb_preg_quote($match[1], '#');
+		}
+		else
+		{
+			$this->encoding = trim($lang['ENCODING']);
 		}
 
 		if ($drop_header != '')
@@ -178,13 +186,13 @@ class emailer
 			$this->msg = trim(preg_replace('#' . $drop_header . '#s', '', $this->msg));
 		}
 
- 		$to = $this->addresses['to'];
-  
- 		$cc = (count($this->addresses['cc'])) ? implode(', ', $this->addresses['cc']) : '';
- 		$bcc = (count($this->addresses['bcc'])) ? implode(', ', $this->addresses['bcc']) : '';
-  
- 		// Build header
- 		$this->extra_headers = (($this->reply_to != '') ? "Reply-to: $this->reply_to\n" : '') . (($this->from != '') ? "From: $this->from\n" : "From: " . $board_config['board_email'] . "\n") . "Return-Path: " . $board_config['board_email'] . "\nMessage-ID: <" . md5(uniqid(time())) . "@" . $board_config['server_name'] . ">\nMIME-Version: 1.0\nContent-type: text/plain; charset=" . $this->encoding . "\nContent-transfer-encoding: 8bit\nDate: " . date('r', time()) . "\nX-Priority: 3\nX-MSMail-Priority: Normal\nX-Mailer: PHP\nX-MimeOLE: Produced By phpBB2\n" . $this->extra_headers . (($cc != '') ? "Cc: $cc\n" : '')  . (($bcc != '') ? "Bcc: $bcc\n" : ''); 
+		$to = $this->addresses['to'];
+
+		$cc = (count($this->addresses['cc'])) ? implode(', ', $this->addresses['cc']) : '';
+		$bcc = (count($this->addresses['bcc'])) ? implode(', ', $this->addresses['bcc']) : '';
+
+		// Build header
+		$this->extra_headers = (($this->reply_to != '') ? "Reply-to: $this->reply_to\n" : '') . (($this->from != '') ? "From: $this->from\n" : "From: " . $board_config['board_email'] . "\n") . "Return-Path: " . $board_config['board_email'] . "\nMessage-ID: <" . md5(uniqid(time())) . "@" . $board_config['server_name'] . ">\nMIME-Version: 1.0\nContent-type: text/plain; charset=" . $this->encoding . "\nContent-transfer-encoding: 8bit\nDate: " . date('r', time()) . "\nX-Priority: 3\nX-MSMail-Priority: Normal\nX-Mailer: PHP\nX-MimeOLE: Produced By phpBB2\n" . $this->extra_headers . (($cc != '') ? "Cc: $cc\n" : '')  . (($bcc != '') ? "Bcc: $bcc\n" : ''); 
 
 		// Send message ... removed $this->encode() from subject for time being
 		if ( $this->use_smtp )

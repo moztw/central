@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: common.php,v 1.74.2.17 2005/02/21 19:29:30 acydburn Exp $
+ *   $Id: common.php,v 1.1 2005/02/28 18:20:02 acydburn Exp $
  *
  ***************************************************************************/
 
@@ -53,7 +53,7 @@ if (@phpversion() < '4.0.0')
 	
 	// We 'flip' the array of variables to test like this so that
 	// we can validate later with isset($test[$var]) (no in_array())
- 	$test = array('HTTP_GET_VARS' => NULL, 'HTTP_POST_VARS' => NULL, 'HTTP_COOKIE_VARS' => NULL, 'HTTP_SERVER_VARS' => NULL, 'HTTP_ENV_VARS' => NULL, 'HTTP_POST_FILES' => NULL, 'phpEx' => NULL, 'phpbb_root_path' => NULL);
+	$test = array('HTTP_GET_VARS' => NULL, 'HTTP_POST_VARS' => NULL, 'HTTP_COOKIE_VARS' => NULL, 'HTTP_SERVER_VARS' => NULL, 'HTTP_ENV_VARS' => NULL, 'HTTP_POST_FILES' => NULL, 'phpEx' => NULL, 'phpbb_root_path' => NULL);
 
 	// Loop through each input array
 	@reset($test);
@@ -63,7 +63,7 @@ if (@phpversion() < '4.0.0')
 		{
 			// Validate the variable to be unset
 			if (!isset($test[$var]) && $var != 'test' && $var != 'input')
-		{
+			{
 				unset($$var);
 			}
 		}
@@ -73,8 +73,6 @@ else if (@ini_get('register_globals') == '1' || strtolower(@ini_get('register_gl
 {
 	// PHP4+ path
 	$not_unset = array('HTTP_GET_VARS', 'HTTP_POST_VARS', 'HTTP_COOKIE_VARS', 'HTTP_SERVER_VARS', 'HTTP_SESSION_VARS', 'HTTP_ENV_VARS', 'HTTP_POST_FILES', 'phpEx', 'phpbb_root_path');
-
-//	$not_unset = array('HTTP_GET_VARS', 'HTTP_POST_VARS', 'HTTP_COOKIE_VARS', 'HTTP_SERVER_VARS', 'HTTP_SESSION_VARS', 'HTTP_ENV_VARS', 'HTTP_POST_FILES', 'phpEx', 'phpbb_root_path'); // 這行應該是多的
 
 	// Not only will array_merge give a warning if a parameter
 	// is not an array, it will actually fail. So we check if
@@ -91,14 +89,14 @@ else if (@ini_get('register_globals') == '1' || strtolower(@ini_get('register_gl
 	unset($input['input']);
 	unset($input['not_unset']);
 
-   while (list($var,) = @each($input))
-   {
-      if (!in_array($var, $not_unset))
-      {
-         unset($$var);
-      }
-   }
-
+	while (list($var,) = @each($input))
+	{
+		if (!in_array($var, $not_unset))
+		{
+			unset($$var);
+		}
+	}
+   
 	unset($input);
 }
 

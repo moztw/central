@@ -6,7 +6,7 @@
  *   copyright            : (C) 2002 Meik Sievertsen
  *   email                : acyd.burn@gmx.de
  *
- *   $Id: posting_attachments.php,v 1.62 2004/07/31 17:25:21 acydburn Exp $
+ *   $Id: posting_attachments.php,v 1.69 2005/05/09 16:19:31 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -196,7 +196,7 @@ class attach_parent
 		if (!$found)
 		{
 			// Set Default Quota Limit
-			$quota_id = ($quota_type == QUOTA_UPLOAD_LIMIT) ? intval($attach_config['default_upload_quota']) : intval($attach_config['default_pm_quota']);
+			$quota_id = ($quota_type == QUOTA_UPLOAD_LIMIT) ? $attach_config['default_upload_quota'] : $attach_config['default_pm_quota'];
 
 			if ($quota_id == 0)
 			{
@@ -227,7 +227,7 @@ class attach_parent
 		// Never exceed the complete Attachment Upload Quota
 		if ($quota_type == QUOTA_UPLOAD_LIMIT)
 		{
-			if (intval($attach_config[$limit_type]) > intval($attach_config[$default]))
+			if ($attach_config[$limit_type] > $attach_config[$default])
 			{
 				$attach_config[$limit_type] = $attach_config[$default];
 			}
@@ -513,7 +513,7 @@ class attach_parent
 								
 								if ($actual_thumbnail_list[$i] == 1)
 								{
-									unlink_attach('t_' . $actual_list[$i], MODE_THUMBNAIL);
+									unlink_attach($actual_list[$i], MODE_THUMBNAIL);
 								}
 							}
 							else
@@ -538,7 +538,7 @@ class attach_parent
 
 							if ( $actual_id_list[$i] == '0' )
 							{
-								unlink_attach('t_' . $actual_list[$i], MODE_THUMBNAIL);
+								unlink_attach($actual_list[$i], MODE_THUMBNAIL);
 							}
 							else
 							{
@@ -625,8 +625,8 @@ class attach_parent
 
 						// Update Entry
 						$sql = "UPDATE " . ATTACHMENTS_DESC_TABLE . " 
-						SET physical_filename = '" . $this->attach_filename . "', real_filename = '" . $this->filename . "', comment = '" . $comment . "', extension = '" . $this->extension . "', mimetype = '" . $this->type . "', filesize = " . $this->filesize . ", filetime = " . $this->filetime . ", thumbnail = " . $this->thumbnail . "
-						WHERE attach_id = " . $attachment_id;
+						SET physical_filename = '" . str_replace("'", "''", basename($this->attach_filename)) . "', real_filename = '" . str_replace("'", "''", basename($this->filename)) . "', comment = '" . str_replace("'", "''", $comment) . "', extension = '" . str_replace("'", "''", $this->extension) . "', mimetype = '" . str_replace("'", "''", $this->type) . "', filesize = " . $this->filesize . ", filetime = " . $this->filetime . ", thumbnail = " . $this->thumbnail . "
+						WHERE attach_id = " . (int) $attachment_id;
 						
 						if ( !($db->sql_query($sql)) )
 						{
@@ -638,7 +638,7 @@ class attach_parent
 								
 						if (intval($row['thumbnail']) == 1)
 						{
-							unlink_attach('t_' . $row['physical_filename'], MODE_THUMBNAIL);
+							unlink_attach($row['physical_filename'], MODE_THUMBNAIL);
 						}
 
 						//
@@ -757,7 +757,7 @@ class attach_parent
 					// insert attachment into db 
 					//
 					$sql = "INSERT INTO " . ATTACHMENTS_DESC_TABLE . " (physical_filename, real_filename, comment, extension, mimetype, filesize, filetime, thumbnail) 
-					VALUES ( '" . $this->attachment_list[$i] . "', '" . str_replace("'", "''", $this->attachment_filename_list[$i]) . "', '" . trim($this->attachment_comment_list[$i]) . "', '" . $this->attachment_extension_list[$i] . "', '" . $this->attachment_mimetype_list[$i] . "', " . $this->attachment_filesize_list[$i] . ", " . $this->attachment_filetime_list[$i] . ", " . $this->attachment_thumbnail_list[$i] . ")";
+					VALUES ( '" . str_replace("'", "''", basename($this->attachment_list[$i])) . "', '" . str_replace("'", "''", basename($this->attachment_filename_list[$i])) . "', '" . trim($this->attachment_comment_list[$i]) . "', '" . $this->attachment_extension_list[$i] . "', '" . $this->attachment_mimetype_list[$i] . "', " . $this->attachment_filesize_list[$i] . ", " . $this->attachment_filetime_list[$i] . ", " . $this->attachment_thumbnail_list[$i] . ")";
 
 					if ( !($db->sql_query($sql)) )
 					{
@@ -786,7 +786,7 @@ class attach_parent
 				// insert attachment into db, here the user submited it directly 
 				//
 				$sql = "INSERT INTO " . ATTACHMENTS_DESC_TABLE . " (physical_filename, real_filename, comment, extension, mimetype, filesize, filetime, thumbnail) 
-				VALUES ( '" . $this->attach_filename . "', '" . str_replace("'", "''", stripslashes($this->filename)) . "', '" . trim($this->file_comment) . "', '" . $this->extension . "', '" . $this->type . "', " . $this->filesize . ", " . $this->filetime . ", " . $this->thumbnail . ")";
+				VALUES ( '" . str_replace("'", "''", basename($this->attach_filename)) . "', '" . str_replace("'", "''", stripslashes(basename($this->filename))) . "', '" . trim($this->file_comment) . "', '" . $this->extension . "', '" . $this->type . "', " . $this->filesize . ", " . $this->filetime . ", " . $this->thumbnail . ")";
 	
 				//
 				// Inform the user that his post has been created, but nothing is attached
@@ -926,7 +926,7 @@ class attach_parent
 				'L_ADD_ATTACHMENT' => $lang['Add_attachment'],
 
 				'FILE_COMMENT' => stripslashes(htmlspecialchars($this->file_comment)),
-				'FILESIZE' => intval($attach_config['max_filesize']),
+				'FILESIZE' => $attach_config['max_filesize'],
 				'FILENAME' => $this->filename,
 
 				'S_FORM_ENCTYPE' => $form_enctype)	
@@ -958,7 +958,7 @@ class attach_parent
 				}
 
 				$template->assign_block_vars('attach_row', array(
-					'FILE_NAME' => $this->attachment_filename_list[$i],
+					'FILE_NAME' => stripslashes(htmlspecialchars($this->attachment_filename_list[$i])),
 					'ATTACH_FILENAME' => $this->attachment_list[$i],
 					'FILE_COMMENT' => stripslashes(htmlspecialchars($this->attachment_comment_list[$i])),
 					'ATTACH_ID' => $this->attachment_id_list[$i],
@@ -995,13 +995,19 @@ class attach_parent
 
 		if ($this->post_attach) 
 		{
-			$r_file = trim($this->filename);
+			$r_file = trim(basename($this->filename));
 			$file = $HTTP_POST_FILES['fileupload']['tmp_name'];
 			$this->type = $HTTP_POST_FILES['fileupload']['type'];
-		
+
+			if (isset($HTTP_POST_FILES['fileupload']['size']) && $HTTP_POST_FILES['fileupload']['size'] == 0)
+			{
+				message_die(GENERAL_ERROR, 'Tried to upload empty file');
+			}
+
 			// Opera add the name to the mime type
 			$this->type = ( strstr($this->type, '; name') ) ? str_replace(strstr($this->type, '; name'), '', $this->type) : $this->type;
 			$this->extension = get_extension($this->filename);
+
 			$this->filesize = @filesize($file);
 			$this->filesize = intval($this->filesize);
 
@@ -1017,14 +1023,14 @@ class attach_parent
 
 			$row = $db->sql_fetchrow($result);
 
-			$allowed_filesize = ( intval($row['max_filesize']) != 0 ) ? intval($row['max_filesize']) : intval($attach_config['max_filesize']);
+			$allowed_filesize = ($row['max_filesize']) ? $row['max_filesize'] : $attach_config['max_filesize'];
 			$cat_id = intval($row['cat_id']);
 			$auth_cache = trim($row['forum_permissions']);
 
 			//
 			// check Filename
 			//
-			if ( preg_match("/[\\/:*?\"<>|]/i", $this->filename) )
+			if ( preg_match("#[\\/:*?\"<>|]#i", $this->filename) )
 			{ 
 				$error = TRUE;
 				if(!empty($error_msg))
@@ -1037,7 +1043,7 @@ class attach_parent
 			//
 			// check php upload-size
 			//
-			if ( (!$error) && ($file == 'none') ) 
+			if (!$error && $file == 'none') 
 			{
 				$error = TRUE;
 				if(!empty($error_msg))
@@ -1061,7 +1067,7 @@ class attach_parent
 			//
 			// Check Extension
 			//
-			if ( (!$error) && (intval($row['allow_group']) == 0) )
+			if (!$error && intval($row['allow_group']) == 0)
 			{
 				$error = TRUE;
 				if(!empty($error_msg))
@@ -1084,210 +1090,7 @@ class attach_parent
 				$error_msg .= sprintf($lang['Disallowed_extension_within_forum'], $this->extension);
 			} 
 
-			//
-			// Check Image Size, if it's an image
-			//
-			if ( (!$error) && ($userdata['user_level'] != ADMIN) && ($cat_id == IMAGE_CAT) )
-			{
-				list($width, $height) = image_getdimension($file);
-
-				if ( ($width != 0) && ($height != 0) && (intval($attach_config['img_max_width']) != 0) && (intval($attach_config['img_max_height']) != 0) )
-				{
-					if ( ($width > intval($attach_config['img_max_width'])) || ($height > intval($attach_config['img_max_height'])) )
-					{
-						$error = TRUE;
-						if(!empty($error_msg))
-						{
-							$error_msg .= '<br />';
-						}
-						$error_msg .= sprintf($lang['Error_imagesize'], intval($attach_config['img_max_width']), intval($attach_config['img_max_height']));
-					}
-				}
-			}
-
-			//
-			// check Filesize 
-			//
-			if ( (!$error) && ($allowed_filesize != 0) && ($this->filesize > $allowed_filesize) && ($userdata['user_level'] != ADMIN) )
-			{
-				$size_lang = ($allowed_filesize >= 1048576) ? $lang['MB'] : ( ($allowed_filesize >= 1024) ? $lang['KB'] : $lang['Bytes'] );
-
-				if ($allowed_filesize >= 1048576)
-				{
-					$allowed_filesize = round($allowed_filesize / 1048576 * 100) / 100;
-				}
-				else if($allowed_filesize >= 1024)
-				{
-					$allowed_filesize = round($allowed_filesize / 1024 * 100) / 100;
-				}
-			
-				$error = TRUE;
-				if(!empty($error_msg))
-				{
-					$error_msg .= '<br />';
-				}
-				$error_msg .= sprintf($lang['Attachment_too_big'], $allowed_filesize, $size_lang); 
-			}
-
-			//
-			// Check our complete quota
-			//
-			if (intval($attach_config['attachment_quota']) != 0)
-			{
-				$sql = 'SELECT sum(filesize) as total FROM ' . ATTACHMENTS_DESC_TABLE;
-
-				if ( !($result = $db->sql_query($sql)) )
-				{
-					message_die(GENERAL_ERROR, 'Could not query total filesize', '', __LINE__, __FILE__, $sql);
-				}
-
-				$row = $db->sql_fetchrow($result);
-				$total_filesize = $row['total'];
-
-				if ($total_filesize + $this->filesize > intval($attach_config['attachment_quota']))
-				{
-					$error = TRUE;
-					if(!empty($error_msg))
-					{
-						$error_msg .= '<br />';
-					}
-					$error_msg .= $lang['Attach_quota_reached'];
-				}
-
-			}
-
-			$this->get_quota_limits($userdata);
-
-			//
-			// Check our user quota
-			//
-			if ($this->page != PAGE_PRIVMSGS)
-			{
-				if (intval($attach_config['upload_filesize_limit']) != 0)
-				{
-					$sql = "SELECT attach_id 
-					FROM " . ATTACHMENTS_TABLE . "
-					WHERE (user_id_1 = " . $userdata['user_id'] . ") AND (privmsgs_id = 0)
-					GROUP BY attach_id";
-		
-					if ( !($result = $db->sql_query($sql)) )
-					{
-						message_die(GENERAL_ERROR, 'Couldn\'t query attachments', '', __LINE__, __FILE__, $sql);
-					}
-		
-					$attach_ids = $db->sql_fetchrowset($result);
-					$num_attach_ids = $db->sql_numrows($result);
-					$attach_id = array();
-
-					for ($i = 0; $i < $num_attach_ids; $i++)
-					{
-						$attach_id[] = intval($attach_ids[$i]['attach_id']);
-					}
-			
-					if ($num_attach_ids > 0)
-					{
-						//
-						// Now get the total filesize
-						//
-						$sql = "SELECT sum(filesize) as total
-						FROM " . ATTACHMENTS_DESC_TABLE . "
-						WHERE attach_id IN (" . implode(', ', $attach_id) . ")";
-
-						if ( !($result = $db->sql_query($sql)) )
-						{
-							message_die(GENERAL_ERROR, 'Could not query total filesize', '', __LINE__, __FILE__, $sql);
-						}
-
-						$row = $db->sql_fetchrow($result);
-						$total_filesize = $row['total'];
-					}
-					else
-					{
-						$total_filesize = 0;
-					}
-
-					if ($total_filesize + $this->filesize > intval($attach_config['upload_filesize_limit']))
-					{
-						$upload_filesize_limit = intval($attach_config['upload_filesize_limit']);
-						$size_lang = ($upload_filesize_limit >= 1048576) ? $lang['MB'] : ( ($upload_filesize_limit >= 1024) ? $lang['KB'] : $lang['Bytes'] );
-
-						if ($upload_filesize_limit >= 1048576)
-						{
-							$upload_filesize_limit = round($upload_filesize_limit / 1048576 * 100) / 100;
-						}
-						else if($upload_filesize_limit >= 1024)
-						{
-							$upload_filesize_limit = round($upload_filesize_limit / 1024 * 100) / 100;
-						}
-			
-						$error = TRUE;
-						if(!empty($error_msg))
-						{
-							$error_msg .= '<br />';
-						}
-						$error_msg .= sprintf($lang['User_upload_quota_reached'], $upload_filesize_limit, $size_lang);
-					}
-				}
-			}
-					
-			//
-			// If we are at Private Messaging, check our PM Quota
-			//
-			if ($this->page == PAGE_PRIVMSGS)
-			{
-				$to_user = ( isset($HTTP_POST_VARS['username']) ) ? $HTTP_POST_VARS['username'] : '';
-
-				if (intval($attach_config['pm_filesize_limit']) != 0)
-				{
-					$total_filesize = get_total_attach_pm_filesize('from_user', $userdata['user_id']);
-
-					if ( ($total_filesize + $this->filesize > intval($attach_config['pm_filesize_limit'])) ) 
-					{
-						$error = TRUE;
-						if(!empty($error_msg))
-						{
-							$error_msg .= '<br />';
-						}
-						$error_msg .= $lang['Attach_quota_sender_pm_reached'];
-					}
-				}
-
-				//
-				// Check Receivers PM Quota
-				//
-				if (!empty($to_user) && $userdata['user_level'] != ADMIN)
-				{
-					$sql = "SELECT user_id
-					FROM " . USERS_TABLE . "
-					WHERE username = '" . str_replace("'", "''", htmlspecialchars($to_user)) . "'";
-					
-					if ( !($result = $db->sql_query($sql)) )
-					{
-						message_die(GENERAL_ERROR, 'Could not query userdata', '', __LINE__, __FILE__, $sql);
-					}
-
-					$row = $db->sql_fetchrow($result);
-					$user_id = intval($row['user_id']);
-					
-					$u_data = get_userdata($user_id);
-					$this->get_quota_limits($u_data, $user_id);
-					
-					if (intval($attach_config['pm_filesize_limit']) != 0)
-					{
-						$total_filesize = get_total_attach_pm_filesize('to_user', $user_id);
-						
-						if ($total_filesize + $this->filesize > intval($attach_config['pm_filesize_limit'])) 
-						{
-							$error = TRUE;
-							if(!empty($error_msg))
-							{
-								$error_msg .= '<br />';
-							}
-							$error_msg .= sprintf($lang['Attach_quota_receiver_pm_reached'], $to_user);
-						}
-					}
-				}
-			}
+			// Upload File
 			
 			$this->thumbnail = 0;
 				
@@ -1297,7 +1100,7 @@ class attach_parent
 				// Prepare Values
 				//
 				$this->filetime = time(); 
-	
+
 				$this->filename = stripslashes($r_file);
 
 				$this->attach_filename = strtolower($this->filename);
@@ -1310,12 +1113,23 @@ class attach_parent
 					$this->attach_filename = str_replace(' ', '_', $this->attach_filename);
 					$this->attach_filename = rawurlencode($this->attach_filename);
 					$this->attach_filename = preg_replace("/%(\w{2})/", "_", $this->attach_filename);
-
-					if (physical_filename_already_stored($this->attach_filename))
+					$this->attach_filename = delete_extension($this->attach_filename);
+					
+					$new_filename = trim($this->attach_filename);
+					
+					if (!$new_filename)
 					{
-						$this->attach_filename = delete_extension($this->attach_filename);
-						$this->attach_filename = $this->attach_filename . '_' . substr(rand(), 0, 3) . '.' . $this->extension;
+						$u_id = (intval($userdata['user_id']) == ANONYMOUS) ? 0 : intval($userdata['user_id']);
+						$new_filename = $u_id . '_' . $this->filetime . '.' . $this->extension;
 					}
+
+					do
+					{
+						$this->attach_filename = $new_filename . '_' . substr(rand(), 0, 3) . '.' . $this->extension;
+					}
+					while (physical_filename_already_stored($this->attach_filename));
+
+					unset($new_filename);
 				}
 				else
 				{
@@ -1333,6 +1147,12 @@ class attach_parent
 				{
 					$this->thumbnail = 1;
 				}
+			}
+
+			if ($error) 
+			{
+				$this->post_attach = FALSE;
+				return;
 			}
 
 			//
@@ -1383,8 +1203,224 @@ class attach_parent
 				}
 			}
 
+			// Now, check filesize parameters
+			if (!$error)
+			{
+				if ($upload_mode != 'ftp' && !$this->filesize)
+				{
+					$this->filesize = intval(@filesize($upload_dir . '/' . $this->attach_filename));
+				}
+			}
+
+			//
+			// Check Image Size, if it's an image
+			//
+			if ( (!$error) && ($userdata['user_level'] != ADMIN) && ($cat_id == IMAGE_CAT) )
+			{
+				list($width, $height) = image_getdimension($file);
+
+				if ( ($width != 0) && ($height != 0) && (intval($attach_config['img_max_width']) != 0) && (intval($attach_config['img_max_height']) != 0) )
+				{
+					if ( ($width > intval($attach_config['img_max_width'])) || ($height > intval($attach_config['img_max_height'])) )
+					{
+						$error = TRUE;
+						if(!empty($error_msg))
+						{
+							$error_msg .= '<br />';
+						}
+						$error_msg .= sprintf($lang['Error_imagesize'], intval($attach_config['img_max_width']), intval($attach_config['img_max_height']));
+					}
+				}
+			}
+
+			//
+			// check Filesize 
+			//
+			if ( (!$error) && ($allowed_filesize != 0) && ($this->filesize > $allowed_filesize) && ($userdata['user_level'] != ADMIN) )
+			{
+				$size_lang = ($allowed_filesize >= 1048576) ? $lang['MB'] : ( ($allowed_filesize >= 1024) ? $lang['KB'] : $lang['Bytes'] );
+
+				if ($allowed_filesize >= 1048576)
+				{
+					$allowed_filesize = round($allowed_filesize / 1048576 * 100) / 100;
+				}
+				else if($allowed_filesize >= 1024)
+				{
+					$allowed_filesize = round($allowed_filesize / 1024 * 100) / 100;
+				}
+			
+				$error = TRUE;
+				if(!empty($error_msg))
+				{
+					$error_msg .= '<br />';
+				}
+				$error_msg .= sprintf($lang['Attachment_too_big'], $allowed_filesize, $size_lang); 
+			}
+
+			//
+			// Check our complete quota
+			//
+			if ($attach_config['attachment_quota'])
+			{
+				$sql = 'SELECT sum(filesize) as total FROM ' . ATTACHMENTS_DESC_TABLE;
+
+				if ( !($result = $db->sql_query($sql)) )
+				{
+					message_die(GENERAL_ERROR, 'Could not query total filesize', '', __LINE__, __FILE__, $sql);
+				}
+
+				$row = $db->sql_fetchrow($result);
+				$total_filesize = $row['total'];
+
+				if (($total_filesize + $this->filesize) > $attach_config['attachment_quota'])
+				{
+					$error = TRUE;
+					if(!empty($error_msg))
+					{
+						$error_msg .= '<br />';
+					}
+					$error_msg .= $lang['Attach_quota_reached'];
+				}
+
+			}
+
+			$this->get_quota_limits($userdata);
+
+			//
+			// Check our user quota
+			//
+			if ($this->page != PAGE_PRIVMSGS)
+			{
+				if ($attach_config['upload_filesize_limit'])
+				{
+					$sql = "SELECT attach_id 
+					FROM " . ATTACHMENTS_TABLE . "
+					WHERE (user_id_1 = " . $userdata['user_id'] . ") AND (privmsgs_id = 0)
+					GROUP BY attach_id";
+		
+					if ( !($result = $db->sql_query($sql)) )
+					{
+						message_die(GENERAL_ERROR, 'Couldn\'t query attachments', '', __LINE__, __FILE__, $sql);
+					}
+		
+					$attach_ids = $db->sql_fetchrowset($result);
+					$num_attach_ids = $db->sql_numrows($result);
+					$attach_id = array();
+
+					for ($i = 0; $i < $num_attach_ids; $i++)
+					{
+						$attach_id[] = intval($attach_ids[$i]['attach_id']);
+					}
+			
+					if ($num_attach_ids > 0)
+					{
+						//
+						// Now get the total filesize
+						//
+						$sql = "SELECT sum(filesize) as total
+						FROM " . ATTACHMENTS_DESC_TABLE . "
+						WHERE attach_id IN (" . implode(', ', $attach_id) . ")";
+
+						if ( !($result = $db->sql_query($sql)) )
+						{
+							message_die(GENERAL_ERROR, 'Could not query total filesize', '', __LINE__, __FILE__, $sql);
+						}
+
+						$row = $db->sql_fetchrow($result);
+						$total_filesize = $row['total'];
+					}
+					else
+					{
+						$total_filesize = 0;
+					}
+
+					if (($total_filesize + $this->filesize) > $attach_config['upload_filesize_limit'])
+					{
+						$upload_filesize_limit = $attach_config['upload_filesize_limit'];
+						$size_lang = ($upload_filesize_limit >= 1048576) ? $lang['MB'] : ( ($upload_filesize_limit >= 1024) ? $lang['KB'] : $lang['Bytes'] );
+
+						if ($upload_filesize_limit >= 1048576)
+						{
+							$upload_filesize_limit = round($upload_filesize_limit / 1048576 * 100) / 100;
+						}
+						else if($upload_filesize_limit >= 1024)
+						{
+							$upload_filesize_limit = round($upload_filesize_limit / 1024 * 100) / 100;
+						}
+			
+						$error = TRUE;
+						if(!empty($error_msg))
+						{
+							$error_msg .= '<br />';
+						}
+						$error_msg .= sprintf($lang['User_upload_quota_reached'], $upload_filesize_limit, $size_lang);
+					}
+				}
+			}
+					
+			//
+			// If we are at Private Messaging, check our PM Quota
+			//
+			if ($this->page == PAGE_PRIVMSGS)
+			{
+				$to_user = ( isset($HTTP_POST_VARS['username']) ) ? $HTTP_POST_VARS['username'] : '';
+
+				if ($attach_config['pm_filesize_limit'])
+				{
+					$total_filesize = get_total_attach_pm_filesize('from_user', $userdata['user_id']);
+
+					if (($total_filesize + $this->filesize) > $attach_config['pm_filesize_limit']) 
+					{
+						$error = TRUE;
+						if(!empty($error_msg))
+						{
+							$error_msg .= '<br />';
+						}
+						$error_msg .= $lang['Attach_quota_sender_pm_reached'];
+					}
+				}
+
+				//
+				// Check Receivers PM Quota
+				//
+				if (!empty($to_user) && $userdata['user_level'] != ADMIN)
+				{
+					$sql = "SELECT user_id
+					FROM " . USERS_TABLE . "
+					WHERE username = '" . str_replace("'", "''", htmlspecialchars($to_user)) . "'";
+					
+					if ( !($result = $db->sql_query($sql)) )
+					{
+						message_die(GENERAL_ERROR, 'Could not query userdata', '', __LINE__, __FILE__, $sql);
+					}
+
+					$row = $db->sql_fetchrow($result);
+					$user_id = intval($row['user_id']);
+					
+					$u_data = get_userdata($user_id);
+					$this->get_quota_limits($u_data, $user_id);
+					
+					if ($attach_config['pm_filesize_limit'])
+					{
+						$total_filesize = get_total_attach_pm_filesize('to_user', $user_id);
+						
+						if (($total_filesize + $this->filesize) > $attach_config['pm_filesize_limit']) 
+						{
+							$error = TRUE;
+							if(!empty($error_msg))
+							{
+								$error_msg .= '<br />';
+							}
+							$error_msg .= sprintf($lang['Attach_quota_receiver_pm_reached'], $to_user);
+						}
+					}
+				}
+			}
+
 			if ($error) 
 			{
+				unlink_attach($this->attach_filename);
+				unlink_attach($this->attach_filename, MODE_THUMBNAIL);
 				$this->post_attach = FALSE;
 			}
 		}
@@ -1396,6 +1432,11 @@ class attach_parent
 	function move_uploaded_attachment($upload_mode, $file)
 	{
 		global $error, $error_msg, $lang, $upload_dir;
+
+		if (!is_uploaded_file($file))
+		{
+			message_die(GENERAL_ERROR, 'Unable to upload file. The given source has not been uploaded.', __LINE__, __FILE__);
+		}
 
 		switch ($upload_mode)
 		{
@@ -1502,9 +1543,9 @@ class attach_parent
 				$dest_file .= '/' . THUMB_DIR . '/t_' . $this->attach_filename;
 			}
 
-			if (!create_thumbnail($file, $dest_file, $this->type))
+			if (!create_thumbnail($source, $dest_file, $this->type))
 			{
-				if (!create_thumbnail($source, $dest_file, $this->type))
+				if (!$file || !create_thumbnail($file, $dest_file, $this->type))
 				{
 					$this->thumbnail = 0;
 				}

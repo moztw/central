@@ -232,6 +232,7 @@ if (
 		}
 	}
 }
+
 //
 // Let's make sure the user isn't logged in while registering,
 // and ensure that they were trying to register a second time
@@ -413,12 +414,12 @@ if ( isset($HTTP_POST_VARS['submit']) )
 		{
 			if (strtolower($username) != strtolower($userdata['username']) || $mode == 'register')
 			{
-			$result = validate_username($username);
-			if ( $result['error'] )
-			{
-				$error = TRUE;
-				$error_msg .= ( ( isset($error_msg) ) ? '<br />' : '' ) . $result['error_msg'];
-			}
+				$result = validate_username($username);
+				if ( $result['error'] )
+				{
+					$error = TRUE;
+					$error_msg .= ( ( isset($error_msg) ) ? '<br />' : '' ) . $result['error_msg'];
+				}
 			}
 
 			if (!$error)
@@ -481,7 +482,7 @@ if ( isset($HTTP_POST_VARS['submit']) )
 	else if ( $user_avatar_local != '' && $board_config['allow_avatar_local'] )
 	{
 		if ( @file_exists(@phpbb_realpath('./' . $board_config['avatar_path'] . '/' . $userdata['user_avatar'])) )
-	{
+		{
 			@unlink(@phpbb_realpath('./' . $board_config['avatar_path'] . '/' . $userdata['user_avatar']));
 		}
 		$avatar_sql = user_avatar_gallery($mode, $error, $error_msg, $user_avatar_local);
@@ -701,21 +702,21 @@ if ( isset($HTTP_POST_VARS['submit']) )
 				{
 					$emailer->from($board_config['board_email']);
 					$emailer->replyto($board_config['board_email']);
-
+					
 					$emailer->email_address(trim($row['user_email']));
 					$emailer->use_template("admin_activate", $row['user_lang']);
-				$emailer->set_subject($lang['New_account_subject']);
+					$emailer->set_subject($lang['New_account_subject']);
 
-				$emailer->assign_vars(array(
-					'USERNAME' => preg_replace($unhtml_specialchars_match, $unhtml_specialchars_replace, substr(str_replace("\'", "'", $username), 0, 25)),
-					'EMAIL_SIG' => str_replace('<br />', "\n", "-- \n" . $board_config['board_email_sig']),
+					$emailer->assign_vars(array(
+						'USERNAME' => preg_replace($unhtml_specialchars_match, $unhtml_specialchars_replace, substr(str_replace("\'", "'", $username), 0, 25)),
+						'EMAIL_SIG' => str_replace('<br />', "\n", "-- \n" . $board_config['board_email_sig']),
 
-					'U_ACTIVATE' => $server_url . '?mode=activate&' . POST_USERS_URL . '=' . $user_id . '&act_key=' . $user_actkey)
-				);
-				$emailer->send();
-				$emailer->reset();
-			    }
-			    $db->sql_freeresult($result);
+						'U_ACTIVATE' => $server_url . '?mode=activate&' . POST_USERS_URL . '=' . $user_id . '&act_key=' . $user_actkey)
+					);
+					$emailer->send();
+					$emailer->reset();
+				}
+				$db->sql_freeresult($result);
 			}
 
 			$message = $message . '<br /><br />' . sprintf($lang['Click_return_index'],  '<a href="' . append_sid("index.$phpEx") . '">', '</a>');

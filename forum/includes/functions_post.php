@@ -134,29 +134,28 @@ function prepare_post(&$mode, &$post_data, &$bbcode_on, &$html_on, &$smilies_on,
 	{
 		$username = phpbb_clean_username($username);
 
- 		if (!$userdata['session_logged_in'] || ($userdata['session_logged_in'] && $username != $userdata['username']))
+		if (!$userdata['session_logged_in'] || ($userdata['session_logged_in'] && $username != $userdata['username']))
 		{
 			include($phpbb_root_path . 'includes/functions_validate.'.$phpEx);
 
 			$result = validate_username($username);
 			if ($result['error'])
 			{
- 				$error_msg .= (!empty($error_msg)) ? '<br />' . $result['error_msg'] : $result['error_msg'];
+				$error_msg .= (!empty($error_msg)) ? '<br />' . $result['error_msg'] : $result['error_msg'];
 			}
 		}
- 		else
- 		{
- 			$username = '';
- 		}
+		else
+		{
+			$username = '';
+		}
 	}
 
 	// Check subject
 	if (!empty($subject))
 	{
 		$subject = htmlspecialchars(trim($subject));
-		$subject = ereg_replace("&amp;","&",$subject); 
 	}
- 	else if ($mode == 'newtopic' || ($mode == 'editpost' && $post_data['first_post']))
+	else if ($mode == 'newtopic' || ($mode == 'editpost' && $post_data['first_post']))
 	{
  		$error_msg .= (!empty($error_msg)) ? '<br />' . $lang['Empty_subject'] : $lang['Empty_subject'];
 	}
@@ -172,53 +171,52 @@ function prepare_post(&$mode, &$post_data, &$bbcode_on, &$html_on, &$smilies_on,
 	$message = ereg_replace('祖國', '中國', $message);
 
 	// Check message
- 	if (!empty($message))
+	if (!empty($message))
 	{
- 		$bbcode_uid = ($bbcode_on) ? make_bbcode_uid() : '';
+		$bbcode_uid = ($bbcode_on) ? make_bbcode_uid() : '';
 		$message = prepare_message(trim($message), $html_on, $bbcode_on, $smilies_on, $bbcode_uid);
 	}
- 	else if ($mode != 'delete' && $mode != 'poll_delete') 
+	else if ($mode != 'delete' && $mode != 'poll_delete') 
 	{
- 		$error_msg .= (!empty($error_msg)) ? '<br />' . $lang['Empty_message'] : $lang['Empty_message'];
+		$error_msg .= (!empty($error_msg)) ? '<br />' . $lang['Empty_message'] : $lang['Empty_message'];
 	}
 
 	//
 	// Handle poll stuff
 	//
- 	if ($mode == 'newtopic' || ($mode == 'editpost' && $post_data['first_post']))
+	if ($mode == 'newtopic' || ($mode == 'editpost' && $post_data['first_post']))
 	{
- 		$poll_length = (isset($poll_length)) ? max(0, intval($poll_length)) : 0;
+		$poll_length = (isset($poll_length)) ? max(0, intval($poll_length)) : 0;
 
- 		if (!empty($poll_title))
+		if (!empty($poll_title))
 		{
 			$poll_title = htmlspecialchars(trim($poll_title));
-			$poll_title = ereg_replace("&amp;","&",$poll_title); 
 		}
 
- 		if(!empty($poll_options))
+		if(!empty($poll_options))
 		{
 			$temp_option_text = array();
- 			while(list($option_id, $option_text) = @each($poll_options))
+			while(list($option_id, $option_text) = @each($poll_options))
 			{
 				$option_text = trim($option_text);
- 				if (!empty($option_text))
+				if (!empty($option_text))
 				{
 					$temp_option_text[$option_id] = htmlspecialchars($option_text);
 				}
 			}
 			$option_text = $temp_option_text;
 
- 			if (count($poll_options) < 2)
+			if (count($poll_options) < 2)
 			{
- 				$error_msg .= (!empty($error_msg)) ? '<br />' . $lang['To_few_poll_options'] : $lang['To_few_poll_options'];
+				$error_msg .= (!empty($error_msg)) ? '<br />' . $lang['To_few_poll_options'] : $lang['To_few_poll_options'];
 			}
- 			else if (count($poll_options) > $board_config['max_poll_options']) 
+			else if (count($poll_options) > $board_config['max_poll_options']) 
 			{
- 				$error_msg .= (!empty($error_msg)) ? '<br />' . $lang['To_many_poll_options'] : $lang['To_many_poll_options'];
+				$error_msg .= (!empty($error_msg)) ? '<br />' . $lang['To_many_poll_options'] : $lang['To_many_poll_options'];
 			}
- 			else if ($poll_title == '')
+			else if ($poll_title == '')
 			{
- 				$error_msg .= (!empty($error_msg)) ? '<br />' . $lang['Empty_poll_title'] : $lang['Empty_poll_title'];
+				$error_msg .= (!empty($error_msg)) ? '<br />' . $lang['Empty_poll_title'] : $lang['Empty_poll_title'];
 			}
 		}
 	}
@@ -229,9 +227,8 @@ function prepare_post(&$mode, &$post_data, &$bbcode_on, &$html_on, &$smilies_on,
 //
 // Post a new topic/reply/poll or edit existing post/poll
 //
-function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_id, &$post_id, &$poll_id, &$topic_type, &$bbcode_on, &$html_on, &$smilies_on, &$attach_sig, &$bbcode_uid, &$post_username, &$post_subject, &$post_message, &$poll_title, &$poll_options, &$poll_length, &$topic_desc)
+function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_id, &$post_id, &$poll_id, &$topic_type, &$bbcode_on, &$html_on, &$smilies_on, &$attach_sig, &$bbcode_uid, &$post_username, &$post_subject, &$post_message, &$poll_title, &$poll_options, &$poll_length)
 {
-	global $html_specialchars_match, $html_specialchars_replace;
 	global $board_config, $lang, $db, $phpbb_root_path, $phpEx;
 	global $userdata, $user_ip;
 
@@ -258,6 +255,30 @@ function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_
 				}
 			}
 		}
+		//
+		// Double Post Control
+		//
+		$lastposttime = intval($row['last_post_time']);
+		if($mode != 'editpost')
+		{
+		    $sql = "SELECT pt.post_text, pt.bbcode_uid
+		    FROM " . POSTS_TABLE . " p, " . POSTS_TEXT_TABLE . " pt
+		    WHERE $where_sql AND p.post_time = $lastposttime AND pt.post_id = p.post_id
+		    LIMIT 1";
+		    if ($result = $db->sql_query($sql))
+		    {
+			if ($row = $db->sql_fetchrow($result))
+			{
+			    // Update BBCode to current UID
+			    $row['post_text'] = str_replace(":" . $row['bbcode_uid'] . "]", ":" . $bbcode_uid . "]", $row['post_text']);
+			    if ($row['post_text'] == $post_message)
+			    {
+				message_die(GENERAL_MESSAGE, $lang['Double_Post_Error']);
+			    }
+			}
+			$db->sql_freeresult($result);
+		    }
+		} 
 	}
 
 	if ($mode == 'editpost')
@@ -295,8 +316,8 @@ function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_
 	$useragent = addslashes($_SERVER['HTTP_USER_AGENT']);
 	//$useragent = preg_replace($html_entities_match, $html_entities_replace, $_SERVER['HTTP_USER_AGENT']);
 	
-	
 	$sql = ($mode != 'editpost') ? "INSERT INTO " . POSTS_TEXT_TABLE . " (post_id, post_subject, bbcode_uid, post_text, poster_useragent) VALUES ($post_id, '$post_subject', '$bbcode_uid', '$post_message','$useragent')" : "UPDATE " . POSTS_TEXT_TABLE . " SET post_text = '$post_message',  bbcode_uid = '$bbcode_uid', post_subject = '$post_subject', poster_useragent='$useragent' WHERE post_id = $post_id";
+
 	if (!$db->sql_query($sql))
 	{
 		message_die(GENERAL_ERROR, 'Error in posting', '', __LINE__, __FILE__, $sql);

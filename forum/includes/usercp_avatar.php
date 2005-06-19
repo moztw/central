@@ -49,9 +49,8 @@ function check_image_type(&$type, &$error, &$error_msg)
 
 function user_avatar_delete($avatar_type, $avatar_file)
 {
-	//$avatar_file = basename($avatar_file); //應該是改錯了
 	global $board_config, $userdata;
-	
+
 	$avatar_file = basename($avatar_file);
 	if ( $avatar_type == USER_AVATAR_UPLOAD && $avatar_file != '' )
 	{
@@ -67,12 +66,13 @@ function user_avatar_delete($avatar_type, $avatar_file)
 function user_avatar_gallery($mode, &$error, &$error_msg, $avatar_filename)
 {
 	global $board_config;
+
 	$avatar_filename = str_replace(array('../', '..\\', './', '.\\'), '', $avatar_filename);
-   if ($avatar_filename{0} == '/' || $avatar_filename{0} == "\\")
-   {
-      return '';
-   }
-	
+	if ($avatar_filename{0} == '/' || $avatar_filename{0} == "\\")
+	{
+		return '';
+	}
+
 	if ( file_exists(@phpbb_realpath($board_config['avatar_gallery_path'] . '/' . $avatar_filename)) && ($mode == 'editprofile') )
 	{
 		$return = ", user_avatar = '" . str_replace("\'", "''", $avatar_filename) . "', user_avatar_type = " . USER_AVATAR_GALLERY;
@@ -231,10 +231,10 @@ function user_avatar_upload($mode, $avatar_mode, &$current_avatar, &$current_typ
 			{
 				$move_file = 'copy';
 			}
-		if (!is_uploaded_file($avatar_filename))
-         {
-            message_die(GENERAL_ERROR, 'Unable to upload file', '', __LINE__, __FILE__);
-         }
+			if (!is_uploaded_file($avatar_filename))
+			{
+			    message_die(GENERAL_ERROR, 'Unable to upload file', '', __LINE__, __FILE__);
+			}
 
 			if (!is_uploaded_file($avatar_filename))
 			{

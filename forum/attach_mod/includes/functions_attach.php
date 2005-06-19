@@ -6,7 +6,7 @@
  *   copyright            : (C) 2002 Meik Sievertsen
  *   email                : acyd.burn@gmx.de
  *
- *   $Id: functions_attach.php,v 1.37 2004/08/02 16:52:04 acydburn Exp $
+ *   $Id: functions_attach.php,v 1.42 2005/05/09 19:30:29 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -234,6 +234,8 @@ function unlink_attach($filename, $mode = false)
 {
 	global $upload_dir, $attach_config, $lang;
 
+	$filename = basename($filename);
+	
 	if (!intval($attach_config['allow_ftp_upload']))
 	{
 		if ($mode == MODE_THUMBNAIL)
@@ -246,19 +248,6 @@ function unlink_attach($filename, $mode = false)
 		}
 
 		$deleted = @unlink($filename);
-
-		if (@file_exists(@amod_realpath($filename)) ) 
-		{
-			$filesys = eregi_replace('/','\\', $filename);
-			$deleted = @system("del $filesys");
-
-			if (@file_exists(@amod_realpath($filename))) 
-			{
-				$deleted = @chmod ($filename, 0775);
-				$deleted = @unlink($filename);
-				$deleted = @system("del $filesys");
-			}
-		}
 	}
 	else
 	{
@@ -454,7 +443,7 @@ function physical_filename_already_stored($filename)
 
 	$sql = 'SELECT attach_id 
 		FROM ' . ATTACHMENTS_DESC_TABLE . "
-		WHERE physical_filename = '$filename' 
+		WHERE physical_filename = '" . str_replace("'", "''", basename($filename)) . "' 
 		LIMIT 1";
 
 	if (!($result = $db->sql_query($sql)))
@@ -809,6 +798,10 @@ function attachment_sync_topic($topic_id)
 //
 function get_extension($filename)
 {
+	if (!stristr($filename, '.'))
+	{
+		return '';
+	}
 	$extension = strrchr(strtolower($filename), '.');
 	$extension[0] = ' ';
 	$extension = strtolower(trim($extension));
@@ -893,20 +886,7 @@ function get_var($var_name, $default)
 
 		if (is_array($var))
 		{
-			foreach ($var as $k => $v)
-			{
-				if (is_array($v))
-				{
-					foreach ($v as $_k => $_v)
-					{
-						_set_var($var[$k][$_k], $_v, $type);
-					}
-				}
-				else
-				{
-					_set_var($var[$k], $v, $type);
-				}
-			}
+			return $default;
 		}
 		else
 		{

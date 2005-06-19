@@ -6,7 +6,7 @@
  *   copyright            : (C) 2002 Meik Sievertsen
  *   email                : acyd.burn@gmx.de
  *
- *   $Id: uacp.php,v 1.14 2004/07/31 17:25:21 acydburn Exp $
+ *   $Id: uacp.php,v 1.17 2005/05/09 19:30:45 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -439,13 +439,16 @@ if (count($attachments) > 0)
 			$hidden_field = '<input type="hidden" name="attach_id_list[]" value="' . (int) $attachments[$i]['attach_id'] . '">';
 			$hidden_field .= '<input type="hidden" name="sid" value="' . $userdata['session_id'] . '" />';
 
+			$comment = trim(htmlspecialchars(stripslashes($attachments[$i]['comment'])));
+			$comment = str_replace("\n", '<br />', $comment);
+
 			$template->assign_block_vars('attachrow', array(
 				'ROW_NUMBER' => $i + ($start + 1 ),
 				'ROW_COLOR' => '#' . $row_color,
 				'ROW_CLASS' => $row_class,
 
-				'FILENAME' => $attachments[$i]['real_filename'],
-				'COMMENT' => stripslashes(trim(nl2br($attachments[$i]['comment']))),
+				'FILENAME' => htmlspecialchars($attachments[$i]['real_filename']),
+				'COMMENT' => $comment,
 				'EXTENSION' => $attachments[$i]['extension'],
 				'SIZE' => round(($attachments[$i]['filesize'] / MEGABYTE), 2),
 				'DOWNLOAD_COUNT' => $attachments[$i]['download_count'],

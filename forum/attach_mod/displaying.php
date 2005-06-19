@@ -6,7 +6,7 @@
  *   copyright            : (C) 2002 Meik Sievertsen
  *   email                : acyd.burn@gmx.de
  *
- *   $Id: displaying.php,v 1.49 2004/07/31 17:25:21 acydburn Exp $
+ *   $Id: displaying.php,v 1.52 2005/05/09 16:19:29 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -447,7 +447,7 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
 				$filesize = (round((round($filesize / 1024 * 100) / 100), 2));
 			}
 
-			$display_name = $attachment_filename_list[$i];
+			$display_name = htmlspecialchars($attachment_filename_list[$i]);
 			$comment = trim(htmlspecialchars(stripslashes($attachment_comment_list[$i])));
 			$comment = str_replace("\n", '<br />', $comment);
 			
@@ -598,16 +598,7 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
 
 				if ($link)
 				{
-					
-					$BC_assign_type = "postrow.attach.attachrow";
 					$upload_image = '';
-
-					if (intval($display_categories[$extension]) == XPI_CAT){
-						$BC_assign_type = "postrow.attach.cat_firefox_install";
-					} elseif (intval($display_categories[$extension]) == SRC_CAT){
-						$BC_assign_type = "postrow.attach.cat_search_install";
-					}
-						
 
 					if ( ($attach_config['upload_img'] != '') && ($upload_icons[$extension] == '') )
 					{
@@ -623,7 +614,7 @@ function display_attachments_preview($attachment_list, $attachment_filesize_list
 					//
 					// display attachment
 					//
-					$template->assign_block_vars($BC_assign_type, array(
+					$template->assign_block_vars('postrow.attach.attachrow', array(
 						'U_DOWNLOAD_LINK' => $filename,
 						'S_UPLOAD_IMAGE' => $upload_image,
 						
@@ -692,7 +683,7 @@ function display_attachments($post_id)
 			$filesize = (round((round($filesize / 1024 * 100) / 100), 2));
 		}
 
-		$display_name = $attachments['_' . $post_id][$i]['real_filename']; 
+		$display_name = htmlspecialchars($attachments['_' . $post_id][$i]['real_filename']); 
 		$comment = trim(htmlspecialchars(stripslashes($attachments['_' . $post_id][$i]['comment'])));
 		$comment = str_replace("\n", '<br />', $comment);
 
@@ -922,18 +913,13 @@ function display_attachments($post_id)
 			}
 
 			if ($link)
-			{	$BC_assign_type = "postrow.attach.attachrow";
-				$target_blank = ( (intval($display_categories[$attachments['_' . $post_id][$i]['extension']]) == IMAGE_CAT) ) ? 'target="_blank"' : '';
+			{
+				$target_blank = 'target="_blank"'; //( (intval($display_categories[$attachments['_' . $post_id][$i]['extension']]) == IMAGE_CAT) ) ? 'target="_blank"' : '';
 
-				if (intval($display_categories[$attachments['_' . $post_id][$i]['extension']]) == XPI_CAT){
-					$BC_assign_type = "postrow.attach.cat_firefox_install";
-				} elseif (intval($display_categories[$attachments['_' . $post_id][$i]['extension']]) == SRC_CAT){
-					$BC_assign_type = "postrow.attach.cat_search_install";
-				}
 				//
 				// display attachment
 				//
-				$template->assign_block_vars($BC_assign_type, array(
+				$template->assign_block_vars('postrow.attach.attachrow', array(
 					'U_DOWNLOAD_LINK' => append_sid('download.' . $phpEx . '?id=' . $attachments['_' . $post_id][$i]['attach_id']),
 					'S_UPLOAD_IMAGE' => $upload_image,
 						

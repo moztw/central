@@ -6,7 +6,7 @@
  *	copyright			: (C) 2002 Meik Sievertsen
  *	email				: acyd.burn@gmx.de
  *
- *	$Id: admin_attach_cp.php,v 1.19 2004/07/31 15:15:53 acydburn Exp $
+ *	$Id: admin_attach_cp.php,v 1.25 2005/05/09 19:30:26 acydburn Exp $
  *
  ***************************************************************************/
 
@@ -59,7 +59,7 @@ include($phpbb_root_path . 'attach_mod/includes/functions_admin.' . $phpEx);
 //
 // Init Variables
 //
-$start = ( isset($HTTP_GET_VARS['start']) ) ? $HTTP_GET_VARS['start'] : 0;
+$start = get_var('start', 0);
 
 if(isset($HTTP_POST_VARS['order']))
 {
@@ -74,23 +74,8 @@ else
 	$sort_order = '';
 }
 
-if(isset($HTTP_GET_VARS['mode']) || isset($HTTP_POST_VARS['mode']))
-{
-	$mode = (isset($HTTP_POST_VARS['mode'])) ? $HTTP_POST_VARS['mode'] : $HTTP_GET_VARS['mode'];
-}
-else
-{
-	$mode = '';
-}
-
-if( isset($HTTP_GET_VARS['view']) || isset($HTTP_POST_VARS['view']) )
-{
-	$view = ( isset($HTTP_POST_VARS['view']) ) ? $HTTP_POST_VARS['view'] : $HTTP_GET_VARS['view'];
-}
-else
-{
-	$view = '';
-}
+$mode = get_var('mode', '');
+$view = get_var('view', '');
 
 if(isset($HTTP_GET_VARS['uid']) || isset($HTTP_POST_VARS['u_id']))
 {
@@ -246,11 +231,11 @@ if (!empty($sort_order))
 
 $submit_change = ( isset($HTTP_POST_VARS['submit_change']) ) ? TRUE : FALSE;
 $delete = ( isset($HTTP_POST_VARS['delete']) ) ? TRUE : FALSE;
-$delete_id_list = ( isset($HTTP_POST_VARS['delete_id_list']) ) ?  $HTTP_POST_VARS['delete_id_list'] : array();
+$delete_id_list = ( isset($HTTP_POST_VARS['delete_id_list']) ) ? array_map('intval', $HTTP_POST_VARS['delete_id_list']) : array();
 
 $confirm = ( $HTTP_POST_VARS['confirm'] ) ? TRUE : FALSE;
 
-if ( ($confirm) && (count($delete_id_list) > 0) )
+if ($confirm && sizeof($delete_id_list) > 0)
 {
 	$attachments = array();
 
@@ -309,9 +294,9 @@ $template->assign_vars(array(
 
 if ($submit_change && $view == 'attachments')
 {
-	$attach_change_list = ( isset($HTTP_POST_VARS['attach_id_list']) ) ? $HTTP_POST_VARS['attach_id_list'] : array();
+	$attach_change_list = ( isset($HTTP_POST_VARS['attach_id_list']) ) ? array_map('intval', $HTTP_POST_VARS['attach_id_list']) : array();
 	$attach_comment_list = ( isset($HTTP_POST_VARS['attach_comment_list']) ) ? $HTTP_POST_VARS['attach_comment_list'] : array();
-	$attach_download_count_list = ( isset($HTTP_POST_VARS['attach_count_list']) ) ? $HTTP_POST_VARS['attach_count_list'] : array();
+	$attach_download_count_list = ( isset($HTTP_POST_VARS['attach_count_list']) ) ? array_map('intval', $HTTP_POST_VARS['attach_count_list']) : array();
 
 	//
 	// Generate correct Change List
@@ -364,17 +349,17 @@ if ($view == 'stats')
 
 	$upload_dir_size = get_formatted_dirsize();
 
-	if (intval($attach_config['attachment_quota']) >= 1048576)
+	if ($attach_config['attachment_quota'] >= 1048576)
 	{
-		$attachment_quota = round(intval($attach_config['attachment_quota']) / 1048576 * 100) / 100 . ' ' . $lang['MB'];
+		$attachment_quota = round($attach_config['attachment_quota'] / 1048576 * 100) / 100 . ' ' . $lang['MB'];
 	}
-	else if (intval($attach_config['attachment_quota']) >= 1024)
+	else if ($attach_config['attachment_quota'] >= 1024)
 	{
-		$attachment_quota = round(intval($attach_config['attachment_quota']) / 1024 * 100) / 100 . ' ' . $lang['KB'];
+		$attachment_quota = round($attach_config['attachment_quota'] / 1024 * 100) / 100 . ' ' . $lang['KB'];
 	}
 	else
 	{
-		$attachment_quota = intval($attach_config['attachment_quota']) . ' ' . $lang['Bytes'];
+		$attachment_quota = $attach_config['attachment_quota'] . ' ' . $lang['Bytes'];
 	}
 
 	$sql = "SELECT count(*) AS total
@@ -588,7 +573,7 @@ if ($view == 'username')
 			//
 			$sql = "SELECT attach_id 
 			FROM " . ATTACHMENTS_TABLE . "
-			WHERE (user_id_1 = " . $members[$i]['user_id'] . ") 
+			WHERE (user_id_1 = " . intval($members[$i]['user_id']) . ") 
 			GROUP BY attach_id";
 		
 			if ( !($result = $db->sql_query($sql)) )
@@ -602,7 +587,7 @@ if ($view == 'username')
 
 			for ($j = 0; $j < $num_attach_ids; $j++)
 			{
-				$attach_id[] = $attach_ids[$j]['attach_id'];
+				$attach_id[] = intval($attach_ids[$j]['attach_id']);
 			}
 			
 			//
@@ -704,7 +689,7 @@ if ($view == 'attachments')
 	{
 		$sql = "SELECT username 
 		FROM " . USERS_TABLE . " 
-		WHERE user_id = " . $uid;
+		WHERE user_id = " . intval($uid);
 
 		if ( !($result = $db->sql_query($sql)) )
 		{
@@ -714,7 +699,7 @@ if ($view == 'attachments')
 		$row = $db->sql_fetchrow($result);
 		$username = $row['username'];
 
-		$s_hidden = '<input type="hidden" name="u_id" value="' . $uid . '">';
+		$s_hidden = '<input type="hidden" name="u_id" value="' . intval($uid) . '">';
 	
 		$template->assign_block_vars('switch_user_based', array());
 
@@ -725,7 +710,7 @@ if ($view == 'attachments')
 
 		$sql = "SELECT attach_id 
 		FROM " . ATTACHMENTS_TABLE . "
-		WHERE user_id_1 = " . $uid . "
+		WHERE user_id_1 = " . intval($uid) . "
 		GROUP BY attach_id";
 		
 		if ( !($result = $db->sql_query($sql)) )
@@ -747,7 +732,7 @@ if ($view == 'attachments')
 
 		for ($j = 0; $j < $num_attach_ids; $j++)
 		{
-			$attach_id[] = $attach_ids[$j]['attach_id'];
+			$attach_id[] = intval($attach_ids[$j]['attach_id']);
 		}
 			
 		$sql = "SELECT a.*
@@ -785,13 +770,13 @@ if ($view == 'attachments')
 	{
 		for ($i = 0; $i < count($attachments); $i++)
 		{
-			$delete_box = '<input type="checkbox" name="delete_id_list[]" value="' . $attachments[$i]['attach_id'] . '" />';
+			$delete_box = '<input type="checkbox" name="delete_id_list[]" value="' . intval($attachments[$i]['attach_id']) . '" />';
 
 			for ($j = 0; $j < count($delete_id_list); $j++)
 			{
 				if ($delete_id_list[$j] == $attachments[$i]['attach_id'])
 				{
-					$delete_box = '<input type="checkbox" name="delete_id_list[]" value="' . $attachments[$i]['attach_id'] . '" checked />';
+					$delete_box = '<input type="checkbox" name="delete_id_list[]" value="' . intval($attachments[$i]['attach_id']) . '" checked />';
 					break;
 				}
 			}
@@ -807,7 +792,7 @@ if ($view == 'attachments')
 
 			$sql = "SELECT *
 			FROM " . ATTACHMENTS_TABLE . "
-			WHERE attach_id = " . $attachments[$i]['attach_id'];
+			WHERE attach_id = " . intval($attachments[$i]['attach_id']);
 
 			if ( !($result = $db->sql_query($sql)) )
 			{
@@ -823,7 +808,7 @@ if ($view == 'attachments')
 				{
 					$sql = "SELECT t.topic_title
 					FROM " . TOPICS_TABLE . " t, " . POSTS_TABLE . " p
-					WHERE p.post_id = " . $ids[$j]['post_id'] . " AND p.topic_id = t.topic_id
+					WHERE p.post_id = " . intval($ids[$j]['post_id']) . " AND p.topic_id = t.topic_id
 					GROUP BY t.topic_id, t.topic_title";
 
 					if ( !($result = $db->sql_query($sql)) )
@@ -851,15 +836,15 @@ if ($view == 'attachments')
 
 			$post_titles = implode('<br />', $post_titles);
 
-			$hidden_field = '<input type="hidden" name="attach_id_list[]" value="' . $attachments[$i]['attach_id'] . '">';
+			$hidden_field = '<input type="hidden" name="attach_id_list[]" value="' . intval($attachments[$i]['attach_id']) . '">';
 
 			$template->assign_block_vars('attachrow', array(
 				'ROW_NUMBER' => $i + ( $HTTP_GET_VARS['start'] + 1 ),
 				'ROW_COLOR' => '#' . $row_color,
 				'ROW_CLASS' => $row_class,
 
-				'FILENAME' => $attachments[$i]['real_filename'],
-				'COMMENT' => $attachments[$i]['comment'],
+				'FILENAME' => htmlspecialchars($attachments[$i]['real_filename']),
+				'COMMENT' => htmlspecialchars($attachments[$i]['comment']),
 				'EXTENSION' => $attachments[$i]['extension'],
 				'SIZE' => round(($attachments[$i]['filesize'] / MEGABYTE), 2),
 				'DOWNLOAD_COUNT' => $attachments[$i]['download_count'],

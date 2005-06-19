@@ -6,7 +6,7 @@
  *   copyright            : (C) 2002 Meik Sievertsen
  *   email                : acyd.burn@gmx.de
  *
- *   $Id: functions_delete.php,v 1.13 2004/07/31 17:25:21 acydburn Exp $
+ *   $Id: functions_delete.php,v 1.14 2004/11/30 17:56:11 acydburn Exp $
  *
  *
  ***************************************************************************/

@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: privmsg.php,v 1.96.2.37 2004/11/18 17:49:36 acydburn Exp $
+ *   $Id: privmsg.php,v 1.2 2005/04/16 10:18:06 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -35,9 +35,6 @@ if ( !empty($board_config['privmsg_disable']) )
 	message_die(GENERAL_MESSAGE, 'PM_disabled');
 }
 
-// Big5 Hack
-// $html_entities_match = array('#<#', '#>#');
-// $html_entities_replace = array('&lt;', '&gt;');
 $html_entities_match = array('#&(?!(\#[0-9]+;))#', '#<#', '#>#');
 $html_entities_replace = array('&amp;', '&lt;', '&gt;');
 
@@ -570,8 +567,8 @@ else if ( $mode == 'read' )
 	// on then we process it, else leave it alone
 	//
 	if ( !$board_config['allow_html'] || !$userdata['user_allowhtml'])
-   {
-      if ( $user_sig != '')
+	{
+		if ( $user_sig != '')
 		{
 			$user_sig = preg_replace('#(<)([\/]?.*?)(>)#is', "&lt;\\2&gt;", $user_sig);
 		}
@@ -889,7 +886,7 @@ else if ( $save && $mark_list && $folder != 'savebox' && $folder != 'outbox' )
 	{
 		redirect(append_sid("login.$phpEx?redirect=privmsg.$phpEx&folder=inbox", true));
 	}
-
+	
 	if (sizeof($mark_list))
 	{
 		// See if recipient is at their savebox limit
@@ -1537,8 +1534,8 @@ else if ( $submit || $refresh || $mode != '' )
 		// Finalise processing as per viewtopic
 		//
 		if ( !$html_on || !$board_config['allow_html'] || !$userdata['user_allowhtml'] )
-      {
-         if ( $user_sig != '' )
+		{
+			if ( $user_sig != '' )
 			{
 				$user_sig = preg_replace('#(<)([\/]?.*?)(>)#is', "&lt;\\2&gt;", $user_sig);
 			}

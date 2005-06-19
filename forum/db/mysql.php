@@ -47,13 +47,11 @@ class sql_db
 
 		if($this->persistency)
 		{
-			$this->db_connect_id = @mysql_pconnect($this->server,
-			$this->user, $this->password);
+			$this->db_connect_id = @mysql_pconnect($this->server, $this->user, $this->password);
 		}
 		else
 		{
-			$this->db_connect_id = @mysql_connect($this->server,
-			$this->user, $this->password);
+			$this->db_connect_id = @mysql_connect($this->server, $this->user, $this->password);
 		}
 		if($this->db_connect_id)
 		{

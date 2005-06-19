@@ -6,7 +6,7 @@
  *   copyright            : (C) 2002 Meik Sievertsen
  *   email                : acyd.burn@gmx.de
  *
- *   $Id: admin_extensions.php,v 1.26 2004/07/31 15:15:53 acydburn Exp $
+ *   $Id: admin_extensions.php,v 1.27 2004/10/31 16:46:58 acydburn Exp $
  *
  ***************************************************************************/
 
@@ -522,7 +522,7 @@ if ($mode == 'groups')
 
 	if ((empty($size)) && (!$submit))
 	{
-		$max_add_filesize = intval($attach_config['max_filesize']);
+		$max_add_filesize = $attach_config['max_filesize'];
 		
 		$size = ($max_add_filesize >= 1048576) ? 'mb' : ( ($max_add_filesize >= 1024) ? 'kb' : 'b' );
 	} 
@@ -581,7 +581,7 @@ if ($mode == 'groups')
 		//
 		if ( $extension_group[$i]['max_filesize'] == 0 )
 		{
-			$extension_group[$i]['max_filesize'] = intval($attach_config['max_filesize']);
+			$extension_group[$i]['max_filesize'] = $attach_config['max_filesize'];
 		}
 
 		$size_format = ($extension_group[$i]['max_filesize'] >= 1048576) ? 'mb' : ( ($extension_group[$i]['max_filesize'] >= 1024) ? 'kb' : 'b' );

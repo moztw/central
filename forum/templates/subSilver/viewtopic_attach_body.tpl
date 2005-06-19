@@ -162,41 +162,6 @@ table.attachtable	{ font: normal 12px Verdana, Arial, Helvetica, sans-serif; col
 	</table>
 	<div align="center"><hr width="95%" /></div>
 	<!-- END cat_thumb_images -->
-		<!-- BEGIN cat_firefox_install -->
-	<div align="center"><hr width="95%" /></div>
-	<table width="95%" border="1" cellpadding="2" cellspacing="0" class="attachtable" align="center">
-	<tr>
-		<td width="100%" colspan="3" class="attachheader" align="center"><b><span class="gen">{postrow.attach.attachrow.DOWNLOAD_NAME}</span></b></td>
-	</tr>
-	<tr>
-		<td width="15%" class="attachrow"><span class="genmed">&nbsp;{L_DESCRIPTION}:</span></td>
-		<td width="75%" class="attachrow">
-			<table width="100%" border="0" cellpadding="0" cellspacing="4" align="center">
-			<tr>
-				<td class="attachrow"><span class="genmed">{postrow.attach.attachrow.COMMENT}</span></td>
-			</tr>
-			</table>
-		</td>
-		<td rowspan="4" align="center" width="10%" class="attachrow">{postrow.attach.attachrow.S_UPLOAD_IMAGE}<br /><a href="{postrow.attach.attachrow.U_DOWNLOAD_LINK}" {postrow.attach.attachrow.TARGET_BLANK} class="genmed"><b>{L_DOWNLOAD}</b></a></td>
-	</tr>
-	<tr>
-		<td width="15%" class="attachrow"><span class="genmed">&nbsp;{L_FILENAME}:</span></td>
-		<td width="75%" class="attachrow"><span class="genmed">&nbsp;{postrow.attach.attachrow.DOWNLOAD_NAME}</span></td>
-	</tr>
-	<tr>
-		<td width="15%" class="attachrow"><span class="genmed">&nbsp;{L_FILESIZE}:</span></td>
-		<td width="75%" class="attachrow"><span class="genmed">&nbsp;{postrow.attach.attachrow.FILESIZE} {postrow.attach.attachrow.SIZE_VAR}</td>
-	</tr>
-	<tr>
-		<td width="15%" class="attachrow"><span class="genmed">&nbsp;{postrow.attach.attachrow.L_DOWNLOADED_VIEWED}:</span></td>
-		<td width="75%" class="attachrow"><span class="genmed">&nbsp;{postrow.attach.attachrow.L_DOWNLOAD_COUNT}</span></td>
-	</tr>
-	<tr>
-		<td width="15%" rolspan="3" class="attachrow" align="right">此檔案由社群成員提供，Mozilla Taiwan 不提供任何保證，請參考相關資訊（說明、後續討論）後再行安裝，自負責任。</td>
-	</tr>
-	</table>
-	<div align="center"><hr width="95%" /></div>
-	<!-- END cat_firefox_install -->
 	<!-- BEGIN attachrow -->
 	<div align="center"><hr width="95%" /></div>
 	<table width="95%" border="1" cellpadding="2" cellspacing="0" class="attachtable" align="center">

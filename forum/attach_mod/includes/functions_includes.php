@@ -6,7 +6,7 @@
  *   copyright            : (C) 2002 Meik Sievertsen
  *   email                : acyd.burn@gmx.de
  *
- *   $Id: functions_includes.php,v 1.35 2004/08/02 16:52:04 acydburn Exp $
+ *   $Id: functions_includes.php,v 1.39 2005/05/10 16:03:54 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -169,7 +169,7 @@ function attach_build_auth_levels($is_auth, &$s_auth_can)
 //
 function attachment_quota_settings($admin_mode, $submit = FALSE, $mode)
 {
-	global $template, $db, $HTTP_POST_VARS, $HTTP_GET_VARS, $lang, $group_id, $lang, $phpbb_root_path, $phpEx, $attach_config;
+	global $template, $db, $HTTP_POST_VARS, $HTTP_GET_VARS, $lang, $lang, $phpbb_root_path, $phpEx, $attach_config;
 
 	include_once($phpbb_root_path . 'attach_mod/includes/constants.'.$phpEx);
 
@@ -260,8 +260,8 @@ function attachment_quota_settings($admin_mode, $submit = FALSE, $mode)
 		else
 		{
 			// Set Default Quota Limit
-			$upload_quota = intval($attach_config['default_upload_quota']);
-			$pm_quota = intval($attach_config['default_pm_quota']);
+			$upload_quota = $attach_config['default_upload_quota'];
+			$pm_quota = $attach_config['default_pm_quota'];
 		
 		}
 		$db->sql_freeresult($result);
@@ -293,14 +293,12 @@ function attachment_quota_settings($admin_mode, $submit = FALSE, $mode)
 	{
 		return;
 	}
-	else if ($admin_mode == 'group')
-	{
-		// Get group id again, we do not trust phpBB here, Mods may be installed ;)
-		$group_id = get_var(POST_GROUPS_URL, 0);
-	}
 
 	if ($admin_mode == 'group' && !$submit && isset($HTTP_POST_VARS['edit']))
 	{
+		// Get group id again, we do not trust phpBB here, Mods may be installed ;)
+		$group_id = get_var(POST_GROUPS_URL, 0);
+	
 		// Show the contents
 		$sql = 'SELECT quota_limit_id, quota_type FROM ' . QUOTA_TABLE . " 
 			WHERE group_id = $group_id";
@@ -330,8 +328,8 @@ function attachment_quota_settings($admin_mode, $submit = FALSE, $mode)
 		else
 		{
 			// Set Default Quota Limit
-			$upload_quota = intval($attach_config['default_upload_quota']);
-			$pm_quota = intval($attach_config['default_pm_quota']);
+			$upload_quota = $attach_config['default_upload_quota'];
+			$pm_quota = $attach_config['default_pm_quota'];
 		}
 		$db->sql_freeresult($result);
 
@@ -345,11 +343,15 @@ function attachment_quota_settings($admin_mode, $submit = FALSE, $mode)
 
 	if ($admin_mode == 'group' && $submit && isset($HTTP_POST_VARS['group_delete']))
 	{
+		$group_id = get_var(POST_GROUPS_URL, 0);
+	
 		process_quota_settings($admin_mode, $group_id, QUOTA_UPLOAD_LIMIT, 0);
 		process_quota_settings($admin_mode, $group_id, QUOTA_PM_LIMIT, 0);
 	}
 	else if ($admin_mode == 'group' && $submit)
 	{
+		$group_id = get_var(POST_GROUPS_URL, 0);
+	
 		// Get the contents
 		$upload_quota = get_var('group_upload_quota', 0);
 		$pm_quota = get_var('group_pm_quota', 0);
@@ -368,7 +370,17 @@ function display_upload_attach_box_limits($user_id, $group_id = 0)
 {
 	global $attach_config, $board_config, $phpbb_root_path, $lang, $db, $template, $phpEx, $userdata, $profiledata;
 	
+	if (intval($attach_config['disable_mod']))
+	{
+		return;
+	}
+	
 	if ($userdata['user_level'] != ADMIN && $userdata['user_id'] != $user_id)
+	{
+		return;
+	}
+
+	if (!$user_id)
 	{
 		return;
 	}
@@ -415,7 +427,7 @@ function display_upload_attach_box_limits($user_id, $group_id = 0)
 
 			if ($quota_id == 0)
 			{
-				$attach_config['upload_filesize_limit'] = intval($attach_config['attachment_quota']);
+				$attach_config['upload_filesize_limit'] = $attach_config['attachment_quota'];
 			}
 			else
 			{
@@ -432,11 +444,11 @@ function display_upload_attach_box_limits($user_id, $group_id = 0)
 				if ($db->sql_numrows($result) > 0)
 				{
 					$row = $db->sql_fetchrow($result);
-					$attach_config['upload_filesize_limit'] = intval($row['quota_limit']);
+					$attach_config['upload_filesize_limit'] = $row['quota_limit'];
 				}
 				else
 				{
-					$attach_config['upload_filesize_limit'] = intval($attach_config['attachment_quota']);
+					$attach_config['upload_filesize_limit'] = $attach_config['attachment_quota'];
 				}
 				$db->sql_freeresult($result);
 			}
@@ -454,13 +466,13 @@ function display_upload_attach_box_limits($user_id, $group_id = 0)
 		}
 	}
 
-	if ( intval($attach_config['upload_filesize_limit']) == 0 )
+	if (!$attach_config['upload_filesize_limit'])
 	{
-		$upload_filesize_limit = intval($attach_config['attachment_quota']);
+		$upload_filesize_limit = $attach_config['attachment_quota'];
 	}
 	else
 	{
-		$upload_filesize_limit = intval($attach_config['upload_filesize_limit']);
+		$upload_filesize_limit = $attach_config['upload_filesize_limit'];
 	}
 
 	if ($upload_filesize_limit == 0)

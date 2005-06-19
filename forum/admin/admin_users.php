@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: admin_users.php,v 1.57.2.26 2004/03/25 15:57:20 acydburn Exp $
+ *   $Id: admin_users.php,v 1.1 2005/02/28 18:24:07 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -314,12 +314,12 @@ if ( $mode == 'edit' || $mode == 'save' && ( isset($HTTP_POST_VARS['username']) 
 
 			if ( stripslashes(strtolower($username)) != strtolower($this_userdata['username']) ) 
 			{
-			$result = validate_username($username);
-			if ( $result['error'] )
-			{
-				$error = TRUE;
-				$error_msg .= ( ( isset($error_msg) ) ? '<br />' : '' ) . $result['error_msg'];
-			}
+				$result = validate_username($username);
+				if ( $result['error'] )
+				{
+					$error = TRUE;
+					$error_msg .= ( ( isset($error_msg) ) ? '<br />' : '' ) . $result['error_msg'];
+				}
 				else if ( strtolower(str_replace("\\'", "''", $username)) == strtolower($userdata['username']) )
 				{
 					$error = TRUE;

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<title>phpBB 2.0.4 :: Changelog</title>
+<title>phpBB 2.0.15 :: Changelog</title>
 <link rel="stylesheet" href="../templates/subSilver/subSilver.css" type="text/css" />
 <style type="text/css">
 <!--
@@ -24,7 +24,7 @@ p,ul,td {font-size:10pt;}
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td><img src="../templates/subSilver/images/logo_phpBB.gif" border="0" alt="phpBB 2 : Creating Communities" vspace="1" /></a></td>
-		<td align="center" width="100%" valign="middle"><span class="maintitle">phpBB 2.0.4 CHANGELOG</span></td>
+		<td align="center" width="100%" valign="middle"><span class="maintitle">phpBB 2.0.15 CHANGELOG</span></td>
 	</tr>
 </table>
 
@@ -32,6 +32,17 @@ p,ul,td {font-size:10pt;}
 <ol>
 <li><a href="#changelog">Changelog</a></li>
 <ol type="i">
+	<li><a href="#2014">Changes since 2.0.14</a></li>
+	<li><a href="#2013">Changes since 2.0.13</a></li>
+	<li><a href="#2012">Changes since 2.0.12</a></li>
+	<li><a href="#2011">Changes since 2.0.11</a></li>
+	<li><a href="#2010">Changes since 2.0.10</a></li>
+	<li><a href="#209">Changes since 2.0.9</a></li>
+	<li><a href="#208">Changes since 2.0.8</a></li>
+	<li><a href="#207">Changes since 2.0.7</a></li>
+	<li><a href="#206">Changes since 2.0.6</a></li>
+	<li><a href="#205">Changes since 2.0.5</a></li>
+	<li><a href="#204">Changes since 2.0.4</a></li>
 	<li><a href="#203">Changes since 2.0.3</a></li>
 	<li><a href="#202">Changes since 2.0.2</a></li>
 	<li><a href="#201">Changes since 2.0.1</a></li>
@@ -49,7 +60,224 @@ p,ul,td {font-size:10pt;}
 
 <p>This is a non-exhaustive (but still near complete) changelog for phpBB 2.0.x including beta and release candidate versions. Our thanks to all those people who've contributed bug reports and code fixes.</p>
 
-<a name="203"></a><h3 class="h3">1.i. Changes since 2.0.3</h3>
+<a name="2014"></a><h3 class="h3">l.i. Changes since 2.0.14</h3>
+
+<ul>
+<li>Fixed moderator status removal in groupcp.php</li>
+<li>Removed newlines after ?&gt; on some files - <b>Thoul</b></li>
+<li>Added admin re-authentication (admin needs to login seperatly to access the ACP) - backported from Olympus</li>
+<li>Fixed vulnerability in url/bbcode handling functions - <b>PapaDos and Paul/Zhen-Xjell from CastleCops</b></li>
+<li>Fixed issue in admin/admin_forums.php</li>
+<li>Suppressed warning message for fsockopen in /includes/smtp.php - <b>Thoul</b></li>
+<li>Fixed bug in admin/admin_smilies.php (admin is able to add empty smilies) - <b>Exy</b></li>
+<li>Adjusted documents to reflect the urgent need to update the files too (not only running the database update script)</li>
+<li>Updated the readme file</li>
+<li>Added one new language variable</li>
+<li>Added general error if accessing profile for a non-existent user</li>
+<li>Changed session id generation to be more unique - <b>Henno Joosep</b></li>
+<li>Fixed bug in highlight code to escape characters correctly</li>
+<li>Reversed the 2.0.14 fix for postgresql because it produced more problems than it solves.</li>
+<li>Added reference to article written by R45 about case-sensitivity in postgreSQL to the readme file</li>
+</ul>
+
+<a name="2013"></a><h3 class="h3">l.ii. Changes since 2.0.13</h3>
+
+<ul>
+<li>Hardened author and keyword search a bit to not allow very server intensive searches</li>
+<li>Fixed full path disclosure in bad word parsing</li>
+<li>Resetting complete userdata array in session code if authentication fails</li>
+<li>Fixed bug in moderator control panel where certain parameters could lead to an "error creating new session" sql error</li>
+<li>Fixed bug in session code where empty page ids could lead to an "error creating new session" sql error</li>
+<li>Fixed html handling in signatures if html is turned off globally</li>
+<li>Fixed install.php problem with PHP5 register_long_arrays option turned off</li>
+<li>Fixed potential issues with styling system</li>
+<li>Added correct class to login_body template file</li>
+<li>Removed file db/oracle.php from package</li>
+<li>Removed version number from message body page in /admin (if user is not an admin) - <b>mikelbeck</b></li>
+<li>Fixed case-sensitivity issues in postgres7.php - <b>R45</b></li>
+</ul>
+
+<a name="2012"></a><h3 class="h3">l.iii. Changes since 2.0.12</h3>
+
+<ul>
+<li>Ommitted preg_replace warning in viewtopic due to improper working of preg_quote in PHP - originally reported by matrix_killer, fix submitted by another party</li>
+<li>Fixed high severity issue in session handling allowing everyone gaining administrator rights. Please update as soon as possible.</li>
+<li>Minimum requirements raised to PHP 4.0.3 or above due to fixing vulnerability issues breaking PHP3 compatibility.</li>
+</ul>
+
+<a name="2011"></a><h3 class="h3">l.iv. Changes since 2.0.11</h3>
+
+<ul>
+<li>Added confirm table to admin_db_utilities.php</li>
+<li>Prevented full path display on critical messages</li>
+<li>Fixed full path disclosure in username handling caused by a PHP 4.3.10 bug - <b>AnthraX101</b></li>
+<li>Added exclude list to unsetting globals (if register_globals is on) - <b>SpoofedExistence</b></li>
+<li>Fixed arbitrary file disclosure vulnerability in avatar handling functions - <b>AnthraX101</b></li>
+<li>Fixed arbitrary file unlink vulnerability in avatar handling functions - <b>AnthraX101</b></li>
+<li>Removed version number from powered by line</li>
+<li>Merged database update files to update_to_latest.php file</li>
+<li>Fixed path disclosure bug in search.php caused by a PHP 4.3.10 bug (related to AnthraX101's discovery)</li>
+<li>Fixed path disclosure bug in viewtopic.php caused by a PHP 4.3.10 bug - <b>matrix_killer</b></li>
+</ul>
+
+<a name="2010"></a><h3 class="h3">l.v. Changes since 2.0.10</h3>
+
+<ul>
+<li>Fixed vulnerability in highlighting code (<b>very high severity, please update your installation as soon as possible</b>)</li>
+<li>Fixed unsetting global vars - <b>Matt Kavanagh</b></li>
+<li>Fixed XSS vulnerability in username handling - <b>AnthraX101</b></li>
+<li>Fixed not confirmed sql injection in username handling - <b>warmth</b></li>
+<li>Added check for empty topic id in topic_review function</li>
+<li>Added visual confirmation mod to code base</li>
+</ul>
+
+<a name="209"></a><h3 class="h3">l.vi. Changes since 2.0.9</h3>
+
+<ul>
+<li>Fixed deleting of styles in admin_styles.php</li>
+<li>Fixed wrong unsetting of variables introduced in phpBB 2.0.9, making the board non-functional for users with specific php.ini settings</li>
+<li>Added code to let phpBB work with PHP5 for those having register_long_arrays set to off (default settings) - running phpBB 2.0.x with PHP5 is not supported at http://www.phpbb.com.</li>
+<li>Fixed bug in admin_board.php for board settings having single quotes in it</li>
+<li>Fixed "search by author" in search.php. Now it is possible to search for users with special chars in their name too</li>
+<li>Fixed forum jumpbox propagating session id in moderator control pages</li>
+<li>Added check for newlines at redirecting pages, to prevent http response splitting attacks - <b>Ory Segal and Amit Klein</b></li>
+<li>Fixed visual confirmation code. The image was not created due to a wrong regular expression.</li>
+</ul>
+
+<a name="208"></a><h3 class="h3">l.vii. Changes since 2.0.8</h3>
+
+<ul>
+<li>Fixed one vulnerability in admin_board.php - <b>Xore</b></li>
+<li>Added checking for proper session id characters to sessions and viewtopic to prevent injections - <b>Bartlomiej Korupczynski</b></li>
+<li>Fixed injection vulnerabilities possible with linked avatars</li>
+<li>Implemented unsetting globalised variables</li>
+<li>Limited confirm switch to POST variable in posting</li>
+<li>Changed IP code in common.php to prevent IP spoofing, which might introduce some problems with private IP Ranges showing up. - <b>Wang Products</b></li>
+<li>Updated visual confirmation mod [pre-edited files]</li>
+<li>Moved obtaining word censors in modcp out of topic generation loop [increased performance/lower query count] - spotted by <b>R45</b></li>
+<li>Added the ability to link to https/ftps sites using the img bbcode tag</li>
+<li>Fixed user online information in admin/index.php</li>
+<li>Fixed getting group moderator in groupcp.php if running oracle backend - spotted by <b>pakman</b></li>
+<li>Fixed use of non-existing result variable in modcp (poster_id instead of user_id)</li>
+<li>Fixed several vulnerabilities (XSS, SQL Injection and path disclosure) only possible with register_globals enabled - <b>Matthew C. Kavanagh, Janek Vind</b></li>
+<li>Fixed problem with SID not delivered to next page in groupcp.php</li>
+</ul>
+
+<a name="207"></a><h3 class="h3">l.viii. Changes since 2.0.7</h3>
+
+<ul>
+<li>Fixed several vulnerabilities in admin pages</li>
+<li>Fixed sid checking code in admin/pagestart.php</li>
+<li>Fixed injection vulnerabilities possible with the img bbcode tag</li>
+<li>Limited allowed images in img bbcode tag to jpg, jpeg, gif and png</li>
+<li>Fixed redirect problems - 2.0.7a</li>
+<li>Fixed sql injection vulnerability in search - 2.0.7a</li>
+<li>Fixed sql injection vulnerability in privmsg - 2.0.8a</li>
+</ul>
+
+<a name="206"></a><h3 class="h3">1.ix. Changes since 2.0.6</h3>
+
+<ul>
+<li>Fixed several vulnerabilities in modcp - <b>Robert Lavierck</b></li>
+<li>Changed whois lookup address within admin index</li>
+<li>Fixed potential vulnerability in viewtopic postorder - 2.0.6d</li>
+<li>Updates to cope with Zend Optimizer 2.5 problems - 2.0.6d - <b>jetset</b></li>
+<li>Force specialcharing of redirect variable in login - <b>Pit</b></li>
+<li>Fixed potential vulnerability in viewtopic postdays - <b>GulfTech Security Research</b></li>
+<li>Fixed potential vulnerability in viewforum topicdays - <b>GulfTech Security Research</b></li>
+<li>Fixed potential vulnerability in modcp</li>
+<li>Fixed potential vulnerability in avatar gallery</li>
+</ul>
+
+<a name="205"></a><h3 class="h3">1.x. Changes since 2.0.5</h3>
+
+<ul>
+<li>Fixed various email issues</li>
+<li>Fixed registration email bug with Administrator Confirmation used</li>
+<li>Fixed mass emailer</li>
+<li>Fixed long post time issue</li>
+<li>Fixed bug with usernames containing single quotes</li>
+<li>Fixed word list bug - Word boundaries were not considered</li>
+<li>Fixed vulnerability in style admin</li>
+<li>Fixed sql injection vulnerability in viewtopic</li>
+<li>Fixed vulnerability allowing server side variable access in search - <b>tendor</b></li>
+<li>Fixed potential vulnerability in 2.0.5 login username entry - <b>throw away/eomer</b></li>
+<li>Fixed sql injection with reset date format field in profile - <b>tendor</b></li>
+</ul>
+
+<a name="204"></a><h3 class="h3">1.xi. Changes since 2.0.4</h3>
+
+<ul>
+<li>Removed user facing session_id checks</li>
+<li>Fixed user self-activation after deactivation</li>
+<li>Fixed incorrect functioning of phpbb_realpath</li>
+<li>Fixed wrong path to database schema files within the upgrade script</li>
+<li>Fixed double quote problem with username validation</li>
+<li>Allow & within email addresses</li>
+<li>Fixed email validation for banned email addresses</li>
+<li>Removed underline from email domain validation</li>
+<li>Fixed redirection for sentbox folder, installation and email</li>
+<li>Fixed poll deletion</li>
+<li>Fixed Mozilla navigation bar</li>
+<li>Fixed URL bbcode parsing</li>
+<li>Fixed database timeouts while searching the forums</li>
+<li>Fixed wrong email return path in admin mass mailing - <b>netclectic</b></li>
+<li>Fixed MS-SQL failures within the update script</li>
+<li>Fixed memberlist sort order</li>
+<li>Fixed not showing leading spaces within Code BBCode</li>
+<li>Fixed problem with adding double quotes to subject titles</li>
+<li>Remove username input field from profile when user cannot change name</li>
+<li>Fixed pagination error with highlighting</li>
+<li>Fixed errors if no smilies are installed</li>
+<li>Fixed CSS issues with IE 5.2 on MacOS X</li>
+<li>Fixed missing sid propagation problem within the Moderator Control Panel</li>
+<li>Fixed language variables within Authentication error output</li>
+<li>Removed doubled CSS class definitions within input fields</li>
+<li>Fixed username change within the Administration Panel</li>
+<li>Added missing &lt;tr&gt; tags to index_body.tpl</li>
+<li>Added missing username language variable to admin index page</li>
+<li>Fixed moderator status update if a usergroup got deleted</li>
+<li>Fixed poll handling upon post edit</li>
+<li>Fixed remove common words from search table if post get pruned - <b>Nuttzy99</b></li>
+<li>Fixed behaviour on splitting topics if no checkbox is selected</li>
+<li>Anonymous is no longer displayed within Username dropdown boxes</li>
+<li>Fixed viewprofile redirection if an invalid mode was specified</li>
+<li>Fixed fraction settings within determining common words - <b>Novan</b></li>
+<li>Prevent admin change usernames to his own within the ACP</li>
+<li>Activation email is sent to all admins</li>
+<li>Fixed conversion of &amp; to &amp;amp; in appropriate cases</li>
+<li>Fixed display of "greater than topics per page" announcements preventing display of normal posts</li>
+<li>Added variable checks to database backup and restore screen</li>
+<li>Prevented pm popup window from resetting after visiting avatar gallery</li>
+<li>Fixed special character handling with word censor</li>
+<li>Added SID to jumpbox</li>
+<li>Fixed problems with usernames using html special chars</li>
+<li>Added GMT + 13 to English lang_main, all translators are encouraged to do likewise</li>
+<li>Deleted doubled 'U_MEMBERLIST' assignment from page_header.php</li>
+<li>Fixed wrong display of Signature Checkbox while editing Private Message</li>
+<li>Fixed disappearing post text if emoticon was inserted directly after pressing a BBCode button</li>
+<li>Display correct alt-tag for smilies within postings</li>
+<li>Prevented the ability to apply BBCode to website contents</li>
+<li>Fixed maxlength issue with password field in login_body.tpl</li>
+<li>Fixed possible username duplication issue with validation and username length</li>
+<li>Fixed split words function to handle additional foreign characters</li>
+<li>Changed empty email To Field to use a non-disclosure delimiter</li>
+<li>Fixed wrong language var in install.php - FTP Config screen</li>
+<li>Fixed alt tag for locked topic images in viewforum_body.tpl</li>
+<li>Fixed typo in groupcp.php - $lang['Unsub_success'] instead of $lang['Usub_success']</li>
+<li>Fixed timezone display</li>
+<li>Fixed wrong display of author quote tag within profile - <b>Cl1mh4224rd</b></li>
+<li>Added deletion of sessions of users whose account is deactivated</li>
+<li>Added mail header X-MimeOLE to the emailer class</li>
+<li>Prevent registration if user is logged in or user trying to register again</li>
+<li>Prevent usage of char(255) in usernames</li>
+<li>Added check for additional FORWARDED_FOR IP's - <b>cosmos</b></li>
+<li>Fixed handling of non-selection of option when voting</li>
+<li>Fixed potential xss issue with memberslist mode</li>
+<li>Default English support for visual confirmation - translators are encouraged to support this</li>
+</ul>
+
+<a name="203"></a><h3 class="h3">1.xii. Changes since 2.0.3</h3>
 
 <ul>
 <li>Fixed cross-browser scripting issue with highlight param</li>
@@ -176,7 +404,7 @@ p,ul,td {font-size:10pt;}
 <li>Fixed potential SQL vulnerability with marking of private messages - <b>Ulf Harnhammar</b></li>
 </ul>
 
-<a name="202"></a><h3 class="h3">1.ii. Changes since 2.0.2</h3>
+<a name="202"></a><h3 class="h3">1.xiii. Changes since 2.0.2</h3>
 
 <ul>
 <li>Fixed potential cross-site scripting vulnerability with avatars - <b>Showscout</b></li>
@@ -185,7 +413,7 @@ p,ul,td {font-size:10pt;}
 <li>Fixed (hopefully) issue with MS Access and multiple pages</li>
 </ul>
 
-<a name="201"></a><h3 class="h3">1.iii. Changes since 2.0.1</h3>
+<a name="201"></a><h3 class="h3">1.xiv. Changes since 2.0.1</h3>
 
 <ul>
 <li>Fixed missing "username" lang variable in user admin template</li>
@@ -220,7 +448,7 @@ p,ul,td {font-size:10pt;}
 <li>Fix emailer to allow sending emails with language-specific character sets</li>
 </ul>
 
-<a name="200"></a><h3 class="h3">1.iv. Changes since 2.0.0</h3>
+<a name="200"></a><h3 class="h3">1.xv. Changes since 2.0.0</h3>
 
 <ul>
 <li>Fixed delete image bug for normal users</li>
@@ -277,7 +505,7 @@ p,ul,td {font-size:10pt;}
 <li>Added database closure to admin frameset page</li>
 </ul>
 
-<a name="final"></a><h3 class="h3">1.v. Changes since RC-4</h3>
+<a name="final"></a><h3 class="h3">1.xvi. Changes since RC-4</h3>
 
 <ul>
 <li>Fixed improper report of general error when posting messages containing errors</li>
@@ -307,7 +535,7 @@ p,ul,td {font-size:10pt;}
 <li>Fixed various remaining usergroup display issues</li>
 </ul>
 
-<a name="rc4"></a><h3 class="h3">1.vi. Changes since RC-3</h3>
+<a name="rc4"></a><h3 class="h3">1.xvii. Changes since RC-3</h3>
 
 <ul>
 <li>Addressed serious security issue with included files</li>
@@ -338,7 +566,7 @@ p,ul,td {font-size:10pt;}
 <li>Fix (hopefully) remaining ICQ overlay issue with view profile in subSilver</li>
 </ul>
 
-<a name="rc3"></a><h3 class="h3">1.vii. Changes since RC-2</h3>
+<a name="rc3"></a><h3 class="h3">1.xviii. Changes since RC-2</h3>
 
 <ul>
 <li>Fixed infamous install parse error</li>
@@ -371,7 +599,7 @@ p,ul,td {font-size:10pt;}
 <li>Hidden usergroups are now completely hidden from view</li>
 </ul>
 
-<a name="rc2"></a><h3 class="h3">1.viii. Changes since RC-1</h3>
+<a name="rc2"></a><h3 class="h3">1.xix. Changes since RC-1</h3>
 
 <ul>
 <li>Fixed numerous PostgreSQL related issues</li>
@@ -391,7 +619,7 @@ p,ul,td {font-size:10pt;}
 <li>Various other fixes and updates</li>
 </ul>
 
-<a name="rc1"></a><h3 class="h3">1.ix. Changes since RC-1 (pre)</h3>
+<a name="rc1"></a><h3 class="h3">1.xx. Changes since RC-1 (pre)</h3>
 
 <ul>
 <li>Upgrade script completed for initial fully functional release</li>

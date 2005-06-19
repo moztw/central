@@ -6,7 +6,7 @@
  *   copyright            : (C) 2002 Meik Sievertsen
  *   email                : acyd.burn@gmx.de
  *
- *   $Id: download.php,v 1.37 2004/07/31 15:15:54 acydburn Exp $
+ *   $Id: download.php,v 1.41 2005/05/09 19:30:43 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -191,8 +191,8 @@ function send_file_to_browser($attachment, $upload_dir)
 //	header('Content-Transfer-Encoding: none');
 
 	// Send out the Headers
-	header('Content-Type: ' . $attachment['mimetype'] . '; name="' . $attachment['real_filename'] . '"');
-	header('Content-Disposition: inline; filename="' . $attachment['real_filename'] . '"');
+	header('Content-Type: ' . $attachment['mimetype'] . '; name="' . htmlspecialchars($attachment['real_filename']) . '"');
+	header('Content-Disposition: inline; filename="' . htmlspecialchars($attachment['real_filename']) . '"');
 
 	//
 	// Now send the File Contents to the Browser
@@ -280,6 +280,8 @@ if (!($attachment = $db->sql_fetchrow($result)))
 {
 	message_die(GENERAL_MESSAGE, $lang['Error_no_attachment']);
 }
+
+$attachment['physical_filename'] = basename($attachment['physical_filename']);
 
 $db->sql_freeresult($result);
 

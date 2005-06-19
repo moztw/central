@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: page_footer_admin.php,v 1.9.2.2 2002/05/12 15:57:45 psotfx Exp $
+ *   $Id: page_footer_admin.php,v 1.9.2.3 2005/04/15 20:15:47 acydburn Exp $
  *
  *
  ***************************************************************************/

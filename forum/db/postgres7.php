@@ -6,7 +6,7 @@
    *   copyright            : (C) 2001 The phpBB Group
    *   email                : supportphpbb.com
    *
-   *   $Id: postgres7.php,v 1.19 2002/03/05 02:19:38 psotfx Exp $
+   *   $Id: postgres7.php,v 1.19.2.3 2005/05/06 20:50:10 acydburn Exp $
    *
    ***************************************************************************/
 
@@ -123,7 +123,6 @@ class sql_db
 			$this->num_queries++;
 
 			$query = preg_replace("/LIMIT ([0-9]+),([ 0-9]+)/", "LIMIT \\2 OFFSET \\1", $query);
-			//$query = preg_replace('#(.*WHERE.*)(username|user_email|ban_email) = \'(.*)\'#ise', "\"\\1LOWER(\\2) = '\" . strtolower('\\3') . \"'\"", $query);
 
 			if( $transaction == BEGIN_TRANSACTION && !$this->in_transaction )
 			{

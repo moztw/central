@@ -6,7 +6,7 @@
  *   copyright            : (C) 2002 Meik Sievertsen
  *   email                : acyd.burn@gmx.de
  *
- *   $Id: functions_thumbs.php,v 1.26 2004/07/31 15:15:54 acydburn Exp $
+ *   $Id: functions_thumbs.php,v 1.28 2005/04/16 10:07:26 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -120,7 +120,7 @@ function create_thumbnail($source, $new_file, $mimetype)
 	
 	$source = realpath($source);
 	$min_filesize = (int) $attach_config['img_min_thumb_filesize'];
-	$img_filesize = (file_exists($source)) ? @filesize($source) : false;
+	$img_filesize = (@file_exists($source)) ? @filesize($source) : false;
 
 	if (!$img_filesize || $img_filesize <= $min_filesize)
 	{
@@ -169,7 +169,7 @@ function create_thumbnail($source, $new_file, $mimetype)
 		passthru($imagick . ' -quality 85 -antialias -sample ' . $new_width . 'x' . $new_height . ' "' . str_replace('\\', '/', $source) . '" +profile "*" "' . str_replace('\\', '/', $new_file) . '"');
 		if (@file_exists($new_file))
 		{
-			$used_imagick = tur;
+			$used_imagick = true;
 		}
 	} 
 
@@ -195,7 +195,7 @@ function create_thumbnail($source, $new_file, $mimetype)
 					break;
 			}
 
-			if ($type['version'] == 1 && !$attach_config['use_gd2'])
+			if ($type['version'] == 1 || !$attach_config['use_gd2'])
 			{
 				$new_image = imagecreate($new_width, $new_height);
 				imagecopyresized($new_image, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);

@@ -6,7 +6,7 @@
  *   copyright            : (C) 2002 Meik Sievertsen
  *   email                : acyd.burn@gmx.de
  *
- *   $Id: admin_attachments.php,v 1.51 2004/08/02 16:57:31 acydburn Exp $
+ *   $Id: admin_attachments.php,v 1.54 2004/12/09 20:10:01 acydburn Exp $
  *
  ***************************************************************************/
 
@@ -135,17 +135,17 @@ while ($row = $db->sql_fetchrow($result))
 
 	if ((empty($size)) && (!$submit) && ($config_name == 'max_filesize'))
 	{
-		$size = (intval($attach_config[$config_name]) >= 1048576) ? 'mb' : ( (intval($attach_config[$config_name]) >= 1024) ? 'kb' : 'b' );
+		$size = ($attach_config[$config_name] >= 1048576) ? 'mb' : (($attach_config[$config_name] >= 1024) ? 'kb' : 'b');
 	} 
 
 	if ((empty($quota_size)) && (!$submit) && ($config_name == 'attachment_quota'))
 	{
-		$quota_size = (intval($attach_config[$config_name]) >= 1048576) ? 'mb' : ( (intval($attach_config[$config_name]) >= 1024) ? 'kb' : 'b' );
+		$quota_size = ($attach_config[$config_name] >= 1048576) ? 'mb' : (($attach_config[$config_name] >= 1024) ? 'kb' : 'b');
 	}
 
 	if ((empty($pm_size)) && (!$submit) && ($config_name == 'max_filesize_pm'))
 	{
-		$pm_size = (intval($attach_config[$config_name]) >= 1048576) ? 'mb' : ( (intval($attach_config[$config_name]) >= 1024) ? 'kb' : 'b' );
+		$pm_size = ($attach_config[$config_name] >= 1048576) ? 'mb' : (($attach_config[$config_name] >= 1024) ? 'kb' : 'b');
 	}
 
 	if ( (!$submit) && (($config_name == 'max_filesize') || ($config_name == 'attachment_quota') || ($config_name == 'max_filesize_pm')) )
@@ -195,8 +195,8 @@ while ($row = $db->sql_fetchrow($result))
 		
 		if ($config_name == 'max_filesize')
 		{
-			$old_size = intval($attach_config[$config_name]);
-			$new_size = intval($new_attach[$config_name]);
+			$old_size = $attach_config[$config_name];
+			$new_size = $new_attach[$config_name];
 
 			if ($old_size != $new_size)
 			{
@@ -601,6 +601,7 @@ if ($submit && $mode == 'shadow')
 	for ($i = 0; $i < count($attach_file_list); $i++)
 	{
 		unlink_attach($attach_file_list[$i]);
+		unlink_attach($attach_file_list[$i], MODE_THUMBNAIL);
 	}
 	
 	//
@@ -1364,7 +1365,7 @@ if ($mode == 'quota')
 		'body' => 'admin/attach_quota_body.tpl')
 	);
 
-	$max_add_filesize = intval($attach_config['max_filesize']);
+	$max_add_filesize = $attach_config['max_filesize'];
 	$size = ($max_add_filesize >= 1048576) ? 'mb' : ( ($max_add_filesize >= 1024) ? 'kb' : 'b' );
 
 	if ($max_add_filesize >= 1048576)

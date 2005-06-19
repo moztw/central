@@ -55,10 +55,6 @@
 		<td class="row1" colspan="2" align="right"><span class="gen">{L_FORUM}:</span></td>
 		<td class="row2" colspan="2" valign="middle"><select class="post" name="search_forum">{S_FORUM_OPTIONS}</select></span></td>
 	</tr>
-	<tr>
-		<td class="row1" colspan="2" align="right"><span class="gen">{L_CATEGORY}:&nbsp;</span></td>
-		<td class="row2" colspan="2" valign="middle"><select class="post" name="search_cat">{S_CATEGORY_OPTIONS}</select></span></td>
-	</tr>
 	<tr> 
 		<td class="row1" colspan="2" align="right"><span class="gen">{L_SORT_BY}:&nbsp;</span></td>
 		<td class="row2" colspan="2" valign="middle">{S_SORT_OPTIONS}</span></td>

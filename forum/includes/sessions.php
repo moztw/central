@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: sessions.php,v 1.58.2.12 2005/02/27 20:33:01 acydburn Exp $
+ *   $Id: sessions.php,v 1.58.2.14 2005/05/06 20:50:11 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -47,13 +47,14 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 		$sessionmethod = SESSION_METHOD_GET;
 	}
 
- 	//
- 	if (!preg_match('/^[A-Za-z0-9]*$/', $session_id)) 
- 	{
- 		$session_id = '';
- 	}
+	//
+	if (!preg_match('/^[A-Za-z0-9]*$/', $session_id)) 
+	{
+		$session_id = '';
+	}
+
 	$page_id = (int) $page_id;
- 
+
 	$last_visit = 0;
 	$current_time = time();
 	$expiry_time = $current_time - $board_config['session_length'];
@@ -66,7 +67,7 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 		WHERE user_id = $user_id";
 	if ( !($result = $db->sql_query($sql)) )
 	{
-		message_die(CRITICAL_ERROR, 'Could not obtain lastvisit data from user table', '', __LINE__, __FILE__, "69");
+		message_die(CRITICAL_ERROR, 'Could not obtain lastvisit data from user table', '', __LINE__, __FILE__, $sql);
 	}
 
 	$userdata = $db->sql_fetchrow($result);
@@ -92,6 +93,7 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 					$login = 0; 
 					$enable_autologin = 0; 
 					$user_id = $userdata['user_id'] = ANONYMOUS;
+				
 					$sql = 'SELECT * FROM ' . USERS_TABLE . ' WHERE user_id = ' . ANONYMOUS;
 					$result = $db->sql_query($sql);
 					$userdata = $db->sql_fetchrow($result);
@@ -104,6 +106,7 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 				$login = 0;
 				$enable_autologin = 0;
 				$user_id = $userdata['user_id'] = ANONYMOUS;
+
 				$sql = 'SELECT * FROM ' . USERS_TABLE . ' WHERE user_id = ' . ANONYMOUS;
 				$result = $db->sql_query($sql);
 				$userdata = $db->sql_fetchrow($result);
@@ -137,7 +140,7 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 	}
 	if ( !($result = $db->sql_query($sql)) )
 	{
-		message_die(CRITICAL_ERROR, 'Could not obtain ban information', '', __LINE__, __FILE__, "140");
+		message_die(CRITICAL_ERROR, 'Could not obtain ban information', '', __LINE__, __FILE__, $sql);
 	}
 
 	if ( $ban_info = $db->sql_fetchrow($result) )
@@ -159,7 +162,6 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 	{
 		list($sec, $usec) = explode(' ', microtime());
 		mt_srand((float) $sec + ((float) $usec * 100000));
-		// //$session_id = md5(uniqid($user_ip));
 		$session_id = md5(uniqid(mt_rand(), true));
 		global $HTTP_SERVER_VARS; //Googlebot and others
 		$session_id = ( !strstr($HTTP_SERVER_VARS['HTTP_USER_AGENT'] ,'Googlebot') ) ? md5(uniqid($user_ip)) : md5(d8ef2eab); // Googlebot
@@ -177,53 +179,51 @@ function session_begin($user_id, $user_ip, $page_id, $auto_create = 0, $enable_a
 		{
 			//message_die(CRITICAL_ERROR, 'Error creating new session', '', __LINE__, __FILE__, "178");
 			$error = TRUE;
-if (SQL_LAYER == "mysql" || SQL_LAYER == "mysql4")
-{
-   $sql_error = $db->sql_error($result);
-   if ($sql_error["code"] == 1114)
-   {
-      $result = $db->sql_query('SHOW TABLE STATUS LIKE "'.SESSIONS_TABLE.'"');
-      $row = $db->sql_fetchrow($result);
-      if ($row["Type"] == "HEAP")
-      {
-         if ($row["Rows"] > 2500)
-         {
-            $delete_order = (SQL_LAYER=="mysql4") ? " ORDER BY session_time ASC" : "";
-            $db->sql_query("DELETE QUICK FROM ".SESSIONS_TABLE."$delete_order LIMIT 50");
-         }
-         else
-         {
-            $db->sql_query("ALTER TABLE ".SESSIONS_TABLE." MAX_ROWS=".($row["Rows"]+50));
-         }
-         if ($db->sql_query($sql))
-         {
-            $error = FALSE;
-         }                   
-      }
-   }
-}
-if ($error)
-{
-   message_die(CRITICAL_ERROR, "Error creating new session", "", __LINE__, __FILE__, "207");
-}
+			if (SQL_LAYER == "mysql" || SQL_LAYER == "mysql4")
+			{
+			    $sql_error = $db->sql_error($result);
+			    if ($sql_error["code"] == 1114)
+			    {
+				$result = $db->sql_query('SHOW TABLE STATUS LIKE "'.SESSIONS_TABLE.'"');
+				$row = $db->sql_fetchrow($result);
+				if ($row["Type"] == "HEAP")
+				{
+				    if ($row["Rows"] > 2500)
+				    {
+					$delete_order = (SQL_LAYER=="mysql4") ? " ORDER BY session_time ASC" : "";
+					$db->sql_query("DELETE QUICK FROM ".SESSIONS_TABLE."$delete_order LIMIT 50");
+				    }
+				    else
+				    {
+					$db->sql_query("ALTER TABLE ".SESSIONS_TABLE." MAX_ROWS=".($row["Rows"]+50));
+				    }
+				    if ($db->sql_query($sql))
+				    {
+					$error = FALSE;
+				    }                   
+				}
+			    }
+			}
+		if ($error)
+		{
+		   message_die(CRITICAL_ERROR, "Error creating new session", "", __LINE__, __FILE__, "207");
 		}
+	    }
 	}
 
 	if ( $user_id != ANONYMOUS )
 	{// ( $userdata['user_session_time'] > $expiry_time && $auto_create ) ? $userdata['user_lastvisit'] : ( 
-		$last_visit = ( $userdata['user_session_time'] > 0 ) ? $userdata['user_session_time'] : $current_time;
-		
+		$last_visit = ( $userdata['user_session_time'] > 0 ) ? $userdata['user_session_time'] : $current_time; 
+
 		if (!$admin)
 		{
-
-		$sql = "UPDATE " . USERS_TABLE . " 
-			SET user_session_time = $current_time, user_session_page = $page_id, user_lastvisit = $last_visit
-			WHERE user_id = $user_id";
-		if ( !$db->sql_query($sql) )
-		{
-			message_die(CRITICAL_ERROR, 'Error updating last visit time', '', __LINE__, __FILE__, "224");
-		}
-		
+			$sql = "UPDATE " . USERS_TABLE . " 
+				SET user_session_time = $current_time, user_session_page = $page_id, user_lastvisit = $last_visit
+				WHERE user_id = $user_id";
+			if ( !$db->sql_query($sql) )
+			{
+				message_die(CRITICAL_ERROR, 'Error updating last visit time', '', __LINE__, __FILE__, $sql);
+			}
 		}
 
 		$userdata['user_lastvisit'] = $last_visit;
@@ -322,8 +322,8 @@ function session_pagestart($user_ip, $thispage_id)
  	}
 
 	$thispage_id = (int) $thispage_id;
- 
- 	//
+
+	//
 	// Does a session exist?
 	//
 	if ( !empty($session_id) )
@@ -338,7 +338,7 @@ function session_pagestart($user_ip, $thispage_id)
 				AND u.user_id = s.session_user_id";
 		if ( !($result = $db->sql_query($sql)) )
 		{
-			message_die(CRITICAL_ERROR, 'Error doing DB query userdata row fetch', '', __LINE__, __FILE__, "341");
+			message_die(CRITICAL_ERROR, 'Error doing DB query userdata row fetch', '', __LINE__, __FILE__, $sql);
 		}
 
 		$userdata = $db->sql_fetchrow($result);
@@ -370,21 +370,21 @@ function session_pagestart($user_ip, $thispage_id)
 					$update_admin = (!defined('IN_ADMIN') && $current_time - $userdata['session_time'] > ($board_config['session_length']+60)) ? ', session_admin = 0' : '';
 
 					$sql = "UPDATE " . SESSIONS_TABLE . " 
-						SET session_time = $current_time, session_page = $thispage_id$update_admin 
+						SET session_time = $current_time, session_page = $thispage_id$update_admin
 						WHERE session_id = '" . $userdata['session_id'] . "'";
 					if ( !$db->sql_query($sql) )
 					{
-						message_die(CRITICAL_ERROR, 'Error updating sessions table', '', __LINE__, __FILE__, "377");
+						message_die(CRITICAL_ERROR, 'Error updating sessions table', '', __LINE__, __FILE__, $sql);
 					}
 
 					if ( $userdata['user_id'] != ANONYMOUS )
 					{
 						$sql = "UPDATE " . USERS_TABLE . " 
-							SET user_session_time = $current_time, user_session_page = $thispage_id 
+							SET user_session_time = $current_time, user_session_page = $thispage_id
 							WHERE user_id = " . $userdata['user_id'];
 						if ( !$db->sql_query($sql) )
 						{
-							message_die(CRITICAL_ERROR, 'Error updating sessions table', '', __LINE__, __FILE__, "387");
+							message_die(CRITICAL_ERROR, 'Error updating sessions table', '', __LINE__, __FILE__, $sql);
 						}
 					}
 
@@ -392,12 +392,13 @@ function session_pagestart($user_ip, $thispage_id)
 					// Delete expired sessions
 					//
 					$expiry_time = $current_time - $board_config['session_length'];
+
 					$sql = "DELETE FROM " . SESSIONS_TABLE . " 
 						WHERE session_time < $expiry_time 
 							AND session_id <> '$session_id'";
 					if ( !$db->sql_query($sql) )
 					{
-						message_die(CRITICAL_ERROR, 'Error clearing sessions table', '', __LINE__, __FILE__, "400");
+						message_die(CRITICAL_ERROR, 'Error clearing sessions table', '', __LINE__, __FILE__, $sql);
 					}
 
 					setcookie($cookiename . '_data', serialize($sessiondata), $current_time + 31536000, $cookiepath, $cookiedomain, $cookiesecure);
@@ -417,7 +418,7 @@ function session_pagestart($user_ip, $thispage_id)
 
 	if ( !($userdata = session_begin($user_id, $user_ip, $thispage_id, TRUE)) )
 	{
-		message_die(CRITICAL_ERROR, 'Error creating user session', '', __LINE__, __FILE__, "420");
+		message_die(CRITICAL_ERROR, 'Error creating user session', '', __LINE__, __FILE__, $sql);
 	}
 
 	return $userdata;
@@ -455,11 +456,11 @@ function session_end($session_id, $user_id)
 		$sessionmethod = SESSION_METHOD_GET;
 	}
 
- 	if (!preg_match('/^[A-Za-z0-9]*$/', $session_id))
- 	{
- 		return;
- 	}
- 	
+	if (!preg_match('/^[A-Za-z0-9]*$/', $session_id))
+	{
+		return;
+	}
+	
 	//
 	// Delete existing session
 	//
@@ -468,7 +469,7 @@ function session_end($session_id, $user_id)
 			AND session_user_id = $user_id";
 	if ( !$db->sql_query($sql) )
 	{
-		message_die(CRITICAL_ERROR, 'Error removing user session', '', __LINE__, __FILE__, "471");
+		message_die(CRITICAL_ERROR, 'Error removing user session', '', __LINE__, __FILE__, $sql);
 	}
 
 	setcookie($cookiename . '_data', '', $current_time - 31536000, $cookiepath, $cookiedomain, $cookiesecure);

@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: admin_styles.php,v 1.27.2.13 2004/07/15 17:57:50 acydburn Exp $
+ *   $Id: admin_styles.php,v 1.27.2.14 2005/03/17 17:33:30 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -60,7 +60,7 @@ $cancel = ( isset($HTTP_POST_VARS['cancel']) ) ? TRUE : FALSE;
 
 if ($cancel)
 {
-   redirect('admin/' . append_sid("admin_styles.$phpEx", true));
+	redirect('admin/' . append_sid("admin_styles.$phpEx", true));
 }
 
 if( isset($HTTP_GET_VARS['mode']) || isset($HTTP_POST_VARS['mode']) )

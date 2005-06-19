@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: posting.php,v 1.159.2.22 2004/07/11 16:46:16 acydburn Exp $
+ *   $Id: posting.php,v 1.1 2005/02/28 18:20:02 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -610,9 +610,9 @@ if( $refresh || isset($HTTP_POST_VARS['del_poll_option']) || $error_msg != '' )
 	$poll_title = ( !empty($HTTP_POST_VARS['poll_title']) ) ? htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['poll_title']))) : '';
 	$poll_length = ( isset($HTTP_POST_VARS['poll_length']) ) ? max(0, intval($HTTP_POST_VARS['poll_length'])) : 0;
 
-	$subject = ereg_replace("&amp;","&",$subject);
-	$message = ereg_replace("&amp;","&",$message);
-	$poll_title = ereg_replace("&amp;","&",$poll_title); 
+	#$subject = ereg_replace("&amp;","&",$subject);
+	#$message = ereg_replace("&amp;","&",$message);
+	#$poll_title = ereg_replace("&amp;","&",$poll_title); 
 	$poll_options = array();
 	if ( !empty($HTTP_POST_VARS['poll_option_text']) )
 	{
@@ -625,15 +625,13 @@ if( $refresh || isset($HTTP_POST_VARS['del_poll_option']) || $error_msg != '' )
 			else if ( !empty($option_text) ) 
 			{
 				$poll_options[$option_id] = htmlspecialchars(trim(stripslashes($option_text)));
-				$poll_options[$option_id] = ereg_replace("&amp;","&",$poll_options[$option_id]); 
 			}
 		}
 	}
 
 	if ( isset($poll_add) && !empty($HTTP_POST_VARS['add_poll_option_text']) )
 	{
-		#$poll_options[] = htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['add_poll_option_text'])));
-		$poll_options[] = ereg_replace("&amp;","&",htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['add_poll_option_text']))));
+		$poll_options[] = htmlspecialchars(trim(stripslashes($HTTP_POST_VARS['add_poll_option_text'])));
 	}
 
 	if ( $mode == 'newtopic' || $mode == 'reply')

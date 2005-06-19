@@ -6,7 +6,7 @@
  *     copyright            : (C) 2001 The phpBB Group
  *     email                : support@phpbb.com
  *
- *     $Id: lang_main.php,v 1.85.2.15 2003/06/10 00:31:19 psotfx Exp $
+ *     $Id: lang_main.php,v 1.85.2.16 2005/05/06 20:50:13 acydburn Exp $
  *
  ****************************************************************************/
 
@@ -33,7 +33,7 @@
 // varies ... give it your best guess!
 //
 
-$lang['ENCODING'] = 'iso-8859-1';
+$lang['ENCODING'] = 'utf-8';
 $lang['DIRECTION'] = 'ltr';
 $lang['LEFT'] = 'left';
 $lang['RIGHT'] = 'right';
@@ -323,6 +323,7 @@ $lang['Confirm_delete'] = 'Are you sure you want to delete this post?';
 $lang['Confirm_delete_poll'] = 'Are you sure you want to delete this poll?';
 
 $lang['Flood_Error'] = 'You cannot make another post so soon after your last; please try again in a short while.';
+$lang['Double_Post_Error'] = 'You cannot make another post with the exact same text as your last.'; 
 $lang['Empty_subject'] = 'You must specify a subject when posting a new topic.';
 $lang['Empty_message'] = 'You must enter a message when posting.';
 $lang['Forum_locked'] = 'This forum is locked: you cannot post, reply to, or edit topics.';
@@ -1017,6 +1018,8 @@ $lang['General_Error'] = 'General Error';
 $lang['Critical_Error'] = 'Critical Error';
 $lang['An_error_occured'] = 'An Error Occurred';
 $lang['A_critical_error'] = 'A Critical Error Occurred';
+
+$lang['Admin_reauthenticate'] = 'To administer the board you must re-authenticate yourself.';
 
 //
 // That's all, Folks!

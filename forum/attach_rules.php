@@ -6,7 +6,7 @@
  *   copyright            : (C) 2002 Meik Sievertsen
  *   email                : acyd.burn@gmx.de
  *
- *   $Id: attach_rules.php,v 1.5 2004/07/31 17:25:21 acydburn Exp $
+ *   $Id: attach_rules.php,v 1.6 2004/10/31 16:46:59 acydburn Exp $
  *
  *
  ***************************************************************************/

@@ -91,22 +91,22 @@ function clean_words($mode, &$entry, &$stopword_list, &$synonym_list)
 
 function split_words(&$entry, $mode = 'post')
 {
- 	// If you experience problems with the new method, uncomment this block.
-	/*
- 	$rex = ( $mode == 'post' ) ? "/\b([\w±µ-ÿ][\w±µ-ÿ']*[\w±µ-ÿ]+|[\w±µ-ÿ]+?)\b/" : '/(\*?[a-z0-9€-±µ-ÿ]+\*?)|\b([a-z0-9€-±µ-ÿ]+)\b/';
+	// If you experience problems with the new method, uncomment this block.
+/*	
+	$rex = ( $mode == 'post' ) ? "/\b([\w±µ-ÿ][\w±µ-ÿ']*[\w±µ-ÿ]+|[\w±µ-ÿ]+?)\b/" : '/(\*?[a-z0-9±µ-ÿ]+\*?)|\b([a-z0-9±µ-ÿ]+)\b/';
 	preg_match_all($rex, $entry, $split_entries);
 
 	return $split_entries[1];
-	*/
- 	// Trim 1+ spaces to one space and split this trimmed string into words.
- 	return explode(' ', trim(preg_replace('#\s+#', ' ', $entry)));
+*/
+	// Trim 1+ spaces to one space and split this trimmed string into words.
+	return explode(' ', trim(preg_replace('#\s+#', ' ', $entry)));
 }
 
 function add_search_words($mode, $post_id, $post_text, $post_title = '')
 {
 	global $db, $phpbb_root_path, $board_config, $lang;
 
- 	$stopword_array = @file($phpbb_root_path . 'language/lang_' . $board_config['default_lang'] . "/search_stopwords.txt"); 
+	$stopword_array = @file($phpbb_root_path . 'language/lang_' . $board_config['default_lang'] . "/search_stopwords.txt"); 
 	$synonym_array = @file($phpbb_root_path . 'language/lang_' . $board_config['default_lang'] . "/search_synonyms.txt"); 
 
 	$search_raw_words = array();

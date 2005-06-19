@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: admin_forumauth.php,v 1.23.2.5 2004/03/25 15:57:19 acydburn Exp $
+ *   $Id: admin_forumauth.php,v 1.1 2005/02/28 18:24:07 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -112,8 +112,8 @@ if( isset($HTTP_POST_VARS['submit']) )
 
 			if (is_array($simple_ary))
 			{
-			$sql = "UPDATE " . FORUMS_TABLE . " SET $sql WHERE forum_id = $forum_id";
-		}
+				$sql = "UPDATE " . FORUMS_TABLE . " SET $sql WHERE forum_id = $forum_id";
+			}
 		}
 		else
 		{

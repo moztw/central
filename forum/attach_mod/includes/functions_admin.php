@@ -6,7 +6,7 @@
  *   copyright            : (C) 2002 Meik Sievertsen
  *   email                : acyd.burn@gmx.de
  *
- *   $Id: functions_admin.php,v 1.15 2004/07/31 15:15:54 acydburn Exp $
+ *   $Id: functions_admin.php,v 1.16 2004/11/30 17:56:11 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -186,8 +186,8 @@ function entry_exists($attach_id)
 	}
 	
 	$sql = 'SELECT post_id, privmsgs_id
-		FROM ' . ATTACHMENTS_TABLE . "
-		WHERE attach_id = $attach_id";
+		FROM ' . ATTACHMENTS_TABLE . '
+		WHERE attach_id = ' . intval($attach_id);
 
 	if( !$db->sql_query($sql) )
 	{
@@ -400,6 +400,10 @@ function search_attachments($order_by, &$total_rows)
 	// Author name search 
 	if ($search_author != '')
 	{
+		$search_author = htmlspecialchars(rtrim(trim($search_author), "\\"));
+		$search_author = substr(str_replace("\\'", "'", $search_author), 0, 25);
+		$search_author = str_replace("'", "\\'", $search_author);
+
 		$search_author = str_replace('*', '%', trim(str_replace("\'", "''", $search_author)));
 
 		//
@@ -483,6 +487,16 @@ function search_attachments($order_by, &$total_rows)
 	{
 		$where_sql[] = ' (a.filetime < ' . ( time() - ((int) $search_days_greater * 86400)) . ') ';
 	}
+
+	//
+	// Search Forum
+	//
+	if ($search_forum)
+	{
+		$where_sql[] = ' (p.forum_id = ' . intval($search_forum) . ') ';
+	}
+	
+	// Search Cat... nope... sorry :(
 
 	$sql = 'SELECT a.*, t.post_id, p.post_time, p.topic_id
 		FROM ' . ATTACHMENTS_TABLE . ' t, ' . ATTACHMENTS_DESC_TABLE . ' a, ' . POSTS_TABLE . ' p WHERE ';

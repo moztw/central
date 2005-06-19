@@ -228,10 +228,7 @@ input.liteoption {
 	<tr> 
 		<td class="bodyline"><table width="100%" cellspacing="0" cellpadding="0" border="0">
 			<tr> 
-			    <td>
-<a href="http://www.csie.ntu.edu.tw/~r91034/mozilla"><img src="templates/subSilver/images/mlogo_zhTW.png" border="0" title="Mozilla Localization: Traditional Chinese" alt="Mozilla Localization: Traditional Chinese"></a><br/>
-<a href="{U_INDEX}"><img title="Mozilla@Taiwan Forum" alt="Mozilla@Taiwan Forum" src="templates/subSilver/images/logo_phpBB.gif" border="0" alt="{L_INDEX}" vspace="1" /></a><br/>
-			    </td>
+				<td><a href="{U_INDEX}"><img src="templates/subSilver/images/logo_phpBB.gif" border="0" alt="{L_INDEX}" vspace="1" /></a></td>
 				<td align="center" width="100%" valign="middle"><span class="maintitle">{SITENAME}</span><br /><span class="gen">{SITE_DESCRIPTION}<br />&nbsp; </span> 
 				<table cellspacing="0" cellpadding="2" border="0">
 					<tr> 
