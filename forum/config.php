@@ -9,7 +9,7 @@ $dbms = 'mysql';
 
 $dbhost = 'localhost';
 $dbname = 'mozforum';
-$dbuser = 'root';
+$dbuser = 'web';
 $dbpasswd = '';
 
 $table_prefix = 'phpbb_';
