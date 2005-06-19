@@ -28,7 +28,10 @@ HINTS:
 (2) If you want to enable uploading, don't put directory into SVN.
     Just create directory on real server as a symbolic link
     to ~moztw/var/XXX/YYY where XXX/YYY presents your original directory
-(3) lighttpd does not support .htaccess.
+(3) To create a new site module (like wiki, photo, forum...)
+    please contact site admin first. Please use database account as
+    userid="web" and pw="" (empty), this is a localhost only account.
+(4) lighttpd does not support .htaccess.
     If you are installing some module with that, notify site admin to
     change lightttpd configuration.
 

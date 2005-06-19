@@ -1,15 +1,13 @@
-<?
-session_start();
-
+<?  
+session_start(); 
 $allow_vote='N'; //前面加 // 就會停止投票
-
 ?>
 <html>
 <head>
-<meta content="text/html; charset=utf-8" http-equiv="content-type">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <title>MozTW 擴充套件票選</title>
-<script src="sorttable.js">
-<style>
+<script src="js/sorttable.js"></script>
+<style type='text/css'>
 /* Sortable tables */
 table.sortable a.sortheader {
     background-color:#eee;
@@ -28,9 +26,9 @@ table.sortable span.sortarrow {
 <?
 function checkVoted($userid)
 {
-    if (file_exists("voteuser"))
+    if (file_exists("vote/voteuser"))
     {
-        $data=file("voteuser");
+        $data=file("vote/voteuser");
 
         foreach($data as $chk)
         {
@@ -65,7 +63,7 @@ if ($userid!='')
 	    if ($_POST['submit']=="Vote" && $voted!="Y")
 	    {
 
-	        $data=file("vote.dat");        //讀入投票資訊
+	        $data=file("vote/vote.dat");        //讀入投票資訊
 
 	        //判斷錯誤
 	        if (count($_POST['myvote']) == 0)
@@ -100,7 +98,7 @@ if ($userid!='')
 	                }
 	            }
 
-	            $file=fopen("voteuser","a");
+	            $file=fopen("vote/voteuser","a");
 	            fputs($file,$yourvote.$crlf);
 	            fclose($file);
 	            //echo $yourvote;
@@ -111,7 +109,7 @@ if ($userid!='')
 
 	            ?>
 	            投好票了 ^__^<br><br>
-	            蟹蟹泥願意讓我們知道你的寶貴意見。<br><br>
+	            謝謝您願意讓我們知道你的寶貴意見。<br><br>
 	            要不要<a href=?look=vote>看看</a>投票狀況？
 	            <?
 	            $psok="Y";
@@ -121,14 +119,14 @@ if ($userid!='')
 	//觀看投票狀況
 	    if ($_GET['look']=="vote" && $voted=="Y")
 	    {
-	        $data=file("vote.dat");          //投票資料
+	        $data=file("vote/vote.dat");          //投票資料
 	        $all_vote=trim($data[3]);        //項目
 	        for ($i=1; $i<=$data[3]; $i++)   //名稱
 	        {
 	            $item[$i]=$data[3+$i];
 	        }
 		//echo $data[0]."<br>".$data[1]."<br>".$data[2]."<br>".$data[3]."<br>";
-	        $data=file("voteuser"); //讀取記錄
+	        $data=file("vote/voteuser"); //讀取記錄
 		
 	        foreach($data as $d)
 	        {
@@ -204,12 +202,12 @@ if ($userid!='')
             else
             {
 
-	            if (file_exists("vote.dat"))
+	            if (file_exists("vote/vote.dat"))
 	            {
-	                $data=file("vote.dat");
+	                $data=file("vote/vote.dat");
 	                echo "<font color=blue><b>".trim($data[1])."</b></font><br><br>";
 
-	                    //$data=file("vote.dat");
+	                    //$data=file("vote/vote.dat");
 
 	                    if ($err != "")
 	                    {
@@ -251,5 +249,5 @@ if ($userid!='')
 	?>
 	</form>
     <?
-}else { echo "請先登入 <a href=\"/\">Mozilla@Taiwan</a> 討論區喔！";}
+}else { echo '請先登入 <a href="/">Mozilla@Taiwan</a> 討論區喔！';}
 ?>
