@@ -32,7 +32,7 @@ function submitSearch(formObj){
   <li id="menu_links"><a href="http://moztw.org/link" title="與 Mozilla 相關的連結">網路資源</a></li>
   <li id="menu_wiki"><a href="http://wiki.moztw.org/" title="Mozilla Taiwan 共筆系統">Wiki</a></li>
   <li id="menu_forum"><a href="{U_INDEX}" title="Mozilla 華語社群討論區">討論區</a></li>
-  <li id="menu_docs"><a href="http://moztw.org/doc" title="各項使用說明、介紹與文件資料">文件</a></li>
+  <li id="menu_docs"><a href="http://moztw.org/docs" title="各項使用說明、介紹與文件資料">文件</a></li>
   <li id="menu_products"><a href="http://moztw.org/dl" title="Moztw.org 提供的中文化軟體一覽">下載</a></li>
  </ul>
 <form name="searchform" method="POST" action="http://forum.moztw.org/search.php?mode=results" onsubmit="submitSearch(this)">

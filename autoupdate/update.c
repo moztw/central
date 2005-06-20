@@ -1,17 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define DATAROOT "/home/moztw/htdocs"
+#define SVNROOT "/home/moztw"
+#define WEBROOT "/home/moztw/htdocs"
 #define SCRIPTROOT "/home/moztw/autoupdate"
 
+#define DL_FILES \
+"dl/ns/index.shtml" \
+"dl/ff/index.shtml" \
+"dl/moz/index.shtml" \
+"dl/tb/index.shtml" \
+"dl/nvu/index.shtml" \
+"inc/dl*.html"
+
 #define COMMAND \
-"cd " DATAROOT " && " \
+"cd " SVNROOT " && " \
 "echo 'SVN update...' && /usr/local/bin/svn --username anonymous --no-auth-cache update 2>&1 && "\
-"echo 'update XML News...' && " SCRIPTROOT "/genxmlnews.pl /home/moztw/htdocs/xmlnews.rdf" \
+"cd " WEBROOT " && " \
+"echo 'Recaching HTML files...' && " SCRIPTROOT "/cacheshtml.sh 2>&1 && "\
+"echo 'update XML News...' && " SCRIPTROOT "/genxmlnews.pl " WEBROOT "/xmlnews.rdf" \
 
 #define COMMAND_MD5 \
-"cd " DATAROOT " && " \
-"echo 'update MD5...' && " SCRIPTROOT "/updateMD5.pl dl*-latest.shtml dl*-all.shtml"
+"cd " WEBROOT " && " \
+"echo 'update MD5...' && " SCRIPTROOT "/updateMD5.pl " DL_FILES
 
 int main(int argc, char *argv[]) {
 	// svn update local
