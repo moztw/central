@@ -372,6 +372,7 @@ $s_auth_can .= ( ( $is_auth['auth_delete'] ) ? $lang['Rules_delete_can'] : $lang
 $s_auth_can .= ( ( $is_auth['auth_vote'] ) ? $lang['Rules_vote_can'] : $lang['Rules_vote_cannot'] ) . '<br />';
 */
 // piaip: we don't need 'cannot's.
+$s_auth_can = '';
 if ($is_auth['auth_post']) $s_auth_can .= $lang['Rules_post_can'] . '<br/>';
 if ($is_auth['auth_reply']) $s_auth_can .= $lang['Rules_reply_can'] . '<br/>';
 if ($is_auth['auth_edit']) $s_auth_can .= $lang['Rules_edit_can'] . '<br/>';

@@ -11,5 +11,5 @@ do
     #mv -f $X2 $X2.old
     #/bin/rm -f $X2
     mv -f $X2 $TMPDIR/.
-    wget $URLROOT/$X -O $X2
+    wget -nv $URLROOT/$X -O $X2
 done

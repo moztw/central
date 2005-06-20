@@ -2,45 +2,6 @@
 #                  Runtime configuration file for Exim               #
 ######################################################################
 
-
-# This is a default configuration file which will operate correctly in
-# uncomplicated installations. Please see the manual for a complete list
-# of all the runtime configuration options that can be included in a
-# configuration file. There are many more than are mentioned here. The
-# manual is in the file doc/spec.txt in the Exim distribution as a plain
-# ASCII file. Other formats (PostScript, Texinfo, HTML, PDF) are available
-# from the Exim ftp sites. The manual is also online at the Exim web sites.
-
-
-# This file is divided into several parts, all but the first of which are
-# headed by a line starting with the word "begin". Only those parts that
-# are required need to be present. Blank lines, and lines starting with #
-# are ignored.
-
-
-########### IMPORTANT ########## IMPORTANT ########### IMPORTANT ###########
-#                                                                          #
-# Whenever you change Exim's configuration file, you *must* remember to    #
-# HUP the Exim daemon, because it will not pick up the new configuration   #
-# until you do. However, any other Exim processes that are started, for    #
-# example, a process started by an MUA in order to send a message, will    #
-# see the new configuration as soon as it is in place.                     #
-#                                                                          #
-# You do not need to HUP the daemon for changes in auxiliary files that    #
-# are referenced from this file. They are read every time they are used.   #
-#                                                                          #
-# It is usually a good idea to test a new configuration for syntactic      #
-# correctness before installing it (for example, by running the command    #
-# "exim -C /config/file.new -bV").                                         #
-#                                                                          #
-########### IMPORTANT ########## IMPORTANT ########### IMPORTANT ###########
-
-
-
-######################################################################
-#                    MAIN CONFIGURATION SETTINGS                     #
-######################################################################
-
 # Specify your host's canonical name here. This should normally be the fully
 # qualified "official" name of your host. If this option is not set, the
 # uname() function is called to obtain the name. In many cases this does
@@ -57,11 +18,6 @@
 domainlist local_domains = @
 domainlist relay_to_domains =
 hostlist   relay_from_hosts = localhost:moztw.org:ossf.moztw.org:forum.moztw.org
-
-# Most straightforward access control requirements can be obtained by
-# appropriate settings of the above options. In more complicated situations, you
-# may need to modify the Access Control List (ACL) which appears later in this
-# file.
 
 # The first setting specifies your local domains, for example:
 #
@@ -659,20 +615,6 @@ begin rewrite
 # There are no authenticator specifications in this default configuration file.
 
 begin authenticators
-
-
-
-######################################################################
-#                   CONFIGURATION FOR local_scan()                   #
-######################################################################
-
-# If you have built Exim to include a local_scan() function that contains
-# tables for private options, you can define those options here. Remember to
-# uncomment the "begin" line. It is commented by default because it provokes
-# an error with Exim binaries that are not built with LOCAL_SCAN_HAS_OPTIONS
-# set in the Local/Makefile.
-
-# begin local_scan
 
 
 # End of Exim configuration file

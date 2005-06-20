@@ -3,12 +3,14 @@
 
 # AWSTATS
 # min, hour, mday, month, wday, command
-27     3     *     *      *	/home/moztw/awstats/logrotate.sh 2>&1 >/dev/null
 27     4,16  *     *      *	/home/moztw/awstats/rebuild.sh 2>&1 >/home/moztw/log/cron.awstats
+# vvv this needs root perm
+27     3     *     *      *	/home/moztw/awstats/logrotate.sh 2>&1 >/dev/null
 
 # Documents
 @hourly /home/moztw/htdocs/genxmlnews.cgi /home/moztw/htdocs/xmlnews.rdf
 
 # Backup
-@weekly /home/moztw/conf/backup.sh >/dev/null
 @daily  /home/moztw/conf/mirrorlist.sh >/dev/null
+# vvv this needs root perm
+@weekly /home/moztw/conf/backup.sh >/dev/null

@@ -2,7 +2,7 @@
 <!-- BEGIN show_apcp -->
 	<tr>
 <td class="stil06" colspan="2" style='text-align: center; font-weight: bold;'><span class='genmed'>
-L_ATTACH_POSTING_CP</span></td>
+{L_ATTACH_POSTING_CP}</span></td>
 	</tr>
 	<tr>
 		<td class="row1" colspan="2"><span class="gensmall">{L_ATTACH_POSTING_CP_EXPLAIN}</span></td>
