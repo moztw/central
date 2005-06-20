@@ -35,8 +35,8 @@ $wgStylePath        = "$wgScriptPath/skins";
 $wgStyleDirectory   = "$IP/skins";
 $wgLogo             = "$wgStylePath/common/images/moztw_wiki.png";
 
-$wgUploadPath       = "$wgScriptPath/images";
-$wgUploadDirectory  = "$IP/images";
+$wgUploadPath       = "$wgScriptPath/uimages";
+$wgUploadDirectory  = "$IP/uimages";
 
 $wgEmergencyContact = "nobody@moztw.org";
 $wgPasswordSender	= "nobody@moztw.org";
