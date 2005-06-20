@@ -111,7 +111,9 @@
 {TOTAL_POSTS}, 
 {TOTAL_USERS}<br />
 {TOTAL_USERS_ONLINE} &nbsp;
+<!--
 [ {L_WHOSONLINE_ADMIN} ] &nbsp; [ {L_WHOSONLINE_MOD} ], 
+-->
 <!-- BEGIN switch_user_logged_in -->
 <a href="{U_MEMBERLIST}" class="mainmenu"> [ {L_MEMBERLIST} ] </a><br/>
 <!-- END switch_user_logged_in -->

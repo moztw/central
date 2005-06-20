@@ -85,7 +85,7 @@ src="{U_PRINT_IMG}" alt="{L_PRINT}" border="0" /></a>
                   <td colspan="2" class="border-bleu-sus">&nbsp;</td>
                 </tr>
                 <tr>
-                  <td colspan="2"><table style="table-layout:fixed"><tr><td style="word-wrap:break-word"><span class="postbody">{postrow.MESSAGE}</span>{postrow.ATTACHMENTS}<span class="postbody">{postrow.SIGNATURE}</span><span class="gensmall">{postrow.EDITED_MESSAGE}</span></table></td>
+                  <td colspan="2"><span class="postbody">{postrow.MESSAGE}</span>{postrow.ATTACHMENTS}<span class="postbody">{postrow.SIGNATURE}</span><span class="gensmall">{postrow.EDITED_MESSAGE}</span></td>
                 </tr>
             </table></td>
           </tr>
