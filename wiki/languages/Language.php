@@ -73,6 +73,7 @@ if(isset($wgExtraNamespaces)) {
 	'davinci' => 'DaVinci',
 	'mono' => 'Mono',
 	'monobook' => 'MonoBook',
+	'moztw' => 'MozTW',
 	'myskin' => 'MySkin',
 	'chick' => 'Chick'
 );

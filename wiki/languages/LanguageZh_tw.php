@@ -38,9 +38,14 @@ require_once( "LanguageZh_cn.php" );
 );
 
 /* private */ $wgSkinNamesZh_tw = array(
-        "標準",/* "Standard" */
-	"懷舊",/* "Nostalgia" */
-	"科隆香水藍" /* "Cologne Blue" */
+	'standard' => 'Classic',
+	'nostalgia' => 'Nostalgia',
+	'cologneblue' => 'Cologne Blue',
+	'davinci' => 'DaVinci',
+	'mono' => 'Mono',
+	'monobook' => 'MonoBook',
+	'moztw' => 'MozTW',
+	'myskin' => 'MySkin',
 );
 
 /* private */ $wgMathNamesZh_tw = array(
@@ -185,7 +190,7 @@ require_once( "LanguageZh_cn.php" );
 "search"		=> "搜索",
 "go"		=> "進入",
 "history"		=> "較早版本",
-"printableversion" => "可打印版",
+"printableversion" => "列印",
 "editthispage"	=> "編輯本頁",
 "deletethispage" => "刪除本頁",
 "protectthispage" => "保護本頁",
@@ -316,6 +321,7 @@ MySQL返回錯誤 \"<tt>$3: $4</tt>\"。",
 
 "welcomecreation" => "<h2>歡迎，$1!</h2><p>您的帳號已經建立，不要忘記設置維基百科個人參數。",
 
+'viewsource' => '檢視源碼',
 "loginpagetitle" => "用戶登錄",
 "yourname"		=> "您的用戶名",
 "yourpassword"	=> "您的密碼",
