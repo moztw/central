@@ -970,6 +970,7 @@ alt=\"Google\" align=\"middle\"></a>
 'categoryarticlecount' => "該類頁面共有 $1 條目", //There are $1 articles in this category.",
 'clearyourcache' => "'''註意：''' 保存設置後，要清掉瀏覽器的緩存才能生效：'''Mozilla:''' 點''刷新'' （或用快鍵''Ctrl-R''），'''IE / Opera:''' ''Ctrl-F5'', '''Safari:''' ''Cmd-R'', '''Konqueror''' ''Ctrl-R''。",//"'''Note:''' After saving, you have to clear your browser cache to see the changes: '''Mozilla:''' click ''Reload'' (or ''Ctrl-R''), '''IE / Opera:''' ''Ctrl-F5'', '''Safari:''' ''Cmd-R'', '''Konqueror''' ''Ctrl-R''.",
 'edit' => "編輯", //"Edit",
+'delete' => '刪除',
 'navigation' => "導航", //"Navigation",
 'nstab-category' => "分類", //"Category",
 'nstab-help' => "幫助",//"Help",

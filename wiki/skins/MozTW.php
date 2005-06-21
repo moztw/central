@@ -194,7 +194,8 @@ class MozTWTemplate extends QuickTemplate {
 	  <?php if($this->data['about'     ]) { ?><li id="f-about"><?php      $this->html('about')      ?></li><?php } ?>
 	  <?php if($this->data['disclaimer']) { ?><li id="f-disclaimer"><?php $this->html('disclaimer') ?></li><?php } ?>
 	</ul>
-      </div>
+	</div></div>
+      </div></div>
     </div>
     <?php $this->html('reporttime') ?>
   </body>
