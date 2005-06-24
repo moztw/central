@@ -121,6 +121,17 @@
                 <input type="radio" name="require_activation" value="{ACTIVATION_ADMIN}" {ACTIVATION_ADMIN_CHECKED} />
                 <span class="gensmall">{L_ADMIN}</span></td>
             </tr>
+	    <tr>
+              <td bgcolor="#E1ECFB"><span class="gensmall">{L_VISUAL_CONFIRM}<br >
+		{L_VISUAL_CONFIRM_EXPLAIN}</span></td>
+              <td bgcolor="#EAF1FC">
+	      <input type="radio" name="enable_confirm" value="1" {CONFIRM_ENABLE}/>
+	      <span class="gensmall">{L_YES}&nbsp; &nbsp;</span>
+	      <input type="radio" name="enable_confirm" value="0" {CONFIRM_DISABLE} />
+	      <span class="gensmall">{L_NO}&nbsp; &nbsp;</span>
+	      </td>
+	</tr>
+
             <tr>
               <td bgcolor="#E1ECFB"><span class="gensmall">{L_BOARD_EMAIL_FORM}</span><br />
                   <span class="gensmall">{L_BOARD_EMAIL_FORM_EXPLAIN}</span></td>
