@@ -132,7 +132,7 @@ class MozTWTemplate extends QuickTemplate {
 	<div id="p-search" class="portlet">
 	  <h5><label for="searchInput"><?php $this->msg('search') ?></label></h5>
 	  <div class="pBody">
-	    <form name="searchform" action="<?php $this->text('searchaction') ?>" id="searchform">
+	    <form name="searchform" action="http://wiki.moztw.org/index.php" id="searchform">
 	      <input id="searchInput" name="search" type="text"
 	        <?php if($this->haveMsg('accesskey-search')) {
 	          ?>accesskey="<?php $this->msg('accesskey-search') ?>"<?php }
