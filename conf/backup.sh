@@ -16,10 +16,11 @@ echo "Backup for $date:"
 
 echo "Backup MySQL database..."
 #backup mysql db
-nice -n 19 $dumpdb -u root --all-databases | gzip -c > $backupdir/$date-mozweb.dbdump.sql.gz
+#nice -n 10 
+$dumpdb -F -h localhost -u root --all-databases | gzip -c > $backupdir/$date-mozweb.dbdump.sql.gz
 
 echo "Backup var files..."
-backup dls/files repot
-nice -n 19 rsync --max-delete=23 -a /home/moztw/var /home/backup/var
+# backup dls/files repot
+#nice -n 10 rsync --max-delete=23 -a /home/moztw/var /home/backup/var
 
 echo "Done."

@@ -52,7 +52,8 @@ if( !$wgDisableCounters ) {
 
 global $wgDisableInternalSearch;
 if ( !$wgDisableInternalSearch ) {
-	$wgSpecialPages['Search'] = new UnlistedSpecialPage( 'Search' );
+//	$wgSpecialPages['Search'] = new UnlistedSpecialPage( 'Search' );
+	$wgSpecialPages['Search'] = new SpecialPage( 'Search' );
 }
 
 $wgSpecialPages = array_merge($wgSpecialPages, array (

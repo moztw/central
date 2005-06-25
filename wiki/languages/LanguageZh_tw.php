@@ -109,12 +109,13 @@ require_once( "LanguageZh_cn.php" );
 	"Contributions" => "",
 	"Emailuser"		=> "",
 	"Whatlinkshere" => "鏈入頁面",
-	"Recentchangeslinked" => "链出更改",
+	"Recentchangeslinked" => "鏈出更改",
 	"Movepage"		=> "鏈出更改",
 	"Booksources"	=> "站外書源",
-#           "Categories" => "頁面分類"
+#	 "Categories" => "頁面分類"
 	"Export" => "導出為XML",
 	"Version" => "媒體維基版本",
+	"Search" => "搜尋",
 );
 
 /* private */ $wgSysopSpecialPagesZh_tw = array(
@@ -444,7 +445,7 @@ MySQL返回錯誤 \"<tt>$3: $4</tt>\"。",
 "searchresults" => "搜索結果",
 "searchhelppage" => "維基百科:搜索",
 "searchingwikipedia" => "搜索維基百科",
-"searchresulttext" => "有關搜索維基百科的更多詳情,參見$1。",
+"searchresulttext" => " ",
 "searchquery"	=> "查詢\"$1\"",
 "badquery"		=> "搜索查詢不正確",
 "badquerytext"	=> "我們無法處理您的查詢。
@@ -713,7 +714,7 @@ alt=\"Google\" align=\"middle\"></a>
 "movethispage"	=> "移動本頁",
 "unusedimagestext" => "<p>請注意其他網站（例如其他語言版本的維基百科）
 有可能直接鏈接本圖像，所以這裏列出的圖像有可能依然被使用。",
-"booksources"	=> "戰外書源",
+"booksources"	=> "站外書源",
 "booksourcetext" => "以下是鏈接到銷售書籍的網站列表，
 因此有可能擁有您所尋找的圖書的進一步資料。
 維基百科與這些公司並沒有任何商業關係，因此本表不應該
