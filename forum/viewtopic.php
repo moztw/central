@@ -573,7 +573,10 @@ make_jumpbox('viewforum.'.$phpEx, $forum_id);
 //
 // Output page header
 //
-$page_title = $lang['View_topic'] .' - ' . $topic_title;
+
+// ants - shorten, we don't need unnecessary words.
+//$page_title = $lang['View_topic'] .' - ' . $topic_title;
+$page_title = $topic_title;
 include($phpbb_root_path . 'includes/page_header.'.$phpEx);
 
 //
