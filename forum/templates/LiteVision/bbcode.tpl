@@ -47,6 +47,9 @@
 <!-- BEGIN i_open --><span style="font-style: italic"><!-- END i_open -->
 <!-- BEGIN i_close --></span><!-- END i_close -->
 
+<!-- BEGIN tt_open --><span class="tt"><tt><!-- END tt_open -->
+<!-- BEGIN tt_close --></tt></span><!-- END tt_close -->
+
 <!-- BEGIN color_open --><span style="color: {COLOR}"><!-- END color_open -->
 <!-- BEGIN color_close --></span><!-- END color_close -->
 
