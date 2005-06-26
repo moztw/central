@@ -406,3 +406,7 @@ overflow: auto;
 	background: #eafefc;
 	border: 1px solid #eafefc;
 }
+
+
+/* SD701 */
+tt, .tt { font-family: Monaco, Courier, 'Courier New', monospace; font-size: 11px; color: #336633;}

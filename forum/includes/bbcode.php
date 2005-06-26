@@ -191,6 +191,11 @@ function bbencode_second_pass($text, $uid)
 	$text = str_replace("[i:$uid]", $bbcode_tpl['i_open'], $text);
 	$text = str_replace("[/i:$uid]", $bbcode_tpl['i_close'], $text);
 
+//MOD from Antony, SillyDog701
+	// [tt] and [/tt] for typewriter text.
+	$text = str_replace("[tt:$uid]", $bbcode_tpl['tt_open'], $text);
+	$text = str_replace("[/tt:$uid]", $bbcode_tpl['tt_close'], $text);
+
 	// Patterns and replacements for URL and email tags..
 	$patterns = array();
 	$replacements = array();
@@ -285,6 +290,10 @@ function bbencode_first_pass($text, $uid)
 
 	// [i] and [/i] for italicizing text.
 	$text = preg_replace("#\[i\](.*?)\[/i\]#si", "[i:$uid]\\1[/i:$uid]", $text);
+
+//MOD from Antony, SillyDog701
+	// [tt] and [/tt] for typewriter text.
+	$text = preg_replace("#\[tt\](.*?)\[/tt\]#si", "[tt:$uid]\\1[/tt:$uid]", $text);
 
 	// [img]image_url_here[/img] code..
 	$text = preg_replace("#\[img\]((http|ftp|https|ftps)://)([^ \?&=\#\"\n\r\t<]*?(\.(jpg|jpeg|gif|png)))\[/img\]#sie", "'[img:$uid]\\1' . str_replace(' ', '%20', '\\3') . '[/img:$uid]'", $text);
