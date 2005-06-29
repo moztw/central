@@ -6,12 +6,12 @@
 #define SCRIPTROOT "/home/moztw/autoupdate"
 
 #define DL_FILES \
-"dl/ns/index.shtml" \
-"dl/ff/index.shtml" \
-"dl/moz/index.shtml" \
-"dl/tb/index.shtml" \
-"dl/nvu/index.shtml" \
-"inc/dl*.html"
+"dl/ns/index.shtml " \
+"dl/ff/index.shtml " \
+"dl/moz/index.shtml " \
+"dl/tb/index.shtml " \
+"dl/nvu/index.shtml " \
+"inc/dl*.html "
 
 #define COMMAND \
 "cd " SVNROOT " && " \
