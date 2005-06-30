@@ -14,7 +14,7 @@ function addEngine(name, imgName, sugName)
 }
      // -->
 </script>
-<span class="nav">您現在位於: <a href="http://moztw.org/">MozTW</a> &gt; <a href="{U_INDEX}">討論區</a> &gt; <a href="{U_VIEW_FORUM}">{FORUM_NAME}</a> &gt; <strong>{TOPIC_TITLE}</strong><br></span>
+<span class="nav">您現在位於: <a href="http://moztw.org/">MozTW</a> &raquo; <a href="{U_INDEX}">討論區</a> &raquo; <a href="{U_VIEW_FORUM}">{FORUM_NAME}</a> &raquo; <strong>{TOPIC_TITLE}</strong><br></span>
 
 
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">

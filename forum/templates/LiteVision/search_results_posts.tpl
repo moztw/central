@@ -1,4 +1,4 @@
-﻿<span class="nav">您現在位於: <a href="http://moztw.org/">MozTW</a> &gt; <a href="{U_INDEX}">討論區</a> &gt; <a href="{U_SEARCH}">{L_SEARCH}</a> &gt; 搜尋結果<br /></span>
+﻿<span class="nav">您現在位於: <a href="http://moztw.org/">MozTW</a> &raquo; <a href="{U_INDEX}">討論區</a> &raquo; <a href="{U_SEARCH}">{L_SEARCH}</a> &raquo; 搜尋結果<br /></span>
 
 <table width="98%"  border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>

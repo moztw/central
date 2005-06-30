@@ -1,4 +1,4 @@
-﻿<span class="nav">您現在位於: <a href="http://moztw.org/">MozTW</a> &gt; <a href="{U_INDEX}">討論區</a><br /></span>
+﻿<span class="nav">您現在位於: <a href="http://moztw.org/">MozTW</a> &raquo; <a href="{U_INDEX}">討論區</a><br /></span>
 
 <!-- BEGIN switch_user_logged_out -->
 <form method="post" action="{S_LOGIN_ACTION}">

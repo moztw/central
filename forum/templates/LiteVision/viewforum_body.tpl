@@ -1,4 +1,4 @@
-﻿<span class="nav">您現在位於: <a href="http://moztw.org/">MozTW</a> &gt; <a href="{U_INDEX}">討論區</a> &gt; <strong><a href="{U_VIEW_FORUM}">{FORUM_NAME}</a></strong><br></span>
+﻿<span class="nav">您現在位於: <a href="http://moztw.org/">MozTW</a> &raquo; <a href="{U_INDEX}">討論區</a> &raquo; <strong><a href="{U_VIEW_FORUM}">{FORUM_NAME}</a></strong><br></span>
 
 <form method="post" action="{S_POST_DAYS_ACTION}">
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
