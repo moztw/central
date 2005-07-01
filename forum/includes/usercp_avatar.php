@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_avatar.php,v 1.8.2.19 2005/02/21 18:37:51 acydburn Exp $
+ *   $Id: usercp_avatar.php,v 1.8.2.20 2005/06/26 12:03:44 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -199,7 +199,7 @@ function user_avatar_upload($mode, $avatar_mode, &$current_avatar, &$current_typ
 		return;
 	}
 
-	if ( $width <= $board_config['avatar_max_width'] && $height <= $board_config['avatar_max_height'] )
+	if ( $width > 0 && $height > 0 && $width <= $board_config['avatar_max_width'] && $height <= $board_config['avatar_max_height'] )
 	{
 		$new_filename = uniqid(rand()) . $imgtype;
 

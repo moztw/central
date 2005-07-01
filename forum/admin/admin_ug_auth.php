@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: admin_ug_auth.php,v 1.2 2005/05/09 16:23:10 acydburn Exp $
+ *   $Id: admin_ug_auth.php,v 1.13.2.8 2005/06/26 12:03:43 acydburn Exp $
  *
  *
  ***************************************************************************/
@@ -807,7 +807,7 @@ else if ( ( $mode == 'user' && ( isset($HTTP_POST_VARS['username']) || $user_id 
 
 		$i++;
 	}
-	@reset($auth_user);
+//	@reset($auth_user);
 	
 	if ( $mode == 'user' )
 	{
