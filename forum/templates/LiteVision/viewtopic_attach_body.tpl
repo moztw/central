@@ -166,7 +166,9 @@ table.attachtable	{ font: normal 12px Verdana, Arial, Helvetica, sans-serif; col
 	<div align="center"><hr width="95%" /></div>
 	<table width="95%" border="1" cellpadding="2" cellspacing="0" class="attachtable" align="center">
 	<tr>
-		<td width="100%" colspan="3" class="attachheader" align="center"><b><span class="gen">{postrow.attach.cat_firefox_install.DOWNLOAD_NAME}</span></b></td>
+		<td width="100%" colspan="3" class="attachheader" align="center">
+<b><span class="gen" style='color: blue;'>
+[擴充套件安裝檔] {postrow.attach.cat_firefox_install.DOWNLOAD_NAME}</span></b></td>
 	</tr>
 	<tr>
 		<td width="15%" class="attachrow"><span class="genmed">&nbsp;{L_DESCRIPTION}:</span></td>
@@ -177,7 +179,7 @@ table.attachtable	{ font: normal 12px Verdana, Arial, Helvetica, sans-serif; col
 			</tr>
 			</table>
 		</td>
-		<td rowspan="4" align="center" width="10%" class="attachrow">{postrow.attach.cat_firefox_install.S_UPLOAD_IMAGE}<br /><a href="{postrow.attach.cat_firefox_install.U_DOWNLOAD_LINK}" {postrow.attach.cat_firefox_install.TARGET_BLANK} class="genmed"><b>{L_DOWNLOAD}</b></a></td>
+		<td rowspan="4" align="center" width="10%" class="attachrow">{postrow.attach.cat_firefox_install.S_UPLOAD_IMAGE}<br /><a href="{postrow.attach.cat_firefox_install.U_DOWNLOAD_LINK}" {postrow.attach.cat_firefox_install.TARGET_BLANK} class="genmed"><b>直接安裝</b></a><br/>(要下載請直接<br/>另存新檔)</td>
 	</tr>
 	<tr>
 		<td width="15%" class="attachrow"><span class="genmed">&nbsp;{L_FILENAME}:</span></td>
