@@ -315,8 +315,10 @@ function submit_post($mode, &$post_data, &$message, &$meta, &$forum_id, &$topic_
 	}
 	$useragent = addslashes($_SERVER['HTTP_USER_AGENT']);
 	//$useragent = preg_replace($html_entities_match, $html_entities_replace, $_SERVER['HTTP_USER_AGENT']);
-	
-	$sql = ($mode != 'editpost') ? "INSERT INTO " . POSTS_TEXT_TABLE . " (post_id, post_subject, bbcode_uid, post_text, poster_useragent) VALUES ($post_id, '$post_subject', '$bbcode_uid', '$post_message','$useragent')" : "UPDATE " . POSTS_TEXT_TABLE . " SET post_text = '$post_message',  bbcode_uid = '$bbcode_uid', post_subject = '$post_subject', poster_useragent='$useragent' WHERE post_id = $post_id";
+
+//Antony change to that UserAgent won't get changed if when user EDIT a post. UserAgent only recorded during the original post.	
+//	$sql = ($mode != 'editpost') ? "INSERT INTO " . POSTS_TEXT_TABLE . " (post_id, post_subject, bbcode_uid, post_text, poster_useragent) VALUES ($post_id, '$post_subject', '$bbcode_uid', '$post_message','$useragent')" : "UPDATE " . POSTS_TEXT_TABLE . " SET post_text = '$post_message',  bbcode_uid = '$bbcode_uid', post_subject = '$post_subject', poster_useragent='$useragent' WHERE post_id = $post_id";
+	$sql = ($mode != 'editpost') ? "INSERT INTO " . POSTS_TEXT_TABLE . " (post_id, post_subject, bbcode_uid, post_text, poster_useragent) VALUES ($post_id, '$post_subject', '$bbcode_uid', '$post_message','$useragent')" : "UPDATE " . POSTS_TEXT_TABLE . " SET post_text = '$post_message',  bbcode_uid = '$bbcode_uid', post_subject = '$post_subject' WHERE post_id = $post_id";
 
 	if (!$db->sql_query($sql))
 	{
