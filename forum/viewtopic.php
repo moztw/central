@@ -849,8 +849,8 @@ for($i = 0; $i < $total_posts; $i++)
 {
 	$poster_id = $postrow[$i]['user_id'];
 	$poster = ( $poster_id == ANONYMOUS ) ? $lang['Guest'] : $postrow[$i]['username'];
-
-	$post_date = create_date($board_config['default_dateformat'], $postrow[$i]['post_time'], $board_config['board_timezone']);
+	//$board_config['default_dateformat']
+	$post_date = create_date('Y年 M d日 g:i a', $postrow[$i]['post_time'], $board_config['board_timezone']);
 
 	$poster_posts = ( $postrow[$i]['user_id'] != ANONYMOUS ) ? $lang['Posts'] . ': ' . $postrow[$i]['user_posts'] : '';
 

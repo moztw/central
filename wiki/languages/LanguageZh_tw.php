@@ -156,9 +156,9 @@ require_once( "LanguageZh_cn.php" );
 # Bits of text used by many pages:
 #
 "categories" => "頁面分類",
- 	 "category" => "分類",
- 	 "category_header" => "類別”$1“中的條目",
- 	 "subcategories" => "子分類",
+"category" => "分類",
+"category_header" => "類別”$1“中的條目",
+"subcategories" => "子分類",
 "linktrail"		=> "/^([a-z]+)(.*)\$/sD",
 "mainpage"		=> "首頁",
 "about"			=> "關於",

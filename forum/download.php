@@ -179,20 +179,25 @@ function send_file_to_browser($attachment, $upload_dir)
 
 	// Correct the mime type - we force application/octetstream for all files, except images
 	// Please do not change this, it is a security precaution
+	$disposition = "attachment";
 	if (!strstr($attachment['mimetype'], 'image'))
 	{
 		$attachment['mimetype'] = ($browser_agent == 'ie' || $browser_agent == 'opera') ? 'application/octetstream' : 'application/octet-stream';
+	} else {
+	    $disposition = "inline";
 	}
 
 	// Now the tricky part... let's dance
 //	@ob_end_clean();
 //	@ini_set('zlib.output_compression', 'Off');
+	header('Content-Type: ' . $attachment['mimetype']);
+	#	. '; name="' . htmlspecialchars($attachment['real_filename']) . '"');
 	header('Pragma: public');
 //	header('Content-Transfer-Encoding: none');
+	header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 
 	// Send out the Headers
-	header('Content-Type: ' . $attachment['mimetype'] . '; name="' . htmlspecialchars($attachment['real_filename']) . '"');
-	header('Content-Disposition: inline; filename="' . htmlspecialchars($attachment['real_filename']) . '"');
+	header('Content-Disposition: ' . $disposition . '; filename="' . htmlspecialchars($attachment['real_filename']) . '"');
 
 	//
 	// Now send the File Contents to the Browser
@@ -438,6 +443,7 @@ if ($download_mode == PHYSICAL_LINK)
 }
 else
 {
+	ini_set( 'zlib.output_compression','Off' );
 	if (intval($attach_config['allow_ftp_upload']))
 	{
 		// We do not need a download path, we are not downloading physically

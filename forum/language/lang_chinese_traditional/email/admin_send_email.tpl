@@ -10,3 +10,5 @@ Message sent to you follows:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 {MESSAGE}
+
+{EMAIL_SIG}
