@@ -2,7 +2,11 @@
 
 ROOT=/home/moztw/htdocs
 TMPDIR=/home/moztw/tmp
+INCDIR=$ROOT/inc
 URLROOT=http://mozilla-taiwan.org
+
+PATH=/usr/local/bin:/usr/bin:$PATH
+export PATH
 
 cd $ROOT
 for X in `find . -name "*.shtml"`
@@ -12,13 +16,15 @@ do
     #continue
 
     # determine if file is newer
-    if [ -f $X2 -a $X -ot $X2 ]
-    then
-	#echo "skip $X"
-	continue
+    if [ "$1" != "rebuild" -a -f $X2 ] ; then
+	if [ $X -ot $X2 -a $INCDIR -ot $X2 ]
+	then
+	    #echo "skip $X"
+	    continue
+	fi
     fi
     #mv -f $X2 $X2.old
     #/bin/rm -f $X2
-    mv -f $X2 $TMPDIR/.
+    mv -f $X2 $TMPDIR/. 2>/dev/null
     wget -nv $URLROOT/$X -O $X2
 done

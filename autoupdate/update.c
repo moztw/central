@@ -13,34 +13,85 @@
 "dl/nvu/index.shtml " \
 "inc/dl*.html "
 
-#define COMMAND \
+#define CMD_DONE \
+    "echo 'DONE.' "
+
+#define CMD_SVNUP \
 "cd " SVNROOT " && " \
 "echo 'SVN update...' && /usr/local/bin/svn --username anonymous --no-auth-cache update 2>&1 && "\
-"cd " WEBROOT " && " \
-"echo 'Recaching HTML files...' && " SCRIPTROOT "/cacheshtml.sh 2>&1 && "\
-"echo 'update XML News...' && " SCRIPTROOT "/genxmlnews.pl " WEBROOT "/xmlnews.rdf" \
 
-#define COMMAND_MD5 \
+#define CMD_XMLNEWS \
 "cd " WEBROOT " && " \
-"echo 'update MD5...' && " SCRIPTROOT "/updateMD5.pl " DL_FILES
+"echo 'Update XML News...' && " SCRIPTROOT "/genxmlnews.pl " WEBROOT "/xmlnews.rdf && " \
+
+#define CMD_CACHE \
+"cd " WEBROOT " && " \
+"echo 'Updating HTML cache...' && " SCRIPTROOT "/cacheshtml.sh 2>&1 && "\
+
+#define CMD_CACHE_ALL \
+"cd " WEBROOT " && " \
+"echo 'Rebuilding HTML cache...' && " SCRIPTROOT "/cacheshtml.sh rebuild 2>&1 && "\
+
+#define CMD_MD5 \
+"cd " WEBROOT " && " \
+"echo 'Update MD5 information...' && " SCRIPTROOT "/updateMD5.pl " DL_FILES " 2>&1 && " \
+
+
+// #define system puts
 
 int main(int argc, char *argv[]) {
 	// svn update local
-	int cmdMD5 = 0;
+	int optMD5 = 0,
+	    optCache = 0;
 	char *cgicmd = NULL;
+	int i = 0;
+
 	setuid(geteuid());
 
 	printf ("\n\n");
 	fflush(stdout);
-	if (argc > 1) {
-		if(strcmp("md5", argv[1]) == 0) {
-			cmdMD5 = 1;
-		}
+
+	for (i = 1; i < argc; i++)
+	{
+	    if(strcmp("md5", argv[i]) == 0) {
+		optMD5 = 1;
+	    } else if (strcmp("cache", argv[i]) == 0) {
+		optCache = 1;
+	    }
 	}
 	// CGI
 	cgicmd = getenv("QUERY_STRING");
 	if(cgicmd != NULL && strncmp("md5", cgicmd, strlen("md5")) == 0) {
-		cmdMD5 = 1;
+		optMD5 = 1;
 	}
-	return system(cmdMD5 ? COMMAND_MD5 : COMMAND);
+
+	if(optMD5)
+	{
+	    if(optCache)
+		return system(
+			CMD_SVNUP
+			CMD_MD5
+			CMD_CACHE_ALL 
+			CMD_XMLNEWS 
+			CMD_DONE);
+	    else
+		return system(
+			CMD_SVNUP
+			CMD_MD5
+			CMD_CACHE 
+			CMD_XMLNEWS 
+			CMD_DONE);
+	} else
+	if(optCache)
+	    return system(
+		    CMD_SVNUP
+		    CMD_CACHE_ALL 
+		    CMD_XMLNEWS 
+		    CMD_DONE);
+	else
+	    return system(
+		    CMD_SVNUP
+		    CMD_CACHE 
+		    CMD_XMLNEWS 
+		    CMD_DONE);
 }
