@@ -1,4 +1,4 @@
-Subject: Welcome to {SITENAME} Forums
+Subject: Welcome to Mozilla Taiwan Forums
 Charset: utf-8
 
 {WELCOME_MSG}

@@ -1,4 +1,4 @@
-Subject: Topic Reply Notification - {TOPIC_TITLE}
+Subject: Topic Reply Notification
 Charset: utf-8
 
 Hello {USERNAME},
