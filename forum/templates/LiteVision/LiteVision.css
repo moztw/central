@@ -398,11 +398,11 @@ overflow: auto;
 }
 
 .faq {
+	color: #000000;
 	padding: 5px 15px;
 	background-color: #EEEE22;
 	display: block;
 	margin: .1em auto;
-	padding: .7em 0;
 	text-align: center;
 	border:2px solid #DDDD11;
 }
