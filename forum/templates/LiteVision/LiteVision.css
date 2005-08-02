@@ -398,6 +398,8 @@ overflow: auto;
 }
 
 .faq {
+	font-weight: bold;
+	font-size: 13px;
 	color:#000000;
 	background-color: #EEEE22;
 	display: block;
