@@ -415,8 +415,8 @@ overflow: auto;
 }
 
 a.faq:link   { text-decoration: none; color : #000000; }
-a.faq:visited { text-decoration: none; color : #333333; }
-a.faq:hover	{ text-decoration: none; color : #FF6666; }
+a.faq:visited { text-decoration: none; color : #222222; }
+a.faq:hover	{ text-decoration: none; color : #444444; }
 
 
 /* SD701 */
