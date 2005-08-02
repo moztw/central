@@ -64,7 +64,7 @@
 <tr>
   <td width="1%" bgcolor="#d0e4fb" class="border-bleu-st-dr">&nbsp;</td>
   <td valign="top" colspan="6" style="background: #a4cbf7; margin: 0;">
-  	<a class="faq topictitle" href="http://wiki.moztw.org/redirect_faq.php?f={FORUM_ID}">FAQ: 本區常見問題 (beta, 請協助整理資料！)  </a>
+  	<a class="faq topictitle" href="http://wiki.moztw.org/redirect_faq.php?f={FORUM_ID}">請按我閱讀本區 FAQ。發問前請先詳閱，內有常見問題的解決方法。  </a>
   </td>
   <td width="1%" bgcolor="#d0e4fb" class="border-bleu-st-dr">&nbsp;</td>
 </tr>
