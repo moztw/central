@@ -406,11 +406,15 @@ overflow: auto;
 	text-align: center;
 	border:2px solid #DDDD11;
 }
-
 .faq:hover {
 	background: #FFCC00;
 	border:2px solid #DDDD11;
+
 }
+
+a.faq:link   { text-decoration: none; color : #000000; }
+a.faq:visited { text-decoration: none; color : #333333; }
+a.faq:hover	{ text-decoration: none; color : #FF6666; }
 
 
 /* SD701 */
