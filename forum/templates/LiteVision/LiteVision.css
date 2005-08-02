@@ -398,16 +398,18 @@ overflow: auto;
 }
 
 .faq {
+	padding: 5px 15px;
+	background-color: #EEEE22;
 	display: block;
 	margin: .1em auto;
 	padding: .7em 0;
 	text-align: center;
-	border: 1px dashed #eafefc;
+	border:2px solid #DDDD11;
 }
 
 .faq:hover {
-	background: #eafefc;
-	border: 1px solid #eafefc;
+	background: #FFCC00;
+	border:2px solid #DDDD11;
 }
 
 
