@@ -494,6 +494,7 @@ function storeCaret(textEl) {
 	{POLLBOX} 
 	<tr> 
         <td colspan="2" valign="top"> <div align="center">{S_HIDDEN_FORM_FIELDS}
+	<b style='color: #f88; font-size: 12px;'>注意: 本討論區禁止非相關主題的商業廣告</b><br/>
               <input type="submit" tabindex="5" name="preview" class="form2" value="{L_PREVIEW}" />
             &nbsp;
               <input type="submit" accesskey="s" tabindex="6" name="post" class="form2" value="{L_SUBMIT}" />

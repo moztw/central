@@ -64,6 +64,9 @@ function submitSearch(formObj){
 
 <img src='templates/icons/icon_mini_login.gif'><a href="{U_LOGIN_LOGOUT}" class="mainmenu">{L_LOGIN_LOGOUT}</a>
 <!-- BEGIN switch_user_logged_out -->
+<!--
+| <a href="https://forum.moztw.org/login.php" class="mainmenu">安全登入(SSL)</a>
+-->
 | <a href="{U_REGISTER}" class="mainmenu">{L_REGISTER}</a>&nbsp;
 <!-- END switch_user_logged_out -->
 <!-- <a style='float: right;' href="{U_FAQ}" class="mainmenu" title="{L_FAQ}">

@@ -1,13 +1,20 @@
 ﻿<span class="nav">您現在位於: <a href="http://moztw.org/">MozTW</a> &raquo; <a href="{U_INDEX}">討論區</a><br /></span>
 
 <!-- BEGIN switch_user_logged_out -->
-<form method="post" action="{S_LOGIN_ACTION}">
+<form name='loginbox' method="post" action="{S_LOGIN_ACTION}">
 <span class="gensmall">{L_USERNAME}: 
  <input class="form3" type="text" name="username" size="10" />
 &nbsp;&nbsp;&nbsp;{L_PASSWORD}:
   <input class="form3" type="password" name="password" size="10" maxlength="32" />
-&nbsp;&nbsp; (<input type="checkbox" name="autologin" checked />{L_AUTO_LOGIN})&nbsp;
-		  <input type="submit" class="form4" name="login" value="{L_LOGIN}" />
+&nbsp;&nbsp; (<input id='lb_autologin' type="checkbox" name="autologin" checked />
+<label for='lb_autologin'>{L_AUTO_LOGIN}</label>&nbsp;
+<!--
+<input id='lb_ssl' type="checkbox" name="ssl" onChange='if (document["loginbox"]["lb_ssl"].checked) document["loginbox"].action = "https://forum.moztw.org/login.php"; else document["loginbox"].action = "http//forum.moztw.org/login.php"; '/>
+<label for='lb_ssl'>安全連線(SSL)</label>
+-->
+)&nbsp;
+
+  <input type="submit" class="form4" name="login" value="{L_LOGIN}" />
 </div>
 </form>
 <!-- END switch_user_logged_out -->
