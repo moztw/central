@@ -106,8 +106,8 @@ if (
 		$current_email = trim(htmlspecialchars($HTTP_POST_VARS['current_email']));
 	}
 
-	$strip_var_list = array('username' => 'username', 'email' => 'email', 'icq' => 'icq', 'aim' => 'aim', 'msn' => 'msn', 'yim' => 'yim', 'skype' => 'skype', 'website' => 'website', 'location' => 'location', 'occupation' => 'occupation', 'interests' => 'interests');
-	$strip_var_list['confirm_code'] = 'confirm_code';
+	$strip_var_list = array('username' => 'username', 'confirm_code' => 'confirm_code', 'email' => 'email', 'icq' => 'icq', 'aim' => 'aim', 'msn' => 'msn', 'yim' => 'yim', 'skype' => 'skype', 'website' => 'website', 'location' => 'location', 'occupation' => 'occupation', 'interests' => 'interests');
+
 
 	// Strip all tags from data ... may p**s some people off, bah, strip_tags is
 	// doing the job but can still break HTML output ... have no choice, have
@@ -268,6 +268,7 @@ if ( isset($HTTP_POST_VARS['submit']) )
 		}
 	}
 
+// Visual Confirmation
 	if ($board_config['enable_confirm'] && $mode == 'register')
 	{
 		if (empty($HTTP_POST_VARS['confirm_id']))
@@ -905,7 +906,7 @@ else
 	}
 
 
-	// Visual Confirmation
+// Visual Confirmation
 	$confirm_image = '';
 	if (!empty($board_config['enable_confirm']) && $mode == 'register')
 	{
@@ -994,6 +995,7 @@ else
 		'NEW_PASSWORD' => $new_password,
 		'PASSWORD_CONFIRM' => $password_confirm,
 		'EMAIL' => $email,
+// Visual Confirmation
 		'CONFIRM_IMG' => $confirm_image, 
 		'YIM' => $yim,
 		'SKYPE' => $skype,
@@ -1090,11 +1092,11 @@ else
 		'L_PROFILE_INFO' => $lang['Profile_info'],
 		'L_PROFILE_INFO_NOTICE' => $lang['Profile_info_warn'],
 		'L_EMAIL_ADDRESS' => $lang['Email_address'],
-
-		'L_CONFIRM_CODE_IMPAIRED'	=> sprintf($lang['Confirm_code_impaired'], '<a href="mailto:' . $board_config['board_email'] . '">', '</a>'), 
-		'L_CONFIRM_CODE'			=> $lang['Confirm_code'], 
-		'L_CONFIRM_CODE_EXPLAIN'	=> $lang['Confirm_code_explain'], 
-
+// Visual Confirmation
+		'L_CONFIRM_CODE_IMPAIRED' => sprintf($lang['Confirm_code_impaired'], '<a href="mailto:' . $board_config['board_email'] . '">', '</a>'), 
+		'L_CONFIRM_CODE' => $lang['Confirm_code'], 
+		'L_CONFIRM_CODE_EXPLAIN' => $lang['Confirm_code_explain'], 
+		
 		'S_ALLOW_AVATAR_UPLOAD' => $board_config['allow_avatar_upload'],
 		'S_ALLOW_AVATAR_LOCAL' => $board_config['allow_avatar_local'],
 		'S_ALLOW_AVATAR_REMOTE' => $board_config['allow_avatar_remote'],

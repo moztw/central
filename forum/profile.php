@@ -20,6 +20,19 @@
  *
  ***************************************************************************/
 
+/*
+
+	This code has been modified from its original form by psoTFX @ phpbb.com
+	Changes introduce the back-ported phpBB 2.2 visual confirmation code. 
+
+	NOTE: Anyone using the modified code contained within this script MUST include
+	a relevant message such as this in profile.php ... failure to do so will affect 
+	a breach of Section 2a of the GPL and our copyright
+
+	png visual confirmation system : (c) phpBB Group, 2003 : All Rights Reserved
+
+*/
+
 define('IN_PHPBB', true);
 $phpbb_root_path = './';
 include($phpbb_root_path . 'extension.inc');
@@ -100,6 +113,7 @@ if ( isset($HTTP_GET_VARS['mode']) || isset($HTTP_POST_VARS['mode']) )
 		include($phpbb_root_path . 'includes/usercp_register.'.$phpEx);
 		exit;
 	}
+// Visual Confirmation
 	else if ( $mode == 'confirm' )
 	{
 		// Visual Confirmation

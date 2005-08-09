@@ -20,6 +20,19 @@
  *
  ***************************************************************************/
 
+/*
+
+	This code has been modified from its original form by psoTFX @ phpbb.com
+	Changes introduce the back-ported phpBB 2.2 visual confirmation code. 
+
+	NOTE: Anyone using the modified code contained within this script MUST include
+	a relevant message such as this in constants.php ... failure to do so will affect 
+	a breach of Section 2a of the GPL and our copyright
+
+	png visual confirmation system : (c) phpBB Group, 2003 : All Rights Reserved
+
+*/
+
 if ( !defined('IN_PHPBB') )
 {
 	die("Hacking attempt");
@@ -178,5 +191,8 @@ define('WORDS_TABLE', $table_prefix.'words');
 define('VOTE_DESC_TABLE', $table_prefix.'vote_desc');
 define('VOTE_RESULTS_TABLE', $table_prefix.'vote_results');
 define('VOTE_USERS_TABLE', $table_prefix.'vote_voters');
+// Visual Confirmation
+define('CONFIRM_TABLE', $table_prefix.'confirm');
+
 
 ?>

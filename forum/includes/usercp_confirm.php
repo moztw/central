@@ -6,7 +6,7 @@
  *   copyright            : (C) 2001 The phpBB Group
  *   email                : support@phpbb.com
  *
- *   $Id: usercp_confirm.php,v 1.1.2.1 2004/11/18 17:49:45 acydburn Exp $
+ *   $Id: usercp_confirm.php,v 1.1 2003/05/19 15:23:04 psotfx Exp $
  *
  ***************************************************************************/
 

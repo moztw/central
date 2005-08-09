@@ -11,6 +11,19 @@
  *
  ***************************************************************************/
 
+/*
+
+	This code has been modified from its original form by psoTFX @ phpbb.com
+	Changes introduce the back-ported phpBB 2.2 visual confirmation code. 
+
+	NOTE: Anyone using the modified code contained within this script MUST include
+	a relevant message such as this in admin_board.php ... failure to do so will
+	affect a breach of Section 2a of the GPL and our copyright
+
+	png visual confirmation system : (c) phpBB Group, 2003 : All Rights Reserved
+
+*/
+
 define('IN_PHPBB', 1);
 
 if( !empty($setmodules) )
@@ -97,6 +110,7 @@ $activation_none = ( $new['require_activation'] == USER_ACTIVATION_NONE ) ? "che
 $activation_user = ( $new['require_activation'] == USER_ACTIVATION_SELF ) ? "checked=\"checked\"" : "";
 $activation_admin = ( $new['require_activation'] == USER_ACTIVATION_ADMIN ) ? "checked=\"checked\"" : "";
 
+// Visual Confirmation
 $confirm_yes = ($new['enable_confirm']) ? 'checked="checked"' : '';
 $confirm_no = (!$new['enable_confirm']) ? 'checked="checked"' : '';
 
@@ -163,6 +177,7 @@ $template->assign_vars(array(
 	"L_NONE" => $lang['Acc_None'], 
 	"L_USER" => $lang['Acc_User'], 
 	"L_ADMIN" => $lang['Acc_Admin'], 
+// Visual Confirmation
 	"L_VISUAL_CONFIRM" => $lang['Visual_confirm'], 
 	"L_VISUAL_CONFIRM_EXPLAIN" => $lang['Visual_confirm_explain'], 
 	"L_COOKIE_SETTINGS" => $lang['Cookie_settings'], 
