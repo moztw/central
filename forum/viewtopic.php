@@ -642,9 +642,9 @@ $pagination = ( $highlight != '' ) ? generate_pagination("viewtopic.$phpEx?" . P
 //
 $template->assign_vars(array(
 	'FORUM_ID' => $forum_id,
-    'FORUM_NAME' => $forum_name,
-    'TOPIC_ID' => $topic_id,
-    'TOPIC_TITLE' => $topic_title,
+	'FORUM_NAME' => $forum_name,
+	'TOPIC_ID' => $topic_id,
+	'TOPIC_TITLE' => $topic_title,
 	'PAGINATION' => $pagination,
 	'PAGE_NUMBER' => sprintf($lang['Page_of'], ( floor( $start / intval($board_config['posts_per_page']) ) + 1 ), ceil( $total_replies / intval($board_config['posts_per_page']) )),
 
@@ -687,6 +687,7 @@ $template->assign_vars(array(
 	'U_VIEW_NEWER_TOPIC' => $view_next_topic_url,
 	'U_POST_NEW_TOPIC' => $new_topic_url,
 	'U_POST_REPLY_TOPIC' => $reply_topic_url)
+
 );
 
 //
