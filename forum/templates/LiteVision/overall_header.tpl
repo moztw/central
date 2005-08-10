@@ -73,12 +73,6 @@ function submitSearch(formObj){
 <img src='templates/icons/icon_mini_faq.gif' alt='FAQ'>
 </a> -->
 </span>
-<!-- BEGIN switch_user_logged_in -->
-<br />
-<div style="width: 550px; background-color: #EEEE22; border:1px solid #DDDD11; text-align: center;" class="gen">
-<a class="faq" href="http://wiki.moztw.org/redirect_faq.php?f={FORUM_ID}">請按我閱讀<span style="color: red;">本區 FAQ</span>。發問前請先詳閱，內有常見問題的解決方法。</a></div>
-<!-- END switch_user_logged_in -->
-
 <!-- BEGIN switch_user_logged_out -->
 <br />
   <!-- 全站公告區 UTF-8 -->

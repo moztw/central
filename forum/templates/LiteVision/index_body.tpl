@@ -25,7 +25,9 @@
 <table width="98%"  border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td valign="top">
-	
+  <td valign="top" colspan="6" style="background: #a4cbf7; margin: 0;">
+  	<a class="faq" href="http://wiki.moztw.org/redirect_faq.php?f={FORUM_ID}">請按我閱讀<span style="color: red;">本區 FAQ</span>。發問前請先詳閱，內有常見問題的解決方法。  </a>
+  </td>
 <!-- BEGIN catrow -->
 <table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-bleu-jos">
   <tr>
