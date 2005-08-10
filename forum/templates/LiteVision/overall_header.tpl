@@ -75,7 +75,7 @@ function submitSearch(formObj){
 </span>
 <!-- BEGIN switch_user_logged_in -->
 <br />
-<div align="center" style="width: 550px; background-color: #EEEE22; border:1px solid #DDDD11;" class="gen">
+<div style="width: 550px; background-color: #EEEE22; border:1px solid #DDDD11; text-align: center;" class="gen">
 <a class="faq" href="http://wiki.moztw.org/redirect_faq.php?f={FORUM_ID}">請按我閱讀<span style="color: red;">本區 FAQ</span>。發問前請先詳閱，內有常見問題的解決方法。</a></div>
 <!-- END switch_user_logged_in -->
 
