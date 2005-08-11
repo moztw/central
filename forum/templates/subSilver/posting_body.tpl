@@ -461,6 +461,16 @@ function storeCaret(textEl) {
 	</tr>
 	{ATTACHBOX}
 	{POLLBOX} 
+	<!-- Visual Confirmation -->
+	<!-- BEGIN switch_confirm -->
+	<tr>
+		<td class="row1" colspan="2" align="center"><span class="gensmall">{L_CONFIRM_CODE_IMPAIRED}</span><br /><br />{CONFIRM_IMG}<br /><br /></td>
+	</tr>
+	<tr> 
+	  <td class="row1"><span class="gen">{L_CONFIRM_CODE}: * </span><br /><span class="gensmall">{L_CONFIRM_CODE_EXPLAIN}</span></td>
+	  <td class="row2"><input type="text" class="post" style="width: 200px" name="confirm_code" size="6" maxlength="6" value="" /></td>
+	</tr>
+	<!-- END switch_confirm -->
 	<tr> 
 	  <td class="catBottom" colspan="2" align="center" height="28"> {S_HIDDEN_FORM_FIELDS}<input type="submit" tabindex="5" name="preview" class="mainoption" value="{L_PREVIEW}" />&nbsp;<input type="submit" accesskey="s" tabindex="6" name="post" class="mainoption" value="{L_SUBMIT}" /></td>
 	</tr>
