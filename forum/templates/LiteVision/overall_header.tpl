@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
-<link rel="alternate" type="application/xml" title="RSS" href="rdf.php">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="rdf.php">
 {META}
 {NAV_LINKS}
 <title>{SITENAME}: {PAGE_TITLE}</title>
