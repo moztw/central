@@ -337,8 +337,8 @@ $lang['Post_Normal'] = '正常';
 $lang['Confirm_delete'] = '您確定要刪除這篇文章嗎?';
 $lang['Confirm_delete_poll'] = '您確定要刪除這個票選活動嗎?';
 
-$lang['Flood_Error'] = '嚴禁惡意的快速發文攻擊, 請稍後再試';
-$lang['Double_Post_Error'] = '請不要重複發文(可能按太快了)'; 
+$lang['Flood_Error'] = '禁止快速發文(避免惡意攻擊), 請回上一頁並稍後再試';
+$lang['Double_Post_Error'] = '請不要重複發文(可能您按太快了)'; 
 $lang['Empty_subject'] = '發表新主題必須要有文章標題';
 $lang['Empty_message'] = '發表文章必須要有文章內容';
 $lang['Forum_locked'] = '這個版面已經被鎖定了, 您無法在這個版面發表, 回覆或是編輯主題';
