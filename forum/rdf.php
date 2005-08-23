@@ -107,6 +107,7 @@ $rdf = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>
 <item>
     <title>" . $title . "</title>
     <link>" . $url . "</link>
+    <pubDate>" . date('r', $topics[$i]['post_time']) . "</pubDate>
 </item>
 ";
     }
