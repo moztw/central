@@ -35,13 +35,13 @@ function submitSearch(formObj){
   <li id="menu_docs"><a href="http://moztw.org/docs" title="各項使用說明、介紹與文件資料">文件</a></li>
   <li id="menu_products"><a href="http://moztw.org/dl" title="Moztw.org 提供的中文化軟體一覽">下載</a></li>
  </ul>
-<form name="searchform" method="POST" action="http://forum.moztw.org/search.php?mode=results&search_terms=all" onsubmit="submitSearch(this)">
- <div><label for="q" title="Search moztw.org">搜尋</label><select name="searchtarget"><option value="forum">討論區</option><option value="moztw">moztw.org</option></select><input type="text" id="key" name="search_keywords" size=12 maxlength=60><input type="hidden" name="search_terms" value="all"><input type="submit" value="{L_SEARCH}">
+<form name="searchform" method="POST" action="http://forum.moztw.org/search.php?mode=results" onsubmit="submitSearch(this)">
+ <div><label for="q" title="Search moztw.org">搜尋</label><select name="searchtarget"><option value="forum">討論區</option><option value="moztw">moztw.org</option></select><input type="text" id="key" name="search_keywords" size=12 maxlength=60><input type="submit" value="{L_SEARCH}">
   <input type="hidden" name="cof" value="LW:375;LH:69;L:http://forum.moztw.org/images/moztw_logo.jpg;GIMP:#cc0000;T:black;ALC:#0000ff;GFNT:grey;LC:#990000;BGC:white;AH:center;VLC:purple;GL:0;GALT:#666633;AWFID:9262c37cefe23a86;">
   <input type="hidden" name="domains" value="moztw.org"><input type="hidden" name="sitesearch" value="moztw.org">
   <input name="inlang" value="zh-TW" type="hidden"><input name="ie" value="UTF-8" type="hidden"><input name="oe" value="UTF-8" type="hidden">
   <input type="hidden" name="sort_dir" value="DESC"><input type="hidden" name="show_results" value="topics">
-  <input type="hidden" name="return_chars" value="200"><input type="hidden" name="search_terms" value="any">
+  <input type="hidden" name="return_chars" value="200"><input type="hidden" name="search_terms" value="all">
 <a href="{U_SEARCH}" style='font-size:80%;color: #fff;'>進階{L_SEARCH}</a>
 </div>
 </form>
