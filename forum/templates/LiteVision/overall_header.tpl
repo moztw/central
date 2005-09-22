@@ -51,7 +51,7 @@ function submitSearch(formObj){
 <!-- <a href="{U_GROUP_CP}" class="mainmenu">{L_USERGROUPS}</a> -->
 
 <!-- BEGIN switch_user_logged_out -->
-<big><b>您尚未登入</b></big> (Your are not logged in.)
+<big><b>您尚未登入</b></big> (You are not logged in yet.)
 <!-- END switch_user_logged_out -->
 <span style=" float: right; padding: 0;">
 <!-- BEGIN switch_user_logged_in -->
