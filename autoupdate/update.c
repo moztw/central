@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #define SVNROOT "/home/moztw"
+#define ADDONSROOT "/home/moztw/mozupdate"
 #define WEBROOT "/home/moztw/htdocs"
 #define SCRIPTROOT "/home/moztw/autoupdate"
 
@@ -15,6 +16,10 @@
 
 #define CMD_DONE \
     "echo 'DONE.' "
+
+#define CMD_SVNUP_ADDONS \
+"cd " ADDONSROOT " && " \
+"echo 'SVN update Mozilla Update...' && /usr/local/bin/svn --username anonymous --no-auth-cache update 2>&1 && "\
 
 #define CMD_SVNUP \
 "cd " SVNROOT " && " \
@@ -69,6 +74,7 @@ int main(int argc, char *argv[]) {
 	{
 	    if(optCache)
 		return system(
+			CMD_SVNUP_ADDONS
 			CMD_SVNUP
 			CMD_MD5
 			CMD_CACHE_ALL 
@@ -76,6 +82,7 @@ int main(int argc, char *argv[]) {
 			CMD_DONE);
 	    else
 		return system(
+			CMD_SVNUP_ADDONS
 			CMD_SVNUP
 			CMD_MD5
 			CMD_CACHE 
@@ -84,12 +91,14 @@ int main(int argc, char *argv[]) {
 	} else
 	if(optCache)
 	    return system(
+		    CMD_SVNUP_ADDONS
 		    CMD_SVNUP
 		    CMD_CACHE_ALL 
 		    CMD_XMLNEWS 
 		    CMD_DONE);
 	else
 	    return system(
+		    CMD_SVNUP_ADDONS
 		    CMD_SVNUP
 		    CMD_CACHE 
 		    CMD_XMLNEWS 

@@ -73,9 +73,10 @@ src="{U_PRINT_IMG}" alt="{L_PRINT}" border="0" /></a>
                 <span class="postdetails">{postrow.POSTER_RANK}<br />
                 {postrow.RANK_IMAGE}{postrow.POSTER_AVATAR}<br />
                 <br />
+		<span style='color: #888;'>
                 {postrow.POSTER_JOINED}<br />
                 {postrow.POSTER_POSTS}<br />
-                {postrow.POSTER_FROM}</span><br />            </td>
+                {postrow.POSTER_FROM}</span></span><br />            </td>
             <td width="79%" valign="top"><table width="100%" border="0" cellspacing="2" cellpadding="0">
                 <tr>
                   <td width="100%"><b style='color: red; font-size: 12px;'>{postrow.POST_SUBJECT}</b> <a href="{postrow.U_MINI_POST}"><img src="{postrow.MINI_POST_IMG}" width="12" height="9" alt="{postrow.L_MINI_POST_ALT}" title="{postrow.L_MINI_POST_ALT}" border="0" /></a><span class="postdetails">{L_POSTED}: {postrow.POST_DATE}</span></td>
