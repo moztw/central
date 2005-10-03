@@ -88,7 +88,8 @@
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="1">
 	<tr>
 		<td bgcolor="#EAF1FC" width="50%"><span class="gen">{L_RANK_TITLE}:</span></td>
-		<td width="50%" bgcolor="#E1ECFB"><input class="form2" type="text" name="title" size="35" maxlength="40" value="{RANK}" /></td>
+<!-- Edited maxlength to 80 -->
+		<td width="50%" bgcolor="#E1ECFB"><input class="form2" type="text" name="title" size="35" maxlength="80" value="{RANK}" /></td>
 	</tr>
 	<tr>
 		<td width="50%" bgcolor="#EAF1FC"><span class="gen">{L_RANK_SPECIAL}</span></td>
