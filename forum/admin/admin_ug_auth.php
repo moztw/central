@@ -289,11 +289,12 @@ if ( isset($HTTP_POST_VARS['submit']) && ( ( $mode == 'user' && $user_id ) || ( 
 				$forum_id = $forum_access[$i]['forum_id'];
 
 				if ( 
-					( isset($auth_access[$forum_id]['auth_mod']) && $change_mod_list[$forum_id]['auth_mod'] != $auth_access[$forum_id]['auth_mod'] ) || 
-					( !isset($auth_access[$forum_id]['auth_mod']) && !empty($change_mod_list[$forum_id]['auth_mod']) ) 
+					( isset($auth_access[$forum_id]['auth_mod']) && $change_mod_list[$forum_id] != $auth_access[$forum_id]['auth_mod'] ) || 
+					( !isset($auth_access[$forum_id]['auth_mod']) && !empty($change_mod_list[$forum_id]) ) 
 				)
 				{
-					$update_mod_status[$forum_id] = $change_mod_list[$forum_id]['auth_mod'];
+					$update_mod_status[$forum_id] = $change_mod_list[$forum_id];
+					// echo "update forum $forum_id: ".$change_mod_list[$forum_id]."<br/>\n";
 
 					if ( !$update_mod_status[$forum_id] )
 					{
