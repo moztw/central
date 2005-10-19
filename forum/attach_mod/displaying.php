@@ -928,17 +928,22 @@ function display_attachments($post_id)
 				$BC_assign_type = "postrow.attach.attachrow";
 				$target_blank = 'target="_blank"'; //( (intval($display_categories[$attachments['_' . $post_id][$i]['extension']]) == IMAGE_CAT) ) ? 'target="_blank"' : '';
 
+				$u_dl_link = append_sid('download.' . $phpEx . '?id=' . $attachments['_' . $post_id][$i]['attach_id']);
+
 				if($xpi)
 				{
 				    $BC_assign_type = "postrow.attach.cat_firefox_install";
 				    $target_blank = '';
+
+// hack to prevent Fx using 'download.php' as filename
+				    $u_dl_link = 'download.' . $phpEx . '/' . $attachments['_' . $post_id][$i]['attach_id'] . '/' . $filename;
 				}
 
 				//
 				// display attachment
 				//
 				$template->assign_block_vars($BC_assign_type, array(
-					'U_DOWNLOAD_LINK' => append_sid('download.' . $phpEx . '?id=' . $attachments['_' . $post_id][$i]['attach_id']),
+					'U_DOWNLOAD_LINK' => $u_dl_link,
 					'S_UPLOAD_IMAGE' => $upload_image,
 						
 					'DOWNLOAD_NAME' => $display_name,

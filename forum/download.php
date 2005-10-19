@@ -407,7 +407,7 @@ if ($download_mode == PHYSICAL_LINK)
 	$server_port = ($board_config['server_port'] <> 80) ? ':' . trim($board_config['server_port']) : '';
 	$script_name = preg_replace('/^\/?(.*?)\/?$/', '/\1', trim($board_config['script_path']));
 
-	if ($script_name[strlen($script_name)] != '/')
+	if (strlen($script_name) > 1 && $script_name[strlen($script_name)-1] != '/')
 	{
 		$script_name .= '/';
 	}
@@ -437,6 +437,7 @@ if ($download_mode == PHYSICAL_LINK)
 		exit;
 	}
 
+	// header('Content-Disposition: attachment; filename="' . htmlspecialchars($attachment['real_filename']) . '"');
 	// Behave as per HTTP/1.1 spec for others
 	header('Location: ' . $redirect_path);
 	exit;
