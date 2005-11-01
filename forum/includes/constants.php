@@ -42,7 +42,6 @@ if ( !defined('IN_PHPBB') )
 //define('DEBUG', 1); // Debugging on
 define('DEBUG', 1); // Debugging off
 
-
 // User Levels <- Do not change the values of USER or ADMIN
 define('DELETED', -1);
 define('ANONYMOUS', -1);
