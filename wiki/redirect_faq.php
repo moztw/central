@@ -26,6 +26,9 @@
 		case (in_array($f, array(19))): // 使用其他軟體
 			header($baseurl.":Other_softwares");
 			break;
+		case (in_array($f, array(35))): // Camino
+			header($baseurl.":Camino");
+			break;
 		default:
 			header($baseurl);
 	}
