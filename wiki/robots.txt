@@ -3,6 +3,3 @@ Crawl-delay: 75
 
 user-agent: msnbot
 crawl-delay: 120 
-
-user-agent: baiduspider
-Disallow: / 
