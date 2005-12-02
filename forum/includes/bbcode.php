@@ -638,6 +638,10 @@ function make_clickable($text)
 	// matches an "xxxx://yyyy.xpi"
 	$ret = preg_replace("#(^|[\n ])([\w]+?://[^ \"\n\r\t<]*.xpi)([ \"\n\r\t<]*)#is", "\\1<a href=\"#\" onClick=\"javascript:InstallTrigger.startSoftwareUpdate('\\2');\">\\2</a>\\3", $ret);
 
+	// match on forum links
+	$ret = preg_replace("#(^|[\n ])http://forum.moz(tw|illa-taiwan).org/viewtopic.php.t=([0-9]*)([^ \"\n\r\t<]*)#is", 
+		"\\1<a href=\"http://forum.moz\\2.org/viewtopic.php?t=\\3\\4\" target=\"_blank\">[討論主題 #\\3]</a>", $ret);
+
 	// matches an "xxxx://yyyy" URL at the start of a line, or after a space.
 	// xxxx can only be alpha characters.
 	// yyyy is anything up to the first space, newline, comma, double quote or <
