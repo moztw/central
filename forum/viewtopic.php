@@ -200,6 +200,9 @@ $topic_title = $forum_topic_data['topic_title'];
 $topic_id = intval($forum_topic_data['topic_id']);
 $topic_time = $forum_topic_data['topic_time'];
 
+// can we header here? Seems like that Firefox 1.5 will follow this.
+header("Content-Disposition: inline; filename=\"Mozilla Taiwan - $forum_name - $topic_title.html\"");
+
 if ( !empty($post_id) )
 {
 	$start = floor(($forum_topic_data['prev_posts'] - 1) / intval($board_config['posts_per_page'])) * intval($board_config['posts_per_page']);
