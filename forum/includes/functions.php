@@ -697,7 +697,8 @@ function message_die($msg_code, $msg_text = '', $msg_title = '', $err_line = '',
 
 			if ( $msg_title == '' )
 			{
-				$msg_title = 'phpBB : <b>' . $lang['Critical_Error'] . '</b>';
+//				$msg_title = 'phpBB : <b>' . $lang['Critical_Error'] . '</b>';
+				$msg_title = 'mozTW Forum: <b>' . $lang['Critical_Error'] . '</b>';
 			}
 			break;
 	}

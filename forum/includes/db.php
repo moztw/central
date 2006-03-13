@@ -60,7 +60,8 @@ switch($dbms)
 $db = new sql_db($dbhost, $dbuser, $dbpasswd, $dbname, false);
 if(!$db->db_connect_id)
 {
-   message_die(CRITICAL_ERROR, "Could not connect to the database");
+//   message_die(CRITICAL_ERROR, "Could not connect to the database");
+	message_die(CRITICAL_ERROR, "Oops, we have some errors here. <br />We apologise for any inconvenience this may cause.<br /><br />Mozilla Taiwan.<br /><br /><br /><small>(Could not connect to the database.)");
 }
 
 ?>
