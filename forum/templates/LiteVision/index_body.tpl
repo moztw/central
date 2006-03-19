@@ -31,13 +31,9 @@
 <!-- BEGIN catrow -->
 <table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-bleu-jos">
   <tr>
-    <td width="" height="26" colspan="2" valign="bottom" class="stil01"><table width="100%"  border="0" cellpadding="0" cellspacing="0" class="border-maro-dr">
+    <td width="" height="26" colspan="2" valign="bottom" class="stil01"><table width="100%"  border="0" cellpadding="0" cellspacing="0" height="21" class="border-maro-dr">
       <tr>
-        <td><table height="21"  border="0" cellpadding="0" cellspacing="0">
-            <tr>
-              <td><img src="templates/LiteVision/images/05.gif" width="49" height="21"></td>
-            </tr>
-        </table></td>
+        <td><img src="templates/LiteVision/images/05.gif" width="49" height="21" style="display: block; "></td>
         <td width="90%"><span class="genmed"><strong><span class="cattitle"><a href="{catrow.U_VIEWCAT}" class="cattitle">{catrow.CAT_DESC}</a></span></strong></span></td>
       </tr>
     </table></td>
