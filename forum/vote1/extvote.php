@@ -222,11 +222,11 @@ if ($userid!='')
 	                    {
 	                        if ($_POST['myvote'][$i]==1)
 	                        {
-	                            echo "<input type=\"checkbox\" name=\"myvote[$i]\" value=\"1\" checked>".$data[3+$i]."<br>";
+	                            echo "<input type=\"checkbox\" name=\"myvote[$i]\" value=\"1\" checked>".$data[3+$i]."<br><br>";
 	                        }
 	                        else
 	                        {
-	                            echo "<input type=\"checkbox\" name=\"myvote[$i]\" value=\"1\">".$data[3+$i]."<br>";
+	                            echo "<input type=\"checkbox\" name=\"myvote[$i]\" value=\"1\">".$data[3+$i]."<br><br>";
 	                        }
 	                    }
 
