@@ -1,6 +1,6 @@
 <?  
 session_start(); 
-$allow_vote='Y'; //前面加 // 就會停止投票
+//$allow_vote='Y'; //前面加 // 就會停止投票
 ?>
 <html>
 <head>
