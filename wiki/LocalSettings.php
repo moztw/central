@@ -101,4 +101,12 @@ $wgRightsText = "姓名標示-相同方式分享";
 $wgRightsIcon = "http://creativecommons.org/images/public/somerights20.gif";
 # $wgRightsCode = "by-sa"; # Not yet used
 
+# prevent anonymous users from being able to edit while allowing users
+$wgGroupPermissions['*']['createaccount'] = true;
+$wgGroupPermissions['*']['read'] = true;
+$wgGroupPermissions['*']['edit'] = false;
+$wgGroupPermissions['user']['edit'] = true; 
+
+# prevent the hidden CSS trick
+$wgSpamRegex = "/\< .*style.*((display|position|overflow|visibility|height)\s* :|font-size\s*:\s*\.?\d+).*>/i"; 
 ?>
