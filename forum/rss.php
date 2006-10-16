@@ -1,80 +1,34 @@
 <?php
 /***************************************************************************
-*				   rss.php
-*			     -------------------
-*   begin		 : Monday, July 7, 2003
-*   notes		 : This code is based on the work of the original
-*			   developer below.  Portions of this code
-*			   'borrowed' from phpbb_fetch_posts, an
-*			   untitled rdf content syndicator posted at
-*			   phpbb.com, and phpbb itself.
-*   email		 : rss@wickedwisdom.com
-*
-*
-*   $Id: rss.php,v 2.0.1 2003/07/17 10:11:00 nschindler Exp $
-*
-*
-***************************************************************************/
+ *                                rss.php
+ *                            -------------------
+ *   begin                : Saturday, Feb 13, 2001
+ *   copyright            : (C) 2005 by Lucas van Dijk
+ *   email                : lucas@aoe3capitol.nl
+ *
+ *   $Id: rss.php,v 1.0.3 2004/07/11 16:46:15 mrlucky Exp $
+ *
+ *
+ ***************************************************************************/
 
 /***************************************************************************
-*				   rdf.php
-*			     -------------------
-*   begin		 : Saturday, Mar 2, 2002
-*   copyright		 : (C) 2002 Matthijs van de Water
-*				    Sascha Carlin
-*   email		 : phpbb@matthijs.net
-*			   sc@itst.org
-*
-*   $Id: rdf.php,v 1.3.1 2003/02/16 14:43:11 mvdwater Exp $
-*
-*
-***************************************************************************/
+ *
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; either version 2 of the License, or
+ *   (at your option) any later version.
+ *
+ ***************************************************************************/
 
-/***************************************************************************
-*
-*   This program is free software; you can redistribute it and/or modify
-*   it under the terms of the GNU General Public License as published by
-*   the Free Software Foundation; either version 2 of the License, or
-*   (at your option) any later version.
-*
-***************************************************************************/
-
-//
-// BEGIN Configuration
-//
-// Set the relative path from this file to your phpBB root folder
+define('IN_PHPBB', 1);
 $phpbb_root_path = './';
-// How many posts do you want to returnd (count)?  Specified in the URL with "c=".  Defaults to 15, upper limit of 50.
-$count = ( isset($HTTP_GET_VARS['c']) ) ? intval($HTTP_GET_VARS['c']) : 15;
-$count = ( $count == 0 ) ? 15 : $count;
-$count = ( $count > 50 ) ? 50 : $count;
-// Which forum do you want posts from (forum_id)?  specified in the url with "f=".  Defaults to all (public) forums.
-$forum_id = ( isset($HTTP_GET_VARS['f']) ) ? intval($HTTP_GET_VARS['f']) : '';
-$sql_forum_where = ( !empty($forum_id) ) ? ' AND f.forum_id = ' . $forum_id : ' ';
-// Return topics only, or all posts?  Specified in the URL with "t=".  Defaults to all posts (0).
-$topics_only = (isset($HTTP_GET_VARS['t']) ) ? intval($HTTP_GET_VARS['t']) : 0;
-$sql_topics_only_where = '';
-if ( $topics_only == 1 )
-{
-	$sql_topics_only_where = 'AND p.post_id = t.topic_first_post_id';
-}
-//
-// END Configuration
-//
-
-//
-// BEGIN Includes of phpBB scripts
-//
-define ('IN_PHPBB', true);
 include($phpbb_root_path . 'extension.inc');
 include($phpbb_root_path . 'common.'.$phpEx);
-include($phpbb_root_path . 'includes/bbcode.'.$phpEx);
-//
-// END Includes of phpBB scripts
-//
+include($phpbb_root_path.'includes/functions_post.'.$phpEx);
+include($phpbb_root_path.'includes/bbcode.'.$phpEx);
 
 //
-// BEGIN Session management
+// Start session management
 //
 $userdata = session_pagestart($user_ip, PAGE_INDEX);
 init_userprefs($userdata);
@@ -82,184 +36,248 @@ init_userprefs($userdata);
 // End session management
 //
 
+// -------
+// Begin Page specific functions
 //
-// BEGIN Create main board information (some code borrowed from functions_post.php)
+function make_xml_compatible($text, $bbcode_uid = '', $use_bbcode = 0)
+{
+        global $board_config, $base_url;
+
+        if($use_bbcode)
+        {
+                if($bbcode_uid != '')
+                {
+                        $text = ( $board_config['allow_bbcode'] ) ? bbencode_second_pass($text, $bbcode_uid) : preg_replace('/\:[0-9a-z\:]+\]/si', ']', $text);
+                }
+                else
+                {
+                        $text = preg_replace('/\:[0-9a-z\:]+\]/si', ']', $text);
+                }
+                $text = make_clickable($text);
+                if($board_config['allow_smilies'])
+                {
+                        $text = smilies_pass($text);
+                        $text = str_replace("./".$board_config['smilies_path'], $base_url.$board_config['smilies_path'], $text);
+                }
+        }
+        $text = nl2br($text);
+
+        $text = str_replace('&pound', '&amp;#163;', $text);
+        $text = str_replace('&copy;', '(c)', $text);
+
+        $text = htmlspecialchars($text);
+
+        return $text;
+}
 //
-// Build URL components
-$script_name = preg_replace('/^\/?(.*?)\/?$/', '\1', trim($board_config['script_path']));
-$viewpost = ( $script_name != '' ) ? $script_name . '/viewtopic.' . $phpEx : 'viewtopic.'. $phpEx;
-$index = ( $script_name != '' ) ? $script_name . '/index.' . $phpEx : 'index.'. $phpEx;
-$server_name = trim($board_config['server_name']);
-$server_protocol = ( $board_config['cookie_secure'] ) ? 'https://' : 'http://';
-$server_port = ( $board_config['server_port'] <> 80 ) ? ':' . trim($board_config['server_port']) . '/' : '/';
-// Assemble URL components
-$index_url = $server_protocol . $server_name . $server_port . $script_name . '/';
-$viewpost_url = $server_protocol . $server_name . $server_port . $viewpost;
-// Reformat site name and description
-$site_name = strip_tags($board_config['sitename']);
-$site_description = strip_tags($board_config['site_desc']);
-// Set the fully qualified url to your smilies folder
-$smilies_path = $board_config['smilies_path'];
-$smilies_url = $index_url . $smilies_path;
-$smilies_path = preg_replace("/\//", "\/", $smilies_path);
-//
-// END Create main board information
-//
+// End page specific functions
+// ------
 
 //
-// BEGIN Initialise template
+// Get Various vars
 //
-$template->set_filenames(array(
-	"body" => "rss_body.tpl")
-);
-//
-// END Initialise template
-//
+$forum = isset($HTTP_GET_VARS[POST_FORUM_URL]) && ctype_digit($HTTP_GET_VARS[POST_FORUM_URL]) ? $HTTP_GET_VARS[POST_FORUM_URL] : false;
+$topic = isset($HTTP_GET_VARS[POST_TOPIC_URL]) && ctype_digit($HTTP_GET_VARS[POST_TOPIC_URL]) ? $HTTP_GET_VARS[POST_TOPIC_URL] : false;
+$post = isset($HTTP_GET_VARS[POST_POST_URL]) && ctype_digit($HTTP_GET_VARS[POST_POST_URL]) ? $HTTP_GET_VARS[POST_POST_URL] : false;
+
+$base_url = ($board_config['cookie_secure'] ? "https://" : "http://").$HTTP_SERVER_VARS['HTTP_HOST'].dirname($HTTP_SERVER_VARS['PHP_SELF']);
+
+if(substr($base_url, -1) != "/")
+{
+        $base_url .= "/";
+}
 
 //
-// BEGIN Assign static variables to template
+// Get topic ID by post id
 //
-// Variable reassignment for Topic Replies
-$l_topic_replies = $lang['Topic'] . ' ' . $lang['Replies'];
-$template->assign_vars(array(
-	'S_CONTENT_ENCODING' => $lang['ENCODING'],
-	'BOARD_URL' => $index_url,
-	'BOARD_TITLE' => $site_name,
-	'BOARD_DESCRIPTION' => $site_description,
-	'BOARD_MANAGING_EDITOR' => $board_config['board_email'],
-	'BOARD_WEBMASTER' => $board_config['board_email'],
-	'BUILD_DATE' => gmdate('D, d M Y H:i:s', time()) . ' GMT', 
-	'L_AUTHOR' => $lang['Author'],
-	'L_POSTED' => $lang['Posted'],
-	'L_TOPIC_REPLIES' => $l_topic_replies,
-	'L_POST' => $lang['Post'])
-);
-//
-// END Assign static variabless to template
-//
+if($post)
+{
+        $sql = "SELECT topic_id
+                FROM ".POSTS_TABLE."
+                WHERE post_id = ".intval($post);
+        if(!$result = $db->sql_query($sql))
+        {
+                message_die(GENERAL_ERROR, "Could not get topic id by post id", '', __LINE__, __FILE__, $sql);
+        }
+
+        $row = $db->sql_fetchrow($result);
+
+        $topic = $row['topic_id'];
+}
 
 //
-// BEGIN SQL statement to fetch active posts of public forums
+// Start RSS output
 //
-$sql = "SELECT f.forum_name, t.topic_title, u.user_id, u.username, u.user_sig, u.user_sig_bbcode_uid, p.post_id, pt.post_text, pt.post_subject, pt.bbcode_uid, p.post_time, t.topic_replies, t.topic_first_post_id
-	FROM " . FORUMS_TABLE . " AS f, " . TOPICS_TABLE . " AS t, " . USERS_TABLE . " AS u, " . POSTS_TABLE . " AS p, " . POSTS_TEXT_TABLE . " as pt
-	WHERE
-		t.forum_id = f.forum_id
-			AND f.auth_view = " . AUTH_ALL . "
-			AND p.poster_id = u.user_id
-			AND pt.post_id = p.post_id
-			AND p.topic_id = t.topic_id
-			$sql_topics_only_where
-			$sql_forum_where
-	ORDER BY p.post_time DESC LIMIT $count";
-$posts_query = $db->sql_query($sql);
-//
-// END SQL statement to fetch active posts of public forums
-//
+$rss_result = "<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>
+<rss version=\"2.0\">
+<channel>
+  <title>".make_xml_compatible($board_config['sitename'])."</title>
+  <link>".$base_url."index.".$phpEx."</link>
+  <description>".make_xml_compatible($board_config['site_desc'])."</description>
+  <language>".$board_config['default_lang']."</language>
+  <copyright>(c) Copyright ".create_date("Y", time(), $board_config['board_timezone'])." by ".make_xml_compatible($board_config['sitename'])."</copyright>
+  <managingEditor>".$board_config['board_email']."</managingEditor>
+  <webMaster>".$board_config['board_email']."</webMaster>
+  <pubDate>".create_date($board_config['default_dateformat'], time(), $board_config['board_timezone'])."</pubDate>
+  <lastBuildDate>".create_date($board_config['default_dateformat'], time(), $board_config['board_timezone'])."</lastBuildDate>
+  <docs>http://backend.userland.com/rss</docs>
+  <generator>phpBB2 RSS Syndication Mod by Lucas</generator>
+  <ttl>1</ttl>
+
+  <image>
+    <title>".make_xml_compatible($board_config['sitename'])."</title>
+    <url>".$board_config['rss_image']."</url>
+    <link>".$base_url."</link>
+    <description>".make_xml_compatible($board_config['site_desc'])."</description>
+  </image>
+";
 
 //
-// BEGIN Query failure check
+// Get latest topics
 //
-if ( !$posts_query )
+if(!$topic && !$forum)
 {
-	message_die(GENERAL_ERROR, "Could not query list of active posts", "", __LINE__, __FILE__, $sql);
-}
-else if ( !$db->sql_numrows($posts_query) )
-{
-	message_die(GENERAL_MESSAGE, $lang['No_match']);
-}
-else
-{
-//
-// END Query failure check
-//
+        //
+        // This SQL Code selects the latest topics on he forum
+        //
+        $sql = "SELECT t.topic_title, t.topic_last_post_id, t.forum_id, p.post_time, pt.post_text, pt.bbcode_uid, u.username, u.user_id
+                FROM ".TOPICS_TABLE." t, ".POSTS_TABLE." p, ".POSTS_TEXT_TABLE." pt, ".USERS_TABLE." u
+                WHERE t.topic_status != 1
+                AND p.post_id = t.topic_last_post_id
+                AND pt.post_id = p.post_id
+                AND u.user_id = p.poster_id
+                ORDER BY t.topic_last_post_id DESC
+                LIMIT 0, ".intval($board_config['max_rss_topics']);
+        if(!$result = $db->sql_query($sql))
+        {
+                message_die(GENERAL_ERROR, "Could not get Latest topics", '', __LINE__, __FILE__, $sql);
+        }
 
-//
-// BEGIN "item" loop
-//
-	while ($post = $db->sql_fetchrow($posts_query))
-	{
+        while($row = $db->sql_fetchrow($result))
+        {
+                $is_auth = array();
+                $is_auth = auth(AUTH_ALL, $row['forum_id'], $userdata);
+                if($is_auth['auth_view'] && $is_auth['auth_read'])
+                {
+                        $description = "
+                                      <b>".$lang['Author'].":</b> <a href='".$base_url."profile.".$phpEx."?mode=viewprofile&".POST_USERS_URL."=".$row['user_id']."'>".$row['username']."</a><br />
+                                      <b>".$lang['Posted'].":</b> ".create_date($board_config['default_dateformat'], $row['post_time'], $board_config['board_timezone'])."<br />
+                                      <br />
+                                      ".$row['post_text'];
 
-// Variable reassignment and reformatting for post text
-$post_text = $post['post_text'];
-$post_text = str_replace("\n", "\n<br />\n", $post_text);
-$post_text = bbencode_second_pass($post_text, $post['bbcode_uid']);
-$post_text = smilies_pass($post_text);
-$post_text = preg_replace("/$smilies_path/", $smilies_url, $post_text);
-$post_text = make_clickable($post_text);
-// Variable reassignment and reformatting for user sig
-$user_sig = $post['user_sig'];
-$user_sig = bbencode_second_pass($user_sig, $post['user_sig_bbcode_uid']);
-$user_sig = smilies_pass($user_sig);
-$user_sig = preg_replace("/$smilies_path/", $smilies_url, $user_sig);
-$user_sig = make_clickable($user_sig);
-	if ( $user_sig != '' )
-{
-		$user_sig = '<br />_________________<br />' . str_replace("\n", "\n<br />\n", $user_sig);
+                        $rss_result .= "
+                                      <item>
+                                        <title>".make_xml_compatible(strip_tags($row['topic_title']))."</title>
+                                        <link>".$base_url."viewtopic.".$phpEx."?".POST_POST_URL."=".$row['topic_last_post_id']."#".$row['topic_last_post_id']."</link>
+                                        <description>".make_xml_compatible($description, $row['bbcode_uid'], true)."</description>
+                                        <comments>".$base_url."viewtopic.".$phpEx."?".POST_POST_URL."=".$row['topic_last_post_id']."#".$row['topic_last_post_id']."</comments>
+                                        <author>".make_xml_compatible($row['username'])."</author>
+                                        <pubDate>".create_date($board_config['default_dateformat'], $row['post_time'], $board_config['board_timezone'])."</pubDate>
+                                        <guid isPermaLink=\"true\">".$base_url."viewtopic.".$phpEx."?".POST_POST_URL."=".$row['topic_last_post_id']."#".$row['topic_last_post_id']."</guid>
+                                      </item>";
+                }
+        }
 }
-// Variable reassignment and reformatting for post subject
-$post_subject = $post['post_subject'];
-	if ( $post_subject != '' )
-{
-		$post_subject = $lang['Subject'] . ': ' . htmlspecialchars($post_subject) . '<br />';
-}
-// Variable reassignment for topic title, and show whether it is the start of topic, or a reply
-$topic_title = $post['topic_title'];
-if ( $post['post_id'] != $post['topic_first_post_id'] )
-{
-	$topic_title = 'RE: ' . $topic_title;
-}
-// Variable reassignment and reformatting for author
-$author = $post['username'];
-if ( $post['user_id'] != -1 )
-{
-        $author = '<a href="' . $index_url . 'profile.' . $phpEx . '?mode=viewprofile&u=' . $post['user_id'] . '" target="_blank">'
- . $author . '</a>';
-}
-$author = make_clickable($author);
-// Assign "item" variables to template
-		$template->assign_block_vars('post_item', array(
-			'POST_URL' => $viewpost_url . '?' . POST_POST_URL . '=' . $post['post_id'] . '#' . $post['post_id'],
-			'TOPIC_TITLE' => htmlspecialchars($topic_title),
-			'AUTHOR' => htmlspecialchars($author),
-			'POST_TIME' => create_date($board_config['default_dateformat'], $post['post_time'], $board_config['board_timezone']).' (GMT ' . $board_config['board_timezone'] . ')',
-			'POST_SUBJECT' => htmlspecialchars($post_subject),
-			'FORUM_NAME' => htmlspecialchars($post['forum_name']),
-			'POST_TEXT' => htmlspecialchars($post_text),
-			'USER_SIG' => htmlspecialchars($user_sig),
-			'TOPIC_REPLIES' => $post['topic_replies']
-)
-		);
-	}
-}
-//
-// END "item" loop
-//
 
-//
-// BEGIN XML and nocaching headers (copied from page_header.php)
-//
-if (!empty($HTTP_SERVER_VARS['SERVER_SOFTWARE']) && strstr($HTTP_SERVER_VARS['SERVER_SOFTWARE'], 'Apache/2'))
+if($topic && !$forum)
 {
-	header ('Cache-Control: no-cache, pre-check=0, post-check=0, max-age=0');
-}
-else
-{
-	header ('Cache-Control: private, pre-check=0, post-check=0, max-age=0');
-}
-header ('Expires: ' . gmdate('D, d M Y H:i:s', time()) . ' GMT');
-header ('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT');
-header ('Content-Type: text/xml');
-//
-// End XML and nocaching headers
-//
+        //
+        // This SQL query selects the latest posts of a topic
+        //
+        $sql = "SELECT p.post_id, p.post_time, pt.post_text, pt.bbcode_uid, pt.post_subject, t.topic_title, t.forum_id, u.username, u.user_id
+                FROM ".POSTS_TABLE." p, ".POSTS_TEXT_TABLE." pt, ".TOPICS_TABLE." t, ".USERS_TABLE." u
+                WHERE p.topic_id = ".intval($topic)."
+                AND pt.post_id = p.post_id
+                AND t.topic_id = p.topic_id
+                AND u.user_id = p.poster_id
+                ORDER BY p.post_time DESC
+                LIMIT 0, ".intval($board_config['max_rss_topics']);
+        if(!$result = $db->sql_query($sql))
+        {
+                message_die(GENERAL_ERROR, "Could not get Latest posts", '', __LINE__, __FILE__, $sql);
+        }
 
-//
-// BEGIN Output XML page
-//
-$template->pparse('body');
-//
-// END Output XML page
-//
+        $auth_loaded = false;
+
+        while($row = $db->sql_fetchrow($result))
+        {
+                if(!$auth_loaded)
+                {
+                        $is_auth = array();
+                        $is_auth = auth(AUTH_ALL, $row['forum_id'], $userdata);
+                        $auth_loaded = true;
+                }
+                if($is_auth['auth_view'] && $is_auth['auth_read'])
+                {
+                        $description = "
+                                      ".$lang['Author'].": <a href='".$base_url."profile.".$phpEx."?mode=viewprofile&".POST_USERS_URL."=".$row['user_id']."'>".$row['username']."</a><br />
+                                      ".$lang['Posted'].": ".create_date($board_config['default_dateformat'], $row['post_time'], $board_config['board_timezone'])."<br />
+                                      <br />
+                                      ".$row['post_text'];
+
+                        $rss_result .= "
+                                      <item>
+                                        <title>".make_xml_compatible(strip_tags(($row['post_subject'] != '' ? $row['post_subject'] : "Re: ".$row['topic_title'])))."</title>
+                                        <link>".$base_url."viewtopic.".$phpEx."?".POST_POST_URL."=".$row['post_id']."#".$row['post_id']."</link>
+                                        <description>".make_xml_compatible($description, $row['bbcode_uid'], true)."</description>
+                                        <comments>".$base_url."viewtopic.".$phpEx."?".POST_POST_URL."=".$row['post_id']."#".$row['post_id']."</comments>
+                                        <author>".make_xml_compatible($row['username'])."</author>
+                                        <pubDate>".create_date($board_config['default_dateformat'], $row['post_time'], $board_config['board_timezone'])."</pubDate>
+                                        <guid isPermaLink=\"true\">".$base_url."viewtopic.".$phpEx."?".POST_POST_URL."=".$row['post_id']."#".$row['post_id']."</guid>
+                                      </item>";
+                }
+        }
+}
+
+if($forum && !$topic)
+{
+        //
+        // This SQL query selects the latest topics of a specific forum
+        //
+        $sql = "SELECT t.topic_title, t.topic_last_post_id, p.post_time, pt.post_text, pt.bbcode_uid, u.username, u.user_id
+                FROM ".TOPICS_TABLE." t, ".POSTS_TABLE." p, ".POSTS_TEXT_TABLE." pt, ".USERS_TABLE." u
+                WHERE t.forum_id = ".intval($forum)."
+                AND t.topic_status != 1
+                AND p.post_id = t.topic_last_post_id
+                AND pt.post_id = p.post_id
+                AND u.user_id = p.poster_id
+                ORDER BY t.topic_last_post_id DESC
+                LIMIT 0, ".intval($board_config['max_rss_topics']);
+        if(!$result = $db->sql_query($sql))
+        {
+                message_die(GENERAL_ERROR, "Could not get Latest topics", '', __LINE__, __FILE__, $sql);
+        }
+
+        $is_auth = array();
+        $is_auth = auth(AUTH_ALL, $forum, $userdata);
+
+        while($row = $db->sql_fetchrow($result))
+        {
+                if($is_auth['auth_view'] && $is_auth['auth_read'])
+                {
+                        $description = "
+                                      ".$lang['Author'].": <a href='".$base_url."profile.".$phpEx."?mode=viewprofile&".POST_USERS_URL."=".$row['user_id']."'>".$row['username']."</a><br />
+                                      ".$lang['Posted'].": ".create_date($board_config['default_dateformat'], $row['post_time'], $board_config['board_timezone'])."<br />
+                                      <br />
+                                      ".$row['post_text'];
+
+                        $rss_result .= "
+                                      <item>
+                                        <title>".make_xml_compatible(strip_tags($row['topic_title']))."</title>
+                                        <link>".$base_url."viewtopic.".$phpEx."?".POST_POST_URL."=".$row['topic_last_post_id']."#".$row['topic_last_post_id']."</link>
+                                        <description>".make_xml_compatible($description, $row['bbcode_uid'], true)."</description>
+                                        <comments>".$base_url."viewtopic.".$phpEx."?".POST_POST_URL."=".$row['topic_last_post_id']."#".$row['topic_last_post_id']."</comments>
+                                        <author>".make_xml_compatible($row['username'])."</author>
+                                        <pubDate>".create_date($board_config['default_dateformat'], $row['post_time'], $board_config['board_timezone'])."</pubDate>
+                                        <guid isPermaLink=\"true\">".$base_url."viewtopic.".$phpEx."?".POST_POST_URL."=".$row['topic_last_post_id']."#".$row['topic_last_post_id']."</guid>
+                                      </item>";
+                }
+        }
+}
+
+$rss_result .= "</channel></rss>";
+
+header("Content-type: text/xml", true);
+echo $rss_result;
 
 ?>
