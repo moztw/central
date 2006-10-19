@@ -15,17 +15,17 @@ Content-Type: text/xml; charset=UTF-8
 HERE
 
 my $RDF_HEADER=<<HERE;
-<?xml version="1.0" encoding="UTF-8" ?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://my.netscape.com/rdf/simple/0.9/">
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="0.92">
 <channel>
-    <title>moztw.org: Mozilla Taiwan</title>
+    <title>MozTW.org: Mozilla Taiwan</title>
     <link>http://moztw.org/</link>
     <description>Mozilla 系列的中文化與相關資源</description>
-</channel>
 HERE
 
 my $RDF_FOOTER=<<HERE;
-</rdf:RDF> 
+</channel>
+</rss>
 HERE
 
 my @ents = ();
