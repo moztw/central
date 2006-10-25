@@ -1,7 +1,7 @@
 ﻿  <div id="footer">
 <span class="copyright">{ADMIN_LINK}</span>
    <ul id="bn">
-	<li><a href="rdf.php" class="mainmenu"><img style='vertical-align: bottom;' src='templates/icons/rss.png' alt='RSS (RDF/XML)' title='RSS'/></a></li>
+	<li><a href="rss.php" class="mainmenu"><img style='vertical-align: bottom;' src='templates/icons/rss20.png' alt='XML / RSS2.0' title='RSS 2.0'/></a></li>
 	<li><a href='http://moztw.org'><img style='vertical-align: bottom;' src='/images/moztw/moztw_80x15.png' alt="moztw.org" title="Mozilla Taiwan"/></a></li>
 	<li><a href="http://moztw.org/about">聯絡資訊</a></li>
    </ul>

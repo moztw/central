@@ -409,7 +409,7 @@ make_jumpbox('viewforum.'.$phpEx);
 
 $template->assign_vars(array(
 	'FORUM_ID' => $forum_id,
-	'FORUM_NAME' => $forum_row['forum_name'] . '  <a href="rdf.php?fid=' . $forum_row['forum_id'] . '"><img src="images/rss.gif" alt="RSS" style="border: 0;" /></a>',
+	'FORUM_NAME' => $forum_row['forum_name'] . '  <a href="rss.php?f=' . $forum_row['forum_id'] . '"><img src="images/rss.gif" alt="RSS" style="border: 0;" /></a>',
 	'MODERATORS' => $forum_moderators,
 	'POST_IMG' => ( $forum_row['forum_status'] == FORUM_LOCKED ) ? $images['post_locked'] : $images['post_new'],
 
