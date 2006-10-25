@@ -90,29 +90,29 @@ moz();
 			<p><xsl:value-of select="description" disable-output-escaping = "yes"/></p> 
 			<xsl:if test="lastBuildDate">
 			<p class="datetime">
-			Last updated on:
+			最後更新:
 			<xsl:value-of select="lastBuildDate"/></p></xsl:if>
 			</td>
 			<td width="34%" style="border:1px outset;">
 <p>
-<xsl:attribute name="class">note</xsl:attribute>
-You are looking at an RSS feed
+<xsl:attribute name="class">注意</xsl:attribute>
+你正在閱讀的是 RSS 消息來源
 <xsl:choose>
 <xsl:when test="contains(generator, 'RSS Feed')">
-provided by <a href="http://naklon.info/rss/about.htm" title="RSS 2.0 and Atom 0.3 Feed for phpBB"><xsl:value-of select="generator"/></a>.
+Provided by <a href="http://naklon.info/rss/about.htm" title="RSS 2.0 and Atom 0.3 Feed for phpBB"><xsl:value-of select="generator"/></a>.
 </xsl:when>
 <xsl:when test="generator">
-provided by <xsl:value-of select="generator"/>.
+Provided by <xsl:value-of select="generator"/>.
 </xsl:when>
 </xsl:choose>
 It has been rendered as HTML using an XSL stylesheet. <br/>
 To see the underlying XML tags please select the "View Source" command in your browser.<br />
 <xsl:choose>
 <xsl:when test="count(item) = 1">
-There is only 1 post shown in this feed.
+此消息來源只有 1 篇文章。
 </xsl:when>
 <xsl:otherwise>
-<xsl:value-of select="count(item)"/> posts are shown in this feed.
+此消息來源有 <xsl:value-of select="count(item)"/> 篇文章。
 </xsl:otherwise>
 </xsl:choose>
 </p>
@@ -147,7 +147,7 @@ There is only 1 post shown in this feed.
 <li>f=x - forum id. Use data only from this forum to output RSS.</li>
 </xsl:otherwise>
 </xsl:choose>
-<li>t=1 - only new topics (first messages in topic). Default - 1.</li>
+<li>t=1 - only new topics (first messages in topic). Default - 0.</li>
 <li>atom - generate atom 0.3 feed instead of rss 2.0</li>
 <li>c=x - feed items count.</li>
 <li> login or uid=x - try to turn WWW-Authenticate on. May not work on some hosts.</li>

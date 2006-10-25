@@ -120,7 +120,7 @@ $needlogin=( isset($HTTP_GET_VARS['login']) or isset($HTTP_GET_VARS['uid'])) ? t
 $sql_forum_where = ( !empty($forum_id) ) ? ' AND f.forum_id = ' . $forum_id : ' ';
 
 // Return topics only, or all posts?  Specified in the URL with "t=".  Defaults to all posts (0).
-$topics_only = (isset($HTTP_GET_VARS['t']) ) ? intval($HTTP_GET_VARS['t']) : 1;
+$topics_only = (isset($HTTP_GET_VARS['t']) ) ? intval($HTTP_GET_VARS['t']) : 0;
 $topics_view = (isset($HTTP_GET_VARS['topic']) ) ? intval($HTTP_GET_VARS['topic']) : 0;
 $sql_topics_only_where = '';
 if ( $topics_only == 1 )
