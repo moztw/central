@@ -23,7 +23,7 @@ define('MAX_WEEKS_AGO',2);			// Limit RSS feed by time. Most important in large 
 									// Set to zero if you don't want use this futures
 $show_time=true;					// Show total script time in RSS comments.
 $unauthed='0';						// Comma separated list of unauthed forums. For ex.: '0,1,11';
-$no_limit=true;
+
 
 $cache_root = 'cache/';				// Cache dir
 $cache_filename="rss_feed.xml";

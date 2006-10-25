@@ -265,14 +265,14 @@ if(isset($HTTP_GET_VARS['styled']) or (AUTOSTYLED and strpos($useragent,'MSIE'))
 $sql_limit_by_http='';
 $MaxRecordAge=time()-MAX_WEEKS_AGO*604800;
 $sql_limit_time=(MAX_WEEKS_AGO>0)?"p.post_time >".$MaxRecordAge:"1";
-if (!$no_limit){
-	if(isset($HTTP_SERVER_VARS['HTTP_IF_MODIFIED_SINCE'])) {
-		$NotErrorFlag=true;
-		$NotModifiedSince=strtotime($HTTP_SERVER_VARS['HTTP_IF_MODIFIED_SINCE']);
-		if(SEE_MODIFYED) $sql_limit_by_http =  "AND (p.post_time > ".$NotModifiedSince." OR p.post_edit_time >".$NotModifiedSince." )";
-		else if($NotModifiedSince>$MaxRecordAge) $sql_limit_time="p.post_time > ".$NotModifiedSince;
-	}
-}
+//if (!$no_limit){
+//	if(isset($HTTP_SERVER_VARS['HTTP_IF_MODIFIED_SINCE'])) {
+//		$NotErrorFlag=true;
+//		$NotModifiedSince=strtotime($HTTP_SERVER_VARS['HTTP_IF_MODIFIED_SINCE']);
+//		if(SEE_MODIFYED) $sql_limit_by_http =  "AND (p.post_time > ".$NotModifiedSince." OR p.post_edit_time >".$NotModifiedSince." )";
+//		else if($NotModifiedSince>$MaxRecordAge) $sql_limit_time="p.post_time > ".$NotModifiedSince;
+//	}
+//}
 $getdesc=($forum_id<>'')?'f.forum_desc,':'';
 $sql = "SELECT f.forum_name,".$getdesc." t.topic_id, t.topic_title, u.user_id,
 	 u.username, u.user_sig, u.user_sig_bbcode_uid,u.user_allowsmile, p.post_time,p.post_username, p.post_edit_time,

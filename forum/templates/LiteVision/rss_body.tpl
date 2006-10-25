@@ -25,7 +25,7 @@ xmlns:annotate="http://purl.org/rss/1.0/modules/annotate/" xmlns:rdf="http://www
 </image>
 <!-- BEGIN post_item -->
 <item>
-<title>{post_item.FORUM_NAME} :: {post_item.TOPIC_TITLE}</title>
+<title>{post_item.TOPIC_TITLE} - {post_item.FORUM_NAME}</title>
 <link>{post_item.POST_URL}</link>
 <pubDate>{post_item.UTF_TIME}</pubDate>
 <guid isPermaLink="true">{post_item.POST_URL}</guid>
