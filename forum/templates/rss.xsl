@@ -147,7 +147,7 @@ There is only 1 post shown in this feed.
 <li>f=x - forum id. Use data only from this forum to output RSS.</li>
 </xsl:otherwise>
 </xsl:choose>
-<li>t=1 - only new topics (first messages in topic). Default - 0.</li>
+<li>t=1 - only new topics (first messages in topic). Default - 1.</li>
 <li>atom - generate atom 0.3 feed instead of rss 2.0</li>
 <li>c=x - feed items count.</li>
 <li> login or uid=x - try to turn WWW-Authenticate on. May not work on some hosts.</li>
