@@ -9,7 +9,7 @@ if ( !defined('IN_PHPBB') )
 
 define('CACHE_TIME', 300);	    	// Cache time for RSS feed in sec, 5 min by default
 									// Set to zero to disable cache (Not recomendated).
-define('AUTOSTYLED',false);			// Use XSLT transformation in MSIE by default
+define('AUTOSTYLED',true);			// Use XSLT transformation in MSIE by default
 define('CACHE_TO_FILE', false);		// Use cache dir for caching defaul page. You MUST set 777 to that dir first
 define('UPDATE_VIEW_COUNT',false);	// Update count of viewed topics for non-Anonymous user
 									// If set to false disable Who viewed a topic update too

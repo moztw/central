@@ -90,12 +90,12 @@ moz();
 			<p><xsl:value-of select="description" disable-output-escaping = "yes"/></p> 
 			<xsl:if test="lastBuildDate">
 			<p class="datetime">
-			最後更新:
+			最後更新：
 			<xsl:value-of select="lastBuildDate"/></p></xsl:if>
 			</td>
 			<td width="34%" style="border:1px outset;">
 <p>
-<xsl:attribute name="class">注意</xsl:attribute>
+<xsl:attribute name="class">note</xsl:attribute>
 你正在閱讀的是 RSS 消息來源
 <xsl:choose>
 <xsl:when test="contains(generator, 'RSS Feed')">
@@ -105,8 +105,8 @@ Provided by <a href="http://naklon.info/rss/about.htm" title="RSS 2.0 and Atom 0
 Provided by <xsl:value-of select="generator"/>.
 </xsl:when>
 </xsl:choose>
-It has been rendered as HTML using an XSL stylesheet. <br/>
-To see the underlying XML tags please select the "View Source" command in your browser.<br />
+這份消息來源經過 XSL 樣式表處理過。<br/>
+要顯示原始的 XML 程式碼，請從瀏覽器中選擇「檢視原始碼」。<br />
 <xsl:choose>
 <xsl:when test="count(item) = 1">
 此消息來源只有 1 篇文章。
@@ -136,21 +136,20 @@ To see the underlying XML tags please select the "View Source" command in your b
 </xsl:for-each></dl> 
 <hr /><p class="off"><xsl:value-of select="copyright"/></p> 
 <xsl:if test="contains(generator, 'RSS Feed')">
-<p class="off">For URL's the following arguments may be optionally passed (as  applicable):</p>
+<p class="off">下面是這個消息來源可用的參數，請接在網址後：</p>
 <ul class="off">
 <xsl:choose>
 <xsl:when test="contains(generator, 'RSS Feed Album')">
-<li>cat_id=x - Album cat id. Use data only from this category to output RSS.</li>
-<li>comments - see album comments in RSS Feed too</li>
+<li>cat_id=x - 相簿 cat ID。 僅列出此分類 ID 的文章列表。</li>
+<li>comments - 一併顯示相簿的留言</li>
 </xsl:when>
 <xsl:otherwise>
-<li>f=x - forum id. Use data only from this forum to output RSS.</li>
+<li>f=x - 分區 ID，僅列出此分區 ID 的文章列表。</li>
 </xsl:otherwise>
 </xsl:choose>
-<li>t=1 - only new topics (first messages in topic). Default - 0.</li>
-<li>atom - generate atom 0.3 feed instead of rss 2.0</li>
-<li>c=x - feed items count.</li>
-<li> login or uid=x - try to turn WWW-Authenticate on. May not work on some hosts.</li>
+<li>t=0 - 顯示所有討論文章，連回覆也一併顯示。</li>
+<li>atom - 產生 Atom 0.3 格式的消息來源</li>
+<li>c=x - 顯示的文章數目</li>
 </ul>
 </xsl:if>
  </xsl:template> 

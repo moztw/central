@@ -445,7 +445,7 @@ else
 			$post_subject = htmlspecialchars($lang['Subject'].': '.$post_subject.'<br />');
 		}
 		// Variable reassignment for topic title, and show whether it is the start of topic, or a reply
-//		$topic_title = $post['topic_title'];
+		$topic_title = $post['topic_title'];
 //		if ( $post['post_id'] != $post['topic_first_post_id'] )
 //		{
 //			$topic_title = 'RE: ' . $topic_title;
