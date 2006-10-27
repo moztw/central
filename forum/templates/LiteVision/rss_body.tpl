@@ -17,11 +17,11 @@ xmlns:annotate="http://purl.org/rss/1.0/modules/annotate/" xmlns:rdf="http://www
 <generator>{PROGRAM}</generator>{LANGUAGE}
 <lastBuildDate>{BUILD_DATE}</lastBuildDate>
 <image>
-	<url>{BOARD_URL}templates/subSilver/images/logo_phpBB_med.gif</url>
+	<url>http://moztw.org/images/mozilla_taiwan_80x15.png</url>
 	<title>{BOARD_TITLE}</title>
 	<link>{BOARD_URL}</link>
-	<width>122</width>
-	<height>56</height>
+	<width>80</width>
+	<height>15</height>
 </image>
 <!-- BEGIN post_item -->
 <item>
