@@ -119,8 +119,8 @@ $needlogin=( isset($HTTP_GET_VARS['login']) or isset($HTTP_GET_VARS['uid'])) ? t
 
 $sql_forum_where = ( !empty($forum_id) ) ? ' AND f.forum_id = ' . $forum_id : ' ';
 
-// Return topics only, or all posts?  Specified in the URL with "t=".  Defaults to all posts (0).
-$topics_only = (isset($HTTP_GET_VARS['t']) ) ? intval($HTTP_GET_VARS['t']) : 0;
+// Return topics only, or all posts?  Specified in the URL with "t=".  Defaults to all posts (1).
+$topics_only = (isset($HTTP_GET_VARS['t']) ) ? intval($HTTP_GET_VARS['t']) : 1;
 $topics_view = (isset($HTTP_GET_VARS['topic']) ) ? intval($HTTP_GET_VARS['topic']) : 0;
 $sql_topics_only_where = '';
 if ( $topics_only == 1 )
@@ -265,14 +265,14 @@ if(isset($HTTP_GET_VARS['styled']) or (AUTOSTYLED and strpos($useragent,'MSIE'))
 $sql_limit_by_http='';
 $MaxRecordAge=time()-MAX_WEEKS_AGO*604800;
 $sql_limit_time=(MAX_WEEKS_AGO>0)?"p.post_time >".$MaxRecordAge:"1";
-if (!$no_limit){
-	if(isset($HTTP_SERVER_VARS['HTTP_IF_MODIFIED_SINCE'])) {
-		$NotErrorFlag=true;
-		$NotModifiedSince=strtotime($HTTP_SERVER_VARS['HTTP_IF_MODIFIED_SINCE']);
-		if(SEE_MODIFYED) $sql_limit_by_http =  "AND (p.post_time > ".$NotModifiedSince." OR p.post_edit_time >".$NotModifiedSince." )";
-		else if($NotModifiedSince>$MaxRecordAge) $sql_limit_time="p.post_time > ".$NotModifiedSince;
-	}
-}
+//if (!$no_limit){
+//	if(isset($HTTP_SERVER_VARS['HTTP_IF_MODIFIED_SINCE'])) {
+//		$NotErrorFlag=true;
+//		$NotModifiedSince=strtotime($HTTP_SERVER_VARS['HTTP_IF_MODIFIED_SINCE']);
+//		if(SEE_MODIFYED) $sql_limit_by_http =  "AND (p.post_time > ".$NotModifiedSince." OR p.post_edit_time >".$NotModifiedSince." )";
+//		else if($NotModifiedSince>$MaxRecordAge) $sql_limit_time="p.post_time > ".$NotModifiedSince;
+//	}
+//}
 $getdesc=($forum_id<>'')?'f.forum_desc,':'';
 $sql = "SELECT f.forum_name,".$getdesc." t.topic_id, t.topic_title, u.user_id,
 	 u.username, u.user_sig, u.user_sig_bbcode_uid,u.user_allowsmile, p.post_time,p.post_username, p.post_edit_time,
