@@ -33,7 +33,7 @@ xmlns:annotate="http://purl.org/rss/1.0/modules/annotate/" xmlns:rdf="http://www
 {post_item.POST_SUBJECT}
 {L_POSTED}: {post_item.POST_TIME}&lt;br /&gt;
 &lt;br /&gt;&lt;span class="postbody"&gt;
-{post_item.POST_TEXT}{post_item.USER_SIG}&lt;/span&gt;&lt;br /&gt;
+{post_item.POST_TEXT}&lt;/span&gt;&lt;br /&gt;
 </description>
 <dc:creator>{post_item.AUTHOR0}</dc:creator>
 <dc:subject>{post_item.FORUM_NAME}</dc:subject>

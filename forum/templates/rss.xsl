@@ -90,23 +90,23 @@ moz();
 			<p><xsl:value-of select="description" disable-output-escaping = "yes"/></p> 
 			<xsl:if test="lastBuildDate">
 			<p class="datetime">
-			最後更新：
+			最後更新時間：
 			<xsl:value-of select="lastBuildDate"/></p></xsl:if>
 			</td>
 			<td width="34%" style="border:1px outset;">
 <p>
 <xsl:attribute name="class">note</xsl:attribute>
-你正在閱讀的是 RSS 消息來源
+你正在閱讀
 <xsl:choose>
 <xsl:when test="contains(generator, 'RSS Feed')">
-Provided by <a href="http://naklon.info/rss/about.htm" title="RSS 2.0 and Atom 0.3 Feed for phpBB"><xsl:value-of select="generator"/></a>.
+由 <a href="http://naklon.info/rss/about.htm" title="RSS 2.0 and Atom 0.3 Feed for phpBB"> Mozilla Taiwan 討論區</a>
 </xsl:when>
 <xsl:when test="generator">
-Provided by <xsl:value-of select="generator"/>.
+由 Mozilla Taiwan 討論區
 </xsl:when>
 </xsl:choose>
-這份消息來源經過 XSL 樣式表處理過。<br/>
-要顯示原始的 XML 程式碼，請從瀏覽器中選擇「檢視原始碼」。<br />
+提供的消息來源，且經過 XSL 樣式表處理過。<br/>
+要顯示原始的 XML 程式碼，請從瀏覽器中選擇「檢視原始檔」。<br />
 <xsl:choose>
 <xsl:when test="count(item) = 1">
 此消息來源只有 1 篇文章。
@@ -148,7 +148,7 @@ Provided by <xsl:value-of select="generator"/>.
 </xsl:otherwise>
 </xsl:choose>
 <li>t=0 - 顯示所有討論文章，連回覆也一併顯示。</li>
-<li>atom - 產生 Atom 0.3 格式的消息來源</li>
+<li>atom - 產生Atom 0.3 格式的消息來源</li>
 <li>c=x - 顯示的文章數目</li>
 </ul>
 </xsl:if>
