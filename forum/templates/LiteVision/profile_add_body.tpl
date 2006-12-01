@@ -49,30 +49,30 @@
 	<!-- END switch_namechange_allowed -->
 	<tr> 
 		<td bgcolor="#EAF1FC"><span class="gen">{L_EMAIL_ADDRESS}: *</span></td>
-		<td bgcolor="#EAF1FC"><input type="text" class="form2" style="width:200px" name="email" size="25" maxlength="255" value="{EMAIL}" /></td>
+		<td bgcolor="#EAF1FC">
+		  <input type="text" class="form2" style="width:200px" name="email" size="25" maxlength="255" value="{EMAIL}" />
+		  <span class="gensmall">FON 優惠碼: <span style="color:#FF0000;">{FONCODE}</span></span>
+		</td>
 	</tr>
 	<!-- BEGIN switch_edit_profile -->
 	<tr> 
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_CURRENT_PASSWORD}: *</span><br />
 		<span class="gensmall">{L_CONFIRM_PASSWORD_EXPLAIN}</span></td>
 	  <td bgcolor="#EAF1FC"> 
-		<input type="password" class="form2" style="width: 200px" name="cur_password" size="25" maxlength="32" value="{CUR_PASSWORD}" />
-	  </td>
+		<input type="password" class="form2" style="width: 200px" name="cur_password" size="25" maxlength="32" value="{CUR_PASSWORD}" />	  </td>
 	</tr>
 	<!-- END switch_edit_profile -->
 	<tr> 
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_NEW_PASSWORD}: *</span><br />
 		<span class="gensmall">{L_PASSWORD_IF_CHANGED}</span></td>
 	  <td bgcolor="#EAF1FC"> 
-		<input type="password" class="form2" style="width: 200px" name="new_password" size="25" maxlength="32" value="{NEW_PASSWORD}" />
-	  </td>
+		<input type="password" class="form2" style="width: 200px" name="new_password" size="25" maxlength="32" value="{NEW_PASSWORD}" />	  </td>
 	</tr>
 	<tr> 
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_CONFIRM_PASSWORD}: * </span><br />
 		<span class="gensmall">{L_PASSWORD_CONFIRM_IF_CHANGED}</span></td>
 	  <td bgcolor="#EAF1FC"> 
-		<input type="password" class="form2" style="width: 200px" name="password_confirm" size="25" maxlength="32" value="{PASSWORD_CONFIRM}" />
-	  </td>
+		<input type="password" class="form2" style="width: 200px" name="password_confirm" size="25" maxlength="32" value="{PASSWORD_CONFIRM}" />	  </td>
 	</tr>
 	<!-- Visual Confirmation -->
 	<!-- BEGIN switch_confirm -->
@@ -100,62 +100,52 @@
 	<tr> 
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_ICQ_NUMBER}:</span></td>
 	  <td bgcolor="#EAF1FC"> 
-		<input type="text" name="icq" class="form2"style="width: 100px"  size="10" maxlength="15" value="{ICQ}" />
-	  </td>
+		<input type="text" name="icq" class="form2"style="width: 100px"  size="10" maxlength="15" value="{ICQ}" />	  </td>
 	</tr>
 	<tr> 
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_AIM}:</span></td>
 	  <td bgcolor="#EAF1FC"> 
-		<input type="text" class="form2"style="width: 150px"  name="aim" size="20" maxlength="255" value="{AIM}" />
-	  </td>
+		<input type="text" class="form2"style="width: 150px"  name="aim" size="20" maxlength="255" value="{AIM}" />	  </td>
 	</tr>
 	<tr> 
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_MESSENGER}:</span></td>
 	  <td bgcolor="#EAF1FC"> 
-		<input type="text" class="form2"style="width: 150px"  name="msn" size="20" maxlength="255" value="{MSN}" />
-	  </td>
+		<input type="text" class="form2"style="width: 150px"  name="msn" size="20" maxlength="255" value="{MSN}" />	  </td>
 	</tr>
 	<tr> 
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_YAHOO}:</span></td>
 	  <td bgcolor="#EAF1FC"> 
-		<input type="text" class="form2"style="width: 150px"  name="yim" size="20" maxlength="255" value="{YIM}" />
-	  </td>
+		<input type="text" class="form2"style="width: 150px"  name="yim" size="20" maxlength="255" value="{YIM}" />	  </td>
 	</tr>
 	<tr> 
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_SKYPE} {USERNAME}:</span></td>
 	  <td bgcolor="#EAF1FC"> 
-		<input type="text" class="form2"style="width: 150px"  name="skype" size="20" maxlength="255" value="{SKYPE}" />
-	  </td>
+		<input type="text" class="form2"style="width: 150px"  name="skype" size="20" maxlength="255" value="{SKYPE}" />	  </td>
 	</tr>
 	<tr> 
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_WEBSITE}:</span></td>
 	  <td bgcolor="#EAF1FC"> 
-		<input type="text" class="form2"style="width: 200px"  name="website" size="25" maxlength="255" value="{WEBSITE}" />
-	  </td>
+		<input type="text" class="form2"style="width: 200px"  name="website" size="25" maxlength="255" value="{WEBSITE}" />	  </td>
 	</tr>
 	<tr> 
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_LOCATION}:</span></td>
 	  <td bgcolor="#EAF1FC"> 
-		<input type="text" class="form2"style="width: 200px"  name="location" size="25" maxlength="100" value="{LOCATION}" />
-	  </td>
+		<input type="text" class="form2"style="width: 200px"  name="location" size="25" maxlength="100" value="{LOCATION}" />	  </td>
 	</tr>
 	<tr> 
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_OCCUPATION}:</span></td>
 	  <td bgcolor="#EAF1FC"> 
-		<input type="text" class="form2"style="width: 200px"  name="occupation" size="25" maxlength="100" value="{OCCUPATION}" />
-	  </td>
+		<input type="text" class="form2"style="width: 200px"  name="occupation" size="25" maxlength="100" value="{OCCUPATION}" />	  </td>
 	</tr>
 	<tr> 
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_INTERESTS}:</span></td>
 	  <td bgcolor="#EAF1FC"> 
-		<input type="text" class="form2"style="width: 200px"  name="interests" size="35" maxlength="150" value="{INTERESTS}" />
-	  </td>
+		<input type="text" class="form2"style="width: 200px"  name="interests" size="35" maxlength="150" value="{INTERESTS}" />	  </td>
 	</tr>
 	<tr> 
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_SIGNATURE}:</span><br /><span class="gensmall">{L_SIGNATURE_EXPLAIN}<br /><br />{HTML_STATUS}<br />{BBCODE_STATUS}<br />{SMILIES_STATUS}</span></td>
 	  <td bgcolor="#EAF1FC"> 
-		<textarea name="signature"style="width: 300px"  rows="6" cols="30" class="form2">{SIGNATURE}</textarea>
-	  </td>
+		<textarea name="signature"style="width: 300px"  rows="6" cols="30" class="form2">{SIGNATURE}</textarea>	  </td>
 	</tr>
 	<tr> 
 	  <td bgcolor="#E1ECFB" colspan="2" height="28">&nbsp;</td>
@@ -256,8 +246,7 @@
 	  <td bgcolor="#EAF1FC"><span class="gen">{L_DATE_FORMAT}:</span><br />
 		<span class="gensmall">{L_DATE_FORMAT_EXPLAIN}</span></td>
 	  <td bgcolor="#EAF1FC"> 
-		<input type="text" name="dateformat" value="{DATE_FORMAT}" maxlength="14" class="form2" />
-	  </td>
+		<input type="text" name="dateformat" value="{DATE_FORMAT}" maxlength="14" class="form2" />	  </td>
 	</tr>
 	<!-- BEGIN switch_avatar_block -->
 	<tr> 

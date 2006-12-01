@@ -809,6 +809,17 @@ if ( $mode == 'editprofile' )
 		$error = TRUE;
 		$error_msg = $lang['Wrong_Profile'];
 	}
+	
+	//START - FON Special Promote
+	$sql = "SELECT code FROM foncode WHERE uid=$user_id";
+	if ($result = $db->sql_query($sql))
+	{
+		$row = $db->sql_fetchrow($result);
+		$foncode = $row['code'];
+	}
+
+	$db->sql_freeresult($result);
+	//END   - FON Special Promote
 }
 
 if( isset($HTTP_POST_VARS['avatargallery']) && !$error )
@@ -995,6 +1006,7 @@ else
 		'NEW_PASSWORD' => $new_password,
 		'PASSWORD_CONFIRM' => $password_confirm,
 		'EMAIL' => $email,
+		'FONCODE' => isset($foncode) ? $foncode : "新註冊的朋友請期待下次贈獎活動囉!",
 // Visual Confirmation
 		'CONFIRM_IMG' => $confirm_image, 
 		'YIM' => $yim,
