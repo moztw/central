@@ -51,7 +51,7 @@
 		<td bgcolor="#EAF1FC"><span class="gen">{L_EMAIL_ADDRESS}: *</span></td>
 		<td bgcolor="#EAF1FC">
 		  <input type="text" class="form2" style="width:200px" name="email" size="25" maxlength="255" value="{EMAIL}" />
-		  <span class="gensmall">FON 優惠碼: <span style="color:#FF0000;">{FONCODE}</span> (<a href="">說明</a>)</span>
+		  <span class="gensmall">FON 優惠碼: <span style="color:#FF0000;">{FONCODE}</span> (<a href="http://forum.moztw.org/viewtopic.php?p=92070">說明</a>)</span>
 		</td>
 	</tr>
 	<!-- BEGIN switch_edit_profile -->
