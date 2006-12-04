@@ -49,34 +49,30 @@ function submitSearch(formObj){
 
 
 <!-- <a href="{U_GROUP_CP}" class="mainmenu">{L_USERGROUPS}</a> -->
-
-<!-- BEGIN switch_user_logged_out -->
-<big><b>您尚未登入</b></big> (You are not logged in yet.)
-<!-- END switch_user_logged_out -->
-<span style=" float: right; padding: 0;">
+<div style=" float: right; padding: 0; text-align:center;">
 <!-- BEGIN switch_user_logged_in -->
 <img src='templates/icons/icon_mini_search.gif'>
 <a href="{U_SEARCH_NEW}" class="gensmall">{L_SEARCH_NEW}</a> |
 <a href="{U_PRIVATEMSGS}" class="mainmenu">{PRIVATE_MESSAGE_INFO}</a> |
 <img src='templates/icons/icon_mini_profile.gif'>
-<a href="{U_PROFILE}" class="mainmenu">{L_PROFILE}</a> | 
+<a href="{U_PROFILE}" class="mainmenu">{L_PROFILE}</a>←FON優惠碼在此 | 
+<img src='templates/icons/icon_mini_login.gif'> <a href="{U_LOGIN_LOGOUT}" class="mainmenu">{L_LOGIN_LOGOUT}</a>
 <!-- END switch_user_logged_in -->
 
-<img src='templates/icons/icon_mini_login.gif'><a href="{U_LOGIN_LOGOUT}" class="mainmenu">{L_LOGIN_LOGOUT}</a>
+
 <!-- BEGIN switch_user_logged_out -->
 <!--
 | <a href="https://forum.moztw.org/login.php" class="mainmenu">安全登入(SSL)</a>
 -->
-| <a href="{U_REGISTER}" class="mainmenu">{L_REGISTER}</a>&nbsp;
+
+<img src='templates/icons/icon_mini_login.gif'> <a href="{U_LOGIN_LOGOUT}" class="mainmenu">{L_LOGIN_LOGOUT}享福利，免費送 FON 路由器</a>
+| <a href="{U_REGISTER}" class="mainmenu">{L_REGISTER}</a>
+
+<br/>
+<a href="http://forum.moztw.org/viewtopic.php?t=5571">部分看板</a>僅會員能貼文 (未註冊仍可閱讀內容)
 <!-- END switch_user_logged_out -->
 <!-- <a style='float: right;' href="{U_FAQ}" class="mainmenu" title="{L_FAQ}">
 <img src='templates/icons/icon_mini_faq.gif' alt='FAQ'>
 </a> -->
-</span>
-<!-- BEGIN switch_user_logged_out -->
-<br />
-  <!-- 全站公告區 UTF-8 -->
-<div align="left" style="width: 550px; padding: 5px 15px; background-color: #EEEE22; border:2px solid #DDDD11;" class="gen">您好，<a href="http://forum.moztw.org/viewtopic.php?t=5571">部分討論區將僅開放會員張貼文章</a>，建議您<a href="{U_REGISTER}">註冊為會員</a>。<br/>（註冊免費，未註冊依然可閱讀所有文章）</div>
-<!-- END switch_user_logged_out -->
-
-<br />
+</div>
+<br style="clear: both;"/>

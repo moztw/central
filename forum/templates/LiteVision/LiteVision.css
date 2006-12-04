@@ -403,20 +403,45 @@ overflow: auto;
 	color:#000000;
 	background-color: #FFFF66;
 	display: block;
-	margin: .1em auto;
 	padding: .7em 0;
 	text-align: center;
-	border:2px solid #DDDD11;
+	border:solid #DDDD11;
+	border-width: 2px 0;
 }
 .faq:hover {
 	background: #FFCC00;
-	border:2px solid #DDDD11;
-
 }
 
-a.faq:link   { text-decoration: none; color : #000000; }
-a.faq:visited { text-decoration: none; color : #222222; }
-a.faq:hover	{ text-decoration: none; color : #444444; }
+a.faq {text-decoration: none; }
+a.faq:link   {color : #000000; }
+a.faq:visited {color : #222222; }
+a.faq:hover	{color : #444444; }
+
+/* start: FON special promote*/
+.faq.fonsp {
+	width: 70%;
+	float: left;
+}
+.fon {
+	font-weight: bold;
+	font-size: 13px;
+	color:#000000;
+	background-color: #DDDD11;
+	display: block;
+	padding: .7em 0;
+	text-align: center;
+	border:solid #DDDD11;
+	border-width: 2px 0;
+	width: 30%;
+	float: right;
+}
+.fon:hover {
+	background: #F04;
+}
+a.fon:link   {color : #444444; }
+a.fon:visited {color : #222222; }
+a.fon:hover	{ color : yellow; }
+/*   end: FON special promote*/
 
 
 /* SD701 */
