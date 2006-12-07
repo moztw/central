@@ -12,10 +12,15 @@
 
 	The phpBB Group : 2002
 // -->
-<span class="genmed"><strong>&nbsp;&nbsp;&nbsp;Powered by: </strong></span><a href="http://www.phpbb.com" target="_blank" class="copyright">phpbb.com</a><span class="genmed"> ©</span><a href="http://www.phpbb.ro" target="_blank" class="copyright"> phpbb.ro</a><span class="gensmall"> - LiteVision theme by <a href="http://www.michaeljackson.ro" target="_blank" class="copyright">MJR</a>, modified by <a href="http://ant.sillydog.org/" target="_blank" class="copyright">Antony</a>.</span></div></td>
+<span class="genmed"><strong>&nbsp;&nbsp;&nbsp;Powered by: </strong></span><a href="http://www.phpbb.com" target="_blank" class="copyright">phpbb.com</a><span class="genmed"> ?/span><a href="http://www.phpbb.ro" target="_blank" class="copyright"> phpbb.ro</a><span class="gensmall"> - LiteVision theme by <a href="http://www.michaeljackson.ro" target="_blank" class="copyright">MJR</a>, modified by <a href="http://ant.sillydog.org/" target="_blank" class="copyright">Antony</a>.</span></div></td>
   </tr>
 </table>
 
 
-</body>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1035080-1";
+urchinTracker();
+</script></body>
 </html>

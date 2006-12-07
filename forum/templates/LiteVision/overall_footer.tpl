@@ -9,5 +9,10 @@
    Copyright &copy; 2002-2005 <a href="http://moztw.org/" class="copyright">Mozilla Taiwan</a> (Mozilla 正體中文/台灣, Mozilla Localization: Traditional Chinese)</p>
   </div>
   <!-- closes #footer-->
-</body>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1035080-1";
+urchinTracker();
+</script></body>
 </html>
