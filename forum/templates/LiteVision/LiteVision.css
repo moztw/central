@@ -417,28 +417,6 @@ a.faq:link   {color : #000000; }
 a.faq:visited {color : #222222; }
 a.faq:hover	{color : #444444; }
 
-/* start: FON special promote*/
-.faq.fonsp {
-	width: 70%;
-	float: left;
-}
-.fon {
-	font-size: 13px;
-	background-color: #EFEFEF;
-	display: block;
-	padding: .7em 0;
-	text-align: center;
-	border:solid rgb(129, 183, 243);
-	border-width: 2px 0;
-	width: 30%;
-	float: right;
-}
-.fon:hover {
-	background: rgb(129, 183, 243);
-}
-a.fon {color:red;}
-a.fon:hover {color:#FFF;}
-/*   end: FON special promote*/
 
 
 /* SD701 */
