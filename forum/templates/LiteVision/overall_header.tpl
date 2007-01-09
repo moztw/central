@@ -55,7 +55,7 @@ function submitSearch(formObj){
 <a href="{U_SEARCH_NEW}" class="gensmall">{L_SEARCH_NEW}</a> |
 <a href="{U_PRIVATEMSGS}" class="mainmenu">{PRIVATE_MESSAGE_INFO}</a> |
 <img src='templates/icons/icon_mini_profile.gif'>
-<a href="{U_PROFILE}" class="mainmenu">{L_PROFILE}</a>←FON優惠碼在此 | 
+<a href="{U_PROFILE}" class="mainmenu">{L_PROFILE}</a> | 
 <img src='templates/icons/icon_mini_login.gif'> <a href="{U_LOGIN_LOGOUT}" class="mainmenu">{L_LOGIN_LOGOUT}</a>
 <!-- END switch_user_logged_in -->
 
@@ -65,7 +65,7 @@ function submitSearch(formObj){
 | <a href="https://forum.moztw.org/login.php" class="mainmenu">安全登入(SSL)</a>
 -->
 
-<img src='templates/icons/icon_mini_login.gif'> <a href="{U_LOGIN_LOGOUT}" class="mainmenu">{L_LOGIN_LOGOUT}享福利，免費送 FON 路由器</a>
+<img src='templates/icons/icon_mini_login.gif'> <a href="{U_LOGIN_LOGOUT}" class="mainmenu">{L_LOGIN_LOGOUT}</a>
 | <a href="{U_REGISTER}" class="mainmenu">{L_REGISTER}</a>
 
 <br/>
