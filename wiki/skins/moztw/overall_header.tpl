@@ -22,6 +22,17 @@ function submitSearch(formObj){
 //-->
 </script>
 <!-- END switch_enable_pm_popup -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1035080-1";
+urchinTracker();
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-1035080-4";
+urchinTracker();
+</script>
 </head>
 <body bgcolor="{T_BODY_BGCOLOR}" text="{T_BODY_TEXT}" link="{T_BODY_LINK}" vlink="{T_BODY_VLINK}"  class="secondLevel sectionForum">
 <a name="top"></a>
