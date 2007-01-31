@@ -10,8 +10,12 @@
 <link href="templates/LiteVision/LiteVision.css" rel="stylesheet" type="text/css">
 <link href="templates/LiteVision/moztwheader.css" rel="stylesheet" type="text/css">
 <!-- BEGIN switch_enable_pm_popup -->
-<script language="JavaScript" type="text/javascript"><!--
+<script type="text/javascript"><!--
 	if ( 0 ) { window.open('privmsg.php?mode=newpm', '_phpbbprivmsg', 'HEIGHT=225,resizable=yes,WIDTH=400'); }
+//-->
+</script>
+<!-- END switch_enable_pm_popup -->
+<script type="text/javascript"><!--
 function submitSearch(formObj){
 	if (formObj.searchtarget.value=="moztw"){
 		formObj.action = "http://www.google.com/custom";
@@ -21,7 +25,6 @@ function submitSearch(formObj){
 }
 //-->
 </script>
-<!-- END switch_enable_pm_popup -->
 </head>
 <body bgcolor="{T_BODY_BGCOLOR}" text="{T_BODY_TEXT}" link="{T_BODY_LINK}" vlink="{T_BODY_VLINK}"  class="secondLevel sectionForum">
 <a name="top"></a>
@@ -29,8 +32,7 @@ function submitSearch(formObj){
 <h1><a href="http://moztw.org/" title="Return to home page, moztw.org" accesskey="1">Mozilla Taiwan (MozTW)</a></h1>
  <ul>
   <li id="menu_aboutus"><a href="http://moztw.org/about" title="About this website">關於本站</a></li>
-  <li id="menu_links"><a href="http://moztw.org/link" title="與 Mozilla 相關的連結">網路資源</a></li>
-  <li id="menu_wiki"><a href="http://wiki.moztw.org/" title="Mozilla Taiwan 共筆系統">Wiki</a></li>
+  <li id="menu_wiki"><a href="http://wiki.moztw.org/" title="Mozilla Taiwan 共筆系統">共筆系統</a></li>
   <li id="menu_forum"><a href="{U_INDEX}" title="Mozilla 華語社群討論區">討論區</a></li>
   <li id="menu_docs"><a href="http://moztw.org/docs" title="各項使用說明、介紹與文件資料">文件</a></li>
   <li id="menu_products"><a href="http://moztw.org/dl" title="Moztw.org 提供的中文化軟體一覽">下載</a></li>
@@ -68,7 +70,7 @@ function submitSearch(formObj){
 <img src='templates/icons/icon_mini_login.gif'> <a href="{U_LOGIN_LOGOUT}" class="mainmenu">{L_LOGIN_LOGOUT}</a>
 | <a href="{U_REGISTER}" class="mainmenu">{L_REGISTER}</a>
 
-<br/>
+<br>
 <a href="http://forum.moztw.org/viewtopic.php?t=5571">部分看板</a>僅會員能貼文 (未註冊仍可閱讀內容)
 <!-- END switch_user_logged_out -->
 <!-- <a style='float: right;' href="{U_FAQ}" class="mainmenu" title="{L_FAQ}">

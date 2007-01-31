@@ -71,8 +71,7 @@ urchinTracker();
 <h1><a href="http://moztw.org/" title="Return to home page, moztw.org" accesskey="1">Mozilla Taiwan (MozTW)</a></h1>
  <ul>
   <li id="menu_aboutus"><a href="http://moztw.org/about" title="About this website">關於本站</a></li>
-  <li id="menu_links"><a href="http://moztw.org/link" title="與 Mozilla 相關的連結">網路資源</a></li>
-  <li id="menu_wiki"><a href="http://wiki.moztw.org/" title="Mozilla Taiwan 共筆系統">Wiki</a></li>
+  <li id="menu_wiki"><a href="http://wiki.moztw.org/" title="Mozilla Taiwan 共筆系統">共筆系統</a></li>
   <li id="menu_forum"><a href="http://forum.moztw.org/" title="Mozilla 華語社群討論區">討論區</a></li>
   <li id="menu_docs"><a href="http://moztw.org/docs" title="各項使用說明、介紹與文件資料">文件</a></li>
   <li id="menu_products"><a href="http://moztw.org/dl" title="Moztw.org 提供的中文化軟體一覽">下載</a></li>
