@@ -119,13 +119,13 @@ $needlogin=( isset($HTTP_GET_VARS['login']) or isset($HTTP_GET_VARS['uid'])) ? t
 
 $sql_forum_where = ( !empty($forum_id) ) ? ' AND f.forum_id = ' . $forum_id : ' ';
 
-// Return topics only, or all posts?  Specified in the URL with "t=".  Defaults to all posts (0).
-$topics_only = (isset($HTTP_GET_VARS['t']) ) ? intval($HTTP_GET_VARS['t']) : 0;
+// Return topics only, or all posts?  Specified in the URL with "t=".  Defaults to all posts (1).
+$topics_only = (isset($HTTP_GET_VARS['t']) ) ? intval($HTTP_GET_VARS['t']) : 1;
 $topics_view = (isset($HTTP_GET_VARS['topic']) ) ? intval($HTTP_GET_VARS['topic']) : 0;
 $sql_topics_only_where = '';
 if ( $topics_only == 1 )
 {
-	$sql_topics_only_where = 'AND p.post_id = t.topic_first_post_id';
+	$sql_topics_only_where = 'AND p.post_id = t.topic_last_post_id';
 }
 if($topics_view != 0)
 {
@@ -265,18 +265,18 @@ if(isset($HTTP_GET_VARS['styled']) or (AUTOSTYLED and strpos($useragent,'MSIE'))
 $sql_limit_by_http='';
 $MaxRecordAge=time()-MAX_WEEKS_AGO*604800;
 $sql_limit_time=(MAX_WEEKS_AGO>0)?"p.post_time >".$MaxRecordAge:"1";
-if (!$no_limit){
-	if(isset($HTTP_SERVER_VARS['HTTP_IF_MODIFIED_SINCE'])) {
-		$NotErrorFlag=true;
-		$NotModifiedSince=strtotime($HTTP_SERVER_VARS['HTTP_IF_MODIFIED_SINCE']);
-		if(SEE_MODIFYED) $sql_limit_by_http =  "AND (p.post_time > ".$NotModifiedSince." OR p.post_edit_time >".$NotModifiedSince." )";
-		else if($NotModifiedSince>$MaxRecordAge) $sql_limit_time="p.post_time > ".$NotModifiedSince;
-	}
-}
+//if (!$no_limit){
+//	if(isset($HTTP_SERVER_VARS['HTTP_IF_MODIFIED_SINCE'])) {
+//		$NotErrorFlag=true;
+//		$NotModifiedSince=strtotime($HTTP_SERVER_VARS['HTTP_IF_MODIFIED_SINCE']);
+//		if(SEE_MODIFYED) $sql_limit_by_http =  "AND (p.post_time > ".$NotModifiedSince." OR p.post_edit_time >".$NotModifiedSince." )";
+//		else if($NotModifiedSince>$MaxRecordAge) $sql_limit_time="p.post_time > ".$NotModifiedSince;
+//	}
+//}
 $getdesc=($forum_id<>'')?'f.forum_desc,':'';
 $sql = "SELECT f.forum_name,".$getdesc." t.topic_id, t.topic_title, u.user_id,
 	 u.username, u.user_sig, u.user_sig_bbcode_uid,u.user_allowsmile, p.post_time,p.post_username, p.post_edit_time,
-	 p.enable_sig,p.enable_smilies,p.enable_bbcode,p.enable_html,pt.*, t.topic_replies, t.topic_first_post_id
+	 p.enable_sig,p.enable_smilies,p.enable_bbcode,p.enable_html,pt.*, t.topic_replies, t.topic_first_post_id, t.topic_last_post_id
 	FROM " . FORUMS_TABLE . " AS f, " . TOPICS_TABLE . " AS t, " . USERS_TABLE . " AS u, " . POSTS_TABLE . " AS p, " . POSTS_TEXT_TABLE . " as pt
 	WHERE
 			$sql_limit_time
@@ -446,10 +446,10 @@ else
 		}
 		// Variable reassignment for topic title, and show whether it is the start of topic, or a reply
 		$topic_title = $post['topic_title'];
-		if ( $post['post_id'] != $post['topic_first_post_id'] )
-		{
-			$topic_title = 'RE: ' . $topic_title;
-		}
+//		if ( $post['post_id'] != $post['topic_first_post_id'] )
+//		{
+//			$topic_title = 'RE: ' . $topic_title;
+//		}
 		// Variable reassignment and reformatting for author
 		$author = $post['username'];
 		$author0 =$author;
