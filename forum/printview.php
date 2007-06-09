@@ -108,6 +108,8 @@ $forum_name = $forum_row['forum_name'];
 $topic_title = $forum_row['topic_title'];
 $topic_time = $forum_row['topic_time'];
 
+// can we header here? Seems like that Firefox 1.5 will follow this.
+header("Content-Disposition: inline; filename=\"Mozilla Taiwan - $forum_name - $topic_title.html\"");
 
 //
 // Start auth check

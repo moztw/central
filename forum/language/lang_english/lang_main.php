@@ -1025,4 +1025,9 @@ $lang['Admin_reauthenticate'] = 'To administer the board you must re-authenticat
 // That's all, Folks!
 // -------------------------------------------------
 
+// [begin] Mass Delete Posts (From Topic) Mod
+$lang['Delete_posts'] = 'Delete posts';
+$lang['Delete_posts_explain'] = 'Using the form below you can delete selected posts from topic';
+$lang['Delete_posts_succesfully'] = 'Posts were successfully deleted';
+// [end] Mass Delete Posts (From Topic) Mod
 ?>

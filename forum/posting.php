@@ -602,9 +602,20 @@ else if ( $submit || $confirm )
 			$poll_title = ( isset($HTTP_POST_VARS['poll_title']) && $is_auth['auth_pollcreate'] ) ? $HTTP_POST_VARS['poll_title'] : '';
 			$poll_options = ( isset($HTTP_POST_VARS['poll_option_text']) && $is_auth['auth_pollcreate'] ) ? $HTTP_POST_VARS['poll_option_text'] : '';
 			$poll_length = ( isset($HTTP_POST_VARS['poll_length']) && $is_auth['auth_pollcreate'] ) ? $HTTP_POST_VARS['poll_length'] : '';
+			// Anti-bot Guest Post Mod
+			$confirm_guest_post = ( !empty($HTTP_POST_VARS['confirm_guest_post']) ) ? $HTTP_POST_VARS['confirm_guest_post'] : '';
 			$bbcode_uid = '';
 
 			prepare_post($mode, $post_data, $bbcode_on, $html_on, $smilies_on, $error_msg, $username, $bbcode_uid, $subject, $message, $poll_title, $poll_options, $poll_length, $topic_desc);
+
+			// Anti-bot Guest Post Mod
+			if( !$userdata['session_logged_in'])
+			{
+				if ($confirm_guest_post != "1")
+				{
+					$error_msg = $lang['Confirm_post_error']; 
+				}
+			}
 
 			if ( $error_msg == '' )
 			{
@@ -931,7 +942,11 @@ if( !$userdata['session_logged_in'] || ( $mode == 'editpost' && $post_info['post
 {
 	$template->assign_block_vars('switch_username_select', array());
 }
-
+// Anti-bot Guest Post Mod
+if( !$userdata['session_logged_in'])
+{
+	$template->assign_block_vars('switch_antibot_post', array());
+}
 //
 // Notify checkbox - only show if user is logged in
 //
@@ -1113,6 +1128,10 @@ $template->assign_vars(array(
 	'HTML_STATUS' => $html_status,
 	'BBCODE_STATUS' => sprintf($bbcode_status, '<a href="' . append_sid("faq.$phpEx?mode=bbcode") . '" target="_phpbbcode">', '</a>'), 
 	'SMILIES_STATUS' => $smilies_status, 
+	'L_CONFIRM_POST' => $lang['Confirm_post'],
+	'L_CONFIRM_POST_EXPLAIN' => $lang['Confirm_post_explain'],
+	'L_YES' => $lang['Yes'],
+	'L_NO' => $lang['No'],
 	'CONFIRM_IMG' => $confirm_image,
 
 	'L_SUBJECT' => $lang['Subject'],

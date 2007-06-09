@@ -65,6 +65,9 @@ src="{U_PRINT_IMG}" alt="{L_PRINT}" border="0" /></a>
   
   <tr>
     <td bgcolor="#EAF1FC"><table width="99%"  border="0" align="center" cellpadding="0" cellspacing="0">
+	<!-- BEGIN switch_topic_mod -->
+	<form action="{S_DELETE_POSTS_ACTION}" method="post">
+	<!-- END switch_topic_mod -->
 	<!-- BEGIN postrow -->
       <tr>
         <td colspan="2"><table width="99%"  border="0" align="center" cellpadding="0" cellspacing="2">
@@ -80,7 +83,7 @@ src="{U_PRINT_IMG}" alt="{L_PRINT}" border="0" /></a>
             <td width="79%" valign="top"><table width="100%" border="0" cellspacing="2" cellpadding="0">
                 <tr>
                   <td width="100%"><b style='color: red; font-size: 12px;'>{postrow.POST_SUBJECT}</b> <a href="{postrow.U_MINI_POST}"><img src="{postrow.MINI_POST_IMG}" width="12" height="9" alt="{postrow.L_MINI_POST_ALT}" title="{postrow.L_MINI_POST_ALT}" border="0" /></a><span class="postdetails">{L_POSTED}: {postrow.POST_DATE}</span></td>
-                  <td valign="top" nowrap="nowrap">{postrow.QUOTE_IMG} {postrow.EDIT_IMG} {postrow.DELETE_IMG} {postrow.IP_IMG}</td>
+                  <td valign="top" nowrap="nowrap">{postrow.S_DELETE_POST_CHECKBOX}{postrow.QUOTE_IMG} {postrow.EDIT_IMG} {postrow.DELETE_IMG} {postrow.IP_IMG}</td>
                 </tr>
                 <tr valign="top">
                   <td colspan="2" class="border-bleu-sus">&nbsp;</td>
@@ -123,6 +126,12 @@ src="{U_PRINT_IMG}" alt="{L_PRINT}" border="0" /></a>
 		<td class="spaceRow" colspan="2" height="1"><img src="templates/LiteVision/images/spacer.gif" alt="" width="1" height="1" /></td>
 	</tr>
 	<!-- END postrow -->		
+	<!-- BEGIN switch_topic_mod -->
+	<tr align="center"> 
+		<td class="catBottom" colspan="2" height="28"><input type="submit" value="{L_DELETE_POSTS}" class="liteoption" name="delete_posts" /></td>
+	</tr>
+	</form>
+	<!-- END switch_topic_mod -->
 		
       </table>
 <span style='float: right; text-align: right;' class="genmed"><b>{PAGINATION}</b></span>

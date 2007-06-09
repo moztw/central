@@ -1037,4 +1037,15 @@ $lang['Topic_Description_Display'] = '補述';
 // That's all Folks!
 // -------------------------------------------------
 
+// [begin] Mass Delete Posts (From Topic) Mod
+$lang['Delete_posts'] = 'Delete posts';
+$lang['Delete_posts_explain'] = 'Using the form below you can delete selected posts from topic';
+$lang['Delete_posts_succesfully'] = 'Posts were successfully deleted';
+// [end] Mass Delete Posts (From Topic) Mod
+
+// Anti-bot Guest Post Mod
+$lang['Confirm_post'] = 'Submit post?';
+$lang['Confirm_post_explain'] = 'Please select "Yes" to submit your guest post';
+$lang['Confirm_post_error'] = 'Please select "Yes" in "Submit post?" to submit your guest post';
+
 ?>

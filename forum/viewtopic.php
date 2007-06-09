@@ -145,7 +145,7 @@ $count_sql = ( empty($post_id) ) ? '' : ", COUNT(p2.post_id) AS prev_posts";
 
 $order_sql = ( empty($post_id) ) ? '' : "GROUP BY p.post_id, t.topic_id, t.topic_title, t.topic_status, t.topic_replies, t.topic_time, t.topic_type, t.topic_vote, t.topic_last_post_id, f.forum_name, f.forum_status, f.forum_id, f.auth_view, f.auth_read, f.auth_post, f.auth_reply, f.auth_edit, f.auth_delete, f.auth_sticky, f.auth_announce, f.auth_pollcreate, f.auth_vote, f.auth_attachments ORDER BY p.post_id ASC";
 
-$sql = "SELECT t.topic_id, t.topic_title, t.topic_status, t.topic_replies, t.topic_time, t.topic_type, t.topic_vote, t.topic_last_post_id, f.forum_name, f.forum_status, f.forum_id, f.auth_view, f.auth_read, f.auth_post, f.auth_reply, f.auth_edit, f.auth_delete, f.auth_sticky, f.auth_announce, f.auth_pollcreate, f.auth_vote, f.auth_attachments" . $count_sql . "
+$sql = "SELECT t.topic_id, t.topic_title, t.topic_status, t.topic_replies, t.topic_time, t.topic_type, t.topic_vote, t.topic_first_post_id, t.topic_last_post_id, f.forum_name, f.forum_status, f.forum_id, f.auth_view, f.auth_read, f.auth_post, f.auth_reply, f.auth_edit, f.auth_delete, f.auth_sticky, f.auth_announce, f.auth_pollcreate, f.auth_vote, f.auth_attachments" . $count_sql . "
 	FROM " . TOPICS_TABLE . " t, " . FORUMS_TABLE . " f" . $join_sql_table . "
 	WHERE $join_sql
 		AND f.forum_id = t.forum_id
@@ -614,6 +614,13 @@ if ( $is_auth['auth_mod'] )
 	$topic_mod .= ( $forum_topic_data['topic_status'] == TOPIC_UNLOCKED ) ? "<a href=\"modcp.$phpEx?" . POST_TOPIC_URL . "=$topic_id&amp;mode=lock&amp;sid=" . $userdata['session_id'] . '"><img src="' . $images['topic_mod_lock'] . '" alt="' . $lang['Lock_topic'] . '" title="' . $lang['Lock_topic'] . '" border="0" /></a>&nbsp;' : "<a href=\"modcp.$phpEx?" . POST_TOPIC_URL . "=$topic_id&amp;mode=unlock&amp;sid=" . $userdata['session_id'] . '"><img src="' . $images['topic_mod_unlock'] . '" alt="' . $lang['Unlock_topic'] . '" title="' . $lang['Unlock_topic'] . '" border="0" /></a>&nbsp;';
 
 	$topic_mod .= "<a href=\"modcp.$phpEx?" . POST_TOPIC_URL . "=$topic_id&amp;mode=split&amp;sid=" . $userdata['session_id'] . '"><img src="' . $images['topic_mod_split'] . '" alt="' . $lang['Split_topic'] . '" title="' . $lang['Split_topic'] . '" border="0" /></a>&nbsp;';
+
+	// [begin] Mass Delete Posts (From Topic) Mod
+	$topic_mod .= "<a href=\"modcp.$phpEx?" . POST_TOPIC_URL . "=$topic_id&amp;mode=delete_posts&amp;sid=" . $userdata['session_id'] . '"><img src="' . $images['delete_posts'] . '" alt="' . $lang['Delete_posts'] . '" title="' . $lang['Delete_posts'] . '" border="0" /></a>&nbsp;';
+
+	$template->assign_block_vars('switch_topic_mod', array());
+	// [end] Mass Delete Posts (From Topic) Mod
+
 }
 
 //
@@ -675,6 +682,11 @@ $template->assign_vars(array(
 	'L_DELETE_TOPIC' => $lang['Delete_topic'],
 	'L_GOTO_PAGE' => $lang['Goto_page'],
 
+	// [begin] Mass Delete Posts (From Topic) Mod
+	'L_DELETE_POSTS' => $lang['Delete_posts'],
+	// [end] Mass Delete Posts (From Topic) Mod
+
+
 	'S_TOPIC_LINK' => POST_TOPIC_URL,
 	'S_SELECT_POST_DAYS' => $select_post_days,
 	'S_SELECT_POST_ORDER' => $select_post_order,
@@ -683,6 +695,10 @@ $template->assign_vars(array(
 	'S_TOPIC_ADMIN' => $topic_mod,
 	'S_WATCH_TOPIC' => $s_watching_topic,
 	'S_WATCH_TOPIC_IMG' => $s_watching_topic_img,
+
+	// [begin] Mass Delete Posts (From Topic) Mod
+	'S_DELETE_POSTS_ACTION' => "modcp.$phpEx?" . POST_TOPIC_URL . "=$topic_id&amp;mode=delete_posts&amp;sid=" . $userdata['session_id'],
+	// [end] Mass Delete Posts (From Topic) Mod
 
 	'U_VIEW_TOPIC' => append_sid("viewtopic.$phpEx?" . POST_TOPIC_URL . "=$topic_id&amp;start=$start&amp;postdays=$post_days&amp;postorder=$post_order&amp;highlight=$highlight"),
 	'U_VIEW_FORUM' => $view_forum_url,
@@ -1041,6 +1057,13 @@ for($i = 0; $i < $total_posts; $i++)
 		$temp_url = "posting.$phpEx?mode=delete&amp;" . POST_POST_URL . "=" . $postrow[$i]['post_id'] . "&amp;sid=" . $userdata['session_id'];
 		$delpost_img = '<a href="' . $temp_url . '"><img src="' . $images['icon_delpost'] . '" alt="' . $lang['Delete_post'] . '" title="' . $lang['Delete_post'] . '" border="0" /></a>';
 		$delpost = '<a href="' . $temp_url . '">' . $lang['Delete_post'] . '</a>';
+
+		// [begin] Mass Delete Posts (From Topic) Mod
+		if ($postrow[$i]['post_id'] != $forum_topic_data['topic_first_post_id'])
+		{
+			$s_delete_post_checkbox = '<input type="checkbox" name="post_id_list[]" value="' . $postrow[$i]['post_id'] . '" />';
+		}
+		// [end] Mass Delete Posts (From Topic) Mod
 	}
 	else
 	{
@@ -1058,6 +1081,10 @@ for($i = 0; $i < $total_posts; $i++)
 			$delpost_img = '';
 			$delpost = '';
 		}
+
+		// [begin] Mass Delete Posts (From Topic) Mod
+		$s_delete_post_checkbox = '';
+		// [end] Mass Delete Posts (From Topic) Mod
 	}
 
 	$post_subject = ( $postrow[$i]['post_subject'] != '' ) ? $postrow[$i]['post_subject'] : '';
@@ -1236,6 +1263,10 @@ for($i = 0; $i < $total_posts; $i++)
 		'IP' => $ip,
 		'DELETE_IMG' => $delpost_img,
 		'DELETE' => $delpost,
+
+		// [begin] Mass Delete Posts (From Topic) Mod
+		'S_DELETE_POST_CHECKBOX' => $s_delete_post_checkbox,
+		// [end] Mass Delete Posts (From Topic) Mod
 
 		'L_MINI_POST_ALT' => $mini_post_alt,
 

@@ -77,6 +77,10 @@ $move = ( isset($HTTP_POST_VARS['move']) ) ? TRUE : FALSE;
 $lock = ( isset($HTTP_POST_VARS['lock']) ) ? TRUE : FALSE;
 $unlock = ( isset($HTTP_POST_VARS['unlock']) ) ? TRUE : FALSE;
 
+// [begin] Mass Delete Posts (From Topic) Mod
+$delete_posts = ( isset($HTTP_POST_VARS['delete_posts']) ) ? TRUE : FALSE;
+// [end] Mass Delete Posts (From Topic) Mod
+
 if ( isset($HTTP_POST_VARS['mode']) || isset($HTTP_GET_VARS['mode']) )
 {
 	$mode = ( isset($HTTP_POST_VARS['mode']) ) ? $HTTP_POST_VARS['mode'] : $HTTP_GET_VARS['mode'];
@@ -100,6 +104,12 @@ else
 	{
 		$mode = 'unlock';
 	}
+	// [begin] Mass Delete Posts (From Topic) Mod
+	else if ( $delete_posts )
+	{
+		$mode = 'delete_posts';
+	}
+	// [end] Mass Delete Posts (From Topic) Mod
 	else
 	{
 		$mode = '';
@@ -953,6 +963,200 @@ switch( $mode )
 			}
 		}
 		break;
+
+	// [begin] Mass Delete Posts (From Topic) Mod
+	case 'delete_posts':
+		if (!$is_auth['auth_delete'])
+		{
+			message_die(MESSAGE, sprintf($lang['Sorry_auth_delete'], $is_auth['auth_delete_type']));
+		}
+
+		$page_title = $lang['Mod_CP'];
+		include($phpbb_root_path . 'includes/functions_search.'.$phpEx);
+		include($phpbb_root_path . 'includes/page_header.'.$phpEx);
+
+		$post_id_sql = '';
+
+		if (isset($HTTP_POST_VARS['post_id_list']))
+		{
+			$posts = $HTTP_POST_VARS['post_id_list'];
+			for ($i = 0; $i < count($posts); $i++)
+			{
+				$post_id_sql .= (($post_id_sql != '') ? ', ' : '') . intval($posts[$i]);
+			}
+		}
+
+		if ( $post_id_sql != '' )
+		{
+			$sql = "SELECT poster_id, COUNT(post_id) AS posts FROM " . POSTS_TABLE . " WHERE post_id IN ($post_id_sql) GROUP BY poster_id";
+			if ( !($result = $db->sql_query($sql)) )
+			{
+				message_die(GENERAL_ERROR, 'Could not get poster id information', '', __LINE__, __FILE__, $sql);
+			}
+
+			$count_sql = array();
+			while ( $row = $db->sql_fetchrow($result) )
+			{
+				$count_sql[] = "UPDATE " . USERS_TABLE . " SET user_posts = user_posts - " . $row['posts'] . " WHERE user_id = " . $row['poster_id'];
+			}
+			$db->sql_freeresult($result);
+
+			if ( sizeof($count_sql) )
+			{
+				for($i = 0; $i < sizeof($count_sql); $i++)
+				{
+					if ( !$db->sql_query($count_sql[$i]) )
+					{
+						message_die(GENERAL_ERROR, 'Could not update user post count information', '', __LINE__, __FILE__, $sql);
+					}
+				}
+			}
+
+			$sql = "DELETE FROM " . POSTS_TABLE . " WHERE post_id IN ($post_id_sql)";
+			if ( !$db->sql_query($sql) )
+			{
+				message_die(GENERAL_ERROR, 'Could not delete posts', '', __LINE__, __FILE__, $sql);
+			}
+
+			$sql = "DELETE FROM " . POSTS_TEXT_TABLE . " WHERE post_id IN ($post_id_sql)";
+			if ( !$db->sql_query($sql) )
+			{
+				message_die(GENERAL_ERROR, 'Could not delete posts text', '', __LINE__, __FILE__, $sql);
+			}
+
+			remove_search_post($post_id_sql);
+
+			sync('topic', $topic_id);
+			sync('forum', $forum_id);
+
+			$template->assign_vars(array(
+				'META' => '<meta http-equiv="refresh" content="3;url=' . "viewtopic.$phpEx?" . POST_TOPIC_URL . "=$topic_id&amp;sid=" . $userdata['session_id'] . '">')
+			);
+
+			$message = $lang['Delete_posts_succesfully'] . '<br /><br />' . sprintf($lang['Click_return_topic'], '<a href="' . "viewtopic.$phpEx?" . POST_TOPIC_URL . "=$topic_id&amp;sid=" . $userdata['session_id'] . '">', '</a>');
+			message_die(GENERAL_MESSAGE, $message);
+
+		}
+		else
+		{
+			//
+			// Set template files
+			//
+			$template->set_filenames(array(
+				'delete_posts_body' => 'modcp_delete_posts.tpl')
+			);
+
+			$sql = "SELECT u.username, p.*, pt.post_text, pt.bbcode_uid, pt.post_subject, p.post_username
+				FROM " . POSTS_TABLE . " p, " . USERS_TABLE . " u, " . POSTS_TEXT_TABLE . " pt
+				WHERE p.topic_id = $topic_id
+					AND p.poster_id = u.user_id
+					AND p.post_id = pt.post_id
+				ORDER BY p.post_time ASC";
+			if ( !($result = $db->sql_query($sql)) )
+			{
+				message_die(GENERAL_ERROR, 'Could not get topic/post information', '', __LINE__, __FILE__, $sql);
+			}
+
+			$s_hidden_fields = '<input type="hidden" name="sid" value="' . $userdata['session_id'] . '" /><input type="hidden" name="' . POST_FORUM_URL . '" value="' . $forum_id . '" /><input type="hidden" name="' . POST_TOPIC_URL . '" value="' . $topic_id . '" /><input type="hidden" name="mode" value="delete_posts" />';
+
+			if( ( $total_posts = $db->sql_numrows($result) ) > 0 )
+			{
+				$postrow = $db->sql_fetchrowset($result);
+
+				$template->assign_vars(array(
+					'L_DELETE_POSTS' => $lang['Delete_posts'],
+					'L_DELETE_POSTS_EXPLAIN' => $lang['Delete_posts_explain'],
+					'L_AUTHOR' => $lang['Author'],
+					'L_MESSAGE' => $lang['Message'],
+					'L_SELECT' => $lang['Select'],
+					'L_POSTED' => $lang['Posted'],
+					'L_POST_SUBJECT' => $lang['Post_subject'],
+					'L_POST' => $lang['Post'],
+
+					'FORUM_NAME' => $forum_name,
+
+					'U_VIEW_FORUM' => append_sid("viewforum.$phpEx?" . POST_FORUM_URL . "=$forum_id"),
+
+					'S_DELETE_POSTS_ACTION' => append_sid("modcp.$phpEx"),
+					'S_HIDDEN_FIELDS' => $s_hidden_fields)
+				);
+
+				//
+				// Define censored word matches
+				//
+				$orig_word = array();
+				$replacement_word = array();
+				obtain_word_list($orig_word, $replacement_word);
+
+				for($i = 0; $i < $total_posts; $i++)
+				{
+					$post_id = $postrow[$i]['post_id'];
+					$poster_id = $postrow[$i]['poster_id'];
+					$poster = $postrow[$i]['username'];
+
+					$post_date = create_date($board_config['default_dateformat'], $postrow[$i]['post_time'], $board_config['board_timezone']);
+
+					$bbcode_uid = $postrow[$i]['bbcode_uid'];
+					$message = $postrow[$i]['post_text'];
+					$post_subject = ( $postrow[$i]['post_subject'] != '' ) ? $postrow[$i]['post_subject'] : $topic_title;
+
+					//
+					// If the board has HTML off but the post has HTML
+					// on then we process it, else leave it alone
+					//
+					if ( !$board_config['allow_html'] )
+					{
+						if ( $postrow[$i]['enable_html'] )
+						{
+							$message = preg_replace('#(<)([\/]?.*?)(>)#is', '&lt;\\2&gt;', $message);
+						}
+					}
+
+					if ( $bbcode_uid != '' )
+					{
+						$message = ( $board_config['allow_bbcode'] ) ? bbencode_second_pass($message, $bbcode_uid) : preg_replace('/\:[0-9a-z\:]+\]/si', ']', $message);
+					}
+
+					if ( count($orig_word) )
+					{
+						$post_subject = preg_replace($orig_word, $replacement_word, $post_subject);
+						$message = preg_replace($orig_word, $replacement_word, $message);
+					}
+
+					$message = make_clickable($message);
+
+					if ( $board_config['allow_smilies'] && $postrow[$i]['enable_smilies'] )
+					{
+						$message = smilies_pass($message);
+					}
+
+					$message = str_replace("\n", '<br />', $message);
+
+					$row_color = ( !($i % 2) ) ? $theme['td_color1'] : $theme['td_color2'];
+					$row_class = ( !($i % 2) ) ? $theme['td_class1'] : $theme['td_class2'];
+
+					$checkbox = ( $i > 0 ) ? '<input type="checkbox" name="post_id_list[]" value="' . $post_id . '" />' : '&nbsp;';
+
+					$template->assign_block_vars('postrow', array(
+						'ROW_COLOR' => '#' . $row_color,
+						'ROW_CLASS' => $row_class,
+						'POSTER_NAME' => $poster,
+						'POST_DATE' => $post_date,
+						'POST_SUBJECT' => $post_subject,
+						'MESSAGE' => $message,
+						'POST_ID' => $post_id,
+
+						'S_DELETE_POST_CHECKBOX' => $checkbox)
+					);
+				}
+
+				$template->pparse('delete_posts_body');
+			}
+		}
+		break;
+		// [end] Mass Delete Posts (From Topic) Mod
+
+
 
 	case 'ip':
 		$page_title = $lang['Mod_CP'];

@@ -311,6 +311,18 @@ function storeCaret(textEl) {
 		<input type="text" name="subject" size="45" maxlength="60" style="width:450px" tabindex="2" class="form2" value="{SUBJECT}" />
 		</span></td>
       </tr>
+	<!-- BEGIN switch_antibot_post -->
+	<tr> 
+		<td class="row1"><span class="gen"><b>{L_CONFIRM_POST}</b></span></td>
+		<td class="row2"><span class="genmed">
+		<select name="confirm_guest_post" size="1">
+		    <option value="0">{L_NO}</option>
+		    <option value="1">{L_YES}</option>
+  		</select>
+		{L_CONFIRM_POST_EXPLAIN}</span></td>
+	</tr>
+	<!-- END switch_antibot_post -->
+
       <!-- BEGIN topic_description -->
 
 	   <tr>
