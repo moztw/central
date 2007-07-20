@@ -17,9 +17,9 @@
 #define CMD_DONE \
     "echo 'DONE.' "
 
-#define CMD_SVNUP_ADDONS \
-"cd " ADDONSROOT " && " \
-"echo 'SVN update Mozilla Update...' && /usr/local/bin/svn --username anonymous --no-auth-cache update 2>&1 && "\
+/* #define CMD_SVNUP_ADDONS \ */
+/* "cd " ADDONSROOT " && " \ */
+/* "echo 'SVN update Mozilla Update...' && /usr/local/bin/svn --username anonymous --no-auth-cache update 2>&1 && "\ */
 
 #define CMD_SVNUP \
 "cd " SVNROOT " && " \
