@@ -105,7 +105,7 @@ function checkForm() {
 }*/
 
 function emoticon(text) {
-  insertAtCaret(" " + document.post.message + " ", text);
+  insertAtCaret(document.post.message, " " + text + " ");
 }
 
 function insertAtCaret(obj, text) {   obj.focus();   if(document.selection) {// for IE      var orig = obj.value.replace(/\r\n/g, "\n");      var range = document.selection.createRange();      if(range.parentElement() != obj)         return false;      range.text = text;        range.select();          } else if(typeof(obj.selectionStart) != 'undefined') {// for Firefox      var start = obj.selectionStart;      var end   = obj.selectionEnd;        var pos   = start + text.length;      obj.value = obj.value.substring(0, start) + text + obj.value.substring(end);        obj.setSelectionRange(pos, pos);   } else {//for Others        obj.value  += text;        obj.focus();    }} 
