@@ -627,4 +627,3 @@ if ( $do_gzip_compress )
 	echo pack('V', $gzip_size);
 }
 exit;
-?>
