@@ -138,7 +138,7 @@ function bbfontstyle(bbopen, bbclose) {
 }
 
 
-function bbstyle(bbnumber) {
+/*function bbstyle(bbnumber) {
 	var txtarea = document.post.message;
 
 	txtarea.focus();
@@ -211,7 +211,9 @@ function bbstyle(bbnumber) {
 		return;
 	}
 	storeCaret(txtarea);
-}
+}*/
+
+function bbstyle(bbnumber) {    var txtarea = document.post.message;    var bblast = opening_tag_list[opening_tag_list.length - 1];//the last inserted tag    switch(bbnumber){        case -1 ://Close all open tags & default button names            while(opening_tag_list.length){                bblast = opening_tag_list[opening_tag_list.length - 1];                insert_close_tag(txtarea, document.post.elements.namedItem('addbbcode' + bblast),                                 bbtags[bblast + 1]);            }            txtarea.focus();            break;        default :            if(isCollapsed(txtarea)){//insert tag                if(opening_tag_list.length){                    if(bblast == 14){//the last inserted tag is IMG                        insert_close_tag(txtarea, document.post.elements.namedItem('addbbcode14'),                                         bbtags[15]);                        if(bbnumber != 14) bbstyle(bbnumber);                    }else{                        tmp = opening_tag_list.toString();                        if(tmp.indexOf(bbnumber) == -1){                            insert_open_tag(txtarea, document.post.elements.namedItem('addbbcode' + bbnumber),                                            bbtags[bbnumber], bbnumber);                        }else{//must close some opened tag                            insert_close_tag(txtarea, document.post.elements.namedItem('addbbcode' + bblast),                                             bbtags[bblast + 1]);                            if(bbnumber != bblast) bbstyle(bbnumber);                        }                    }                }else{//no open tags                    insert_open_tag(txtarea, document.post.elements.namedItem('addbbcode' + bbnumber),                                    bbtags[bbnumber], bbnumber);                }            }else{//wrapping                mozWrap(txtarea, bbtags[bbnumber], bbtags[bbnumber+1]);            }    }}function insert_close_tag(txtarea, button, text){    insertAtCaret(txtarea, text);    switchLabel(button, 'close');    arraypop(opening_tag_list);}function insert_open_tag(txtarea, button, text, bbnumber){    insertAtCaret(txtarea, text);    switchLabel(button, 'open');    arraypush(opening_tag_list, bbnumber)}
 
 // From http://www.massless.org/mozedit/
 function mozWrap(txtarea, open, close)
