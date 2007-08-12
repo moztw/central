@@ -72,6 +72,7 @@ function arraypop(thearray) {
 	return retval;
 }
 
+function isCollapsed(txtarea){    if(document.selection){//for IE        if (document.selection.type == 'None')            return true;        return false;    }else if(typeof(txtarea.selectionStart) != 'undefined'){//for Firerox        if(txtarea.selectionStart == txtarea.selectionEnd)            return true;        return false;    }else{//for Others        return false;    }}function switchLabel(obj, which){    var mark = '*';    switch (which) {        case 'open' :            obj.value += mark;            break;        case 'close' :            obj.value = obj.value.replace(mark, '');            break;    }}
 
 function checkForm() {
 
