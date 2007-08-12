@@ -57,6 +57,9 @@ function getarraysize(thearray) {
 	return thearray.length;
 }
 
+function indexOfArray(array, element){//Array.IndexOf()    for(var i = 0; i < array.length; i++){        if(element == array[i]) return i;    }    return -1;}
+
+/*
 // Replacement for arrayname.push(value) not implemented in IE until version 5.5
 // Appends element to the array
 function arraypush(thearray,value) {
@@ -70,7 +73,9 @@ function arraypop(thearray) {
 	retval = thearray[thearraysize - 1];
 	delete thearray[thearraysize - 1];
 	return retval;
-}
+}*/
+
+// Replacement for arrayname.push(value) not implemented in IE until version 5.5// Appends element to the arrayfunction arraypush(obj, value){	obj[obj.length] = value;}// Replacement for arrayname.pop() not implemented in IE until version 5.5// Removes and returns the last element of an arrayfunction arraypop(obj) {    obj.length -= 1;}
 
 function isCollapsed(txtarea){    if(document.selection){//for IE        if (document.selection.type == 'None')            return true;        return false;    }else if(typeof(txtarea.selectionStart) != 'undefined'){//for Firerox        if(txtarea.selectionStart == txtarea.selectionEnd)            return true;        return false;    }else{//for Others        return false;    }}function switchLabel(obj, which){    var mark = '*';    switch (which) {        case 'open' :            obj.value += mark;            break;        case 'close' :            obj.value = obj.value.replace(mark, '');            break;    }}
 
@@ -112,7 +117,7 @@ function emoticon(text) {
 
 function insertAtCaret(obj, text) {   obj.focus();   if(document.selection) {// for IE      var orig = obj.value.replace(/\r\n/g, "\n");      var range = document.selection.createRange();      if(range.parentElement() != obj)         return false;      range.text = text;        range.select();          } else if(typeof(obj.selectionStart) != 'undefined') {// for Firefox      var start = obj.selectionStart;      var end   = obj.selectionEnd;        var pos   = start + text.length;      obj.value = obj.value.substring(0, start) + text + obj.value.substring(end);        obj.setSelectionRange(pos, pos);   } else {//for Others        obj.value  += text;        obj.focus();    }} 
 
-function bbfontstyle(bbopen, bbclose) {
+/*function bbfontstyle(bbopen, bbclose) {
 	var txtarea = document.post.message;
 
 	if ((clientVer >= 4) && is_ie && is_win) {
@@ -137,8 +142,9 @@ function bbfontstyle(bbopen, bbclose) {
 		txtarea.focus();
 	}
 	storeCaret(txtarea);
-}
+}*/
 
+function bbfontstyle(bbopen, bbclose) {	mozWrap(document.post.message, bbopen, bbclose);}
 
 /*function bbstyle(bbnumber) {
 	var txtarea = document.post.message;
@@ -215,10 +221,11 @@ function bbfontstyle(bbopen, bbclose) {
 	storeCaret(txtarea);
 }*/
 
-function bbstyle(bbnumber) {    var txtarea = document.post.message;    var bblast = opening_tag_list[opening_tag_list.length - 1];//the last inserted tag    switch(bbnumber){        case -1 ://Close all open tags & default button names            while(opening_tag_list.length){                bblast = opening_tag_list[opening_tag_list.length - 1];                insert_close_tag(txtarea, document.post.elements.namedItem('addbbcode' + bblast),                                 bbtags[bblast + 1]);            }            txtarea.focus();            break;        default :            if(isCollapsed(txtarea)){//insert tag                if(opening_tag_list.length){                    if(bblast == 14){//the last inserted tag is IMG                        insert_close_tag(txtarea, document.post.elements.namedItem('addbbcode14'),                                         bbtags[15]);                        if(bbnumber != 14) bbstyle(bbnumber);                    }else{                        tmp = opening_tag_list.toString();                        if(tmp.indexOf(bbnumber) == -1){                            insert_open_tag(txtarea, document.post.elements.namedItem('addbbcode' + bbnumber),                                            bbtags[bbnumber], bbnumber);                        }else{//must close some opened tag                            insert_close_tag(txtarea, document.post.elements.namedItem('addbbcode' + bblast),                                             bbtags[bblast + 1]);                            if(bbnumber != bblast) bbstyle(bbnumber);                        }                    }                }else{//no open tags                    insert_open_tag(txtarea, document.post.elements.namedItem('addbbcode' + bbnumber),                                    bbtags[bbnumber], bbnumber);                }            }else{//wrapping                mozWrap(txtarea, bbtags[bbnumber], bbtags[bbnumber+1]);            }    }}function insert_close_tag(txtarea, button, text){    insertAtCaret(txtarea, text);    switchLabel(button, 'close');    arraypop(opening_tag_list);}function insert_open_tag(txtarea, button, text, bbnumber){    insertAtCaret(txtarea, text);    switchLabel(button, 'open');    arraypush(opening_tag_list, bbnumber)}
+function bbstyle(bbnumber) {    var txtarea = document.post.message;    var bblast = opening_tag_list[opening_tag_list.length - 1];//the last inserted tag    switch(bbnumber){        case -1 ://Close all open tags & default button names            while(opening_tag_list.length){                bblast = opening_tag_list[opening_tag_list.length - 1];                insert_close_tag(txtarea, document.post.elements.namedItem('addbbcode' + bblast),                                 bbtags[bblast + 1]);            }            txtarea.focus();            break;        default :            if(isCollapsed(txtarea)){//insert tag                if(opening_tag_list.length){                    if(bblast == 14){//the last inserted tag is IMG                        insert_close_tag(txtarea, document.post.elements.namedItem('addbbcode14'),                                         bbtags[15]);                        if(bbnumber != 14) bbstyle(bbnumber);                    }else{                        if(indexOfArray(opening_tag_list, bbnumber) == -1){                            insert_open_tag(txtarea, document.post.elements.namedItem('addbbcode' + bbnumber),                                            bbtags[bbnumber], bbnumber);                        }else{//must close some opened tag                            insert_close_tag(txtarea, document.post.elements.namedItem('addbbcode' + bblast),                                             bbtags[bblast + 1]);                            if(bbnumber != bblast) bbstyle(bbnumber);                        }                    }                }else{//no open tags                    insert_open_tag(txtarea, document.post.elements.namedItem('addbbcode' + bbnumber),                                    bbtags[bbnumber], bbnumber);                }            }else{//wrapping                mozWrap(txtarea, bbtags[bbnumber], bbtags[bbnumber+1]);            }    }}
+function insert_close_tag(txtarea, button, text){    insertAtCaret(txtarea, text);    switchLabel(button, 'close');    arraypop(opening_tag_list);}function insert_open_tag(txtarea, button, text, bbnumber){    insertAtCaret(txtarea, text);    switchLabel(button, 'open');    arraypush(opening_tag_list, bbnumber)}
 
 // From http://www.massless.org/mozedit/
-function mozWrap(txtarea, open, close)
+/*function mozWrap(txtarea, open, close)
 {
 	var selLength = txtarea.textLength;
 	var selStart = txtarea.selectionStart;
@@ -231,7 +238,9 @@ function mozWrap(txtarea, open, close)
 	var s3 = (txtarea.value).substring(selEnd, selLength);
 	txtarea.value = s1 + open + s2 + close + s3;
 	return;
-}
+}*/
+
+function mozWrap(txtarea, open, close){	txtarea.focus();	if(document.selection) {// for IE        var range = document.selection.createRange();        if(range.parentElement() != txtarea) return;		if (document.selection.type != 'Text') return;		range.text = open + range.text + close;		range.select();	} else if(typeof(txtarea.selectionStart) != 'undefined') {// for Firefox        var selLength = txtarea.textLength;        var selStart = txtarea.selectionStart;        var selEnd = txtarea.selectionEnd;            if (selEnd == 1 || selEnd == 2)                selEnd = selLength;        var s1 = (txtarea.value).substring(0,selStart);        var s2 = (txtarea.value).substring(selStart, selEnd)        var s3 = (txtarea.value).substring(selEnd, selLength);        txtarea.value = s1 + open + s2 + close + s3;        var pos = txtarea.value.length - s3.length;        txtarea.setSelectionRange(pos, pos);	} else {//for Others        txtarea.value  += text;        txtarea.focus();    }}
 
 // Insert at Claret position. Code from
 // http://www.faqts.com/knowledge_base/view.phtml/aid/1052/fid/130
