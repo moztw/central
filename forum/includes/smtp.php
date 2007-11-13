@@ -120,6 +120,10 @@ function smtpmail($mail_to, $subject, $message, $headers = '')
 	{ 
 		fputs($socket, "EHLO " . $board_config['smtp_host'] . "\r\n");
 		server_parse($socket, "250", __LINE__);
+		
+		fputs($socket, "STARTTLS\r\n");
+		server_parse($socket, "220", __LINE__);
+		stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
 
 		fputs($socket, "AUTH LOGIN\r\n");
 		server_parse($socket, "334", __LINE__);
