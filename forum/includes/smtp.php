@@ -41,7 +41,7 @@ function server_parse($socket, $response, $line = __LINE__)
 		message_die(GENERAL_ERROR, "Ran into problems sending Mail. Response: $server_response", "", $line, __FILE__); 
 	} 
 }
-
+//rever//
 // Replacement or substitute for PHP's mail command
 function smtpmail($mail_to, $subject, $message, $headers = '')
 {
@@ -106,23 +106,10 @@ function smtpmail($mail_to, $subject, $message, $headers = '')
 
 	// Ok we have error checked as much as we can to this point let's get on
 	// it already.
-
-	// timdream: GO GMAIL
-	if( !$socket = @fsockopen('smtp.gmail.com', 465, $errno, $errstr, 20) )
-	//if( !$socket = @fsockopen($board_config['smtp_host'], 25, $errno, $errstr, 20) )
+	if( !$socket = @fsockopen($board_config['smtp_host'], 25, $errno, $errstr, 20) )
 	{
 		message_die(GENERAL_ERROR, "Could not connect to smtp host : $errno : $errstr", "", __LINE__, __FILE__);
 	}
-
-	// timdream: turn on stream_set_blocking as suggested in here:
-	//           http://tw.php.net/stream_socket_enable_crypto#75442
-	stream_set_blocking ($socket, true);
-	if( !stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_SSLv3_CLIENT))
-	{
-		message_die(GENERAL_ERROR, "Could not connect to smtp host securely.", "", __LINE__, __FILE__);
-	}
-	stream_set_blocking ($socket, false);
-	//timdream: SSL modification -->
 
 	// Wait for reply
 	server_parse($socket, "220", __LINE__);
@@ -134,6 +121,10 @@ function smtpmail($mail_to, $subject, $message, $headers = '')
 		fputs($socket, "EHLO " . $board_config['smtp_host'] . "\r\n");
 		server_parse($socket, "250", __LINE__);
 		
+		fputs($socket, "STARTTLS\r\n");
+		server_parse($socket, "220", __LINE__);
+		stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+
 		fputs($socket, "AUTH LOGIN\r\n");
 		server_parse($socket, "334", __LINE__);
 
