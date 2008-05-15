@@ -720,7 +720,7 @@ $lang['Group_hidden'] = '隱形群組';
 
 $lang['Current_memberships'] = '隸屬群組'; 
 $lang['Non_member_groups'] = '尚未加入的群組';
-$lang['Memberships_pending'] = '會員身分審核中';
+$lang['Memberships_pending'] = '會員身分尚待管理員開通，您亦可至「關於 MozTW」板主動催促一下 :)';
 
 $lang['No_groups_exist'] = '群組不存在';
 $lang['Group_not_exist'] = '這個會員群組不存在';
