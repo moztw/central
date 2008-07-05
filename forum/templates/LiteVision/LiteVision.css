@@ -417,7 +417,28 @@ a.faq:link   {color : #000000; }
 a.faq:visited {color : #222222; }
 a.faq:hover	{color : #444444; }
 
-
+/* start: special promote*/
+.faq.sp {
+	width: 70%;
+	float: left;
+}
+.specialpromote {
+	font-size: 13px;
+	background-color: #EFEFEF;
+	display: block;
+	padding: .7em 0;
+	text-align: center;
+	border:solid rgb(129, 183, 243);
+	border-width: 2px 0;
+	width: 30%;
+	float: right;
+}
+.specialpromote:hover {
+	background: rgb(129, 183, 243);
+}
+a.specialpromote {color:red;}
+a.specialpromote:hover {color:#FFF;}
+/*   end: special promote*/
 
 /* SD701 */
 tt, .tt { font-family: Monaco, Courier, 'Courier New', monospace; font-size: 11px; color: #336633;}

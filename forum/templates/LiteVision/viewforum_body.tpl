@@ -60,7 +60,7 @@
 <tr>
   <td width="1%" bgcolor="#d0e4fb" class="border-bleu-st-dr">&nbsp;</td>
   <td valign="top" colspan="6" style="background: #a4cbf7; margin: 0;">
-  	<a class="faq fonsp" href="http://wiki.moztw.org/redirect_faq.php?f={FORUM_ID}">請按我閱讀<span style="color: red;">本區 FAQ</span>。發問前請先詳閱，內有常見問題的解決方法。</a>
+  	<a class="faq sp" href="http://wiki.moztw.org/redirect_faq.php?f={FORUM_ID}">請按我閱讀<span style="color: red;">本區 FAQ</span>。發問前請先詳閱，內有常見問題的解決方法。</a> <a class="specialpromote" href="http://forum.moztw.org/index.php?c=23">第三屆Top15 / 鬥陣遊台灣 ！</a>
   </td>
   <td width="1%" bgcolor="#d0e4fb" class="border-bleu-st-dr">&nbsp;</td>
 </tr>
