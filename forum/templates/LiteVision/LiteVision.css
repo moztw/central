@@ -424,7 +424,7 @@ a.faq:hover	{color : #444444; }
 }
 .specialpromote {
 	font-size: 13px;
-	background-color: #EFEFEF;
+	background: #EFEFEF url(http://moztw.org/events/firefox3party/foxmosa_icon.png) no-repeat right;
 	display: block;
 	padding: .7em 0;
 	text-align: center;
@@ -434,7 +434,7 @@ a.faq:hover	{color : #444444; }
 	float: right;
 }
 .specialpromote:hover {
-	background: rgb(129, 183, 243);
+	background-color: rgb(129, 183, 243);
 }
 a.specialpromote {color:red;}
 a.specialpromote:hover {color:#FFF;}
