@@ -35,6 +35,20 @@ include($phpbb_root_path . 'includes/functions_post.'.$phpEx);
 //
 // Check and set various parameters
 //
+/*
+	png visual confirmation system : (c) phpBB Group, 2003 : All Rights Reserved
+	
+	reCAPTCHA Guest Post MOD
+	Based on: http://www.phpbb.com/mods/db/index.php?i=misc&mode=display&contrib_id=1305
+	Based on: http://recaptcha.net/plugins/phpbb/
+*/
+
+//START reCAPTCHA 
+require_once($phpbb_root_path . 'includes/recaptchalib.' . $phpEx);
+$recaptcha_public_key = '';  // You need to put your public key here
+$recaptcha_private_key = ''; // You need to put your private key here
+$recaptcha_code = null;
+//END reCAPTCHA
 $params = array('submit' => 'post', 'preview' => 'preview', 'delete' => 'delete', 'poll_delete' => 'poll_delete', 'poll_add' => 'add_poll_option', 'poll_edit' => 'edit_poll_option', 'mode' => 'mode');
 while( list($var, $param) = @each($params) )
 {
@@ -543,6 +557,17 @@ else if ( $submit || $confirm )
 		case 'editpost':
 		case 'newtopic':
 		case 'reply':
+			if ( $board_config['enable_confirm'] && !$userdata['session_logged_in'] )
+ 	{	
+		//START reCAPTCHA
+		$recaptcha_response =  recaptcha_check_answer ($recaptcha_private_key, $client_ip, htmlspecialchars($HTTP_POST_VARS['recaptcha_challenge_field']), htmlspecialchars($HTTP_POST_VARS['recaptcha_response_field'])); 	
+		if (!$recaptcha_response->is_valid) {
+ 			$error = TRUE;
+			$recaptcha_code = recaptcha_get_html ($recaptcha_public_key, $recaptcha_response->error);
+		//END reCAPTCHA
+		 	$error_msg .= ( ( isset($error_msg) ) ? '<br />' : '' ) . $lang['Confirm_code_wrong'];
+ 		}
+	}
 		// Visual Confirmation for Guests
 				if ( $board_config['enable_confirm'] && !$userdata['session_logged_in'] )
 			{
@@ -1079,6 +1104,19 @@ if( !$userdata['session_logged_in'] && (!empty($board_config['enable_confirm']))
 	$template->assign_block_vars('switch_confirm', array());
 }
 
+//
+// reCAPTCHA Visual confirmation for guests
+//
+
+	if( !$userdata['session_logged_in'] && (!empty($board_config['enable_confirm'])) )
+	{
+		//START reCAPTCHA
+		if (!$recaptcha_code)
+		$recaptcha_code = recaptcha_get_html ($recaptcha_public_key, null);	
+		//END reCAPTCHA
+		
+ 		$template->assign_block_vars('switch_confirm', array());
+ 	}
 // Generate smilies listing for page output
 generate_smilies('inline', PAGE_POSTING);
 
@@ -1128,6 +1166,7 @@ $template->assign_vars(array(
 	'HTML_STATUS' => $html_status,
 	'BBCODE_STATUS' => sprintf($bbcode_status, '<a href="' . append_sid("faq.$phpEx?mode=bbcode") . '" target="_phpbbcode">', '</a>'), 
 	'SMILIES_STATUS' => $smilies_status, 
+	'RECAPTCHA_CODE' => $recaptcha_code,
 	'L_CONFIRM_POST' => $lang['Confirm_post'],
 	'L_CONFIRM_POST_EXPLAIN' => $lang['Confirm_post_explain'],
 	'L_YES' => $lang['Yes'],
