@@ -523,13 +523,6 @@ function storeCaret(textEl) {
       </tr>
 	{ATTACHBOX}
 	{POLLBOX} 
-	<!-- reCAPTCHA Visual Confirmation -->
- 	<!-- BEGIN switch_confirm -->
- 	<tr> 
-	  <td class="row1"><span class="gen"><b>{L_CONFIRM_CODE}</b>: * </span><br /><span class="gensmall">{L_CONFIRM_CODE_EXPLAIN}</span></td>
-	  <td class="row2">{RECAPTCHA_CODE}</td>
- 	</tr>
- 	<!-- END switch_confirm -->
 	<!-- Visual Confirmation -->
 	<!-- BEGIN switch_confirm -->
 	<tr>
