@@ -20,12 +20,12 @@
     // Feel free to use, change or ignore.
     define('SERVER_INSTANCE', 'dev');
     define('ALLOW_REMOTE_ADMIN', false);
-    define('ADMIN_EMAIL_ADDRESS', 'user@host.com');
+    define('ADMIN_EMAIL_ADDRESS', 'timdream@mail.moztw.org');
     define('NARRO_VERSION', '0.9.1');
-    define ('__DOCROOT__', realpath(dirname(__FILE__) . '/../..'));
+    define ('__DOCROOT__', realpath(dirname(__FILE__) . '/..'));
     define ('__VIRTUAL_DIRECTORY__', '');
-    define ('__HTTP_URL__', 'http://localhost');
-    define ('__SUBDIRECTORY__', '/narro');
+    define ('__HTTP_URL__', 'http://translate.moztw.org');
+    define ('__SUBDIRECTORY__', '');
     define ('__URL_REWRITE__', 'none');
     define ('__DEVTOOLS_CLI__', __DOCROOT__ . __SUBDIRECTORY__ . '/_devtools_cli');
     define ('__INCLUDES__', __DOCROOT__ .  __SUBDIRECTORY__ . '/includes');
