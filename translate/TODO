@@ -1,0 +1,8 @@
+Add comments on texts, contexts and suggestions.
+Add import options from launchpad, transifex, mozilla's servers and openoffice's servers, url and cvs anonymous.
+Show statistics on import/export operations.
+Export mozilla projects as language pack.
+Export the most used suggestion and the current user's suggestion.
+Add more RSS feeds.
+Add possibility to maintain and create glossaries.
+And more in the issue tracker: http://code.google.com/p/narro/issues/list

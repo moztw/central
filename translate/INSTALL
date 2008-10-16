@@ -1,0 +1,42 @@
+- extract the archive contents in your web server root directory. Or somwhere else if you prefer that.
+
+- edit the file narro/includes/configuration.inc.php. You'll want to review the following settings:
+
+    This is the email address where all aplication errors will be sent. Since this is a beta version, please be so kind and forward this reports to my email address.
+        define('ADMIN_EMAIL_ADDRESS', 'user@host.com');
+
+    If you're using a virtual directory like http://address/~user, fill in here /~user as value.
+        define ('__VIRTUAL_DIRECTORY__', '');
+        
+    Define here the url to your server, http or https and server name.
+        define ('__HTTP_URL__', 'http://localhost');
+
+    Define here the subdirectory where Narro is located. If you extract the original archive under your web server root directory, then the subdirectory is /narro
+        define ('__SUBDIRECTORY__', '/narro');
+
+    Change your database settings accordingly, check server, port, database, username and password.
+        define('DB_CONNECTION_1', serialize(array(
+                'adapter' => 'MySqli5',
+                'encoding' => 'UTF8',
+                'server' => 'localhost',
+                'port' => null,
+                'database' => 'narro',
+                'username' => 'narro',
+                'password' => '',
+                'profiling' => false)));
+
+- import the file narro.sql in the database you are using.
+
+    Make sure that the directory "data" under Narro's directory has 777 permissions (everyone can read, write and execute). If you extract the archive on a unix based system, the permissions are usually kept.
+
+- head to http://server/__VIRTUAL_DIRECTORY__/__SUBDIRECTORY__. By default, it's http://hostname/narro.
+
+    Narro should be working. 
+    If so, create an account by clicking Register. 
+    The first account will get super powers. Go to the link "Projects". 
+    You'll have a project already defined, that's Narro. 
+    Follow the "Manage" link besides it and do a first import from the page that opens. 
+    It shouldn't take long. 
+    After it's finished, click on "Narro" from the breadcrumbs to see the texts imported.
+    Please visit the page http://code.google.com/p/narro/wiki/KnownIssues and add issues if you find any.
+    
