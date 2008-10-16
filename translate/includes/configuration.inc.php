@@ -66,13 +66,13 @@
         'server' => 'localhost',
         'port' => null,
         'database' => 'narro',
-        'username' => 'narro',
+        'username' => 'root',
         'password' => '',
         'profiling' => false)));
 
     // (For PHP > v5.1) Setup the default timezone (if not already specified in php.ini)
     if ((function_exists('date_default_timezone_set')) && (!ini_get('date.timezone')))
-        date_default_timezone_set('America/Los_Angeles');
+        date_default_timezone_set('Asia/Taipei');
 
 
 
