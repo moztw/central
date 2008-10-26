@@ -33,8 +33,10 @@
         protected $btnAddPermission;
 
         protected function Form_Create() {
+            parent::Form_Create();
+            
             if (!QApplication::$objUser->hasPermission('Can manage users'))
-                QApplication::Redirect('narro_project_list.php');
+                QApplication::Redirect(NarroLink::ProjectList());
 
             $this->objUser = NarroUser::Load(QApplication::QueryString('u'));
 

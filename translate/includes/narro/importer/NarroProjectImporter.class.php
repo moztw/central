@@ -402,7 +402,7 @@
             /**
              * clear the progress cache
              */
-            QApplication::$Cache->remove('project_progress_' . $this->objProject->ProjectId . '_' . $this->objTargetLanguage->LanguageId);
+            NarroCache::ClearAllTextsCount($this->objProject->ProjectId, $this->objTargetLanguage->LanguageId);
 
         }
 
@@ -722,6 +722,8 @@
                 case "Validate": return $this->blnValidate;
                 case "CheckEqual": return $this->blnCheckEqual;
                 case "OnlySuggestions": return $this->blnOnlySuggestions;
+                case "DeactivateFiles": return $this->blnDeactivateFiles;
+                case "DeactivateContexts": return $this->blnDeactivateContexts;
 
                 default: return false;
             }
@@ -811,6 +813,24 @@
                 case "OnlySuggestions":
                     try {
                         $this->blnOnlySuggestions = QType::Cast($mixValue, QType::Boolean);
+                        break;
+                    } catch (QInvalidCastException $objExc) {
+                        $objExc->IncrementOffset();
+                        throw $objExc;
+                    }
+
+                case "DeactivateContexts":
+                    try {
+                        $this->blnDeactivateContexts = QType::Cast($mixValue, QType::Boolean);
+                        break;
+                    } catch (QInvalidCastException $objExc) {
+                        $objExc->IncrementOffset();
+                        throw $objExc;
+                    }
+
+                case "DeactivateFiles":
+                    try {
+                        $this->blnDeactivateFiles = QType::Cast($mixValue, QType::Boolean);
                         break;
                     } catch (QInvalidCastException $objExc) {
                         $objExc->IncrementOffset();

@@ -22,7 +22,9 @@
         protected $objUser;
 
         protected function Form_Create() {
-            $this->objUser = NarroUser::Load(QApplication::QueryString('u'));
+            parent::Form_Create();
+            
+            $this->objUser = NarroUser::LoadByUserId(QApplication::QueryString('u'));
             $this->pnlUserSuggestions = new NarroUserSuggestionsPanel(QApplication::QueryString('u'), $this);
         }
 

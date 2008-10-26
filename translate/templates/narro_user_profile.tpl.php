@@ -22,6 +22,7 @@
 ?>
 
     <?php $this->RenderBegin() ?>
+        <?php $this->pnlHeader->Render() ?>
         <h1><?php echo sprintf(t('%s\'s translations'), $this->objUser->Username); ?></h1>
         <?php
             $intSuggestionCount = NarroSuggestion::CountByUserId($this->objUser->UserId);

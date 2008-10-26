@@ -53,7 +53,7 @@
                 if ($strText != '')
                     fputs($hndLogFile, $strText . "\n");
             else {
-                self::SetLogFile(__TMP_PATH__ . '/narro-' . QApplication::$objUser->Language->LanguageCode);
+                self::SetLogFile(__TMP_PATH__ . '/narro-' . QApplication::$Language->LanguageCode);
                 $hndLogFile = fopen(self::$strLogFile, 'a+');
                 if ($hndLogFile)
                     if ($strText != '')
@@ -83,8 +83,8 @@
                 unlink(self::$strLogFile);
             }
 
-            if (file_exists(__TMP_PATH__ . '/narro-' . QApplication::$objUser->Language->LanguageCode)) {
-                unlink(__TMP_PATH__ . '/narro-' . QApplication::$objUser->Language->LanguageCode);
+            if (file_exists(__TMP_PATH__ . '/narro-' . QApplication::$Language->LanguageCode)) {
+                unlink(__TMP_PATH__ . '/narro-' . QApplication::$Language->LanguageCode);
             }
         }
 
@@ -92,8 +92,8 @@
 
             if (file_exists(self::$strLogFile))
                 return file_get_contents(self::$strLogFile);
-            elseif (file_exists(__TMP_PATH__ . '/narro-' . QApplication::$objUser->Language->LanguageCode))
-                return file_get_contents(__TMP_PATH__ . '/narro-' . QApplication::$objUser->Language->LanguageCode);
+            elseif (file_exists(__TMP_PATH__ . '/narro-' . QApplication::$Language->LanguageCode))
+                return file_get_contents(__TMP_PATH__ . '/narro-' . QApplication::$Language->LanguageCode);
             else
                 return sprintf(t('No log found, check the server log. Log file is set in Narro to: "%s"'), self::$strLogFile);
         }

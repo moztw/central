@@ -23,6 +23,7 @@
         public static $arrPreferences;
         public static $arrFormats;
         public static $Cache;
+        public static $Language;
 
         /**
         * This is called by the PHP5 Autoloader.  This method overrides the
@@ -93,40 +94,22 @@
     /////////////////////////////
     // Start Session Handler (if required)
     /////////////////////////////
-    session_name('NARRO_ID');
-    session_save_path(__TMP_PATH__ . '/session');
-    session_set_cookie_params(time()+31*24*3600, __VIRTUAL_DIRECTORY__ . __SUBDIRECTORY__);
-    session_start();
+    require_once __INCLUDES__ . '/Zend/Session.php';
+    Zend_Session::setOptions(
+        array(
+            'name'=>'NARRO_ID',
+            'save_path'=> __TMP_PATH__ . '/session',
+            'cookie_lifetime'           => 31*24*3600,
+            'cookie_path'               => __VIRTUAL_DIRECTORY__ . __SUBDIRECTORY__,
+        )
+    );
 
-    QApplication::RegisterPreference('Items per page', 'number', 'How many items are displayed per page', 10);
-    QApplication::RegisterPreference('Font size', 'option', 'The application font size', 'medium', array('x-small', 'small', 'medium', 'large', 'x-large'));
-    QApplication::RegisterPreference('Language', 'option', 'The language you are translating to.', 'en-US', array('en-US'));
-    QApplication::RegisterPreference('Special characters', 'text', 'Characters that are not on your keyboard, separated by spaces.', '$€');
-    QApplication::RegisterPreference('Theme', 'option', 'The theme used in the translation page', 'narro', array('Narro', 'KBabel'));
-
-    if (isset($_SESSION['objUser']) && $_SESSION['objUser'] instanceof NarroUser)
-        QApplication::$objUser = $_SESSION['objUser'];
-    else
-        QApplication::$objUser = NarroUser::LoadAnonymousUser();
-
-    if (!QApplication::$objUser instanceof NarroUser)
-        // @todo add handling here
-        throw Exception('Could not create an instance of NarroUser');
-
-    if (QApplication::QueryString('switch_lang')) {
-        $objNewLanguage = NarroLanguage::LoadByLanguageCode(QApplication::QueryString('switch_lang'));
-        if ( $objNewLanguage instanceof NarroLanguage ) {
-            QApplication::$objUser->Language = $objNewLanguage;
-            $_SESSION['objUser'] = QApplication::$objUser;
-            header('Location: index.php');
-        }
-    }
-
-    QApplication::$LanguageCode = QApplication::$objUser->Language->LanguageCode;
+    require_once __INCLUDES__ . '/Zend/Session/Namespace.php';
+    $objNarroSession = new Zend_Session_Namespace('Narro');
 
     QCache::$CachePath = __DOCROOT__ . __SUBDIRECTORY__ . '/data/cache';
-    QForm::$FormStateHandler = 'QFormStateHandler';
-    QFileFormStateHandler::$StatePath = __TMP_PATH__ . '/qform_states/';
+    QForm::$FormStateHandler = 'QFileFormStateHandler';
+    QFileFormStateHandler::$StatePath = __TMP_PATH__ . '/qform_state';
 
     require_once __INCLUDES__ . '/Zend/Cache.php';
 
@@ -140,7 +123,28 @@
     );
 
     QApplication::$Cache = Zend_Cache::factory('Core', 'File', $frontendOptions, $backendOptions);
+    if (QApplication::QueryString('l'))
+        QApplication::$Language = NarroLanguage::LoadByLanguageCode(QApplication::QueryString('l'));
 
+    QApplication::RegisterPreference('Items per page', 'number', 'How many items are displayed per page', 10);
+    QApplication::RegisterPreference('Font size', 'option', 'The application font size', 'medium', array('x-small', 'small', 'medium', 'large', 'x-large'));
+    QApplication::RegisterPreference('Language', 'option', 'The language you are translating to.', QApplication::QueryString('l'), array(QApplication::QueryString('l')));
+    QApplication::RegisterPreference('Application language', 'option', 'The language you want to see Narro in.', (isset(QApplication::$Language))?QApplication::$Language->LanguageId:1, array((isset(QApplication::$Language))?QApplication::$Language->LanguageId:1));
+    QApplication::RegisterPreference('Special characters', 'text', 'Characters that are not on your keyboard, separated by spaces.', '$€');
+
+    if (isset($objNarroSession->User) && $objNarroSession->User instanceof NarroUser)
+        QApplication::$objUser = $objNarroSession->User;
+    else
+        QApplication::$objUser = NarroUser::LoadAnonymousUser();
+
+    if (!QApplication::$objUser instanceof NarroUser)
+        // @todo add handling here
+        throw Exception('Could not create an instance of NarroUser');
+
+    if (!isset(QApplication::$Language))
+        QApplication::$Language = QApplication::$objUser->Language;
+
+    QApplication::$LanguageCode = QApplication::$Language->LanguageCode;
 
     QApplication::$objPluginHandler = new NarroPluginHandler(dirname(__FILE__) . '/narro/plugins');
 
@@ -158,10 +162,14 @@
     QApplicationBase::$ClassFile['NarroMozilla'] = __INCLUDES__ . '/narro/importer/NarroMozilla.class.php';
     QApplicationBase::$ClassFile['NarroImportStatistics'] = __INCLUDES__ . '/narro/importer/NarroImportStatistics.class.php';
     QApplicationBase::$ClassFile['NarroLog'] = __INCLUDES__ . '/narro/importer/NarroLog.class.php';
+    QApplicationBase::$ClassFile['NarroCache'] = __INCLUDES__ . '/narro/NarroCache.class.php';
     QApplicationBase::$ClassFile['NarroProgress'] = __INCLUDES__ . '/narro/importer/NarroProgress.class.php';
     QApplicationBase::$ClassFile['NarroUtils'] = __INCLUDES__ . '/narro/NarroUtils.class.php';
     QApplicationBase::$ClassFile['NarroString'] = __INCLUDES__ . '/narro/NarroString.class.php';
     QApplicationBase::$ClassFile['Archive_Tar'] = __INCLUDES__ . '/PEAR/Archive/Tar.php';
     QApplicationBase::$ClassFile['NarroDiacriticsPanel'] = __INCLUDES__ . '/narro/narro_diacritics_panel.class.php';
+    QApplicationBase::$ClassFile['NarroHeaderPanel'] = __INCLUDES__ . '/narro/NarroHeaderPanel.class.php';
+    QApplicationBase::$ClassFile['NarroTextCommentListPanel'] = __INCLUDES__ . '/narro/NarroTextCommentListPanel.class.php';
+    QApplicationBase::$ClassFile['NarroLink'] = __INCLUDES__ . '/narro/NarroLink.class.php';
 
 ?>

@@ -22,6 +22,7 @@
 ?>
 
     <?php $this->RenderBegin() ?>
+        <?php $this->pnlHeader->Render() ?>
         <p><?php echo t('Here you can set your preferences.');?></p>
         <?php $this->pnlPreferences->Render() ?>
     <?php $this->RenderEnd() ?>

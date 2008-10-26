@@ -35,7 +35,7 @@
                 throw $objExc;
             }
 
-            if (isset($_SERVER['HTTP_REFERER']) && !strstr($_SERVER['HTTP_REFERER'], basename(__FILE__)) && $_SERVER['HTTP_REFERER'] !='')
+            if (isset($_SERVER['HTTP_REFERER']) && !strstr($_SERVER['HTTP_REFERER'], 'narro_login.php') && strstr($_SERVER['HTTP_REFERER'], __HTTP_URL__) && !strstr($_SERVER['HTTP_REFERER'], basename(__FILE__)) && $_SERVER['HTTP_REFERER'] !='')
                 $this->txtPreviousUrl = $_SERVER['HTTP_REFERER'];
 
             $this->lblMessage = new QLabel($this);
@@ -49,7 +49,7 @@
             $this->btnCancel->Text = t('Cancel');
             $this->btnCancel->AddAction(new QClickEvent(), new QServerControlAction($this, 'btnCancel_Click'));
 
-            if (is_numeric(QApplication::QueryString('u')) && QApplication::$objUser->hasPermission('Can manage users')) {
+            if (QApplication::$objUser->UserId != QApplication::QueryString('u') && QApplication::$objUser->hasPermission('Can manage users')) {
                 $this->objUser = NarroUser::LoadByUserId(QApplication::QueryString('u'));
                 $this->lblMessage->ForeColor = 'red';
                 $this->lblMessage->Text = t('Warning, you are editing another user\'s preferences!');
@@ -80,16 +80,16 @@
                             $txtTextPref = new QTextBox($this);
                             $txtTextPref->Name = $strName;
                             $txtTextPref->Text = $this->objUser->getPreferenceValueByName($strName);
-                            
+
                             if ($strName == 'Special characters') {
                                 $strSelect = sprintf('<select onchange="document.getElementById(\'%s\').value+=this.options[this.selectedIndex].value;">', $txtTextPref->ControlId);
-                                foreach(NarroDiacriticsPanel::$arrEntities as $strEntityName=>$strEntityChar) 
+                                foreach(NarroDiacriticsPanel::$arrEntities as $strEntityName=>$strEntityChar)
                                     $strSelect .= sprintf('<option value=" %s">%s (%s)', $strEntityName, $strEntityChar, $strEntityName);
-                                $strSelect .= '</select>';  
+                                $strSelect .= '</select>';
                                 $arrPref['description'] .= $strSelect;
                                 $txtTextPref->Width = 400;
                             }
-                            
+
                             $strOutput .= sprintf('<tr class="datagrid_row datagrid_even" style="height:40px"><td>%s:</td><td>%s</td><td style="font-size:-1">%s</td></tr>', t($strName), $txtTextPref->RenderWithError(false), t($arrPref['description']));
                             $this->arrControls[$strName] = $txtTextPref;
                             break;
@@ -100,6 +100,12 @@
                                 $arrLanguages = NarroLanguage::LoadAll(QQ::Clause(QQ::OrderBy(QQN::NarroLanguage()->LanguageName)));
                                 foreach($arrLanguages as $objLanguage) {
                                     $lstOption->AddItem(t($objLanguage->LanguageName), $objLanguage->LanguageCode, ($objLanguage->LanguageCode == $this->objUser->getPreferenceValueByName($strName)));
+                                }
+                            }
+                            elseif ($strName == 'Application language') {
+                                $arrLanguages = NarroLanguage::LoadAll(QQ::Clause(QQ::OrderBy(QQN::NarroLanguage()->LanguageName)));
+                                foreach($arrLanguages as $objLanguage) {
+                                    $lstOption->AddItem(t($objLanguage->LanguageName), $objLanguage->LanguageId, ($objLanguage->LanguageId == $this->objUser->getPreferenceValueByName($strName)));
                                 }
                             }
                             else
@@ -135,8 +141,10 @@
 
             $this->objUser->Data = serialize($this->objUser->Preferences);
 
-            if (!is_numeric(QApplication::QueryString('u'))) {
-                $_SESSION['objUser'] = $this->objUser;
+            if (QApplication::QueryString('u') == $this->objUser->UserId) {
+                require_once __INCLUDES__ . '/Zend/Session/Namespace.php';
+                $objNarroSession = new Zend_Session_Namespace('Narro');
+                $objNarroSession->User = $this->objUser;
             }
 
             /**
@@ -147,7 +155,7 @@
 
             try {
                 $this->objUser->Save();
-                if (is_numeric(QApplication::QueryString('u')) && QApplication::$objUser->hasPermission('Can manage users'))
+                if (QApplication::$objUser->UserId != QApplication::QueryString('u') && QApplication::$objUser->hasPermission('Can manage users'))
                     $this->lblMessage->Text = sprintf(t('Preferences for %s were saved successfuly.'), $this->objUser->Username);
                 else
                     $this->lblMessage->Text = t('Your preferences were saved successfuly.');
@@ -159,9 +167,9 @@
         }
 
         public function btnCancel_Click($strFormId, $strControlId, $strParameter) {
-            QApplication::Redirect('narro_project_list.php');
+            QApplication::Redirect(NarroLink::ProjectList());
         }
-        
+
         public function __get($strName) {
             switch ($strName) {
                 case 'User': return $this->objUser;
@@ -174,7 +182,7 @@
                         throw $objExc;
                     }
             }
-        }        
+        }
 
     }
 
@@ -182,6 +190,8 @@
         protected $pnlPreferences;
 
         protected function Form_Create() {
+            parent::Form_Create();
+
             $this->pnlPreferences = new NarroUserPreferencesPanel($this);
         }
     }

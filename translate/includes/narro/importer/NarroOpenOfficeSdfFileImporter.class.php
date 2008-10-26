@@ -78,6 +78,14 @@
                 $arrTranslatedColumn[8] = 0;
                 $arrTranslatedColumn[9] = 'ro';
 
+                if (preg_match('/~(\w)/', $strText, $arrTextAccMatches)) {
+                    $strTextAccKey = $arrTextAccMatches[1];
+                    $strText = mb_ereg_replace('~' . $strTextAccKey, $strTextAccKey, $strText);
+                }
+                else {
+                    $strTextAccKey = null;
+                }
+
                 $objNarroContextInfo = $this->GetContextInfo($strText, $strContext);
 
                 if ($objNarroContextInfo instanceof NarroContextInfo && $objNarroContextInfo->ValidSuggestionId) {
@@ -258,10 +266,6 @@
                 }
 
                 $this->AddTranslation($strText, $strTextAccKey, $strTranslation, $strTranslationAccKey, $strContext);
-
-                if ($intProcessedSoFar % 10 === 0) {
-                    NarroLog::LogMessage(1, sprintf(t("Progress: %s%%"), (int) ceil(($intProcessedSoFar*100)/$intTotalToProcess)));
-                }
             }
             fclose($hndFile);
         }

@@ -23,15 +23,26 @@
 ?>
 
     <?php $this->RenderBegin() ?>
+        <?php $this->pnlHeader->Render() ?>
         <h3><?php echo t('Project list') ?></h3>
         <p><?php echo t('This is a list of projects that are being translated here. You can help too. Click on any project name to start translating.'); ?></p>
-        <br />
-        <?php if (QApplication::$objUser->hasPermission('Can add project', null, QApplication::$objUser->Language->LanguageId)) { ?>
-            <p align="right"><a href="narro_project_edit.php"><?php _t('Add project') ?></a></p>
+        <?php if (QApplication::$objUser->hasPermission('Can add project', null, QApplication::$Language->LanguageId)) { ?>
+            <p align="right"><a href="narro_project_edit.php?l=<?php echo QApplication::$Language->LanguageCode ?>"><?php _t('Add project') ?></a></p>
         <?php } ?>
         <?php $this->dtgNarroProject->Render() ?>
-        <p><?php echo t('Top 10 translators') ?>
+        <table style="width:100%;padding-top:10px" cellpadding="0" cellspacing="0">
+        <tr>
+        <td>
+        <?php echo t('Top 10 translators') ?>
         <?php $this->pnlTopUsers->Render() ?>
+        </td>
+        <td style="padding-left:10px">
+        <?php echo t('Newest 10 translators') ?>
+        <?php $this->pnlNewUsers->Render() ?>
+        </td>
+        </tr>
+        </table>
+
 
     <?php $this->RenderEnd() ?>
 

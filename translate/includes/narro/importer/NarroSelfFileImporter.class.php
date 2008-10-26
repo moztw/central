@@ -208,9 +208,6 @@
                 $this->ImportFile($objFile, $strFileToImport);
                 $intElapsedTime = time() - $intTime;
                 NarroLog::LogMessage(1, sprintf(t('Processed file "%s" in %d seconds, %d files left'), str_replace($strDirectory, '', $strFileToImport), $intElapsedTime, (count($arrFiles) - $intCurFile)));
-
-                if ($intFileNo % 10 === 0)
-                    NarroLog::LogMessage(1, sprintf(t("Progress: %s%%"), ceil(($intFileNo*100)/$intTotalFilesToProcess)));
             }
 
             $objFile = NarroFile::QuerySingle(
@@ -260,7 +257,7 @@
             /**
              * clear the progress cache
              */
-            QApplication::$Cache->remove('project_progress_' . $this->objProject->ProjectId . '_' . $this->objTargetLanguage->LanguageId);
+            NarroCache::ClearAllTextsCount($this->objProject->ProjectId, $this->objTargetLanguage->LanguageId);
         }
 
         public function ImportFile($objFile, $strFileName) {
@@ -304,7 +301,7 @@
                 NarroContextInfo::QueryArray(
                     QQ::AndCondition(
                         QQ::Equal(QQN::NarroContextInfo()->Context->Project->ProjectName, 'Narro'),
-                        QQ::Equal(QQN::NarroContextInfo()->LanguageId, QApplication::$objUser->Language->LanguageId)
+                        QQ::Equal(QQN::NarroContextInfo()->LanguageId, QApplication::$Language->LanguageId)
                     )
                 ) as $objContextInfo) {
                     NarroSelfTranslate::UpdateTranslation(

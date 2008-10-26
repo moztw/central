@@ -20,6 +20,7 @@
         protected $dtgSuggestions;
         protected $colText;
         protected $colSuggestion;
+        protected $colLanguage;
 
         protected $intUserId;
 
@@ -36,6 +37,7 @@
 
             $this->colSuggestion = new QDataGridColumn(t('Translated text'), '<?= $_CONTROL->ParentControl->dtgSuggestions_colSuggestion_Render($_ITEM); ?>', array('OrderByClause' => QQ::OrderBy(QQN::NarroSuggestion()->SuggestionValue), 'ReverseOrderByClause' => QQ::OrderBy(QQN::NarroSuggestion()->SuggestionValue, false)));
             $this->colText = new QDataGridColumn(t('Original text'), '<?= $_CONTROL->ParentControl->dtgSuggestions_colText_Render($_ITEM); ?>', array('OrderByClause' => QQ::OrderBy(QQN::NarroSuggestion()->Text->TextValue), 'ReverseOrderByClause' => QQ::OrderBy(QQN::NarroSuggestion()->Text->TextValue, false)));
+            $this->colLanguage = new QDataGridColumn(t('Language'), '<?= $_CONTROL->ParentControl->dtgSuggestions_colLanguage_Render($_ITEM); ?>', array('OrderByClause' => QQ::OrderBy(QQN::NarroSuggestion()->LanguageId), 'ReverseOrderByClause' => QQ::OrderBy(QQN::NarroSuggestion()->LanguageId, false)));
 
             // Setup DataGrid
             $this->dtgSuggestions = new QDataGrid($this);
@@ -55,6 +57,7 @@
 
             $this->dtgSuggestions->AddColumn($this->colText);
             $this->dtgSuggestions->AddColumn($this->colSuggestion);
+            $this->dtgSuggestions->AddColumn($this->colLanguage);
         }
 
         public function dtgSuggestions_colSuggestion_Render( NarroSuggestion $objNarroSuggestion ) {
@@ -63,6 +66,10 @@
 
         public function dtgSuggestions_colText_Render( NarroSuggestion $objNarroSuggestion ) {
             return $objNarroSuggestion->Text->TextValue;
+        }
+
+        public function dtgSuggestions_colLanguage_Render( NarroSuggestion $objNarroSuggestion ) {
+            return t($objNarroSuggestion->Language->LanguageName);
         }
 
         public function dtgSuggestions_Bind() {

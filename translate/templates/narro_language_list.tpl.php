@@ -23,11 +23,12 @@
 ?>
 
     <?php $this->RenderBegin() ?>
+        <?php $this->pnlHeader->Render() ?>
         <h3><?php echo t('Language list') ?></h3>
         <p><?php echo t('This is a list of languages that projects can be translated in.'); ?></p>
         <br />
         <?php if (QApplication::$objUser->hasPermission('Can add language')) { ?>
-            <p align="right"><a href="narro_language_edit.php"><?php _t('Add language') ?></a></p>
+            <p align="right"><a href="narro_language_edit.php?l=<?php echo QApplication::$Language->LanguageCode ?>"><?php _t('Add language') ?></a></p>
         <?php } ?>
         <?php $this->dtgNarroLanguage->Render() ?>
 

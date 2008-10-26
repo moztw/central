@@ -44,71 +44,73 @@
             return sprintf('NarroLanguage Object %s',  $this->intLanguageId);
         }
 
-        // Override or Create New Load/Count methods
-        // (For obvious reasons, these methods are commented out...
-        // but feel free to use these as a starting point)
-/*
-        public static function LoadArrayBySample($strParam1, $intParam2, $objOptionalClauses = null) {
-            // This will return an array of NarroLanguage objects
-            return NarroLanguage::QueryArray(
-                QQ::AndCondition(
-                    QQ::Equal(QQN::NarroLanguage()->Param1, $strParam1),
-                    QQ::GreaterThan(QQN::NarroLanguage()->Param2, $intParam2)
-                ),
-                $objOptionalClauses
-            );
+        public static function Load($intLanguageId) {
+            $objLanguage = QApplication::$Cache->load('narrolanguage_' . $intLanguageId);
+
+            if (!$objLanguage instanceof NarroLanguage) {
+                $objLanguage = parent::Load($intLanguageId);
+                if ($objLanguage instanceof NarroLanguage) {
+                    QApplication::$Cache->save($objLanguage, 'narrolanguage_' . $intLanguageId);
+                }
+            }
+
+            return $objLanguage;
         }
 
-        public static function LoadBySample($strParam1, $intParam2, $objOptionalClauses = null) {
-            // This will return a single NarroLanguage object
-            return NarroLanguage::QuerySingle(
-                QQ::AndCondition(
-                    QQ::Equal(QQN::NarroLanguage()->Param1, $strParam1),
-                    QQ::GreaterThan(QQN::NarroLanguage()->Param2, $intParam2)
-                ),
-                $objOptionalClauses
-            );
+        public static function LoadAll($objOptionalClauses = null) {
+            $arrLanguage = QApplication::$Cache->load('narrolanguage_loadall');
+
+            if (!$arrLanguage && $objOptionalClauses == QQ::Clause(QQ::OrderBy(QQN::NarroLanguage()->LanguageName))) {
+                $arrLanguage = parent::LoadAll($objOptionalClauses);
+                if ($arrLanguage) {
+                    QApplication::$Cache->save($arrLanguage, 'narrolanguage_loadall');
+                }
+            }
+
+            return $arrLanguage;
         }
 
-        public static function CountBySample($strParam1, $intParam2, $objOptionalClauses = null) {
-            // This will return a count of NarroLanguage objects
-            return NarroLanguage::QueryCount(
-                QQ::AndCondition(
-                    QQ::Equal(QQN::NarroLanguage()->Param1, $strParam1),
-                    QQ::Equal(QQN::NarroLanguage()->Param2, $intParam2)
-                ),
-                $objOptionalClauses
-            );
+        public static function CountAll() {
+            $intCount = QApplication::$Cache->load('narrolanguage_countall');
+
+            if (!$intCount) {
+                $intCount = parent::CountAll();
+                if ($intCount) {
+                    QApplication::$Cache->save($intCount, 'narrolanguage_countall');
+                }
+            }
+
+            return $intCount;
         }
 
-        public static function LoadArrayBySample($strParam1, $intParam2, $objOptionalClauses) {
-            // Performing the load manually (instead of using Qcodo Query)
+        public static function LoadByLanguageCode($strLanguageCode) {
+            $objLanguage = QApplication::$Cache->load('narrolanguage_' . str_replace('-', '_', $strLanguageCode));
 
-            // Get the Database Object for this Class
-            $objDatabase = NarroLanguage::GetDatabase();
+            if (!$objLanguage instanceof NarroLanguage) {
+                $objLanguage = parent::LoadByLanguageCode($strLanguageCode);
+                if ($objLanguage instanceof NarroLanguage) {
+                    QApplication::$Cache->save($objLanguage, 'narrolanguage_' . str_replace('-', '_', $strLanguageCode));
+                }
+            }
 
-            // Properly Escape All Input Parameters using Database->SqlVariable()
-            $strParam1 = $objDatabase->SqlVariable($strParam1);
-            $intParam2 = $objDatabase->SqlVariable($intParam2);
-
-            // Setup the SQL Query
-            $strQuery = sprintf('
-                SELECT
-                    `narro_language`.*
-                FROM
-                    `narro_language` AS `narro_language`
-                WHERE
-                    param_1 = %s AND
-                    param_2 < %s',
-                $strParam1, $intParam2);
-
-            // Perform the Query and Instantiate the Result
-            $objDbResult = $objDatabase->Query($strQuery);
-            return NarroLanguage::InstantiateDbResult($objDbResult);
+            return $objLanguage;
         }
-*/
 
+        public function Save($blnForceInsert = false, $blnForceUpdate = false) {
+            QApplication::$Cache->remove('narrolanguage_' . str_replace('-', '_', $this->LanguageCode));
+            QApplication::$Cache->remove('narrolanguage_' . $this->LanguageId);
+            QApplication::$Cache->remove('narrolanguage_loadall');
+            QApplication::$Cache->remove('narrolanguage_countall');
+            parent::Save($blnForceInsert, $blnForceUpdate);
+        }
 
+        public function Delete() {
+            QApplication::$Cache->remove('narrolanguage_' . str_replace('-', '_', $this->LanguageCode));
+            QApplication::$Cache->remove('narrolanguage_' . $this->LanguageId);
+            QApplication::$Cache->remove('narrolanguage_loadall');
+            QApplication::$Cache->remove('narrolanguage_countall');
+            parent::Delete();
+        }
 
         // Override or Create New Properties and Variables
         // For performance reasons, these variables and __set and __get override methods

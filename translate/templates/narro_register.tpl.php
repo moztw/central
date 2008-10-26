@@ -23,6 +23,7 @@
 ?>
 
     <?php $this->RenderBegin() ?>
+        <?php $this->pnlHeader->Render() ?>
         <h3><?php echo t('Register') ?></h3>
         <p><?php echo t('Here are a few benefits for a registered user'); ?>:</p>
         <ul>

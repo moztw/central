@@ -22,6 +22,7 @@
 ?>
 
     <?php $this->RenderBegin() ?>
+        <?php $this->pnlHeader->Render() ?>
         <div class="title_action"><?php echo sprintf(t('%s\'s permissions'), $this->objUser->Username); ?></div>
         <br class="item_divider" />
 

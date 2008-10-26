@@ -22,6 +22,7 @@
 ?>
 
     <?php $this->RenderBegin() ?>
+        <?php $this->pnlHeader->Render() ?>
         <h3><?php echo $strPageTitle ?></h3>
         <br class="item_divider" />
         

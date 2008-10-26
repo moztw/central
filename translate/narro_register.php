@@ -26,6 +26,8 @@
         protected $btnRegister;
 
         protected function Form_Create() {
+            parent::Form_Create();
+
             $this->lblMessage = new QLabel($this);
             $this->lblMessage->HtmlEntities = false;
             $this->txtUsername = new QTextBox($this);
@@ -54,47 +56,21 @@
             $objUser->Password = md5($this->txtPassword->Text);
 
             try {
-                $objUser->Save();
+                $objUser = NarroUser::RegisterUser($this->txtUsername->Text, $this->txtEmail->Text, $this->txtPassword->Text);
             } catch(Exception $objEx) {
                 $this->lblMessage->ForeColor = 'red';
                 $this->lblMessage->Text = t("Seems like the username or email is already in use.") . $objEx->getMessage();
                 return false;
             }
 
-            /**
-             * set up default permissions
-             */
-            if ($objUser->UserId == 1) {
-                /**
-                 * give super powers to the first user
-                 */
-                $arrPermissions = array();
-                $arrNarroPermissions = NarroPermission::LoadAll();
-                foreach($arrNarroPermissions as $objNarroPermission) {
-                    $arrPermissions[] = $objNarroPermission->PermissionId;
-                }
-            }
-            else
-                /**
-                 * registered users can suggest, vote and comment
-                 */
-                $arrPermissions = array(1, 2, 4);
-
-            foreach($arrPermissions as $intPermissionId) {
-                $objUserPermission = new NarroUserPermission();
-                $objUserPermission->PermissionId = $intPermissionId;
-                $objUserPermission->UserId = $objUser->UserId;
-                $objUserPermission->Save();
-            }
-
-            $objUser = NarroUser::LoadByUsernameAndPassword($this->txtUsername->Text, md5($this->txtPassword->Text));
-
             if (!$objUser instanceof NarroUser)
-                QApplication::Redirect('narro_login.php');
+                QApplication::Redirect(sprintf('narro_login.php?l=%s', QApplication::$Language->LanguageCode));
 
-            $_SESSION['objUser'] = $objUser;
+            require_once __INCLUDES__ . '/Zend/Session/Namespace.php';
+            $objNarroSession = new Zend_Session_Namespace('Narro');
+            $objNarroSession->User = $objUser;
             QApplication::$objUser = $objUser;
-            QApplication::Redirect('narro_user_preferences.php');
+            QApplication::Redirect(NarroLink::UserPreferences($objUser->UserId));
         }
     }
 

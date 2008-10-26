@@ -21,6 +21,7 @@
 
         protected function Form_Create() {
             parent::Form_Create();
+            
             switch($this->lstSearchType->SelectedValue) {
                 case NarroTextListForm::SEARCH_SUGGESTIONS:
                     $this->SetMessage(t('Note that, since you\'re searching suggestions, you won\'t see the texts without suggestions.'));
@@ -37,40 +38,43 @@
                 $this->objNarroProject = NarroProject::Load(($intProjectId));
 
                 if (!$this->objNarroProject)
-                    QApplication::Redirect('narro_project_list.php');
+                    QApplication::Redirect(NarroLink::ProjectList());
 
             } else
-                QApplication::Redirect('narro_project_list.php');
+                QApplication::Redirect(NarroLink::ProjectList());
         }
 
         public function dtgNarroContextInfo_Actions_Render(NarroContextInfo $objNarroContextInfo, $intRowIndex) {
-            if (QApplication::$objUser->hasPermission('Can suggest', $this->objNarroProject->ProjectId, QApplication::$objUser->Language->LanguageId) && QApplication::$objUser->hasPermission('Can vote', $this->objNarroProject->ProjectId, QApplication::$objUser->Language->LanguageId) )
+            if (QApplication::$objUser->hasPermission('Can suggest', $this->objNarroProject->ProjectId, QApplication::$Language->LanguageId) && QApplication::$objUser->hasPermission('Can vote', $this->objNarroProject->ProjectId, QApplication::$Language->LanguageId) )
                 $strText = t('Suggest/Vote');
-            elseif (QApplication::$objUser->hasPermission('Can suggest', $this->objNarroProject->ProjectId, QApplication::$objUser->Language->LanguageId))
+            elseif (QApplication::$objUser->hasPermission('Can suggest', $this->objNarroProject->ProjectId, QApplication::$Language->LanguageId))
                 $strText = t('Suggest');
-            elseif (QApplication::$objUser->hasPermission('Can vote', $this->objNarroProject->ProjectId, QApplication::$objUser->Language->LanguageId))
+            elseif (QApplication::$objUser->hasPermission('Can vote', $this->objNarroProject->ProjectId, QApplication::$Language->LanguageId))
                 $strText = t('Vote');
             else
                 $strText = t('Details');
 
-            return sprintf('<a href="narro_context_suggest.php?p=%d&c=%d&tf=%d&st=%d&s=%s&ci=%d&cc=%d">%s</a>',
-                        $this->objNarroProject->ProjectId,
-                        $objNarroContextInfo->Context->ContextId,
-                        $this->lstTextFilter->SelectedValue,
-                        $this->lstSearchType->SelectedValue,
-                        $this->txtSearch->Text,
-                        $intRowIndex + (($this->dtgNarroContextInfo->PageNumber - 1) * $this->dtgNarroContextInfo->ItemsPerPage),
-                        $this->dtgNarroContextInfo->TotalItemCount,
-                        $strText
-                   );
+            return 
+                NarroLink::ContextSuggest(
+                    $this->objNarroProject->ProjectId,
+                    $objNarroContextInfo->Context->ContextId,
+                    $this->lstTextFilter->SelectedValue,
+                    $this->lstSearchType->SelectedValue,
+                    $this->txtSearch->Text,
+                    $intRowIndex + (($this->dtgNarroContextInfo->PageNumber - 1) * $this->dtgNarroContextInfo->ItemsPerPage),
+                    $this->dtgNarroContextInfo->TotalItemCount,
+                    $this->dtgNarroContextInfo->SortColumnIndex,
+                    $this->dtgNarroContextInfo->SortDirection,
+                    $strText
+               );
         }
 
         public function lstTextFilter_Change() {
-            QApplication::Redirect('narro_project_text_list.php?' . sprintf('p=%d&tf=%d&st=%d&s=%s', $this->objNarroProject->ProjectId, $this->lstTextFilter->SelectedValue, $this->lstSearchType->SelectedValue, $this->txtSearch->Text));
+            QApplication::Redirect(NarroLink::ProjectTextList($this->objNarroProject->ProjectId, $this->lstTextFilter->SelectedValue, $this->lstSearchType->SelectedValue, $this->txtSearch->Text));
         }
 
         public function btnSearch_Click() {
-            QApplication::Redirect('narro_project_text_list.php?' . sprintf('p=%d&tf=%d&st=%d&s=%s', $this->objNarroProject->ProjectId, $this->lstTextFilter->SelectedValue, $this->lstSearchType->SelectedValue, $this->txtSearch->Text));
+            QApplication::Redirect(NarroLink::ProjectTextList($this->objNarroProject->ProjectId, $this->lstTextFilter->SelectedValue, $this->lstSearchType->SelectedValue, $this->txtSearch->Text));
         }
 
 
@@ -79,7 +83,7 @@
 
             $objCommonCondition = QQ::AndCondition(
                 QQ::Equal(QQN::NarroContextInfo()->Context->ProjectId, $this->objNarroProject->ProjectId),
-                QQ::Equal(QQN::NarroContextInfo()->LanguageId, QApplication::$objUser->Language->LanguageId),
+                QQ::Equal(QQN::NarroContextInfo()->LanguageId, QApplication::$Language->LanguageId),
                 QQ::Equal(QQN::NarroContextInfo()->Context->Active, 1)
             );
 

@@ -23,11 +23,14 @@
 ?>
 
     <?php $this->RenderBegin() ?>
+        <?php $this->pnlHeader->Render() ?>
         <div>
         <?php echo
-        '<a href="narro_project_list.php">'.t('Projects').'</a>' .
-        ' -> <a href="narro_project_text_list.php?p=' . $this->objNarroProject->ProjectId . '">' . $this->objNarroProject->ProjectName.'</a>' .
-        ' -> <a href="narro_project_file_list.php?p=' . $this->objNarroProject->ProjectId . '">'.t('Files').'</a>';
+        NarroLink::ProjectList(t('Projects')) .
+        ' -> ' .
+        NarroLink::ProjectTextList($this->objNarroProject->ProjectId, 1, 1, '', $this->objNarroProject->ProjectName) .
+        ' -> ' .
+        NarroLink::ProjectFileList($this->objNarroProject->ProjectId, 0, t('Files'));
         ?>
         </div>
         <h3><?php echo sprintf(t('Language list for %s'), $this->objNarroProject->ProjectName); ?></h3>

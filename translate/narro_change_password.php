@@ -24,12 +24,16 @@
         protected $btnChangePassword;
 
         protected function Form_Create() {
+            parent::Form_Create();
+
             if (QApplication::$objUser->UserId == NarroUser::ANONYMOUS_USER_ID) {
                 $strPassHash = QApplication::QueryString('h');
                 $strUsername = QApplication::QueryString('u');
                 if ($strPassHash && $strUsername) {
                     if ($objUser = NarroUser::LoadByUsernameAndPassword($strUsername, $strPassHash)) {
-                        $_SESSION['objUser'] = $objUser;
+                        require_once __INCLUDES__ . '/Zend/Session/Namespace.php';
+                        $objNarroSession = new Zend_Session_Namespace('Narro');
+                        $objNarroSession->User = $objUser;
                         QApplication::$objUser = $objUser;
                     }
                     else
@@ -60,7 +64,9 @@
                 $this->lblMessage->Text = t('Failed to change the password.');
             }
 
-            $_SESSION['objUser'] = QApplication::$objUser;
+            require_once __INCLUDES__ . '/Zend/Session/Namespace.php';
+            $objNarroSession = new Zend_Session_Namespace('Narro');
+            $objNarroSession->User = QApplication::$objUser;
             $this->lblMessage->ForeColor = 'green';
             $this->lblMessage->Text = t('Password changed succesfully.');
 

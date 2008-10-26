@@ -57,6 +57,8 @@
         }
 
         protected function Form_Create() {
+            parent::Form_Create();
+            
             // Call SetupNarroProject to either Load/Edit Existing or Create New
             $this->SetupNarroProject();
 
@@ -119,9 +121,9 @@
             $this->btnSave->PrimaryButton = true;
             $this->btnSave->CausesValidation = true;
             if ($this->blnEditMode)
-                $this->btnSave->Visible = QApplication::$objUser->hasPermission('Can edit project', $this->objNarroProject->ProjectId, QApplication::$objUser->Language->LanguageId);
+                $this->btnSave->Visible = QApplication::$objUser->hasPermission('Can edit project', $this->objNarroProject->ProjectId, QApplication::$Language->LanguageId);
             else
-                $this->btnSave->Visible = QApplication::$objUser->hasPermission('Can add project', null, QApplication::$objUser->Language->LanguageId);
+                $this->btnSave->Visible = QApplication::$objUser->hasPermission('Can add project', null, QApplication::$Language->LanguageId);
         }
 
         // Setup btnCancel
@@ -143,7 +145,7 @@
             if (!$this->blnEditMode)
                 $this->btnDelete->Visible = false;
 
-            $this->btnDelete->Visible = QApplication::$objUser->hasPermission('Can delete project', $this->objNarroProject->ProjectId, QApplication::$objUser->Language->LanguageId);
+            $this->btnDelete->Visible = QApplication::$objUser->hasPermission('Can delete project', $this->objNarroProject->ProjectId, QApplication::$Language->LanguageId);
         }
 
         // Protected Update Methods
@@ -156,28 +158,28 @@
 
         // Control ServerActions
         protected function btnSave_Click($strFormId, $strControlId, $strParameter) {
-            if ($this->blnEditMode && !QApplication::$objUser->hasPermission('Can edit project', $this->objNarroProject->ProjectId, QApplication::$objUser->Language->LanguageId))
-                QApplication::Redirect('narro_project_list.php');
+            if ($this->blnEditMode && !QApplication::$objUser->hasPermission('Can edit project', $this->objNarroProject->ProjectId, QApplication::$Language->LanguageId))
+                QApplication::Redirect(NarroLink::ProjectList());
 
-            if (!$this->blnEditMode && !QApplication::$objUser->hasPermission('Can add project', null, QApplication::$objUser->Language->LanguageId))
-                QApplication::Redirect('narro_project_list.php');
+            if (!$this->blnEditMode && !QApplication::$objUser->hasPermission('Can add project', null, QApplication::$Language->LanguageId))
+                QApplication::Redirect(NarroLink::ProjectList());
 
             $this->UpdateNarroProjectFields();
             $this->objNarroProject->Save();
 
-            if (!file_exists(__DOCROOT__ . __SUBDIRECTORY__ . __IMPORT_PATH__ . '/' . $this->objNarroProject->ProjectId . '/' . QApplication::$objUser->Language->LanguageCode))
-                mkdir(__DOCROOT__ . __SUBDIRECTORY__ . __IMPORT_PATH__ . '/' . $this->objNarroProject->ProjectId . '/' . QApplication::$objUser->Language->LanguageCode, 0777, true);
+            if (!file_exists(__DOCROOT__ . __SUBDIRECTORY__ . __IMPORT_PATH__ . '/' . $this->objNarroProject->ProjectId . '/' . QApplication::$Language->LanguageCode))
+                mkdir(__DOCROOT__ . __SUBDIRECTORY__ . __IMPORT_PATH__ . '/' . $this->objNarroProject->ProjectId . '/' . QApplication::$Language->LanguageCode, 0777, true);
 
             QApplication::Redirect(sprintf('narro_project_manage.php?p=%d', $this->objNarroProject->ProjectId));
         }
 
         protected function btnCancel_Click($strFormId, $strControlId, $strParameter) {
-            QApplication::Redirect('narro_project_list.php');
+            QApplication::Redirect(NarroLink::ProjectList());
         }
 
         protected function btnDelete_Click($strFormId, $strControlId, $strParameter) {
-            if (!QApplication::$objUser->hasPermission('Can delete project', $this->objNarroProject->ProjectId, QApplication::$objUser->Language->LanguageId))
-                QApplication::Redirect('narro_project_list.php');
+            if (!QApplication::$objUser->hasPermission('Can delete project', $this->objNarroProject->ProjectId, QApplication::$Language->LanguageId))
+                QApplication::Redirect(NarroLink::ProjectList());
 
             $objDatabase = QApplication::$Database[1];
 
@@ -208,7 +210,7 @@
 
             $this->objNarroProject->Delete();
 
-            QApplication::Redirect('narro_project_list.php');
+            QApplication::Redirect(NarroLink::ProjectList());
         }
 
     }

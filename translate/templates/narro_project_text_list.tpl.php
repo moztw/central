@@ -22,11 +22,14 @@
 ?>
 
     <?php $this->RenderBegin() ?>
+        <?php $this->pnlHeader->Render() ?>
         <div>
         <?php echo
-        '<a href="narro_project_list.php">'.t('Projects').'</a>' .
-        ' -> <a href="narro_project_text_list.php?p=' . $this->objNarroProject->ProjectId . '">' . $this->objNarroProject->ProjectName.'</a>' .
-        ' -> <a href="narro_project_file_list.php?p=' . $this->objNarroProject->ProjectId . '">'.t('Files').'</a>';
+        NarroLink::ProjectList(t('Projects')) .
+        ' -> ' .
+        NarroLink::ProjectTextList($this->objNarroProject->ProjectId, 1, 1, '', $this->objNarroProject->ProjectName) .
+        ' -> ' .
+        NarroLink::ProjectFileList($this->objNarroProject->ProjectId, 0, t('Files'));
         ?>
         </div>
         <br />
@@ -41,7 +44,7 @@
         </div>
         <br />
         <?php $this->dtgNarroContextInfo->Render() ?>
-        <?php QApplication::ExecuteJavaScript("if (location.hash) qc.pA('NarroProjectTextListForm', '" . $this->dtgNarroContextInfo->Paginator->ControlId . "', 'QClickEvent', location.hash.replace('#', ''), '');"); ?>
+        <?php QApplication::ExecuteJavaScript("if (location.hash.match('p')) qc.pA('NarroProjectTextListForm', '" . $this->dtgNarroContextInfo->Paginator->ControlId . "', 'QClickEvent', location.hash.replace('#p', ''), '');"); ?>
     <?php $this->RenderEnd() ?>
 
 <?php require('includes/footer.inc.php'); ?>

@@ -16,13 +16,14 @@
      * Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
      */
 
-    $strPageTitle = sprintf((QApplication::$objUser->hasPermission('Can suggest', $this->objNarroContextInfo->Context->ProjectId, QApplication::$objUser->Language->LanguageId))?t('Translate "%s"'):t('See suggestions for "%s"'),
+    $strPageTitle = sprintf((QApplication::$objUser->hasPermission('Can suggest', $this->objNarroContextInfo->Context->ProjectId, QApplication::$Language->LanguageId))?t('Translate "%s"'):t('See suggestions for "%s"'),
         (strlen($this->objNarroContextInfo->Context->Text->TextValue)>30)?mb_substr($this->objNarroContextInfo->Context->Text->TextValue, 0, 30) . '...':$this->objNarroContextInfo->Context->Text->TextValue);
 
     require('includes/header.inc.php')
 ?>
 
     <?php $this->RenderBegin() ?>
+        <?php $this->pnlHeader->Render() ?>
         <div style="width:100%;display:block;">
             <div style="float:left">
             <?php $this->pnlNavigator->Render(); ?>
@@ -46,7 +47,7 @@
         $this->txtSuggestionValue->BackColor = '#FFFFFF';
         $this->txtSuggestionValue->SetCustomStyle('width', '98%');
         ?>
-        <?php if (QApplication::$objUser->hasPermission('Can suggest', $this->objNarroContextInfo->Context->ProjectId, QApplication::$objUser->Language->LanguageId)) { ?>
+        <?php if (QApplication::$objUser->hasPermission('Can suggest', $this->objNarroContextInfo->Context->ProjectId, QApplication::$Language->LanguageId)) { ?>
             <?php $this->pnlPluginMessages->Render(); ?>
             <?php echo t('Translated string'); ?>:
                 <?php $this->txtSuggestionValue->Render("Rows=10"); ?>
@@ -57,7 +58,7 @@
                 <div style="float:right;padding-right:2%">
                 &nbsp;<?php $this->btnSave->Render(); ?>
                 &nbsp;<?php $this->btnSaveIgnore->Render(); ?>
-                <?php if (QApplication::$objUser->hasPermission('Can validate', $this->objNarroContextInfo->Context->ProjectId, QApplication::$objUser->Language->LanguageId)) { ?>
+                <?php if (QApplication::$objUser->hasPermission('Can validate', $this->objNarroContextInfo->Context->ProjectId, QApplication::$Language->LanguageId)) { ?>
                     &nbsp;<?php $this->btnSaveValidate->Render()?>
                 <?php } ?>
                 </div>

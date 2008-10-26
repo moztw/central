@@ -369,8 +369,9 @@
                     /**
                      * update the HasSuggestions if it was 0 and we added a suggestion
                      */
-                    if ($objContextInfo->HasSuggestions == 0 && $objNarroSuggestion instanceof NarroSuggestion )
+                    if ($objContextInfo->HasSuggestions == 0 && $objNarroSuggestion instanceof NarroSuggestion ) {
                         $objContextInfo->HasSuggestions = 1;
+                    }
 
                     NarroImportStatistics::$arrStatistics['Imported suggestions']++;
                 }
@@ -378,7 +379,7 @@
                     NarroImportStatistics::$arrStatistics['Reused suggestions']++;
                 }
 
-                if ($this->blnValidate) {
+                if ($this->blnValidate && $objContextInfo->ValidSuggestionId != $objNarroSuggestion->SuggestionId) {
                     $objContextInfo->ValidSuggestionId = $objNarroSuggestion->SuggestionId;
                     $objContextInfo->ValidatorUserId = QApplication::$objUser->UserId;
                     $blnContextInfoChanged = true;

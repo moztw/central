@@ -64,5 +64,11 @@
 		 */
 		protected $strIgnoreStyleSheetFileArray = array();
 		// protected $strIgnoreStyleSheetFileArray = array('datagrid.css', 'calendar.css', 'textbox.css', 'listbox.css');
+		
+		protected $pnlHeader;
+		
+		protected function Form_Create() {
+            $this->pnlHeader = new NarroHeaderPanel($this);
+		}
 	}
 ?>

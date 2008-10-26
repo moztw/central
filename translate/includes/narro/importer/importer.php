@@ -54,7 +54,7 @@
          * Get boolean options
          */
         $objNarroImporter->DeactivateFiles = !((bool) array_search('--do-not-deactivate-files', $argv));
-        $objNarroImporter->DeactivateContexts = !((bool) !array_search('--do-not-deactivate-contexts', $argv));
+        $objNarroImporter->DeactivateContexts = !((bool) array_search('--do-not-deactivate-contexts', $argv));
         $objNarroImporter->CheckEqual = (bool) array_search('--check-equal', $argv);
         $objNarroImporter->Validate = (bool) array_search('--validate', $argv);
         $objNarroImporter->OnlySuggestions = (bool) array_search('--only-suggestions', $argv);
@@ -112,7 +112,7 @@
             return false;
         }
 
-        QApplication::$objUser->Language = $objLanguage;
+        QApplication::$Language = $objLanguage;
 
         $objNarroImporter->TargetLanguage = $objLanguage;
 
@@ -201,7 +201,7 @@
             return false;
         }
 
-        QApplication::$objUser->Language = $objLanguage;
+        QApplication::$Language = $objLanguage;
 
         $objNarroImporter->TargetLanguage = $objLanguage;
 

@@ -88,7 +88,7 @@
             }
 
             $objUser->arrPreferences = unserialize($objUser->Data);
-            
+
             if (isset($objUser->Preferences['Language'])) {
                 $objLanguage = NarroLanguage::LoadByLanguageCode($objUser->Preferences['Language']);
 
@@ -113,7 +113,7 @@
             }
 
             $objUser->arrPreferences = unserialize($objUser->Data);
-            
+
             if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
                 if (strstr($_SERVER['HTTP_ACCEPT_LANGUAGE'], ';')) {
                     $arrLangGroups = split(';', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
@@ -138,7 +138,7 @@
                     }
                 }
             }
-            
+
             if (isset($objUser->Preferences['Language'])) {
                 $objLanguage = NarroLanguage::LoadByLanguageCode($objUser->Preferences['Language']);
 
@@ -228,6 +228,50 @@
             }
             else
                 return false;
+        }
+
+        public static function RegisterUser($strUsername, $strEmail, $strPassword) {
+            $objMaxUser = NarroUser::LoadAll(QQ::Clause(QQ::LimitInfo(1,0), QQ::OrderBy(QQN::NarroUser()->UserId, false)));
+
+            $objUser = new NarroUser();
+            $objUser->UserId = $objMaxUser[0]->UserId + 1;
+            $objUser->Username = $strUsername;
+            $objUser->Email = $strEmail;
+            $objUser->Password = md5($strPassword);
+
+            try {
+                $objUser->Save();
+            } catch(Exception $objEx) {
+                throw $objEx;
+            }
+
+            /**
+             * set up default permissions
+             */
+            if ($objUser->UserId == 1) {
+                /**
+                 * give super powers to the first user
+                 */
+                $arrPermissions = array();
+                $arrNarroPermissions = NarroPermission::LoadAll();
+                foreach($arrNarroPermissions as $objNarroPermission) {
+                    $arrPermissions[] = $objNarroPermission->PermissionId;
+                }
+            }
+            else
+                /**
+                 * registered users can suggest, vote and comment
+                 */
+                $arrPermissions = array(1, 2, 4);
+
+            foreach($arrPermissions as $intPermissionId) {
+                $objUserPermission = new NarroUserPermission();
+                $objUserPermission->PermissionId = $intPermissionId;
+                $objUserPermission->UserId = $objUser->UserId;
+                $objUserPermission->Save();
+            }
+
+            return NarroUser::LoadByUsernameAndPassword($strUsername, md5($strPassword));
         }
 
 

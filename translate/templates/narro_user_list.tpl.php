@@ -22,6 +22,7 @@
 ?>
 
     <?php $this->RenderBegin() ?>
+        <?php $this->pnlHeader->Render() ?>
         <div class="title_action"><?php echo t('User list'); ?></div>
         <br class="item_divider" />
 

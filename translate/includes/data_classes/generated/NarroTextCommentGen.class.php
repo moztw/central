@@ -271,6 +271,7 @@
 			$objBuilder->AddSelectItem($strTableName . '.`text_comment_id` AS ' . $strAliasPrefix . 'text_comment_id`');
 			$objBuilder->AddSelectItem($strTableName . '.`text_id` AS ' . $strAliasPrefix . 'text_id`');
 			$objBuilder->AddSelectItem($strTableName . '.`user_id` AS ' . $strAliasPrefix . 'user_id`');
+			$objBuilder->AddSelectItem($strTableName . '.`language_id` AS ' . $strAliasPrefix . 'language_id`');
 			$objBuilder->AddSelectItem($strTableName . '.`created` AS ' . $strAliasPrefix . 'created`');
 			$objBuilder->AddSelectItem($strTableName . '.`modified` AS ' . $strAliasPrefix . 'modified`');
 			$objBuilder->AddSelectItem($strTableName . '.`comment_text` AS ' . $strAliasPrefix . 'comment_text`');
@@ -305,6 +306,7 @@
 			$objToReturn->intTextCommentId = $objDbRow->GetColumn($strAliasPrefix . 'text_comment_id', 'Integer');
 			$objToReturn->intTextId = $objDbRow->GetColumn($strAliasPrefix . 'text_id', 'Integer');
 			$objToReturn->intUserId = $objDbRow->GetColumn($strAliasPrefix . 'user_id', 'Integer');
+			$objToReturn->intLanguageId = $objDbRow->GetColumn($strAliasPrefix . 'language_id', 'Integer');
 			$objToReturn->strCreated = $objDbRow->GetColumn($strAliasPrefix . 'created', 'VarChar');
 			$objToReturn->strModified = $objDbRow->GetColumn($strAliasPrefix . 'modified', 'VarChar');
 			$objToReturn->strCommentText = $objDbRow->GetColumn($strAliasPrefix . 'comment_text', 'Blob');
@@ -329,6 +331,10 @@
 			// Check for User Early Binding
 			if (!is_null($objDbRow->GetColumn($strAliasPrefix . 'user_id__user_id')))
 				$objToReturn->objUser = NarroUser::InstantiateDbRow($objDbRow, $strAliasPrefix . 'user_id__', $strExpandAsArrayNodes);
+
+			// Check for Language Early Binding
+			if (!is_null($objDbRow->GetColumn($strAliasPrefix . 'language_id__language_id')))
+				$objToReturn->objLanguage = NarroLanguage::InstantiateDbRow($objDbRow, $strAliasPrefix . 'language_id__', $strExpandAsArrayNodes);
 
 
 
@@ -386,18 +392,20 @@
 			
 		/**
 		 * Load a single NarroTextComment object,
-		 * by TextId, UserId, CommentTextMd5 Index(es)
+		 * by TextId, UserId, CommentTextMd5, LanguageId Index(es)
 		 * @param integer $intTextId
 		 * @param integer $intUserId
 		 * @param string $strCommentTextMd5
+		 * @param integer $intLanguageId
 		 * @return NarroTextComment
 		*/
-		public static function LoadByTextIdUserIdCommentTextMd5($intTextId, $intUserId, $strCommentTextMd5) {
+		public static function LoadByTextIdUserIdCommentTextMd5LanguageId($intTextId, $intUserId, $strCommentTextMd5, $intLanguageId) {
 			return NarroTextComment::QuerySingle(
 				QQ::AndCondition(
 				QQ::Equal(QQN::NarroTextComment()->TextId, $intTextId),
 				QQ::Equal(QQN::NarroTextComment()->UserId, $intUserId),
-				QQ::Equal(QQN::NarroTextComment()->CommentTextMd5, $strCommentTextMd5)
+				QQ::Equal(QQN::NarroTextComment()->CommentTextMd5, $strCommentTextMd5),
+				QQ::Equal(QQN::NarroTextComment()->LanguageId, $intLanguageId)
 				)
 			);
 		}
@@ -465,6 +473,38 @@
 				QQ::Equal(QQN::NarroTextComment()->UserId, $intUserId)
 			);
 		}
+			
+		/**
+		 * Load an array of NarroTextComment objects,
+		 * by LanguageId Index(es)
+		 * @param integer $intLanguageId
+		 * @param QQClause[] $objOptionalClauses additional optional QQClause objects for this query
+		 * @return NarroTextComment[]
+		*/
+		public static function LoadArrayByLanguageId($intLanguageId, $objOptionalClauses = null) {
+			// Call NarroTextComment::QueryArray to perform the LoadArrayByLanguageId query
+			try {
+				return NarroTextComment::QueryArray(
+					QQ::Equal(QQN::NarroTextComment()->LanguageId, $intLanguageId),
+					$objOptionalClauses);
+			} catch (QCallerException $objExc) {
+				$objExc->IncrementOffset();
+				throw $objExc;
+			}
+		}
+
+		/**
+		 * Count NarroTextComments
+		 * by LanguageId Index(es)
+		 * @param integer $intLanguageId
+		 * @return int
+		*/
+		public static function CountByLanguageId($intLanguageId) {
+			// Call NarroTextComment::QueryCount to perform the CountByLanguageId query
+			return NarroTextComment::QueryCount(
+				QQ::Equal(QQN::NarroTextComment()->LanguageId, $intLanguageId)
+			);
+		}
 
 
 
@@ -497,6 +537,7 @@
 						INSERT INTO `narro_text_comment` (
 							`text_id`,
 							`user_id`,
+							`language_id`,
 							`created`,
 							`modified`,
 							`comment_text`,
@@ -504,6 +545,7 @@
 						) VALUES (
 							' . $objDatabase->SqlVariable($this->intTextId) . ',
 							' . $objDatabase->SqlVariable($this->intUserId) . ',
+							' . $objDatabase->SqlVariable($this->intLanguageId) . ',
 							' . $objDatabase->SqlVariable($this->strCreated) . ',
 							' . $objDatabase->SqlVariable($this->strModified) . ',
 							' . $objDatabase->SqlVariable($this->strCommentText) . ',
@@ -525,6 +567,7 @@
 						SET
 							`text_id` = ' . $objDatabase->SqlVariable($this->intTextId) . ',
 							`user_id` = ' . $objDatabase->SqlVariable($this->intUserId) . ',
+							`language_id` = ' . $objDatabase->SqlVariable($this->intLanguageId) . ',
 							`created` = ' . $objDatabase->SqlVariable($this->strCreated) . ',
 							`modified` = ' . $objDatabase->SqlVariable($this->strModified) . ',
 							`comment_text` = ' . $objDatabase->SqlVariable($this->strCommentText) . ',
@@ -633,6 +676,13 @@
 					 */
 					return $this->intUserId;
 
+				case 'LanguageId':
+					/**
+					 * Gets the value for intLanguageId (Not Null)
+					 * @return integer
+					 */
+					return $this->intLanguageId;
+
 				case 'Created':
 					/**
 					 * Gets the value for strCreated (Not Null)
@@ -693,6 +743,20 @@
 						throw $objExc;
 					}
 
+				case 'Language':
+					/**
+					 * Gets the value for the NarroLanguage object referenced by intLanguageId (Not Null)
+					 * @return NarroLanguage
+					 */
+					try {
+						if ((!$this->objLanguage) && (!is_null($this->intLanguageId)))
+							$this->objLanguage = NarroLanguage::Load($this->intLanguageId);
+						return $this->objLanguage;
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
 
 				////////////////////////////
 				// Virtual Object References (Many to Many and Reverse References)
@@ -745,6 +809,20 @@
 					try {
 						$this->objUser = null;
 						return ($this->intUserId = QType::Cast($mixValue, QType::Integer));
+					} catch (QCallerException $objExc) {
+						$objExc->IncrementOffset();
+						throw $objExc;
+					}
+
+				case 'LanguageId':
+					/**
+					 * Sets the value for intLanguageId (Not Null)
+					 * @param integer $mixValue
+					 * @return integer
+					 */
+					try {
+						$this->objLanguage = null;
+						return ($this->intLanguageId = QType::Cast($mixValue, QType::Integer));
 					} catch (QCallerException $objExc) {
 						$objExc->IncrementOffset();
 						throw $objExc;
@@ -870,6 +948,38 @@
 					}
 					break;
 
+				case 'Language':
+					/**
+					 * Sets the value for the NarroLanguage object referenced by intLanguageId (Not Null)
+					 * @param NarroLanguage $mixValue
+					 * @return NarroLanguage
+					 */
+					if (is_null($mixValue)) {
+						$this->intLanguageId = null;
+						$this->objLanguage = null;
+						return null;
+					} else {
+						// Make sure $mixValue actually is a NarroLanguage object
+						try {
+							$mixValue = QType::Cast($mixValue, 'NarroLanguage');
+						} catch (QInvalidCastException $objExc) {
+							$objExc->IncrementOffset();
+							throw $objExc;
+						} 
+
+						// Make sure $mixValue is a SAVED NarroLanguage object
+						if (is_null($mixValue->LanguageId))
+							throw new QCallerException('Unable to set an unsaved Language for this NarroTextComment');
+
+						// Update Local Member Variables
+						$this->objLanguage = $mixValue;
+						$this->intLanguageId = $mixValue->LanguageId;
+
+						// Return $mixValue
+						return $mixValue;
+					}
+					break;
+
 				default:
 					try {
 						return parent::__set($strName, $mixValue);
@@ -926,6 +1036,14 @@
 		 */
 		protected $intUserId;
 		const UserIdDefault = null;
+
+
+		/**
+		 * Protected member variable that maps to the database column narro_text_comment.language_id
+		 * @var integer intLanguageId
+		 */
+		protected $intLanguageId;
+		const LanguageIdDefault = null;
 
 
 		/**
@@ -1002,6 +1120,16 @@
 		 */
 		protected $objUser;
 
+		/**
+		 * Protected member variable that contains the object pointed by the reference
+		 * in the database column narro_text_comment.language_id.
+		 *
+		 * NOTE: Always use the Language property getter to correctly retrieve this NarroLanguage object.
+		 * (Because this class implements late binding, this variable reference MAY be null.)
+		 * @var NarroLanguage objLanguage
+		 */
+		protected $objLanguage;
+
 
 
 
@@ -1016,6 +1144,7 @@
 			$strToReturn .= '<element name="TextCommentId" type="xsd:int"/>';
 			$strToReturn .= '<element name="Text" type="xsd1:NarroText"/>';
 			$strToReturn .= '<element name="User" type="xsd1:NarroUser"/>';
+			$strToReturn .= '<element name="Language" type="xsd1:NarroLanguage"/>';
 			$strToReturn .= '<element name="Created" type="xsd:string"/>';
 			$strToReturn .= '<element name="Modified" type="xsd:string"/>';
 			$strToReturn .= '<element name="CommentText" type="xsd:string"/>';
@@ -1030,6 +1159,7 @@
 				$strComplexTypeArray['NarroTextComment'] = NarroTextComment::GetSoapComplexTypeXml();
 				NarroText::AlterSoapComplexTypeArray($strComplexTypeArray);
 				NarroUser::AlterSoapComplexTypeArray($strComplexTypeArray);
+				NarroLanguage::AlterSoapComplexTypeArray($strComplexTypeArray);
 			}
 		}
 
@@ -1052,6 +1182,9 @@
 			if ((property_exists($objSoapObject, 'User')) &&
 				($objSoapObject->User))
 				$objToReturn->User = NarroUser::GetObjectFromSoapObject($objSoapObject->User);
+			if ((property_exists($objSoapObject, 'Language')) &&
+				($objSoapObject->Language))
+				$objToReturn->Language = NarroLanguage::GetObjectFromSoapObject($objSoapObject->Language);
 			if (property_exists($objSoapObject, 'Created'))
 				$objToReturn->strCreated = $objSoapObject->Created;
 			if (property_exists($objSoapObject, 'Modified'))
@@ -1086,6 +1219,10 @@
 				$objObject->objUser = NarroUser::GetSoapObjectFromObject($objObject->objUser, false);
 			else if (!$blnBindRelatedObjects)
 				$objObject->intUserId = null;
+			if ($objObject->objLanguage)
+				$objObject->objLanguage = NarroLanguage::GetSoapObjectFromObject($objObject->objLanguage, false);
+			else if (!$blnBindRelatedObjects)
+				$objObject->intLanguageId = null;
 			return $objObject;
 		}
 	}
@@ -1114,6 +1251,10 @@
 					return new QQNode('user_id', 'integer', $this);
 				case 'User':
 					return new QQNodeNarroUser('user_id', 'integer', $this);
+				case 'LanguageId':
+					return new QQNode('language_id', 'integer', $this);
+				case 'Language':
+					return new QQNodeNarroLanguage('language_id', 'integer', $this);
 				case 'Created':
 					return new QQNode('created', 'string', $this);
 				case 'Modified':
@@ -1152,6 +1293,10 @@
 					return new QQNode('user_id', 'integer', $this);
 				case 'User':
 					return new QQNodeNarroUser('user_id', 'integer', $this);
+				case 'LanguageId':
+					return new QQNode('language_id', 'integer', $this);
+				case 'Language':
+					return new QQNodeNarroLanguage('language_id', 'integer', $this);
 				case 'Created':
 					return new QQNode('created', 'string', $this);
 				case 'Modified':

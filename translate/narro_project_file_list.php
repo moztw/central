@@ -41,10 +41,10 @@
                 $this->objNarroProject = NarroProject::Load(($intProjectId));
 
                 if (!$this->objNarroProject)
-                    QApplication::Redirect('narro_project_list.php');
+                    QApplication::Redirect(NarroLink::ProjectList());
 
             } else
-                QApplication::Redirect('narro_project_list.php');
+                QApplication::Redirect(NarroLink::ProjectList());
 
             $intParentId = QApplication::QueryString('pf');
 
@@ -54,6 +54,8 @@
         }
 
         protected function Form_Create() {
+            parent::Form_Create();
+            
             $this->SetupNarroProject();
 
             // Setup DataGrid Columns
@@ -88,11 +90,11 @@
 
             $this->chkShowHierarchy = new QCheckBox($this);
             $this->chkShowHierarchy->Checked = true;
-            $this->chkShowHierarchy->AddAction(new QClickEvent(), new QAjaxAction('dtgNarroFile_Bind'));
+            $this->chkShowHierarchy->AddAction(new QClickEvent(), new QServerAction('dtgNarroFile_Bind'));
 
             $this->chkShowFolders = new QCheckBox($this);
             $this->chkShowFolders->Checked = true;
-            $this->chkShowFolders->AddAction(new QClickEvent(), new QAjaxAction('dtgNarroFile_Bind'));
+            $this->chkShowFolders->AddAction(new QClickEvent(), new QServerAction('dtgNarroFile_Bind'));
 
         }
 
@@ -111,7 +113,7 @@
                     $mixRow = $objDbResult->FetchArray();
                     $intTotalTexts = $mixRow['cnt'];
 
-                    $strQuery = sprintf('SELECT COUNT(c.context_id) AS cnt FROM `narro_context` c, narro_context_info ci WHERE c.context_id=ci.context_id AND c.project_id = %d AND ci.language_id=%d AND ci.valid_suggestion_id IS NULL AND ci.has_suggestions=1 AND c.active=1 AND c.file_id=%d', $objNarroFile->ProjectId, QApplication::$objUser->Language->LanguageId, $objNarroFile->FileId);
+                    $strQuery = sprintf('SELECT COUNT(c.context_id) AS cnt FROM `narro_context` c, narro_context_info ci WHERE c.context_id=ci.context_id AND c.project_id = %d AND ci.language_id=%d AND ci.valid_suggestion_id IS NULL AND ci.has_suggestions=1 AND c.active=1 AND c.file_id=%d', $objNarroFile->ProjectId, QApplication::$Language->LanguageId, $objNarroFile->FileId);
 
                     // Perform the Query
                     $objDbResult = $objDatabase->Query($strQuery);
@@ -121,7 +123,7 @@
                         $intTranslatedTexts = $mixRow['cnt'];
                     }
 
-                    $strQuery = sprintf('SELECT COUNT(c.context_id) AS cnt FROM `narro_context` c, narro_context_info ci WHERE c.context_id=ci.context_id AND c.project_id = %d AND ci.language_id=%d AND ci.valid_suggestion_id IS NOT NULL AND c.active=1 AND c.file_id=%d', $objNarroFile->ProjectId, QApplication::$objUser->Language->LanguageId, $objNarroFile->FileId);
+                    $strQuery = sprintf('SELECT COUNT(c.context_id) AS cnt FROM `narro_context` c, narro_context_info ci WHERE c.context_id=ci.context_id AND c.project_id = %d AND ci.language_id=%d AND ci.valid_suggestion_id IS NOT NULL AND c.active=1 AND c.file_id=%d', $objNarroFile->ProjectId, QApplication::$Language->LanguageId, $objNarroFile->FileId);
                     // Perform the Query
                     $objDbResult = $objDatabase->Query($strQuery);
 
@@ -141,7 +143,7 @@
                     $sOutput .= $objProgressBar->Render(false);
 
                 }
-                return sprintf('<a href="narro_file_text_list.php?p=%d&f=%d">%s</a>', $objNarroFile->ProjectId, $objNarroFile->FileId, $sOutput);
+                return NarroLink::FileTextList($objNarroFile->ProjectId, $objNarroFile->FileId, 1, 1, '', $sOutput);
             }
             else
                 return '';
@@ -150,11 +152,13 @@
 
         public function dtgNarroFile_FileNameColumn_Render(NarroFile $objNarroFile) {
             if ($objNarroFile->TypeId == NarroFileType::Folder)
-                return sprintf('<img src="%s" style="vertical-align:middle" /> <a href="narro_project_file_list.php?p=%d&pf=%d">%s</a>',
+                return sprintf('<img src="%s" style="vertical-align:middle" /> %s',                
                     __IMAGE_ASSETS__ . '/folder.png',
-                    $this->objNarroProject->ProjectId,
-                    $objNarroFile->FileId,
-                    $objNarroFile->FileName
+                    NarroLink::ProjectFileList(
+                        $this->objNarroProject->ProjectId,
+                        $objNarroFile->FileId,
+                        $objNarroFile->FileName
+                    )
                 );
             else {
                 switch($objNarroFile->TypeId) {
@@ -170,11 +174,16 @@
                     default:
                             $strIcon = 'dtd_file.gif';
                 }
-                return sprintf('<img src="%s" style="vertical-align:middle" /> <a href="narro_file_text_list.php?p=%d&f=%d">%s</a>',
+                return sprintf('<img src="%s" style="vertical-align:middle" /> %s',
                     __IMAGE_ASSETS__ . '/' . $strIcon,
-                    $objNarroFile->ProjectId,
-                    $objNarroFile->FileId,
-                    $objNarroFile->FileName
+                    NarroLink::FileTextList(
+                        $objNarroFile->ProjectId,
+                        $objNarroFile->FileId,
+                        1,
+                        1,
+                        '',
+                        $objNarroFile->FileName
+                    )
                 );
             }
         }
@@ -196,7 +205,7 @@
                     $objExportButton->Text = t('Export');
                     $objExportButton->ActionParameter = $objNarroFile->FileId;
                     $objExportButton->AddAction(new QClickEvent(), new QServerAction('btnExport_Click'));
-                    $objExportButton->Visible = QApplication::$objUser->hasPermission('Can export file', $objNarroFile->ProjectId, QApplication::$objUser->Language->LanguageId);
+                    $objExportButton->Visible = QApplication::$objUser->hasPermission('Can export file', $objNarroFile->ProjectId, QApplication::$Language->LanguageId);
                 }
 
                 if (!$objImportButton = $this->GetControl('btnImport' . $objNarroFile->FileId)) {
@@ -204,23 +213,23 @@
                     $objImportButton->Text = t('Import');
                     $objImportButton->ActionParameter = $objNarroFile->FileId;
                     $objImportButton->AddAction(new QClickEvent(), new QServerAction('btnImport_Click'));
-                    $objImportButton->Visible = QApplication::$objUser->hasPermission('Can import file', $objNarroFile->ProjectId, QApplication::$objUser->Language->LanguageId);
+                    $objImportButton->Visible = QApplication::$objUser->hasPermission('Can import file', $objNarroFile->ProjectId, QApplication::$Language->LanguageId);
                 }
 
                 if (!$objImportFile = $this->GetControl('fileImport' . $objNarroFile->FileId)) {
                     $objImportFile = new QFileControl($this->dtgNarroFile, 'fileImport' . $objNarroFile->FileId);
-                    $objImportFile->Visible = QApplication::$objUser->hasPermission('Can import file', $objNarroFile->ProjectId, QApplication::$objUser->Language->LanguageId);
+                    $objImportFile->Visible = QApplication::$objUser->hasPermission('Can import file', $objNarroFile->ProjectId, QApplication::$Language->LanguageId);
                 }
 
                 if (!$objExportFile = $this->GetControl('fileExport' . $objNarroFile->FileId)) {
                     $objExportFile = new QFileControl($this->dtgNarroFile, 'fileExport' . $objNarroFile->FileId);
-                    $objExportFile->Visible = QApplication::$objUser->hasPermission('Can export file', $objNarroFile->ProjectId, QApplication::$objUser->Language->LanguageId);
+                    $objExportFile->Visible = QApplication::$objUser->hasPermission('Can export file', $objNarroFile->ProjectId, QApplication::$Language->LanguageId);
                 }
 
-                if (QApplication::$objUser->hasPermission('Can import file', $objNarroFile->ProjectId, QApplication::$objUser->Language->LanguageId))
+                if (QApplication::$objUser->hasPermission('Can import file', $objNarroFile->ProjectId, QApplication::$Language->LanguageId))
                     $strImportAction = t('File to import') . ': ' . $objImportFile->Render(false) . $objImportButton->Render(false);
 
-                if (QApplication::$objUser->hasPermission('Can export file', $objNarroFile->ProjectId, QApplication::$objUser->Language->LanguageId))
+                if (QApplication::$objUser->hasPermission('Can export file', $objNarroFile->ProjectId, QApplication::$Language->LanguageId))
                     $strExportAction = t('Model to use') . ': ' . $objExportFile->Render(false) . $objExportButton->Render(false);
 
 
@@ -335,12 +344,12 @@
             $objFileImporter->User = QApplication::$objUser;
             $objFileImporter->Project = $this->objNarroProject;
             $objFileImporter->SourceLanguage = NarroLanguage::LoadByLanguageCode('en-US');
-            $objFileImporter->TargetLanguage = QApplication::$objUser->Language;
+            $objFileImporter->TargetLanguage = QApplication::$Language;
             $objFileImporter->File = $objFile;
 
             NarroLog::$intMinLogLevel = 3;
 
-            $strTempFileName = tempnam(__TMP_PATH__, QApplication::$objUser->Language->LanguageCode);
+            $strTempFileName = tempnam(__TMP_PATH__, QApplication::$Language->LanguageCode);
 
             if ($objFileControl instanceof QFileControl && file_exists($objFileControl->File)) {
                 $objFileImporter->ExportFile($objFileControl->File, $strTempFileName);
@@ -394,7 +403,7 @@
             $objFileImporter->User = QApplication::$objUser;
             $objFileImporter->Project = $this->objNarroProject;
             $objFileImporter->SourceLanguage = NarroLanguage::LoadByLanguageCode('en-US');
-            $objFileImporter->TargetLanguage = QApplication::$objUser->Language;
+            $objFileImporter->TargetLanguage = QApplication::$Language;
             $objFileImporter->CheckEqual = true;
             $objFileImporter->File = $objFile;
 
@@ -404,16 +413,16 @@
 
             NarroLog::$intMinLogLevel = 3;
 
-            $objFileImporter->Validate = QApplication::$objUser->hasPermission('Can validate', $objFile->ProjectId, QApplication::$objUser->Language->LanguageId);
+            $objFileImporter->Validate = QApplication::$objUser->hasPermission('Can validate', $objFile->ProjectId, QApplication::$Language->LanguageId);
 
-            $strTempFileName = tempnam(__TMP_PATH__, QApplication::$objUser->Language->LanguageCode);
+            $strTempFileName = tempnam(__TMP_PATH__, QApplication::$Language->LanguageCode);
 
             $objFileImporter->ImportFile(__DOCROOT__ . __SUBDIRECTORY__ . __IMPORT_PATH__ . '/' . $this->objNarroProject->ProjectId . '/en-US' . $objFile->FilePath, $objFileControl->File);
 
             /**
              * clear the progress cache
              */
-            QApplication::$Cache->remove('project_progress_' . $this->objNarroProject->ProjectId . '_' . QApplication::$objUser->Language->LanguageId);
+            NarroCache::ClearAllTextsCount($this->objNarroProject->ProjectId, QApplication::$Language->LanguageId);
         }
 
     }

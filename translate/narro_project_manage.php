@@ -67,19 +67,20 @@
                 $this->objNarroProject = NarroProject::Load(($intProjectId));
 
                 if (!$this->objNarroProject)
-                    QApplication::Redirect('narro_project_list.php');
+                    QApplication::Redirect(NarroLink::ProjectList());
 
             } else
-                QApplication::Redirect('narro_project_list.php');
+                QApplication::Redirect(NarroLink::ProjectList());
 
         }
 
         protected function Form_Create() {
+            parent::Form_Create();
 
             $this->SetupNarroProject();
 
-            if (!QApplication::$objUser->hasPermission('Can manage project', $this->objNarroProject->ProjectId, QApplication::$objUser->Language->LanguageId))
-                QApplication::Redirect('narro_project_list.php');
+            if (!QApplication::$objUser->hasPermission('Can manage project', $this->objNarroProject->ProjectId, QApplication::$Language->LanguageId))
+                QApplication::Redirect(NarroLink::ProjectList());
 
             $this->pnlLogViewer = new QPanel($this);
             $this->pnlLogViewer->Visible = false;
@@ -90,8 +91,8 @@
             $this->btnDelProjectContexts->AddAction(new QClickEvent(), new QServerAction('btnDelProjectContexts_Click'));
 
             $this->btnDelProjectContextInfos = new QButton($this);
-            $this->btnDelProjectContextInfos->Text = sprintf(t('Delete context informations in %s for this project'), QApplication::$objUser->Language->LanguageName);
-            $this->btnDelProjectContextInfos->AddAction(new QClickEvent(), new QConfirmAction(sprintf(QApplication::Translate('Are you SURE you want to DELETE the context information for the project "%s", language "%s"?\nThis operation might take a while and will delete:\n - context information for the current language\nYou can recreate this deleted information by doing an import for this project and current language\nProject\'s contexts are not deleted, only this language is affected\nTexts and suggestions are not deleted.'), $this->objNarroProject->ProjectName, QApplication::$objUser->Language->LanguageName)));
+            $this->btnDelProjectContextInfos->Text = sprintf(t('Delete context informations in %s for this project'), QApplication::$Language->LanguageName);
+            $this->btnDelProjectContextInfos->AddAction(new QClickEvent(), new QConfirmAction(sprintf(QApplication::Translate('Are you SURE you want to DELETE the context information for the project "%s", language "%s"?\nThis operation might take a while and will delete:\n - context information for the current language\nYou can recreate this deleted information by doing an import for this project and current language\nProject\'s contexts are not deleted, only this language is affected\nTexts and suggestions are not deleted.'), $this->objNarroProject->ProjectName, QApplication::$Language->LanguageName)));
             $this->btnDelProjectContextInfos->AddAction(new QClickEvent(), new QServerAction('btnDelProjectContextInfos_Click'));
 
             $this->btnDelProjectFiles = new QButton($this);
@@ -150,7 +151,11 @@
 
             $this->btnExport = new QButton($this);
             $this->btnExport->Text = t('Export');
-            if (function_exists('proc_open') && QApplication::$blnUseAjax)
+            if (
+                function_exists('proc_open') &&
+                function_exists('escapeshellarg') &&
+                function_exists('escapeshellcmd') &&
+                QApplication::$blnUseAjax)
                 $this->btnExport->AddAction(new QClickEvent(), new QAjaxAction('btnExport_Click'));
             else
                 $this->btnExport->AddAction(new QClickEvent(), new QServerAction('btnExport_Click'));
@@ -176,7 +181,7 @@
             $strImportPath = __DOCROOT__ . __SUBDIRECTORY__ . __IMPORT_PATH__ . '/' . $this->objNarroProject->ProjectId;
 
             foreach(array('tar.gz', 'zip') as $strFileExt) {
-                $strArchiveName = $this->objNarroProject->ProjectId . '-' . QApplication::$objUser->Language->LanguageCode . '.' . $strFileExt;
+                $strArchiveName = $this->objNarroProject->ProjectId . '-' . QApplication::$Language->LanguageCode . '.' . $strFileExt;
                 $strExportFile = $strImportPath . '/' . $strArchiveName;
                 if (file_exists($strExportFile)) {
                     $objDateSpan = new QDateTimeSpan(time() - filemtime($strExportFile));
@@ -188,28 +193,28 @@
                 }
             }
 
-            if (file_exists($strImportPath . '/' . QApplication::$objUser->Language->LanguageCode . '/import.pid')) {
+            if (file_exists($strImportPath . '/' . QApplication::$Language->LanguageCode . '/import.pid')) {
                 $this->btnImport->Enabled = false;
                 $this->objImportProgress->Visible = true;
-                NarroProgress::SetProgressFile($strImportPath . '/' . QApplication::$objUser->Language->LanguageCode . '/import.progress');
+                NarroProgress::SetProgressFile($strImportPath . '/' . QApplication::$Language->LanguageCode . '/import.progress');
                 $this->objImportProgress->Translated = NarroProgress::GetProgress();
                 QApplication::ExecuteJavaScript(sprintf('lastImportId = setInterval("qcodo.postAjax(\'%s\', \'%s\', \'QClickEvent\', \'1\');", %d);', $this->FormId, $this->btnImport->ControlId, 2000));
             }
             else {
-                NarroLog::SetLogFile($strImportPath . '/' . QApplication::$objUser->Language->LanguageCode . '/import.log');
+                NarroLog::SetLogFile($strImportPath . '/' . QApplication::$Language->LanguageCode . '/import.log');
                 NarroLog::ClearLog();
             }
 
 
-            if (file_exists($strImportPath . '/' . QApplication::$objUser->Language->LanguageCode . '/export.pid')) {
+            if (file_exists($strImportPath . '/' . QApplication::$Language->LanguageCode . '/export.pid')) {
                 $this->btnExport->Enabled = false;
                 $this->objExportProgress->Visible = true;
-                NarroProgress::SetProgressFile($strImportPath . '/' . QApplication::$objUser->Language->LanguageCode . '/export.progress');
+                NarroProgress::SetProgressFile($strImportPath . '/' . QApplication::$Language->LanguageCode . '/export.progress');
                 $this->objExportProgress->Translated = NarroProgress::GetProgress();
                 QApplication::ExecuteJavaScript(sprintf('lastImportId = setInterval("qcodo.postAjax(\'%s\', \'%s\', \'QClickEvent\', \'1\');", %d);', $this->FormId, $this->btnExport->ControlId, 2000));
             }
             else {
-                NarroLog::SetLogFile($strImportPath . '/' . QApplication::$objUser->Language->LanguageCode . '/export.log');
+                NarroLog::SetLogFile($strImportPath . '/' . QApplication::$Language->LanguageCode . '/export.log');
                 NarroLog::ClearLog();
             }
 
@@ -222,12 +227,12 @@
         }
 
         public function btnImport_Click($strFormId, $strControlId, $strParameter) {
-            if (!QApplication::$objUser->hasPermission('Can manage project', $this->objNarroProject->ProjectId, QApplication::$objUser->Language->LanguageId))
+            if (!QApplication::$objUser->hasPermission('Can manage project', $this->objNarroProject->ProjectId, QApplication::$Language->LanguageId))
                 return false;
 
             $strImportPath = __DOCROOT__ . __SUBDIRECTORY__ . __IMPORT_PATH__ . '/' . $this->objNarroProject->ProjectId;
-            NarroProgress::SetProgressFile($strImportPath . '/' . QApplication::$objUser->Language->LanguageCode . '/import.progress');
-            NarroLog::SetLogFile($strImportPath . '/' . QApplication::$objUser->Language->LanguageCode . '/import.log');
+            NarroProgress::SetProgressFile($strImportPath . '/' . QApplication::$Language->LanguageCode . '/import.progress');
+            NarroLog::SetLogFile($strImportPath . '/' . QApplication::$Language->LanguageCode . '/import.log');
 
             if ($strParameter != 1) {
                 $this->btnImport->Enabled = false;
@@ -236,7 +241,7 @@
                 $this->lblImport->Text = '';
 
                 if (file_exists($this->flaImportFromFile->File)) {
-                    $strWorkDir = __TMP_PATH__ . '/import-project-' . $this->objNarroProject->ProjectId . '-' . QApplication::$objUser->Language->LanguageCode;
+                    $strWorkDir = __TMP_PATH__ . '/import-project-' . $this->objNarroProject->ProjectId . '-' . QApplication::$Language->LanguageCode;
 
                     if (file_exists($strWorkDir))
                         try {
@@ -250,7 +255,7 @@
                     chmod($strWorkDir, 0777);
                     chdir($strWorkDir);
 
-                    $strExportArchive = $this->objNarroProject->ProjectId . '-' . QApplication::$objUser->Language->LanguageCode . '.' . $this->lstExportArchiveType->SelectedValue;
+                    $strExportArchive = $this->objNarroProject->ProjectId . '-' . QApplication::$Language->LanguageCode . '.' . $this->lstExportArchiveType->SelectedValue;
 
                     if (file_exists($strExportPath . '/' . $strExportArchive))
                         unlink($strExportPath . '/' . $strExportArchive);
@@ -285,8 +290,8 @@
 
                     }
 
-                    if (!file_exists($strWorkDir . '/en-US') && !file_exists($strWorkDir . '/' . QApplication::$objUser->Language->LanguageCode)) {
-                        NarroLog::LogMessage(3, sprintf(t('The uploaded archive should have at least one directory named "en-US" or one named "%s" that contains the files with the original texts'), QApplication::$objUser->Language->LanguageCode));
+                    if (!file_exists($strWorkDir . '/en-US') && !file_exists($strWorkDir . '/' . QApplication::$Language->LanguageCode)) {
+                        NarroLog::LogMessage(3, sprintf(t('The uploaded archive should have at least one directory named "en-US" or one named "%s" that contains the files with the original texts'), QApplication::$Language->LanguageCode));
                         $this->lblImport->Text = t('Import failed.');
                         try {
                             NarroUtils::RecursiveDelete($strWorkDir);
@@ -315,11 +320,11 @@
                             }
                         }
 
-                        if (file_exists($strWorkDir . '/' . QApplication::$objUser->Language->LanguageCode)) {
+                        if (file_exists($strWorkDir . '/' . QApplication::$Language->LanguageCode)) {
                             try {
-                                NarroUtils::RecursiveDelete($strImportPath . '/' . QApplication::$objUser->Language->LanguageCode . '/*');
-                                NarroUtils::RecursiveCopy($strWorkDir . '/' . QApplication::$objUser->Language->LanguageCode, __DOCROOT__ . __SUBDIRECTORY__ . __IMPORT_PATH__ . '/' . $this->objNarroProject->ProjectId . '/' . QApplication::$objUser->Language->LanguageCode);
-                                NarroUtils::RecursiveChmod(__DOCROOT__ . __SUBDIRECTORY__ . __IMPORT_PATH__ . '/' . $this->objNarroProject->ProjectId . '/' . QApplication::$objUser->Language->LanguageCode);
+                                NarroUtils::RecursiveDelete($strImportPath . '/' . QApplication::$Language->LanguageCode . '/*');
+                                NarroUtils::RecursiveCopy($strWorkDir . '/' . QApplication::$Language->LanguageCode, __DOCROOT__ . __SUBDIRECTORY__ . __IMPORT_PATH__ . '/' . $this->objNarroProject->ProjectId . '/' . QApplication::$Language->LanguageCode);
+                                NarroUtils::RecursiveChmod(__DOCROOT__ . __SUBDIRECTORY__ . __IMPORT_PATH__ . '/' . $this->objNarroProject->ProjectId . '/' . QApplication::$Language->LanguageCode);
                             }
                             catch(Exception $objEx) {
                                 NarroLog::LogMessage(3, $objEx->getMessage());
@@ -333,7 +338,7 @@
                             NarroLog::LogMessage(3, $objEx->getMessage());
                         }
 
-                        NarroLog::LogMessage(3, sprintf(t('The directories "%s" and "%s" from the uploaded archive were extracted to "%s"'), 'en-US', QApplication::$objUser->Language->LanguageCode, __DOCROOT__ . __SUBDIRECTORY__ . __IMPORT_PATH__ . '/' . $this->objNarroProject->ProjectId));
+                        NarroLog::LogMessage(3, sprintf(t('The directories "%s" and "%s" from the uploaded archive were extracted to "%s"'), 'en-US', QApplication::$Language->LanguageCode, __DOCROOT__ . __SUBDIRECTORY__ . __IMPORT_PATH__ . '/' . $this->objNarroProject->ProjectId));
                     }
 
                 }
@@ -345,7 +350,7 @@
                     QApplication::ExecuteJavaScript(sprintf('lastImportId = setInterval("qcodo.postAjax(\'%s\', \'%s\', \'QClickEvent\', \'1\');", %d);', $strFormId, $strControlId, 2000));
             }
             else {
-                if (!file_exists($strImportPath . '/' . QApplication::$objUser->Language->LanguageCode . '/import.pid')) {
+                if (!file_exists($strImportPath . '/' . QApplication::$Language->LanguageCode . '/import.pid')) {
                     $this->lblImport->Text = t('Import finished.');
 
                     if (file_exists($this->flaImportFromFile->File))
@@ -382,10 +387,14 @@
                     $this->lstLogLevel->SelectedValue,
                     $this->objNarroProject->ProjectId,
                     QApplication::$objUser->UserId,
-                    QApplication::$objUser->Language->LanguageCode
+                    QApplication::$Language->LanguageCode
                 );
 
                 proc_close(proc_open ("$strCommand &", array(), $foo));
+                /**
+                 * give the process a few seconds to start
+                 */
+                sleep(3);
             } elseif ($strParameter != 1) {
                 set_time_limit(0);
 
@@ -404,7 +413,7 @@
                 $objNarroImporter->MinLogLevel = $this->lstLogLevel->SelectedValue;
                 $objNarroImporter->Project = $this->objNarroProject;
                 $objNarroImporter->User = QApplication::$objUser;
-                $objNarroImporter->TargetLanguage = QApplication::$objUser->Language;
+                $objNarroImporter->TargetLanguage = QApplication::$Language;
                 $objNarroImporter->SourceLanguage = NarroLanguage::LoadByLanguageCode('en-US');
                 $objNarroImporter->TranslationPath = $strImportPath . '/' . $objNarroImporter->TargetLanguage->LanguageCode;
                 $objNarroImporter->TemplatePath = $strImportPath . '/' . $objNarroImporter->SourceLanguage->LanguageCode;
@@ -438,12 +447,12 @@
         }
 
         public function btnExport_Click($strFormId, $strControlId, $strParameter) {
-            if (!QApplication::$objUser->hasPermission('Can manage project', $this->objNarroProject->ProjectId, QApplication::$objUser->Language->LanguageId))
+            if (!QApplication::$objUser->hasPermission('Can manage project', $this->objNarroProject->ProjectId, QApplication::$Language->LanguageId))
                 return false;
 
             $strExportPath = __DOCROOT__ . __SUBDIRECTORY__ . __IMPORT_PATH__ . '/' . $this->objNarroProject->ProjectId;
-            NarroProgress::SetProgressFile($strExportPath . '/' . QApplication::$objUser->Language->LanguageCode . '/export.progress');
-            NarroLog::SetLogFile($strExportPath . '/' . QApplication::$objUser->Language->LanguageCode . '/export.log');
+            NarroProgress::SetProgressFile($strExportPath . '/' . QApplication::$Language->LanguageCode . '/export.progress');
+            NarroLog::SetLogFile($strExportPath . '/' . QApplication::$Language->LanguageCode . '/export.log');
 
             if ($strParameter != 1) {
                 $this->btnExport->Enabled = false;
@@ -459,7 +468,7 @@
                 }
             }
             else {
-                if (!file_exists($strExportPath . '/' . QApplication::$objUser->Language->LanguageCode . '/export.pid')) {
+                if (!file_exists($strExportPath . '/' . QApplication::$Language->LanguageCode . '/export.pid')) {
                     $this->lblExport->Text = t('Export finished.');
                     QApplication::ExecuteJavaScript('if (typeof lastExportId != \'undefined\') clearInterval(lastExportId)');
 
@@ -470,8 +479,8 @@
                     /**
                      * Create an archive
                      */
-                    if (file_exists($strExportPath . '/' . QApplication::$objUser->Language->LanguageCode)) {
-                        $strExportArchive = $this->objNarroProject->ProjectId . '-' . QApplication::$objUser->Language->LanguageCode . '.' . $this->lstExportArchiveType->SelectedValue;
+                    if (file_exists($strExportPath . '/' . QApplication::$Language->LanguageCode)) {
+                        $strExportArchive = $this->objNarroProject->ProjectId . '-' . QApplication::$Language->LanguageCode . '.' . $this->lstExportArchiveType->SelectedValue;
                         $strCurDir = getcwd();
                         chdir($strExportPath);
 
@@ -479,8 +488,8 @@
                             unlink($strExportPath . '/' . $strExportArchive);
 
                         $arrFiles = array_merge(
-                            NarroUtils::ListDirectory($strExportPath . '/en-US', null, '/CVS|\.svn|port\.pid|port\.log|port\.status/', $strExportPath . '/', true),
-                            NarroUtils::ListDirectory($strExportPath . '/' . QApplication::$objUser->Language->LanguageCode, null, '/CVS|\.svn|port\.pid|port\.log|port\.status/', $strExportPath . '/', true)
+                            NarroUtils::ListDirectory($strExportPath . '/en-US', null, '/CVS|\.svn|\.hg|port\.pid|port\.log|port\.status/', $strExportPath . '/', true),
+                            NarroUtils::ListDirectory($strExportPath . '/' . QApplication::$Language->LanguageCode, null, '/CVS|\.svn|\.hg|port\.pid|port\.log|port\.status/', $strExportPath . '/', true)
                         );
 
 
@@ -492,9 +501,11 @@
 
                                 $objArchiver = new Archive_Tar($strExportArchive);
                                 $objArchiver->create($arrFiles);
+                                break;
                             default:
                                 $objArchiver = new ZipArchive();
-                                if ($objArchiver->open($strExportArchive, ZIPARCHIVE::OVERWRITE) !== true ) {
+                                unlink($strExportArchive);
+                                if ($objArchiver->open($strExportArchive, ZIPARCHIVE::CREATE) !== true ) {
                                     throw new Exception(__METHOD__ . ':Can\'t open file: ' . $strExportArchive);
                                 }
 
@@ -545,7 +556,7 @@
                     $this->lstLogLevel->SelectedValue,
                     $this->objNarroProject->ProjectId,
                     QApplication::$objUser->UserId,
-                    QApplication::$objUser->Language->LanguageCode
+                    QApplication::$Language->LanguageCode
                 );
 
                 proc_close(proc_open ("$strCommand &", array(), $foo));
@@ -558,11 +569,11 @@
                 $objNarroImporter->MinLogLevel = $this->lstLogLevel->SelectedValue;
                 NarroLog::$intMinLogLevel = $this->lstLogLevel->SelectedValue;
                 $objNarroImporter->ExportedSuggestion = $this->lstExportedSuggestion->SelectedValue;
-                $objNarroImporter->TargetLanguage = QApplication::$objUser->Language;
+                $objNarroImporter->TargetLanguage = QApplication::$Language;
                 $objNarroImporter->SourceLanguage = NarroLanguage::LoadByLanguageCode('en-US');
                 $objNarroImporter->Project = $this->objNarroProject;
                 $objNarroImporter->User = QApplication::$objUser;
-                $objNarroImporter->TranslationPath = $strExportPath . '/' . QApplication::$objUser->Language->LanguageCode;
+                $objNarroImporter->TranslationPath = $strExportPath . '/' . QApplication::$Language->LanguageCode;
                 $objNarroImporter->TemplatePath = $strExportPath . '/en-US';
 
                 NarroLog::LogMessage(3, sprintf(t('Source language is %s'), $objNarroImporter->SourceLanguage->LanguageName));
@@ -599,19 +610,19 @@
         }
 
         protected function btnDelProjectContextInfos_Click($strFormId, $strControlId, $strParameter) {
-            if (!QApplication::$objUser->hasPermission('Can manage project', $this->objNarroProject->ProjectId, QApplication::$objUser->Language->LanguageId))
-                QApplication::Redirect('narro_project_list.php');
+            if (!QApplication::$objUser->hasPermission('Can manage project', $this->objNarroProject->ProjectId, QApplication::$Language->LanguageId))
+                QApplication::Redirect(NarroLink::ProjectList());
 
             $objDatabase = QApplication::$Database[1];
 
-            $strQuery = sprintf("DELETE FROM narro_context_comment USING narro_context_comment LEFT JOIN narro_context ON narro_context_comment.context_id=narro_context.context_id WHERE narro_context_comment.language_id=%d AND narro_context.project_id=%d", QApplication::$objUser->Language->LanguageId, $this->objNarroProject->ProjectId);
+            $strQuery = sprintf("DELETE FROM narro_context_comment USING narro_context_comment LEFT JOIN narro_context ON narro_context_comment.context_id=narro_context.context_id WHERE narro_context_comment.language_id=%d AND narro_context.project_id=%d", QApplication::$Language->LanguageId, $this->objNarroProject->ProjectId);
             try {
                 $objDatabase->NonQuery($strQuery);
             }catch (Exception $objEx) {
                 throw new Exception(sprintf(t('Error while executing sql query in file %s, line %d: %s'), __FILE__, __LINE__ - 4, $objEx->getMessage()));
             }
 
-            $strQuery = sprintf("DELETE FROM narro_context_info USING narro_context_info LEFT JOIN narro_context ON narro_context_info.context_id=narro_context.context_id WHERE narro_context_info.language_id=%d AND narro_context.project_id=%d", QApplication::$objUser->Language->LanguageId, $this->objNarroProject->ProjectId);
+            $strQuery = sprintf("DELETE FROM narro_context_info USING narro_context_info LEFT JOIN narro_context ON narro_context_info.context_id=narro_context.context_id WHERE narro_context_info.language_id=%d AND narro_context.project_id=%d", QApplication::$Language->LanguageId, $this->objNarroProject->ProjectId);
             try {
                 $objDatabase->NonQuery($strQuery);
             }catch (Exception $objEx) {
@@ -620,8 +631,8 @@
         }
 
         protected function btnDelProjectContexts_Click($strFormId, $strControlId, $strParameter) {
-            if (!QApplication::$objUser->hasPermission('Can delete project', $this->objNarroProject->ProjectId, QApplication::$objUser->Language->LanguageId))
-                QApplication::Redirect('narro_project_list.php');
+            if (!QApplication::$objUser->hasPermission('Can delete project', $this->objNarroProject->ProjectId, QApplication::$Language->LanguageId))
+                QApplication::Redirect(NarroLink::ProjectList());
 
             $objDatabase = QApplication::$Database[1];
 
@@ -634,8 +645,8 @@
         }
 
         protected function btnDelProjectFiles_Click($strFormId, $strControlId, $strParameter) {
-            if (!QApplication::$objUser->hasPermission('Can delete project', $this->objNarroProject->ProjectId, QApplication::$objUser->Language->LanguageId))
-                QApplication::Redirect('narro_project_list.php');
+            if (!QApplication::$objUser->hasPermission('Can delete project', $this->objNarroProject->ProjectId, QApplication::$Language->LanguageId))
+                QApplication::Redirect(NarroLink::ProjectList());
 
             $objDatabase = QApplication::$Database[1];
 

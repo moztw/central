@@ -19,6 +19,7 @@
     class NarroTopUsersPanel extends QPanel {
         protected $dtgUsers;
         protected $colUsername;
+        protected $colLanguage;
         protected $colSuggestionCnt;
         protected $colCharCnt;
         protected $intLimit = 10;
@@ -34,8 +35,9 @@
 
             $this->colUsername = new QDataGridColumn(t('Username'), '<?= $_CONTROL->ParentControl->dtgUsers_colUsername_Render($_ITEM); ?>');
             $this->colUsername->HtmlEntities = false;
-            $this->colSuggestionCnt = new QDataGridColumn(t('Suggestions made'), '<?= $_CONTROL->ParentControl->dtgUsers_colSuggestionCnt_Render($_ITEM); ?>');
-            $this->colCharCnt = new QDataGridColumn(t('Letters typed'), '<?= $_CONTROL->ParentControl->dtgUsers_colCharCnt_Render($_ITEM); ?>');
+            $this->colSuggestionCnt = new QDataGridColumn(t('Translations'), '<?= $_CONTROL->ParentControl->dtgUsers_colSuggestionCnt_Render($_ITEM); ?>');
+            $this->colCharCnt = new QDataGridColumn(t('Characters'), '<?= $_CONTROL->ParentControl->dtgUsers_colCharCnt_Render($_ITEM); ?>');
+            $this->colLanguage = new QDataGridColumn(t('Language'), '<?= $_CONTROL->ParentControl->dtgUsers_colLanguage_Render($_ITEM); ?>');
 
             // Setup DataGrid
             $this->dtgUsers = new QDataGrid($this);
@@ -52,10 +54,11 @@
             $this->dtgUsers->AddColumn($this->colUsername);
             $this->dtgUsers->AddColumn($this->colSuggestionCnt);
             $this->dtgUsers->AddColumn($this->colCharCnt);
+            $this->dtgUsers->AddColumn($this->colLanguage);
         }
 
         public function dtgUsers_colUsername_Render( $arrUserInfo ) {
-            return sprintf('<a href="narro_user_profile.php?u=%d">%s</a>', $arrUserInfo->GetColumn('user_id'), $arrUserInfo->GetColumn('username'));
+            return NarroLink::UserProfile($arrUserInfo->GetColumn('user_id'), $arrUserInfo->GetColumn('username'));
         }
 
         public function dtgUsers_colSuggestionCnt_Render( $arrUserInfo ) {
@@ -66,11 +69,21 @@
             return $arrUserInfo->GetColumn('char_cnt');
         }
 
+        public function dtgUsers_colLanguage_Render( $arrUserInfo ) {
+            try {
+                $arrUserData = unserialize($arrUserInfo->GetColumn('data'));
+                return $arrUserData['Language'];
+            }
+            catch (Exception $objEx) {
+                return t('Unknown');
+            }
+        }
+
 
         public function dtgUsers_Bind() {
             $objDatabase = QApplication::$Database[1];
 
-            $strQuery = sprintf('SELECT u.username, u.user_id, COUNT(s.suggestion_id) as suggestion_cnt, SUM(s.suggestion_char_count) AS char_cnt FROM narro_user u LEFT JOIN narro_suggestion s ON u.user_id=s.user_id WHERE u.data LIKE \'%%"Language"%%"%s"%%\' AND u.user_id<>%d GROUP BY u.user_id ORDER BY suggestion_cnt DESC LIMIT 0,%d', QApplication::$objUser->Language->LanguageCode, NarroUser::ANONYMOUS_USER_ID, $this->intLimit);
+            $strQuery = sprintf('SELECT u.username, u.user_id, u.data, COUNT(s.suggestion_id) as suggestion_cnt, SUM(s.suggestion_char_count) AS char_cnt FROM narro_user u LEFT JOIN narro_suggestion s ON u.user_id=s.user_id WHERE u.user_id<>%d GROUP BY u.user_id ORDER BY suggestion_cnt DESC LIMIT 0,%d', NarroUser::ANONYMOUS_USER_ID, $this->intLimit);
 
             // Perform the Query
             $objDbResult = $objDatabase->Query($strQuery);

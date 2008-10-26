@@ -23,6 +23,7 @@
 ?>
 
     <?php $this->RenderBegin() ?>
+        <?php $this->pnlHeader->Render() ?>
         <h3><?php echo t('Login') ?></h3>
         <p><?php echo t('Please login so everyone else knows who is adding those great suggestions that you will add.'); ?></p>
         <br />
@@ -31,16 +32,14 @@
             <tr>
                 <td><?php echo t('Username')?>:</td>
                 <td><?php $this->txtUsername->Render() ?></td>
+                <td rowspan="2"><h3><?php echo t('or') ?></h3></td>
+                <td rowspan="2" valign="middle"><?php echo t('<a href="http://www.openid.net">OpenID</a>')?>:</td>
+                <td rowspan="2" valign="middle"><?php $this->txtOpenId->Render() ?></td>
             </tr>
             <tr>
                 <td><?php echo t('Password')?>:</td>
                 <td><?php $this->txtPassword->Render() ?></td>
             </tr>
-            <tr>
-                <td></td>
-                <td><?php $this->chkRememberLogin->Render() ?><label for="<? echo $this->chkRememberLogin->ControlId ?>"><?php echo t('Remember me')?></label></td>
-            </tr>
-
             <tr>
                 <td colspan="2" style="text-align:right"><?php $this->btnRecoverPassword->Render();?> <?php $this->btnLogin->Render() ?></td>
             </tr>

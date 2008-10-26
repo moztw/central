@@ -23,6 +23,7 @@
 ?>
 
     <?php $this->RenderBegin() ?>
+        <?php $this->pnlHeader->Render() ?>
         <h3><?php echo t('Change password') ?></h3>
         <p><?php echo t('Here you can change your password. Just type the new password and hit the button.'); ?></p>
         <br />

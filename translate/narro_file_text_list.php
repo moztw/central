@@ -30,43 +30,44 @@
                 $this->objNarroFile = NarroFile::Load(($intFileId));
 
                 if (!$this->objNarroFile)
-                    QApplication::Redirect('narro_project_file_list.php?p=' . $intProjectId);
+                    QApplication::Redirect(NarroLink::ProjectFileList($intProjectId));
 
             } else
-                QApplication::Redirect('narro_project_file_list.php?p=' . $intProjectId);
+                QApplication::Redirect(NarroLink::ProjectFileList($intProjectId));
 
             $this->objNarroProject = $this->objNarroFile->Project;
         }
 
         public function dtgNarroContextInfo_Actions_Render(NarroContextInfo $objNarroContextInfo, $intRowIndex) {
-            if (QApplication::$objUser->hasPermission('Can suggest', $objNarroContextInfo->Context->ProjectId, QApplication::$objUser->Language->LanguageId) && QApplication::$objUser->hasPermission('Can vote', $objNarroContextInfo->Context->ProjectId, QApplication::$objUser->Language->LanguageId))
+            if (QApplication::$objUser->hasPermission('Can suggest', $objNarroContextInfo->Context->ProjectId, QApplication::$Language->LanguageId) && QApplication::$objUser->hasPermission('Can vote', $objNarroContextInfo->Context->ProjectId, QApplication::$Language->LanguageId))
                 $strText = t('Suggest / Vote');
-            elseif (QApplication::$objUser->hasPermission('Can suggest', $objNarroContextInfo->Context->ProjectId, QApplication::$objUser->Language->LanguageId))
+            elseif (QApplication::$objUser->hasPermission('Can suggest', $objNarroContextInfo->Context->ProjectId, QApplication::$Language->LanguageId))
                 $strText = t('Suggest');
-            elseif (QApplication::$objUser->hasPermission('Can vote', $objNarroContextInfo->Context->ProjectId, QApplication::$objUser->Language->LanguageId))
+            elseif (QApplication::$objUser->hasPermission('Can vote', $objNarroContextInfo->Context->ProjectId, QApplication::$Language->LanguageId))
                 $strText = t('Vote');
             else
                 $strText = t('Details');
 
-            return sprintf('<a href="narro_context_suggest.php?p=%d&f=%d&c=%d&tf=%d&st=%d&s=%s&ci=%d&cc=%d">%s</a>',
+            return NarroLink::ContextSuggest(
                         $this->objNarroFile->Project->ProjectId,
-                        $this->objNarroFile->FileId,
                         $objNarroContextInfo->ContextId,
                         $this->lstTextFilter->SelectedValue,
                         $this->lstSearchType->SelectedValue,
                         $this->txtSearch->Text,
-                        $intRowIndex,
+                        $intRowIndex + (($this->dtgNarroContextInfo->PageNumber - 1) * $this->dtgNarroContextInfo->ItemsPerPage),
                         $this->dtgNarroContextInfo->TotalItemCount,
+                        $this->dtgNarroContextInfo->SortColumnIndex,
+                        $this->dtgNarroContextInfo->SortDirection,
                         $strText
                    );
         }
 
         public function lstTextFilter_Change() {
-            QApplication::Redirect('narro_file_text_list.php?' . sprintf('f=%d&tf=%d&st=%d&s=%s', $this->objNarroFile->FileId, $this->lstTextFilter->SelectedValue, $this->lstSearchType->SelectedValue, $this->txtSearch->Text));
+            QApplication::Redirect(NarroLink::FileTextList($this->objNarroFile->ProjectId, $this->objNarroFile->FileId, $this->lstTextFilter->SelectedValue, $this->lstSearchType->SelectedValue, $this->txtSearch->Text));
         }
 
         public function btnSearch_Click() {
-            QApplication::Redirect('narro_file_text_list.php?' . sprintf('f=%d&tf=%d&st=%d&s=%s', $this->objNarroFile->FileId, $this->lstTextFilter->SelectedValue, $this->lstSearchType->SelectedValue, $this->txtSearch->Text));
+            QApplication::Redirect(NarroLink::FileTextList($this->objNarroFile->ProjectId, $this->objNarroFile->FileId, $this->lstTextFilter->SelectedValue, $this->lstSearchType->SelectedValue, $this->txtSearch->Text));
         }
 
 
@@ -75,7 +76,7 @@
 
             $objCommonCondition = QQ::AndCondition(
                 QQ::Equal(QQN::NarroContextInfo()->Context->FileId, $this->objNarroFile->FileId),
-                QQ::Equal(QQN::NarroContextInfo()->LanguageId, QApplication::$objUser->Language->LanguageId),
+                QQ::Equal(QQN::NarroContextInfo()->LanguageId, QApplication::$Language->LanguageId),
                 QQ::Equal(QQN::NarroContextInfo()->Context->Active, 1)
             );
 

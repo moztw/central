@@ -21,12 +21,15 @@
 ?>
 
     <?php $this->RenderBegin() ?>
+        <?php $this->pnlHeader->Render() ?>
         <div>
         <?php echo
-        '<a href="narro_project_list.php">'.t('Projects').'</a>' .
-        ' -> <a href="narro_project_text_list.php?p=' . $this->objNarroFile->Project->ProjectId.'">'.$this->objNarroFile->Project->ProjectName.'</a>' .
-        ' -> <a href="narro_project_file_list.php?p=' . $this->objNarroFile->Project->ProjectId . '">'.t('Files').'</a>' .
-        (($this->objNarroFile->ParentId)? ' -> <a href="narro_project_file_list.php?' . sprintf('p=%d&pf=%d', $this->objNarroFile->Project->ProjectId, $this->objNarroFile->ParentId).'"> .. </a>':'') .
+        NarroLink::ProjectList(t('Projects')) .
+        ' -> ' . 
+        NarroLink::ProjectTextList($this->objNarroFile->Project->ProjectId, 1, 1, '', $this->objNarroFile->Project->ProjectName) .
+        ' -> ' . 
+        NarroLink::ProjectFileList($this->objNarroFile->Project->ProjectId, 0, t('Files')) .
+        (($this->objNarroFile->ParentId)? ' -> ' . NarroLink::ProjectFileList($this->objNarroFile->Project->ProjectId, $this->objNarroFile->ParentId, '..'):'') .
         ' -> ' . $this->objNarroFile->FileName; ?>
         </div>
         <br />

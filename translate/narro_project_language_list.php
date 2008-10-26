@@ -36,14 +36,16 @@
                 $this->objNarroProject = NarroProject::Load(($intProjectId));
 
                 if (!$this->objNarroProject)
-                    QApplication::Redirect('narro_project_list.php');
+                    QApplication::Redirect(NarroLink::ProjectList());
 
             } else
-                QApplication::Redirect('narro_project_list.php');
+                QApplication::Redirect(NarroLink::ProjectList());
 
         }
 
         protected function Form_Create() {
+            parent::Form_Create();
+            
             $this->SetupNarroProject();
 
             // Setup DataGrid Columns
@@ -123,7 +125,7 @@
         }
 
         public function dtgNarroLanguage_LanguageNameColumn_Render(NarroLanguage $objNarroLanguage) {
-            return sprintf('<a href="%s?switch_lang=%s">%s</a>', basename(__FILE__), $objNarroLanguage->LanguageCode, $objNarroLanguage->LanguageName);
+            return sprintf('<a href="%s?l=%s">%s</a>', basename(__FILE__), $objNarroLanguage->LanguageCode, $objNarroLanguage->LanguageName);
         }
 
         protected function dtgNarroLanguage_Bind() {

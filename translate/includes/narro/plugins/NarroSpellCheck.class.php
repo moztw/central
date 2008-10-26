@@ -24,7 +24,7 @@
         }
 
         public static function GetSpellSuggestions($strText) {
-            if (QApplication::$objUser->getPreferenceValueByName('Spellchecking') == 'No spellchecking')
+            if (QApplication::$objUser->getPreferenceValueByName('Spellchecking') == 'I don\'t need it')
                 return true;
             $strCleanText = mb_ereg_replace('[…\\n\.,:;\\\!\?0-9]+', ' ', $strText);
             $strCleanText = strip_tags($strCleanText);
@@ -116,15 +116,21 @@
                 foreach($arrTextSuggestions as $strWord=>$arrSuggestions) {
                     if (count($arrSuggestions))
                         $strSpellcheckText .= sprintf(
-                            t('<span class="mispelled_word">%s</span> is mispelled. Maybe you meant %s.'),
+                            t('<span class="mispelled_word">%s</span> seems to be mispelled. Maybe you meant %s.'),
                             $strWord,
                             ' <span class="mispelled_suggestion">' .
                                 join('</span>, <span class="mispelled_suggestion">', $arrSuggestions) .
                                 '</span>'
                         ) . '<br />';
+                    else
+                        $strSpellcheckText .= sprintf(
+                            t('<span class="mispelled_word">%s</span> seems to be mispelled.'),
+                            $strWord
+                        ) . '<br />';
                 }
 
-                $this->arrErrors[] =  $strSpellcheckText;
+                if ($strSpellcheckText)
+                    $this->arrErrors[] =  $strSpellcheckText;
             }
 
             return array($strOriginal, $strTranslation, $strContext, $objFile, $objProject);

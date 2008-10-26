@@ -72,6 +72,14 @@
             return array($strOriginal, $this->ConvertToComma($strTranslation), $strContext, $objFile, $objProject);
         }
 
+        public function SaveTextComment($strTextComment) {
+            return $this->ConvertToComma($strTextComment);
+        }
+
+        public function DisplayTextComment($strTextComment) {
+            return $this->Convert($strTextComment);
+        }
+
         public function ExportSuggestion($strOriginal, $strTranslation, $strContext, $objFile, $objProject) {
             if (
                 in_array(

@@ -16,6 +16,13 @@
 		public function GetJavaScriptAction() {}
 		public function ParsePostData() {}
 
+        protected function GetPaginatorRowHtml($objPaginator) {
+            if ($this->objPaginator->TotalItemCount < $this->objPaginator->ItemsPerPage)
+                return false;
+            else
+                return parent::GetPaginatorRowHtml($objPaginator);
+        }
+
 		protected function GetControlHtml() {
 			$this->DataBind();
 
@@ -66,7 +73,7 @@
 				case "Template": return $this->strTemplate;
 				case "CurrentItemIndex": return $this->intCurrentItemIndex;
 				case "TagName": return $this->strTagName;
-				
+
 				default:
 					try {
 						return parent::__get($strName);

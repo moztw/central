@@ -43,7 +43,7 @@
         protected function SetupNarroLanguage() {
             // Lookup Object PK information from Query String (if applicable)
             // Set mode to Edit or New depending on what's found
-            $intLanguageId = QApplication::QueryString('l');
+            $intLanguageId = QApplication::QueryString('lid');
             if (($intLanguageId)) {
                 $this->objNarroLanguage = NarroLanguage::Load(($intLanguageId));
 
@@ -60,6 +60,8 @@
         }
 
         protected function Form_Create() {
+            parent::Form_Create();
+
             // Call SetupNarroLanguage to either Load/Edit Existing or Create New
             $this->SetupNarroLanguage();
 
@@ -162,7 +164,7 @@
             $this->btnSave->PrimaryButton = true;
             $this->btnSave->CausesValidation = true;
             if ($this->blnEditMode)
-                $this->btnSave->Visible = QApplication::$objUser->hasPermission('Can edit language', null, QApplication::$objUser->Language->LanguageId);
+                $this->btnSave->Visible = QApplication::$objUser->hasPermission('Can edit language', null, QApplication::$Language->LanguageId);
             else
                 $this->btnSave->Visible = QApplication::$objUser->hasPermission('Can add language');
         }
@@ -184,7 +186,7 @@
             $this->btnDelete->CausesValidation = false;
             if (!$this->blnEditMode)
                 $this->btnDelete->Visible = false;
-            $this->btnDelete->Visible = QApplication::$objUser->hasPermission('Can delete language', null, QApplication::$objUser->Language->LanguageId);
+            $this->btnDelete->Visible = QApplication::$objUser->hasPermission('Can delete language', null, QApplication::$Language->LanguageId);
         }
 
         // Protected Update Methods
@@ -201,11 +203,11 @@
 
         // Control ServerActions
         protected function btnSave_Click($strFormId, $strControlId, $strParameter) {
-            if ($this->blnEditMode && !QApplication::$objUser->hasPermission('Can edit language', null, QApplication::$objUser->Language->LanguageId))
-                QApplication::Redirect('narro_language_list.php');
+            if ($this->blnEditMode && !QApplication::$objUser->hasPermission('Can edit language', null, QApplication::$Language->LanguageId))
+                $this->RedirectToListPage();
 
             if (!$this->blnEditMode && !QApplication::$objUser->hasPermission('Can add language'))
-                QApplication::Redirect('narro_language_list.php');
+                $this->RedirectToListPage();
 
             $this->UpdateNarroLanguageFields();
             $this->objNarroLanguage->Save();
@@ -219,8 +221,8 @@
         }
 
         protected function btnDelete_Click($strFormId, $strControlId, $strParameter) {
-            if (!QApplication::$objUser->hasPermission('Can delete language', null, QApplication::$objUser->Language->LanguageId))
-                QApplication::Redirect('narro_language_list.php');
+            if (!QApplication::$objUser->hasPermission('Can delete language', null, QApplication::$Language->LanguageId))
+                $this->RedirectToListPage();
 
             $this->objNarroLanguage->Delete();
 
@@ -228,7 +230,7 @@
         }
 
         protected function RedirectToListPage() {
-            QApplication::Redirect('narro_language_list.php');
+            QApplication::Redirect('narro_language_list.php?l=' . QApplication::$Language->LanguageCode);
         }
     }
 

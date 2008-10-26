@@ -22,25 +22,32 @@
         protected $lblMessage;
         protected $txtUsername;
         protected $txtPassword;
-        protected $chkRememberLogin;
+        protected $txtOpenId;
         protected $btnLogin;
         protected $btnRecoverPassword;
         protected $txtPreviousUrl;
 
         protected function Form_Create() {
+            parent::Form_Create();
+
             $this->lblMessage = new QLabel($this);
             $this->lblMessage->HtmlEntities = false;
-            $this->txtUsername = new QTextBox($this);
+            $this->txtUsername = new QTextBox($this, 'username');
+            $this->txtUsername->TabIndex = 1;
             $this->txtPassword = new QTextBox($this);
+            $this->txtPassword->TabIndex = 2;
             $this->txtPassword->TextMode = QTextMode::Password;
-            $this->chkRememberLogin = new QCheckBox($this);
             $this->btnLogin = new QButton($this);
             $this->btnLogin->Text = t('Login');
             $this->btnLogin->PrimaryButton = true;
+            $this->btnLogin->TabIndex = 4;
             $this->btnLogin->AddAction(new QClickEvent(), new QServerAction('btnLogin_Click'));
             $this->btnRecoverPassword = new QButton($this);
             $this->btnRecoverPassword->Text = t('Lost password or username');
             $this->btnRecoverPassword->AddAction(new QClickEvent(), new QServerAction('btnRecoverPassword_Click'));
+            $this->btnRecoverPassword->TabIndex = 5;
+            $this->txtOpenId = new QTextBox($this, 'openid');
+            $this->txtOpenId->TabIndex = 3;
 
             if (isset($_SERVER['HTTP_REFERER']) && !strstr($_SERVER['HTTP_REFERER'], basename(__FILE__)) && $_SERVER['HTTP_REFERER'] !='')
                 $this->txtPreviousUrl = $_SERVER['HTTP_REFERER'];
@@ -48,24 +55,88 @@
 
         }
 
+        protected function Form_PreRender() {
+            if (isset($_REQUEST['openid_mode'])) {
+                require_once __INCLUDES__ . "/Zend/Auth.php";
+                require_once __INCLUDES__ . "/Zend/Auth/Adapter/OpenId.php";
+                require_once __INCLUDES__ . "/Zend/Auth/Storage/NonPersistent.php";
+
+                $auth = Zend_Auth::getInstance();
+                $auth->authenticate(new Zend_Auth_Adapter_OpenId($this->txtOpenId->Text));
+
+                if ($auth->hasIdentity()) {
+                    $objUser = NarroUser::LoadByUsername($auth->getIdentity());
+                    require_once __INCLUDES__ . '/Zend/Session/Namespace.php';
+                    $objNarroSession = new Zend_Session_Namespace('Narro');
+
+                    if (!$objUser instanceof NarroUser) {
+                        try {
+                            $objUser = NarroUser::RegisterUser($auth->getIdentity(), $auth->getIdentity(), '');
+                        }
+                        catch (Exception $objEx) {
+                            $this->lblMessage->ForeColor = 'red';
+                            $this->lblMessage->Text = t('Failed to create an associated user for this OpenId') . $objEx->getMessage() . var_export($auth->getIdentity(), true);
+                            return false;
+                        }
+
+                        $objNarroSession->User = $objUser;
+                        QApplication::Redirect(NarroLink::UserPreferences($objUser->UserId));
+                    }
+
+                    $objNarroSession->User = $objUser;
+
+                    QApplication::$objUser = $objUser;
+                    if ($this->txtPreviousUrl)
+                        QApplication::Redirect($this->txtPreviousUrl);
+                    else
+                        QApplication::Redirect(NarroLink::ProjectList());
+                }
+            }
+        }
+
         protected function btnRecoverPassword_Click($strFormId, $strControlId, $strParameter) {
             QApplication::Redirect('narro_recover_password.php');
         }
 
         protected function btnLogin_Click($strFormId, $strControlId, $strParameter) {
-            if ($objUser = NarroUser::LoadByUsernameAndPassword($this->txtUsername->Text, md5($this->txtPassword->Text))) {
-                $_SESSION['objUser'] = $objUser;
-                if ($this->chkRememberLogin->Checked)
-                    setcookie(session_name(), $_COOKIE[session_name()], time()+31*24*3600, __VIRTUAL_DIRECTORY__ . __SUBDIRECTORY__);
-                QApplication::$objUser = $objUser;
-                if ($this->txtPreviousUrl)
-                    QApplication::Redirect($this->txtPreviousUrl);
-                else
-                    QApplication::Redirect('narro_project_list.php');
+            if (trim($this->txtOpenId->Text) != '') {
+                require_once __INCLUDES__ . "/Zend/Auth.php";
+                require_once __INCLUDES__ . "/Zend/Auth/Adapter/OpenId.php";
+                require_once __INCLUDES__ . "/Zend/Auth/Storage/NonPersistent.php";
+
+                $this->txtOpenId->Text = preg_replace('/\/$/', '', $this->txtOpenId->Text);
+
+                $status = "";
+                $auth = Zend_Auth::getInstance();
+                $result = $auth->authenticate(
+                new Zend_Auth_Adapter_OpenId($this->txtOpenId->Text));
+                if ($result->isValid()) {
+                    Zend_OpenId::redirect(Zend_OpenId::selfURL());
+                } else {
+                    $auth->clearIdentity();
+                    foreach ($result->getMessages() as $message) {
+                        $status .= "$message<br>\n";
+                    }
+                    $this->lblMessage->ForeColor = 'red';
+                    $this->lblMessage->Text = $status;
+                }
             }
             else {
-                $this->lblMessage->ForeColor = 'red';
-                $this->lblMessage->Text = t('Bad username or password');
+                if (trim($this->txtPassword->Text) != '' && $objUser = NarroUser::LoadByUsernameAndPassword($this->txtUsername->Text, md5($this->txtPassword->Text))) {
+                    require_once __INCLUDES__ . '/Zend/Session/Namespace.php';
+                    $objNarroSession = new Zend_Session_Namespace('Narro');
+                    $objNarroSession->User = $objUser;
+
+                    QApplication::$objUser = $objUser;
+                    if ($this->txtPreviousUrl)
+                        QApplication::Redirect($this->txtPreviousUrl);
+                    else
+                        QApplication::Redirect(NarroLink::ProjectList());
+                }
+                else {
+                    $this->lblMessage->ForeColor = 'red';
+                    $this->lblMessage->Text = t('Bad username or password');
+                }
             }
         }
     }

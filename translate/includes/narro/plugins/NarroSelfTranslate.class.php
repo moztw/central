@@ -59,17 +59,17 @@
         }
 
         public static function CacheTranslation($strText) {
-            $strIdentifier = sprintf('narro_%d', QApplication::$objUser->Language->LanguageId);
+            $strIdentifier = sprintf('narro_%d', QApplication::$objUser->getPreferenceValueByName('Application language'));
 
             $arrTextSuggestions = QApplication::$Cache->load($strIdentifier);
 
             /**
-             * if this is the first suggestion, consider it most_voted
+             * Take the validated suggestion
              */
             $objContextInfo = NarroContextInfo::QuerySingle(
                 QQ::AndCondition(
                     QQ::Equal(QQN::NarroContextInfo()->Context->Project->ProjectName, 'Narro'),
-                    QQ::Equal(QQN::NarroContextInfo()->LanguageId, QApplication::$objUser->Language->LanguageId),
+                    QQ::Equal(QQN::NarroContextInfo()->LanguageId, QApplication::$objUser->getPreferenceValueByName('Application language')),
                     QQ::Equal(QQN::NarroContextInfo()->Context->Text->TextValueMd5, md5($strText)),
                     QQ::IsNotNull(QQN::NarroContextInfo()->ValidSuggestionId)
                 )
@@ -94,7 +94,7 @@
 
         public static function Translate($strText) {
             if (!count(self::$arrTranslations)) {
-                $strIdentifier = sprintf('narro_%d', QApplication::$objUser->Language->LanguageId);
+                $strIdentifier = sprintf('narro_%d', QApplication::$objUser->getPreferenceValueByName('Application language'));
 
                 $arrTextSuggestions = QApplication::$Cache->load($strIdentifier);
 
