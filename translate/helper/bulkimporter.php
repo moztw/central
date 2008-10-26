@@ -55,7 +55,7 @@ function copy_moz_files($dir, $root, $dest) {
 	global $ignore;
 	$A = scandir($root . $dir);
 	foreach($A as $k => $v) {
-		if (in_array($v, array('.', '..', 'CVS'))) continue;
+		if (in_array($v, array('.', '..', 'CVS', 'l10n.ini'))) continue;
 		if (is_dir($root . $dir . '/' . $v)) {
 			mkdir($dest . $dir . '/' . $v);
 			copy_moz_files($dir . '/' . $v, $root, $dest);
