@@ -61,7 +61,7 @@
      * Database configuration
      */
     define('DB_CONNECTION_1', serialize(array(
-        'adapter' => 'MySqli5',
+        'adapter' => 'MySql',
         'encoding' => 'UTF8',
         'server' => 'localhost',
         'port' => null,
