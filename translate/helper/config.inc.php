@@ -35,7 +35,7 @@ $PROJECTS = array(
 		'id' => 4,
 		'updatecommand' => null,
 		'filestocopy' => array(
-			'calender' => $helper_data_dir . 'l10n-en-US/calender'//,
+			'calendar' => $helper_data_dir . 'l10n-en-US/calendar'//,
 //			'other-licenses/branding/sunbird' =>  $helper_data_dir . 'l10n-en-US/other-licenses/branding/sunbird',
 		),
 		'purge_old_files' => true,
@@ -83,7 +83,7 @@ $PROJECTS = array(
 	),
 	array(
 		'id' => 9,
-		'updatecommand' => 'wget -q https://svn.mozilla.org/projects/mozparty/trunk/app/locale/eng/LC_MESSAGES/default.po'
+		'updatecommand' => 'wget -q http://svn.mozilla.org/projects/mozparty/trunk/app/locale/eng/LC_MESSAGES/default.po'
 			 . ' -O ' . $narro_dir . 'data/import/9/en-US/default.dpo',
 		'filestocopy' => array(), // Copy nothing :-)
 		'purge_old_files' => false, // Delete nothing since the old one is already overwritten by wget
