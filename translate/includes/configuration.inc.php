@@ -21,7 +21,7 @@
     define('SERVER_INSTANCE', 'dev');
     define('ALLOW_REMOTE_ADMIN', false);
     define('ADMIN_EMAIL_ADDRESS', 'timdream@mail.moztw.org');
-    define('NARRO_VERSION', '0.9.1');
+    define('NARRO_VERSION', '0.9.2');
     define ('__DOCROOT__', realpath(dirname(__FILE__) . '/..'));
     define ('__VIRTUAL_DIRECTORY__', '');
     define ('__HTTP_URL__', 'http://translate.moztw.org');
