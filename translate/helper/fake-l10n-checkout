@@ -3,9 +3,9 @@
 
 cd $1
 # wget -q http://hg.frenchmozilla.fr/index.cgi/archive/tip.tar.gz -O - | tar -xz
-wget -q http://share.timc.idv.tw/download-l10n-en-US.php -O /dev/null
+wget http://share.timc.idv.tw/download-l10n-en-US.php -O /dev/null
 #wget -q http://share.timc.idv.tw/l10n-en-US.tar.gz -O - | tar -xz
-wget -q http://share.timc.idv.tw/l10n-en-US.tar.gz -O l10n-en-US.tar.gz
+wget http://share.timc.idv.tw/l10n-en-US.tar.gz -O l10n-en-US.tar.gz
 tar xzf l10n-en-US.tar.gz
 
 rm -R l10n-en-US
