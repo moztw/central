@@ -28,8 +28,8 @@
 
         public function ValidateSuggestion($strOriginal, $strTranslation, $strContext, $objFile, $objProject) {
 
-            preg_match('/[\.\!\?\:]+$/', $strOriginal, $arrOriginalTextMatches);
-            preg_match('/[\.\!\?\:]+$/', $strTranslation, $arrSuggestionMatches);
+            preg_match('/[\.\!\?\:¡C¡I¡H]+$/', $strOriginal, $arrOriginalTextMatches);
+            preg_match('/[\.\!\?\:¡C¡I¡H]+$/', $strTranslation, $arrSuggestionMatches);
 
             if (isset($arrOriginalTextMatches[0]) && !isset($arrSuggestionMatches[0])) {
                     $this->arrErrors[] =
@@ -54,7 +54,8 @@
                             $arrSuggestionMatches[0]
                         );
             }
-            elseif (isset($arrOriginalTextMatches[0]) && isset($arrSuggestionMatches[0]) && $arrOriginalTextMatches[0] != $arrSuggestionMatches[0]) {
+            elseif (isset($arrOriginalTextMatches[0]) && isset($arrSuggestionMatches[0]) &&
+				$arrOriginalTextMatches[0] != preg_replace(array('/¡I/g', '/¡C/g', '/¡H/g'), array('!', '.', '?'), $arrSuggestionMatches[0])) {
                     $this->arrErrors[] =
                         sprintf(
                             t(
