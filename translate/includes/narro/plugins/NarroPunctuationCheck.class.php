@@ -55,7 +55,7 @@
                         );
             }
             elseif (isset($arrOriginalTextMatches[0]) && isset($arrSuggestionMatches[0]) &&
-				$arrOriginalTextMatches[0] != preg_replace(array('/！/g', '/。/g', '/？/g'), array('!', '.', '?'), $arrSuggestionMatches[0])) {
+				$arrOriginalTextMatches[0] != preg_replace(array('/！/', '/。/', '/？/'), array('!', '.', '?'), $arrSuggestionMatches[0])) {
                     $this->arrErrors[] =
                         sprintf(
                             t(
