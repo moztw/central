@@ -30,5 +30,16 @@
      */
 ?>
     <p align="center" style="font-size:small"><a target="_blank" href="http://code.google.com/p/narro/wiki/About"><?php echo sprintf(t('%s, version %s'), 'Narro', NARRO_VERSION) ?></a></p>
+	<script type="text/javascript" src="http://www.google-analytics.com/ga.js"></script>
+	<script type="text/javascript">
+	//<![CDATA[
+	try {
+		var pageTracker = _gat._getTracker("UA-1035080-1");
+		pageTracker._trackPageview();
+	} catch (e) {
+	}
+	 //]]>
+	</script>
+
     </body>
 </html>

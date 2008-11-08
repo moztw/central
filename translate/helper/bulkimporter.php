@@ -13,6 +13,17 @@ foreach ($PROJECTS as $PROJECT) {
 		print("	Running update command...\n");
 		system($PROJECT['updatecommand']);
 	}
+
+	$e = false;
+	foreach ($PROJECT['filestocopy'] as $dist => $filepath) {
+		if (!file_exists($filepath)) {
+			print("	Error: " . $filepath . " does not exist...\n");
+			$e = true;
+			break;
+		}
+	}
+	if ($e) break;
+
 	//purge old files in en-US directory
 	if ($PROJECT['purge_old_files']) {
 		print("	Purging old files...\n");
