@@ -6,6 +6,12 @@ header('Content-Type: text/plain');
 
 require('config.inc.php');
 
+require('../includes/configuration.inc.php');
+$DB = unserialize(DB_CONNECTION_1);
+
+print("Backing up database...\n");
+system('mysqldump -u ' . $DB['username'] . ' ' . $DB['database'] . ' > /home/translate/data/helper/narro-backup-$(date +%Y%m%d_%H%m%S).sql');
+
 foreach ($PROJECTS as $PROJECT) {
 	print('Processing Project #' . $PROJECT['id'] . "...\n");
 	//Run update command if there is one.
