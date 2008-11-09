@@ -27,6 +27,8 @@ mv l10n-en-US/extensions/spellcheck/locales/en-US/* l10n-en-US/extensions/spellc
 rm -R l10n-en-US/extensions/spellcheck/locales
 mv l10n-en-US/mail/locales/en-US/* l10n-en-US/mail/
 rm -R l10n-en-US/mail/locales
+mv l10n-en-US/mobile/locales/en-US/* l10n-en-US/mobile/
+rm -R l10n-en-US/mobile/locales
 mv l10n-en-US/netwerk/locales/en-US/* l10n-en-US/netwerk/
 rm -R l10n-en-US/netwerk/locales
 mv l10n-en-US/other-licenses/branding/firefox/locales/en-US/* l10n-en-US/other-licenses/branding/firefox/

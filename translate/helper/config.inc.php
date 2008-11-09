@@ -88,6 +88,15 @@ $PROJECTS = array(
 		'filestocopy' => array(), // Copy nothing :-)
 		'purge_old_files' => false, // Delete nothing since the old one is already overwritten by wget
 		'moz_files_only' => false
+	),
+	array(
+		'id' => 10,
+		'updatecommand' => null,
+		'filestocopy' => array(
+			'mobile' => $helper_data_dir . 'l10n-en-US/mobile'
+		),
+		'purge_old_files' => true,
+		'moz_files_only' => true
 	)
 );
 
