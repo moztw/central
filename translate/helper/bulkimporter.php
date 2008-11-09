@@ -10,7 +10,7 @@ require('../includes/configuration.inc.php');
 $DB = unserialize(DB_CONNECTION_1);
 
 print("Backing up database...\n");
-system('mysqldump -u ' . $DB['username'] . ' ' . $DB['database'] . ' > /home/moztw/translate/data/helper/narro-backup-$(date +%Y%m%d_%H%M%S)-$(< /dev/urandom tr -dc_A-Z-a-z-0-9 | head -c6).sql');
+system('mysqldump -u ' . $DB['username'] . ' ' . $DB['database'] . ' > /home/moztw/translate/data/helper/narro-backup-$(date +%Y%m%d_%H%M%S)-$(echo < /dev/urandom tr -dc_A-Z-a-z-0-9 | head -c6).sql');
 
 foreach ($PROJECTS as $PROJECT) {
 	print('Processing Project #' . $PROJECT['id'] . "...\n");
