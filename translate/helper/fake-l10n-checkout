@@ -36,6 +36,8 @@ mv l10n-en-US/other-licenses/branding/firefox/locales/en-US/* l10n-en-US/other-l
 rm -R l10n-en-US/other-licenses/branding/firefox/locales
 mv l10n-en-US/other-licenses/branding/thunderbird/locales/en-US/* l10n-en-US/other-licenses/branding/thunderbird/
 rm -R l10n-en-US/other-licenses/branding/thunderbird/locales
+mv l10n-en-US/other-licenses/branding/sunbird/locales/en-US/* l10n-en-US/other-licenses/branding/sunbird/
+rm -R l10n-en-US/other-licenses/branding/sunbird/locales
 mv l10n-en-US/security/manager/locales/en-US/* l10n-en-US/security/manager/
 rm -R l10n-en-US/security/manager/locales
 mv l10n-en-US/suite/locales/en-US/* l10n-en-US/suite/

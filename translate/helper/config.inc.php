@@ -35,8 +35,8 @@ $PROJECTS = array(
 		'id' => 4,
 		'updatecommand' => null,
 		'filestocopy' => array(
-			'calendar' => $helper_data_dir . 'l10n-en-US/calendar'//,
-//			'other-licenses/branding/sunbird' =>  $helper_data_dir . 'l10n-en-US/other-licenses/branding/sunbird',
+			'calendar' => $helper_data_dir . 'l10n-en-US/calendar',
+			'other-licenses/branding/sunbird' =>  $helper_data_dir . 'l10n-en-US/other-licenses/branding/sunbird'
 		),
 		'purge_old_files' => true,
 		'moz_files_only' => true
