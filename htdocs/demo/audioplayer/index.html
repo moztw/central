@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<title>Firefox HTML5 Audio Demo Test</title>
+<script type="text/javascript" src="track_list.js"></script>
+<script type="text/javascript" src="music.js"></script>
+</head>
+<body onload="load();">
+<div id="content">
+<div id="header" class="shadow">
+<h3 id="title"></h3>
+</div>
+<ol id="song"></ol>
+<div id="pause" onclick="toggle(); return false;"><img src="pause.png"></div>
+<div id="info">
+<h3>From <a href="http://moztw.org" title="Mozilla Community in Taiwan" class="strong">MozTW.org</a> !!!</h3>
+<p>
+Created for the purpose of test and demo HTML5 <strong>audio</strong> tag in Firefox 3.5 by <a href="http://kidwm.net" class="strong">WM</a> & <a href="http://littlebtc.blogspot.com/" class="strong">Littlebtc</a>.
+<br>Safari Users may need to install <a href="http://www.xiph.org/quicktime/" id="quicktime">this plugin</a> for OGG playing. All used Music Tracks are from <a href="http://www.jamendo.com/" class="strong">Jamendo</a>.
+</p>
+<p>
+Features Used：
+</p>
+<ul>
+<li>APNG</li>
+<li>HTML5</li>
+<li>&lt;audio&gt;</li>
+<li>opacity</li>
+<li>text-shadow</li>
+<li>-moz-box-shadow</li>
+<li>-moz-border-radius</li>
+<li>@font-face</li>
+<li>outline</li>
+</ul>
+<div id="cc">
+<!--Creative Commons License-->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/tw/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style = "border: 0"></a>
+<!--/Creative Commons License-->
+</div>
+<p style="display: none">底下為偵錯用訊息。
+<code id="bug"></code>
+</p>
+</div>
+<img id="previous" class="change" src="left.png" alt="←" onclick="track_change('previous'); return false" onmouseover="button_hover('previous'); return false;" onmouseout="button_out('previous'); return false;">
+<img id="cover" class="shadow" src="#" alt="Album Art" onclick="toggle(); return false;">
+<img id="next" class="change" src="right.png" alt="→" onclick="track_change('next'); return false;" onmouseover="button_hover('next'); return false;" onmouseout="button_out('next'); return false;">
+<audio id="audio" src="#" class="shadow" controls>Your browser does not support the <code>audio</code> element.</audio>
+<div id="bar" class="shadow"><img id="wave" src="static.png" alt="WAVE"><span id="about" title="關於作者與這個作品" onclick="display('about'); return false;">[TW]</span><span id="list" title="切換顯示播放清單" onclick="display('list'); return false;">[LS]</span><span id="time" title="Current / Length"></span><span id="re" title="切換重複播放模式" onclick="repeat(); return false;">[RP]</span><span id="mode" title="切換隨機播放模式" onclick="shuffle(); return false;">[SF]</span><div id="volume"><span id="vo">VOL</span><span class="vol" onclick="vol_down(); return false;">-</span><span id="vol" title="Volume"></span><span class="vol" onclick="vol_up(); return false;">+</span></div></div>
+</div>
+</body>
+</html>
