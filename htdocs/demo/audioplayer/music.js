@@ -15,6 +15,7 @@ var i;
 var index;
 var playlist = '';
 var temp = '';
+var to = gup('to');
 var sf = new Array();
 for(i = 0; i < track; i++) {
 sf[i] = i;
@@ -161,6 +162,8 @@ document.getElementById('bug').innerHTML = box.v.currentTime + '<br>' + box.v.du
 }
 
 function ready() {
+if(to)
+	current = to-1;
 var h = document.getElementById('title');
 box.v.src = 'audio/' + song[current].source;
 box.c.title = song[current].artist + ' - ' + song[current].title;
@@ -170,6 +173,7 @@ h.innerHTML = song[current].artist + ' - ' + song[current].title;
 }
 box.v.load();
 set_change();
+to = null;
 }
 
 function set_change() {
@@ -363,4 +367,15 @@ temp = '';
 for(i = 0; i < track; i++) {
 temp = temp + sf[i] + ' ';
 }
+}
+
+function gup(name) {  
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");  
+    var regexS = "[\\?&]"+name+"=([^&#]*)";  
+    var regex = new RegExp( regexS );  
+    var results = regex.exec( window.location.href );  
+    if( results == null )    
+        return "";  
+    else    
+        return results[1];
 }
