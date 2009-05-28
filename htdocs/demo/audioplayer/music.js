@@ -100,7 +100,7 @@ current = current + 1;
 break;
 case 'previous':
 if (mode == 'shuffle') {
-if (index == 0) {
+if (index <= 0) {
 shuffle_init();
 }
 else {
@@ -162,8 +162,15 @@ document.getElementById('bug').innerHTML = box.v.currentTime + '<br>' + box.v.du
 }
 
 function ready() {
-if(to)
+if(!isNaN(to) && to > 0 && to <= track) {
 	current = to-1;
+	to = 0;
+}
+if (index == -1)
+{
+	index++;
+	current = sf[index];
+}
 var h = document.getElementById('title');
 box.v.src = 'audio/' + song[current].source;
 box.c.title = song[current].artist + ' - ' + song[current].title;
@@ -173,7 +180,6 @@ h.innerHTML = song[current].artist + ' - ' + song[current].title;
 }
 box.v.load();
 set_change();
-to = null;
 }
 
 function set_change() {
@@ -222,7 +228,7 @@ var m = document.getElementById('mode');
 if (mode == 'shuffle') {
 m.style.color = '#00E5EE';
 shuffle_init();
-current = sf[0];
+index = -1;
 }
 else {
 m.style.color = '#007B7F';
@@ -346,17 +352,20 @@ shuffle_init();
 track_change(sf[0]);
 }
 else if (mode == 'shuffle' && index == track - 1) {
+var li = document.getElementsByTagName('li');
+li[current].getElementsByTagName('a')[0].style.textShadow = '#00F5FF 0px 0px 10px';
+li[current].getElementsByTagName('a')[0].style.fontSize = '1em';
 pause(1);
 }
 else if (mode == 'order' && current == track - 1) {
+var li = document.getElementsByTagName('li');
+li[current].getElementsByTagName('a')[0].style.textShadow = '#00F5FF 0px 0px 10px';
+li[current].getElementsByTagName('a')[0].style.fontSize = '1em';
 pause(1);
 }
 else{
 track_change('next');
 }
-var li = document.getElementsByTagName('li');
-li[current].getElementsByTagName('a')[0].style.textShadow = '#00F5FF 0px 0px 10px';
-li[current].getElementsByTagName('a')[0].style.fontSize = '1em';
 }
 
 function shuffle_init() {
@@ -369,7 +378,8 @@ temp = temp + sf[i] + ' ';
 }
 }
 
-function gup(name) {  
+function gup(name)
+{  
     name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");  
     var regexS = "[\\?&]"+name+"=([^&#]*)";  
     var regex = new RegExp( regexS );  
