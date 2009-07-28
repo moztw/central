@@ -77,27 +77,7 @@ urchinTracker();
   <li id="menu_docs"><a href="http://moztw.org/docs" title="各項使用說明、介紹與文件資料">文件</a></li>
   <li id="menu_products"><a href="http://moztw.org/dl" title="Moztw.org 提供的中文化軟體一覽">下載</a></li>
  </ul>
-
- <!-- Google 自訂搜索 -->
-<form id="search" action="http://forum.moztw.org/google_results.php">
-  <div>
-    <input type="hidden" name="cx" value="004834718651483963205:4eo-sv95xaa" />
-    <input type="hidden" name="cof" value="FORID:9" />
-    <input type="hidden" name="ie" value="UTF-8" />
-    <input type="text" id="q" name="q" accesskey="s" size="30" maxlength="64"  />
-    <input type="submit" id="submit" name="sa" value="搜尋" />
-  </div>
-</form>
-
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">google.load("elements", "1", {packages: "transliteration"});</script>
-<script type="text/javascript" src="http://www.google.com/coop/cse/t13n?form=cse-search-box&t13n_langs=zh-Hant"></script>
-
-<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=zh-Hant"></script>
-<!-- End of Google Search -->
-
 </div>
-
   <div id="globalWrapper">
       <div id="column-content">
 	<div id="content">
