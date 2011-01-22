@@ -165,6 +165,7 @@ function ready() {
 if(!isNaN(to) && to > 0 && to <= track) {
 	current = to-1;
 	to = 0;
+	index = 0;
 }
 if (index == -1)
 {

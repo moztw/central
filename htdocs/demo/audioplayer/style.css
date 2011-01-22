@@ -8,10 +8,12 @@ body {
 }
 
 #content {
+	z-index: 3;
 	position: relative;
 	margin: 10px auto;
 	width:600px; 
 	background-color: #fff;
+	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	padding: 10px 0 20px;
@@ -31,7 +33,7 @@ body {
 #title {
 	text-shadow: #FF7F24 1px 1px 5px,#FFD700 -1px -1px 10px;
 	line-height: 30px;
-	font-size: 1.3em; 
+	font-size: 1.3em;
 	margin: auto
 }
 
@@ -40,6 +42,7 @@ img.change {
 }
 
 .shadow {
+	box-shadow: black 0px 0px 20px;
 	-moz-box-shadow: black 0px 0px 20px;
 	-webkit-box-shadow: black 0px 0px 20px;
 }
@@ -55,7 +58,7 @@ img.change {
 
 #cover {
 	margin: auto; 
-	width:400px; 
+	width: 400px; 
 	height: 400px;
 }
 
@@ -190,7 +193,7 @@ display: block;
 padding: 15px;
 }
 
-.strong {
+#me {
 font-size: 1.3em;
 color: #fff;
 text-decoration: none;
@@ -214,5 +217,10 @@ margin-top: 150px;
 }
 
 #cc {
-text-align: center;
+	text-align: center;
+}
+
+#spectrum {
+	z-index: 2;
+	position: absolute;
 }
