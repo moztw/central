@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="style.css">
-<title>Pantheon of Divas ~ Firefox HTML5 Audio Demo ~</title>
+<title>Firefox HTML5 Audio Demo Test</title>
 <script type="text/javascript" src="track_list.js"></script>
 <script type="text/javascript" src="music.js"></script>
 <script type="text/javascript" src="processing.js"></script>
@@ -11,11 +11,11 @@
 <script type="text/javascript" src="dsp.js"></script>
 </head>
 <body onload="load();">
+<canvas id="spectrum"></canvas>
 <div id="content">
 <div id="header" class="shadow">
 <h3 id="title"></h3>
 </div>
-
 <ol id="song"></ol>
 <div id="pause" onclick="toggle(); return false;"><img src="pause.png"></div>
 <div id="info">
@@ -32,7 +32,6 @@ Features Used：
 <li>APNG</li>
 <li>HTML5</li>
 <li>&lt;audio&gt;</li>
-
 <li>opacity</li>
 <li>text-shadow</li>
 <li>-moz-box-shadow</li>
@@ -54,7 +53,7 @@ Features Used：
 <img id="previous" class="change" src="left.png" alt="←" onclick="track_change('previous'); return false" onmouseover="button_hover('previous'); return false;" onmouseout="button_out('previous'); return false;">
 <img id="cover" class="shadow" src="#" alt="Album Art" onclick="toggle(); return false;">
 <img id="next" class="change" src="right.png" alt="→" onclick="track_change('next'); return false;" onmouseover="button_hover('next'); return false;" onmouseout="button_out('next'); return false;">
-<audio id="audio" src="audio/00.ogg" class="shadow" controls></audio>
+<audio id="audio" src="audio/00.ogg" class="shadow" controls="true" onloadedmetadata="loadedMetaData(event);"></audio>
 <div id="bar" class="shadow"><img id="wave" src="static.png" alt="WAVE"><span id="about" title="About This Demo" onclick="display('about'); return false;">[TW]</span><span id="list" title="Display/Hide Play List" onclick="display('list'); return false;">[LS]</span><span id="time" title="Current / Length"></span><span id="re" title="Switch Repeat Mode" onclick="repeat(); return false;">[RP]</span><span id="mode" title="Switch Shuffle Mode" onclick="shuffle(); return false;">[SF]</span><div id="volume"><span id="vo">VOL</span><span class="vol" onclick="vol_down(); return false;">-</span><span id="vol" title="Volume"></span><span class="vol" onclick="vol_up(); return false;">+</span></div></div>
 
 </div>
@@ -106,7 +105,7 @@ Features Used：
         background(0);
         //fill(0, 60);
         //rect(0, 0, width, height);
-        for ( int i = 0; i < fft.spectrum.length/2; i += 3 ) {          
+        for ( var i = 0; i < fft.spectrum.length/2; i += 3 ) {          
           if (3 * i > width) { break; }
           var magnitude = fft.spectrum[i];
           

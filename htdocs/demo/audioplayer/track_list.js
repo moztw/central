@@ -48,10 +48,10 @@ var song = [
 		"cover": "08.jpg"
 	},
 	{
-		'artist':'Juanitos',
-		"title": "Dead Insect Mambo",
-		"source": '09.ogg',
-		"cover": "09.jpg"
+		'artist':'林強',
+		"title": "交心",
+		"source": 'bosom.ogg',
+		"cover": "bosom.jpg"
 	},
 	{
 		'artist':'Abu Simbel',
