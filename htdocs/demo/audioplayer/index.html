@@ -6,50 +6,44 @@
 	<title>Firefox HTML5 Audio Demo Test</title>
 	<script type="text/javascript" src="track_list.js"></script>
 	<script type="text/javascript" src="music.js"></script>
-	<script type="text/javascript" src="processing-1.1.0.js"></script>
+	<script type="text/javascript" src="processing-1.1.0.min.js"></script>
 	<script type="text/javascript" src="init.js"></script>
 	<script type="text/javascript" src="dsp.js"></script>
 </head>
 <body onload="load();">
 <canvas id="spectrum"></canvas>
-<div id="content">
-<div id="header" class="shadow">
-<h3 id="title"></h3>
-</div>
-<ol id="song"></ol>
-<div id="pause" onclick="toggle(); return false;"><img src="pause.png"></div>
-<div id="info">
-<h3>From <a href="http://moztw.org" title="Mozilla Community in Taiwan" class="strong">MozTW.org</a> !!!</h3>
-<p>
-Created for the purpose of test and demo HTML5 <strong>audio</strong> tag in Firefox 3.5 by <a href="http://kidwm.net" class="strong">WM</a> & <a href="http://littlebtc.blogspot.com/" class="strong">Littlebtc</a>.
+	<div id="content">
+		<div id="header" class="shadow">
+			<h3 id="title"></h3>
+		</div>
+		<ol id="song"></ol>
+		<div id="pause" onclick="toggle(); return false;"><img src="pause.png"></div>
+		<div id="info">
+			<h3>From <a href="http://moztw.org" title="Mozilla Community in Taiwan" class="strong">MozTW.org</a> !!!</h3>
+			<p>Created for the purpose of test and demo HTML5 <strong>audio</strong> tag in Firefox 3.5 by <a href="http://kidwm.net" class="strong">WM</a> & <a href="http://littlebtc.blogspot.com/" class="strong">Littlebtc</a>.<br>Safari Users may need to install <a href="http://www.xiph.org/quicktime/" id="quicktime">this plugin</a> for OGG playing. All used Music Tracks are from <a href="http://www.jamendo.com/" class="strong">Jamendo</a>.</p>
+			<p>Features Used：</p>
+			<ul>
+				<li>APNG</li>
+				<li>HTML5</li>
+				<li>&lt;audio&gt;</li>
+				<li>opacity</li>
+				<li>text-shadow</li>
+				<li>-moz-box-shadow</li>
+				<li>-moz-border-radius</li>
+				<li>@font-face</li>
+				<li>outline</li>
+				<li>Audio API</li>
+			</ul>
+			<div id="cc">
+				<!--Creative Commons License-->
+				<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/tw/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style = "border: 0"></a>
+				<!--/Creative Commons License-->
 
-<br>Safari Users may need to install <a href="http://www.xiph.org/quicktime/" id="quicktime">this plugin</a> for OGG playing. All used Music Tracks are from <a href="http://www.jamendo.com/" class="strong">Jamendo</a>.
-</p>
-<p>
-Features Used：
-</p>
-<ul>
-<li>APNG</li>
-<li>HTML5</li>
-<li>&lt;audio&gt;</li>
-<li>opacity</li>
-<li>text-shadow</li>
-<li>-moz-box-shadow</li>
-<li>-moz-border-radius</li>
-<li>@font-face</li>
-<li>outline</li>
-<li>Audio API</li>
-</ul>
-<div id="cc">
-<!--Creative Commons License-->
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/tw/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style = "border: 0"></a>
-<!--/Creative Commons License-->
-
-</div>
-<p style="display: none">底下為偵錯用訊息。
-<code id="bug"></code>
-</p>
-</div>
+			</div>
+			<p style="display: none">底下為偵錯用訊息。
+				<code id="bug"></code>
+			</p>
+		</div>
 <img id="previous" class="change" src="left.png" alt="←" onclick="track_change('previous'); return false" onmouseover="button_hover('previous'); return false;" onmouseout="button_out('previous'); return false;">
 <img id="cover" class="shadow" src="#" alt="Album Art" onclick="toggle(); return false;">
 <img id="next" class="change" src="right.png" alt="→" onclick="track_change('next'); return false;" onmouseover="button_hover('next'); return false;" onmouseout="button_out('next'); return false;">
