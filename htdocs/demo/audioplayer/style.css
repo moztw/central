@@ -11,13 +11,12 @@ body {
 	z-index: 3;
 	position: relative;
 	margin: 10px auto;
-	width:600px; 
+	width: 600px; 
 	background-color: #fff;
 	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
 	padding: 10px 0 20px;
-	text-align: center
+	text-align: center;
+	box-shadow: inset 0px 0px 20px #888;
 }
 
 #header {
@@ -43,28 +42,27 @@ img.change {
 
 .shadow {
 	box-shadow: black 0px 0px 20px;
-	-moz-box-shadow: black 0px 0px 20px;
-	-webkit-box-shadow: black 0px 0px 20px;
 }
 
 #audio {
-	display: block;
+	visibility:hidden;
+/*	display: block;
 	width: 400px; 
 	height: 28px;
 	margin: 0 auto;
 	margin-top: -4px;
-	padding: 0;
+	padding: 0;*/
 }
 
 #cover {
-	margin: auto; 
+	margin: 0 10px; 
 	width: 400px; 
 	height: 400px;
 }
 
 #bar {
 	color: #00E5EE;
-	margin: 0px auto; 
+	margin: 0 auto; 
 	background-color: #000; 
 	width: 400px;
 }
@@ -77,6 +75,15 @@ img.change {
 #about {
 	margin: 0 3px 0 10px;
 	cursor: pointer;
+}
+
+#flow {
+	padding: 0 10px;
+}
+
+#flow img {
+	display: block;
+	float: left;
 }
 
 @font-face {
@@ -189,24 +196,24 @@ span.vol {
 }
 
 #bug {
-display: block;
-padding: 15px;
+	display: block;
+	padding: 15px;
 }
 
 #me {
-font-size: 1.3em;
-color: #fff;
-text-decoration: none;
-text-shadow: #0ff 0px 0px 10px
+	font-size: 1.3em;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: #0ff 0px 0px 10px
 }
 
 #quicktime {
-color: #fff;
+	color: #fff;
 }
 
 #pause img {
-margin: auto;
-margin-top: 150px;
+	margin: 0 auto;
+	margin-top: 150px;
 }
 
 #wave {
