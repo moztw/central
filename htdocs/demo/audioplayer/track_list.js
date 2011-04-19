@@ -1,9 +1,9 @@
 var song = [
 	{
-		'artist':'Speedsound',
-		"title": "Erotic Dream - Fractal",
-		"source": '01.ogg',
-		"cover": "01.jpg"
+		"artist": "林強",
+		"title": "交心",
+		"source": 'bosom.ogg',
+		"cover": "bosom.jpg"
 	},
 	{	
 		'artist':'FUll Faya Orchestra',
@@ -48,10 +48,10 @@ var song = [
 		"cover": "08.jpg"
 	},
 	{
-		'artist':'林強',
-		"title": "交心",
-		"source": 'bosom.ogg',
-		"cover": "bosom.jpg"
+		'artist':'Speedsound',
+		"title": "Erotic Dream - Fractal",
+		"source": '01.ogg',
+		"cover": "01.jpg"
 	},
 	{
 		'artist':'Abu Simbel',
