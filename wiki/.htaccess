@@ -1,0 +1,18 @@
+RewriteEngine On
+
+## Rule to redirect (not rewrite) old links
+RewriteRule ^(page|index\.php)/(.*)$ /$2 [R,L]
+
+## Rule to exclude existing files and dirs
+RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+		RewriteRule ^(.*)$ /index.php?title=$1 [L]
+
+## These rules should be handled by MediaWiki itself. see LocalSettings.php
+#RewriteRule ^[^:]*\. - [L]
+#RewriteRule ^[^:]*\/ - [L]
+#RewriteRule ^/*$ /index.php?title=首頁 [L,QSA]
+#RewriteRule (.+) /index.php?title=$1 [L,QSA]
+#RewriteRule ^(images|skins)/ - [L]
+#RewriteRule ^[^:]*[./] - [L]
+
