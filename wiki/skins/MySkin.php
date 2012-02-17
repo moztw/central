@@ -1,30 +1,20 @@
 <?php
 /**
- * See skin.doc
+ * MySkin: Monobook without the CSS. The idea is that you
+ * customise it using user or site CSS
  *
- * @todo document
- * @package MediaWiki
- * @subpackage Skins
+ * @file
+ * @ingroup Skins
  */
 
 if( !defined( 'MEDIAWIKI' ) )
-	die();
-
-/** */
-require_once('MonoBook.php');
+	die( -1 );
 
 /**
- * @todo document
- * @package MediaWiki
- * @subpackage Skins
+ * Inherit main code from SkinTemplate, set the CSS and template filter.
+ * @ingroup Skins
  */
 class SkinMySkin extends SkinTemplate {
-	function initPage( &$out ) {
-		SkinTemplate::initPage( $out );
-		$this->skinname  = 'myskin';
-		$this->stylename = 'myskin';
-		$this->template  = 'MonoBookTemplate';
-	}
+	var $skinname = 'myskin', $stylename = 'myskin',
+		$template = 'MonoBookTemplate', $useHeadElement = true;
 }
-
-?>

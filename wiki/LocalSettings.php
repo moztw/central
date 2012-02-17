@@ -4,7 +4,7 @@
 # If you make manual changes, please keep track in case you need to
 # recreate them later.
 
-$IP = "/usr/home/moztw/wiki";
+$IP = "/home/moztw/wiki-archive/www";
 ini_set( "include_path", ".:$IP:$IP/includes:$IP/languages" );
 require_once( "includes/DefaultSettings.php" );
 
@@ -27,9 +27,12 @@ $wgScript           = "$wgScriptPath/index.php";
 $wgRedirectScript   = "$wgScriptPath/redirect.php";
 
 ## If using PHP as a CGI module, use the ugly URLs
-$wgArticlePath      = "$wgScript/$1";
+#$wgArticlePath      = "$wgScript/$1";
+#$wgArticlePath      = "$1";
+$wgArticlePath      = "/$1";
 #$wgArticlePath      = "$wgScript?title=$1";
 #$wgArticlePath      = "/page/$1";
+$wgUsePathInfo      = false; 
 
 $wgStylePath        = "$wgScriptPath/skins";
 $wgStyleDirectory   = "$IP/skins";
@@ -37,9 +40,10 @@ $wgLogo             = "$wgStylePath/common/images/moztw_wiki.png";
 
 $wgUploadPath       = "$wgScriptPath/uimages";
 $wgUploadDirectory  = "$IP/uimages";
+$wgHashedUploadDirectory = true;
 
 $wgEmergencyContact = "nobody@moztw.org";
-$wgPasswordSender	= "nobody@moztw.org";
+$wgPasswordSender   = "nobody@moztw.org";
 
 $wgDBserver         = "localhost";
 $wgDBname           = "wikidb";
@@ -84,7 +88,6 @@ $wgLocalInterwiki   = $wgSitename;
 $wgLanguageCode = "zh-tw";
 $wgUseLatin1 = false;
 
-
 $wgProxyKey = "963e0eeb5e970e0814127015518178e5ed58ed051605b787b5a166f16e8453e4";
 
 ## Default skin: you can change the default skin. Use the internal symbolic
@@ -102,4 +105,51 @@ $wgRightsIcon = "http://creativecommons.org/images/public/somerights20.gif";
 # $wgRightsCode = "by-sa"; # Not yet used
 
 $wgWhitelistEdit = true;
+$wgLocaltimezone = "Asia/Taipei";
+
+require_once("$IP/extensions/Nuke/Nuke.php");
+require_once("$IP/extensions/DeleteBatch/DeleteBatch.php");
+require_once( "$IP/extensions/ConfirmEdit/ConfirmEdit.php" );
+require_once( "$IP/extensions/ConfirmEdit/ReCaptcha.php"); 
+require_once("$IP/extensions/Renameuser/Renameuser.php");
+//require_once( "$IP/extensions/WikiEditor/WikiEditor.php" );
+
+$wgCaptchaClass = 'ReCaptcha';
+$wgReCaptchaPublicKey = '6Lf4rs0SAAAAAB_KjQeGN9CX7WBk3Sj49jtJxPhw';
+$wgReCaptchaPrivateKey = '6Lf4rs0SAAAAAGr9wb0ZxJ0hHrQaBWgxa1InhiWc';
+
+$wgGroupPermissions['*'            ]['skipcaptcha'] = false;
+$wgGroupPermissions['user'         ]['skipcaptcha'] = false;
+$wgGroupPermissions['autoconfirmed']['skipcaptcha'] = false;
+$wgGroupPermissions['bot'          ]['skipcaptcha'] = true; // registered bots
+$wgGroupPermissions['sysop'        ]['skipcaptcha'] = true;
+$wgGroupPermissions['emailconfirmed']['skipcaptcha'] = true;
+$ceAllowConfirmedEmail = true;
+
+/*$wgWikiEditorModules['toolbar']['global'] = true;  // Enable the WikiEditor toolbar for everyone
+$wgDefaultUserOptions['usebetatoolbar'] = true;
+$wgDefaultUserOptions['usebetatoolbar-cgd'] = true;
+$wgDefaultUserOptions['wikieditor-preview'] = true;
+$wgWikiEditorModules = array(
+        'highlight' => array( 'global' => true, 'user' => true ),
+	'preview' => array( 'global' => true, 'user' => true ),
+	'toc' => array( 'global' => true, 'user' => true ),
+	'toolbar' => array( 'global' => true, 'user' => true ),
+    );*/
+
+$wgGroupPermissions['*']['createaccount']   = false; //禁止建立帳號。
+$wgGroupPermissions['*']['edit']            = false; //禁止編輯內容
+$wgGroupPermissions['*']['createpage']      = false; //禁止產生頁面
+$wgGroupPermissions['*']['createtalk']      = false; //禁止產生對話頁面。
+$wgGroupPermissions['*']['upload']	    = false; //禁止產生對話頁面。
+
+$wgGroupPermissions['sysop']['createaccount']   = true;
+$wgGroupPermissions['sysop']['edit']            = true;
+$wgGroupPermissions['sysop']['createpage']      = true;
+$wgGroupPermissions['sysop']['createtalk']      = true;
+$wgGroupPermissions['sysop']['upload']		= true;
+$wgGroupPermissions['sysop']['renameuser'] 	= true;
+
+//$wgReadOnly = 'MozTW Wiki 已唯讀，若有問題請洽 moztw-general AT googlegroups DOT com';
+
 ?>

@@ -1,48 +1,48 @@
 <?php
-# Copyright (C) 2004 Brion Vibber <brion@pobox.com>
-# http://www.mediawiki.org/
-# 
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or 
-# (at your option) any later version.
-# 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-# http://www.gnu.org/copyleft/gpl.html
-
 /**
  * This script generates UniNormalData.inc from the Unicode Character Database
  * and supplementary files.
  *
- * @package UtfNormal
- * @access private
+ * Copyright (C) 2004 Brion Vibber <brion@pobox.com>
+ * http://www.mediawiki.org/
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup UtfNormal
  */
-
-/** */
 
 if( php_sapi_name() != 'cli' ) {
 	die( "Run me from the command line please.\n" );
 }
 
+require_once 'UtfNormalDefines.php';
 require_once 'UtfNormalUtil.php';
 
 $in = fopen("DerivedNormalizationProps.txt", "rt" );
 if( !$in ) {
 	print "Can't open DerivedNormalizationProps.txt for reading.\n";
 	print "If necessary, fetch this file from the internet:\n";
-	print "http://www.unicode.org/Public/UNIDATA/CompositionExclusions.txt\n";
+	print "http://www.unicode.org/Public/UNIDATA/DerivedNormalizationProps.txt\n";
 	exit(-1);
 }
 print "Initializing normalization quick check tables...\n";
 $checkNFC = array();
 while( false !== ($line = fgets( $in ) ) ) {
+	$matches = array();
 	if( preg_match( '/^([0-9A-F]+)(?:..([0-9A-F]+))?\s*;\s*(NFC_QC)\s*;\s*([MN])/', $line, $matches ) ) {
 		list( $junk, $first, $last, $prop, $value ) = $matches;
 		#print "$first $last $prop $value\n";
@@ -90,18 +90,18 @@ $canon = 0;
 
 print "Reading character definitions...\n";
 while( false !== ($line = fgets( $in ) ) ) {
-	$columns = split(';', $line);
+	$columns = explode(';', $line);
 	$codepoint = $columns[0];
 	$name = $columns[1];
 	$canonicalCombiningClass = $columns[3];
 	$decompositionMapping = $columns[5];
-	
+
 	$source = codepointToUtf8( hexdec( $codepoint ) );
 
 	if( $canonicalCombiningClass != 0 ) {
-		$combiningClass[$source] = IntVal( $canonicalCombiningClass );
+		$combiningClass[$source] = intval( $canonicalCombiningClass );
 	}
-	
+
 	if( $decompositionMapping === '' ) continue;
 	if( preg_match( '/^<(.+)> (.*)$/', $decompositionMapping, $matches ) ) {
 		# Compatibility decomposition
@@ -114,7 +114,7 @@ while( false !== ($line = fgets( $in ) ) ) {
 	}
 	$total++;
 	$dest = hexSequenceToUtf8( $decompositionMapping );
-	
+
 	$compatibilityDecomp[$source] = $dest;
 	if( $canonical ) {
 		$canonicalDecomp[$source] = $dest;
@@ -174,15 +174,15 @@ if( $out ) {
 /**
  * This file was automatically generated -- do not edit!
  * Run UtfNormalGenerate.php to create this file again (make clean && make)
- * @package MediaWiki
+ *
+ * @file
  */
-/** */
-global \$utfCombiningClass, \$utfCanonicalComp, \$utfCanonicalDecomp, \$utfCheckNFC;
-\$utfCombiningClass = unserialize( '$serCombining' );
-\$utfCanonicalComp = unserialize( '$serComp' );
-\$utfCanonicalDecomp = unserialize( '$serCanon' );
-\$utfCheckNFC = unserialize( '$serCheckNFC' );
-?" . ">\n";
+ 
+UtfNormal::\$utfCombiningClass = unserialize( '$serCombining' );
+UtfNormal::\$utfCanonicalComp = unserialize( '$serComp' );
+UtfNormal::\$utfCanonicalDecomp = unserialize( '$serCanon' );
+UtfNormal::\$utfCheckNFC = unserialize( '$serCheckNFC' );
+\n";
 	fputs( $out, $outdata );
 	fclose( $out );
 	print "Wrote out UtfNormalData.inc\n";
@@ -199,12 +199,12 @@ if( $out ) {
 /**
  * This file was automatically generated -- do not edit!
  * Run UtfNormalGenerate.php to create this file again (make clean && make)
- * @package MediaWiki
+ *
+ * @file
  */
-/** */
-global \$utfCompatibilityDecomp;
-\$utfCompatibilityDecomp = unserialize( '$serCompat' );
-?" . ">\n";
+
+UtfNormal::\$utfCompatibilityDecomp = unserialize( '$serCompat' );
+\n";
 	fputs( $out, $outdata );
 	fclose( $out );
 	print "Wrote out UtfNormalDataK.inc\n";
@@ -231,5 +231,3 @@ function callbackCompat( $matches ) {
 	}
 	return $matches[1];
 }
-
-?>

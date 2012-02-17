@@ -1,194 +1,65 @@
 <?php
 /**
- * @todo document
- * @package MediaWiki
- * @subpackage Maintenance
+ * Backwards-compatibility wrapper for old-style maintenance scripts.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup Maintenance
  */
 
-/** */
-# Abort if called from a web server
-if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
-	print "This script must be run from the command line\n";
-	exit();
-}
+require( dirname( __FILE__ ) . '/Maintenance.php' );
 
-define("MEDIAWIKI",true);
-
-# Process command line arguments
-# $options becomes an array with keys set to the option names
-# $optionsWithArgs is an array of GNU-style options that take an argument. The arguments are returned
-# in the values of $options.
-# $args becomes a zero-based array containing the non-option arguments
-
+global $optionsWithArgs;
 if ( !isset( $optionsWithArgs ) ) {
 	$optionsWithArgs = array();
 }
 
-$self = array_shift( $argv );
-$IP = realpath( dirname( $self ) . "/.." );
-if ($IP == '/' || $IP == '')
-	$IP = "/home/moztw/wiki";
-chdir( $IP );
-
-$options = array();
-$args = array();
-
-for( $arg = reset( $argv ); $arg !== false; $arg = next( $argv ) ) {
-	if ( substr( $arg, 0, 2 ) == '--' ) {
-		# Long options
-		$option = substr( $arg, 2 );
-		if ( in_array( $option, $optionsWithArgs ) ) {
-			$param = next( $argv );
-			if ( $param === false ) {
-				die( "$arg needs an value after it\n" );
-			}
-			$options[$option] = $param;
-		} else {
-			$bits = explode( '=', $option, 2 );
-			if( count( $bits ) > 1 ) {
-				$option = $bits[0];
-				$param = $bits[1];
-			} else {
-				$param = 1;
-			}
-			$options[$option] = $param;
-		}
-	} elseif ( $arg{0} == '-' ) {
-		# Short options
-		for ( $p=1; $p<strlen( $arg ); $p++ ) {
-			$option = $arg{$p};
-			if ( in_array( $option, $optionsWithArgs ) ) {
-				$param = next( $argv );
-				if ( $param === false ) {
-					die( "$arg needs an value after it\n" );
-				}
-				$options[$option] = $param;
-			} else {
-				$options[$option] = 1;
-			}
-		}
-	} else {
-		$args[] = $arg;
-	}
-}
-
-# General initialisation
-
-$wgCommandLineMode = true;
-# Turn off output buffering if it's on
-@ob_end_flush();
-$sep = strchr( $include_path = ini_get( "include_path" ), ";" ) ? ";" : ":";
-
-if (!isset( $wgUseNormalUser ) ) {
-	$wgUseNormalUser = false;
-}
-
-if ( file_exists( '/home/wikipedia/common/langlist' ) ) {
-	$wgWikiFarm = true;
-	require_once( "$IP/includes/SiteConfiguration.php" );
-
-	# Get $conf
-	require( "$IP/InitialiseSettings.php" );
-
-	# Check if we were passed a db name
-	$db = array_shift( $args );
-	list( $site, $lang ) = $conf->siteFromDB( $db );
-
-	# If not, work out the language and site the old way
-	if ( is_null( $site ) || is_null( $lang ) ) {
-		if ( !$db ) {	
-			$lang = "aa";
-		} else {
-			$lang = $db;
-		}
-		if ( isset( $args[0] ) ) {
-			$site = array_shift( $args );
-		} else {
-			$site = "wikipedia";
+class CommandLineInc extends Maintenance {
+	public function __construct() {
+		global $optionsWithArgs;
+		parent::__construct();
+		foreach ( $optionsWithArgs as $name ) {
+			$this->addOption( $name, '', false, true );
 		}
 	}
 
-	# This is for the IRC scripts, which now run as the apache user
-	# The apache user doesn't have access to the wikiadmin_pass command
-	if ( $_ENV['USER'] == "apache" ) {
-		$wgUseNormalUser = true;
+	public function getDbType() {
+		global $wgUseNormalUser;
+
+		return ( isset( $wgUseNormalUser ) && $wgUseNormalUser ) ?
+			Maintenance::DB_STD : Maintenance::DB_ADMIN;
 	}
 
-	if ( !$wgUseNormalUser ) {
-		$wgDBuser = $wgDBadminuser = "wikiadmin";
-		$wgDBpassword = $wgDBadminpassword = trim(`wikiadmin_pass`);
+	/**
+	 * No help, it would just be misleading since it misses custom options
+	 */
+	protected function maybeHelp( $force = false ) {
+		if ( !$force )
+			return;
+		parent::maybeHelp( true );
 	}
 
-	putenv( "wikilang=$lang");
-
-	$DP = $IP;
-	ini_set( "include_path", ".:$IP:$IP/includes:$IP/languages:$IP/maintenance" );
-
-	require_once( "$IP/includes/Defines.php" );
-	require_once( "/home/wikipedia/common/php-1.4/CommonSettings.php" );
-} else {
-	$wgWikiFarm = false;
-	$settingsFile = "$IP/LocalSettings.php";
-
-	if ( ! is_readable( $settingsFile ) ) {
-		print "A copy of your installation's LocalSettings.php\n" .
-		  "must exist in the source directory.\n";
-		exit();
-	}
-	$wgCommandLineMode = true;
-	$DP = $IP;
-	require_once( "$IP/includes/Defines.php" );
-	require_once( $settingsFile );
-	ini_set( "include_path", ".$sep$IP$sep$IP/includes$sep$IP/languages$sep$IP/maintenance" );
-	
-	if ( is_readable( "$IP/AdminSettings.php" ) ) {
-		require_once( "$IP/AdminSettings.php" );
+	public function execute() {
+		global $args, $options;
+		$args = $this->mArgs;
+		$options = $this->mOptions;
 	}
 }
 
-# Turn off output buffering again, it might have been turned on in the settings files
-@ob_end_flush();
-# Same with these
-$wgCommandLineMode = true;
+$maintClass = 'CommandLineInc';
+require( RUN_MAINTENANCE_IF_MAIN );
 
-if ( !$wgUseNormalUser && isset( $wgDBadminuser ) ) {
-	$wgDBuser = $wgDBadminuser;
-	$wgDBpassword = $wgDBadminpassword;
-
-	foreach ( $wgDBservers as $i => $server ) {
-		$wgDBservers[$i]['user'] = $wgDBuser;
-		$wgDBservers[$i]['password'] = $wgDBpassword;
-	}
-}
-
-ini_set( 'memory_limit', -1 );
-
-require_once( "Setup.php" );
-require_once( "install-utils.inc" );
-$wgTitle = Title::newFromText( "Command line script" );
-set_time_limit(0);
-
-
-// --------------------------------------------------------------------
-// Functions
-// --------------------------------------------------------------------
-
-function wfWaitForSlaves( $maxLag ) {
-	global $wgLoadBalancer;
-	if ( $maxLag ) {
-		list( $host, $lag ) = $wgLoadBalancer->getMaxLag();
-		while ( $lag > $maxLag ) {
-			$name = @gethostbyaddr( $host );
-			if ( $name !== false ) {
-				$host = $name;
-			}
-			print "Waiting for $host (lagged $lag seconds)...\n";
-			sleep($maxLag);
-			list( $host, $lag ) = $wgLoadBalancer->getMaxLag();
-		}
-	}
-}
-
-
-
-?>

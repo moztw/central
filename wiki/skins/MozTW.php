@@ -71,12 +71,16 @@ urchinTracker();
 <h1><a href="http://moztw.org/" title="Return to home page, moztw.org" accesskey="1">Mozilla Taiwan (MozTW)</a></h1>
  <ul>
   <li id="menu_aboutus"><a href="http://moztw.org/about" title="About this website">關於本站</a></li>
+  <li id="menu_contribute"><a title="了解我們正在做什麼，看看您能幫上什麼忙！" href="http://moztw.org/contribute">參與我們</a></li>
   <li id="menu_planet"><a title="MozTW 社群成員閒聊區" href="http://planet.moztw.org/">摩茲工寮</a></li>
   <li id="menu_wiki"><a href="http://wiki.moztw.org/" title="Mozilla Taiwan 共筆系統">共筆系統</a></li>
   <li id="menu_forum"><a href="http://forum.moztw.org/" title="Mozilla 華語社群討論區">討論區</a></li>
-  <li id="menu_docs"><a href="http://moztw.org/docs" title="各項使用說明、介紹與文件資料">文件</a></li>
   <li id="menu_products"><a href="http://moztw.org/dl" title="Moztw.org 提供的中文化軟體一覽">下載</a></li>
  </ul>
+</div>
+<div class="key-point" style="background:#FCF4C4;margin:1em 3em;padding:5px 30px;">
+<h2>舊文件</h2>
+<p>此處文件僅供參考，請自行考量時效性與適用程度，其他庫藏文件請參考<a href="http://moztw.org/docs/" title="更舊的文件">文件頁面</a>；<br>我們亟需您的協助，進行共筆系統搬移、及文件整理工作，詳情請查閱<a title="了解我們正在做什麼，看看您能幫上什麼忙！" href="http://moztw.org/contribute">參與我們</a>。</p>
 </div>
   <div id="globalWrapper">
       <div id="column-content">
@@ -98,11 +102,11 @@ urchinTracker();
 	  <div id="bodyContent">
 	    <h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
 	    <div id="contentSub"><?php $this->html('subtitle') ?></div>
-	    <?php if($this->data['undelete']) { ?><div id="contentSub"><?php     $this->html('undelete') ?></div><?php } ?>
-	    <?php if($this->data['newtalk'] ) { ?><div class="usermessage"><?php $this->html('newtalk')  ?></div><?php } ?>
+	    <?php if($this->data['undelete']) { ?><div class="contentSub"><?php $this->html('undelete') ?></div><?php } ?>
+	    <?php if($this->data['newtalk'] ) { ?><div class="usermessage"><?php $this->html('newtalk') ?></div><?php } ?>
 	    <!-- start content -->
 	    <?php $this->html('bodytext') ?>
-	    <?php if($this->data['catlinks']) { ?><div id="catlinks"><?php       $this->html('catlinks') ?></div><?php } ?>
+	    <?php if($this->data['catlinks']) $this->html('catlinks'); ?>
 	    <!-- end content -->
 	    <div class="visualClear"></div>
 	  </div>
@@ -128,7 +132,7 @@ urchinTracker();
 	  <h5><?php $this->msg('navigation') ?></h5>
 	  <div class="pBody">
 	    <ul>
-	      <?php foreach($this->data['navigation_urls'] as $navlink) { ?>
+	      <?php foreach($this->data['sidebar']['navigation'] as $navlink) { ?>
 	      <li id="<?php echo htmlspecialchars($navlink['id'])
 	        ?>"><a href="<?php echo htmlspecialchars($navlink['href']) ?>"><?php 
 	        echo htmlspecialchars($navlink['text']) ?></a></li><?php } ?>

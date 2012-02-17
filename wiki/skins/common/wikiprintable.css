@@ -1,9 +1,9 @@
 /* MediaWiki print stylesheet */
 
 body {
-	color: #000000; background: #ffffff;
+	color: #000000;
+	background: #ffffff;
 }
-
 
 /* MSIE/Win doesn't understand 'inherit' */
 a, a.external, a.new, a.stub {
@@ -21,7 +21,7 @@ a, a.external, a.new, a.stub {
 }
 
 /* Hide ugly UI stuff */
-#quickbar, #topbar, #footer, #siteNotice,
+#quickbar, #topbar, #logo, #footer, #siteNotice,
 .editsection, .toctoggle {
 	display: none;
 }
@@ -30,11 +30,6 @@ a, a.external, a.new, a.stub {
 #article {
 	position: relative;
 	margin: inherit ! important;
-}
-
-/* Show some stuff */
-.urlexpansion {
-	display: inline ! important;
 }
 
 .printfooter {

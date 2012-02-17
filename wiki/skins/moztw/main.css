@@ -999,11 +999,12 @@ body {
     display: block;
     width: 354px;
     height: 65px;
-    background: transparent url("/images/moztw/header_logo2.png") no-repeat;
+    /*background: transparent url("/images/moztw/header_logo2.png") no-repeat;*/
+    background: transparent url("http://moztw.org/images/header_logo3.png") no-repeat;
     text-indent: -700em;
     text-decoration: none;
 }
-#header ul {
+#headerk ul {
     width: auto;
     position: absolute;
     bottom: 0;

@@ -1,188 +1,128 @@
 <?php
-# Image download authorisation script
-# To use, in LocalSettings.php set $wgUploadDirectory to point to a non-public directory, and
-# $wgUploadPath to point to this file. Also set $wgWhitelistRead to an array of pages you want
-# everyone to be able to access. Your server must support PATH_INFO, CGI-based configurations
-# generally don't. 
 
-# Valid web server entry point, enable includes
-define( "MEDIAWIKI", true );
+/**
+ * Image authorisation script
+ *
+ * To use this, see http://www.mediawiki.org/wiki/Manual:Image_Authorization
+ *
+ * - Set $wgUploadDirectory to a non-public directory (not web accessible)
+ * - Set $wgUploadPath to point to this file
+ *
+ * Optional Parameters
+ *
+ * - Set $wgImgAuthDetails = true if you want the reason the access was denied messages to be displayed
+ *       instead of just the 403 error (doesn't work on IE anyway),  otherwise will only appear in error logs
+ * - Set $wgImgAuthPublicTest false if you don't want to just check and see if all are public
+ *       must be set to false if using specific restrictions such as LockDown or NSFileRepo
+ *
+ *  For security reasons, you usually don't want your user to know *why* access was denied, just that it was.
+ *  If you want to change this, you can set $wgImgAuthDetails to 'true' in localsettings.php and it will give the user the reason
+ *  why access was denied.
+ *
+ * Your server needs to support PATH_INFO; CGI-based configurations usually don't.
+ *
+ * @file
+ *
+ **/
 
-require_once( "includes/Defines.php" );
-require_once( "./LocalSettings.php" );
-require_once( "includes/Setup.php" );
-
-if( !isset( $_SERVER['PATH_INFO'] ) ) {
-	wfForbidden();
-}
-
-# Get filenames/directories
-$filename = realpath( $wgUploadDirectory . $_SERVER['PATH_INFO'] );
-$realUploadDirectory = realpath( $wgUploadDirectory );
-$imageName = $wgLang->getNsText( NS_IMAGE ) . ":" . basename( $_SERVER['PATH_INFO'] );
-
-# Check if the filename is in the correct directory
-if ( substr( $filename, 0, strlen( $realUploadDirectory ) ) != $realUploadDirectory ) {
-	wfForbidden();
-}
-
-if ( is_array( $wgWhitelistRead ) && !in_array( $imageName, $wgWhitelistRead ) && !$wgUser->getID() ) {
-	wfForbidden();
-}
-
-if( !file_exists( $filename ) ) {
-	wfForbidden();
-}
-if( is_dir( $filename ) ) {
-	wfForbidden();
-}
-
-# Write file
-$type = wfGetType( $filename );
-if ( $type ) {
-	header("Content-type: $type");
+define( 'MW_NO_OUTPUT_COMPRESSION', 1 );
+if ( isset( $_SERVER['MW_COMPILED'] ) ) {
+	require ( 'phase3/includes/WebStart.php' );
 } else {
-	header("Content-type: application/x-wiki");
+	require ( dirname( __FILE__ ) . '/includes/WebStart.php' );
+}
+wfProfileIn( 'img_auth.php' );
+require_once( dirname( __FILE__ ) . '/includes/StreamFile.php' );
+
+$wgActionPaths[] = $_SERVER['SCRIPT_NAME'];
+// See if this is a public Wiki (no protections)
+if ( $wgImgAuthPublicTest
+	&& in_array( 'read', User::getGroupPermissions( array( '*' ) ), true ) )
+{
+	wfForbidden('img-auth-accessdenied','img-auth-public');
 }
 
-readfile( $filename );
+$matches = WebRequest::getPathInfo();
+$path = $matches['title'];
 
-function wfGetType( $filename ) {
-	# There's probably a better way to do this
-	$types = <<<END_STRING
-application/andrew-inset ez
-application/mac-binhex40 hqx
-application/mac-compactpro cpt
-application/mathml+xml mathml
-application/msword doc
-application/octet-stream bin dms lha lzh exe class so dll
-application/oda oda
-application/ogg ogg
-application/pdf pdf
-application/postscript ai eps ps
-application/rdf+xml rdf
-application/smil smi smil
-application/srgs gram
-application/srgs+xml grxml
-application/vnd.mif mif
-application/vnd.ms-excel xls
-application/vnd.ms-powerpoint ppt
-application/vnd.wap.wbxml wbxml
-application/vnd.wap.wmlc wmlc
-application/vnd.wap.wmlscriptc wmlsc
-application/voicexml+xml vxml
-application/x-bcpio bcpio
-application/x-cdlink vcd
-application/x-chess-pgn pgn
-application/x-cpio cpio
-application/x-csh csh
-application/x-director dcr dir dxr
-application/x-dvi dvi
-application/x-futuresplash spl
-application/x-gtar gtar
-application/x-hdf hdf
-application/x-javascript js
-application/x-koan skp skd skt skm
-application/x-latex latex
-application/x-netcdf nc cdf
-application/x-sh sh
-application/x-shar shar
-application/x-shockwave-flash swf
-application/x-stuffit sit
-application/x-sv4cpio sv4cpio
-application/x-sv4crc sv4crc
-application/x-tar tar
-application/x-tcl tcl
-application/x-tex tex
-application/x-texinfo texinfo texi
-application/x-troff t tr roff
-application/x-troff-man man
-application/x-troff-me me
-application/x-troff-ms ms
-application/x-ustar ustar
-application/x-wais-source src
-application/xhtml+xml xhtml xht
-application/xslt+xml xslt
-application/xml xml xsl
-application/xml-dtd dtd
-application/zip zip
-audio/basic au snd
-audio/midi mid midi kar
-audio/mpeg mpga mp2 mp3
-audio/x-aiff aif aiff aifc
-audio/x-mpegurl m3u
-audio/x-pn-realaudio ram rm
-audio/x-pn-realaudio-plugin rpm
-audio/x-realaudio ra
-audio/x-wav wav
-chemical/x-pdb pdb
-chemical/x-xyz xyz
-image/bmp bmp
-image/cgm cgm
-image/gif gif
-image/ief ief
-image/jpeg jpeg jpg jpe
-image/png png
-image/svg+xml svg
-image/tiff tiff tif
-image/vnd.djvu djvu djv
-image/vnd.wap.wbmp wbmp
-image/x-cmu-raster ras
-image/x-icon ico
-image/x-portable-anymap pnm
-image/x-portable-bitmap pbm
-image/x-portable-graymap pgm
-image/x-portable-pixmap ppm
-image/x-rgb rgb
-image/x-xbitmap xbm
-image/x-xpixmap xpm
-image/x-xwindowdump xwd
-model/iges igs iges
-model/mesh msh mesh silo
-model/vrml wrl vrml
-text/calendar ics ifb
-text/css css
-text/richtext rtx
-text/rtf rtf
-text/sgml sgml sgm
-text/tab-separated-values tsv
-text/vnd.wap.wml wml
-text/vnd.wap.wmlscript wmls
-text/x-setext etx
-video/mpeg mpeg mpg mpe
-video/quicktime qt mov
-video/vnd.mpegurl mxu
-video/x-msvideo avi
-video/x-sgi-movie movie
-x-conference/x-cooltalk ice
-END_STRING;
-	// Needed for windows servers who use \r\n not \n
-	$endl = "
-";
-	$types = explode( $endl, $types );
-	if ( !preg_match( "/\.([^.]*?)$/", $filename, $matches ) ) {
-		return false;
-	}
-
-	foreach( $types as $type ) {
-		$extensions = explode( " ", $type );
-		for ( $i=1; $i<count( $extensions ); $i++ ) {
-			if ( $extensions[$i] == $matches[1] ) {
-				return $extensions[0];
-			}
-		}
-	}
-	return false;
+// Check for bug 28235: QUERY_STRING overriding the correct extension
+$dotPos = strrpos( $path, '.' );
+$whitelist = array();
+if ( $dotPos !== false ) {
+	$whitelist[] = substr( $path, $dotPos + 1 );
+}
+if ( !$wgRequest->checkUrlExtension( $whitelist ) )
+{
+	return;
 }
 
-function wfForbidden() {
-	header( "HTTP/1.0 403 Forbidden" );
-	print 
-"<html><body>
-<h1>Access denied</h1>
-<p>You need to log in to access files on this server</p>
-</body></html>";
-	exit;
-}
+$filename = realpath( $wgUploadDirectory . $path );
+$realUpload = realpath( $wgUploadDirectory );
 
-?>
+// Basic directory traversal check
+if( substr( $filename, 0, strlen( $realUpload ) ) != $realUpload )
+	wfForbidden('img-auth-accessdenied','img-auth-notindir');
+
+// Extract the file name and chop off the size specifier
+// (e.g. 120px-Foo.png => Foo.png)
+$name = wfBaseName( $path );
+if( preg_match( '!\d+px-(.*)!i', $name, $m ) )
+	$name = $m[1];
+
+// Check to see if the file exists
+if( !file_exists( $filename ) )
+	wfForbidden('img-auth-accessdenied','img-auth-nofile',$filename);
+
+// Check to see if tried to access a directory
+if( is_dir( $filename ) )
+	wfForbidden('img-auth-accessdenied','img-auth-isdir',$filename);
+
+
+$title = Title::makeTitleSafe( NS_FILE, $name );
+
+// See if could create the title object
+if( !$title instanceof Title )
+	wfForbidden('img-auth-accessdenied','img-auth-badtitle',$name);
+
+// Run hook
+if (!wfRunHooks( 'ImgAuthBeforeStream', array( &$title, &$path, &$name, &$result ) ) )
+	wfForbidden($result[0],$result[1],array_slice($result,2));
+
+//  Check user authorization for this title
+//  UserCanRead Checks Whitelist too
+if( !$title->userCanRead() )
+	wfForbidden('img-auth-accessdenied','img-auth-noread',$name);
+
+// Stream the requested file
+wfDebugLog( 'img_auth', "Streaming `".$filename."`." );
+wfStreamFile( $filename, array( 'Cache-Control: private', 'Vary: Cookie' ) );
+wfLogProfilingData();
+
+/**
+ * Issue a standard HTTP 403 Forbidden header ($msg1-a message index, not a message) and an
+ * error message ($msg2, also a message index), (both required) then end the script
+ * subsequent arguments to $msg2 will be passed as parameters only for replacing in $msg2
+ */
+function wfForbidden($msg1,$msg2) {
+	global $wgImgAuthDetails;
+	$args = func_get_args();
+	array_shift( $args );
+	array_shift( $args );
+	$MsgHdr = htmlspecialchars(wfMsg($msg1));
+	$detailMsg = (htmlspecialchars(wfMsg(($wgImgAuthDetails ? $msg2 : 'badaccess-group0'),$args)));
+	wfDebugLog('img_auth', "wfForbidden Hdr:".wfMsgExt( $msg1, array('language' => 'en'))." Msg: ".
+				wfMsgExt($msg2,array('language' => 'en'),$args));
+	header( 'HTTP/1.0 403 Forbidden' );
+	header( 'Cache-Control: no-cache' );
+	header( 'Content-Type: text/html; charset=utf-8' );
+	echo <<<ENDS
+<html>
+<body>
+<h1>$MsgHdr</h1>
+<p>$detailMsg</p>
+</body>
+</html>
+ENDS;
+	wfLogProfilingData();
+	exit();
+}

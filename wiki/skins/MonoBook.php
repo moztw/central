@@ -6,33 +6,55 @@
  * dependency on PHPTAL.
  *
  * @todo document
- * @package MediaWiki
- * @subpackage Skins
+ * @file
+ * @ingroup Skins
  */
 
 if( !defined( 'MEDIAWIKI' ) )
-	die();
-
-/** */
-require_once('includes/SkinTemplate.php');
+	die( -1 );
 
 /**
  * Inherit main code from SkinTemplate, set the CSS and template filter.
  * @todo document
- * @package MediaWiki
- * @subpackage Skins
+ * @ingroup Skins
  */
 class SkinMonoBook extends SkinTemplate {
 	/** Using monobook. */
-	function initPage( &$out ) {
-		SkinTemplate::initPage( $out );
-		$this->skinname  = 'monobook';
-		$this->stylename = 'monobook';
-		$this->template  = 'MonoBookTemplate';
+	var $skinname = 'monobook', $stylename = 'monobook',
+		$template = 'MonoBookTemplate', $useHeadElement = true;
+
+	function setupSkinUserCss( OutputPage $out ) {
+		global $wgHandheldStyle;
+		parent::setupSkinUserCss( $out );
+
+		$out->addModuleStyles( 'skins.monobook' );
+
+		// Ugh. Can't do this properly because $wgHandheldStyle may be a URL
+		if( $wgHandheldStyle ) {
+			// Currently in testing... try 'chick/main.css'
+			$out->addStyle( $wgHandheldStyle, 'handheld' );
+		}
+
+		// TODO: Migrate all of these
+		$out->addStyle( 'monobook/IE50Fixes.css', 'screen', 'lt IE 5.5000' );
+		$out->addStyle( 'monobook/IE55Fixes.css', 'screen', 'IE 5.5000' );
+		$out->addStyle( 'monobook/IE60Fixes.css', 'screen', 'IE 6' );
+		$out->addStyle( 'monobook/IE70Fixes.css', 'screen', 'IE 7' );
+
 	}
 }
-	
-class MonoBookTemplate extends QuickTemplate {
+
+/**
+ * @todo document
+ * @ingroup Skins
+ */
+class MonoBookTemplate extends BaseTemplate {
+
+	/**
+	 * @var Skin
+	 */
+	var $skin;
+
 	/**
 	 * Template filter callback for MonoBook skin.
 	 * Takes an associative array of data set from a SkinTemplate-based
@@ -42,161 +64,259 @@ class MonoBookTemplate extends QuickTemplate {
 	 * @access private
 	 */
 	function execute() {
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php $this->text('lang') ?>" lang="<?php $this->text('lang') ?>" dir="<?php $this->text('dir') ?>">
-  <head>
-    <meta http-equiv="Content-Type" content="<?php $this->text('mimetype') ?>; charset=<?php $this->text('charset') ?>" />
-    <?php $this->html('headlinks') ?>
-    <title><?php $this->text('pagetitle') ?></title>
-    <style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/main.css"; /*]]>*/</style>
-    <link rel="stylesheet" type="text/css" media="print" href="<?php $this->text('stylepath') ?>/common/commonPrint.css" />
-    <!--[if lt IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE50Fixes.css";</style><![endif]-->
-    <!--[if IE 5.5000]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE55Fixes.css";</style><![endif]-->
-    <!--[if IE 6]><style type="text/css">@import "<?php $this->text('stylepath') ?>/<?php $this->text('stylename') ?>/IE60Fixes.css";</style><![endif]-->
-    <!--[if IE]><script type="text/javascript" src="<?php $this->text('stylepath') ?>/common/IEFixes.js"></script>
-    <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
-    <?php if($this->data['jsvarurl'  ]) { ?><script type="text/javascript" src="<?php $this->text('jsvarurl'  ) ?>"></script><?php } ?>
-    <script type="text/javascript" src="<?php                                   $this->text('stylepath' ) ?>/common/wikibits.js"></script>
-    <?php if($this->data['usercss'   ]) { ?><style type="text/css"><?php              $this->html('usercss'   ) ?></style><?php    } ?>
-    <?php if($this->data['userjs'    ]) { ?><script type="text/javascript" src="<?php $this->text('userjs'    ) ?>"></script><?php } ?>
-    <?php if($this->data['userjsprev']) { ?><script type="text/javascript"><?php      $this->html('userjsprev') ?></script><?php   } ?>
-  </head>
-  <body <?php if($this->data['body_ondblclick']) { ?>ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
-        <?php if($this->data['nsclass'        ]) { ?>class="<?php      $this->text('nsclass')         ?>"<?php } ?>>
-    <div id="globalWrapper">
-      <div id="column-content">
-	<div id="content">
-	  <a name="top" id="contentTop"></a>
-	  <?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
-	  <h1 class="firstHeading"><?php $this->text('title') ?></h1>
-	  <div id="bodyContent">
-	    <h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
-	    <div id="contentSub"><?php $this->html('subtitle') ?></div>
-	    <?php if($this->data['undelete']) { ?><div id="contentSub"><?php     $this->html('undelete') ?></div><?php } ?>
-	    <?php if($this->data['newtalk'] ) { ?><div class="usermessage"><?php $this->html('newtalk')  ?></div><?php } ?>
-	    <!-- start content -->
-	    <?php $this->html('bodytext') ?>
-	    <?php if($this->data['catlinks']) { ?><div id="catlinks"><?php       $this->html('catlinks') ?></div><?php } ?>
-	    <!-- end content -->
-	    <div class="visualClear"></div>
-	  </div>
+		$this->skin = $this->data['skin'];
+
+		// Suppress warnings to prevent notices about missing indexes in $this->data
+		wfSuppressWarnings();
+
+		$this->html( 'headelement' );
+?><div id="globalWrapper">
+<div id="column-content"><div id="content">
+	<a id="top"></a>
+	<?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
+
+	<h1 id="firstHeading" class="firstHeading"><?php $this->html('title') ?></h1>
+	<div id="bodyContent">
+		<div id="siteSub"><?php $this->msg('tagline') ?></div>
+		<div id="contentSub"<?php $this->html('userlangattributes') ?>><?php $this->html('subtitle') ?></div>
+<?php if($this->data['undelete']) { ?>
+		<div id="contentSub2"><?php $this->html('undelete') ?></div>
+<?php } ?><?php if($this->data['newtalk'] ) { ?>
+		<div class="usermessage"><?php $this->html('newtalk')  ?></div>
+<?php } ?><?php if($this->data['showjumplinks']) { ?>
+		<div id="jump-to-nav"><?php $this->msg('jumpto') ?> <a href="#column-one"><?php $this->msg('jumptonavigation') ?></a>, <a href="#searchInput"><?php $this->msg('jumptosearch') ?></a></div>
+<?php } ?>
+		<!-- start content -->
+<?php $this->html('bodytext') ?>
+		<?php if($this->data['catlinks']) { $this->html('catlinks'); } ?>
+		<!-- end content -->
+		<?php if($this->data['dataAfterContent']) { $this->html ('dataAfterContent'); } ?>
+		<div class="visualClear"></div>
 	</div>
-      </div>
-      <div id="column-one">
-	<div id="p-cactions" class="portlet">
-	  <h5>Views</h5>
-	  <ul>
-	    <?php foreach($this->data['content_actions'] as $key => $action) {
-	       ?><li id="ca-<?php echo htmlspecialchars($key) ?>"
-	       <?php if($action['class']) { ?>class="<?php echo htmlspecialchars($action['class']) ?>"<?php } ?>
-	       ><a href="<?php echo htmlspecialchars($action['href']) ?>"><?php
-	       echo htmlspecialchars($action['text']) ?></a></li><?php
-	     } ?>
-	  </ul>
-	</div>
+</div></div>
+<div id="column-one"<?php $this->html('userlangattributes')  ?>>
+<?php $this->cactions(); ?>
 	<div class="portlet" id="p-personal">
-	  <h5><?php $this->msg('personaltools') ?></h5>
-	  <div class="pBody">
-	    <ul>
-	    <?php foreach($this->data['personal_urls'] as $key => $item) {
-	       ?><li id="pt-<?php echo htmlspecialchars($key) ?>"><a href="<?php
-	       echo htmlspecialchars($item['href']) ?>"<?php
-	       if(!empty($item['class'])) { ?> class="<?php
-	       echo htmlspecialchars($item['class']) ?>"<?php } ?>><?php
-	       echo htmlspecialchars($item['text']) ?></a></li><?php
-	    } ?>
-	    </ul>
-	  </div>
+		<h5><?php $this->msg('personaltools') ?></h5>
+		<div class="pBody">
+			<ul<?php $this->html('userlangattributes') ?>>
+<?php		foreach($this->getPersonalTools() as $key => $item) { ?>
+				<?php echo $this->makeListItem($key, $item); ?>
+
+<?php		} ?>
+			</ul>
+		</div>
 	</div>
 	<div class="portlet" id="p-logo">
-	  <a style="background-image: url(<?php $this->text('logopath') ?>);"
-	    href="<?php echo htmlspecialchars($this->data['nav_urls']['mainpage']['href'])?>"
-	    title="<?php $this->msg('mainpage') ?>"></a>
+		<?php
+			$logoAttribs = array() + Linker::tooltipAndAccesskeyAttribs('p-logo');
+			$logoAttribs['style'] = "background-image: url({$this->data['logopath']});";
+			$logoAttribs['href'] = $this->data['nav_urls']['mainpage']['href'];
+			echo Html::element( 'a', $logoAttribs );
+		?>
+
 	</div>
-	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
-	<div class="portlet" id="p-nav">
-	  <h5><?php $this->msg('navigation') ?></h5>
-	  <div class="pBody">
-	    <ul>
-	      <?php foreach($this->data['navigation_urls'] as $navlink) { ?>
-	      <li id="<?php echo htmlspecialchars($navlink['id'])
-	        ?>"><a href="<?php echo htmlspecialchars($navlink['href']) ?>"><?php 
-	        echo htmlspecialchars($navlink['text']) ?></a></li><?php } ?>
-	    </ul>
-	  </div>
+	<script type="<?php $this->text('jsmimetype') ?>"> if (window.isMSIE55) fixalpha(); </script>
+<?php
+	$this->renderPortals( $this->data['sidebar'] );
+?>
+</div><!-- end of the left (by default at least) column -->
+<div class="visualClear"></div>
+<?php
+	$validFooterIcons = $this->getFooterIcons( "icononly" );
+	$validFooterLinks = $this->getFooterLinks( "flat" ); // Additional footer links
+
+	if ( count( $validFooterIcons ) + count( $validFooterLinks ) > 0 ) { ?>
+<div id="footer"<?php $this->html('userlangattributes') ?>>
+<?php
+		$footerEnd = '</div>';
+	} else {
+		$footerEnd = '';
+	}
+	foreach ( $validFooterIcons as $blockName => $footerIcons ) { ?>
+	<div id="f-<?php echo htmlspecialchars($blockName); ?>ico">
+<?php foreach ( $footerIcons as $icon ) { ?>
+		<?php echo $this->skin->makeFooterIcon( $icon ); ?>
+
+<?php }
+?>
 	</div>
-	<div id="p-search" class="portlet">
-	  <h5><label for="searchInput"><?php $this->msg('search') ?></label></h5>
-	  <div class="pBody">
-	    <form name="searchform" action="<?php $this->text('searchaction') ?>" id="searchform">
-	      <input id="searchInput" name="search" type="text"
-	        <?php if($this->haveMsg('accesskey-search')) {
-	          ?>accesskey="<?php $this->msg('accesskey-search') ?>"<?php }
-	        if( isset( $this->data['search'] ) ) {
-	          ?> value="<?php $this->text('search') ?>"<?php } ?> />
-	      <input type='submit' name="go" class="searchButton" id="searchGoButton"
-	        value="<?php $this->msg('go') ?>"
-	        />&nbsp;<input type='submit' name="fulltext"
-	        class="searchButton"
-	        value="<?php $this->msg('search') ?>" />
-	    </form>
-	  </div>
-	</div>
-	<div class="portlet" id="p-tb">
-	  <h5><?php $this->msg('toolbox') ?></h5>
-	  <div class="pBody">
-	    <ul>
-		  <?php if($this->data['notspecialpage']) { foreach( array( 'whatlinkshere', 'recentchangeslinked' ) as $special ) { ?>
-		  <li id="t-<?php echo $special?>"><a href="<?php
-		    echo htmlspecialchars($this->data['nav_urls'][$special]['href']) 
-		    ?>"><?php echo $this->msg($special) ?></a></li>
-		  <?php } } ?>
-	      <?php if($this->data['feeds']) { ?><li id="feedlinks"><?php foreach($this->data['feeds'] as $key => $feed) {
-	        ?><span id="feed-<?php echo htmlspecialchars($key) ?>"><a href="<?php
-	        echo htmlspecialchars($feed['href']) ?>"><?php echo htmlspecialchars($feed['text'])?></a>&nbsp;</span>
-	        <?php } ?></li><?php } ?>
-	      <?php foreach( array('contributions', 'emailuser', 'upload', 'specialpages') as $special ) { ?>
-	      <?php if($this->data['nav_urls'][$special]) {?><li id="t-<?php echo $special ?>"><a href="<?php
-	        echo htmlspecialchars($this->data['nav_urls'][$special]['href'])
-	        ?>"><?php $this->msg($special) ?></a></li><?php } ?>
-	      <?php } ?>
-	    </ul>
-	  </div>
-	</div>
-	<?php if( $this->data['language_urls'] ) { ?><div id="p-lang" class="portlet">
-	  <h5><?php $this->msg('otherlanguages') ?></h5>
-	  <div class="pBody">
-	    <ul>
-	      <?php foreach($this->data['language_urls'] as $langlink) { ?>
-	      <li>
-	      <a href="<?php echo htmlspecialchars($langlink['href'])
-	        ?>"><?php echo $langlink['text'] ?></a>
-	      </li>
-	      <?php } ?>
-	    </ul>
-	  </div>
-	</div>
-	<?php } ?>
-      </div><!-- end of the left (by default at least) column -->
-      <div class="visualClear"></div>
-      <div id="footer">
-    <?php if($this->data['poweredbyico']) { ?><div id="f-poweredbyico"><?php $this->html('poweredbyico') ?></div><?php } ?>
-	<?php if($this->data['copyrightico']) { ?><div id="f-copyrightico"><?php $this->html('copyrightico') ?></div><?php } ?>
-	<ul id="f-list">
-	  <?php if($this->data['lastmod'   ]) { ?><li id="f-lastmod"><?php    $this->html('lastmod')    ?></li><?php } ?>
-	  <?php if($this->data['viewcount' ]) { ?><li id="f-viewcount"><?php  $this->html('viewcount')  ?></li><?php } ?>
-	  <?php if($this->data['credits'   ]) { ?><li id="f-credits"><?php    $this->html('credits')    ?></li><?php } ?>
-	  <?php if($this->data['copyright' ]) { ?><li id="f-copyright"><?php  $this->html('copyright')  ?></li><?php } ?>
-	  <?php if($this->data['about'     ]) { ?><li id="f-about"><?php      $this->html('about')      ?></li><?php } ?>
-	  <?php if($this->data['disclaimer']) { ?><li id="f-disclaimer"><?php $this->html('disclaimer') ?></li><?php } ?>
+<?php }
+
+		if ( count( $validFooterLinks ) > 0 ) {
+?>	<ul id="f-list">
+<?php
+			foreach( $validFooterLinks as $aLink ) { ?>
+		<li id="<?php echo $aLink ?>"><?php $this->html($aLink) ?></li>
+<?php
+			}
+?>
 	</ul>
-      </div>
-    </div>
-    <?php $this->html('reporttime') ?>
-  </body>
-</html>
+<?php	}
+echo $footerEnd;
+?>
+
+</div>
+<?php
+		$this->printTrail();
+		echo Html::closeElement( 'body' );
+		echo Html::closeElement( 'html' );
+		wfRestoreWarnings();
+	} // end of execute() method
+
+	/*************************************************************************************************/
+
+	protected function renderPortals( $sidebar ) {
+		if ( !isset( $sidebar['SEARCH'] ) ) $sidebar['SEARCH'] = true;
+		if ( !isset( $sidebar['TOOLBOX'] ) ) $sidebar['TOOLBOX'] = true;
+		if ( !isset( $sidebar['LANGUAGES'] ) ) $sidebar['LANGUAGES'] = true;
+
+		foreach( $sidebar as $boxName => $content ) {
+			if ( $content === false )
+				continue;
+
+			if ( $boxName == 'SEARCH' ) {
+				$this->searchBox();
+			} elseif ( $boxName == 'TOOLBOX' ) {
+				$this->toolbox();
+			} elseif ( $boxName == 'LANGUAGES' ) {
+				$this->languageBox();
+			} else {
+				$this->customBox( $boxName, $content );
+			}
+		}
+	}
+
+	function searchBox() {
+		global $wgUseTwoButtonsSearchForm;
+?>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput"><?php $this->msg('search') ?></label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="<?php $this->text('wgScript') ?>" id="searchform">
+				<input type='hidden' name="title" value="<?php $this->text('searchtitle') ?>"/>
+				<?php echo $this->makeSearchInput(array( "id" => "searchInput" )); ?>
+
+				<?php echo $this->makeSearchButton("go", array( "id" => "searchGoButton", "class" => "searchButton" ));
+				if ($wgUseTwoButtonsSearchForm): ?>&#160;
+				<?php echo $this->makeSearchButton("fulltext", array( "id" => "mw-searchButton", "class" => "searchButton" ));
+				else: ?>
+
+				<div><a href="<?php $this->text('searchaction') ?>" rel="search"><?php $this->msg('powersearch-legend') ?></a></div><?php
+				endif; ?>
+
+			</form>
+		</div>
+	</div>
 <?php
 	}
-}
 
+	/**
+	 * Prints the cactions bar.
+	 * Shared between MonoBook and Modern
+	 */
+	function cactions() {
 ?>
+	<div id="p-cactions" class="portlet">
+		<h5><?php $this->msg('views') ?></h5>
+		<div class="pBody">
+			<ul><?php
+				foreach($this->data['content_actions'] as $key => $tab) {
+					$linkAttribs = array( 'href' => $tab['href'] );
+
+				 	if( isset( $tab["tooltiponly"] ) && $tab["tooltiponly"] ) {
+						$title = Linker::titleAttrib( "ca-$key" );
+						if ( $title !== false ) {
+							$linkAttribs['title'] = $title;
+						}
+				 	} else {
+						$linkAttribs += Linker::tooltipAndAccesskeyAttribs( "ca-$key" );
+				 	}
+				 	$linkHtml = Html::element( 'a', $linkAttribs, $tab['text'] );
+
+				 	/* Surround with a <li> */
+				 	$liAttribs = array( 'id' => Sanitizer::escapeId( "ca-$key" ) );
+					if( $tab['class'] ) {
+						$liAttribs['class'] = $tab['class'];
+					}
+				 	echo '
+				' . Html::rawElement( 'li', $liAttribs, $linkHtml );
+				} ?>
+
+			</ul>
+		</div>
+	</div>
+<?php
+	}
+	/*************************************************************************************************/
+	function toolbox() {
+?>
+	<div class="portlet" id="p-tb">
+		<h5><?php $this->msg('toolbox') ?></h5>
+		<div class="pBody">
+			<ul>
+<?php
+		foreach ( $this->getToolbox() as $key => $tbitem ) { ?>
+				<?php echo $this->makeListItem($key, $tbitem); ?>
+
+<?php
+		}
+		wfRunHooks( 'MonoBookTemplateToolboxEnd', array( &$this ) );
+		wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );
+?>
+			</ul>
+		</div>
+	</div>
+<?php
+	}
+
+	/*************************************************************************************************/
+	function languageBox() {
+		if( $this->data['language_urls'] ) {
+?>
+	<div id="p-lang" class="portlet">
+		<h5<?php $this->html('userlangattributes') ?>><?php $this->msg('otherlanguages') ?></h5>
+		<div class="pBody">
+			<ul>
+<?php		foreach($this->data['language_urls'] as $key => $langlink) { ?>
+				<?php echo $this->makeListItem($key, $langlink); ?>
+
+<?php		} ?>
+			</ul>
+		</div>
+	</div>
+<?php
+		}
+	}
+
+	/*************************************************************************************************/
+	function customBox( $bar, $cont ) {
+		$portletAttribs = array( 'class' => 'generated-sidebar portlet', 'id' => Sanitizer::escapeId( "p-$bar" ) );
+		$tooltip = Linker::titleAttrib( "p-$bar" );
+		if ( $tooltip !== false ) {
+			$portletAttribs['title'] = $tooltip;
+		}
+		echo '	' . Html::openElement( 'div', $portletAttribs );
+?>
+
+		<h5><?php $msg = wfMessage( $bar ); echo htmlspecialchars( $msg->exists() ? $msg->text() : $bar ); ?></h5>
+		<div class='pBody'>
+<?php   if ( is_array( $cont ) ) { ?>
+			<ul>
+<?php 			foreach($cont as $key => $val) { ?>
+				<?php echo $this->makeListItem($key, $val); ?>
+
+<?php			} ?>
+			</ul>
+<?php   } else {
+			# allow raw HTML block to be defined by extensions
+			print $cont;
+		}
+?>
+		</div>
+	</div>
+<?php
+	}
+} // end of class
+
+

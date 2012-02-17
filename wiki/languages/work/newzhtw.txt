@@ -1,0 +1,1585 @@
+'special_version_prefix' => '&nbsp;',
+'special_version_postfix' => '&nbsp;',
+# User preference toggles
+'tog-hover' => '指到鏈結時顯示注釋',
+'tog-underline' => '鏈結加底線',
+'tog-highlightbroken' => '無效的鏈結格式<a href="" class="new">像這樣</a> (或者像這個<a href="" class="internal">?</a>)',
+'tog-justify' => '段落對齊',
+'tog-hideminor' => '隱藏最近更動中的細部修改',
+'tog-usenewrc' => '增強最近更動（只適用部分瀏覽器）',
+'tog-numberheadings' => '標題自動編號',
+'tog-showtoolbar' => '顯示編輯工具欄',
+'tog-editondblclick' => '雙擊時編輯頁面（Javascript）',
+'tog-editsection' => '允許通過點擊[編輯]鏈結編輯段落',
+'tog-editsectiononrightclick' => '允許右擊標題編輯段落(JavaScript)',
+'tog-showtoc' => '顯示目錄<br />(針對一頁超過3個標題的文章)',
+'tog-rememberpassword' => '記住密碼供下次瀏覽用',
+'tog-editwidth' => '編輯欄位使用最大寬度',
+'tog-watchdefault' => '監視新的以及更動過的文章',
+'tog-minordefault' => '預設為細部修改',
+'tog-previewontop' => '在編輯框上方顯示預覽',
+'tog-previewonfirst' => '第一次編輯時即顯示預覽',
+'tog-nocache' => '關閉頁面快取(Cache)',
+'tog-fancysig' => '純文字簽名檔(不使用自動鏈結格式化)',
+
+# dates
+'sunday' => '星期日',
+'monday' => '星期一',
+'tuesday' => '星期二',
+'wednesday' => '星期三',
+'thursday' => '星期四',
+'friday' => '星期五',
+'saturday' => '星期六',
+'january' => '一月',
+'february' => '二月',
+'march' => '三月',
+'april' => '四月',
+'may_long' => '五月',
+'june' => '六月',
+'july' => '七月',
+'august' => '八月',
+'september' => '九月',
+'october' => '十月',
+'november' => '十一月',
+'december' => '十二月',
+'jan' => '一月',
+'feb' => '二月',
+'mar' => '三月',
+'apr' => '四月',
+'may' => '五月',
+'jun' => '六月',
+'jul' => '七月',
+'aug' => '八月',
+'sep' => '九月',
+'oct' => '十月',
+'nov' => '十一月',
+'dec' => '十二月',
+# Bits of text used by many pages:
+#
+'categories' => '分類',
+'category' => '分類',
+'category_header' => '類別「$1」中的文章',
+'subcategories' => '子分類',
+
+
+'linktrail'		=> '/^([a-z]+)(.*)$/sD',
+'mainpage'		=> '首頁',
+'mainpagetext'	=> '已成功安裝 Wiki 軟體',
+"mainpagedocfooter" => "Please see [http://meta.wikipedia.org/wiki/MediaWiki_i18n documentation on customizing the interface]
+and the [http://meta.wikipedia.org/wiki/MediaWiki_User%27s_Guide User's Guide] for usage and configuration help.",
+
+# NOTE: To turn off "Community portal" in the title links,
+# set "portal" => "-"
+
+'portal' => '社群',
+'portal-url'		=> 'Project:Community Portal',
+'about' => '關於',
+"aboutsite"      => "關於 {{SITENAME}}",
+"aboutpage" => "計畫:關於", # "Project:About"
+'article' => '文章',
+'help' => '說明',
+"helppage" => "說明:目錄",
+"wikititlesuffix" => "{{SITENAME}}",
+"bugreports" => "錯誤報告",
+"bugreportspage" => "計畫:錯誤報告",
+'sitesupport'   => '-', # To enable, something like 'Donations', 
+'sitesupport-url' => 'Project:Site support',
+'faq' => '常見問題解答',
+"faqpage" => "計畫:常見問題解答",
+"edithelp" => "編輯說明",
+"newwindow"		=> "(開啟於新視窗)",
+"edithelppage" => "說明:如何編輯頁面",
+'cancel' => '取消',
+'qbfind' => '尋找',
+'qbbrowse' => '瀏覽',
+'qbedit' => '編輯',
+'qbpageoptions' => '頁面選項',
+'qbpageinfo' => '頁面資訊',
+'qbmyoptions' => '我的選項',
+'qbspecialpages'	=> '特別頁面',
+'moredotdotdot'	=> '更多資訊...',
+'mypage' => '我的頁面',
+'mytalk' => '我的討論',
+'anontalk' => '該 IP 的討論頁',
+'navigation' => '導覽',
+
+# NOTE: To turn off "Current Events" in the sidebar,
+# set "currentevents" => "-"
+				       
+'currentevents' => '新聞動態',
+'currentevents-url' => 'Current events',
+
+# NOTE: To turn off "Disclaimers" in the title links,
+# set "disclaimers" => "-"
+
+'disclaimers' => 'Disclaimers',
+"disclaimerpage" => "Project:General_disclaimer",
+"errorpagetitle" => "錯誤",
+"returnto" => "返回到 $1",
+"tagline"      	=> "來自 {{SITENAME}}",
+'whatlinkshere' => '鏈入頁面',
+'help' => '說明',
+'search' => '搜索',
+'go' => '進入',
+"history" => "舊版本",
+'history_short' => '舊版',
+'info_short'	=> '資訊',
+'printableversion' => '友善列印',
+'edit' => '編輯',
+'editthispage' => '編輯本頁',
+'delete' => '刪除',
+"deletethispage" => "刪除本頁",
+"undelete_short" => "回溯 $1 次編輯記錄",
+'protect' => '保護',
+'protectthispage' => '保護本頁',
+'unprotect' => '解除保護',
+'unprotectthispage' => '解除保護',
+'newpage' => '新頁面',
+'talkpage' => '討論本頁',
+'specialpage' => '特別頁',
+'personaltools' => '個人工具',
+'postcomment' => '發表評論',
+'addsection'   => '+',
+'articlepage' => '檢視文章',
+'subjectpage' => '檢視主題',
+'talk' => '討論',
+'toolbox' => '工具',
+'userpage' => '檢視使用者',
+'wikipediapage' => '檢視計畫首頁',
+'imagepage' => '檢視圖片頁面',
+'viewtalkpage' => '檢視討論',
+'otherlanguages' => '其它語言',
+'redirectedfrom' => '(重定向來源: $1)',
+'lastmodified' => '最後更動時間: $1',
+'viewcount' => '本頁面已經被瀏覽 $1 次。',
+'copyright'	=> '本內容的著作權聲明或使用條款為 $1.',
+'poweredby'	=> "{{SITENAME}} 使用 [http://www.mediawiki.org/ MediaWiki], 開放源碼的 Wiki 引擎.",
+'printsubtitle' => "(來自 {{SERVER}})",
+'protectedpage' => '被保護頁',
+'administrators' => '計畫:管理員',
+'sysoptitle' => '需要管理員權限',
+'sysoptext' => "您剛才的請求只有擁有管理員權限(sysop)的使用者才可使用。 請見 $1.",
+
+
+'developertitle' => '需要開發者權限',
+"developertext" => "您剛才的請求只有擁有開發者權限的使用者才可使用。 請見 $1.",
+
+
+'bureaucrattitle'	=> 'Bureaucrat access required',
+"bureaucrattext"	=> "The action you have requested can only be
+performed by sysops with  \"bureaucrat\" status.",
+'nbytes' => '位元',
+'ok' => '確定',
+'sitetitle' => '{{SITENAME}}',
+'pagetitle'		=> "$1 - {{SITENAME}}",
+'sitesubtitle' => '自由的百科全書', # FIXME
+'retrievedfrom' => "取自「$1」",
+'newmessages' => "您有 $1。",
+'newmessageslink' => '新訊息',
+'editsection' => '編輯',
+'toc' => '目錄',
+'showtoc' => '顯示',
+'hidetoc' => '隱藏',
+'thisisdeleted' => "檢視或回復 $1?",
+'restorelink' => "$1 項已刪除(回溯)編輯記錄",
+'feedlinks' => 'Feed:',
+'sitenotice'	=> '-', # the equivalent to wgSiteNotice
+
+# Short words for each namespace, by default used in the 'article' tab in monobook
+'nstab-main' => '文章',
+'nstab-user' => '使用者頁面',
+'nstab-media' => '媒體',
+'nstab-special' => '特殊',
+'nstab-wp' => '關於',
+'nstab-image' => '圖像',
+'nstab-mediawiki' => '界面',
+'nstab-template' => '範本',
+'nstab-help' => '說明',
+'nstab-category' => '分類',
+
+# Main script and global functions
+#
+'nosuchaction' => '沒有這個命令',
+'nosuchactiontext' => 'URL請求的命令無法被 Wiki 識別。',
+recognized by the wiki',
+'nosuchspecialpage' => '沒有這個特殊頁。',
+'nospecialpagetext' => '無法識別指定的頁面。',
+
+# General errors
+#
+'error' => '錯誤',
+'databaseerror' => '資料庫錯誤',
+'dberrortext' => '資料庫指令語法錯誤。',
+'dberrortextcl' => "A database query syntax error has occurred.
+The last attempted database query was:
+\"$1\"
+from within function \"$2\".
+MySQL returned error \"$3: $4\".\n",
+'noconnect' => '無法與資料庫連線。<br />',
+'nodb' => "無法選擇資料庫 $1",
+'cachederror'		=> 'The following is a cached copy of the requested page, and may not be up to date.',
+'laggedslavemode'   => 'Warning: Page may not contain recent updates.',
+'readonly' => '資料庫已鎖定',
+'enterlockreason' => '請輸入鎖定原因, 包括估計重新開放的時間',
+of when the lock will be released',
+'readonlytext' => "資料庫目前禁止新增或更改任何內容，
+這很可能是由於資料庫正在維修，之後即可恢復。
+管理員有如下解釋:
+'missingarticle' => "資料庫找不到應該存在的文字「$1」，
+<p>通常這是由於修訂歷史頁上過時的鏈結指向已經被刪除的頁面所導致的。",
+'readonly_lag' => "The database has been automatically locked while the slave database servers catch up to the master",
+'internalerror' => '內部錯誤',
+'filecopyerror' => "無法複製檔案「$1」到「$2」。",
+'filerenameerror' => "無法重新命名檔案「$1」為「$2」。",
+'filedeleteerror' => "無法刪除檔案「$1」。",
+'filenotfound' => "找不到檔案「$1」。",
+'unexpected' => "不正確的數值: $1=$2。",
+'formerror' => '錯誤: 無法送出表單',
+'badarticleerror' => '無法在本頁上進行此項操作。',
+'cannotdelete' => '無法刪除選定的頁面或圖片（可能已經被其他人刪除了）。',
+'block_compress_delete' => "Can't delete this article because it contains block-compressed revisions. 
+This is a temporary situation which the developers are well aware of, and should be fixed within a month or two. 
+Please mark the article for deletion and wait for a developer to fix our buggy software.",
+'badtitle' => '錯誤的標題',
+'badtitletext' => '所請求頁面的標題可能是無效的，或不存在，或是跨語言/跨Wiki鏈結的錯誤標題。',
+'perfdisabled' => '抱歉！由於此項操作有可能造成資料庫癱瘓，目前暫時無法使用。',
+'perfdisabledsub' => "這是 $1 的複本:",
+'perfcached' => 'The following data is cached and may not be completely up to date:',
+'wrong_wfQuery_params' => "Incorrect parameters to wfQuery()<br />
+Function: $1<br />
+Query: $2
+",
+'viewsource' => '檢視源碼',
+'protectedtext' => "This page has been locked to prevent editing; there are
+a number of reasons why this may be so, please see
+[[Project:Protected page]].
+
+You can view and copy the source of this page:",
+'seriousxhtmlerrors' => 'There were serious xhtml markup errors detected by tidy.',
+'sqlhidden' => '(SQL query hidden)',
+
+# Login and logout pages
+#
+"logouttitle" => "使用者登出",
+"logouttext" => "您現在已經登出。
+您可以繼續以匿名方式使用 {{SITENAME}}，或以相同或不同的使用者身份重新登入。
+",
+
+'welcomecreation' => "== 歡迎 $1! ==
+
+您的帳號已經建立，不要忘記設置個人參數。",
+
+'loginpagetitle' => '使用者登入',
+'yourname' => '您的使用者名稱',
+'yourpassword' => '您的密碼',
+'yourpasswordagain' => '再次輸入密碼',
+'newusersonly' => '（僅限新使用者）',
+'remembermypassword' => '記住密碼自動登入。',
+'loginproblem' => '<b>登入錯誤。</b><br />再試一次！',
+'alreadyloggedin' => "<font color=red><b>您已經登錄為 $1 了!</b></font><br />\n",
+
+'login' => '登入',
+'loginprompt'           => "You must have cookies enabled to log in to {{SITENAME}}.",
+'userlogin' => '使用者登入',
+'logout' => '登出',
+'userlogout' => '使用者登出',
+'notloggedin'	=> '未登入',
+'createaccount' => '建立新帳號',
+'createaccountmail' => '使用 email',
+'badretype' => '前後輸入的密碼不相同。',
+'userexists' => '您所輸入的使用者名稱已有人使用。請另選一個。',
+'youremail' => '您的電子郵件*',
+'yourrealname' => '真實姓名*',
+'yourlanguage' => '界面語言',
+'yourvariant' => '中文字體',
+'yournick' => '暱稱（簽名用）',
+'emailforlost' => '* 電子郵件並不是必須的，但可方便它人通過電子郵件與您聯繫，如果您忘了密碼的話也可用來取回密碼。',
+'prefs-help-userdata' => '*<strong>真實姓名</strong>（非必需）: 用以對您的貢獻署名。<br />*<strong>電子郵件</strong>（非必需）: 讓他人通過網站在不知道您的電子郵件地址的情況下通過電子郵件與您聯絡，以及通過電子郵件取得遺忘的密碼。',
+* <strong>Email</strong> (optional): Enables people to contact you through the website without you having to reveal your
+email address to them, and it can be used to send you a new password if you forget it.',
+'loginerror' => '登錄錯誤',
+'nocookiesnew'	=> "The user account was created, but you are not logged in. {{SITENAME}} uses cookies to log in users. You have cookies disabled. Please enable them, then log in with your new username and password.",
+"nocookieslogin"	=> "{{SITENAME}} uses cookies to log in users. You have cookies disabled. Please enable them and try again.",
+'noname' => '你沒有輸入一個有效的使用者名。',
+'loginsuccesstitle' => '登錄成功',
+'loginsuccess' => '你現在以 ""的身份登錄維基百科。',
+'nosuchuser' => '找不到使用者 ""。
+檢查您的拼寫，或者用下面的表格建立一個新帳號。',
+Check your spelling, or use the form below to create a new user account.",
+'nosuchusershort'	=> "There is no user by the name \"$1\". Check your spelling.",
+'wrongpassword' => '您輸入的密碼錯誤，請再試一次。',
+'mailmypassword' => '將新密碼寄給我',
+'passwordremindertitle' => '維基百科密碼提醒',
+'passwordremindertext' => '有人（可能是您，來自網址)要求我們將新的維基百科登錄密碼寄給你。
+使用者 "" 的密碼現在是 ""。
+請立即登錄並更改密碼。',
+requested that we send you a new {{SITENAME}} login password.
+The password for user \"$2\" is now \"$3\".
+You should log in and change your password now.",
+'noemail' => '使用者""沒有登記電子郵件地址。',
+'passwordsent' => '使用者""的新密碼已經寄往所登記的電子郵件地址。
+請在收到後再登錄。',
+registered for \"$1\".
+Please log in again after you receive it.",
+'loginend'		=> '&nbsp;',
+'mailerror' => "Error sending mail: $1",
+'acct_creation_throttle_hit' => '對不起，您已經註冊了賬號。你不能再註冊了。',
+
+# Edit page toolbar
+'bold_sample'=>'Bold text',
+'bold_tip'=>'Bold text',
+'italic_sample'=>'Italic text',
+'italic_tip'=>'Italic text',
+'link_sample'=>'Link title',
+'link_tip'=>'Internal link',
+'extlink_sample'=>'http://www.example.com link title',
+'extlink_tip'=>'External link (remember http:// prefix)',
+'headline_sample'=>'Headline text',
+'headline_tip'=>'Level 2 headline',
+'math_sample'=>'Insert formula here',
+'math_tip'=>'Mathematical formula (LaTeX)',
+'nowiki_sample'=>'Insert non-formatted text here',
+'nowiki_tip'=>'Ignore wiki formatting',
+'image_sample'=>'Example.jpg',
+'image_tip'=>'Embedded image',
+'media_sample'=>'Example.mp3',
+'media_tip'=>'Media file link',
+'sig_tip'=>'Your signature with timestamp',
+'hr_tip'=>'Horizontal line (use sparingly)',
+'infobox'=>'Click a button to get an example text',
+# alert box shown in browsers where text selection does not work, test e.g. with mozilla or konqueror
+'infobox_alert'=>"Please enter the text you want to be formatted.\\n It will be shown in the infobox for copy and pasting.\\nExample:\\n$1\\nwill become:\\n$2",
+
+# Edit pages
+#
+'summary' => '簡述',
+'subject' => '主題',
+'minoredit' => '這是一個小修改',
+'watchthis' => '監視本頁',
+'savearticle' => '保存本頁',
+'preview' => '預覽',
+'showpreview' => '顯示預覽',
+'blockedtitle' => '使用者被封',
+'blockedtext' => '您的使用者名或網址已被封。
+理由是: <br />''''''<p>您可以與向其他任何[[維基百科:管理員|管理員]]詢問。',
+The reason given is this:<br />''$2''<p>You may contact $1 or one of the other
+[[Project:Administrators|administrators]] to discuss the block.
+
+Note that you may not use the \"email this user\" feature unless you have a valid email address registered in your [[Special:Preferences|user preferences]].
+
+Your IP address is $3. Please include this address in any queries you make.
+",
+'whitelistedittitle' => '登錄後才可編輯',
+'whitelistedittext' => '您必須先[[特殊:登錄]]才可編輯頁面。',
+'whitelistreadtitle' => '登錄後才可閱讀',
+'whitelistreadtext' => '您必須先[[特殊:登錄]]才可閱讀頁面。',
+'whitelistacctitle' => '您被禁止建立帳號',
+'whitelistacctext' => '在本維基中建立帳號您必須先[[特殊:登錄]]並擁有相關權限。',
+'loginreqtitle'	=> 'Login Required',
+'loginreqtext'	=> 'You must [[special:Userlogin|login]] to view other pages.',
+'accmailtitle' => '密碼寄出',
+'accmailtext' => '''的密碼已經寄到。',
+'newarticle' => '（新）',
+'newarticletext' => '您從一個鏈接進入了一個並不存在的頁面。
+要創建該頁面，請在下面的編輯框中輸入內容（詳情參見[[維基百科:幫助|幫助頁面]]）。
+如果您不小心來到本頁面，直接點擊您瀏覽器中的“返回”按鈕。',
+"You've followed a link to a page that doesn't exist yet.
+To create the page, start typing in the box below
+(see the [[Project:Help|help page]] for more info).
+If you are here by mistake, just click your browser's '''back''' button.",
+'talkpagetext' => '<!-- MediaWiki:talkpagetext -->',
+'anontalkpagetext' => '---- ''這是一個還未建立帳號的匿名使用者的對話頁。我們因此只能用[[網址]]來與他／她聯絡。該網址可能由幾名使用者共享。如果您是一名匿名使用者並認為本頁上的評語與您無關，請[[特殊:登錄|創建新帳號或登錄]]以避免在未來於其他匿名使用者混淆。''',
+'noarticletext' => '（本頁目前沒有內容）',
+'clearyourcache' => ''''註意: ''' 保存設置後，要清掉瀏覽器的緩存才能生效: '''Mozilla:''' 點''刷新'' （或用快鍵''Ctrl-R''），'''IE / Opera:''' ''Ctrl-F5'', '''Safari:''' ''Cmd-R'', '''Konqueror''' ''Ctrl-R''。',
+'usercssjsyoucanpreview' => "<strong>Tip:</strong> Use the 'Show preview' button to test your new CSS/JS before saving.",
+'usercsspreview' => "'''Remember that you are only previewing your user CSS, it has not yet been saved!'''",
+'userjspreview' => "'''Remember that you are only testing/previewing your user JavaScript, it has not yet been saved!'''",
+'updated' => '（已更新）',
+'note' => '<strong>注意: </strong> ',
+'previewnote' => '請記住這只是預覽，內容還未保存！',
+'previewconflict' => '這個預覽顯示了上面文字編輯區中的內容。它將在你選擇保存後出現。',
+text editing area as it will appear if you choose to save.',
+'editing' => '正在編輯',
+'editingsection' => '正在編輯 (段落)',
+'editingcomment' => '正在編輯 (評論)',
+'editconflict' => '編輯衝突: ',
+'explainconflict' => '有人在你開始編輯後更改了頁面。
+上面的文字框內顯示的是目前本頁的內容。
+你所做的修改顯示在下面的文字框中。
+你應當將你所做的修改加入現有的內容中。
+<b>只有</b>在上面文字框中的內容會在你點擊"保存頁面"後被保存。
+<p>',
+started editing it.
+The upper text area contains the page text as it currently exists.
+Your changes are shown in the lower text area.
+You will have to merge your changes into the existing text.
+<b>Only</b> the text in the upper text area will be saved when you
+press \"Save page\".\n<p>",
+'yourtext' => '您的文字',
+'storedversion' => '已保存版本',
+'nonunicodebrowser' => "<strong>WARNING: Your browser is not unicode compliant, please change it before editing an article.</strong>",
+'editingold' => '<strong>警告: 你正在編輯的是本頁的舊版本。
+如果你保存它的話，在本版本之後的任何修改都會丟失。</strong>
+',
+revision of this page.
+If you save it, any changes made since this revision will be lost.</strong>\n",
+'yourdiff' => '差別',
+'copyrightwarning' => '請注意對W維基百科的任何貢獻都將被認為是在GNU自由文檔協議證書下發佈。
+(細節請見).
+如果您不希望您的文字被任意修改和再散佈，請不要提交。<br />
+您同時也向我們保證你所提交的內容是你自己所作，或得自一個不受版權保護或相似自由的來源。
+<strong>不要在未獲授權的情況下發表！</strong>',
+considered to be released under the $2 (see $1 for details).
+If you don't want your writing to be edited mercilessly and redistributed
+at will, then don't submit it here.<br />
+You are also promising us that you wrote this yourself, or copied it from a
+public domain or similar free resource.
+<strong>DO NOT SUBMIT COPYRIGHTED WORK WITHOUT PERMISSION!</strong>",
+'copyrightwarning2' => "Please note that all contributions to {{SITENAME}}
+may be edited, altered, or removed by other contributors.
+If you don't want your writing to be edited mercilessly, then don't submit it here.<br />
+You are also promising us that you wrote this yourself, or copied it from a
+public domain or similar free resource (see $1 for details).
+<strong>DO NOT SUBMIT COPYRIGHTED WORK WITHOUT PERMISSION!</strong>",
+'longpagewarning' => '警告: 本頁長度達千位；一些瀏覽器將無法編輯長過三十二千位的文章。請考慮將本文切割成幾個小段落。',
+browsers may have problems editing pages approaching or longer than 32kb.
+Please consider breaking the page into smaller sections.",
+'readonlywarning' => '警告: 資料庫被鎖以進行維護，所以您目前將無法保存您的修改。您或許希望先將本斷文字複製並保存到文本文件，然後等一會兒再修改。',
+so you will not be able to save your edits right now. You may wish to cut-n-paste
+the text into a text file and save it for later.',
+'protectedpagewarning' => '警告: 本頁已經被保護，只有擁有管理員權限的使用者才可修改。請確認您遵守
+<a href='/wiki/Wikipedia:Protected_page_guidelines'>保護頁面守則</a>.',
+users with sysop privileges can edit it. Be sure you are following the
+<a href='$wgScript/Project:Protected_page_guidelines'>protected page
+guidelines</a>.",
+'templatesused'	=> 'Templates used on this page:',
+
+# History pages
+#
+'revhistory' => '修訂歷史',
+'nohistory' => '沒有本頁的修訂記錄。',
+'revnotfound' => '沒有找到修訂記錄',
+'revnotfoundtext' => '您請求的更早版本的修訂記錄沒有找到。
+請檢查您請求本頁面用的URL是否正確。
+',
+Please check the URL you used to access this page.\n",
+'loadhist' => '載入頁面修訂歷史',
+'currentrev' => '當前修訂版本',
+'revisionasof' => '的修訂版本',
+'revisionasofwithlink'  => 'Revision as of $1; $2<br />$3 | $4',
+'previousrevision'	=> '&larr;Older revision',
+'nextrevision'		=> 'Newer revision&rarr;',
+'currentrevisionlink'   => 'view current revision',
+'cur' => '當前',
+'next' => '後繼',
+'last' => '先前',
+'orig' => '初始',
+'histlegend' => '說明: (當前)指與當前修訂版本比較；(先前)指與前一個修訂版本比較，小 指細微修改。',
+Legend: (cur) = difference with current version,
+(last) = difference with preceding version, M = minor edit.',
+'history_copyright'    => '-',
+
+# Diffs
+#
+'difference' => '（修訂版本間差異）',
+'loadingrev' => '載入修訂版本比較',
+'lineno' => '第行: ',
+'editcurrent' => '編輯本頁的當前修訂版本',
+'selectnewerversionfordiff' => 'Select a newer version for comparison',
+'selectolderversionfordiff' => 'Select an older version for comparison',
+'compareselectedversions' => 'Compare selected versions',
+
+# Search results
+#
+'searchresults' => '搜索結果',
+'searchresulttext' => ' ',
+'searchquery' => '查詢""',
+'badquery' => '搜索查詢不正確',
+'badquerytext' => '我們無法處理您的查詢。
+這可能是由於您試圖搜索一個短於3個字母的外文單詞，
+或者您錯誤地輸入了搜索項，例如"汽車和和火車"。
+請再嘗試一個新的搜索項。',
+This is probably because you have attempted to search for a
+word fewer than three letters long, which is not yet supported.
+It could also be that you have mistyped the expression, for
+example "fish and and scales".
+Please try another query.',
+'matchtotals' => '搜索項""與條文章的題目相符，和條文章相符。',
+and the text of $3 pages.",
+'nogomatch' => '沒有文章與搜索項完全匹配，請嘗試完整文字搜索。',
+'titlematches' => '文章題目相符',
+'notitlematches' => '沒有找到匹配文章題目',
+'textmatches' => '文章內容相符',
+'notextmatches' => '沒有文章內容匹配',
+'prevn' => '先前',
+'nextn' => '之後',
+'viewprevnext' => '檢視 () () ().',
+'showingresults' => '下面顯示<b></b>條結果，從第<b></b>條開始',
+'showingresultsnum' => "Showing below <b>$3</b> results starting with #<b>$2</b>.",
+'nonefound' => '<strong>注意: </strong>失敗的搜索往往是由於試圖搜索諸如“的”或“和”之類的常見字所引起。',
+often caused by searching for common words like \"have\" and \"from\",
+which are not indexed, or by specifying more than one search term (only pages
+containing all of the search terms will appear in the result).",
+'powersearch' => '搜索',
+'powersearchtext' => '
+搜索名字空間: <br /><br />列出重定向頁面；搜索 ',
+Search in namespaces :<br />
+$1<br />
+$2 List redirects &nbsp; Search for $3 $9",
+"searchdisabled" => "<p>維基百科內部搜索功能由於高峰時段服務器超載而停止使用。
+您可以暫時通過
+<a href="http:
+謝謝您的耐心。
+<!-- Search Google -->
+<form id="google" method="get" action="http:
+<table bgcolor="#FFFFFF" cellspacing=0 border=0>
+<tr valign=top><td>
+<a href="http:
+<img src="http:
+alt="Google" align="middle"></a>
+</td>
+<td>
+<input type=text name="q" size=31 maxlength=255 value="">
+<input type=submit name="sa" value="Google搜索">
+<input type=hidden name="cof" value="LW:135;L:http:
+<input type=hidden name="domains" value="zh-tw.wikipedia.org"><br />
+<input type=radio name="sitesearch" value=""> 搜索WWW
+<input type=radio name="sitesearch" value="zh-tw.wikipedia.org" checked> 搜索zh-tw.wikipedia.org </font><br />
+</td></tr></table></form>
+<!-- Search Google -->
+",
+<span style="font-size: 89%; display: block; margin-left: .2em">Note that their indexes of {{SITENAME}} content may be out of date.</span></p>',
+'googlesearch' => '
+<div style="margin-left: 2em">
+
+<!-- Google search -->
+<div style="width:130px;float:left;text-align:center;position:relative;top:-8px"><a href="http://www.google.com/" style="padding:0;background-image:none"><img src="http://www.google.com/logos/Logo_40wht.gif" alt="Google" style="border:none" /></a></div>
+
+<form method="get" action="http://www.google.com/search" style="margin-left:135px">
+  <div>
+    <input type="hidden" name="domains" value="{{SERVER}}" />
+    <input type="hidden" name="num" value="50" />
+    <input type="hidden" name="ie" value="$2" />
+    <input type="hidden" name="oe" value="$2" />
+    
+    <input type="text" name="q" size="31" maxlength="255" value="$1" />
+    <input type="submit" name="btnG" value="Google Search" />
+  </div>
+  <div style="font-size:90%">
+    <input type="radio" name="sitesearch" id="gwiki" value="{{SERVER}}" checked="checked" /><label for="gwiki">{{SITENAME}}</label>
+    <input type="radio" name="sitesearch" id="gWWW" value="" /><label for="gWWW">WWW</label>
+  </div>
+</form>
+
+</div>',
+'blanknamespace' => '(Main)',
+
+# Preferences page
+#
+'preferences' => '參數設置',
+'prefsnologin' => '還未登錄',
+'prefsnologintext' => '您必須先<a href="{{localurle:Special:Userlogin}}">登錄</a>才能設置個人參數。',
+to set user preferences.",
+'prefslogintext' => '你已經以""的身份登錄。
+你的內部ID是。',
+Your internal ID number is $2.
+
+See [[Project:User preferences help]] for help deciphering the options.",
+'prefsreset' => '參數重新設置。',
+'qbsettings' => '快速導航條設置',
+'qbsettingsnote'	=> 'This preference only works in the \'Standard\' and the \'CologneBlue\' skin.',
+'changepassword' => '更改密碼',
+'skin' => '皮膚',
+'math' => '數學顯示',
+'dateformat'	=> 'Date format',
+'math_failure' => '無法解析',
+'math_unknown_error' => '未知錯誤',
+'math_unknown_function' => '未知函數',
+'math_lexing_error' => '句法錯誤',
+'math_syntax_error' => '語法錯誤',
+'math_image_error'	=> 'PNG conversion failed; check for correct installation of latex, dvips, gs, and convert',
+'math_bad_tmpdir'	=> 'Can\'t write to or create math temp directory',
+'math_bad_output'	=> 'Can\'t write to or create math output directory',
+'math_notexvc'	=> 'Missing texvc executable; please see math/README to configure.',
+'prefs-personal' => '使用者數據',
+'prefs-rc' => '最近更新',
+'prefs-misc' => '雜項',
+'saveprefs' => '保存參數設置',
+'resetprefs' => '重設參數',
+'oldpassword' => '舊密碼',
+'newpassword' => '新密碼',
+'retypenew' => '重複新密碼',
+'textboxsize' => '文字框尺寸',
+'rows' => '行',
+'columns' => '列',
+'searchresultshead' => '搜索結果設定',
+'resultsperpage' => '每頁顯示鏈接數',
+'contextlines' => '每鏈接行數',
+'contextchars' => '每行字數',
+'stubthreshold' => '短條目顯示基本限制',
+'recentchangescount' => '最近更改頁行數',
+'savedprefs' => '您的個人參數設置已經保存。',
+'timezonelegend' => '時區',
+'timezonetext' => '輸入當地時間與服務器時間的時差。',
+from server time (UTC).',
+'localtime' => '當地時間',
+'timezoneoffset' => '時差',
+'servertime'	=> 'Server time is now',
+'guesstimezone' => 'Fill in from browser',
+'emailflag' => '禁止其他使用者發電子郵件給我',
+'defaultns'		=> 'Search in these namespaces by default:',
+'default'		=> 'default',
+
+# User levels special page
+#
+
+# switching pan
+'userlevels-lookup-group' => 'Manage group rights',
+'userlevels-group-edit' => 'Existent groups: ',
+'editgroup' => 'Edit Group',
+'addgroup' => '增加新的組',
+
+'userlevels-lookup-user' => 'Manage user groups',
+'userlevels-user-editname' => 'Enter a username: ',
+'editusergroup' => 'Edit User Groups',
+
+# group editing
+'userlevels-editgroup' => 'Edit group',
+'userlevels-addgroup' => 'Add group',
+'userlevels-editgroup-name' => 'Group name: ',
+'userlevels-editgroup-description' => 'Group description (max 255 characters):<br />',
+'savegroup' => 'Save Group',
+
+# user groups editing
+'userlevels-editusergroup' => 'Edit user groups',
+'saveusergroups' => 'Save User Groups',
+'userlevels-groupsmember' => 'Member of:',
+'userlevels-groupsavailable' => 'Available groups:',
+'userlevels-groupshelp' => 'Select groups you want the user to be removed from or added to.
+Unselected groups will not be changed. You can unselect a group by using CTRL + Left Click',
+# Recent changes
+#
+'changes' => '更改',
+'recentchanges' => '最近更改',
+'recentchanges-url' => 'Special:Recentchanges',
+'recentchangestext' => '本頁跟蹤維基百科內最新的更改。
+[[維基百科:歡迎，新來者|歡迎，新來者]]！
+請參見這些頁面: [[維基百科:常見問題解答|維基百科常見問題解答]]、
+[[維基百科:守則與指導|維基百科守則]]
+（特別是[[維基百科:命名常規|命名常規]]、
+[[維基百科:中性的觀點|中立觀點]]）
+和[[維基百科:最常見失禮行為|最常見失禮行為]]。
+
+如果您希望維基百科成功，那麼請您不要增加受其它[[維基百科:版權信息|版權]]
+限制的材料，這一點將非常重要。相關的法律責任會傷害本項工程，所以請不要這樣做。
+此外請參見',
+'rcloaderr' => '載入最近更改',
+'rcnote' => '下面是最近<strong></strong>天內最新的<strong></strong>次改動。',
+'rcnotefrom' => '下面是自<b></b>（最多顯示<b></b>）。',
+'rclistfrom' => '顯示自以來的新更改',
+'showhideminor' => ' 小修改 |  bots |  登錄使用者 |  檢查過的',
+'rclinks' => '顯示最近  天內最新的  次改動。<br />',
+'rchide' => '以形式；個小修改；個二級名字空間；個多重修改',
+'rcliu'			=> "; $1 edits from logged in users",
+'diff' => '差異',
+'hist' => '歷史',
+'hide' => '隱藏',
+'show' => '顯示',
+'tableform' => '表格',
+'listform' => '列表',
+'nchanges' => '個更改',
+'minoreditletter' => '小',
+'newpageletter' => '新',
+'sectionlink' => '&rarr;',
+'undo'          => 'undo',
+
+# Upload
+#
+'upload' => '上載文件',
+'uploadbtn' => '上載文件',
+'uploadlink' => '上載圖像',
+'reupload' => '重新上載',
+'reuploaddesc' => '返回上載表單。',
+'uploadnologin' => '未登錄',
+'uploadnologintext' => '您必須先<a href="{{localurle:Special:Userlogin}}">登錄</a>
+才能上載文件。',
+to upload files.",
+'uploadfile' => '上載文件',
+'uploaderror' => '上載錯誤',
+'uploadtext' => '<strong>停止！</strong>在您上載之前，請先閱讀並遵守維基百科<a href="{{localurle:Wikipedia:Image use policy}}">圖像使用守則</a>。
+<p>如果您要檢視或搜索之前上載的圖像，
+請到<a href="{{localurle:Special:Imagelist}}">已上載圖像列表</a>.
+所有上載與刪除行為都被記錄在<a href="{{localurle:Wikipedia:Upload image}}">上載紀錄</a>內。
+<p>使用下面的表單來上載用在條目內新的圖像文件。
+在絕大多數瀏覽器內，你會看到一個"瀏覽..."按鈕，點擊它後就會跳出一個打開文件對話框。
+選擇一個文件後文件名將出現在按鈕旁邊的文字框中。
+您也必須點擊旁邊的複選框確認您所上載的文件並沒有違反相關版權法律。
+點擊"上載" 按鈕完成上載程序。
+如果您使用的是較慢的網絡連接的話那麼這個上載過程會需要一些時間。
+<p>我們建議照相圖片使用JPEG格式，繪圖及其他圖標圖像使用PNG格式，音像則使用OGG格式。
+請使用具有描述性的語言來命名您的文件以避免混亂。
+要在文章中加入圖像，使用以下形式的連接: 
+<b>[[圖像:檔案.jpg]]</b>或者<b>[[圖像:檔案.png|解釋文字]]</b>
+或<b>[[媒體:檔案.ogg]]</b>來連接音像文件。
+<p>請注意在維基百科頁面中，其他人可能會為了百科全書的利益而編輯或刪除您的上載文件，
+而如果您濫用上載系統，您則有可能被禁止使用上載功能。',
+"'''STOP!''' Before you upload here,
+make sure to read and follow the [[Project:Image use policy|image use policy]].
+
+To view or search previously uploaded images,
+go to the [[Special:Imagelist|list of uploaded images]].
+Uploads and deletions are logged on the
+[[Project:Upload log|upload log]].
+
+Use the form below to upload new image files for use in
+illustrating your pages.
+On most browsers, you will see a \"Browse...\" button, which will
+bring up your operating system's standard file open dialog.
+Choosing a file will fill the name of that file into the text
+field next to the button.
+You must also check the box affirming that you are not
+violating any copyrights by uploading the file.
+Press the \"Upload\" button to finish the upload.
+This may take some time if you have a slow internet connection.
+
+The preferred formats are JPEG for photographic images, PNG
+for drawings and other iconic images, and OGG for sounds.
+Please name your files descriptively to avoid confusion.
+To include the image in a page, use a link in the form
+'''<nowiki>[[{{ns:6}}:file.jpg]]</nowiki>''' or
+'''<nowiki>[[{{ns:6}}:file.png|alt text]]</nowiki>''' or
+'''<nowiki>[[{{ns:-2}}:file.ogg]]</nowiki>''' for sounds.
+
+Please note that as with wiki pages, others may edit or
+delete your uploads if they think it serves the project, and
+you may be blocked from uploading if you abuse the system.",
+
+'uploadlog' => '上載紀錄',
+'uploadlogpage' => '上載紀錄',
+'uploadlogpagetext' => '以下是最近上載的文件的一覽表。
+所有顯示的時間都是服務器時間。
+<ul>
+</ul>
+',
+'filename' => '文件名',
+'filedesc' => '簡述',
+'filestatus' => 'Copyright status',
+'filesource' => 'Source',
+'affirmation' => '我保證本文件的版權持有人同意將其在條款下發佈。',
+agrees to license it under the terms of the $1.",
+'copyrightpage' => '維基百科:版權信息',
+'copyrightpagename' => '維基百科版權',
+'uploadedfiles' => '已上載文件',
+'noaffirmation' => '您必須保證您上載的文件並沒有侵犯版權。',
+'ignorewarning' => '忽略警告並保存文件。',
+'minlength' => '圖像名字必須至少有三個字母。',
+'illegalfilename'	=> 'The filename "$1" contains characters that are not allowed in page titles. Please rename the file and try uploading it again.',
+'badfilename' => '圖像名已被改為""。',
+'badfiletype' => '"."不是所推薦的圖像文件格式。',
+'largefile' => '我們建議圖像大小不超過百千位。',
+'emptyfile'		=> 'The file you uploaded seems to be empty. This might be due to a typo in the file name. Please check whether you really want to upload this file.',
+'fileexists'		=> 'A file with this name exists already, please check $1 if you are not sure if you want to change it.',
+'successfulupload' => '上載成功',
+'fileuploaded' => '文件""上載成功。
+請根據連接()到圖像描述頁添加有關文件信息，例如它的來源，在何時由誰創造，
+以及其他任何您知道的關於改圖像的信息。',
+Please follow this link: $2 to the description page and fill
+in information about the file, such as where it came from, when it was
+created and by whom, and anything else you may know about it. If this is an image, you can insert it like this: <tt><nowiki>[[Image:$1|thumb|Description]]</nowiki></tt>",
+'uploadwarning' => '上載警告',
+'savefile' => '保存文件',
+'uploadedimage' => '已上載""',
+'uploaddisabled' => 'Sorry, uploading is disabled.',
+'uploadcorrupt' => 'The file is corrupt or has an incorrect extension. Please check the file and upload again.',
+
+# Image list
+#
+'imagelist' => '圖像列表',
+'imagelisttext' => '以下是按排列的幅圖像列表。',
+'getimagelist' => '正在獲取圖像列表',
+'ilshowmatch' => '顯示所有匹對的圖像',
+'ilsubmit' => '搜索',
+'showlast' => '顯示按排列的最後幅圖像。',
+'all' => '全部',
+'byname' => '名字',
+'bydate' => '日期',
+'bysize' => '大小',
+'imgdelete' => '刪',
+'imgdesc' => '述',
+'imglegend' => '說明: (述) = 顯示/編輯圖像描述頁。',
+'imghistory' => '圖像歷史',
+'revertimg' => '回',
+'deleteimg' => '刪',
+'deleteimgcompletely'		=> 'Delete all revisions',
+'imghistlegend' => '題跋: (現) = 目前的圖像，(刪) = 刪除舊版本，
+(複) = 恢復到舊版本。
+<br /><i>點擊日期檢視當天上載的圖像</i>.',
+this old version, (rev) = revert to this old version.
+<br /><i>Click on date to see image uploaded on that date</i>.',
+'imagelinks' => '圖像鏈接',
+'linkstoimage' => '以下頁面連接到本圖像: ',
+'nolinkstoimage' => '沒有頁面連接到本圖像。',
+'sharedupload' => "This is a file from the [[Commons:Main Page|Wikimedia Commons]]. Please 
+see its '''[[Commons:Image:{{PAGENAME}}|description page]]''' there.",
+
+# Statistics
+#
+'statistics' => '統計',
+'sitestats' => '站點統計',
+'userstats' => '使用者統計',
+'sitestatstext' => '資料庫中共有 <b></b> 頁頁面；
+其中包括對話頁、關於維基百科的頁面、最少量的"stub"頁、重定向的頁面，
+以及未達到條目質量的頁面；除此之外還有 <b></b> 頁可能是合乎標準的條目。
+<p>從系統軟件升級以來，全站點共有頁面瀏覽 <b></b> 次，
+頁面編輯 <b></b> 次，每頁平均編輯 <b></b> 次，
+各次編輯後頁面的每個版本平均瀏覽 <b></b> 次。',
+This includes \"talk\" pages, pages about {{SITENAME}}, minimal \"stub\"
+pages, redirects, and others that probably don't qualify as content pages.
+Excluding those, there are '''$2''' pages that are probably legitimate
+content pages.
+
+There have been a total of '''$3''' page views, and '''$4''' page edits
+since the wiki was setup.
+That comes to '''$5''' average edits per page, and '''$6''' views per edit.",
+'userstatstext' => "There are '''$1''' registered users.
+'''$2''' of these are administrators (see $3).",
+
+# Maintenance Page
+#
+'maintenance' => '維護頁',
+'maintnancepagetext' => '這頁面提供了幾個幫助維基百科日常維護的工具。
+但其中幾個會對我們的資料庫造成壓力，
+所以請您不要在每修理好幾個項目後就按重新載入 ;-)',
+'maintenancebacklink' => '返回維護頁',
+'disambiguations' => '消含糊頁',
+'disambiguationspage' => '維基百科:鏈接到消歧義的頁面',
+'disambiguationstext' => '以下的條目都有到消含糊頁的鏈接，但它們應該是鏈到適當的題目。<br />一個頁面會被視為消含糊頁如果它是鏈自.<br />由其它他名字空間來的鏈接<i>不會</i>在這兒被列出來。',
+'doubleredirects' => '雙重重定向',
+'doubleredirectstext' => '<b>請注意: </b> 這列表可能包括不正確的反應。
+這通常表示在那頁面第一個#REDIRECT之下還有文字。<br />
+
+每一行都包含到第一跟第二個重定向頁的鏈接，以及第二個重定向頁的第一行文字，
+通常顯示的都會是“真正” 的目標頁面，也就是第一個重定向頁應該指向的條目。',
+'brokenredirects' => '損壞的重定向頁',
+'brokenredirectstext' => '以下的重定向頁指向的是不存在的條目。',
+'selflinks' => '有自我鏈接的頁面',
+'selflinkstext' => '以下的頁面都錯誤地包含了連到自己的鏈接。',
+'mispeelings' => '拼寫錯誤的頁面',
+'mispeelingstext' => '以下頁面包含了一些常見的拼寫錯誤（見）。正確的拼法已經給出。',
+'mispeelingspage' => '常見拼寫錯誤列表',
+'missinglanguagelinks' => '無語言鏈接',
+'missinglanguagelinksbutton' => '尋找沒有該語言的頁面',
+'missinglanguagelinkstext' => '這些條目<i>沒有</i>鏈接到。
+重定向頁與副頁<b>並沒有</b>包括在內。',
+
+
+# Miscellaneous special pages
+#
+'orphans' => '孤立條目',
+'geo'		=> 'GEO coordinates',
+'validate'		=> 'Validate page',
+'lonelypages' => '孤立頁面',
+'uncategorizedpages'	=> 'Uncategorized pages',
+'uncategorizedcategories'	=> 'Uncategorized categories',
+'unusedimages' => '未使用圖像',
+'popularpages' => '熱點條目',
+'nviews' => '次瀏覽',
+'wantedpages' => '待撰頁面',
+'nlinks' => '個鏈接',
+'allpages' => '所有頁面',
+'randompage' => '隨機頁面',
+'randompage-url'=> 'Special:Randompage',
+'shortpages' => '短條目',
+'longpages' => '長條目',
+'deadendpages'  => 'Dead-end pages',
+'listusers' => '使用者列表',
+'listadmins'	=> 'Admins list',
+'specialpages' => '特殊頁面',
+'spheading' => '特殊頁面',
+'asksqlpheading' => 'asksql level',
+'blockpheading' => 'block level',
+'createaccountpheading' => 'createaccount level',
+'deletepheading' => 'delete level',
+'userrightspheading' => 'userrights level',
+'siteadminpheading' => 'siteadmin level',
+
+'sysopspheading' => '管理員特殊頁面',
+'developerspheading' => '開發者特殊頁面',
+
+'protectpage' => '保護頁面',
+'recentchangeslinked' => '鏈出更改',
+'rclsub' => '（從 ""鏈出的頁面）',
+'debug' => '除錯',
+'newpages' => '新頁面',
+'ancientpages' => '老條目',
+'intl' => '跨語言鏈接',
+'move' => 'Move',
+'movethispage' => '移動本頁',
+'unusedimagestext' => '<p>請注意其他網站（例如其他語言版本的維基百科）
+有可能直接鏈接本圖像，所以這裏列出的圖像有可能依然被使用。',
+a direct URL, and so may still be listed here despite being
+in active use.</p>',
+'booksources' => '站外書源',
+'categoriespagetext' => '以下列出所有的頁面分類。',
+'data'	=> 'Data',
+'userlevels' => 'User levels management',
+
+# FIXME: Other sites, of course, may have affiliate relations with the booksellers list
+'booksourcetext' => '以下是鏈接到銷售書籍的網站列表，
+因此有可能擁有您所尋找的圖書的進一步資料。
+維基百科與這些公司並沒有任何商業關係，因此本表不應該
+被看作是一種背書。',
+sell new and used books, and may also have further information
+about books you are looking for.
+{{SITENAME}} is not affiliated with any of these businesses, and
+this list should not be construed as an endorsement.",
+'isbn'	=> 'ISBN',
+'rfcurl' =>  'http://www.faqs.org/rfcs/rfc$1.html',
+'pubmedurl' =>  'http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=$1',
+'alphaindexline' => ' 到 ',
+'version'		=> 'Version',
+'log'		=> 'Logs',
+'alllogstext'	=> 'Combined display of upload, deletion, protection, blocking, and sysop logs.
+You can narrow down the view by selecting a log type, the user name, or the affected page.',
+
+# Special:Allpages
+'nextpage'          => 'Next page ($1)',
+'articlenamespace'  => '(articles)',
+'allpagesformtext1' => '列出從  起的條目',
+'allpagesformtext2' => '選定名字空間:   ',
+'allarticles' => '所有條目',
+'allpagesprev' => '上一頁',
+'allpagesnext' => '下一頁',
+'allpagesnamespace' => '所有  名字空間的條目',
+'allpagessubmit' => '提交',
+
+# Email this user
+#
+'mailnologin' => '無電郵地址',
+'mailnologintext' => '您必須先<a href="{{localurle:Special:Userlogin}}">登錄</a>
+並在<a href="{{localurle:Special:Preferences}}">參數設置</a>
+中有一個有效的電子郵件地址才可以電郵其他使用者。',
+and have a valid e-mail address in your <a href=\"{{localurl:Special:Preferences}}\">preferences</a>
+to send e-mail to other users.",
+'emailuser' => '電子郵件該使用者',
+'emailpage' => '電子郵件使用者',
+'emailpagetext' => '如果該使用者已經在他或她的參數設置頁中輸入了有效的電子郵件地址，以下的表格將寄一個信息給該使用者。您在您參數設置中所輸入的電子郵件地址將出現在郵件“發件人”一欄中，這樣該使用者就可以回復您。',
+his or her user preferences, the form below will send a single message.
+The e-mail address you entered in your user preferences will appear
+as the "From" address of the mail, so the recipient will be able
+to reply.',
+'usermailererror' => 'Mail object returned error: ',
+'defemailsubject'  => "{{SITENAME}} e-mail",
+'noemailtitle' => '無電子郵件地址',
+'noemailtext' => '該使用者還沒有指定一個有效的電子郵件地址，
+或者選擇不接受來自其他使用者的電子郵件。',
+or has chosen not to receive e-mail from other users.',
+'emailfrom' => '發件人',
+'emailto' => '收件人',
+'emailsubject' => '主題',
+'emailmessage' => '信息',
+'emailsend' => '發送',
+'emailsent' => '電子郵件已發送',
+'emailsenttext' => '您的電子郵件已經發出。',
+
+# Watchlist
+#
+'watchlist' => '監視列表',
+'watchlistsub' => '(使用者"")',
+'nowatchlist' => '您的監視列表為空。',
+'watchnologin' => '未登錄',
+'watchnologintext' => '您必須先<a href="{{localurle:Special:Userlogin}}">登錄</a>
+才能更改您的監視列表',
+to modify your watchlist.",
+'addedwatch' => '加入到監視列表',
+'addedwatchtext' => '本頁（“”）已經被加入到您的<a href="{{localurle:Special:Watchlist}}">監視列表</a>中。
+未來有關它或它的對話頁的任何修改將會在本頁中列出，
+而且還會在<a href="{{localurle:Special:Recentchanges}}">最近更改列表</a>中
+以<b>粗體</b>形式列出。</p>
+
+<p>如果您之後想將該頁面從監視列表中刪除，點擊導航條中的“停止監視”鏈接。',
+Future changes to this page and its associated Talk page will be listed there,
+and the page will appear '''bolded''' in the [[Special:Recentchanges|list of recent changes]] to
+make it easier to pick out.
+
+<p>If you want to remove the page from your watchlist later, click \"Stop watching\" in the sidebar.",
+'removedwatch' => '停止監視',
+'removedwatchtext' => '頁面“”已經從您的監視頁面中移除。',
+'watch' => '監視',
+'watchthispage' => '監視本頁',
+'unwatch' => 'Unwatch',
+'unwatchthispage' => '停止監視',
+'notanarticle' => '不是條目',
+'watchnochange' => '在顯示的時間段內您所監視的頁面沒有更改。',
+'watchdetails' => '(個頁面（不含對話頁）被監視；
+ 	 總共個頁面被編輯；
+ 	 ...
+ 	 <a href=''>顯示並編輯完整列表</a>.)',
+$2 total pages edited since cutoff;
+$3...
+<a href='$4'>show and edit complete list</a>.)",
+'watchmethod-recent' => '檢查被監視頁面的最近編輯',
+'watchmethod-list' => 'checking watched pages for recent edits',
+'removechecked' => '將被選頁面從監視列表中移除',
+'watchlistcontains' => '您的監視列表包含個頁面。',
+'watcheditlist' => '這裏是您所監視的頁面的列表。要移除某一頁面，只要選擇該頁面然後點擊”移除頁面“按鈕。',
+watched pages. Check the boxes of pages you want to remove
+from your watchlist and click the \'remove checked\' button
+at the bottom of the screen.',
+'removingchecked' => '移除頁面...',
+'couldntremove' => '無法移除''...',
+'iteminvalidname' => '頁面''錯誤，無效命名...',
+'wlnote' => '以下是最近<b></b>小時內的最後次修改。',
+'wlshowlast' 		=> "Show last $1 hours $2 days $3",
+'wlsaved'			=> 'This is a saved version of your watchlist.',
+
+
+# Delete/protect/revert
+#
+'deletepage' => '刪除頁面',
+'confirm' => '確認',
+'excontent' => 'content was:',
+'exbeforeblank' => 'content before blanking was:',
+'exblank' => 'page was empty',
+'confirmdelete' => '確認刪除',
+'deletesub' => '（正在刪除“”）',
+'historywarning' => 'Warning: The page you are about to delete has a history: ',
+'confirmdeletetext' => '您即將從資料庫中永遠刪除一個頁面或圖像以及其歷史。
+請確定您要進行此項操作，並且瞭解其後果，同時您的行為符合[[維基百科:守則與指導]]。
+',
+or image along with all of its history from the database.
+Please confirm that you intend to do this, that you understand the
+consequences, and that you are doing this in accordance with
+[[Project:Policy]].",
+'confirmcheck' => '是的，我確定要刪除。',
+'actioncomplete' => '操作完成',
+'deletedtext' => '“”已經被刪除。
+最近刪除的紀錄請參見。',
+See $2 for a record of recent deletions.",
+'deletedarticle' => '已刪除“”',
+'dellogpage' => '刪除紀錄',
+'dellogpagetext' => '以下是最近刪除的紀錄列表。
+所有的時間都是使用服務器時間。
+<ul>
+</ul>
+',
+'deletionlog' => '刪除紀錄',
+'reverted' => '回降到早期版本',
+'deletecomment' => '刪除理由',
+'imagereverted' => '回降到早期版本操作完成。',
+'rollback' => '恢復',
+'rollback_short' => 'Rollback',
+'rollbacklink' => '恢復',
+'rollbackfailed' => 'Rollback failed',
+'cantrollback' => '無法恢復編輯；最後的鞏縣者是本文的唯一作者。',
+'alreadyrolled'	=> "Cannot rollback last edit of [[$1]]
+by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled back the page already.
+
+Last edit was by [[User:$3|$3]] ([[User talk:$3|Talk]]). ",
+#   only shown if there is an edit comment
+'editcomment' => "The edit comment was: \"<i>$1</i>\".",
+'revertpage' => '回降到的最後一次編輯',
+'sessionfailure' => 'There seems to be a problem with your login session;
+this action has been canceled as a precaution against session hijacking.
+Please hit "back" and reload the page you came from, then try again.',
+'protectlogpage' => 'Protection_log',
+'protectlogtext' => "Below is a list of page locks/unlocks.
+See [[Project:Protected page]] for more information.",
+'protectedarticle' => "protected $1",
+'unprotectedarticle' => "unprotected $1",
+'protectsub' =>"(Protecting \"$1\")",
+'confirmprotecttext' => 'Do you really want to protect this page?',
+'confirmprotect' => 'Confirm protection',
+'protectmoveonly' => 'Protect from moves only',
+'protectcomment' => 'Reason for protecting',
+'unprotectsub' =>"(Unprotecting \"$1\")",
+'confirmunprotecttext' => 'Do you really want to unprotect this page?',
+'confirmunprotect' => 'Confirm unprotection',
+'unprotectcomment' => 'Reason for unprotecting',
+'protectreason' => '(give a reason)',
+
+# Undelete
+'undelete' => '恢復被刪頁面',
+'undeletepage' => '瀏覽及恢復被刪頁面',
+'undeletepagetext' => '以下頁面已經被刪除，但依然在檔案中並可以被恢復。
+檔案庫可能被定時清理。',
+can be restored. The archive may be periodically cleaned out.',
+'undeletearticle' => '恢復被刪文章',
+'undeleterevisions' => '版本存檔',
+'undeletehistory' => '如果您恢復了該頁面，所有版本都會被恢復到修訂歷史中。
+如果本頁刪除後有一個同名的新頁面建立，
+被恢復的版本將會稱為較新的歷史，而新頁面的當前版本將無法被自動復原。',
+If a new page with the same name has been created since the deletion, the restored
+revisions will appear in the prior history, and the current revision of the live page
+will not be automatically replaced.',
+'undeleterevision' => '刪除時的版本',
+'undeletebtn' => '恢復！',
+'undeletedarticle' => '已經恢復“”',
+'undeletedrevisions' => "$1 revisions restored",
+'undeletedtext' => '[[]]已經被成功復原。
+有關維基百科最近的刪除與復原，參見[[維基百科:刪除紀錄]]',
+See [[Special:Log/delete]] for a record of recent deletions and restorations.",
+
+# Contributions
+#
+'contributions' => '使用者貢獻',
+'mycontris' => '我的貢獻',
+'contribsub' => '為',
+'nocontribs' => '沒有找到符合特徵的更改。',
+'ucnote' => '以下是該使用者最近<b></b>天內的最後<b></b>次修改。',
+'uclinks' => '參看最後次修改；參看最後天。',
+'uctop' => ' (頂)',
+'newbies'       => 'newbies',
+
+# What links here
+#
+'whatlinkshere' => '鏈入頁面',
+'notargettitle' => '無目標',
+'notargettext' => '您還沒有指定一個目標頁面或使用者以進行此項操作。',
+to perform this function on.',
+'linklistsub' => '(鏈接列表)',
+'linkshere' => '以下頁面鏈接到這裏: ',
+'nolinkshere' => '沒有頁面鏈接到這裏。',
+'isredirect' => '重定向頁',
+
+# Block/unblock IP
+#
+'blockip' => '查封網址',
+'blockiptext' => '用下面的表單來禁止來自某一特定網址的修改權限。
+只有在為防止破壞，及符合[[維基百科:守則與指導]]的情況下才可採取此行動。
+請在下面輸入一個具體的理由（例如引述一個被破壞的頁面）。',
+from a specific IP address or username.
+This should be done only only to prevent vandalism, and in
+accordance with [[Project:Policy|policy]].
+Fill in a specific reason below (for example, citing particular
+pages that were vandalized).",
+'ipaddress' => '網址',
+'ipbexpiry'		=> 'Expiry',
+'ipbreason' => '原因',
+'ipbsubmit' => '查封該地址',
+'badipaddress' => '網址不正確。',
+'noblockreason' => '您必須說明查封的具體理由。',
+'blockipsuccesssub' => '查封成功',
+'blockipsuccesstext' => '網址“”已經被查封。
+<br />參看[[特殊:被封網址列表|被封網址列表]]以復審查封。',
+<br />See [[Special:Ipblocklist|IP block list]] to review blocks.",
+'unblockip' => '解除禁封網址',
+'unblockiptext' => '用下面的表單來恢復先前被禁封的網址的書寫權。',
+to a previously blocked IP address or username.',
+'ipusubmit' => '解除禁封',
+'ipusuccess' => '網址””已經被解除禁封',
+'ipblocklist' => '被封網址列表',
+'blocklistline' => '，禁封',
+'blocklink' => '禁封',
+'unblocklink' => '解除禁封',
+'contribslink' => '貢獻',
+'autoblocker' => '你的IP和被封了的 "" 是一樣的。封鎖原因:  "".',
+'blocklogpage' => '封鎖記錄',
+'blocklogentry' => '封鎖 , ',
+'blocklogtext'	=> 'This is a log of user blocking and unblocking actions. Automatically
+blocked IP addresses are not listed. See the [[Special:Ipblocklist|IP block list]] for
+the list of currently operational bans and blocks.',
+'unblocklogentry'	=> 'unblocked "$1"',
+'range_block_disabled'	=> 'The sysop ability to create range blocks is disabled.',
+'ipb_expiry_invalid'	=> 'Expiry time invalid.',
+'ip_range_invalid'	=> "Invalid IP range.\n",
+'proxyblocker'	=> 'Proxy blocker',
+'proxyblockreason'	=> 'Your IP address has been blocked because it is an open proxy. Please contact your Internet service provider or tech support and inform them of this serious security problem.',
+'proxyblocksuccess'	=> "Done.\n",
+'sorbs'         => 'SORBS DNSBL',
+'sorbsreason'   => 'Your IP address is listed as an open proxy in the [http://www.sorbs.net SORBS] DNSBL.',
+'sorbs_create_account_reason' => 'Your IP address is listed as an open proxy in the [http://www.sorbs.net SORBS] DNSBL. You cannot create an account',
+
+# Developer tools
+#
+'lockdb' => '禁止更改資料庫',
+'unlockdb' => '開放更改資料庫',
+'lockdbtext' => '鎖住資料庫將禁止所有使用者進行編輯頁面、更改參數、編輯監視列表以及其他需要更改資料庫的操作。
+請確認您的決定，並且保證您在維護工作結束後會重新開放資料庫。',
+users to edit pages, change their preferences, edit their watchlists, and
+other things requiring changes in the database.
+Please confirm that this is what you intend to do, and that you will
+unlock the database when your maintenance is done.',
+'unlockdbtext' => '開放資料庫將會恢復所有使用者進行編輯頁面、修改參數、編輯監視列表以及其他需要更改資料庫的操作。
+請確認您的決定。',
+users to edit pages, change their preferences, edit their watchlists, and
+other things requiring changes in the database.
+Please confirm that this is what you intend to do.',
+'lockconfirm' => '是的，我確實想要封鎖資料庫。',
+'unlockconfirm' => '是的，我確實想要開放資料庫。',
+'lockbtn' => '資料庫上鎖',
+'unlockbtn' => '開放資料庫',
+'locknoconfirm' => '您並沒有勾選確認按鈕。',
+'lockdbsuccesssub' => '資料庫成功上鎖',
+'unlockdbsuccesssub' => '資料庫開放',
+'lockdbsuccesstext' => '維基百科資料庫已經上鎖。
+<br />請記住在維護完成後重新開放資料庫。',
+<br />Remember to remove the lock after your maintenance is complete.',
+'unlockdbsuccesstext' => '維基百科資料庫重新開放。',
+
+# SQL query
+#
+'asksql' => 'SQL查詢',
+'asksqltext' => '用下麵的表單對維基百科資料庫進行直接查詢。
+使用單引號（'像這樣'）來分割字串符。
+這樣做有可能增加服務器的負擔，所以請慎用本功能。',
+database.
+Use single quotes ('like this') to delimit string literals.
+This can often add considerable load to the server, so please use
+this function sparingly.",
+'sqlislogged'	=> 'Please note that all queries are logged.',
+'sqlquery' => '輸入查詢',
+'querybtn' => '提交查詢',
+'selectonly' => '除了“SELECT”以外的所有查詢都只限維基百科開發者使用。',
+'querysuccessful' => '查詢成功',
+
+# Make sysop
+'makesysoptitle'	=> 'Make a user into a sysop',
+'makesysoptext'		=> 'This form is used by bureaucrats to turn ordinary users into administrators.
+Type the name of the user in the box and press the button to make the user an administrator',
+'makesysopname'		=> 'Name of the user:',
+'makesysopsubmit'	=> 'Make this user into a sysop',
+'makesysopok'		=> "<b>User \"$1\" is now a sysop</b>",
+'makesysopfail'		=> "<b>User \"$1\" could not be made into a sysop. (Did you enter the name correctly?)</b>",
+'setbureaucratflag' => 'Set bureaucrat flag',
+'bureaucratlog'		=> 'Bureaucrat_log',
+'rightslogtext'		=> 'This is a log of changes to user rights.',
+'bureaucratlogentry'	=> "Rights for user \"$1\" set \"$2\"",
+'rights'			=> 'Rights:',
+'set_user_rights'	=> 'Set user rights',
+'user_rights_set'	=> "<b>User rights for \"$1\" updated</b>",
+'set_rights_fail'	=> "<b>User rights for \"$1\" could not be set. (Did you enter the name correctly?)</b>",
+'makesysop'         => 'Make a user into a sysop',
+
+# Validation
+'val_clear_old' => 'Clear my other validation data for $1',
+'val_merge_old' => 'Use my previous assessment where selected \'No opinion\'',
+'val_form_note' => '<b>Hint:</b> Merging your data means that for the article
+revision you select, all options where you have specified <i>no opinion</i>
+will be set to the value and comment of the most recent revision for which you
+have expressed an opinion. For example, if you want to change a single option
+for a newer revision, but also keep your other settings for this article in
+this revision, just select which option you intend to <i>change</i>, and
+merging will fill in the other options with your previous settings.',
+'val_noop' => 'No opinion',
+'val_percent' => '<b>$1%</b><br />($2 of $3 points<br />by $4 users)',
+'val_percent_single' => '<b>$1%</b><br />($2 of $3 points<br />by one user)',
+'val_total' => 'Total',
+'val_version' => 'Version',
+'val_tab' => 'Validate',
+'val_this_is_current_version' => 'this is the latest version',
+'val_version_of' => "Version of $1" ,
+'val_table_header' => "<tr><th>Class</th>$1<th colspan=4>Opinion</th>$1<th>Comment</th></tr>\n",
+'val_stat_link_text' => 'Validation statistics for this article',
+'val_view_version' => 'View this version',
+'val_validate_version' => 'Validate this version',
+'val_user_validations' => 'This user has validated $1 pages.',
+'val_no_anon_validation' => 'You have to be logged in to validate an article.',
+'val_validate_article_namespace_only' => 'Only articles can be validated. This page is <i>not</i> in the article namespace.',
+'val_validated' => 'Validation done.',
+'val_article_lists' => 'List of validated articles',
+'val_page_validation_statistics' => 'Page validation statistics for $1',
+
+# Move page
+#
+'movepage' => '移動頁面',
+'movepagetext' => '用下面的表單來重命名一個頁面，並將其修訂歷史同時移動到新頁面。
+老的頁面將成為新頁面的重定向頁。
+鏈接到老頁面的鏈接並不會自動更改；
+請[[特殊:檢查|檢查]]雙重或損壞重定向鏈接。
+您應當負責確定所有鏈接依然會鏈到指定的頁面。
+
+注意如果新頁面已經有內容的話，頁面將'''不會'''被移動，
+除非新頁面無內容或是重定向頁，而且沒有修訂歷史。
+這意味著您再必要時可以在移動到新頁面後再移回老的頁面，
+同時您也無法覆蓋現有頁面。
+
+<b>警告！</b>
+對一個經常被訪問的頁面而言這可能是一個重大與唐突的更改；
+請在行動前先了結其所可能帶來的後果。',
+of its history to the new name.
+The old title will become a redirect page to the new title.
+Links to the old page title will not be changed; be sure to
+[[Special:Maintenance|check]] for double or broken redirects.
+You are responsible for making sure that links continue to
+point where they are supposed to go.
+
+Note that the page will \'\'\'not\'\'\' be moved if there is already
+a page at the new title, unless it is empty or a redirect and has no
+past edit history. This means that you can rename a page back to where
+it was just renamed from if you make a mistake, and you cannot overwrite
+an existing page.
+
+<b>WARNING!</b>
+This can be a drastic and unexpected change for a popular page;
+please be sure you understand the consequences of this before
+proceeding.',
+'movepagetalktext' => '有關的對話頁（如果有的話）將被自動與該頁面一起移動，'''除非''': 
+*您將頁面移動到不同的名字空間；
+*新頁面已經有一個包含內容的對話頁，或者
+*您不勾選下麵的複選框。
+
+在這些情況下，您在必要時必須手工移動或合併頁面。',
+*You are moving the page across namespaces,
+*A non-empty talk page already exists under the new name, or
+*You uncheck the box below.
+
+In those cases, you will have to move or merge the page manually if desired.',
+'movearticle' => '移動頁面',
+'movenologin' => '未登錄',
+'movenologintext' => '您必須是一名登記使用者並且<a href="{{localurle:Special:Userlogin}}">登錄</a>
+後才可移動一個頁面。',
+to move a page.",
+'newtitle' => '新標題',
+'movepagebtn' => '移動頁面',
+'pagemovedsub' => '移動成功',
+'pagemovedtext' => '頁面“[[]]”已經移動到“[[]]”。',
+'articleexists' => '該名字的頁面已經存在，或者您選擇的名字無效。請再選一個名字。',
+name you have chosen is not valid.
+Please choose another name.',
+'talkexists' => '頁面本身移動成功，
+但是由於新標題下已經有對話頁存在，所以對話頁無法移動。請手工合併兩個頁面。',
+talk page could not be moved because one already exists at the new
+title. Please merge them manually.',
+'movedto' => '移動到',
+'movetalk' => '如果可能的話，請同時移動對話頁。',
+'talkpagemoved' => '相應的對話頁也已經移動。',
+'talkpagenotmoved' => '相應的對話頁<strong>沒有</strong>被移動。',
+'1movedto2' => '移動到',
+'1movedto2_redir' => '重定向到',
+
+# Export
+
+'export'		=> 'Export pages',
+'exporttext'	=> 'You can export the text and editing history of a particular page or
+set of pages wrapped in some XML. In the future, this may then be imported into another
+wiki running MediaWiki software, although there is no support for this feature in the
+current version.
+
+To export article pages, enter the titles in the text box below, one title per line, and
+select whether you want the current version as well as all old versions, with the page
+history lines, or just the current version with the info about the last edit.
+
+In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/Train]] for the
+article [[Train]].
+',
+'exportcuronly'	=> 'Include only the current revision, not the full history',
+
+# Namespace 8 related
+
+'allmessages' => '系統界面',
+'allmessagesname' => 'Name',
+'allmessagesdefault' => 'Default text',
+'allmessagescurrent' => 'Current text',
+'allmessagestext' => '這裡列出所有可定製的系統界面。',
+'allmessagesnotsupportedUI' => 'Your current interface language <b>$1</b> is not supported by Special:AllMessages at this site. ',
+'allmessagesnotsupportedDB' => '系統界面功能處於關閉狀態 (wgUseDatabaseMessages)。',
+
+# Thumbnails
+
+'thumbnail-more'	=> 'Enlarge',
+'missingimage'		=> "<b>Missing image</b><br /><i>$1</i>\n",
+'filemissing'		=> 'File missing',
+
+# Special:Import
+'import'	=> 'Import pages',
+'importtext'	=> 'Please export the file from the source wiki using the Special:Export utility, save it to your disk and upload it here.',
+'importfailed'	=> "Import failed: $1",
+'importnotext'	=> 'Empty or no text',
+'importsuccess'	=> 'Import succeeded!',
+'importhistoryconflict' => 'Conflicting history revision exists (may have imported this page before)',
+
+# Keyboard access keys for power users
+'accesskey-search' => 'f',
+'accesskey-minoredit' => 'i',
+'accesskey-save' => 's',
+'accesskey-preview' => 'p',
+'accesskey-compareselectedversions' => 'v',
+
+# tooltip help for some actions, most are in Monobook.js
+'tooltip-search' => 'Search this wiki [alt-f]',
+'tooltip-minoredit' => 'Mark this as a minor edit [alt-i]',
+'tooltip-save' => 'Save your changes [alt-s]',
+'tooltip-preview' => 'Preview your changes, please use this before saving! [alt-p]',
+'tooltip-compareselectedversions' => 'See the differences between the two selected versions of this page. [alt-v]',
+'tooltip-watch' => 'Add this page to your watchlist [alt-w]',
+
+# stylesheets
+
+'Monobook.css' => '/* edit this file to customize the monobook skin for the entire site */',
+#'Monobook.js' => '/* edit this file to change js things in the monobook skin */',
+
+# Metadata
+'nodublincore' => 'Dublin Core RDF metadata disabled for this server.',
+'nocreativecommons' => 'Creative Commons RDF metadata disabled for this server.',
+'notacceptable' => 'The wiki server can\'t provide data in a format your client can read.',
+
+# Attribution
+
+'anonymous' => '匿名使用者',
+'siteuser' => "$wgSitename user $1",
+'lastmodifiedby' => "This page was last modified $1 by $2.",
+'and' => '和',
+'othercontribs' => "Based on work by $1.",
+'others' => 'others',
+'siteusers' => "$wgSitename user(s) $1",
+'creditspage' => 'Page credits',
+'nocredits' => 'There is no credits info available for this page.',
+
+# Spam protection
+
+'spamprotectiontitle' => 'Spam protection filter',
+'spamprotectiontext' => 'The page you wanted to save was blocked by the spam filter. This is probably caused by a link to an external site.',
+'spamprotectionmatch' => 'The following text is what triggered our spam filter: $1',
+'subcategorycount' => "There are $1 subcategories to this category.",
+'subcategorycount1' => "There is $1 subcategory to this category.",
+'categoryarticlecount' => '該類頁面共有 $1 條目',
+'categoryarticlecount1' => "There is $1 article in this category.",
+'usenewcategorypage' => "1\n\nSet first character to \"0\" to disable the new category page layout.",
+'listingcontinuesabbrev' => " cont.",
+
+# Info page
+"infosubtitle" => "Information for page",
+"numedits" => "Number of edits (article): $1",
+"numtalkedits" => "Number of edits (discussion page): $1",
+"numwatchers" => "Number of watchers: $1",
+"numauthors" => "Number of distinct authors (article): $1",
+"numtalkauthors" => "Number of distinct authors (discussion page): $1",
+
+# Math options
+'mw_math_png' => 'Always render PNG',
+'mw_math_simple' => 'HTML if very simple or else PNG',
+'mw_math_html' => 'HTML if possible or else PNG',
+'mw_math_source' => 'Leave it as TeX (for text browsers)',
+'mw_math_modern' => 'Recommended for modern browsers',
+'mw_math_mathml' => 'MathML if possible (experimental)',
+
+# Patrolling
+'markaspatrolleddiff'   => "Mark as patrolled",
+'markaspatrolledlink'   => "<div class='patrollink'>[$1]</div>",
+'markaspatrolledtext'   => "Mark this article as patrolled",
+'markedaspatrolled'     => "Marked as patrolled",
+'markedaspatrolledtext' => "The selected revision has been marked as patrolled.",
+'rcpatroldisabled'      => "Recent Changes Patrol disabled",
+'rcpatroldisabledtext'  => "The Recent Changes Patrol feature is currently disabled.",
+
+# Monobook.js: tooltips and access keys for monobook
+'Monobook.js' => '/* tooltips and access keys */
+ta = new Object();
+ta[\'pt-userpage\'] = new Array(\'.\',\'My user page\');
+ta[\'pt-anonuserpage\'] = new Array(\'.\',\'The user page for the ip you\\\'re editing as\');
+ta[\'pt-mytalk\'] = new Array(\'n\',\'My talk page\');
+ta[\'pt-anontalk\'] = new Array(\'n\',\'Discussion about edits from this ip address\');
+ta[\'pt-preferences\'] = new Array(\'\',\'My preferences\');
+ta[\'pt-watchlist\'] = new Array(\'l\',\'The list of pages you\\\'re monitoring for changes.\');
+ta[\'pt-mycontris\'] = new Array(\'y\',\'List of my contributions\');
+ta[\'pt-login\'] = new Array(\'o\',\'You are encouraged to log in, it is not mandatory however.\');
+ta[\'pt-anonlogin\'] = new Array(\'o\',\'You are encouraged to log in, it is not mandatory however.\');
+ta[\'pt-logout\'] = new Array(\'o\',\'Log out\');
+ta[\'ca-talk\'] = new Array(\'t\',\'Discussion about the content page\');
+ta[\'ca-edit\'] = new Array(\'e\',\'You can edit this page. Please use the preview button before saving.\');
+ta[\'ca-addsection\'] = new Array(\'+\',\'Add a comment to this discussion.\');
+ta[\'ca-viewsource\'] = new Array(\'e\',\'This page is protected. You can view its source.\');
+ta[\'ca-history\'] = new Array(\'h\',\'Past versions of this page.\');
+ta[\'ca-protect\'] = new Array(\'=\',\'Protect this page\');
+ta[\'ca-delete\'] = new Array(\'d\',\'Delete this page\');
+ta[\'ca-undelete\'] = new Array(\'d\',\'Restore the edits done to this page before it was deleted\');
+ta[\'ca-move\'] = new Array(\'m\',\'Move this page\');
+ta[\'ca-nomove\'] = new Array(\'\',\'You don\\\'t have the permissions to move this page\');
+ta[\'ca-watch\'] = new Array(\'w\',\'Add this page to your watchlist\');
+ta[\'ca-unwatch\'] = new Array(\'w\',\'Remove this page from your watchlist\');
+ta[\'search\'] = new Array(\'f\',\'Search this wiki\');
+ta[\'p-logo\'] = new Array(\'\',\'Main Page\');
+ta[\'n-mainpage\'] = new Array(\'z\',\'Visit the Main Page\');
+ta[\'n-portal\'] = new Array(\'\',\'About the project, what you can do, where to find things\');
+ta[\'n-currentevents\'] = new Array(\'\',\'Find background information on current events\');
+ta[\'n-recentchanges\'] = new Array(\'r\',\'The list of recent changes in the wiki.\');
+ta[\'n-randompage\'] = new Array(\'x\',\'Load a random page\');
+ta[\'n-help\'] = new Array(\'\',\'The place to find out.\');
+ta[\'n-sitesupport\'] = new Array(\'\',\'Support us\');
+ta[\'t-whatlinkshere\'] = new Array(\'j\',\'List of all wiki pages that link here\');
+ta[\'t-recentchangeslinked\'] = new Array(\'k\',\'Recent changes in pages linked from this page\');
+ta[\'feed-rss\'] = new Array(\'\',\'RSS feed for this page\');
+ta[\'feed-atom\'] = new Array(\'\',\'Atom feed for this page\');
+ta[\'t-contributions\'] = new Array(\'\',\'View the list of contributions of this user\');
+ta[\'t-emailuser\'] = new Array(\'\',\'Send a mail to this user\');
+ta[\'t-upload\'] = new Array(\'u\',\'Upload images or media files\');
+ta[\'t-specialpages\'] = new Array(\'q\',\'List of all special pages\');
+ta[\'ca-nstab-main\'] = new Array(\'c\',\'View the content page\');
+ta[\'ca-nstab-user\'] = new Array(\'c\',\'View the user page\');
+ta[\'ca-nstab-media\'] = new Array(\'c\',\'View the media page\');
+ta[\'ca-nstab-special\'] = new Array(\'\',\'This is a special page, you can\\\'t edit the page itself.\');
+ta[\'ca-nstab-wp\'] = new Array(\'a\',\'View the project page\');
+ta[\'ca-nstab-image\'] = new Array(\'c\',\'View the image page\');
+ta[\'ca-nstab-mediawiki\'] = new Array(\'c\',\'View the system message\');
+ta[\'ca-nstab-template\'] = new Array(\'c\',\'View the template\');
+ta[\'ca-nstab-help\'] = new Array(\'c\',\'View the help page\');
+ta[\'ca-nstab-category\'] = new Array(\'c\',\'View the category page\');
+',
+
+# image deletion
+'deletedrevision' => 'Deleted old revision $1.',
+
+# browsing diffs
+'previousdiff' => '&larr; Go to previous diff',
+'nextdiff' => 'Go to next diff &rarr;',
+
+'imagemaxsize' => 'Limit images on image description pages to: ',
+'showbigimage' => 'Download high resolution version ($1x$2, $3 KB)',
+
+'newimages' => 'New images gallery',
+'noimages'  => 'Nothing to see.',
+
+'sitesettings'                  => 'Site Settings',
+'sitesettings-features'         => 'Features',
+'sitesettings-permissions'      => 'Permissions',
+'sitesettings-memcached'        => 'Memcache Daemon',
+'sitesettings-debugging'        => 'Debugging',
+'sitesettings-caching'          => 'Page caching',
+'sitesettings-wgShowIPinHeader' => 'Show IP in header (for non-logged in users)',
+'sitesettings-wgUseDatabaseMessages' => 'Use database messages for user interface labels',
+'sitesettings-wgUseCategoryMagic' => 'Enable categories',
+'sitesettings-wgUseCategoryBrowser' => 'Enable experimental dmoz-like category browsing. Outputs things like:  Encyclopedia > Music > Style of Music > Jazz',
+'sitesettings-wgHitcounterUpdateFreq' => 'Hit counter update frequency',
+'sitesettings-wgAllowExternalImages' => 'Allow to include external images into articles',
+'sitesettings-permissions-readonly' => 'Maintenance mode: Disable write access',
+'sitesettings-permissions-whitelist' => 'Whitelist mode',
+'sitesettings-permissions-banning' => 'User banning',
+'sitesettings-permissions-miser' => 'Performance settings',
+'sitesettings-wgReadOnly' => 'Readonly mode',
+'sitesettings-wgReadOnlyFile' => 'Readonly message file',
+'sitesettings-wgWhitelistEdit' => 'Users must be logged in to edit',
+'sitesettings-wgWhitelistRead' => 'Anonymous users may only read these pages:',
+'sitesettings-wgWhitelistAccount-user' => 'Users may create accounts themself',
+'sitesettings-wgWhitelistAccount-sysop' => 'Sysops may create accounts for users',
+'sitesettings-wgWhitelistAccount-developer' => 'Developers may create accounts for users',
+'sitesettings-wgSysopUserBans' => 'Sysops may block logged-in users',
+'sitesettings-wgSysopRangeBans' => 'Sysops may block IP-ranges',
+'sitesettings-wgDefaultBlockExpiry' => 'By default, blocks expire after:',
+'sitesettings-wgMiserMode' => 'Enable miser mode, which disables most "expensive" features',
+'sitesettings-wgDisableQueryPages' => 'When in miser mode, disable all query pages, not only "expensive" ones',
+'sitesettings-wgUseWatchlistCache' => 'Generate a watchlist once every hour or so',
+'sitesettings-wgWLCacheTimeout' => 'The hour or so mentioned above (in seconds):',
+'sitesettings-cookies' => 'Cookies',
+'sitesettings-performance' => 'Performance',
+'sitesettings-images' => 'Images',
+
+# short names for language variants used for language conversion links. 
+# to disable showing a particular link, set it to 'disable', e.g.
+# 'variantname-zh-sg' => 'disable',
+'variantname-zh-cn' => 'cn',
+'variantname-zh-tw' => 'tw',
+'variantname-zh-hk' => 'hk',
+'variantname-zh-sg' => 'sg',
+'variantname-zh' => 'zh',
+
+# Chinese conversion table
+'zhconversiontable' => '-{}-',
+
+# labels for User: and Title: on Special:Log pages
+'specialloguserlabel' => 'User: ',
+'speciallogtitlelabel' => 'Title: ',
+
+# List of bad images
+'bad_image_list' => '',
+);

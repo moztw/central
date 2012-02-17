@@ -1,89 +1,70 @@
 <?php
 /**
+ * Wikimedia specific
+ *
+ * This script generates SQL used to update MySQL users on a hardcoded
+ * list of hosts. It takes care of setting the wikiuser for every
+ * database as well as setting up wikiadmin.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
  * @todo document
- * @package MediaWiki
- * @subpackage Maintenance
+ * @file
+ * @ingroup Maintenance
+ * @ingroup Wikimedia
  */
 
 /** */
 $wikiuser_pass = `wikiuser_pass`;
 $wikiadmin_pass = `wikiadmin_pass`;
-$wikisql_pass = `wikisql_pass`;
+$nagios_pass = `nagios_sql_pass`;
 
-$hosts = array( 
+$hosts = array(
 	'localhost',
-	'207.142.131.194',
-	'207.142.131.195',
-	'207.142.131.196',
-	'207.142.131.197',
-	'207.142.131.198',
-	'207.142.131.199',
-	'207.142.131.226',
-	'207.142.131.227',
-	'207.142.131.228',
-	'207.142.131.229',
-	'207.142.131.230',
-	'207.142.131.231',
-	'207.142.131.232',
-	'207.142.131.233',
-	'207.142.131.234',
-	'207.142.131.237',
-	'207.142.131.238',
-	'207.142.131.239',
-	'207.142.131.243',
-	'207.142.131.244',
-	'207.142.131.249',
-	'207.142.131.250',
-	'207.142.131.216',
 	'10.0.%',
+	'66.230.200.%',
+	'208.80.152.%',
 );
 
 $databases = array(
-	'%wikibooks',
-	'%wiki',
-	'%wikiquote',
-	'%wiktionary',
-	'%wikisource',
-	'%wikinews',
-	'%wikiversity',
-	'%wikimedia',
+	'%wik%',
+	'centralauth',
 );
 
-foreach( $hosts as $host ) {
-	print "--\n-- $host\n--\n\n-- wikiuser\n\n";
-	print "GRANT REPLICATION CLIENT ON *.* TO 'wikiuser'@'$host' IDENTIFIED BY '$wikiuser_pass';\n";
-	print "GRANT ALL PRIVILEGES ON `boardvote`.* TO 'wikiuser'@'$host' IDENTIFIED BY '$wikiuser_pass';\n";
-	foreach( $databases as $db ) {
+print "/*!40100 set old_passwords=1 */;\n";
+print "/*!40100 set global old_passwords=1 */;\n";
+
+foreach ( $hosts as $host ) {
+	print "--\n-- $host\n--\n";
+	print "\n-- wikiuser\n\n";
+	print "GRANT REPLICATION CLIENT,PROCESS ON *.* TO 'wikiuser'@'$host' IDENTIFIED BY '$wikiuser_pass';\n";
+	print "GRANT ALL PRIVILEGES ON `boardvote%`.* TO 'wikiuser'@'$host' IDENTIFIED BY '$wikiuser_pass';\n";
+	foreach ( $databases as $db ) {
 		print "GRANT SELECT, INSERT, UPDATE, DELETE ON `$db`.* TO 'wikiuser'@'$host' IDENTIFIED BY '$wikiuser_pass';\n";
 	}
-	
-/*
-	print "\n-- wikisql\n\n";
-	foreach ( $databases as $db ) {
-print <<<EOS
-GRANT SELECT ON `$db`.`old` TO 'wikisql'@'$host' IDENTIFIED BY '$wikisql_pass';
-GRANT SELECT ON `$db`.`imagelinks` TO 'wikisql'@'$host' IDENTIFIED BY '$wikisql_pass';
-GRANT SELECT ON `$db`.`image` TO 'wikisql'@'$host' IDENTIFIED BY '$wikisql_pass';
-GRANT SELECT ON `$db`.`watchlist` TO 'wikisql'@'$host' IDENTIFIED BY '$wikisql_pass';
-GRANT SELECT ON `$db`.`site_stats` TO 'wikisql'@'$host' IDENTIFIED BY '$wikisql_pass';
-GRANT SELECT ON `$db`.`archive` TO 'wikisql'@'$host' IDENTIFIED BY '$wikisql_pass';
-GRANT SELECT ON `$db`.`links` TO 'wikisql'@'$host' IDENTIFIED BY '$wikisql_pass';
-GRANT SELECT ON `$db`.`ipblocks` TO 'wikisql'@'$host' IDENTIFIED BY '$wikisql_pass';
-GRANT SELECT ON `$db`.`cur` TO 'wikisql'@'$host' IDENTIFIED BY '$wikisql_pass';
-GRANT SELECT (user_rights, user_id, user_name, user_options) ON `$db`.`user` TO 'wikisql'@'$host' IDENTIFIED BY '$wikisql_pass';
-GRANT SELECT ON `$db`.`oldimage` TO 'wikisql'@'$host' IDENTIFIED BY '$wikisql_pass';
-GRANT SELECT ON `$db`.`recentchanges` TO 'wikisql'@'$host' IDENTIFIED BY '$wikisql_pass';
-GRANT SELECT ON `$db`.`math` TO 'wikisql'@'$host' IDENTIFIED BY '$wikisql_pass';
-GRANT SELECT ON `$db`.`brokenlinks` TO 'wikisql'@'$host' IDENTIFIED BY '$wikisql_pass';
 
-EOS;
-	}*/
-	
 	print "\n-- wikiadmin\n\n";
 	print "GRANT PROCESS, REPLICATION CLIENT ON *.* TO 'wikiadmin'@'$host' IDENTIFIED BY '$wikiadmin_pass';\n";
-	print "GRANT ALL PRIVILEGES ON `boardvote`.* TO wikiadmin@'$host' IDENTIFIED BY '$wikiadmin_pass';\n";
+	print "GRANT ALL PRIVILEGES ON `boardvote%`.* TO wikiadmin@'$host' IDENTIFIED BY '$wikiadmin_pass';\n";
 	foreach ( $databases as $db ) {
 		print "GRANT ALL PRIVILEGES ON `$db`.* TO wikiadmin@'$host' IDENTIFIED BY '$wikiadmin_pass';\n";
 	}
+	print "\n-- nagios\n\n";
+	print "GRANT REPLICATION CLIENT ON *.* TO 'nagios'@'$host' IDENTIFIED BY '$nagios_pass';\n";
+
 	print "\n";
 }
+

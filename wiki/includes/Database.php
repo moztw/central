@@ -213,8 +213,14 @@ class Database {
 		
 		if ( $this->mFlags & DBO_PERSISTENT ) {
 			@/**/$this->mConn = mysql_pconnect( $server, $user, $password );
+                        $success = @/**/mysql_query("SET NAMES utf8");
+                        $success = @/**/mysql_query("SET CHARACTER_SET_CLIENT=utf8");
+                        $success = @/**/mysql_query("SET CHARACTER_SET_RESULTS=utf8");
 		} else {
 			@/**/$this->mConn = mysql_connect( $server, $user, $password );
+			$success = @/**/mysql_query("SET NAMES utf8");
+			$success = @/**/mysql_query("SET CHARACTER_SET_CLIENT=utf8");
+			$success = @/**/mysql_query("SET CHARACTER_SET_RESULTS=utf8");  
 		}
 
 		if ( $dbName != '' ) {

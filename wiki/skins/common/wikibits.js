@@ -1,394 +1,670 @@
-// Wikipedia JavaScript support functions
-// if this is true, the toolbar will no longer overwrite the infobox when you move the mouse over individual items
-var noOverwrite=false;
-var alertText;
-var clientPC = navigator.userAgent.toLowerCase(); // Get client info
-var is_gecko = ((clientPC.indexOf('gecko')!=-1) && (clientPC.indexOf('spoofer')==-1)
-                && (clientPC.indexOf('khtml') == -1) && (clientPC.indexOf('netscape/7.0')==-1));
-var is_safari = ((clientPC.indexOf('AppleWebKit')!=-1) && (clientPC.indexOf('spoofer')==-1));
-var is_khtml = (navigator.vendor == 'KDE' || ( document.childNodes && !document.all && !navigator.taintEnabled ));
-if (clientPC.indexOf('opera')!=-1) {
-    var is_opera = true;
-    var is_opera_preseven = (window.opera && !document.childNodes);
-    var is_opera_seven = (window.opera && document.childNodes);
+// MediaWiki JavaScript support functions
+
+window.clientPC = navigator.userAgent.toLowerCase(); // Get client info
+window.is_gecko = /gecko/.test( clientPC ) &&
+	!/khtml|spoofer|netscape\/7\.0/.test(clientPC);
+
+window.is_safari = window.is_safari_win = window.webkit_version =
+	window.is_chrome = window.is_chrome_mac = false;
+window.webkit_match = clientPC.match(/applewebkit\/(\d+)/);
+if (webkit_match) {
+	window.is_safari = clientPC.indexOf('applewebkit') != -1 &&
+		clientPC.indexOf('spoofer') == -1;
+	window.is_safari_win = is_safari && clientPC.indexOf('windows') != -1;
+	window.webkit_version = parseInt(webkit_match[1]);
+	// Tests for chrome here, to avoid breaking old scripts safari left alone
+	// This is here for accesskeys
+	window.is_chrome = clientPC.indexOf('chrome') !== -1 &&
+		clientPC.indexOf('spoofer') === -1;
+	window.is_chrome_mac = is_chrome && clientPC.indexOf('mac') !== -1
 }
+
+// For accesskeys; note that FF3+ is included here!
+window.is_ff2 = /firefox\/[2-9]|minefield\/3/.test( clientPC );
+window.ff2_bugs = /firefox\/2/.test( clientPC );
+// These aren't used here, but some custom scripts rely on them
+window.is_ff2_win = is_ff2 && clientPC.indexOf('windows') != -1;
+window.is_ff2_x11 = is_ff2 && clientPC.indexOf('x11') != -1;
+
+window.is_opera = window.is_opera_preseven = window.is_opera_95 =
+	window.opera6_bugs = window.opera7_bugs = window.opera95_bugs = false;
+if (clientPC.indexOf('opera') != -1) {
+	window.is_opera = true;
+	window.is_opera_preseven = window.opera && !document.childNodes;
+	window.is_opera_seven = window.opera && document.childNodes;
+	window.is_opera_95 = /opera\/(9\.[5-9]|[1-9][0-9])/.test( clientPC );
+	window.opera6_bugs = is_opera_preseven;
+	window.opera7_bugs = is_opera_seven && !is_opera_95;
+	window.opera95_bugs = /opera\/(9\.5)/.test( clientPC );
+}
+// As recommended by <http://msdn.microsoft.com/en-us/library/ms537509.aspx>,
+// avoiding false positives from moronic extensions that append to the IE UA
+// string (bug 23171)
+window.ie6_bugs = false;
+if ( /msie ([0-9]{1,}[\.0-9]{0,})/.exec( clientPC ) != null
+&& parseFloat( RegExp.$1 ) <= 6.0 ) {
+	ie6_bugs = true;
+}
+
+// Global external objects used by this script.
+/*extern ta, stylepath, skin */
 
 // add any onload functions in this hook (please don't hard-code any events in the xhtml source)
-function onloadhook () {
-    // don't run anything below this for non-dom browsers
-    if(!(document.getElementById && document.getElementsByTagName)) return;
-    histrowinit();
-    unhidetzbutton();
-    tabbedprefs();
-    akeytt();
+window.doneOnloadHook = undefined;
+
+if (!window.onloadFuncts) {
+	window.onloadFuncts = [];
 }
-if (window.addEventListener) window.addEventListener("load",onloadhook,false);
-else if (window.attachEvent) window.attachEvent("onload",onloadhook);
 
-
-// document.write special stylesheet links
-if(typeof stylepath != 'undefined' && typeof skin != 'undefined') {
-    if (is_opera_preseven) {
-        document.write('<link rel="stylesheet" type="text/css" href="'+stylepath+'/'+skin+'/Opera6Fixes.css" />');
-    } else if (is_opera_seven) {
-        document.write('<link rel="stylesheet" type="text/css" href="'+stylepath+'/'+skin+'/Opera7Fixes.css" />');
-    } else if (is_khtml) {
-        document.write('<link rel="stylesheet" type="text/css" href="'+stylepath+'/'+skin+'/KHTMLFixes.css" />');
-    }
-}
-// Un-trap us from framesets
-if( window.top != window ) window.top.location = window.location;
-
-// for enhanced RecentChanges
-function toggleVisibility( _levelId, _otherId, _linkId) {
-	var thisLevel = document.getElementById( _levelId );
-	var otherLevel = document.getElementById( _otherId );
-	var linkLevel = document.getElementById( _linkId );
-	if ( thisLevel.style.display == 'none' ) {
-		thisLevel.style.display = 'block';
-		otherLevel.style.display = 'none';
-		linkLevel.style.display = 'inline';
+window.addOnloadHook = function( hookFunct ) {
+	// Allows add-on scripts to add onload functions
+	if( !doneOnloadHook ) {
+		onloadFuncts[onloadFuncts.length] = hookFunct;
 	} else {
-		thisLevel.style.display = 'none';
-		otherLevel.style.display = 'inline';
-		linkLevel.style.display = 'none';
-		}
-}
-
-// page history stuff
-// attach event handlers to the input elements on history page
-function histrowinit () {
-    hf = document.getElementById('pagehistory');
-    if(!hf) return;
-    lis = hf.getElementsByTagName('li');
-    for (i=0;i<lis.length;i++) {
-        inputs=lis[i].getElementsByTagName('input');
-        if(inputs[0] && inputs[1]) {
-                inputs[0].onclick = diffcheck;
-                inputs[1].onclick = diffcheck;
-        }
-    }
-    diffcheck();
-}
-// check selection and tweak visibility/class onclick
-function diffcheck() { 
-    var dli = false; // the li where the diff radio is checked
-    var oli = false; // the li where the oldid radio is checked
-    hf = document.getElementById('pagehistory');
-    if(!hf) return;
-    lis = hf.getElementsByTagName('li');
-    for (i=0;i<lis.length;i++) {
-        inputs=lis[i].getElementsByTagName('input');
-        if(inputs[1] && inputs[0]) {
-            if(inputs[1].checked || inputs[0].checked) { // this row has a checked radio button
-                if(inputs[1].checked && inputs[0].checked && inputs[0].value == inputs[1].value) return false;
-                if(oli) { // it's the second checked radio
-                    if(inputs[1].checked) {
-                    oli.className = "selected";
-                    return false 
-                    }
-                } else if (inputs[0].checked) {
-                    return false;
-                }
-                if(inputs[0].checked) dli = lis[i];
-                if(!oli) inputs[0].style.visibility = 'hidden';
-                if(dli) inputs[1].style.visibility = 'hidden';
-                lis[i].className = "selected";
-                oli = lis[i];
-            }  else { // no radio is checked in this row
-                if(!oli) inputs[0].style.visibility = 'hidden';
-                else inputs[0].style.visibility = 'visible';
-                if(dli) inputs[1].style.visibility = 'hidden';
-                else inputs[1].style.visibility = 'visible';
-                lis[i].className = "";
-            }
-        }
-    }
-}
-
-// generate toc from prefs form, fold sections
-// XXX: needs testing on IE/Mac and safari
-// more comments to follow
-function tabbedprefs() {
-    prefform = document.getElementById('preferences');
-    if(!prefform || !document.createElement) return;
-    if(prefform.nodeName.toLowerCase() == 'a') return; // Occasional IE problem
-    prefform.className = prefform.className + 'jsprefs';
-    var sections = new Array();
-    children = prefform.childNodes;
-    var seci = 0;
-    for(i=0;i<children.length;i++) {
-        if(children[i].nodeName.toLowerCase().indexOf('fieldset') != -1) {
-            children[i].id = 'prefsection-' + seci;
-            children[i].className = 'prefsection';
-            if(is_opera || is_khtml) children[i].className = 'prefsection operaprefsection';
-            legends = children[i].getElementsByTagName('legend');
-            sections[seci] = new Object();
-            if(legends[0] && legends[0].firstChild.nodeValue)
-                sections[seci].text = legends[0].firstChild.nodeValue;
-            else
-                sections[seci].text = '# ' + seci;
-            sections[seci].secid = children[i].id;
-            seci++;
-            if(sections.length != 1) children[i].style.display = 'none';
-            else var selectedid = children[i].id;
-        }
-    }
-    var toc = document.createElement('ul');
-    toc.id = 'preftoc';
-    toc.selectedid = selectedid;
-    for(i=0;i<sections.length;i++) {
-        var li = document.createElement('li');
-        if(i == 0) li.className = 'selected';
-        var a =  document.createElement('a');
-        a.href = '#' + sections[i].secid;
-        a.onclick = uncoversection;
-        a.appendChild(document.createTextNode(sections[i].text));
-        a.secid = sections[i].secid;
-        li.appendChild(a);
-        toc.appendChild(li);
-    }
-    prefform.insertBefore(toc, children[0]);
-    document.getElementById('prefsubmit').id = 'prefcontrol';
-}
-function uncoversection() {
-    oldsecid = this.parentNode.parentNode.selectedid;
-    newsec = document.getElementById(this.secid);
-    if(oldsecid != this.secid) {
-        ul = document.getElementById('preftoc');
-        document.getElementById(oldsecid).style.display = 'none';
-        newsec.style.display = 'block';
-        ul.selectedid = this.secid;
-        lis = ul.getElementsByTagName('li');
-        for(i=0;i< lis.length;i++) {
-            lis[i].className = '';
-        }
-        this.parentNode.className = 'selected';
-    }
-    return false;
-}
-
-// Timezone stuff
-// tz in format [+-]HHMM
-function checkTimezone( tz, msg ) {
-	var localclock = new Date();
-	// returns negative offset from GMT in minutes
-	var tzRaw = localclock.getTimezoneOffset();
-	var tzHour = Math.floor( Math.abs(tzRaw) / 60);
-	var tzMin = Math.abs(tzRaw) % 60;
-	var tzString = ((tzRaw >= 0) ? "-" : "+") + ((tzHour < 10) ? "0" : "") + tzHour + ((tzMin < 10) ? "0" : "") + tzMin;
-	if( tz != tzString ) {
-		var junk = msg.split( '$1' );
-		document.write( junk[0] + "UTC" + tzString + junk[1] );
+		hookFunct();  // bug in MSIE script loading
 	}
-}
-function unhidetzbutton() {
-    tzb = document.getElementById('guesstimezonebutton')
-    if(tzb) tzb.style.display = 'inline';
-}
+};
 
-// in [-]HH:MM format...
-// won't yet work with non-even tzs
-function fetchTimezone() {
-	// FIXME: work around Safari bug
-	var localclock = new Date();
-	// returns negative offset from GMT in minutes
-	var tzRaw = localclock.getTimezoneOffset();
-	var tzHour = Math.floor( Math.abs(tzRaw) / 60);
-	var tzMin = Math.abs(tzRaw) % 60;
-	var tzString = ((tzRaw >= 0) ? "-" : "") + ((tzHour < 10) ? "0" : "") + tzHour +
-		":" + ((tzMin < 10) ? "0" : "") + tzMin;
-	return tzString;
-}
+window.importScript = function( page ) {
+	// TODO: might want to introduce a utility function to match wfUrlencode() in PHP
+	var uri = wgScript + '?title=' +
+		encodeURIComponent(page.replace(/ /g,'_')).replace(/%2F/ig,'/').replace(/%3A/ig,':') +
+		'&action=raw&ctype=text/javascript';
+	return importScriptURI( uri );
+};
 
-function guessTimezone(box) {
-	document.preferences.wpHourDiff.value = fetchTimezone();
-}
-
-function showTocToggle(show,hide) {
-	if(document.getElementById) {
-		document.writeln('<span class=\'toctoggle\'>[<a href="javascript:toggleToc()" class="internal">' +
-		'<span id="showlink" style="display:none;">' + show + '</span>' +
-		'<span id="hidelink">' + hide + '</span>'
-		+ '</a>]</span>');
+window.loadedScripts = {}; // included-scripts tracker
+window.importScriptURI = function( url ) {
+	if ( loadedScripts[url] ) {
+		return null;
 	}
-}
+	loadedScripts[url] = true;
+	var s = document.createElement( 'script' );
+	s.setAttribute( 'src', url );
+	s.setAttribute( 'type', 'text/javascript' );
+	document.getElementsByTagName('head')[0].appendChild( s );
+	return s;
+};
 
+window.importStylesheet = function( page ) {
+	return importStylesheetURI( wgScript + '?action=raw&ctype=text/css&title=' + encodeURIComponent( page.replace(/ /g,'_') ) );
+};
 
-function toggleToc() {
-	var tocmain = document.getElementById('toc');
-	var toc = document.getElementById('tocinside');
-	var showlink=document.getElementById('showlink');
-	var hidelink=document.getElementById('hidelink');
-	if(toc.style.display == 'none') {
-		toc.style.display = tocWas;
-		hidelink.style.display='';
-		showlink.style.display='none';
-		tocmain.className = '';
+window.importStylesheetURI = function( url, media ) {
+	var l = document.createElement( 'link' );
+	l.type = 'text/css';
+	l.rel = 'stylesheet';
+	l.href = url;
+	if( media ) {
+		l.media = media;
+	}
+	document.getElementsByTagName('head')[0].appendChild( l );
+	return l;
+};
 
+window.appendCSS = function( text ) {
+	var s = document.createElement( 'style' );
+	s.type = 'text/css';
+	s.rel = 'stylesheet';
+	if ( s.styleSheet ) {
+		s.styleSheet.cssText = text; // IE
 	} else {
-		tocWas = toc.style.display;
-		toc.style.display = 'none';
-		hidelink.style.display='none';
-		showlink.style.display='';
-		tocmain.className = 'tochidden';
+		s.appendChild( document.createTextNode( text + '' ) ); // Safari sometimes borks on null
+	}
+	document.getElementsByTagName('head')[0].appendChild( s );
+	return s;
+};
+
+// Special stylesheet links for Monobook only (see bug 14717)
+if ( typeof stylepath != 'undefined' && skin == 'monobook' ) {
+	if ( opera6_bugs ) {
+		importStylesheetURI( stylepath + '/' + skin + '/Opera6Fixes.css' );
+	} else if ( opera7_bugs ) {
+		importStylesheetURI( stylepath + '/' + skin + '/Opera7Fixes.css' );
+	} else if ( opera95_bugs ) {
+		importStylesheetURI( stylepath + '/' + skin + '/Opera9Fixes.css' );
+	} else if ( ff2_bugs ) {
+		importStylesheetURI( stylepath + '/' + skin + '/FF2Fixes.css' );
 	}
 }
 
-// this function generates the actual toolbar buttons with localized text
-// we use it to avoid creating the toolbar where javascript is not enabled
-function addButton(imageFile, speedTip, tagOpen, tagClose, sampleText) {
 
-	speedTip=escapeQuotes(speedTip);
-	tagOpen=escapeQuotes(tagOpen);
-	tagClose=escapeQuotes(tagClose);
-	sampleText=escapeQuotes(sampleText);
-	var mouseOver="";
-
-	// we can't change the selection, so we show example texts
-	// when moving the mouse instead, until the first button is clicked
-	if(!document.selection && !is_gecko) {
-		// filter backslashes so it can be shown in the infobox
-		var re=new RegExp("\\\\n","g");
-		tagOpen=tagOpen.replace(re,"");
-		tagClose=tagClose.replace(re,"");
-		mouseOver = "onmouseover=\"if(!noOverwrite){document.infoform.infobox.value='"+tagOpen+sampleText+tagClose+"'};\"";
+if ( 'wgBreakFrames' in window && window.wgBreakFrames ) {
+	// Un-trap us from framesets
+	if ( window.top != window ) {
+		window.top.location = window.location;
 	}
-
-	document.write("<a href=\"javascript:insertTags");
-	document.write("('"+tagOpen+"','"+tagClose+"','"+sampleText+"');\">");
-
-        document.write("<img width=\"23\" height=\"22\" src=\""+imageFile+"\" border=\"0\" alt=\""+speedTip+"\" title=\""+speedTip+"\""+mouseOver+" />");
-	document.write("</a>");
-	return;
 }
 
-function addInfobox(infoText,text_alert) {
-	alertText=text_alert;
-	var clientPC = navigator.userAgent.toLowerCase(); // Get client info
+window.changeText = function( el, newText ) {
+	// Safari work around
+	if ( el.innerText ) {
+		el.innerText = newText;
+	} else if ( el.firstChild && el.firstChild.nodeValue ) {
+		el.firstChild.nodeValue = newText;
+	}
+};
 
-	var re=new RegExp("\\\\n","g");
-	alertText=alertText.replace(re,"\n");
+window.killEvt = function( evt ) {
+	evt = evt || window.event || window.Event; // W3C, IE, Netscape
+	if ( typeof ( evt.preventDefault ) != 'undefined' ) {
+		evt.preventDefault(); // Don't follow the link
+		evt.stopPropagation();
+	} else {
+		evt.cancelBubble = true; // IE
+	}
+	return false; // Don't follow the link (IE)
+};
 
-	// if no support for changing selection, add a small copy & paste field
-	// document.selection is an IE-only property. The full toolbar works in IE and
-	// Gecko-based browsers.
-	if(!document.selection && !is_gecko) {
- 		infoText=escapeQuotesHTML(infoText);
-	 	document.write("<form name='infoform' id='infoform'>"+
-			"<input size=80 id='infobox' name='infobox' value=\""+
-			infoText+"\" readonly='readonly'></form>");
- 	}
+window.mwEditButtons = [];
+window.mwCustomEditButtons = []; // eg to add in MediaWiki:Common.js
 
-}
+window.escapeQuotes = function( text ) {
+	var re = new RegExp( "'", "g" );
+	text = text.replace( re, "\\'" );
+	re = new RegExp( "\\n", "g" );
+	text = text.replace( re, "\\n" );
+	return escapeQuotesHTML( text );
+};
 
-function escapeQuotes(text) {
-	var re=new RegExp("'","g");
-	text=text.replace(re,"\\'");
-	re=new RegExp('"',"g");
-	text=text.replace(re,'&quot;');
-	re=new RegExp("\\n","g");
-	text=text.replace(re,"\\n");
+window.escapeQuotesHTML = function( text ) {
+	var re = new RegExp( '&', "g" );
+	text = text.replace( re, "&amp;" );
+	re = new RegExp( '"', "g" );
+	text = text.replace( re, "&quot;" );
+	re = new RegExp( '<', "g" );
+	text = text.replace( re, "&lt;" );
+	re = new RegExp( '>', "g" );
+	text = text.replace( re, "&gt;" );
 	return text;
+};
+
+/**
+ * Set the accesskey prefix based on browser detection.
+ */
+window.tooltipAccessKeyPrefix = 'alt-';
+if ( is_opera ) {
+	tooltipAccessKeyPrefix = 'shift-esc-';
+} else if ( is_chrome ) {
+	tooltipAccessKeyPrefix = is_chrome_mac ? 'ctrl-option-' : 'alt-';
+} else if ( !is_safari_win && is_safari && webkit_version > 526 ) {
+	tooltipAccessKeyPrefix = 'ctrl-alt-';
+} else if ( !is_safari_win && ( is_safari
+		|| clientPC.indexOf('mac') != -1
+		|| clientPC.indexOf('konqueror') != -1 ) ) {
+	tooltipAccessKeyPrefix = 'ctrl-';
+} else if ( is_ff2 ) {
+	tooltipAccessKeyPrefix = 'alt-shift-';
 }
+window.tooltipAccessKeyRegexp = /\[(ctrl-)?(alt-)?(shift-)?(esc-)?(.)\]$/;
 
-function escapeQuotesHTML(text) {
-	var re=new RegExp('"',"g");
-	text=text.replace(re,"&quot;");
-	return text;
-}
-
-// apply tagOpen/tagClose to selection in textarea,
-// use sampleText instead of selection if there is none
-// copied and adapted from phpBB
-function insertTags(tagOpen, tagClose, sampleText) {
-
-	var txtarea = document.editform.wpTextbox1;
-	// IE
-	if(document.selection  && !is_gecko) {
-		var theSelection = document.selection.createRange().text;
-		if(!theSelection) { theSelection=sampleText;}
-		txtarea.focus();
-		if(theSelection.charAt(theSelection.length - 1) == " "){// exclude ending space char, if any
-			theSelection = theSelection.substring(0, theSelection.length - 1);
-			document.selection.createRange().text = tagOpen + theSelection + tagClose + " ";
-		} else {
-			document.selection.createRange().text = tagOpen + theSelection + tagClose;
+/**
+ * Add the appropriate prefix to the accesskey shown in the tooltip.
+ * If the nodeList parameter is given, only those nodes are updated;
+ * otherwise, all the nodes that will probably have accesskeys by
+ * default are updated.
+ *
+ * @param nodeList Array list of elements to update
+ */
+window.updateTooltipAccessKeys = function( nodeList ) {
+	if ( !nodeList ) {
+		// Rather than scan all links on the whole page, we can just scan these
+		// containers which contain the relevant links. This is really just an
+		// optimization technique.
+		var linkContainers = [
+			'column-one', // Monobook and Modern
+			'mw-head', 'mw-panel', 'p-logo' // Vector
+		];
+		for ( var i in linkContainers ) {
+			var linkContainer = document.getElementById( linkContainers[i] );
+			if ( linkContainer ) {
+				updateTooltipAccessKeys( linkContainer.getElementsByTagName( 'a' ) );
+			}
 		}
-
-	// Mozilla
-	} else if(txtarea.selectionStart || txtarea.selectionStart == '0') {
- 		var startPos = txtarea.selectionStart;
-		var endPos = txtarea.selectionEnd;
-		var scrollTop=txtarea.scrollTop;
-		var myText = (txtarea.value).substring(startPos, endPos);
-		if(!myText) { myText=sampleText;}
-		if(myText.charAt(myText.length - 1) == " "){ // exclude ending space char, if any
-			subst = tagOpen + myText.substring(0, (myText.length - 1)) + tagClose + " ";
-		} else {
-			subst = tagOpen + myText + tagClose;
-		}
-		txtarea.value = txtarea.value.substring(0, startPos) + subst +
-		  txtarea.value.substring(endPos, txtarea.value.length);
-		txtarea.focus();
-
-		var cPos=startPos+(tagOpen.length+myText.length+tagClose.length);
-		txtarea.selectionStart=cPos;
-		txtarea.selectionEnd=cPos;
-		txtarea.scrollTop=scrollTop;
-
-	// All others
-	} else {
-		var copy_alertText=alertText;
-		var re1=new RegExp("\\$1","g");
-		var re2=new RegExp("\\$2","g");
-		copy_alertText=copy_alertText.replace(re1,sampleText);
-		copy_alertText=copy_alertText.replace(re2,tagOpen+sampleText+tagClose);
-		var text;
-		if (sampleText) {
-			text=prompt(copy_alertText);
-		} else {
-			text="";
-		}
-		if(!text) { text=sampleText;}
-		text=tagOpen+text+tagClose;
-		document.infoform.infobox.value=text;
-		// in Safari this causes scrolling
-		if(!is_safari) {
-			txtarea.focus();
-		}
-		noOverwrite=true;
+		// these are rare enough that no such optimization is needed
+		updateTooltipAccessKeys( document.getElementsByTagName( 'input' ) );
+		updateTooltipAccessKeys( document.getElementsByTagName( 'label' ) );
+		return;
 	}
-	// reposition cursor if possible
-	if (txtarea.createTextRange) txtarea.caretPos = document.selection.createRange().duplicate();
-}
 
-function akeytt() {
-    if(typeof ta == "undefined" || !ta) return;
-    pref = 'alt-';
-    if(is_safari || navigator.userAgent.toLowerCase().indexOf( 'mac' ) + 1 ) pref = 'control-';
-    if(is_opera) pref = 'shift-esc-';
-    for(id in ta) {
-        n = document.getElementById(id);
-        if(n){
-            a = n.childNodes[0];
-            if(a){
-                if(ta[id][0].length > 0) {
-                    a.accessKey = ta[id][0];
-                    ak = ' ['+pref+ta[id][0]+']';
-                } else {
-                    ak = '';
-                }
-                a.title = ta[id][1]+ak;
-            } else {
-                if(ta[id][0].length > 0) {
-                    n.accessKey = ta[id][0];
-                    ak = ' ['+pref+ta[id][0]+']';
-                } else {
-                    ak = '';
-                }
-                n.title = ta[id][1]+ak;
-            }
-        }
-    }
+	for ( var i = 0; i < nodeList.length; i++ ) {
+		var element = nodeList[i];
+		var tip = element.getAttribute( 'title' );
+		if ( tip && tooltipAccessKeyRegexp.exec( tip ) ) {
+			tip = tip.replace(tooltipAccessKeyRegexp,
+					  '[' + tooltipAccessKeyPrefix + "$5]");
+			element.setAttribute( 'title', tip );
+		}
+	}
+};
+
+/**
+ * Add a link to one of the portlet menus on the page, including:
+ *
+ * p-cactions: Content actions (shown as tabs above the main content in Monobook)
+ * p-personal: Personal tools (shown at the top right of the page in Monobook)
+ * p-navigation: Navigation
+ * p-tb: Toolbox
+ *
+ * This function exists for the convenience of custom JS authors.  All
+ * but the first three parameters are optional, though providing at
+ * least an id and a tooltip is recommended.
+ *
+ * By default the new link will be added to the end of the list.  To
+ * add the link before a given existing item, pass the DOM node of
+ * that item (easily obtained with document.getElementById()) as the
+ * nextnode parameter; to add the link _after_ an existing item, pass
+ * the node's nextSibling instead.
+ *
+ * @param portlet String id of the target portlet ("p-cactions", "p-personal", "p-navigation" or "p-tb")
+ * @param href String link URL
+ * @param text String link text (will be automatically lowercased by CSS for p-cactions in Monobook)
+ * @param id String id of the new item, should be unique and preferably have the appropriate prefix ("ca-", "pt-", "n-" or "t-")
+ * @param tooltip String text to show when hovering over the link, without accesskey suffix
+ * @param accesskey String accesskey to activate this link (one character, try to avoid conflicts)
+ * @param nextnode Node the DOM node before which the new item should be added, should be another item in the same list
+ *
+ * @return Node -- the DOM node of the new item (an LI element) or null
+ */
+window.addPortletLink = function( portlet, href, text, id, tooltip, accesskey, nextnode ) {
+	var root = document.getElementById( portlet );
+	if ( !root ) {
+		return null;
+	}
+	var uls = root.getElementsByTagName( 'ul' );
+	var node;
+	if ( uls.length > 0 ) {
+		node = uls[0];
+	} else {
+		node = document.createElement( 'ul' );
+		var lastElementChild = null;
+		for ( var i = 0; i < root.childNodes.length; ++i ) { /* get root.lastElementChild */
+			if ( root.childNodes[i].nodeType == 1 ) {
+				lastElementChild = root.childNodes[i];
+			}
+		}
+		if ( lastElementChild && lastElementChild.nodeName.match( /div/i ) ) {
+			/* Insert into the menu divs */
+			lastElementChild.appendChild( node );
+		} else {
+			root.appendChild( node );
+		}
+	}
+	if ( !node ) {
+		return null;
+	}
+
+	// unhide portlet if it was hidden before
+	root.className = root.className.replace( /(^| )emptyPortlet( |$)/, "$2" );
+
+	var link = document.createElement( 'a' );
+	link.appendChild( document.createTextNode( text ) );
+	link.href = href;
+
+	// Wrap in a span - make it work with vector tabs and has no effect on any other portlets
+	var span = document.createElement( 'span' );
+	span.appendChild( link );
+
+	var item = document.createElement( 'li' );
+	item.appendChild( span );
+	if ( id ) {
+		item.id = id;
+	}
+
+	if ( accesskey ) {
+		link.setAttribute( 'accesskey', accesskey );
+		tooltip += ' [' + accesskey + ']';
+	}
+	if ( tooltip ) {
+		link.setAttribute( 'title', tooltip );
+	}
+	if ( accesskey && tooltip ) {
+		updateTooltipAccessKeys( new Array( link ) );
+	}
+
+	if ( nextnode && nextnode.parentNode == node ) {
+		node.insertBefore( item, nextnode );
+	} else {
+		node.appendChild( item );  // IE compatibility (?)
+	}
+
+	return item;
+};
+
+window.getInnerText = function( el ) {
+	if ( typeof el == 'string' ) {
+		return el;
+	}
+	if ( typeof el == 'undefined' ) {
+		return el;
+	}
+	// Custom sort value through 'data-sort-value' attribute
+	// (no need to prepend hidden text to change sort value)
+	if ( el.nodeType && el.getAttribute( 'data-sort-value' ) !== null ) {
+		// Make sure it's a valid DOM element (.nodeType) and that the attribute is set (!null)
+		return el.getAttribute( 'data-sort-value' );
+	}
+	if ( el.textContent ) {
+		return el.textContent; // not needed but it is faster
+	}
+	if ( el.innerText ) {
+		return el.innerText; // IE doesn't have textContent
+	}
+	var str = '';
+
+	var cs = el.childNodes;
+	var l = cs.length;
+	for ( var i = 0; i < l; i++ ) {
+		switch ( cs[i].nodeType ) {
+			case 1: // ELEMENT_NODE
+				str += getInnerText( cs[i] );
+				break;
+			case 3:	// TEXT_NODE
+				str += cs[i].nodeValue;
+				break;
+		}
+	}
+	return str;
+};
+
+/* Dummy for deprecated function */
+window.ta = [];
+window.akeytt = function( doId ) {
+};
+
+window.checkboxes = undefined;
+window.lastCheckbox = undefined;
+
+window.setupCheckboxShiftClick = function() {
+	checkboxes = [];
+	lastCheckbox = null;
+	var inputs = document.getElementsByTagName( 'input' );
+	addCheckboxClickHandlers( inputs );
+};
+
+window.addCheckboxClickHandlers = function( inputs, start ) {
+	if ( !start ) {
+		start = 0;
+	}
+
+	var finish = start + 250;
+	if ( finish > inputs.length ) {
+		finish = inputs.length;
+	}
+
+	for ( var i = start; i < finish; i++ ) {
+		var cb = inputs[i];
+		if ( !cb.type || cb.type.toLowerCase() != 'checkbox' || ( ' ' + cb.className + ' ' ).indexOf( ' noshiftselect ' )  != -1 ) {
+			continue;
+		}
+		var end = checkboxes.length;
+		checkboxes[end] = cb;
+		cb.index = end;
+		addClickHandler( cb, checkboxClickHandler );
+	}
+
+	if ( finish < inputs.length ) {
+		setTimeout( function() {
+			addCheckboxClickHandlers( inputs, finish );
+		}, 200 );
+	}
+};
+
+window.checkboxClickHandler = function( e ) {
+	if ( typeof e == 'undefined' ) {
+		e = window.event;
+	}
+	if ( !e.shiftKey || lastCheckbox === null ) {
+		lastCheckbox = this.index;
+		return true;
+	}
+	var endState = this.checked;
+	var start, finish;
+	if ( this.index < lastCheckbox ) {
+		start = this.index + 1;
+		finish = lastCheckbox;
+	} else {
+		start = lastCheckbox;
+		finish = this.index - 1;
+	}
+	for ( var i = start; i <= finish; ++i ) {
+		checkboxes[i].checked = endState;
+		if( i > start && typeof checkboxes[i].onchange == 'function' ) {
+			checkboxes[i].onchange(); // fire triggers
+		}
+	}
+	lastCheckbox = this.index;
+	return true;
+};
+
+
+/*
+	Written by Jonathan Snook, http://www.snook.ca/jonathan
+	Add-ons by Robert Nyman, http://www.robertnyman.com
+	Author says "The credit comment is all it takes, no license. Go crazy with it!:-)"
+	From http://www.robertnyman.com/2005/11/07/the-ultimate-getelementsbyclassname/
+*/
+window.getElementsByClassName = function( oElm, strTagName, oClassNames ) {
+	var arrReturnElements = new Array();
+	if ( typeof( oElm.getElementsByClassName ) == 'function' ) {
+		/* Use a native implementation where possible FF3, Saf3.2, Opera 9.5 */
+		var arrNativeReturn = oElm.getElementsByClassName( oClassNames );
+		if ( strTagName == '*' ) {
+			return arrNativeReturn;
+		}
+		for ( var h = 0; h < arrNativeReturn.length; h++ ) {
+			if( arrNativeReturn[h].tagName.toLowerCase() == strTagName.toLowerCase() ) {
+				arrReturnElements[arrReturnElements.length] = arrNativeReturn[h];
+			}
+		}
+		return arrReturnElements;
+	}
+	var arrElements = ( strTagName == '*' && oElm.all ) ? oElm.all : oElm.getElementsByTagName( strTagName );
+	var arrRegExpClassNames = new Array();
+	if( typeof oClassNames == 'object' ) {
+		for( var i = 0; i < oClassNames.length; i++ ) {
+			arrRegExpClassNames[arrRegExpClassNames.length] =
+				new RegExp("(^|\\s)" + oClassNames[i].replace(/\-/g, "\\-") + "(\\s|$)");
+		}
+	} else {
+		arrRegExpClassNames[arrRegExpClassNames.length] =
+			new RegExp("(^|\\s)" + oClassNames.replace(/\-/g, "\\-") + "(\\s|$)");
+	}
+	var oElement;
+	var bMatchesAll;
+	for( var j = 0; j < arrElements.length; j++ ) {
+		oElement = arrElements[j];
+		bMatchesAll = true;
+		for( var k = 0; k < arrRegExpClassNames.length; k++ ) {
+			if( !arrRegExpClassNames[k].test( oElement.className ) ) {
+				bMatchesAll = false;
+				break;
+			}
+		}
+		if( bMatchesAll ) {
+			arrReturnElements[arrReturnElements.length] = oElement;
+		}
+	}
+	return ( arrReturnElements );
+};
+
+window.redirectToFragment = function( fragment ) {
+	var match = navigator.userAgent.match(/AppleWebKit\/(\d+)/);
+	if ( match ) {
+		var webKitVersion = parseInt( match[1] );
+		if ( webKitVersion < 420 ) {
+			// Released Safari w/ WebKit 418.9.1 messes up horribly
+			// Nightlies of 420+ are ok
+			return;
+		}
+	}
+	if ( window.location.hash == '' ) {
+		window.location.hash = fragment;
+
+		// Mozilla needs to wait until after load, otherwise the window doesn't
+		// scroll.  See <https://bugzilla.mozilla.org/show_bug.cgi?id=516293>.
+		// There's no obvious way to detect this programmatically, so we use
+		// version-testing.  If Firefox fixes the bug, they'll jump twice, but
+		// better twice than not at all, so make the fix hit future versions as
+		// well.
+		if ( is_gecko ) {
+			addOnloadHook(function() {
+				if ( window.location.hash == fragment ) {
+					window.location.hash = fragment;
+				}
+			});
+		}
+	}
+};
+
+/**
+ * Add a cute little box at the top of the screen to inform the user of
+ * something, replacing any preexisting message.
+ *
+ * @param message String -or- Dom Object  HTML to be put inside the right div
+ * @param className String   Used in adding a class; should be different for each
+ *   call to allow CSS/JS to hide different boxes.  null = no class used.
+ * @return Boolean       True on success, false on failure
+ */
+window.jsMsg = function( message, className ) {
+	if ( !document.getElementById ) {
+		return false;
+	}
+	// We special-case skin structures provided by the software.  Skins that
+	// choose to abandon or significantly modify our formatting can just define
+	// an mw-js-message div to start with.
+	var messageDiv = document.getElementById( 'mw-js-message' );
+	if ( !messageDiv ) {
+		messageDiv = document.createElement( 'div' );
+		if ( document.getElementById( 'column-content' )
+		&& document.getElementById( 'content' ) ) {
+			// MonoBook, presumably
+			document.getElementById( 'content' ).insertBefore(
+				messageDiv,
+				document.getElementById( 'content' ).firstChild
+			);
+		} else if ( document.getElementById( 'content' )
+		&& document.getElementById( 'article' ) ) {
+			// Non-Monobook but still recognizable (old-style)
+			document.getElementById( 'article').insertBefore(
+				messageDiv,
+				document.getElementById( 'article' ).firstChild
+			);
+		} else {
+			return false;
+		}
+	}
+
+	messageDiv.setAttribute( 'id', 'mw-js-message' );
+	messageDiv.style.display = 'block';
+	if( className ) {
+		messageDiv.setAttribute( 'class', 'mw-js-message-' + className );
+	}
+
+	if ( typeof message === 'object' ) {
+		while ( messageDiv.hasChildNodes() ) { // Remove old content
+			messageDiv.removeChild( messageDiv.firstChild );
+		}
+		messageDiv.appendChild( message ); // Append new content
+	} else {
+		messageDiv.innerHTML = message;
+	}
+	return true;
+};
+
+/**
+ * Inject a cute little progress spinner after the specified element
+ *
+ * @param element Element to inject after
+ * @param id Identifier string (for use with removeSpinner(), below)
+ */
+window.injectSpinner = function( element, id ) {
+	var spinner = document.createElement( 'img' );
+	spinner.id = 'mw-spinner-' + id;
+	spinner.src = stylepath + '/common/images/spinner.gif';
+	spinner.alt = spinner.title = '...';
+	if( element.nextSibling ) {
+		element.parentNode.insertBefore( spinner, element.nextSibling );
+	} else {
+		element.parentNode.appendChild( spinner );
+	}
+};
+
+/**
+ * Remove a progress spinner added with injectSpinner()
+ *
+ * @param id Identifier string
+ */
+window.removeSpinner = function( id ) {
+	var spinner = document.getElementById( 'mw-spinner-' + id );
+	if( spinner ) {
+		spinner.parentNode.removeChild( spinner );
+	}
+};
+
+window.runOnloadHook = function() {
+	// don't run anything below this for non-dom browsers
+	if ( doneOnloadHook || !( document.getElementById && document.getElementsByTagName ) ) {
+		return;
+	}
+
+	// set this before running any hooks, since any errors below
+	// might cause the function to terminate prematurely
+	doneOnloadHook = true;
+
+	// Run any added-on functions
+	for ( var i = 0; i < onloadFuncts.length; i++ ) {
+		onloadFuncts[i]();
+	}
+};
+
+/**
+ * Add an event handler to an element
+ *
+ * @param element Element to add handler to
+ * @param attach String Event to attach to
+ * @param handler callable Event handler callback
+ */
+window.addHandler = function( element, attach, handler ) {
+	if( element.addEventListener ) {
+		element.addEventListener( attach, handler, false );
+	} else if( element.attachEvent ) {
+		element.attachEvent( 'on' + attach, handler );
+	}
+};
+
+window.hookEvent = function( hookName, hookFunct ) {
+	addHandler( window, hookName, hookFunct );
+};
+
+/**
+ * Add a click event handler to an element
+ *
+ * @param element Element to add handler to
+ * @param handler callable Event handler callback
+ */
+window.addClickHandler = function( element, handler ) {
+	addHandler( element, 'click', handler );
+};
+
+/**
+ * Removes an event handler from an element
+ *
+ * @param element Element to remove handler from
+ * @param remove String Event to remove
+ * @param handler callable Event handler callback to remove
+ */
+window.removeHandler = function( element, remove, handler ) {
+	if( window.removeEventListener ) {
+		element.removeEventListener( remove, handler, false );
+	} else if( window.detachEvent ) {
+		element.detachEvent( 'on' + remove, handler );
+	}
+};
+// note: all skins should call runOnloadHook() at the end of html output,
+//      so the below should be redundant. It's there just in case.
+hookEvent( 'load', runOnloadHook );
+
+if ( ie6_bugs ) {
+	importScriptURI( stylepath + '/common/IEFixes.js' );
 }
