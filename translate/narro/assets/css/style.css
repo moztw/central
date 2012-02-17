@@ -1,0 +1,204 @@
+/**
+ * Narro is an application that allows online software translation and maintenance.
+ * Copyright (C) 2008 Alexandru Szasz <alexxed@gmail.com>
+ * http://code.google.com/p/narro/
+ *
+ * This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
+ * License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any
+ * later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the
+ * implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along with this program; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ */
+
+body {
+    font-family:verdana,arial,tahoma,sans-serif;
+}
+.title { font-weight: bold; margin-left: -2px;}
+.title_action { font-weight: bold; margin-bottom: -4px; }
+.warning { color: #ff0000; }
+.instructions { font-style: italic; color: #888888}
+.item_divider { line-height: 16px; }
+.item_label { padding-bottom: 4px; }
+.item_label_disabled { padding-bottom: 4px; color: #999999; }
+
+.button {  }
+.listbox {  }
+.textbox {  }
+
+.paginator_inactive_step { font-weight: bold; color: #aaaaaa; }
+.paginator_active_step { font-weight: bold; color: #000000; text-decoration: none; }
+.paginator_page { text-decoration: none; color: #000000; padding: 0px 3px 0px 3px; }
+.paginator_selected_page { font-weight: bold; background-color: #ddccff; padding: 0px 3px 0px 3px; border: 1px; border-style: solid; }
+
+.dashboard_top {width: 854px; margin-left: 170px; color: #000066; font: 30px 'Verdana','Arial','Helvetica','Sans-Serif'; font-weight: bold; height: 40px;}
+.dashboard_pane {float: left; width: 160px;}
+.dashboard_left {float: left; background-color: #eeeeff; width: 400px; height: 500px; margin-left: 10px; border-width: 1px; border-style: solid; border-color: black; padding: 10px; overflow: auto;}
+.dashboard_right {float: left; background-color: #eeeeff; width: 400px; height: 500px; margin-left: 10px; border-width: 1px; border-style: solid; border-color: black; padding: 10px; overflow: auto;}
+
+.file_asset_dbox { border: 1px solid #1c4a8c; background-color: #fff; padding: 20px; width: 400px; overflow: auto; }
+.file_asset_dbox h1 { margin: 0; }
+.file_asset_dbox input { padding: 3px; margin-right: 5px; }
+
+.dotted_box { border:1px dotted black;}
+.dotted_box_title { display:block; background-color: #A5F7A5; font-weight:bold; padding:2px; }
+.dotted_box_content { padding:5px; }
+
+a:link, a:visited {
+  color: #557D0C;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:active, a.active {
+  color: #6c871d;
+}
+
+td, th{
+    text-align: left;
+}
+
+th.dtg_header_row a {
+    color: black;
+}
+
+div.graph {
+border:0px solid black;
+height:15px;
+position:relative;
+width:160px;
+}
+
+div.translated {
+background:transparent url(../images/green-bar.png) repeat-x scroll 0pt 50%;
+height:100%;
+left:0%;
+position:absolute;
+top:0px;
+}
+
+div.fuzzy {
+background:transparent url(../images/orange-bar.png) repeat-x scroll 0pt 50%;
+height:100%;
+position:absolute;
+top:0px;
+}
+
+div.untranslated {
+background:transparent url(../images/red-bar.png) repeat-x scroll 0pt 50%;
+height:100%;
+position:absolute;
+top:0px;
+}
+
+#header {
+    text-align:right;
+    width:100%;
+}
+
+th.datagrid_header {
+    background: #DDDDDD url(../images/bg_td2.jpg) repeat-x;
+    height: 30px;
+    color: #000000;
+    font-weight: bold;
+    padding: 0px 7px;
+    margin: 20px 0px 0px;
+    text-align: left;
+    border-right: 1px solid #DDDDDD;
+}
+
+div.breadcrumb {
+    background: #DDDDDD url(../images/bg_td1.jpg) repeat-x;
+    padding: 4px;
+    text-align: left;
+    border: 1px solid #DDDDDD;
+}
+
+th.datagrid_header a{
+    color: #000000;
+}
+
+th.datagrid_header a:hover{
+    color: #000000;
+}
+
+tr.datagrid_even {
+    background: url(../images/bg_td1.jpg) repeat-x top;
+}
+tr.datagrid_odd {
+    background: #FFFFFF url(../images/bg_td1.jpg) repeat-x;
+}
+
+tr.selected {
+    background: #D0FAD0;
+}
+
+.white3dbg {
+    background: #FFFFFF url(../images/bg_td1.jpg) repeat-x;
+}
+
+.green3dbg {
+    background: #A5F7A5;
+}
+
+tbody th.datagrid_row,td.datagrid_row {
+    line-height: 1.4em;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #777777;
+    padding: 10px 7px;
+    border-top: 1px solid #FFCA5E;
+    border-right: 1px solid #DDDDDD;
+    text-align: left;
+}
+td.datagrid_row a {
+    color: #777777;
+    font-weight: bold;
+    text-decoration: underline;
+}
+td.datagrid_row a:hover {
+    color: #F8A704;
+    text-decoration: underline;
+}
+th.datagrid_footer {
+    background: url(../images/bg_total.jpg) repeat-x bottom;
+    color: #FFFFFF;
+    height: 30px;
+}
+
+td.datagrid_footer {
+    background: url(../images/bg_total.jpg) repeat-x bottom;
+    color: #FFFFFF;
+    height: 30px;
+}
+
+.ltr {
+    direction: ltr;
+    text-align: left;
+}
+
+.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+.mispelled_word {
+    color: red;
+    background-color:white;
+    font-weight:bold;
+}
+
+.mispelled_suggestion {
+    color:green;
+    background-color:white;
+    font-weight:bold;
+}
+
+.whitespace {
+    background-color:white;
+    margin-right:2px;
+}
