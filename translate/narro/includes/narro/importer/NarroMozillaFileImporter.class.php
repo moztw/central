@@ -1,4 +1,13 @@
 <?php
+     /* When importing strings that if a string with a accesskey is not found in the string itself, 
+	Narro would pick the first ascii character from the string as accesskey.  
+	However, We (MozTW) follow the accesskeys from en-US so this activity is not desirable.
+
+	Workaround is landed, but it would still show error message when importing.
+	
+	by petercpg Mar. 23, 2012 
+     */
+
     /**
      * Narro is an application that allows online software translation and maintenance.
      * Copyright (C) 2008 Alexandru Szasz <alexxed@gmail.com>
@@ -74,9 +83,10 @@
                                     NarroLog::LogMessage(1, sprintf('Found access key %s, using it', $arrAccKey[$strLabelCtx]));
                                 }
                                 elseif (preg_match('/[a-z]/i', $strOriginalText, $arrPossibleKeyMatches)) {
-                                    $arrAccKey[$strLabelCtx] = $arrPossibleKeyMatches[0];
-                                    unset($arrTexts[$strAccCtx]);
-                                    NarroLog::LogMessage(3, sprintf('Found access key %s does not exist in the label %s, using the first ascii character as accesskey: "%s"', $strAccKey, $arrTexts[$strLabelCtx], $arrPossibleKeyMatches[0]));
+                                    //$arrAccKey[$strLabelCtx] = $arrPossibleKeyMatches[0];
+                                    //unset($arrTexts[$strAccCtx]);
+                                    $arrAccKey[$strLabelCtx] = $strAccKey; //hack by petercpg Mar. 23 2012
+				    NarroLog::LogMessage(3, sprintf('Found access key %s does not exist in the label %s, using the first ascii character as accesskey: "%s"', $strAccKey, $arrTexts[$strLabelCtx], $arrPossibleKeyMatches[0]));
                                 }
                                 else {
                                     $arrAccKey[$strLabelCtx] = $strAccKey;
@@ -126,7 +136,8 @@
                     if ($objNarroContextInfo->SuggestionAccessKey) {
                         if (!preg_match('/[a-z0-9\-\+]/i', $objNarroContextInfo->SuggestionAccessKey)) {
                             if (preg_match('/[a-z0-9\-\+]/i', $objNarroContextInfo->ValidSuggestion->SuggestionValue, $arrPossibleKeyMatches)) {
-                                $arrTranslationKeys[$objNarroContextInfo->Context->Context] = $arrPossibleKeyMatches[0];
+                                //$arrTranslationKeys[$objNarroContextInfo->Context->Context] = $arrPossibleKeyMatches[0];
+				$arrTranslationKeys[$objNarroContextInfo->Context->Context] = $objNarroContextInfo->TextAccessKey; //hack by petercpg Mar 23, 2012
                                 NarroLog::LogMessage(3, sprintf('For context "%s", found access key "%s" is not a ascii character, using the first ascii character as accesskey: "%s"', $objNarroContextInfo->Context->Context, $objNarroContextInfo->SuggestionAccessKey, $arrPossibleKeyMatches[0]));
                             }
                             else {
