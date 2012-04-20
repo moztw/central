@@ -15,11 +15,11 @@
 		<li>若您是 l10n 團隊的一員或是已接受邀請願意參與翻譯</li>
 		<li>想要看看尚未 push 到 Mozilla 的翻譯進度</li>
 	</ul>
-	<p>請前往 <a href="https://l10n-stage-sj.mozilla.org/dashboard/?locale=zh-TW">l10n dashboard</a></p>
+	<p>請前往 <a href="https://l10n.mozilla.org/teams/zh-TW">l10n dashboard</a> 或 <a href="https://l10n.mozilla.org/dashboard/?locale=zh-TW">old l10n dashboard</a></p>
 	<ul>
 		<li>若您想要知道目前各程式在 Mozilla repository 的狀態</li>
 	</ul>
-	<p>請前往 <a href="https://l10n-stage-sj.mozilla.org/webby/">Webby</a></p>
+	<p>請前往 <a href="https://l10n.mozilla.org/webby/">Webby</a></p>
 	<ul>
 		<li>若您想要知道目前有哪些語系已經加入某個網頁專案，以及各專案的狀態</li>
 		<li>各網頁專案的 repo/stage 等基礎資訊</li>

@@ -10,7 +10,7 @@ header('Content-Type: text/plain; charset=utf-8');
  - 若您是 l10n 團隊的一員或是已接受邀請
  - 想要看看尚未 push 到 Mozilla 的翻譯進度
 
-請前往 https://l10n-stage-sj.mozilla.org/dashboard/?locale=zh-TW
+請前往 https://l10n.mozilla.org/teams/zh-TW 或 https://l10n-stage-sj.mozilla.org/dashboard/?locale=zh-TW
  - 若您想要知道目前各程式在 Mozilla repository 的狀態
 
 要瀏覽檔案請洽 http://mxr.mozilla.org/
