@@ -109,8 +109,8 @@ $wgLocaltimezone = "Asia/Taipei";
 
 require_once("$IP/extensions/Nuke/Nuke.php");
 require_once("$IP/extensions/DeleteBatch/DeleteBatch.php");
-require_once( "$IP/extensions/ConfirmEdit/ConfirmEdit.php" );
-require_once( "$IP/extensions/ConfirmEdit/ReCaptcha.php"); 
+require_once("$IP/extensions/ConfirmEdit/ConfirmEdit.php");
+require_once("$IP/extensions/ConfirmEdit/ReCaptcha.php" );
 require_once("$IP/extensions/Renameuser/Renameuser.php");
 //require_once( "$IP/extensions/WikiEditor/WikiEditor.php" );
 
