@@ -69,7 +69,7 @@ class FancyCaptcha extends SimpleCaptcha {
 				'id'    => 'wpCaptchaId',
 				'value' => $index ) ) .
 			"<p>" .
-			Xml::element( 'input', array(
+			Html::element( 'input', array(
 				'name' => 'wpCaptchaWord',
 				'id'   => 'wpCaptchaWord',
 				'autocorrect' => 'off',
@@ -97,6 +97,9 @@ class FancyCaptcha extends SimpleCaptcha {
 
 			// Check which subdirs are actually present...
 			$dir = opendir( $directory );
+			if ( !$dir ) {
+				return false;
+			}
 			while ( false !== ( $entry = readdir( $dir ) ) ) {
 				if ( ctype_xdigit( $entry ) && strlen( $entry ) == 1 ) {
 					$dirs[] = $entry;
