@@ -122,6 +122,16 @@ a
 		color: green;
 	}
 
+	#irc .join, #irc .quit 
+	{
+    	display: none;
+	}
+
+	#irc.showmsg .join, #irc.showmsg .quit 
+	{
+    	display: table-row;
+	}
+
 	#irc  .action, #irc .action a
 	{
 		color: purple;

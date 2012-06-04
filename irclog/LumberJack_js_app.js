@@ -31,6 +31,9 @@ $(function() {
 	$("#next").click( page_down );
 	$("#events").click( events );
 	$("#important").click( important );
+	$("#showmsg").click(function() {
+    	$("#irc").toggleClass("showmsg");
+	})
 	
 	$("#searchoptions").hide();	
 });
@@ -237,7 +240,7 @@ function page_up()
 {	
 	// Ajax call to populate table
 	loading();
-	$.getJSON("json.php", {'type':'context', 'id':first_id, 'n':20, 'context':'before' },
+	$.getJSON("json.php", {'type':'context', 'id':first_id, 'n':50, 'context':'before' },
         function(data){
         	$("<tr class='pagebreak'><td></td> <td>------------------------------</td> <td></td></tr>").prependTo("#irc");
         	$(data).each( function(i, item) { 	
@@ -255,7 +258,7 @@ function page_down()
 {	
 	loading();
 	
-	$.getJSON("json.php", {'type':'context', 'id':last_id, 'n':20, 'context':'after' },
+	$.getJSON("json.php", {'type':'context', 'id':last_id, 'n':50, 'context':'after' },
         function(data){
         	$("<tr class='pagebreak'><td></td> <td>------------------------------</td> <td></td></tr>").appendTo("#irc");
         	$(data).each( function(i, item) { 	
