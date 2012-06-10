@@ -15,7 +15,7 @@
 		<li>若您是 l10n 團隊的一員或是已接受邀請願意參與翻譯</li>
 		<li>想要看看尚未 push 到 Mozilla 的翻譯進度</li>
 	</ul>
-	<p>請前往 <a href="https://l10n.mozilla.org/teams/zh-TW">l10n dashboard</a> 或 <a href="https://l10n.mozilla.org/dashboard/?locale=zh-TW">old l10n dashboard</a></p>
+	<p>請前往 <a href="https://l10n.mozilla.org/teams/zh-TW">L10n dashboard</a><!-- 或 <a href="https://l10n.mozilla.org/dashboard/?locale=zh-TW">old l10n dashboard</a>--></p>
 	<ul>
 		<li>若您想要知道目前各程式在 Mozilla repository 的狀態</li>
 	</ul>
