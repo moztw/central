@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8" />
 	<title>MozTW 翻譯站</title>
+	<base target="_blank" />
 </head>
 <body>
 	<h1>MozTW 翻譯站</h1>
