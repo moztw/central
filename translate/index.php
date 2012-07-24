@@ -106,7 +106,7 @@ sudo -u www-data ln -s <strong>../../</strong>../../../../../repo/<strong>mozill
 		<li>將 Accesskey 全部改為與英文版相同 <button class="correct-accesskey">同步</button></li>
 		<li>回到翻譯流程 #4</li>
 	</ol>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript">
 $(function () {
 	$('.correct-accesskey').bind(
