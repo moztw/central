@@ -33,7 +33,7 @@
 	<p>第三方工具</p>
 	<ul>
 		<li><a href="http://mxr.mozilla.org/">mxr.mozilla.org</a> - 瀏覽 Mozilla 程式碼（Mozilla）</li>
-		<li><a href="http://www.frenchmozilla.fr/glossaire/zh-TW/">Search in the glossary</a> - 詞彙位置搜尋（法國 L10n 團隊；僅限 Firefox）</li>
+		<li><a href="http://transvision.mozfr.org/">Transvision glossary</a> - 詞彙位置搜尋（法國 L10n 團隊）</li>
                 <li>English CopyNPaste Translations for <a href="http://indianoss.sourceforge.net/mozilla/CopyNPasteFinder.php?q=zh-TW">Firefox</a>、<a href="http://indianoss.sourceforge.net/mozilla/CopyNPasteFinder_Aurora.php?q=zh-TW">Firefox Aurora</a> - 中英相同詞彙列表（印度團隊）</li>
 	</ul>
 	<p>所有非 <a href="http://blog.mozilla.com/blog/2011/04/13/new-channels-for-firefox-rapid-releases/">Rapid Release Cycle</a> 下的舊版本翻譯已不再維護並自翻譯站移除，若有需要請直接至 Mozilla 取回最終版本翻譯，或至 <a href="oldrepo/">此處</a> 取用備份（以專案與版本區分資料夾）。</p>
