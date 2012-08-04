@@ -16,9 +16,13 @@
 		<li>若您是 l10n 團隊的一員或是已接受邀請願意參與翻譯</li>
 		<li>想要看看尚未 push 到 Mozilla 的翻譯進度</li>
 	</ul>
+	<p>請前往 <a href="http://translate.moztw.org/l10n-base/">L10n Base</a></p>
+	<ul>
+		<li>若您想要取得本站的 Narro 所匯出的資料（By file），這些資料可能已經或尚未送出至 Mozilla repository</li>
+	</ul>
 	<p>請前往 <a href="https://l10n.mozilla.org/teams/zh-TW">L10n dashboard</a><!-- 或 <a href="https://l10n.mozilla.org/dashboard/?locale=zh-TW">old l10n dashboard</a>--></p>
 	<ul>
-		<li>若您想要知道目前各程式在 Mozilla repository 的狀態</li>
+		<li>若您想要知道目前各程式的正體中文語系在 Mozilla repository 當中的狀態</li>
 	</ul>
 	<p>請前往 <a href="https://l10n.mozilla.org/webby/">Webby</a></p>
 	<ul>
