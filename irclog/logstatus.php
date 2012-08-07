@@ -33,6 +33,7 @@ function checkBot($process) {
 			$.get('./callbot.php',
 				function (data) {
 					alert(data);
+					location.reload();
 				}
 			     );
 			}
