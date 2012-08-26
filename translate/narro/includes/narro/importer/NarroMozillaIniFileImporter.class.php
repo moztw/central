@@ -211,9 +211,9 @@
         public function GetAccessKeys($arrTexts) {
             $arrTexts = parent::GetAccessKeys($arrTexts);
             foreach($arrTexts as $strContext=>$objEntity) {
-                if (preg_match('/&([^\s])/', html_entity_decode($objEntity->Value), $arrMatches)) {
+                if (preg_match('/&([a-z0-9])/i', html_entity_decode($objEntity->Value), $arrMatches)) {
                     $objEntity->AccessKey = $arrMatches[1];
-                    $arrTexts[$strContext]->Value = str_replace($arrMatches[0], $arrMatches[1], $objEntity->Value);
+                    $arrTexts[$strContext]->Value = NarroString::Replace($arrMatches[0], $arrMatches[1], $objEntity->Value, 1);
                 }
             }
 
