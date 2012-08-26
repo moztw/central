@@ -1,0 +1,128 @@
+<?php
+	require(__META_CONTROLS_GEN__ . '/NarroLogDataGridGen.class.php');
+
+	/**
+	 * This is the "Meta" DataGrid customizable subclass for the List functionality
+	 * of the NarroLog class.  This code-generated class extends
+	 * from the generated Meta DataGrid class which contains a QDataGrid class which
+	 * can be used by any QForm or QPanel, listing a collection of NarroLog
+	 * objects.  It includes functionality to perform pagination and sorting on columns.
+	 *
+	 * To take advantage of some (or all) of these control objects, you
+	 * must create an instance of this DataGrid in a QForm or QPanel.
+	 *
+	 * This file is intended to be modified.  Subsequent code regenerations will NOT modify
+	 * or overwrite this file.
+	 *
+	 * @package Narro
+	 * @subpackage MetaControls
+	 *
+	 */
+	class NarroLogDataGrid extends NarroLogDataGridGen {
+	    // Specify a CssClass
+	    protected $strCssClass = 'datagrid';
+	     
+	    // Let's Show a Footer
+	    protected $blnShowFooter = true;
+	     
+	    protected $blnAlwaysShowPaginator = true;
+	     
+	    // Let's define the footer to be to display our alternate paginator
+	    // We'll use the already built-in GetPaginatorRowHtml, sending in our ALTERNATE paginator, to help with the rendering
+	    protected function GetFooterRowHtml() {
+	        QApplication::ExecuteJavaScript(sprintf('highlight_datagrid(\'%s\');', $this->ControlId));
+	        if ($this->objPaginatorAlternate)
+	        return sprintf('<tr><td colspan="%s">%s</td></tr>', count($this->objColumnArray), $this->GetPaginatorRowHtml($this->objPaginatorAlternate));
+	    }
+	     
+	    public function colLanguage_Render( NarroLog $objLog ) {
+	        return t($objLog->Language->LanguageName);
+	    }
+	     
+	    public function colCreated_Render( NarroLog $objLog ) {
+	        $objDateSpan = new QDateTimeSpan(time() - $objLog->Date->Timestamp);
+	        $strModifiedWhen = $objDateSpan->SimpleDisplay();
+	         
+	        return sprintf(t('%s ago'), $strModifiedWhen);
+	    }
+	    
+	    public function colMessage_Render(NarroLog $objLog) {
+	        switch($objLog->Priority) {
+	            case NarroLog::PRIORITY_INFO:
+	                $strMessage = '<div class="info"';
+	                break;
+	            case NarroLog::PRIORITY_WARN:
+	                $strMessage = '<div class="warning"';
+	                break;
+	            case NarroLog::PRIORITY_ERROR:
+	                $strMessage = '<div class="error"';
+	                break;
+	            default:
+	                $strMessage = '<div';
+	        }
+	        
+	        return sprintf('%s title="%s">%s</div>', $strMessage, $objLog->Date, nl2br(NarroString::HtmlEntities($objLog->Message)));
+	    }
+	     
+	    ///////////////////////////
+	    // DataGrid Preferences
+	    ///////////////////////////
+	     
+	    // Feel free to specify global display preferences/defaults for all QDataGrid controls
+	    public function __construct($objParentObject, $strControlId = null) {
+	        try {
+	            parent::__construct($objParentObject, $strControlId);
+	        } catch (QCallerException  $objExc) {
+	            $objExc->IncrementOffset();
+	            throw $objExc;
+	        }
+	    }
+	     
+	    protected function GetPaginatorRowHtml($objPaginator) {
+	        if (!$this->blnAlwaysShowPaginator && $this->objPaginator->TotalItemCount < $this->objPaginator->ItemsPerPage)
+	        return false;
+	        else
+	        return parent::GetPaginatorRowHtml($objPaginator);
+	    }
+	     
+	    /////////////////////////
+	    // Public Properties: SET
+	    /////////////////////////
+	    public function __set($strName, $mixValue) {
+	        switch ($strName) {
+	            case 'Title':
+	                try {
+	                    $this->strLabelForNoneFound = '&nbsp;' . sprintf('<b>%s</b>: %s', $mixValue, QApplication::Translate('%s found nothing.'));/**Translators: ignore %s */
+	                    $this->strLabelForOneFound = '&nbsp;' . sprintf('<b>%s</b>: %s', $mixValue, QApplication::Translate(' 1 %s found.'));/**Translators: ignore %s */
+	                    $this->strLabelForMultipleFound = '&nbsp;' . sprintf('<b>%s</b>: %s', $mixValue, QApplication::Translate(' %d %s found.'));/**Translators: ignore %s */
+	                    $this->strLabelForPaginated = '&nbsp;' . sprintf('<b>%s</b>: %s', $mixValue, QApplication::Translate('%s %d-%d of %d.'));/**Translators: ignore %s */
+	                    $this->strNoun = '';
+	                    $this->strNounPlural = '';
+	                     
+	                    break;
+	                } catch (QInvalidCastException $objExc) {
+	                    $objExc->IncrementOffset();
+	                    throw $objExc;
+	                }
+	                 
+	            case 'AlwaysShowPaginator':
+	                try {
+	                    $this->blnAlwaysShowPaginator = QType::Cast($mixValue, QType::Boolean);
+	                    break;
+	                } catch (QInvalidCastException $objExc) {
+	                    $objExc->IncrementOffset();
+	                    throw $objExc;
+	                }
+	                 
+	            default:
+	                try {
+	                parent::__set($strName, $mixValue);
+	                break;
+	            } catch (QCallerException $objExc) {
+	                $objExc->IncrementOffset();
+	                throw $objExc;
+	            }
+	        }
+	    }
+	}
+?>

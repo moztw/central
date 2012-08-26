@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<plugins>
+	
+
+<plugin>
+	<name><![CDATA[QFirebug]]></name>
+	<description><![CDATA[Plugin that eases debugging of QCubed applications through integration with Firebug, an excellent Firefox extension for Javascript debugging.]]></description>
+	<version>0.2</version>
+	<platform_version>1.1</platform_version>
+	<author name="Eduardo Garcia aka enzo" email="enzo [at] anexusit [dot] com"/>
+	<files>
+		<file type="misc_include" filename="includes/QFirebug.class.php" />
+		<file type="misc_include" filename="includes/FirePHP.class.php" />
+		<file type="misc_include" filename="includes/fb.php" />
+		<file type="example" filename="example/qfirebug.php" />
+		<file type="example" filename="example/qfirebug.tpl.php" />
+		<file type="example" filename="example/qfirebug.png" />
+	</files>
+	<includes>
+		<include_files classname="QFirebug" filename="includes/QFirebug.class.php" />
+	</includes>
+	<examples>
+		<example filename="example/qfirebug.php" description="Introduction to Debugging with QFirebug" />
+	</examples>
+</plugin>
+
+<plugin>
+	<name><![CDATA[QFlot]]></name>
+	<description><![CDATA[Use a JavaScript-based plotting library called Flot to create nice-looking charts. Based on jQuery.]]></description>
+	<version>0.4</version>
+	<platform_version>1.1</platform_version>
+	<author name="Eduardo Garcia aka enzo" email="enzo [at] anexusit [dot] com"/>
+	<files>
+		<file type="control" filename="includes/QFlot.class.php" />
+		<file type="control" filename="includes/QFlotSeries.class.php" />
+		<file type="js" filename="js/jquery.flot.pack.js" />
+		<file type="js" filename="js/excanvas.pack.js" />
+		<file type="example" filename="example/qflot-bar.php" />
+		<file type="example" filename="example/qflot-bar.tpl.php" />
+		<file type="example" filename="example/qflot-timeseries.php" />
+		<file type="example" filename="example/qflot-timeseries.tpl.php" />
+	</files>
+	<includes>
+		<include_files classname="QFlot" filename="includes/QFlot.class.php" />
+		<include_files classname="QFlotSeries" filename="includes/QFlotSeries.class.php" />
+	</includes>
+	<examples>
+		<example filename="example/qflot-bar.php" description="QFlot: Display a bar chart" />
+		<example filename="example/qflot-timeseries.php" description="QFlot: Display a time series chart" />
+	</examples>
+</plugin>
+
+<plugin>
+	<name><![CDATA[QSlidePaginator]]></name>
+	<description><![CDATA[Alternative data grid paginator based on jQuery slider. Allows easier way to navigate between data grid pages]]></description>
+	<version>0.1</version>
+	<platform_version>1.1</platform_version>
+	<author name="Sergej Dugokontov" email="dugokontov [at] gmail [dot] com"/>
+	<files>
+		<file type="control" filename="includes/QSlidePaginator.class.php" />
+		<file type="css" filename="css/slider.css" />
+		<file type="js" filename="js/jquery.dimensions.js" />
+		<file type="js" filename="js/ui.mouse.js" />
+		<file type="js" filename="js/ui.slider.js" />
+		<file type="image" filename="images/slider-bg-1.png" />
+		<file type="image" filename="images/slider-bg-2.png" />
+		<file type="image" filename="images/slider-handle.gif" />
+		<file type="image" filename="images/slider-next.png" />
+		<file type="image" filename="images/slider-prev.png" />
+		<file type="example" filename="example/qslidepaginator.php" />
+		<file type="example" filename="example/qslidepaginator.tpl.php" />
+	</files>
+	<includes>
+		<include_files classname="QSlidePaginator" filename="includes/QSlidePaginator.class.php" />
+	</includes>
+	<examples>
+		<example filename="example/qslidepaginator.php" description="QSliderPaginator: Data Grid Paginator Based on jQuery-based Slider" />
+	</examples>
+</plugin>
+
+<plugin>
+	<name><![CDATA[QDateRangePicker]]></name>
+	<description><![CDATA[Date range picker control based on datrangepicker jQuery plugin.]]></description>
+	<version>0.3</version>
+	<platform_version>2.0.2</platform_version>
+	<author name="Vardan Akopian" email="vakopian+qcubed [at] gmail [dot] com"/>
+	<files>
+		<file type="js" filename="js/daterangepicker.jQuery.js" />
+		<file type="image" filename="images/fcfdfd_40x100_textures_06_inset_hard_100.png" />
+		<file type="image" filename="images/469bdd_256x240_icons_icons.png" />
+		<file type="image" filename="images/d8e7f3_256x240_icons_icons.png" />
+		<file type="image" filename="images/aaaaaa_40x100_textures_01_flat_0.png" />
+		<file type="image" filename="images/d0e5f5_40x100_textures_02_glass_75.png" />
+		<file type="image" filename="images/2e83ff_256x240_icons_icons.png" />
+		<file type="image" filename="images/6da8d5_256x240_icons_icons.png" />
+		<file type="image" filename="images/dfeffc_40x100_textures_02_glass_85.png" />
+		<file type="image" filename="images/fef1ec_40x100_textures_02_glass_95.png" />
+		<file type="image" filename="images/fbec88_40x100_textures_01_flat_55.png" />
+		<file type="image" filename="images/217bc0_256x240_icons_icons.png" />
+		<file type="image" filename="images/cd0a0a_256x240_icons_icons.png" />
+		<file type="image" filename="images/f9bd01_256x240_icons_icons.png" />
+		<file type="image" filename="images/5c9ccc_500x100_textures_12_gloss_wave_55.png" />
+		<file type="image" filename="images/f5f8f9_40x100_textures_06_inset_hard_100.png" />
+		<file type="css" filename="css/ui.daterangepicker.css" />
+		<file type="css" filename="css/collisions.css" />
+		<file type="control" filename="includes/QDateRangePicker.class.php" />
+		<file type="control" filename="includes/QDateRangePickerBase.class.php" />
+		<file type="misc_include" filename="includes/QDateRangePickerPreset.class.php" />
+		<file type="misc_include" filename="includes/QDateRangePickerPresetRange.class.php" />
+		<file type="example" filename="example/daterangepicker.php" />
+		<file type="example" filename="example/daterangepicker.tpl.php" />
+	</files>
+	<includes>
+		<include_files classname="QDateRangePicker" filename="includes/QDateRangePicker.class.php" />
+		<include_files classname="QDateRangePickerBase" filename="includes/QDateRangePickerBase.class.php" />
+	</includes>
+	<examples>
+		<example filename="example/daterangepicker.php" description="QDateRangePicker: Date range picker control" />
+	</examples>
+</plugin>
+
+<plugin>
+	<name><![CDATA[DialogBoxes]]></name>
+	<description><![CDATA[A collection of server-side "modal" dialog boxes: QConfirmationDialog, QTextBoxPromptDialog, QRadioButtonPromptDialog.]]></description>
+	<version>0.1</version>
+	<platform_version>1.1</platform_version>
+	<author name="Alex Weinstein, a.k.a. alex94040" email="alex94040 [at] yahoo [dot] com"/>
+	<files>
+		<file type="control" filename="includes/QPromptDialog.class.php" />
+		<file type="control" filename="includes/QTextBoxPromptDialog.class.php" />
+		<file type="control" filename="includes/QRadioButtonPromptDialog.class.php" />
+		<file type="control" filename="includes/QConfirmationDialog.class.php" />
+		<file type="misc_include" filename="includes/QConfirmationDialog.tpl.php" />
+		<file type="misc_include" filename="includes/QRadioButtonPromptDialog.tpl.php" />
+		<file type="misc_include" filename="includes/QTextBoxPromptDialog.tpl.php" />
+		<file type="example" filename="example/more_dialog_boxes.php" />
+		<file type="example" filename="example/more_dialog_boxes.tpl.php" />
+	</files>
+	<includes>
+		<include_files classname="QPromptDialog" filename="includes/QPromptDialog.class.php" />
+		<include_files classname="QTextBoxPromptDialog" filename="includes/QTextBoxPromptDialog.class.php" />
+		<include_files classname="QRadioButtonPromptDialog" filename="includes/QRadioButtonPromptDialog.class.php" />
+		<include_files classname="QConfirmationDialog" filename="includes/QConfirmationDialog.class.php" />
+	</includes>
+	<examples>
+		<example filename="example/more_dialog_boxes.php" description="* Pre-built Dialog Boxes: Confirmations and Prompts" />
+	</examples>
+</plugin>
+
+<plugin>
+	<name><![CDATA[QQConditionRange]]></name>
+	<description><![CDATA[Range query for QQuery.]]></description>
+	<version>0.11</version>
+	<platform_version>1.1</platform_version>
+	<author name="Vardan Akopian" email="vakopian+qcubed [at] gmail [dot] com"/>
+	<files>
+		<file type="control" filename="includes/QQConditionRange.class.php" />
+		<file type="example" filename="example/conditionrange.php" />
+		<file type="example" filename="example/conditionrange.tpl.php" />
+	</files>
+	<includes>
+		<include_files classname="QQConditionRange" filename="includes/QQConditionRange.class.php" />
+	</includes>
+	<examples>
+		<example filename="example/conditionrange.php" description="QQConditionRange: Range query for QQuery" />
+	</examples>
+</plugin>
+
+<plugin>
+	<name><![CDATA[QCurl]]></name>
+	<description><![CDATA[Server-side HTTP request wrapper (curl)]]></description>
+	<version>0.2</version>
+	<platform_version>1.1</platform_version>
+	<author name="Doc Helge Dzierzon" email="dochelge [at] gmail [dot] com"/>
+	<files>
+		<file type="control" filename="includes/QCurl.class.php" />
+		<file type="example" filename="example/qcurl.php" />
+		<file type="example" filename="example/qcurl.tpl.php" />
+	</files>
+	<includes>
+		<include_files classname="QCurl" filename="includes/QCurl.class.php" />
+	</includes>
+	<examples>
+		<example filename="example/qcurl.php" description="QCurl: Making server-side HTTP requests using a Curl wrapper" />
+	</examples>
+</plugin>
+
+</plugins>

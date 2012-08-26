@@ -1,0 +1,77 @@
+diff --git a/narro/includes/qcubed/includes/qcubed/_core/base_controls/QFormBase.class.php b/narro/includes/qcubed/includes/qcubed/_core/base_controls/QFormBase.class.php
+--- a/narro/includes/qcubed/includes/qcubed/_core/base_controls/QFormBase.class.php
++++ b/narro/includes/qcubed/includes/qcubed/_core/base_controls/QFormBase.class.php
+@@ -482,6 +482,13 @@
+ 
+ 			// Update Render State
+ 			$this->intFormStatus = QFormBase::FormStatusRenderEnded;
++
++            if (SERVER_INSTANCE == 'dev') {
++                QFirebug::table('Queries', @$GLOBALS['arrQueries']);
++                QFirebug::info(sprintf('%d queries in total', count(@$GLOBALS['arrQueries'])));
++                QFirebug::table('Cache', @$GLOBALS['arrCacheQueries']);
++                QFirebug::info(sprintf('%d cache queries in total, %s seconds spent on them', count(@$GLOBALS['arrCacheQueries']), intval(@$GLOBALS['arrCacheQueriesSpent'])));
++            }
+ 			exit;
+ 		}
+ 
+diff --git a/narro/includes/qcubed/includes/qcubed/_core/database/QMySqli5Database.class.php b/narro/includes/qcubed/includes/qcubed/_core/database/QMySqli5Database.class.php
+--- a/narro/includes/qcubed/includes/qcubed/_core/database/QMySqli5Database.class.php
++++ b/narro/includes/qcubed/includes/qcubed/_core/database/QMySqli5Database.class.php
+@@ -41,8 +41,17 @@
+ 		}
+ 
+ 		protected function ExecuteQuery($strQuery) {
++            $intStartTime = time();
++
+ 			// Perform the Query
+ 			$objResult = $this->objMySqli->query($strQuery);
++
++            $intElapsed = time() - $intStartTime;
++
++            if (SERVER_INSTANCE == 'dev') {
++                $GLOBALS['arrQueries'][] = array($strQuery, $intElapsed);
++            }
++
+ 			if ($this->objMySqli->error)
+ 				throw new QMySqliDatabaseException($this->objMySqli->error, $this->objMySqli->errno, $strQuery);
+ 
+diff --git a/narro/includes/qcubed/includes/qcubed/_core/database/QMySqliDatabase.class.php b/narro/includes/qcubed/includes/qcubed/_core/database/QMySqliDatabase.class.php
+--- a/narro/includes/qcubed/includes/qcubed/_core/database/QMySqliDatabase.class.php
++++ b/narro/includes/qcubed/includes/qcubed/_core/database/QMySqliDatabase.class.php
+@@ -84,8 +84,17 @@
+ 		}
+ 
+ 		protected function ExecuteQuery($strQuery) {
++            $intStartTime = time();
++
+ 			// Perform the Query
+ 			$objResult = $this->objMySqli->query($strQuery);
++
++            $intElapsed = time() - $intStartTime;
++
++            if (SERVER_INSTANCE == 'dev') {
++                $GLOBALS['arrQueries'][] = array($strQuery, $intElapsed);
++            }
++
+ 			if ($this->objMySqli->error)
+ 				throw new QMySqliDatabaseException($this->objMySqli->error, $this->objMySqli->errno, $strQuery);
+ 
+@@ -95,8 +104,17 @@
+ 		}
+ 
+ 		protected function ExecuteNonQuery($strNonQuery) {
++            $intStartTime = time();
++
+ 			// Perform the Query
+ 			$this->objMySqli->query($strNonQuery);
++
++            $intElapsed = time() - $intStartTime;
++
++            if (SERVER_INSTANCE == 'dev') {
++                $GLOBALS['arrQueries'][] = array($strNonQuery, $intElapsed);
++            }
++
+ 			if ($this->objMySqli->error)
+ 				throw new QMySqliDatabaseException($this->objMySqli->error, $this->objMySqli->errno, $strNonQuery);
+ 		}
