@@ -1,7 +1,7 @@
 <?php
     /**
      * Narro is an application that allows online software translation and maintenance.
-     * Copyright (C) 2008 Alexandru Szasz <alexxed@gmail.com>
+     * Copyright (C) 2008-2011 Alexandru Szasz <alexxed@gmail.com>
      * http://code.google.com/p/narro/
      *
      * This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
@@ -27,6 +27,7 @@
         array
         (
             "Texts that don't have access keys",
+            'Unchanged template files',
             'Contexts to export',
             'Exported contexts',
             'Exported files',
@@ -51,8 +52,10 @@
             'Suggestions that kept the original text',
             'Approved suggestions',
             'Reused suggestions',
+            'Reused context informations',
             'Empty original texts',
-            'Texts with no access key set, but fixed'
+            'Texts with no access key set, but fixed',
+            'Texts exported as fuzzy because they are not approved'
         )
         as $strPropertyName)
         NarroImportStatistics::$arrStatistics[$strPropertyName] = 0;

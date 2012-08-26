@@ -1,7 +1,7 @@
 <?php
     /**
      * Narro is an application that allows online software translation and maintenance.
-     * Copyright (C) 2008 Alexandru Szasz <alexxed@gmail.com>
+     * Copyright (C) 2008-2011 Alexandru Szasz <alexxed@gmail.com>
      * http://code.google.com/p/narro/
      *
      * This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
@@ -20,23 +20,19 @@
         public function __construct() {
             parent::__construct();
             $this->strName = t('Spell check');
-            /**
-             * Spellchecking: t('Yes, please')
-             * Spellchecking: t('I don\'t need it')
-             */
-
-            NarroApp::RegisterPreference('Spellchecking', 'option', 'Spellcheck support if possible, or just disable it', 'Yes, please', array('I don\'t need it', 'Yes, please'));
+            $this->Enable();
         }
 
         public static function GetSpellSuggestions($strText) {
-            if (NarroApp::$User->getPreferenceValueByName('Spellchecking') == 'I don\'t need it')
-                return true;
+
             $strCleanText = mb_ereg_replace('[…\\n\.,:;\\\!\?0-9]+', ' ', $strText);
+            $strCleanText = str_replace(array('\n', '\r'), array(' ', ' '), $strText);
+            $strCleanText = mb_ereg_replace('http://[a-z\-A-Z\.]+', ' ', $strCleanText);
             $strCleanText = strip_tags($strCleanText);
             /**
              * mozilla entitites: &xxx;
              */
-            $strCleanText = mb_ereg_replace('&[a-zA-Z\-0-9]+\;', ' ' , $strCleanText);
+            $strCleanText = mb_ereg_replace('&[\.\-a-zA-Z\-0-9]+\;', ' ' , $strCleanText);
             /**
              * keyboard shortcuts
              */
@@ -50,15 +46,16 @@
              * some characters that mess with the spellchecking
              */
             $strCleanText = mb_ereg_replace('[\(\)]+', ' ', $strCleanText);
+            $strCleanText = mb_ereg_replace('[„”]', ' ', $strCleanText);
+            $strCleanText = mb_ereg_replace('[…\\n\.,:;\\\!\?0-9]+', ' ', $strCleanText);
 
-            $strSpellLang = NarroApp::$User->getPreferenceValueByName('Language');
-
-            return self::GetSpellSuggestionsWithPspell($strCleanText, $strSpellLang);
+            return self::GetSpellSuggestionsWithPspell($strCleanText, QApplication::$TargetLanguage->LanguageCode);
         }
 
         public static function GetSpellSuggestionsWithPspell($strText, $strSpellLang) {
-            if (!function_exists('pspell_new'))
+            if (!function_exists('pspell_new')) {
                 return true;
+            }
 
             if (file_exists(__DICTIONARY_PATH__ . '/' . $strSpellLang . '.dat')) {
                 if (!defined('PSPELL_FAST'))
@@ -72,7 +69,7 @@
                 if (!pspell_config_dict_dir($pspell_config, __DICTIONARY_PATH__))
                     return self::GetSpellSuggestionsWithHunspell($strText, $strSpellLang);
 
-                if (!$pspell_link = pspell_new_config($pspell_config)) {
+                if (!$pspell_link = @pspell_new_config($pspell_config)) {
                     return self::GetSpellSuggestionsWithHunspell($strText, $strSpellLang);
                 }
             }
@@ -115,6 +112,7 @@
 
         public function ApproveSuggestion($strOriginal, $strTranslation, $strContext, $objFile, $objProject) {
             $arrTextSuggestions = self::GetSpellSuggestions($strTranslation);
+            
             $strSpellcheckText = '';
 
             if (is_array($arrTextSuggestions) && count($arrTextSuggestions)) {
@@ -133,7 +131,7 @@
                             $strWord
                         ) . '<br />';
                 }
-
+                
                 if ($strSpellcheckText)
                     $this->arrErrors[] =  $strSpellcheckText;
             }

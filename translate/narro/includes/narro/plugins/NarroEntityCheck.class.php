@@ -1,7 +1,7 @@
 <?php
     /**
      * Narro is an application that allows online software translation and maintenance.
-     * Copyright (C) 2008 Alexandru Szasz <alexxed@gmail.com>
+     * Copyright (C) 2008-2011 Alexandru Szasz <alexxed@gmail.com>
      * http://code.google.com/p/narro/
      *
      * This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
@@ -22,6 +22,7 @@
         public function __construct() {
             parent::__construct();
             $this->strName = t('Entity check');
+            $this->Enable();
         }
 
         public static function RegisterEntityFormat($strRegexForEntity) {
@@ -76,7 +77,6 @@
          * @return array with the same parameters given
          */
         public function ApproveSuggestion($strOriginal, $strTranslation, $strContext, NarroFile $objFile, NarroProject $objProject) {
-            return array($strOriginal, $strTranslation, $strContext, $objFile, $objProject);
 
             /**
              * replace CR, LF and tabs with a space
@@ -94,25 +94,27 @@
                  * &entity; catch
                  */
                 if (strstr($strOriginal, '&'))
-                    self::RegisterEntityFormat('/&[a-zA-Z\-0-9]+\;/');
+                    self::RegisterEntityFormat('/&[\.a-zA-Z\-0-9]+\;/');
 
             $strPreparedOriginal = self::StripIgnoreCharacters($strOriginal);
 
-            if (strstr($strOriginal, '%') || strstr($strOriginal, '$') || strstr($strOriginal, '&'))
+            if (strstr($strOriginal, '%') || strstr($strOriginal, '$') || strstr($strOriginal, '&')) {
                 $arrEntities = self::GetEntities($strOriginal);
-            if (count($arrEntities)) {
-                foreach($arrEntities as $strEntity) {
-                    if (strpos($strTranslation, trim($strEntity)) === false)
-                        $arrDiff[] = htmlspecialchars(trim($strEntity), null, 'utf-8');
-                }
+                if (count($arrEntities)) {
+                    if (is_array($arrEntities))
+                    foreach($arrEntities as $strEntity) {
+                        if (strpos($strTranslation, trim($strEntity)) === false)
+                            $arrDiff[] = htmlspecialchars(trim($strEntity), null, 'utf-8');
+                    }
 
-                if (isset($arrDiff) && $arrDiff) {
-                    $this->arrErrors[] =
-                        sprintf(
-                            t(
-                                'You translated or forgot some variables that should have been left as they were: <span style="color:red;font-size:large">%s</span>'),
-                            join(', ', $arrDiff)
-                        );
+                    if (isset($arrDiff) && $arrDiff) {
+                        $this->arrErrors[] =
+                            sprintf(
+                                t(
+                                    'You translated or forgot some variables that should have been left as they were: <span style="color:red;font-size:large">%s</span>'),
+                                join(', ', $arrDiff)
+                            );
+                    }
                 }
             }
 

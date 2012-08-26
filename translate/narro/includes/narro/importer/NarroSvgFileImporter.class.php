@@ -1,7 +1,7 @@
 <?php
     /**
      * Narro is an application that allows online software translation and maintenance.
-     * Copyright (C) 2008 Alexandru Szasz <alexxed@gmail.com>
+     * Copyright (C) 2008-2011 Alexandru Szasz <alexxed@gmail.com>
      * http://code.google.com/p/narro/
      *
      * This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
@@ -19,8 +19,7 @@
     class NarroSvgFileImporter extends NarroFileImporter {
         protected $objFile;
 
-        public function ExportFile($objFile, $strTemplate, $strTranslatedFile = null) {
-            $this->objFile = $objFile;
+        public function ExportFile($strTemplate, $strTranslatedFile = null) {
 
             if ($strFileContents = file_get_contents($strTemplate)) {
                 if (preg_match_all('/<flowPara[^>]+>([^<]+)<\/flowPara>/', $strFileContents, $arrMatches)) {
@@ -40,23 +39,22 @@
                 chmod($strTranslatedFile, 0666);
             }
             else {
-                NarroLog::LogMessage(3, sprintf('Cannot open file "%s".', $strFileToImport));
+                NarroLogger::LogError(sprintf('Cannot open file "%s".', $strFileToImport));
             }
         }
 
-        public function ImportFile($objFile, $strFileToImport, $strTranslatedFile = null) {
-            $this->objFile = $objFile;
+        public function ImportFile($strFileToImport, $strTranslatedFile = null) {
 
             if ($strFileContents = file_get_contents($strFileToImport)) {
                 if (preg_match_all('/<flowPara[^>]+>([^<]+)<\/flowPara>/', $strFileContents, $arrMatches)) {
                     foreach($arrMatches[0] as $intKey=>$strContext) {
                         if (trim($arrMatches[1][$intKey]) != '')
-                            $this->AddTranslation($objFile, $arrMatches[1][$intKey], null, null, null, $strContext);
+                            $this->AddTranslation($this->objFile, $arrMatches[1][$intKey], null, null, null, $strContext);
                     }
                 }
             }
             else {
-                NarroLog::LogMessage(3, sprintf('Cannot open file "%s".', $strFileToImport));
+                NarroLogger::LogError(sprintf('Cannot open file "%s".', $strFileToImport));
             }
         }
 
@@ -92,6 +90,61 @@
                 return $strOriginal;
             }
         }
+
+        /**
+         * Preprocesses the whole file, e.g. removing trailing spaces
+         * @param string $strFile file content
+         * @return string
+         */
+        protected function PreProcessFile($strFile) {}
+
+        /**
+         * Converts the file to an associative array
+         * array(
+         *     'key' => ''
+         *     array(
+         *         'text' => '',
+         *         'comment' => '',
+         *         'full_line' => '',
+         *         'before_line' => ''
+         *     )
+         * );
+         *
+         * The key is something that must be unique to each text from that file; in most cases it can be the actual text
+         * @param string $strFile file path
+         * @return array
+         */
+        protected function FileAsArray($strFilePath) {}
+
+        /**
+         * Tells whether the file is a comment
+         * This function helps with comments that spread over multiple lines
+         * @param string $strLine
+         * @return boolean
+         */
+        protected function IsComment($strLine) {}
+
+        /**
+         * Preprocesses the line if needed
+         * e.g. in the source file there's a comment like '# #define MOZ_LANGPACK_CONTRIBUTORS that should be uncommented
+         * @param string $strLine
+         * @param array $arrComment
+         * @param array $arrLinesBefore
+         * @return array an array with the arguments received; processed if needed
+         */
+        protected function PreProcessLine($strLine, $arrComment, $arrLinesBefore) {}
+
+        /**
+         * Process the line by splitting the $strLine in key=>value
+         * array(array('key' => $strKey, 'value' => $strValue), $arrComment, $arrLinesBefore)
+         * or
+         * array(false, $arrComment, $arrLinesBefore)
+         * @param string $strLine
+         * @param array $arrComment
+         * @param array $arrLinesBefore
+         * @return array
+         */
+        protected function ProcessLine($strLine, $arrComment, $arrLinesBefore) {}
     }
 
 ?>

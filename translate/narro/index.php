@@ -1,3 +1,3 @@
 <?php
-header('Location: narro_project_list.php');
+header('Location: projects.php');
 ?>

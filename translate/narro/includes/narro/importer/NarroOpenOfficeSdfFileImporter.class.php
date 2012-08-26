@@ -1,7 +1,7 @@
 <?php
     /**
      * Narro is an application that allows online software translation and maintenance.
-     * Copyright (C) 2008 Alexandru Szasz <alexxed@gmail.com>
+     * Copyright (C) 2008-2011 Alexandru Szasz <alexxed@gmail.com>
      * http://code.google.com/p/narro/
      *
      * This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
@@ -19,11 +19,6 @@
     class NarroOpenOfficeSdfFileImporter extends NarroFileImporter {
 
         public function ExportFile($strTemplateFile, $strTranslatedFile) {
-            $hndTemplateFile = fopen($strTemplateFile, 'r');
-            if (!$hndTemplateFile) {
-                NarroLog::LogMessage(3, sprintf('Can\'t open file "%s" for reading', $strTemplateFile));
-                return false;
-            }
 
             $hndTranslatedFile = @fopen($strTranslatedFile, 'w');
 
@@ -32,13 +27,21 @@
 
             $intTotalToProcess = NarroUtils::CountFileLines($strTemplateFile);
 
-            NarroLog::LogMessage(1, sprintf('Starting to process file "%s" (%d texts), the result is written to "%s".', $strTemplateFile, $intTotalToProcess, $strTranslatedFile));
+            /**
+             * get all the texts and contexts from the template file, including the file line
+             */
+            $arrTexts = $this->FileToArray($strTemplateFile, $this->objSourceLanguage->LanguageCode, true);
+
+            // NarroLogger::LogDebug(sprintf('Starting to process file "%s" (%d texts), the result is written to "%s".', $strTemplateFile, $intTotalToProcess, $strTranslatedFile));
 
             $intFileLineNr=0;
 
-            while(!feof($hndTemplateFile)) {
+            foreach($arrTexts as $strContext=>$arrTextInfo) {
+                $strText = $arrTextInfo[0];
+                $strTextAccKey = $arrTextInfo[1];
+                $strTextAccKeyPrefix = $arrTextInfo[2];
+                $strFileLine = $arrTextInfo[3];
 
-                $strFileLine = fgets($hndTemplateFile, 4096);
                 $intFileLineNr++;
 
                 $arrColumn = preg_split('/\t/', $strFileLine);
@@ -49,81 +52,51 @@
                 $arrColumn[8] = '';
 
                 /**
-                 * skip help
+                 * create a copy for the translated line, we'll just replace lang code, the number on column 8 and the text with the translation
                  */
-                if ($arrColumn[0] == 'helpcontent2') continue;
-
-                if (count($arrColumn) != 15) {
-                    NarroLog::LogMessage(2, sprintf('Skipped "%s" because splitting by tab does not give 14 columns.', $strFileLine));
-                    continue;
-                }
-
                 $arrTranslatedColumn = $arrColumn;
-
-                $strLangCode = $arrColumn[9];
-                $strText = $arrColumn[10];
-
-                $strPossibleContext = '';
-                /**
-                 * positions 8, 9 and 10 contain a number, the language code and the text/translation
-                 * positions 1 and 2 contain path info
-                 * position 3 contains a number
-                 * position 14 contains a date
-                 */
-                foreach(array(3, 4, 5, 6, 7, 11, 12, 13) as $intPos) {
-                    if (trim($arrColumn[$intPos]) != '' && !is_numeric($arrColumn[$intPos]))
-                        $strPossibleContext .= $arrColumn[$intPos] ."\n";
-                }
-                $strContext = trim($strPossibleContext);
 
                 $arrTranslatedColumn[8] = 0;
                 $arrTranslatedColumn[9] = 'ro';
 
-                if (preg_match('/~(\w)/', $strText, $arrTextAccMatches)) {
-                    $strTextAccKey = $arrTextAccMatches[1];
-                    $strText = mb_ereg_replace('~' . $strTextAccKey, $strTextAccKey, $strText);
-                }
-                else {
-                    $strTextAccKey = null;
-                }
-
                 $objNarroContextInfo = $this->GetContextInfo($strText, $strContext);
+                if (!$objContextInfo) {
+                    // NarroLogger::LogDebug('No context info found, trying database');
+                    $objContextInfo = NarroContextInfo::QueryArray(
+                        QQ::AndCondition(
+                            QQ::Equal(QQN::NarroContextInfo()->Context->FileId, $this->objFile->FileId),
+                            QQ::Equal(QQN::NarroContextInfo()->LanguageId, $this->objTargetLanguage->LanguageId),
+                            QQ::Equal(QQN::NarroContextInfo()->Context->Text->TextValueMd5, md5($strText)),
+                            QQ::Equal(QQN::NarroContextInfo()->Context->ContextMd5, md5($strContext))
+                        )
+                    );
+                }
 
+                /**
+                 * the original texts are used if no suggestion is found, so we export only approved texts
+                 */
                 if ($objNarroContextInfo instanceof NarroContextInfo)
                     $strSuggestionValue = $this->GetExportedSuggestion($objNarroContextInfo);
-                else
+                else  {
+                    // NarroLogger::LogDebug('No context info found, skipping');
                     continue;
+                }
 
                 if (!isset($strSuggestionValue) || !$strSuggestionValue)
                     continue;
 
-                if ( $objNarroContextInfo->TextAccessKey != '') {
+                if ( $objNarroContextInfo->Context->TextAccessKey != '') {
                     if ($objNarroContextInfo->ValidSuggestionId && $objNarroContextInfo->SuggestionAccessKey != '')
                         $strSuggestionValue = NarroString::Replace(
                             $objNarroContextInfo->SuggestionAccessKey,
-                            '~' . $objNarroContextInfo->SuggestionAccessKey,
+                            $strTextAccKeyPrefix . $objNarroContextInfo->SuggestionAccessKey,
                             $strSuggestionValue,
                             1
                         );
                     else
-                        $strSuggestionValue = '~' . $strSuggestionValue;
+                        $strSuggestionValue = $strTextAccKeyPrefix . $strSuggestionValue;
                 }
 
-
-                $arrResult = NarroApp::$PluginHandler->ExportSuggestion($strText, $strSuggestionValue, $strContext, new NarroFile(), $this->objProject);
-                if
-                (
-                    trim($arrResult[1]) != '' &&
-                    $arrResult[0] == $strText &&
-                    $arrResult[2] == $strContext &&
-                    $arrResult[3] == new NarroFile() &&
-                    $arrResult[4] == $this->objProject
-                ) {
-
-                    $strSuggestionValue = $arrResult[1];
-                }
-                else
-                    NarroLog::LogMessage(2, sprintf('A plugin returned an unexpected result while processing the suggestion "%s": %s', $strSuggestionValue, print_r($arrResult, true)));
 
                 $arrTranslatedColumn[10] = str_replace(array("\n", "\r"), array("",""), $strSuggestionValue);
 
@@ -132,7 +105,7 @@
                 preg_match_all('/\\\\"/', $strSuggestionValue, $arrEscTransMatches);
 
                 if (isset($arrEscOrigMatches[0]) && count($arrEscTransMatches[0]) % 2 != 0) {
-                    NarroLog::LogMessage(2, sprintf('Warning! The translated text "%s" has unclosed double quotes.', $strSuggestionValue));
+                    NarroLogger::LogWarn(sprintf('Warning! The translated text "%s" has unclosed double quotes.', $strSuggestionValue));
                     continue;
                 }
 
@@ -141,148 +114,126 @@
 
             }
 
-            fclose($hndTemplateFile);
             fclose($hndTranslatedFile);
-            chmod($strTranslatedFile, 0666);
+            if (filesize($strTranslatedFile) == 0)
+                unlink($strTranslatedFile);
+            else
+                chmod($strTranslatedFile, 0666);
         }
 
         public function ImportFile($strTemplateFile, $strTranslatedFile = null) {
-            $objDatabase = NarroApp::$Database[1];
-            /**
-             * Open the template file
-             */
-            $hndFile = fopen($strTemplateFile, 'r');
+
+            if (file_exists($strTemplateFile))
+                $arrTexts = $this->FileToArray($strTemplateFile, $this->objSourceLanguage->LanguageCode);
+            else
+                NarroLogger::LogError(sprintf('The template file "%s" does not exist.', $strTemplateFile));
+
+            if (trim($strTranslatedFile) != '')
+                if (file_exists($strTranslatedFile))
+                    $arrTranslations = $this->FileToArray($strTranslatedFile, $this->objTargetLanguage->LanguageCode);
+                else
+                    NarroLogger::LogError(sprintf('The translation file "%s" does not exist.', $strTranslatedFile));
+
+            foreach($arrTexts as $strContext=>$arrTextInfo) {
+                if (isset($arrTranslations[$strContext]))
+                    $this->AddTranslation($arrTexts[$strContext][0], $arrTexts[$strContext][1], $arrTranslations[$strContext][0], $arrTranslations[$strContext][1], $strContext);
+                else
+                    $this->AddTranslation($arrTexts[$strContext][0], $arrTexts[$strContext][1], null, null, $strContext);
+            }
+        }
+
+        private function FileToArray($strFile, $strLocale, $blnIncludeFileLine = false) {
+            $arrTexts = array();
+
+            $hndFile = fopen($strFile, 'r');
 
             if (!$hndFile) {
-                NarroLog::LogMessage(3, sprintf('Cannot open input file "%s" for reading.', $strTemplateFile));
+                NarroLogger::LogError(sprintf('Cannot open input file "%s" for reading.', $strFile));
                 return false;
             }
 
-            $intTotalToProcess = NarroUtils::CountFileLines($strTemplateFile);
+            $intTotalToProcess = NarroUtils::CountFileLines($strFile);
             $intProcessedSoFar = 0;
 
             /**
              * read the template file line by line
              */
             while(!feof($hndFile)) {
-                $strFileLine = fgets($hndFile, 16384);
+                $strFileLine = fgets($hndFile);
                 $intProcessedSoFar++;
+                if ($strFileLine == '') {
+                    // NarroLogger::LogDebug(sprintf('Skipping empty line from "%s"', $strFileLine));
+                    continue;
+                }
 
                 /**
                  * OpenOffice uses tab separated values
                  */
-                $arrColumn = preg_split('/\t/', $strFileLine);
-
-                /**
-                 * skip help
-                 */
-                if ($arrColumn[0] == 'helpcontent2') continue;
+                $arrColumn = explode("\t", $strFileLine);
+                if (count($arrColumn) != 15) {
+                    NarroLogger::LogError(sprintf('Skipping line "%s" from "%s" because it does not split into 15 fields by tab', $strFileLine, $strFile));
+                    continue;
+                }
 
                 $strLangCode = $arrColumn[9];
 
-                $strPossibleContext = '';
-                /**
-                 * positions 8, 9 and 10 contain a number, the language code and the text/translation
-                 * positions 1 and 2 contain path info
-                 * position 3 contains a number
-                 * position 14 contains a date
-                 */
-                foreach(array(3, 4, 5, 6, 7, 11, 12, 13) as $intPos) {
-                    if (trim($arrColumn[$intPos]) != '' && !is_numeric($arrColumn[$intPos]))
-                        $strPossibleContext .= $arrColumn[$intPos] ."\n";
-                }
-                $strPossibleContext = trim($strPossibleContext);
-
-                /**
-                 * Unset some unused fields
-                 */
-                unset($arrColumn[8]);
-                unset($arrColumn[9]);
-                unset($arrColumn[9]);
-
                 if ($strLangCode == 1)
-                    $strLangCode = 'en-US';
+                    $strLangCode = NarroLanguage::SOURCE_LANGUAGE_CODE;
 
-                /**
-                 * if we have a line with the target language in the language column, then the previous line was probably the original english value
-                 * to be sure, we're checking the context too
-                 */
-                if ($this->objTargetLanguage->LanguageCode == trim($strLangCode) && isset($strContext) && $strContext == $strPossibleContext) {
-                    /**
-                     * $strText and $strTextAccKey are kept from the previous cycle
-                     */
-                    $strTranslation = $arrColumn[10];
+                if ($strLocale == trim($strLangCode) ) {
+                    $strContext = '';
 
                     /**
-                     * search for access key if needed
+                     * positions 8, 9 and 10 contain a number, the language code and the text/translation
+                     * positions 1 and 2 contain path info
+                     * position 3 contains a number
+                     * position 14 contains a date
                      */
-                    if ($strTextAccKey) {
-                        /**
-                         * if we import a translation and it already has an access key set, keep it
-                         * if not, find one or just use the first usable character
-                         */
-                        if (preg_match('/~(\w)/', $strTranslation, $arrTranslationAccMatches)) {
-                            $strTranslationAccKey = $arrTranslationAccMatches[1];
-                        }
-                        else {
-                            $intPos = mb_stripos($strTranslation, $strTextAccKey);
-                            if ($intPos != false)
-                                $strTranslationAccKey = mb_substr($strTranslation, $intPos, 1);
-                            else {
-                                if (preg_match('/(\w)/', $strTranslation, $arrTranslationAccMatches))
-                                    $strTranslationAccKey = $arrTranslationAccMatches[1];
-                                else
-                                    $strTranslationAccKey = mb_substr($strTranslation, 0, 1);
-                            }
-                        }
-
-                        $strTranslation = mb_ereg_replace('~' . $strTranslationAccKey, $strTranslationAccKey, $strTranslation);
+                    foreach(array(3, 4, 5, 6, 7, 11, 12, 13) as $intPos) {
+                        if (trim($arrColumn[$intPos]) != '')
+                            $strContext .= $arrColumn[$intPos] ."\n";
                     }
-                    else
-                        $strTranslationAccKey = null;
 
-                }
-                elseif ($this->objSourceLanguage->LanguageCode == trim($strLangCode) ) {
+                    $strContext = trim($strContext);
+
+
                     $strText = $arrColumn[10];
+                    $strTextAccKey = null;
+                    $strTextAccKeyPrefix = null;
 
-                    $strTranslation = null;
-                    $strTranslationAccKey = null;
-
-                    if (preg_match('/~(\w)/', $strText, $arrTextAccMatches)) {
+                    if (strstr($strText, '~') && preg_match('/~(\w)/', $strText, $arrTextAccMatches)) {
                         $strTextAccKey = $arrTextAccMatches[1];
                         $strText = mb_ereg_replace('~' . $strTextAccKey, $strTextAccKey, $strText);
+                        $strTextAccKeyPrefix = '~';
+                    }
+                    elseif (strstr($strText, '&') && preg_match('/&(\w)/', $strText, $arrTextAccMatches)) {
+                        $strTextAccKey = $arrTextAccMatches[1];
+                        $strText = mb_ereg_replace('&' . $strTextAccKey, $strTextAccKey, $strText);
+                        $strTextAccKeyPrefix = '&';
                     }
                     else {
                         $strTextAccKey = null;
                     }
+
+                    if (isset($arrTexts[$strContext]))
+                        $strContext .= "\n" . $intProcessedSoFar;
+
+                    $arrTexts[$strContext] = array($strText, $strTextAccKey, $strTextAccKeyPrefix, ($blnIncludeFileLine)?$strFileLine:'');
                 }
                 else {
-                    NarroLog::LogMessage(2, sprintf('Skipped line "%s" because the language code found "%s" does not match the source or target language. Columns: %s', $strFileLine, $strLangCode, print_r($arrColumn, true)));
-                    continue;
+                    // NarroLogger::LogDebug(sprintf('Skipping line "%s" from "%s" because detected language code "%s" does not match the expected one "%s"', $strFileLine, $strFile, $strLangCode, $strLocale));
                 }
-
-                $strContext = $strPossibleContext;
-
-                $strDate = $arrColumn[14];
-
-                if (!isset($strDate))
-                    continue;
-
-                if (!preg_match('/[0-9]{4,4}[\-]?[0-9]{2,2}[\-]?[0-9]{2,2}\s[0-9]{2,2}:[0-9]{2,2}:[0-9]{2,2}/', $strDate)) {
-                    NarroLog::LogMessage(2, var_export($strDate,true) . ' not good. Count: ' . count($arrColumn) . var_export($arrColumn, true));
-                    continue;
-                }
-
-                $this->AddTranslation($strText, $strTextAccKey, $strTranslation, $strTranslationAccKey, $strContext);
             }
             fclose($hndFile);
+
+            return $arrTexts;
         }
 
-        public static function SplitFile($strFile) {
+        public static function SplitFile($strFile, $strPath, $arrLocale = array(NarroLanguage::SOURCE_LANGUAGE_CODE)) {
             $hndFile = fopen($strFile, 'r');
 
             if (!$hndFile) {
-                NarroLog::LogMessage(3, sprintf('Cannot open input file "%s" for reading.', $strFile));
+                NarroLogger::LogError(sprintf('Cannot open input file "%s" for reading.', $strFile));
                 return false;
             }
 
@@ -290,7 +241,7 @@
              * read the template file line by line
              */
             while(!feof($hndFile)) {
-                $strFileLine = fgets($hndFile, 16384);
+                $strFileLine = fgets($hndFile);
 
                 /**
                  * OpenOffice uses tab separated values
@@ -299,17 +250,13 @@
 
                 if (count($arrColumn) < 14) continue;
 
-                /**
-                 * skip help
-                 */
-                if ($arrColumn[0] == 'helpcontent2') continue;
+                if (!in_array($arrColumn[9], $arrLocale)) continue;
 
-                $strFilePath = dirname($strFile) . '/' . $arrColumn[0] . '/' . str_replace('\\', '/', $arrColumn[1]) . '.sdf';
+                $strFilePath = $strPath . '/' . $arrColumn[0] . '/' . str_replace('\\', '/', $arrColumn[1]) . '.sdf';
 
                 if (!file_exists($strFilePath)) {
                     if (!file_exists(dirname($strFilePath))) {
                         mkdir(dirname($strFilePath), 0777, true);
-                        NarroUtils::RecursiveChmod(dirname($strFilePath));
                     }
                 }
 
@@ -318,7 +265,62 @@
                 fclose($hndSplitFile);
             }
 
-            NarroUtils::RecursiveChmod(dirname($strFile));
+            NarroUtils::RecursiveChmod($strPath);
         }
+
+        /**
+         * Preprocesses the whole file, e.g. removing trailing spaces
+         * @param string $strFile file content
+         * @return string
+         */
+        protected function PreProcessFile($strFile) {}
+
+        /**
+         * Converts the file to an associative array
+         * array(
+         *     'key' => ''
+         *     array(
+         *         'text' => '',
+         *         'comment' => '',
+         *         'full_line' => '',
+         *         'before_line' => ''
+         *     )
+         * );
+         *
+         * The key is something that must be unique to each text from that file; in most cases it can be the actual text
+         * @param string $strFile file path
+         * @return array
+         */
+        protected function FileAsArray($strFilePath) {}
+
+        /**
+         * Tells whether the file is a comment
+         * This function helps with comments that spread over multiple lines
+         * @param string $strLine
+         * @return boolean
+         */
+        protected function IsComment($strLine) {}
+
+        /**
+         * Preprocesses the line if needed
+         * e.g. in the source file there's a comment like '# #define MOZ_LANGPACK_CONTRIBUTORS that should be uncommented
+         * @param string $strLine
+         * @param array $arrComment
+         * @param array $arrLinesBefore
+         * @return array an array with the arguments received; processed if needed
+         */
+        protected function PreProcessLine($strLine, $arrComment, $arrLinesBefore) {}
+
+        /**
+         * Process the line by splitting the $strLine in key=>value
+         * array(array('key' => $strKey, 'value' => $strValue), $arrComment, $arrLinesBefore)
+         * or
+         * array(false, $arrComment, $arrLinesBefore)
+         * @param string $strLine
+         * @param array $arrComment
+         * @param array $arrLinesBefore
+         * @return array
+         */
+        protected function ProcessLine($strLine, $arrComment, $arrLinesBefore) {}
     }
 ?>
