@@ -29,6 +29,10 @@
 		<li>若您想要知道目前有哪些語系已經加入某個網頁專案，以及各專案的狀態</li>
 		<li>各網頁專案的 repo/stage 等基礎資訊</li>
 	</ul>
+	<p>請前往 <a href="http://tinderbox.mozilla.org/showbuilds.cgi?tree=Mozilla-l10n-zh-TW">tinderbox</a></p>
+	<ul>
+		<li>若您想要知道 l10n repository 目前的編譯狀態</li>
+	</ul>
 	<p>請前往 <a href="https://localize.mozilla.org/zh_TW/">Mozilla Verbatim</a></p>
 	<ul>
 		<li>若您想要知道目前已經加入的網頁專案（配合 Webby）</li>
