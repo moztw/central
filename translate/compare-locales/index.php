@@ -4,14 +4,14 @@
 
 compare-locales webrunner
 
-$ /usr/bin/compare-locales /home/moztw/translate/var/repo/mozilla-central/browser/locales/l10n.ini /home/moztw/translate/www/l10n-base/l10n-central zh-TW
+$ /usr/local/bin/compare-locales /home/moztw/translate/var/repo/mozilla-central/browser/locales/l10n.ini /home/moztw/translate/www/l10n-base/l10n-central zh-TW
 
 */
 
 
 header('Content-Type: text/plain');
 
-$bin = '/usr/bin/compare-locales -v';
+$bin = '/usr/local/bin/compare-locales -v';
 $lang = 'zh-TW';
 
 if (!isset($_GET['app']) || !isset($_GET['branch'])) {
