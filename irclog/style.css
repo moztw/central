@@ -122,12 +122,12 @@ a
 		color: green;
 	}
 
-	#irc .join, #irc .quit 
+	#irc .join, #irc .quit, #irc .part 
 	{
     	display: none;
 	}
 
-	#irc.showmsg .join, #irc.showmsg .quit 
+	#irc.showmsg .join, #irc.showmsg .quit, #irc .part 
 	{
     	display: table-row;
 	}
@@ -146,7 +146,7 @@ a
 
 	#irc .nick, #irc .nick a
 	{
-		color: darkblue;
+		color: #0088BB;
 	}
 
 	#irc .quit, #irc .quit a
