@@ -18,7 +18,7 @@ foreach(@ARGV) {
 	foreach (@src) {
 		if ($_ =~ /MD5:\s*([^'"]*)['"].*href=['"]\/?($chkroot[^'"]*)['"]/i) {
 			if (-r $2) {
-				open EMD5, "/sbin/md5 -q '$2'|";
+				open EMD5, "/usr/bin/md5sum '$2'|";
 				my @md5 = <EMD5>;
 				close EMD5;
 				my $md5 = join('', @md5);

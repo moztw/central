@@ -1,9 +1,9 @@
 #!/bin/sh
 
-ROOT=/home/moztw/htdocs
-TMPDIR=/home/moztw/tmp
+ROOT=/home/moztw/htdocs/www
+TMPDIR=/tmp
 INCDIR=$ROOT/inc
-URLROOT=http://mozilla-taiwan.org
+URLROOT=http://moztw.org
 
 PATH=/usr/local/bin:/usr/bin:$PATH
 export PATH
@@ -24,7 +24,7 @@ do
 	fi
     fi
     #mv -f $X2 $X2.old
-    #/bin/rm -f $X2
+    #rm -f $X2
     mv -f $X2 $TMPDIR/. 2>/dev/null
     wget -nv $URLROOT/$X -O $X2
 done

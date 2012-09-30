@@ -5,8 +5,8 @@
 
 use strict;
 
-my $fnLatest = '/home/moztw/htdocs/inc/news.html';
-my $fnAll = '/home/moztw/htdocs/news/index.shtml';
+my $fnLatest = '/home/moztw/htdocs/www/inc/news.html';
+my $fnAll = '/home/moztw/htdocs/www/news/index.shtml';
 my $maxEntries = 10;
 
 my $HTTP_HEADER=<<HERE;
