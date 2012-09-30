@@ -3,7 +3,7 @@
 
 /* #define ADDONSROOT "/home/moztw/mozupdate" */
 #define WEBROOT "/home/moztw/htdocs"
-#define SCRIPTROOT "/home/moztw/autoupdate"
+#define SCRIPTROOT "/home/moztw/htdocs/autoupdate"
 
 #define DL_FILES                                \
   "dl/ns/index.shtml "                          \
