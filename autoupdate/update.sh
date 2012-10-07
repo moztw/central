@@ -63,7 +63,7 @@ if [ 1 == $OPT_STAGE ]; then
     WEBROOT="/home/moztw/www-stage/www"
     URLROOT="http://www-stage.moztw.org"
 else
-    REPODIR="/home/moztw/moztw-www"
+    REPODIR="/home/moztw/moztw-git"
     SCRIPTROOT="/home/moztw/htdocs/autoupdate"
     WEBROOT="/home/moztw/htdocs/www"
     URLROOT="http://moztw.org"
