@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /* #define ADDONSROOT "/home/moztw/mozupdate" */
-#define WEBROOT "/home/moztw/htdocs"
+#define WEBROOT "/home/moztw/htdocs/www"
 #define SCRIPTROOT "/home/moztw/htdocs/autoupdate"
 
 #define DL_FILES                                \
