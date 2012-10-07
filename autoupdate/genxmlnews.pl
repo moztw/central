@@ -73,7 +73,7 @@ for (@dats) {
 }
 
 # Main Program
-if (@ARGV == 1) {
+if (@ARGV == 2) {
 	# got filename
 	print "Output File: $ARGV[1]\n";
 	close STDOUT;
