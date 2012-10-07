@@ -20,9 +20,9 @@ function checkBot($process) {
 </head>
 <body>
 	<h1>MozTW IRC Bot Status</h1>
-<?php  if (checkBot("LumberJack.py")) {  ?>
-	<p>The bot is Running!</p> 
-<?php  } else {  ?>      
+<? /* php  if (checkBot("LumberJack.py")) { */ ?>
+	<!--<p>The bot is Running!</p>--> 
+<? /* php  } else { */ ?>
 	<p>Call back IRC bot: <button class="respawn-ircbot">Respawn</button></p>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript">
@@ -41,6 +41,6 @@ function checkBot($process) {
 
 	});
 	</script>
-<?php   }     ?>
+<? /* php   }  (/   ?>
 </body>
 </html>

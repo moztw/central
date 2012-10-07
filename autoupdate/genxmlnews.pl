@@ -4,9 +4,9 @@
 # Author: Hung-Te Lin <piaip@csie.ntu.edu.tw>
 
 use strict;
-
-my $fnLatest = '/home/moztw/htdocs/www/inc/news.html';
-my $fnAll = '/home/moztw/htdocs/www/news/index.shtml';
+my $wwwroot = $ARGV[0];
+my $fnLatest = $wwwroot . '/inc/news.html';
+my $fnAll = $wwwroot . '/news/index.shtml';
 my $maxEntries = 10;
 
 my $HTTP_HEADER=<<HERE;
@@ -75,9 +75,9 @@ for (@dats) {
 # Main Program
 if (@ARGV == 1) {
 	# got filename
-	print "Output File: $ARGV[0]\n";
+	print "Output File: $ARGV[1]\n";
 	close STDOUT;
-	open STDOUT, ">$ARGV[0]";
+	open STDOUT, ">$ARGV[1]";
 } else {
 	print $HTTP_HEADER;
 }
