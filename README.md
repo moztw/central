@@ -30,13 +30,13 @@ The 2nd step is add the virtual host config to your apache's configuration:
 
 Restart your apache and open your browser, link to *http://moztw.yourdomain.name*. You should see the homepage of moztw.
 
-*** Nginx
+### Nginx
 
-** Forum Installation
+## Forum Installation
 
-** Wiki Installation
+## Wiki Installation
 
-** Folder Structure & Production Environment
+## Folder Structure & Production Environment
 
 Please refer to [old README][old] file.
 
