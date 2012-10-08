@@ -1,19 +1,20 @@
 # Repository of moztw.org
 
-This is the new repository of moztw.org, including static page, forum and wiki. If you are willing to contribute. You can fork modify and send pull request.
+This is the git repository of moztw.org web service, including static pages, forum and wiki. If you are willing to contribute, feel free to fork, modify, and send pull request.
 
-## Static Page Local Installation
+## Static Pages Local Installation
 
-To install static pages including home page, event pages, contribution pages ...etc is very easy. Only two requirement:
+It's easy to set up static pages including home page, event pages, contribution pages...,etc. 
 
-* SSI, server side include
-* Virtual Host
+Only one requirement: 
+* SSI (Server Side Include)-support web server with Virtual Hosts enabled
 
 ### Apache 2
 
-To enable SSI on apache is very easy on some os. Take Ubuntu for example, just execute `a2enmod include`. Then you have a SSI ready Aapche.
+To enable SSI on Apache is very easy on most OSes. 
+Take Ubuntu for example, just execute `a2enmod include`. Then you have a SSI-ready Aapche.
 
-The 2nd step is add the virtual host config to your apache's configuration:
+The 2nd step is adding virtual host configs to your Apache configuration:
 
     <VirtualHost *:80>
         ServerName moztw.yourdomain.name
@@ -28,7 +29,7 @@ The 2nd step is add the virtual host config to your apache's configuration:
         </Directory>
     </VirtualHost>
 
-Restart your apache and open your browser, link to *http://moztw.yourdomain.name*. You should see the homepage of moztw.
+Restart Apache and open your browser, open *http://moztw.yourdomain.name*. You should now see the MozTW homepage.
 
 ### Nginx
 
