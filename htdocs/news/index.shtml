@@ -12,6 +12,8 @@
 </ul><!-- start tag is in inc/news.html, DO NOT REMOVE -->
 <h1>過去的公告記錄</h1>
 <ul class="news">
+<li><div class="date"> 10 月 12</div>
+<a href="/firefox/releases/16.0.1/">Firefox</a>、<a href="/mobile">Firefox Mobile</a> 及 <a href="/thunderbird/releases/16.0.1/">Thunderbird</a> 釋出 16.0.1 安全性更新</li>
 <li><div class="date"> 10 月 11</div>
 <a href="https://blog.mozilla.org/security/2012/10/10/security-vulnerability-in-firefox-16/" target="_blank">由於一個安全性問題</a>，Mozilla 暫時停止 Firefox 16 下載，預定將於明日發佈修正</li>
 <li><div class="date"> 10 月 10</div>
