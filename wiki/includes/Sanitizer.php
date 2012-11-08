@@ -1,6 +1,6 @@
 <?php
 /**
- * XHTML sanitizer for MediaWiki
+ * XHTML sanitizer for %MediaWiki.
  *
  * Copyright © 2002-2005 Brion Vibber <brion@pobox.com> et al
  * http://www.mediawiki.org/
@@ -374,7 +374,7 @@ class Sanitizer {
 		if ( !$staticInitialised ) {
 
 			$htmlpairsStatic = array( # Tags that must be closed
-				'b', 'del', 'i', 'ins', 'u', 'font', 'big', 'small', 'sub', 'sup', 'h1',
+				'b', 'bdi', 'del', 'i', 'ins', 'u', 'font', 'big', 'small', 'sub', 'sup', 'h1',
 				'h2', 'h3', 'h4', 'h5', 'h6', 'cite', 'code', 'em', 's',
 				'strike', 'strong', 'tt', 'var', 'div', 'center',
 				'blockquote', 'ol', 'ul', 'dl', 'table', 'caption', 'pre',
@@ -689,6 +689,18 @@ class Sanitizer {
 			if ( in_array( $attribute, array( 'height', 'width', 'size' ) ) ) {
 				if ( preg_match( '/^[\d.]+$/', $value ) ) {
 					$value = "{$value}px";
+				}
+			}
+
+			// Table align is special, it's about block alignment instead of
+			// content align (see also bug 40306)
+			if ( $attribute === 'align' && in_array( $element, $table ) ) {
+				if ( $value === 'center' ) {
+					$style .= ' margin-left: auto;';
+					$property = 'margin-right';
+					$value = 'auto';
+				} else {
+					$property = 'float';
 				}
 			}
 
@@ -1016,7 +1028,7 @@ class Sanitizer {
 
 		# Stupid hack
 		$encValue = preg_replace_callback(
-			'/(' . wfUrlProtocols() . ')/',
+			'/((?i)' . wfUrlProtocols() . ')/',
 			array( 'Sanitizer', 'armorLinksCallback' ),
 			$encValue );
 		return $encValue;
@@ -1243,7 +1255,7 @@ class Sanitizer {
 	 * a. named char refs can only be &lt; &gt; &amp; &quot;, others are
 	 *   numericized (this way we're well-formed even without a DTD)
 	 * b. any numeric char refs must be legal chars, not invalid or forbidden
-	 * c. use &#x, not &#X
+	 * c. use lower cased "&#x", not "&#X"
 	 * d. fix or reject non-valid attributes
 	 *
 	 * @param $text String
@@ -1411,7 +1423,7 @@ class Sanitizer {
 	/**
 	 * If the named entity is defined in the HTML 4.0/XHTML 1.0 DTD,
 	 * return the UTF-8 encoding of that character. Otherwise, returns
-	 * pseudo-entity source (eg &foo;)
+	 * pseudo-entity source (eg "&foo;")
 	 *
 	 * @param $name String
 	 * @return String
@@ -1611,6 +1623,10 @@ class Sanitizer {
 			# 'title' may not be 100% valid here; it's XHTML
 			# http://www.w3.org/TR/REC-MathML/
 			'math'       => array( 'class', 'style', 'id', 'title' ),
+
+			# HTML 5 section 4.6
+			'bdi' => $common,
+
 			);
 		return $whitelist;
 	}
