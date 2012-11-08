@@ -957,7 +957,7 @@ div.gallerytext {
 
 /* Basic Structure */
 body {
-    background: #fff url("/images/moztw/body_back.gif") repeat-x;
+    background: #fff url("/images/body_back.gif") repeat-x;
 }
 /* General Structure */
 /* Header */
@@ -977,7 +977,7 @@ body {
 }
 
 #header {
-    background: #455372 url("/images/moztw/header_bl.png") bottom left repeat-x;
+    background: #455372 url("/images/header_bl.png") bottom left repeat-x;
     position: relative;
     min-height: 39px;
     height: 3em; /* 5em; */
@@ -991,7 +991,7 @@ body {
     left: 0;
     margin: 0;
     font-size: 2px;
-    background: url("/images/moztw/header_tl.gif") no-repeat;
+    background: url("/images/header_tl.gif") no-repeat;
     height: 8px;
     z-index: 100; /* above the UL */
 }
@@ -999,8 +999,8 @@ body {
     display: block;
     width: 354px;
     height: 65px;
-    /*background: transparent url("/images/moztw/header_logo2.png") no-repeat;*/
-    background: transparent url("http://moztw.org/images/header_logo3.png") no-repeat;
+    /*background: transparent url("/images/header_logo2.png") no-repeat;*/
+    background: transparent url("/images/header_logo3.png") no-repeat;
     text-indent: -700em;
     text-decoration: none;
 }
@@ -1012,12 +1012,12 @@ body {
     margin: 0;
     padding: 0 15px 0 0;
     list-style: none;
-    background: url("/images/moztw/header_br.gif") no-repeat bottom right;
+    background: url("/images/header_br.gif") no-repeat bottom right;
     z-index: 90; /* below the H1 */
 }
 #header li {
     float: right;
-    background: transparent url("/images/moztw/header_tab.gif") 100% -600px no-repeat;
+    background: transparent url("/images/header_tab.gif") 100% -600px no-repeat;
     padding: 0 6px 0 0;
     margin: 0 1px 0 0;
     border-bottom: 1px solid #515358;
@@ -1026,7 +1026,7 @@ body {
     float: left;
     display: block;
     padding: 4px 4px 4px 10px;
-    background: transparent url("/images/moztw/header_tab.gif") 0% -600px no-repeat;
+    background: transparent url("/images/header_tab.gif") 0% -600px no-repeat;
     font-weight: bold;
     color: #fff;
     text-decoration: none;
@@ -1088,7 +1088,7 @@ body.sectionDocs li#menu_docs:hover a {
     top: 0;
     right: 0;
     padding: 12px 20px 0 0;
-    background: url("/images/moztw/header_tr.gif") no-repeat top right;
+    background: url("/images/header_tr.gif") no-repeat top right;
     margin: 0; /* need for IE Mac */
     text-align: right; /* need for IE Mac */
     white-space: nowrap; /* for Opera */

@@ -78,7 +78,7 @@ urchinTracker();
   <li id="menu_products"><a href="http://moztw.org/dl" title="Moztw.org 提供的中文化軟體一覽">下載</a></li>
  </ul>
 </div>
-<div class="key-point" style="background:#FCF4C4;margin:1em 3em;padding:5px 30px;">
+<div class="key-point" style="background:#FCF4C4;margin:1em 3em;padding:5px 30px; font-size: 1.5em;">
 <h2>舊文件</h2>
 <p>此處文件僅供參考，請自行考量時效性與適用程度，其他庫藏文件請參考<a href="http://moztw.org/docs/" title="更舊的文件">文件頁面</a>；<br>我們亟需您的協助，進行共筆系統搬移、及文件整理工作，詳情請查閱<a title="了解我們正在做什麼，看看您能幫上什麼忙！" href="http://moztw.org/contribute">參與我們</a>。</p>
 </div>
