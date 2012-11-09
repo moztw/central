@@ -20,7 +20,7 @@ if ( $wgCommandLineMode ) {
 	if( !ini_get( 'zlib.output_compression' ) ) @ob_start( 'ob_gzhandler' );
 }
 
-$wgSitename         = "MoztwWiki";
+$wgSitename         = "MozTW Wiki";
 
 $wgScriptPath	    = "";
 $wgScript           = "$wgScriptPath/index.php";
@@ -32,7 +32,7 @@ $wgRedirectScript   = "$wgScriptPath/redirect.php";
 $wgArticlePath      = "/$1";
 #$wgArticlePath      = "$wgScript?title=$1";
 #$wgArticlePath      = "/page/$1";
-$wgUsePathInfo      = false; 
+$wgUsePathInfo      = false;
 
 $wgStylePath        = "$wgScriptPath/skins";
 $wgStyleDirectory   = "$IP/skins";
@@ -151,5 +151,4 @@ $wgGroupPermissions['sysop']['upload']		= true;
 $wgGroupPermissions['sysop']['renameuser'] 	= true;
 
 //$wgReadOnly = 'MozTW Wiki 已唯讀，若有問題請洽 moztw-general AT googlegroups DOT com';
-
 ?>
