@@ -39,7 +39,7 @@
     margin-top: -6px;
     height: 90px;
     width: 256px;
-    background-color: rgba(255,255,255,.2);
+    background-color: rgba(255,255,255,.4);
     border-radius: 10px;
 }
 
@@ -109,6 +109,7 @@
     background-image: url("foxmosa/images/firfox_8yr.png") , -webkit-radial-gradient(center, circle farthest-corner, #1997D2 0%, #2565A3 100%);
     background-image: url("foxmosa/images/firfox_8yr.png") , radial-gradient(circle farthest-corner at center, #1997D2 0%, #2565A3 100%);
     background-repeat: no-repeat;
+    background-position: right -30%;
 
 }
 .key-point.coscup {
@@ -194,7 +195,7 @@
 <!--#include virtual="/inc/header.html" -->
 
 <div class="key-point front-feature" id="front-feature">
-  <a id="mobile_link" href="/foxmosa/"></a>
+  <a id="mobile_link" href="/foxmosa/" title="為了慶祝 Firefox 及 Foxmosa 8 歲，Foxmosa 個人網頁正式登場"></a>
   <div id="feature-content">
     <h2><a class="fx-link" href="/firefox/"><img src="images/logo-wordmark-mozilla-small.png" alt="Firefox" height="84" width="240"></a></h2>
     <div class="download dl-box">
