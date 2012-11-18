@@ -59,7 +59,7 @@ var PicWall = (function ($) {
 				}));
 				ele.append(grid[i].getJqueryElement());
 			}
-
+			
 			eventTarget.trigger('afterResize'); 
 		};
 
@@ -167,7 +167,12 @@ var PicWall = (function ($) {
 			});
 
 		});
-
+		
+		/**reSize();
+		ele.resize(function(){
+			reSize();
+		});**/
+	
 		return {
 			change: function(){
 				for(var i in grid){

@@ -1,9 +1,9 @@
-jQuery(i18n(function($, that){
+jQuery(l10n(function($, that){
 	
 	that.init();
 
 	that.on('change', function(){
-		that.update('.i18n', 'i18n');
+		that.update('.l10n', 'l10n');
 	});
 
 	$.get('pictures.json', function(data){
@@ -11,7 +11,7 @@ jQuery(i18n(function($, that){
 		picwall = new PicWall($picwall, data),
 		timer;
 
-		picwall.on('load').on('afterResize', function(){
+		picwall.on('afterResize', function(){
 			$('#foxmosa-gallery div > div').fancybox({
 				openEffect  : 'fade',
 				closeEffect : 'fade',
@@ -33,6 +33,9 @@ jQuery(i18n(function($, that){
 		ctx = canvas.getContext("2d"),
 		x = 55, y = 0, speed = 50, index = 0, len = 20,
 		images = [], timer;
+
+		ctx.translate(canvas.width, 0);
+		ctx.scale(-1, 1);
 
 		function preload(){
 			var counter = 1;
