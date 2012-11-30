@@ -59,7 +59,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 $wgConf = new SiteConfiguration;
 
 /** MediaWiki version number */
-$wgVersion = '1.20.0';
+$wgVersion = '1.20.1';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename = 'MediaWiki';
@@ -2472,11 +2472,6 @@ $wgAllowRdfaAttributes = false;
  * Enabled HTML5 microdata attributes for use in wikitext, if $wgHtml5 is also true.
  */
 $wgAllowMicrodataAttributes = false;
-
-/**
- * Cleanup as much presentational html like valign -> css vertical-align as we can
- */
-$wgCleanupPresentationalAttributes = true;
 
 /**
  * Should we try to make our HTML output well-formed XML?  If set to false,
