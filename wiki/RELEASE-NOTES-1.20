@@ -3,6 +3,18 @@
 Security reminder: MediaWiki does not require PHP's register_globals
 setting since version 1.2.0. If you have it on, turn it '''off''' if you can.
 
+== MediaWiki 1.20.1 ==
+
+This is a security release of the MediaWiki 1.20 branch
+
+=== Changes since 1.20 ===
+* (bug 42202) Validate options to prevent html injection
+* (bug 40995) Prevent session fixation in Special:UserLogin (CVE-2012-5391)
+* (bug 41400) Prevent linker regex from exceeding PCRE backtrack limit
+* Javscript Lint fixes
+* (bug 40632) Remove CleanupPresentationalAttributes feature
+* [Database] Fixed case where trx idle callbacks might be lost.
+
 == MediaWiki 1.20 ==
 
 MediaWiki 1.20 is a stable release.
@@ -230,8 +242,6 @@ milestone in Bugzilla.
 * (bug 36812) Special:ActiveUsers "Hide bots" should hide users from any group
   having the "bot" user right, instead of just the default "bot" user group.
 * (bug 35082) mw.util.addPortletLink incorrectly adds link to mutiple <ul> tags.
-* (bug 36495) Sanitizer::fixDeprecatedAttributes should convert "align"
-  attribute to margin or float instead of text-align (for non-table-cells).
 * (bug 36991) jquery.tablesorter should extract date sort format from date
   string instead of global config. Dates like "April 1 2012" and "1 April 2012"
   now sort correctly regardless of the content language's DefaultDateFormat.
@@ -283,6 +293,7 @@ milestone in Bugzilla.
 * (bug 40500) ResourceLoader should not ignore media-type for urls in debug mode.
 * (bug 40660) ResourceLoaderWikiModule should not convert "&nbsp;" to a space
   for pages from the MediaWiki-namespace.
+* (bug 40329) (bug 40632) Removed CleanupPresentationalAttributes feature.
 
 === API changes in 1.20 ===
 * (bug 34316) Add ability to retrieve maximum upload size from MediaWiki API.
