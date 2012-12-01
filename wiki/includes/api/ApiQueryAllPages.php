@@ -4,7 +4,7 @@
  *
  * Created on Sep 25, 2006
  *
- * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
+ * Copyright © 2006 Yuri Astrakhan "<Firstname><Lastname>@gmail.com"
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@
  *
  * @ingroup API
  */
-class ApiQueryAllpages extends ApiQueryGeneratorBase {
+class ApiQueryAllPages extends ApiQueryGeneratorBase {
 
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'ap' );
@@ -66,6 +66,17 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 
 		// Page filters
 		$this->addTables( 'page' );
+
+		if ( !is_null( $params['continue'] ) ) {
+			$cont = explode( '|', $params['continue'] );
+			if ( count( $cont ) != 1 ) {
+				$this->dieUsage( "Invalid continue param. You should pass the " .
+					"original value returned by the previous query", "_badcontinue" );
+			}
+			$op = $params['dir'] == 'descending' ? '<' : '>';
+			$cont_from = $db->addQuotes( $cont[0] );
+			$this->addWhere( "page_title $op= $cont_from" );
+		}
 
 		if ( $params['filterredir'] == 'redirects' ) {
 			$this->addWhereFld( 'page_is_redirect', 1 );
@@ -153,7 +164,7 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 			$this->addOption( 'STRAIGHT_JOIN' );
 			// We have to GROUP BY all selected fields to stop
 			// PostgreSQL from whining
-			$this->addOption( 'GROUP BY', implode( ', ', $selectFields ) );
+			$this->addOption( 'GROUP BY', $selectFields );
 			$forceNameTitleIndex = false;
 		}
 
@@ -165,13 +176,22 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 		$this->addOption( 'LIMIT', $limit + 1 );
 		$res = $this->select( __METHOD__ );
 
+		//Get gender information
+		if( MWNamespace::hasGenderDistinction( $params['namespace'] ) ) {
+			$users = array();
+			foreach ( $res as $row ) {
+				$users[] = $row->page_title;
+			}
+			GenderCache::singleton()->doQuery( $users, __METHOD__ );
+			$res->rewind(); //reset
+		}
+
 		$count = 0;
 		$result = $this->getResult();
 		foreach ( $res as $row ) {
 			if ( ++ $count > $limit ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				// TODO: Security issue - if the user has no right to view next title, it will still be shown
-				$this->setContinueEnumParameter( 'from', $this->keyToTitle( $row->page_title ) );
+				$this->setContinueEnumParameter( 'continue', $row->page_title );
 				break;
 			}
 
@@ -184,7 +204,7 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 				);
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $vals );
 				if ( !$fit ) {
-					$this->setContinueEnumParameter( 'from', $this->keyToTitle( $row->page_title ) );
+					$this->setContinueEnumParameter( 'continue', $row->page_title );
 					break;
 				}
 			} else {
@@ -202,6 +222,7 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 
 		return array(
 			'from' => null,
+			'continue' => null,
 			'to' => null,
 			'prefix' => null,
 			'namespace' => array(
@@ -275,6 +296,7 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 		$p = $this->getModulePrefix();
 		return array(
 			'from' => 'The page title to start enumerating from',
+			'continue' => 'When more results are available, use this to continue',
 			'to' => 'The page title to stop enumerating at',
 			'prefix' => 'Search for all page titles that begin with this value',
 			'namespace' => 'The namespace to enumerate',
@@ -296,6 +318,16 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 		);
 	}
 
+	public function getResultProperties() {
+		return array(
+			'' => array(
+				'pageid' => 'integer',
+				'ns' => 'namespace',
+				'title' => 'string'
+			)
+		);
+	}
+
 	public function getDescription() {
 		return 'Enumerate all pages sequentially in a given namespace';
 	}
@@ -304,6 +336,7 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'params', 'info' => 'Use "gapfilterredir=nonredirects" option instead of "redirects" when using allpages as a generator' ),
 			array( 'code' => 'params', 'info' => 'prlevel may not be used without prtype' ),
+			array( 'code' => '_badcontinue', 'info' => 'Invalid continue param. You should pass the original value returned by the previous query' ),
 		) );
 	}
 
