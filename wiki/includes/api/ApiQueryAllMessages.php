@@ -4,7 +4,7 @@
  *
  * Created on Dec 1, 2007
  *
- * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
+ * Copyright © 2006 Yuri Astrakhan "<Firstname><Lastname>@gmail.com"
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@
  *
  * @ingroup API
  */
-class ApiQueryAllmessages extends ApiQueryBase {
+class ApiQueryAllMessages extends ApiQueryBase {
 
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'am' );
@@ -253,6 +253,27 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			'lang' => 'Return messages in this language',
 			'from' => 'Return messages starting at this message',
 			'to' => 'Return messages ending at this message',
+		);
+	}
+
+	public function getResultProperties() {
+		return array(
+			'' => array(
+				'name' => 'string',
+				'customised' => 'boolean',
+				'missing' => 'boolean',
+				'*' => array(
+					ApiBase::PROP_TYPE => 'string',
+					ApiBase::PROP_NULLABLE => true
+				)
+			),
+			'default' => array(
+				'defaultmissing' => 'boolean',
+				'default' => array(
+					ApiBase::PROP_TYPE => 'string',
+					ApiBase::PROP_NULLABLE => true
+				)
+			)
 		);
 	}
 
