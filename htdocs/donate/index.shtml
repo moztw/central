@@ -1,0 +1,35 @@
+<!--#include virtual="/inc/new_meta.html" -->
+	<link href="style.css" rel="stylesheet" />
+	<title>贊助 Mozilla</title>
+	<meta name="description" content="Mozilla 全球社群依循 Mozilla 宣言，致力於打造更開放自由的網路、提升人們的網路體驗、維護大眾的選擇權，要打造更美好的網路未來。這樣的任務，沒有您的在地參與可辦不到！">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="http://mozilla.tw">
+	<meta property="og:image" content="http://moztw.org/images/foxmosa-icon.gif">
+	<meta property="og:site_name" content="Mozilla 台灣社群">
+	<meta property="og:description" content="Mozilla 全球社群依循 Mozilla 宣言，致力於打造更開放自由的網路、提升人們的網路體驗、維護大眾的選擇權，要打造更美好的網路未來。這樣的任務，沒有您的在地參與可辦不到！">
+<!--#include virtual="/inc/new_header.html" -->
+	
+	<hgroup id="main-feature">
+		<h1><span class="zh">贊助</span>Mozilla</h1>
+		<h2>致力於網路開放、維繫大眾的選擇<br />打造更美好的網路未來</h2>
+	</hgroup>
+
+	<section id="key-point">
+		<h2>請與我們一起保護世上最重要的公用資源</h2>
+		
+		<p>我們相信網際網路應該保持安全、開放與容易取用。請觀看「Mozilla 故事」影片，了解我們如何保護隱私、自由、維繫使用者選擇，並打造協助任何人隨心所欲塑造網路的工具。</p>
+		<p>在此邀請您與我們一起打造更美好的網路，請捐款支持 Mozilla 基金會。只要您捐款美金 30 元以上，我們將贈送您一件 Firefox T-shirt（運費全免），讓你藉由穿著，向世界展現出我們的共同夢想：一個更安全、更開放且更為透明的網際網路。</p>
+	</section>
+
+	<section id="youtube" class="row">
+		<div class="left">
+			<iframe src="http://www.youtube.com/embed/Q1n2q_YSZUE" frameborder="0" allowfullscreen></iframe>
+		</div>
+		<div class="right">
+			<a id="donate-button" href="https://donate.mozilla.org/page/contribute/mozillatshirt" target="_blank" onClick="_gaq.push(['_trackEvent', 'Outgoing', '/donate', 'donate.mozilla.org-mozillatshirt']);">
+				<span class="title">立即捐款 !</span>並獲得 T-shirt&nbsp;
+			</a>
+			<span class="help">* 連結到 Mozilla 基金會英文頁面<br>　MozTW 社群未收受╱經手您的捐款</span>
+		</div>
+	</section>
+<!--#include virtual="/inc/new_footer.html" -->
