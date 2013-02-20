@@ -100,37 +100,135 @@
 }
 
 .key-point {
-    background: url("/images/firefox_mobile14.png") no-repeat 305px bottom #78B8D0;
+    background: url("/images/mwc.jpg") no-repeat scroll -50px -350px #1875B5;
 }
 .key-point.coscup {
     background: url("images/pairslogo.jpg") 75% center no-repeat #D3A77D;
     background-size: auto 100%;
 }
 
-.event-desc {
-    color: white;
-    font-family: sans-serif;
-    font-size: 1.6em;
-    font-weight: bold;
-    left: 0;
-    position: absolute;
-    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
-    top: 240px;
-}
-
 .homepage .download {
     width: 250px;
 }
+
+
+#front-feature .mwc-box {
+    color: #FFFFFF;
+    left: 336px;
+    letter-spacing: 0.05em;
+    position: absolute;
+    text-shadow: 2px 1px 2px #185199;
+    top: 45px;
+    width: 425px;
+}
+
+#front-feature .mwc-box h2 {
+    color: #FFFFFF;
+    font-size: 24px;
+    font-family: "Helvetica", "Heiti TC", "LiHei Pro", "微軟正黑體", "WenQuanYi - Micro Hei", "Arial", sans-serif;
+    line-height: 1.7em;
+    text-align: justify;
+    margin-bottom: 0.5em;
+    position: absolute;
+    -webkit-transition: opacity 0.7s;
+    transition: opacity 0.7s;
+}
+#front-feature .mwc-box .mwc-intro {
+    font-size: 18px;
+    line-height: 1.5em;
+    text-align: justify;
+    margin: 0 0 0.5em;
+    padding: 0;
+    position: absolute;
+    -webkit-transition: opacity 0.7s;
+    transition: opacity 0.7s;
+}
+
+/* MWS Countdown style and code from http://www.mozilla.org/en-US/firefox/partners/ */
+
+#front-feature .mwc-box .countdown {
+    left: 50px;
+    padding: 0;
+    position: absolute;
+    top: 160px;
+    width: 200px;
+}
+.mwc-box .countdown:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.mwc-box .countdown .box {
+    float: left;
+    margin: 0 5% 0 0;
+    width: 20%;
+}
+.mwc-box .countdown .count {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.05);
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 1px rgba(0, 0, 0, 0.25) inset;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 3px;
+    padding: 6px 1px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+.mwc-box .countdown .label {
+    border: none;
+    display: block;
+    font-size: 11px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.mwc-intro {
+    opacity: 0;
+}
+.mwc-box h2 {
+    opacity: 1;
+}
+#front-feature:hover .mwc-box h2 {
+    opacity: 0;
+}
+#front-feature:hover .mwc-box .mwc-intro {
+    opacity: 1;
+}
+
 
 @media only screen and (max-width : 500px) {
     #front-feature #feature-content {
         display: none;
     }
     #front-feature {
-        background-position: 30% 0px;
-        background-size: auto 100%;
+        background-position: right -115px;
+        background-size: auto 360px;
         padding-bottom: 200px;
         background-repeat: no-repeat;
+    }
+    #front-feature .mwc-box {
+        left: 0;
+        top: 0;
+        width: 85%;
+    }
+    #front-feature .mwc-box h2 {
+        font-size: 22px;
+        line-height: 1.5em;
+        transition: none;
+        -webkit-transition: none;
+    }
+    #front-feature:hover .mwc-box h2 {
+        opacity: 1;
+    }
+    #front-feature .mwc-box .mwc-intro {
+        display: none;
+    }
+    
+    #front-feature .mwc-box .countdown {
+        left: 25px;
+        top: 135px;
     }
     #front-feature.coscup {
         background-position: center 60%;
@@ -140,7 +238,7 @@
     
     coscup {
         background-position: 0px 0px !important;
-        background-size 90% !important;
+        background-size: 90% !important;
         padding-bottom: 200px;
         background-repeat: no-repeat;
         background: #78B8D0 !important;
@@ -149,19 +247,17 @@
         width: 100%;
         height: 100%;
     }
-    .event-desc {
-        left: 0;
-        position: absolute;
-        top: 145px;
-        font-size: 1.33em;
-        text-align: center;
-        margin: 0 auto !important;
-        width: 100%;
-    }
 }
    
 -->
 </style>
+<!--[if IE]>
+<style>
+    .key-point {
+        background-position-x: -25px;
+    }
+</style>
+<![endif]-->
 <!--[if lte IE 8]>
 <style>
 .frontcolumn {
@@ -170,43 +266,34 @@
 #front-feature .download ul, #planets ul {
     margin-left: 0;
 }
-#front-feature {
-    background-position: 465px -45px;
-}
-#front-feature:hover {
-    background-position: 90px -45px;
-}
-.event-desc {
-    left: 260px;
-    top: 20px;
-}
-#front-feature:hover .event-desc {
-    left: 35px;
-    top: 20px;
-}
 .front-feature #mobile_link {
     height: 330px;
     width: 70%;
 }
-</style>
-<![endif]-->
-<!--[if lte IE 6]>
-<style>
-#front-feature {
-    background-position: 225px -45px;
-}
-#front-feature .event-desc {
-    left: 70px;
-    top: 20px;
+#front-feature .mwc-box .mwc-intro {
+    display: none;
 }
 </style>
 <![endif]-->
+
 
 <!--#include virtual="/inc/class_homepage.html" -->
 <!--#include virtual="/inc/header.html" -->
 
 <div class="key-point front-feature" id="front-feature">
-  <a id="mobile_link" href="/mobile/"></a>
+  <div class="mwc-box">
+    <h2>一年之前，Mozilla 承諾將開放網路推上行動裝置的舞台。現在我們帶著成果回來了！</h2>
+    <div class="mwc-intro">
+        <p>透過 Firefox OS、Firefox Marketplace 及 Android 版 Firefox，我們讓營運商、手機製造商與開發者得以經營、客制並直接掌握顧客關係。</p>
+        <p>更多資訊即將於 MWC 大會公開，敬請期待……</p>
+    </div>
+    <div class="countdown">
+      <span id="mwc-countdown" data-time="1361723400"></span>
+    </div>
+  </div>
+
+  <a id="mobile_link" href="http://www.mozilla.org/firefox/partners/" target="_blank" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'mozilla.org/partner', 'Frontpage']);"></a>
+
   <div id="feature-content">
     <h2><a class="fx-link" href="/firefox/"><img src="images/logo-wordmark-mozilla.png" alt="Firefox" height="84" width="240"></a></h2>
     <div class="download dl-box">
@@ -350,6 +437,16 @@ $('#news_columns').removeClass('frontcolumndouble').addClass('frontcolumn').afte
 		},
 		5
 	);
+	
+
+// MWC countdown
+window.trans = function trans(a) {
+  return $("#strings").data(a)
+};
+
 })(jQuery);
+</script>
+<div data-secondstextex="seconds" data-secondstext="秒" data-minutestextex="minutes" data-minutestext="分" data-hourstextex="hours" data-hourstext="時" data-daystextex="days" data-daystext="日" data-daytext="日" data-close="Close" id="strings"></div>
+<script src="http://mozorg.cdn.mozilla.net/media/js/partners-min.js">
 </script>
 <!--#include virtual="/inc/footer.html" -->
