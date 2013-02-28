@@ -1,13 +1,13 @@
 # Repository of moztw.org
 
-This is the git repository of moztw.org web service, including static pages, forum and wiki. If you are willing to contribute, feel free to fork, modify, and send pull request.
+This is the git repository of moztw.org web sites, including static pages, forum and wiki. If you are willing to contribute, feel free to fork, modify, and send pull request.
 
 ## Static Pages Local Installation
 
-It's easy to set up static pages including home page, event pages, contribution pages...,etc. 
+It's easy to set up static pages including home page, event pages, contribution pages, etc. 
 
 Only one requirement: 
-* SSI (Server Side Include)-support web server with Virtual Hosts enabled
+* SSI (Server Side Include)-supported web server with Virtual Hosts enabled
 
 ### Apache 2
 
