@@ -33,6 +33,23 @@ Restart Apache and open your browser, open *http://moztw.yourdomain.name*. You s
 
 ### Nginx
 
+Example of site configuration with SSI module enabled:
+
+    server {
+      listen 80;
+      server_name moztw.yourdomain.name;
+
+      location / {
+        root /path/to/moztw/central/htdocs/;
+        ssi on;
+        ssi_types text/shtml;
+        index index.html index.htm index.shtml index.php;
+      }
+    }
+
+Note that we're not running Nginx server online for now, you might encounter some problems,
+e.g., _.htaccess_ feature was not supported.
+
 ## Forum Installation
 
 ## Wiki Installation
