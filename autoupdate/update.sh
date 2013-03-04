@@ -89,10 +89,12 @@ if [ 0 != $? ]; then
     exit 1
 fi
 
-update_cache
-if [ 0 != $? ]; then
-    echo "!!! Update cache fail"
-    exit 1
+if [ 1 = $OPT_CACHE ]; then
+	update_cache
+	if [ 0 != $? ]; then
+    	echo "!!! Update cache fail"
+	    exit 1
+	fi
 fi
 
 if [ 1 = $OPT_MD5 ]; then
