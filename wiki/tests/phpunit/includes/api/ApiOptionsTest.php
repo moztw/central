@@ -2,10 +2,13 @@
 
 /**
  * @group API
+ * @group Database
  */
 class ApiOptionsTest extends MediaWikiLangTestCase {
 
 	private $mTested, $mApiMainMock, $mUserMock, $mContext, $mSession;
+
+	private $mOldGetPreferencesHooks = false;
 
 	private static $Success = array( 'options' => 'success' );
 
@@ -20,8 +23,13 @@ class ApiOptionsTest extends MediaWikiLangTestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
+		// Set up groups
+		$this->mUserMock->expects( $this->any() )
+			->method( 'getEffectiveGroups' )->will( $this->returnValue( array( '*', 'user')) );
+
 		// Create a new context
 		$this->mContext = new DerivativeContext( new RequestContext() );
+		$this->mContext->getContext()->setTitle( Title::newFromText( 'Test' ) );
 		$this->mContext->setUser( $this->mUserMock );
 
 		$this->mApiMainMock->expects( $this->any() )
@@ -37,6 +45,36 @@ class ApiOptionsTest extends MediaWikiLangTestCase {
 		$this->mSession = array();
 
 		$this->mTested = new ApiOptions( $this->mApiMainMock, 'options' );
+
+		global $wgHooks;
+		if ( !isset( $wgHooks['GetPreferences'] ) ) {
+			$wgHooks['GetPreferences'] = array();
+		}
+		$this->mOldGetPreferencesHooks = $wgHooks['GetPreferences'];
+		$wgHooks['GetPreferences'][] = array( $this, 'hookGetPreferences' );
+	}
+
+	public function tearDown() {
+		global $wgHooks;
+
+		if ( $this->mOldGetPreferencesHooks !== false ) {
+			$wgHooks['GetPreferences'] = $this->mOldGetPreferencesHooks;
+			$this->mOldGetPreferencesHooks = false;
+		}
+
+		parent::tearDown();
+	}
+
+	public function hookGetPreferences( $user, &$preferences ) {
+		foreach ( array( 'name', 'willBeNull', 'willBeEmpty', 'willBeHappy' ) as $k ) {
+			$preferences[$k] = array(
+				'type' => 'text',
+				'section' => 'test',
+				'label' => '&#160;',
+			);
+		}
+
+		return true;
 	}
 
 	private function getSampleRequest( $custom = array() ) {
@@ -173,14 +211,23 @@ class ApiOptionsTest extends MediaWikiLangTestCase {
 			->method( 'resetOptions' );
 
 		$this->mUserMock->expects( $this->at( 1 ) )
-			->method( 'setOption' )
-			->with( $this->equalTo( 'willBeNull' ), $this->equalTo( null ) );
+			->method( 'getOptions' );
 
 		$this->mUserMock->expects( $this->at( 2 ) )
 			->method( 'setOption' )
-			->with( $this->equalTo( 'willBeEmpty' ), $this->equalTo( '' ) );
+			->with( $this->equalTo( 'willBeNull' ), $this->equalTo( null ) );
 
 		$this->mUserMock->expects( $this->at( 3 ) )
+			->method( 'getOptions' );
+
+		$this->mUserMock->expects( $this->at( 4 ) )
+			->method( 'setOption' )
+			->with( $this->equalTo( 'willBeEmpty' ), $this->equalTo( '' ) );
+
+		$this->mUserMock->expects( $this->at( 5 ) )
+			->method( 'getOptions' );
+
+		$this->mUserMock->expects( $this->at( 6 ) )
 			->method( 'setOption' )
 			->with( $this->equalTo( 'willBeHappy' ), $this->equalTo( 'Happy' ) );
 
@@ -199,10 +246,16 @@ class ApiOptionsTest extends MediaWikiLangTestCase {
 			->method( 'resetOptions' );
 
 		$this->mUserMock->expects( $this->at( 2 ) )
+			->method( 'getOptions' );
+
+		$this->mUserMock->expects( $this->at( 3 ) )
 			->method( 'setOption' )
 			->with( $this->equalTo( 'willBeHappy' ), $this->equalTo( 'Happy' ) );
 
-		$this->mUserMock->expects( $this->at( 3 ) )
+		$this->mUserMock->expects( $this->at( 4 ) )
+			->method( 'getOptions' );
+
+		$this->mUserMock->expects( $this->at( 5 ) )
 			->method( 'setOption' )
 			->with( $this->equalTo( 'name' ), $this->equalTo( 'value' ) );
 
