@@ -73,15 +73,15 @@ $wgMemCachedServers = array();
 ## is writable, then uncomment this:
 $wgDisableUploads		= false;
 $wgUseImageResize		= true;
-# $wgUseImageMagick = true;
-# $wgImageMagickConvertCommand = "/usr/bin/convert";
+$wgUseImageMagick = true;
+$wgImageMagickConvertCommand = "/usr/bin/convert";
 
 ## If you have the appropriate support software installed
 ## you can enable inline LaTeX equations:
 # $wgUseTeX			= true;
-$wgMathPath         = "{$wgUploadPath}/math";
-$wgMathDirectory    = "{$wgUploadDirectory}/math";
-$wgTmpDirectory     = "{$wgUploadDirectory}/tmp";
+$wgMathPath         = "$wgUploadPath/math";
+$wgMathDirectory    = "$wgUploadDirectory/math";
+$wgTmpDirectory     = "$wgUploadDirectory/temp";
 
 $wgLocalInterwiki   = $wgSitename;
 
