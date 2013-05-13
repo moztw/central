@@ -214,8 +214,8 @@ section .appendix {
       <div class="key-point">
         <div id="product-desc" class="firefox-releasenotes-v4">
           <p id="release-date">
-            <time datetime="2013-04-02">2013 年 4 月 2 日</time>
-             v.20.0
+            <time datetime="2013-04-12">2013 年 4 月 12 日</time>
+             v.20.0.1
           </p>
           <p>此版本資訊包含了<a href="#whatsnew">Firefox 新鮮事</a>、<a href="#knownissues">已知問題</a>、<a href="#downloadandinstall">下載安裝指示</a>、以及<a href="#FAQ">常見問題</a>等訊息。</p>
 
@@ -230,6 +230,10 @@ section .appendix {
                 <h3>Firefox 新鮮事</h3>
                 <div class="section-contents">
                     <ul>
+                      <li>
+                        <span class="tag tag-fixed">修正</span>
+                        <h5>20.0.1:（僅 Windows）修正 UNC 路徑的處理問題（見 <a href="http://bugzil.la/846848">bug 846848</a>）。</h5>
+                      </li>
                       <li>
                         <span class="tag tag-new">全新功能</span>
                         <h5>個別視窗的隱私瀏覽功能，見<a href="https://support.mozilla.org/en-US/kb/private-browsing-browse-web-without-saving-info">詳細資訊</a>。</h5>
@@ -268,6 +272,10 @@ section .appendix {
                       </li>
                       <li>
                         <span class="tag tag-fixed">修正</span>
+                        <h5>20.0.1: 安全性更新詳見<a href="https://www.mozilla.org/security/known-vulnerabilities/firefox.html">安全性公告</a>。</h5>
+                      </li>
+                      <li>
+                        <span class="tag tag-fixed">修正</span>
                         <h5>
                           當機回報員的「細節」按鈕問題（<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=793972">bug 793972</a>）。
                         </h5>
@@ -280,8 +288,8 @@ section .appendix {
                       </li>
 
                       <li class="complete">
-                        請參考此版本的<a href="http://www.mozilla.com/firefox/20.0/releasenotes/buglist.html">完整變更清單</a>。
-                        您可能也想瞭解<a href="/firefox/releases/19.0.2/">前一個版本的更新</a>。
+                        請參考此版本的<a href="https://bugzilla.mozilla.org/buglist.cgi?bug_status=RESOLVED&bug_status=VERIFIED&bug_status=CLOSED&f1=target_milestone&f2=cf_status_firefox20&o1=anywords&o2=anywords&resolution=FIXED&v1=mozilla20%2C%20Firefox%2020&v2=fixed%2Cverified&order=bug_id&limit=0">完整變更清單</a>。
+                        您可能也想瞭解<a href="/firefox/releases/20.0/">前一個版本的更新</a>。
                       </li>
                     </ul>
                 </div>
@@ -305,7 +313,7 @@ section .appendix {
                       <div class="status">
                         <span class="status-unresolved">v19 未修復</span>
                         <span class="status-resolved">
-                          <a href="http://www.mozilla.org/en-US/firefox/21.0a2/auroranotes">v21 已修復</a>
+                          <a href="http://www.mozilla.org/en-US/firefox/21.0beta/releasenotes">v21 已修復</a>
                         </span>
                       </div>
                     </li>
@@ -317,7 +325,7 @@ section .appendix {
                       <div class="status">
                         <span class="status-unresolved">v20 未修復</span>
                         <span class="status-resolved">
-                          <a href="http://www.mozilla.org/en-US/firefox/21.0a2/auroranotes">v21 已修復</a>
+                          <a href="http://www.mozilla.org/en-US/firefox/21.0beta/releasenotes">v21 已修復</a>
                         </span>
                       </div>
                     </li>
@@ -326,16 +334,6 @@ section .appendix {
                       <h5>
                         Download Statusbar 附加元件在由一般瀏覽切換為隱私瀏覽時，仍會繼續下載檔案（<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=853463">bug 853463</a>）。
                       </h5>
-                    </li>
-                    <li>
-                      <span class="tag tag-unresolved">尚未修復</span>
-                      <h5>HTML5 video 的複製功能無法正常使用（<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=855726">bug 855726</a>）。</h5>
-                      <div class="status">
-                        <span class="status-unresolved">v19 未修復</span>
-                        <span class="status-resolved">
-                          <a href="http://www.mozilla.org/en-US/firefox/21.0a2/auroranotes">v21 已修復</a>
-                        </span>
-                      </div>
                     </li>
                   </ul>
                 </div>

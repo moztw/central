@@ -1,0 +1,70 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          irclogbot
+# Required-Start:    $local_fs $remote_fs $network $syslog
+# Required-Stop:     $local_fs $remote_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start irclog bot service at boot time
+# Description:       Enable irclog bot service
+### END INIT INFO
+
+##### PATH
+export PATH="${PATH:+$PATH:}/usr/sbin:/sbin:/usr/bin"
+
+##### params
+EXEC="python"
+EXEC_PATH=$(which ${EXEC})
+PROG="LumberJack.py"
+PROG_NAME="LumberJack"
+PROG_PATH="/home/moztw/irclog/var/ircbot"
+PID_PATH="/var/run"
+LOG_PATH="/var/log"
+ARGUS=""
+USER="www-data"
+GROUP="www-data"
+TIME=$(date +%Y%m%d%H%M%S)
+
+##### actions
+serv_start() {
+	start-stop-daemon --make-pidfile --quiet --oknodo --start --pidfile ${PID_PATH}/${PROG_NAME}.pid --chuid ${USER}:${GROUP} --exec ${EXEC_PATH} ${PROG_PATH}/${PROG} &
+	echo '......starting irclogbot'
+}
+
+serv_stop() {
+	start-stop-daemon --quiet --oknodo --stop --pidfile ${PID_PATH}/${PROG_NAME}.pid --chuid ${USER}:${GROUP} --exec ${EXEC_PATH} ${PROG_PATH}/${PROG}
+	echo '......stoping irclogbot'
+}
+
+##### check Python exist
+if [ ${EXEC_PATH} == "" ]; then
+	echo Error: Python is not installed. >&2
+	exit 1
+fi
+
+##### Check if uid is root
+if [ $(id -u) != "0" ]; then
+	echo This script should be ran as root! >&2
+	exit 1
+fi
+
+##### switch action
+case ${1} in
+	start)
+		serv_start
+		exit 0
+	;;
+	stop)
+		serv_stop
+		exit 0
+	;;
+	restart)
+		serv_stop
+		serv_start
+		exit 0
+	;;
+	**)
+		echo Usage: ${0} "{start|stop|restart}" >&2
+		exit 1
+	;;
+esac
