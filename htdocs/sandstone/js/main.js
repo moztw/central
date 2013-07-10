@@ -1,7 +1,7 @@
 'use strict';
 
 requirejs.config({
-  baseUrl: 'js',
+  baseUrl: '/sandstone/js',
   shim: {
     app: ['jquery']
   },
@@ -18,11 +18,15 @@ requirejs([
   'jquery',
   'layout/all',
   'module/all',
-  'app'
-], function ($, layout, module, app) {
+  'app',
+  'os_detector',
+  'ga'
+], function ($, layout, module, app, os_detector, google_analytics) {
   app.layout = layout;
   app.module = module;
   $(function () {
     app.init();
+    os_detector.init();
+    google_analytics.init();
   });
 });
