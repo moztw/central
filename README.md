@@ -50,6 +50,10 @@ Example of site configuration with SSI module enabled:
 Note that we're not running Nginx server online for now, you might encounter some problems,
 e.g., _.htaccess_ feature was not supported.
 
+## Coding Style
+* Please always use LF on line ending, and set 2/4 space characters as indent according to the original style of each files.
+* Please take [Mozilla Coding Style](https://developer.mozilla.org/en-US/docs/Mozilla_Coding_Style_Guide) as reference.
+
 ## Forum Installation
 
 ## Wiki Installation
