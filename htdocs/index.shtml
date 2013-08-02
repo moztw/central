@@ -12,6 +12,22 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.33) inset;
 }
 
+.front-feature #mobile_link {
+    background: url("/images/fox.png") no-repeat scroll right bottom transparent;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 595px;
+    height: 100%;
+    z-index: 200;
+    text-decoration: none;
+}
+
+.front-feature #mobile_link:hover, .front-feature #mobile_link:visited {
+    text-decoration: none;
+}
+
 #feature-content h2 {
     margin-bottom: 5px;
 }
@@ -20,22 +36,23 @@
     background-color: transparent;
 }
 
-.front-feature a.fx-link:hover img {
-    margin-top: -6px;
-    height: 90px;
-    width: 256px;
-    background-color: rgba(255,255,255,.2);
-    border-radius: 10px;
+.front-feature a.fx-link img {
+    border-radius: 35px;
 }
 
-.front-feature a.fx-link img {
-    border-radius: 10px;
+.front-feature a.fx-link:hover img {
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 86px;
+    margin-left: -10px;
+    margin-top: -6px;
+    padding: 5px 10px 0;
+    width: 230px;
 }
 
 #front-feature .download {
     padding: 12px 0 10px 15px !important;
     margin-bottom: 15px;
-/*    box-shadow: 0 0 3px #5F8FBE;*/
+    box-shadow: 0 0 3px #5F8FBE;
 }
 
 #front-feature .dl-mobile {
@@ -84,146 +101,152 @@
 	height: 64px;
 }
 
-#fxtw {
-    background: transparent;
-    display: block;
-    height: 300px;
-    position: absolute;
-    right: 0;
-    top: 40px;
-    width: 500px;
+.key-point {
+    background-color:#05a0dc;
+    background: url("/images/FFxOSDevs_BlueprintBG_PRINT.png") repeat 0px -10px, linear-gradient(rgb(15, 159, 219), rgb(0, 85, 160));
+    background: url("/images/FFxOSDevs_BlueprintBG_PRINT.png") repeat 0px -10px, -moz-linear-gradient(rgb(15, 159, 219), rgb(0, 85, 160));
+    background: url("/images/FFxOSDevs_BlueprintBG_PRINT.png") repeat 0px -10px, -o-linear-gradient(rgb(15, 159, 219), rgb(0, 85, 160));
+    background: url("/images/FFxOSDevs_BlueprintBG_PRINT.png") repeat 0px -10px, -webkit-linear-gradient(rgb(15, 159, 219), rgb(0, 85, 160));
+    border-bottom: none;
 }
 
-#fxtw:hover {
-    background: transparent;
-}
-#fxtw .frame {
-    position: absolute;
-    right: -50px;
-    top: 0;
-    z-index: 50;
+.homepage .download {
+    width: 250px;
 }
 
-#fxtw .frame img {
-    height: 255px;
-}
 
-#fxtw .title {
-    background-color: #0F9FDB;
-    background-image: -webkit-linear-gradient(top, #0F9FDB, #0055A0);
-    background-image: -ms-linear-gradient(top, #0F9FDB, #0055A0);
-    background-image: -o-linear-gradient(top, #0F9FDB, #0055A0);
-    background-image: linear-gradient(#0F9FDB, #0055A0);    
-    border-radius: 5px 5px 5px 5px;
-    bottom: -35px;
-    box-shadow: 3px -2px 10px rgba(0, 0, 0, 0.33);
-    color: white;
-    display: block;
-    font: bold 21px Helvetica,"Heiti TC","Apple LiGothic","微軟正黑體",Geneva,sans-serif;
-    left: 270px;
+#front-feature .mwc-box {
+    color: #FFFFFF;
+    left: 350px;
     letter-spacing: 0.1em;
-    opacity: 0.8;
-    overflow: visible;
-    padding: 7px 215px 55px 240px;
     position: absolute;
-    text-align: right;
-    text-shadow: 0 2px 5px black;
-    white-space: nowrap;
-    width: 255px;
-    z-index: 25;
-    transform: rotate(-10deg);
-    -webkit-transform: rotate(-10deg);
-    -ms-transform: rotate(-10deg);
-    -o-transform: rotate(-10deg);
-}
-#fxtw:hover .title {
-    left: 65px;
-    opacity: 1;
-    padding: 8px 215px 55px 15px;
-    transition: all 0.5s ease 0s;
-    -o-transition: all .5s;
-    -webkit-transition: all .5s;
+    text-shadow: 2px 1px 2px #185199;
+    top: 160px;
+    width: 425px;
 }
 
-#fxtw .title .mt {
+#fox-tail {
+    bottom: 200px;
+    position: absolute;
+    right: 268px;
+    width: 400px;
+}
+
+#front-feature .mwc-box h2 {
+    color: #FFFFFF;
+    font-family: "Helvetica","Heiti TC","LiHei Pro","微軟正黑體","WenQuanYi - Micro Hei","Arial",sans-serif;
+    font-size: 36px;
+    line-height: 1em;
+    margin-bottom: 0.5em;
+    position: absolute;
+    text-align: justify;
+}
+
+#front-feature .mwc-box h2 span {
     display: block;
-    font-size: 33px;
-    letter-spacing: 0.2em;
-    margin: 0 -0.2em 0 0;
-}
-#fxtw .title .fxeng {
-    letter-spacing: 0;
-}
-#fxtw > img {
-    border: 1px solid #AAAAAA;
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
-    height: 355px;
-    opacity: 0.33;
-    position: absolute;
-    right: -40px;
-    top: -40px;
-    transform: rotate(-10deg);
-    -o-transform: rotate(-10deg);
-    -webkit-transform: rotate(-10deg);
-    -ms-transform: rotate(-10deg);
-    -o-transition: all .5s;
-    -webkit-transition: all .5s;
-    transition: all .5s;    
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.5em;
+    margin-top: 0.5em;
 }
 
-#fxtw:hover > img {
-    opacity: 0.5;
-    filter: alpha(opacity=75);
+#front-feature .mwc-box .mwc-intro {
+    font-size: 22px;
+    line-height: 1.5em;
+    text-align: justify;
+    margin: 0 0 0.5em;
+    padding: 0;
+    position: absolute;
+    overflow: hidden;
+    letter-spacing: 0.1em;
 }
+
+#front-feature .mwc-box .mwc-intro .thunder {
+    font-size: 36px;
+    display: block;
+    margin-top: 0.3em;
+    margin-left: 1em;
+    font-style: italic;
+    letter-spacing: 0.3em;
+}
+
+/* Switch at hover */
+.mwc-intro {
+    display: none;
+}
+.mwc-box h2 {
+    display: block;
+}
+#front-feature:hover .mwc-box h2 {
+    display: none;
+}
+#front-feature:hover .mwc-box .mwc-intro {
+    display: block;
+}
+
 
 @media only screen and (max-width : 500px) {
     #front-feature #feature-content {
         display: none;
     }
     #front-feature {
-        padding-bottom: 260px;
+        background-size: 100%;
+        padding-bottom: 205px;
     }
-    #front-feature #fxtw {
-        top: 0;
+    #front-feature .mwc-box {
+        bottom: 10px;
+        left: 0;
+        width: 80%;
+    }
+    #front-feature .mwc-box h2 {
+        bottom: 0;
+        font-size: 28px;
+    }
+    #front-feature .mwc-box h2 span {
+        white-space: nowrap;
+        font-size: 20px;
+    }    
+    #front-feature:hover .mwc-box .mwc-intro {
+        bottom: 0;
+        display: block;
+        margin-bottom: 0;
         width: 100%;
     }
-    #front-feature #fxtw > img {
-        top: -30px;
-    }
-    #front-feature #fxtw .title {
-        left: auto;
-        opacity: 1;
-        padding-left: 250px;
-        padding-right: 40px;
-        padding-top: 3px;
-        right: -21px;
-        text-align: right;
-        top: 230px;
-        z-index: 55;
-    }
     
-}
+    #fox-tail { display: none; }
 
+    .front-feature #mobile_link {
+        background-position: right top;
+        background-size: 70%;
+        width: 100%;
+        height: 100%;
+    }    
+}
+   
 -->
 </style>
+<!--[if IE]>
+<style>
+    .key-point {
+        background-position-x: 344px;
+    }
+</style>
+<![endif]-->
 <!--[if lte IE 8]>
 <style>
 .frontcolumn {
     padding-right: 2%;
-    width: 31%;
 }
-</style>
-<![endif]-->
-<!--[if IE 6]>
-<style>
-#fxtw {
-    overflow: hidden;
-    cursor: pointer;
+#front-feature .download ul, #planets ul {
+    margin-left: 0;
 }
-#fxtw .title {
-    background-color: #0F9FDB;
-    left: 65px;
-    padding: 8px 215px 55px 15px;
+.front-feature #mobile_link {
+    height: 330px;
+    width: 70%;
+    z-index: 130;
+}
+#front-feature .mwc-box .mwc-intro {
+    display: none;
 }
 </style>
 <![endif]-->
@@ -232,14 +255,20 @@
 <!--#include virtual="/inc/class_homepage.html" -->
 <!--#include virtual="/inc/header.html" -->
 
-<div class="key-point front-feature" id="front-feature">
-  <a id="fxtw" href="/firefox/tw" title="Firefox台灣版大解密">
-      <p class="title">美商謀智台灣版 <span class="fxeng">Firefox</span> <span class="mt">大解密</span></p>
-      <div class="frame"><img src="foxmosa/images/30series/30foxmosa-16.gif"></div>
-      <img src="firefox/tw/screenshot/fxtw-twhomepage-home-small.png" alt="">
-  </a>
+<div class="key-point front-feature" id="front-feature">	
+
+  <div class="mwc-box">
+    <h2 class="webfont_10">狐塞雷！<span class="webfont_9">慶祝 Firefox OS 正式上市，<br>週末兩天限定活動。</span></h2>
+    <div class="mwc-intro">
+      <p class="webfont_9">立即登錄參加<br>一同在網路上打響<span class="thunder webfont_10">驚狐巨雷！</span></p>
+    </div>
+  </div>
+
+  <a id="mobile_link" href="http://bit.ly/moztw-fxos-thunderclap" target="_blank" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'fxos-thunderclap', 'Frontpage']);"></a>
+  
+
   <div id="feature-content">
-    <h2><a class="fx-link" href="/firefox/"><img src="images/logo-wordmark-mozilla-small.png" alt="Firefox" height="84" width="240"></a></h2>
+    <h2><a class="fx-link" href="/firefox/"><img src="images/firefox_logo-wordmark-horiz_RGB_480w.png" alt="Firefox" height="82" width="220"></a></h2>
     <div class="download dl-box">
 		<h3><a href="/firefox/" title="最好的瀏覽器"><strong class="downloadText">Firefox 正體中文版</strong></a></h3>
  		<div style='margin-top: 5px;'>
@@ -255,6 +284,8 @@
         </div>
     </div>
   </div>
+  
+  <img id="fox-tail" src="/images/fox-tail.png">
 </div>
 
 <div id="mBody">
@@ -275,7 +306,7 @@
   	<p>網路發展至今，人人都該具備在網路上創作的能力，Webmaker 計畫以各種簡單有趣的專案，讓大家嘗試混搭網頁、踏出網頁創作的第一步。</p>
   </div>-->
 <div class="frontcolumn">
-  <h2><a href="http://www.mozilla.org/firefox/partners/" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'mozilla.org/partner', 'Frontpage']);">Firefox OS<img src="/images/firefox-os-icon1small.png" alt=""  class="promo" style="width: 89px; height: 72px;"></a></h2>
+  <h2><a href="http://mozilla.com.tw/firefox/os/" target="_blank" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'mozilla.org/partner', 'Frontpage']);">Firefox OS<img src="/images/Pocketfox.png" alt=""  class="promo" style="width: 72px; height: 72px;"></a></h2>
   <p>完全使用 HTML5 與開放網路標準打造的開放行動平台，將帶領次世代數十億使用者連結網路。</p>
 </div>
 
@@ -327,8 +358,9 @@
 <!--          <li><a href="https://webmaker.org/" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'Webmaker', 'frontpage']);">Mozilla Webmaker</a></li>          -->
           <li><a href="http://mozlinks-zh.blogspot.com/" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'Mozilla Links', 'frontpage']);">Mozilla Links 正體中文版</a></li>
           <li><a href="http://gfx.tw/" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'gfx.tw', 'frontpage']);">gfx.tw 抓火狐</a></li>
+          <li><a href="/firefox/tw">Firefox 台灣版：深度介紹</a></li>
           <li><a href="http://forum.moztw.org/viewforum.php?f=2" onClick="_gaq.push(['_trackEvent', 'inGoing', 'Forum: Firefox', 'frontpage']);">Firefox 中文討論區</a></li>
-          <li><a href="http://forum.moztw.org/viewtopic.php?f=17&t=34697" onClick="_gaq.push(['_trackEvent', 'inGoing', 'Forum: dev-general-zh', 'frontpage']);">郵件群組：Mozilla 中文開發者社群</a></li>
+<!--          <li><a href="http://forum.moztw.org/viewtopic.php?f=17&t=34697" onClick="_gaq.push(['_trackEvent', 'inGoing', 'Forum: dev-general-zh', 'frontpage']);">郵件群組：Mozilla 中文開發者社群</a></li>-->
           <li><a href="http://www.mozilla.com/zh-TW/firefox/channel/" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'Firefox Mozilla - Channel', 'frontpage']);">Firefox 未來發行版本</a></li>
           <li><a href="/firefox/extension_top_15/">社群嚴選：擴充套件 Top 15</a></li>
           <li><a href="/twoffice/">Mozilla Taiwan 公司徵人啟事</a></li>
@@ -336,8 +368,7 @@
     </div>
   </div>
   </div>
-<script type="text/javascript" 
-src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
 /*
  * jGFeed 1.0 - Google Feed API abstraction plugin for jQuery
@@ -387,4 +418,37 @@ $('#news_columns').removeClass('frontcolumndouble').addClass('frontcolumn').afte
 	);
 })(jQuery);
 </script>
-<!--#include virtual="/inc/footer.html" -->
+
+<script type='text/javascript' src='http://moztw-arphic.cloudapp.net/FontSubsetOutput/WebFontApi-AACAE9FCA1494d66B9BF53196F0992E1/WebFontApi-AACAE9FCA1494d66B9BF53196F0992E1.JS?9395323985'></script>
+<script>
+function getTxtResultObject() {
+    var obj = document.getElementById("txtResult");
+    return obj;
+}
+function serverResponseCallback(resultArray) {
+    var obj = getTxtResultObject();
+    obj.value = resultArray;
+}
+arphicWebFontApi.ready = function() {
+    // setup webfont selectors 
+    var selectorFontNameArray =
+    [
+        { selectorName: ".webfont_1", fontName: "文鼎W圓體B" },
+        { selectorName: ".webfont_2", fontName: "文鼎W圓體M" },
+        { selectorName: ".webfont_3", fontName: "文鼎W俏黑體E" },
+        { selectorName: ".webfont_4", fontName: "文鼎W甜妞體H" },
+        { selectorName: ".webfont_5", fontName: "文鼎W鋼筆行楷M" },
+        { selectorName: ".webfont_6", fontName: "文鼎W簽字筆體E" },
+        { selectorName: ".webfont_7", fontName: "文鼎W仿宋M" },
+        { selectorName: ".webfont_8", fontName: "文鼎W書苑黑體B" },
+        { selectorName: ".webfont_9", fontName: "文鼎WUD書苑黑體M" },
+        { selectorName: ".webfont_10", fontName: "文鼎W顏楷H" }
+    ];
+    if (!window.arphicWebFontApi) return;    
+    arphicWebFontApi.loadWebFont(selectorFontNameArray, serverResponseCallback);
+    // if u needn't callback function, you can do this way
+    //arphicWebFontApi.loadWebFont(selectorFontNameArray);
+}
+</script>
+
+<!--#include virtual="/inc/footer_arphic_webfont.html" -->

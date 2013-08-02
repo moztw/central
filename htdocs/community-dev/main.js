@@ -1,8 +1,7 @@
-/*jslint browser: true, regexp: true, nomen: true */
-/*global alert */
+/*jslint browser: true*/
 
 (function (window) {
-	'use strict';
+	"use strict";
 	
 	var body,
 	    newsRenderer,
@@ -10,18 +9,18 @@
 	
 	body = window.document.getElementsByTagName('body');
 	body = body[0];
-
+    
 	rssScript = window.document.createElement('script');
 	rssScript.src = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://groups.google.com/group/moztw-general/feed/atom_v1_0_msgs.xml&callback=newsRenderer&scoring=h&num=20";
-	
+    
 	body.appendChild(rssScript);
-
+    
 	newsRenderer = function (data) {
 		if (data.responseStatus !== 200) {
 			return;
 		}
 		data = data.responseData.feed.entries;
-
+        
 		var news = window.document.getElementById('moztw-general-news'),
 		    counter = 0,
 		    content = '',
@@ -42,10 +41,10 @@
 					date: undefined
 				};
 			}
-
+            
 			current.link = val.link;
 			current.date = new Date(val.publishedDate);
-
+            
 			current.authors.push(val.author.replace(/\@([\w.]+)/, ''));
 		});
 		
@@ -55,7 +54,7 @@
 					break;
 				}
 				counter += 1;
-
+                
 				current = thread[i];
 				tmp = '<li>';
 				tmp += '<p>' + (current.date.getMonth() + 1) + '/' + current.date.getDate() + ' ' + current.date.getHours() + ':' + current.date.getMinutes() + '<br />';
@@ -65,9 +64,9 @@
 				if (current.authors.length > 3) {
 					tmp += ' 等' + (current.authors.length - 3) + '篇';
 				}
-
+                
 				tmp += '</p>';
-
+                
 				content += tmp;
 			}
 		}
@@ -76,11 +75,10 @@
 		btn.innerHTML = '訂閱！';
 		btn.setAttribute('href', '#mailinglist');
 		btn.setAttribute('class', 'btnfollowus');
-		//console.log(btn);
 		news.appendChild(btn);
-
+        
 		form = document.getElementById('mailinglist');
-
+        
 		btn.addEventListener('click', function (e) {
 			setTimeout(function () {
 				form.style.border = '1px #F60 solid';
@@ -97,7 +95,7 @@
 			return false;
 		});
 	};
-
+    
 	window.newsRenderer = newsRenderer;
-
+    
 }(this));
