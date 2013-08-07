@@ -1,5 +1,5 @@
 <!--#include virtual="/inc/meta.html" -->
-<title>Mozilla Firefox 22.0 版本資訊</title>
+<title>Mozilla Firefox 23.0 版本資訊</title>
 <style type="text/css">
 <!--
 #product-desc p {
@@ -214,8 +214,8 @@ section .appendix {
       <div class="key-point">
         <div id="product-desc" class="firefox-releasenotes-v4">
           <p id="release-date">
-            <time datetime="2013-06-25">2013 年 6 月 25 日</time>
-             v.22.0
+            <time datetime="2013-08-07">2013 年 8 月 7 日</time>
+             v.23.0
           </p>
           <p>此版本資訊包含了<a href="#whatsnew">Firefox 新鮮事</a>、<a href="#knownissues">已知問題</a>、<a href="#downloadandinstall">下載安裝指示</a>、以及<a href="#FAQ">常見問題</a>等訊息。</p>
 
@@ -232,67 +232,79 @@ section .appendix {
                     <ul>
                       <li>
                         <span class="tag tag-new">全新功能</span>
-                        <h5>Windows: 在高解析度顯示裝置上，Firefox 會隨系統縮放設定顯示較大的文字。</h5>
+                        <h5>阻擋可能不安全的混合內容，保護使用者免於中間人攻擊或利用 HTTPS 的頁面監聽（<a href="https://blog.mozilla.org/security/2013/05/16/mixed-content-blocking-in-firefox-aurora/">了解更多</a>）。</h5>
                       </li>
                       <li>
                         <span class="tag tag-new">全新功能</span>
-                        <h5>WebRTC 現在<a href="http://blog.mozilla.org/futurereleases/2013/05/16/firefox-beta-now-includes-webrtc-on-by-default">預設就是啟用的</a>！</h5>
-                      </li>
-                      <li>
-                        <span class="tag tag-new">全新功能</span>
-                        <h5>Mac OS X: 下載進度會顯示於 Dock 應用程式圖示上。</h5>
-                      </li>
-                      <li>
-                        <span class="tag tag-new">全新功能</span>
-                        <h5>可以變更 HTML5 audio/video 的播放速度。</h5>
-                      </li>
-                      <li>
-                        <span class="tag tag-new">全新功能</span>
-                        <h5>附加元件管理員中實作了社交服務的管理功能。</h5>
-                      </li>
-                      <li>
-                        <span class="tag tag-new">全新功能</span>
-                        <h5>啟用 asm.js 最佳化功能（<a href="https://blog.mozilla.org/luke/2013/03/21/asm-js-in-firefox-nightly/">OdinMonkey</a>）而達到重大效能改善。</h5>
+                        <h5>開發者工具箱新增選項面板。</h5>
                       </li>
                       <li>
                         <span class="tag tag-changed">變更</span>
-                        <h5>藉由<a href="https://bugzilla.mozilla.org/buglist.cgi?quicksearch=829747">非同步 canvas 更新</a>改善 WebGL 描繪效能。</h5>
+                        <h5>移除「啟用 JavaScript」選項，並將既存的設定重設為預設值。</h5>
                       </li>
                       <li>
                         <span class="tag tag-changed">變更</span>
-                        <h5>在 Firefox 中顯示的純文字檔案，現在會 word-wrap（折行）顯示。</h5>
+                        <h5>更新 Firefox 圖示。</h5>
                       </li>
                       <li>
                         <span class="tag tag-changed">變更</span>
-                        <h5>安全性考量，web 內容不再能夠存取 |Components| 物件。</h5>
+                        <h5>改善 about:memory 使用者介面。</h5>
                       </li>
                       <li>
                         <span class="tag tag-changed">變更</span>
-                        <h5>即使不在全螢幕中，仍可使用 Pointer Lock API。</h5>
+                        <h5>簡化安裝外掛程式的通知介面。</h5>
+                      </li>
+                      <li>
+                        <span class="tag tag-changed">變更</span>
+                        <h5>於 Windows Vista 以上啟用 DXVA2 以加速 H.264 影片解碼。</h5>
+                      </li>
+                      <li>
+                        <span class="tag tag-changed">變更</span>
+                        <h5>切換到新的搜尋引擎時，整個瀏覽器都會使用該搜尋引擎。</h5>
+                      </li>
+                      <li>
+                        <span class="tag tag-changed">變更</span>
+                        <h5>強制使用符合標準文法及語義的 CSP (Content Security Policy) 政策。</h5>
+                      </li>
+                      <li>
+                        <span class="tag tag-changed">變更</span>
+                        <h5>強化 &lt;input type='file'&gt; 顯示（<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=838675">bug 838675</a>）。</h5>
+                      </li>
+                      <li>
+                        <span class="tag tag-changed">變更</span>
+                        <h5>改用 Speex 重新取樣器取代 webrtc.org 的固定比率聲音取樣器，並淘汰虛擬 44000Hz 頻率。</h5>
+                      </li>
+                      <li>
+                        <span class="tag tag-changed">變更</span>
+                        <h5>移除「自動載入圖片」和「總是顯示分頁工具列」選項，並將設定重設為預設值。</h5>
                       </li>
                       <li>
                         <span class="tag tag-developer">開發功能</span>
-                        <h5>實作 <a href="https://developer.mozilla.org/en-US/docs/CSS/Using_CSS_flexible_boxes?redirectlocale=en-US&redirectslug=CSS%2FFlexbox">CSS3 Flexbox</a>，且預設就是啟用的。</h5>
+                        <h5>實作 HTML5 &lt;input type="range"&gt; 表單控制。</h5>
                       </li>
                       <li>
                         <span class="tag tag-developer">開發功能</span>
-                        <h5>實作了新的 Web Notifications API。</h5>
+                        <h5>可在按鈕上使用新的 ARIA role，撰寫對觸控介面更具親和力的網頁。</h5>
                       </li>
                       <li>
                         <span class="tag tag-developer">開發功能</span>
-                        <h5>新增 clipboardData API，讓 JavaScript 得以存取使用者剪貼簿。</h5>
+                        <h5>社交分享功能。</h5>
                       </li>
                       <li>
                         <span class="tag tag-developer">開發功能</span>
-                        <h5>內建新的字型檢測器。</h5>
+                        <h5>增加不需 prefix 的 requestAnimationFrame。</h5>
                       </li>
                       <li>
-                        <span class="tag tag-html5">HTML5</span>
-                        <h5>支援新的 HTML5 <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=839371">&lt;data&gt;</a> 和 <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=629801">&lt;time&gt;</a> 元素。</h5>
+                        <span class="tag tag-developer">開發功能</span>
+                        <h5>實作了全域的瀏覽器主控台。</h5>
                       </li>
                       <li>
-                        <span class="tag tag-fixed">修正</span>
-                        <h5>部分支援高解析度捲動的觸控板，捲動時會感到遲鈍（<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=829952">bug 829952</a>）。</h5>
+                        <span class="tag tag-developer">開發功能</span>
+                        <h5><blink>取消閃爍效果，含 text-decoration: blink，並完全移除 &lt;blink&gt; 元素</blink>。</h5>
+                      </li>
+                      <li>
+                        <span class="tag tag-developer">開發功能</span>
+                        <h5>工具箱新功能：<a href="https://hacks.mozilla.org/2013/05/firefox-developer-tool-features-for-firefox-23/">網路監測器</a>。</h5>
                       </li>
                       <li>
                         <span class="tag tag-fixed">修正</span>
@@ -300,8 +312,8 @@ section .appendix {
                       </li>
 
                       <li class="complete">
-                        請參考此版本的<a href="https://bugzilla.mozilla.org/buglist.cgi?bug_status=RESOLVED&bug_status=VERIFIED&bug_status=CLOSED&f1=target_milestone&f2=cf_status_firefox22&o1=anywords&o2=anywords&resolution=FIXED&v1=mozilla22%2C%20Firefox%2022&v2=fixed%2Cverified&order=bug_id&limit=0">完整變更清單</a>。
-                        您可能也想瞭解<a href="/firefox/releases/21.0/">前一個版本的更新</a>。
+                        請參考此版本的<a href="https://bugzilla.mozilla.org/buglist.cgi?bug_status=RESOLVED&bug_status=VERIFIED&bug_status=CLOSED&f1=target_milestone&f2=cf_status_firefox23&o1=anywords&o2=anywords&resolution=FIXED&v1=mozilla23%2C%20Firefox%2023&v2=fixed%2Cverified&order=bug_id&limit=0">完整變更清單</a>。
+                        您可能也想瞭解<a href="/firefox/releases/22.0/">前一個版本的更新</a>。
                       </li>
                     </ul>
                 </div>
@@ -315,6 +327,12 @@ section .appendix {
                       <span class="tag tag-unresolved">尚未修復</span>
                       <h5>
                         以被鎖定的個人設定檔重新啟動 Firefox 時，程式會當掉（<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=573369">bug 573369</a>）。
+                      </h5>
+                    </li>
+                    <li>
+                      <span class="tag tag-unresolved">尚未修復</span>
+                      <h5>
+                        全螢幕播放 flash 影片時，將 Firefox 移至背景，再度取回時會使程式涷結（<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=809055">bug 809055</a>）。
                       </h5>
                     </li>
                   </ul>
