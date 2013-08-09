@@ -1,0 +1,107 @@
+<!--#include virtual="/sandstone/meta.shtml" -->
+  <title>Sandstone</title>
+<!--#include virtual="/inc/class_homepage.html" -->
+<!--#include virtual="/sandstone/header.shtml" -->
+
+  <hgroup id="main-feature" class="container block">
+    <h1>MozTW</h1>
+    <h2>Doing good is part of our code</h2>
+  </hgroup>
+
+  <section class="container block">
+    <h2 class="block-title hide">標題</h2>
+    <div class="key-point module">
+      <div class="key-point-inner">
+        <!-- slider start -->
+        <div class="slider key-point-slider">
+          <section class="slider-section show" data-background="http://www.mozillabolivia.org/wp-content/uploads/2012/06/promo-beta.jpg">
+            <h3 class="slider-section-title">Title 1</h3>
+            <div class="slider-section-description">
+              <p>asd a dsa sda dsasda sdasd asd asda as dasdas dasd</p>
+            </div>
+          </section>
+          <section class="slider-section" data-background="http://www.mozillabolivia.org/wp-content/uploads/2012/06/promo-affiliates.jpg">
+            <h3 class="slider-section-title">Title 2</h3>
+            <div class="slider-section-description">
+              <p>asd a dsa sda dsasda sdasd asd asda as dasdas dasd</p>
+            </div>
+          </section>
+        </div>
+        <!-- slider end -->
+      </div>
+    </div>
+  </section>
+
+  <section class="container block">
+    <h2 class="block-title hide">標題</h2>
+    <div class="grids">
+      <div class="grid-4">
+        <article class="module">
+          <h3><a href="http://moztw.org/thunderbird/">Thunderbird</a></h3>
+          <p><a href="http://moztw.org/thunderbird/">Thunderbird</a> 電子郵件軟體全新登場，帶來分頁、威力倍增的搜索及郵件備存功能，並提供您個人專屬的郵件體驗。</p>
+        </article>
+      </div>
+      <div class="grid-4">
+        <article class="module">
+          <h3><a href="http://www.mozilla.org/firefox/partners/">Firefox OS</a></h3>
+          <p>完全使用 HTML5 與開放網路標準打造的開放行動平台，將帶領次世代數十億使用者連結網路。</p>
+        </article>
+      </div>
+      <div class="grid-4">
+        <article class="module">
+          <h3><a href="http://moztw.org/contribute/">參與我們</a></h3>
+              <p>我們想要讓網路變得更好。歡迎<a href="http://moztw.org/contribute/">參與我們的任務</a>，成為推廣網路自由的一份子！ </p>
+              <p><a href="https://groups.google.com/group/moztw-general">MozTW 社群郵件群組</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="container block page-home-foxmosa">
+    <div class="module no-padding">
+      <div class="grids">
+        <div class="grid-3 page-home-foxmosa-say">
+          <div class="padding-10">
+            <h2 class="block-title">小莎說：</h2>
+          </div>
+        </div>
+        <div class="grid-7 page-home-foxmosa-feed">
+          <div id="page-home-foxmosa-feed-container">
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="padding-10 page-home-foxmosa-sns">
+            <a href=""><i class="icon-google-plus-sign icon-2 text-color-plus"></i></a>
+            <a href=""><i class="icon-tumblr-sign icon-2 text-color-tumblr"></i></a>
+            <a href=""><i class="icon-facebook-sign icon-2 text-color-facebook"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container block">
+    <h2 class="block-title hide">標題</h2>
+    <div class="grids">
+      <div class="grid-4">
+        <section class="module">
+          <h3>最新消息與公告</h3>
+          <ul class="list feed" data-feed="http://moztw.org/xmlnews.rdf">
+          </ul>
+        </section>
+      </div>
+      <div class="grid-4">
+        <section class="module">
+          <h3>摩茲工寮</h3>
+          <ul class="list feed" data-feed="http://planet.moztw.org/atom.xml">
+          </ul>
+        </section>
+      </div>
+      <div class="grid-4">
+        <section class="module">
+        </section>
+      </div>
+    </div>
+  </section>
+
+<!--#include virtual="/sandstone/footer.shtml" -->
