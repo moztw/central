@@ -4,13 +4,45 @@
 <style type="text/css">
 <!--
 #product-desc.product-thunderbird {
-	background: transparent url(images/product-thunderbird-screen.png) no-repeat scroll 0 0;
-	padding: 40px 0 60px;
+   background: transparent url(images/product-thunderbird-screen.png) no-repeat scroll 0 0;
+   padding: 40px 0 60px;
 }
 #product-desc.product-thunderbird p {
-	padding-left:177px;
-	padding-top:7px;
+   padding-left: 177px;
+   padding-top: 47px;
 }
+.key-point {
+   padding: 15px 15px;
+   height: auto;
+}
+.download:before {
+   height: 50px;
+   width: 50px;
+   display: block;
+   border: none;
+   position:absolute;
+   top:-3px;
+   right:0px;
+   background: transparent url("../../images/download_back_arrow.png") top right no-repeat;
+   content: '';
+}
+.download {
+   position:relative;
+   background-color: #C4EFA1;
+   padding: 15px 45px 15px 15px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+   border-bottom:1px solid #AED48F;
+   border-right:1px solid #B6DE96;
+}
+.download > h3 {
+   color: #1D9101;
+   font-weight: bold;
+   margin: 0;
+   font-size: 140%;
+}
+
 .right {
    float: right;
    margin-left: 75px;
@@ -20,6 +52,7 @@
 }
 div[class^=grid-] > p {
    margin-bottom: 8px;
+   padding-right: 20px;
 }
 -->
 </style>
@@ -27,21 +60,25 @@ div[class^=grid-] > p {
 <!--#include virtual="/sandstone/header.shtml" -->
 
 <section class="container block">
-<div class="key-point">
-    <div id="product-desc" class="product-thunderbird">
-      <h2 class="block-title hide">Thunderbird: 以你為本的郵件體驗，讓收發電子郵件變得更簡單</h2>
-      <p>Thunderbird 有分頁標籤、威力倍增的搜索及郵件備存功能，並提供您個人專屬的郵件體驗。</p>
-    </div>
-    <div id="product-side">
-	<div class="download">
-	    <h3>免費下載 Thunderbird</h3><!--#include virtual="/inc/dltb.html" -->
-	</div>
-    	<ul>
-	    <li><a href="system-requirements/">系統需求</a></li>
-	    <li><a href="releases/">版本資訊</a></li>
-   	</ul>
+   <div class="key-point">
+      <div class="grids">
+         <div class="grid-7">
+             <div id="product-desc" class="product-thunderbird">
+               <h2 class="block-title hide">Thunderbird: 以你為本的郵件體驗，讓收發電子郵件變得更簡單</h2>
+               <p>Thunderbird 有分頁標籤、威力倍增的搜索及郵件備存功能，並提供您個人專屬的郵件體驗。</p>
+             </div>
+         </div>
+         <div class="grid-4">
+            <div class="download">
+                <h3>免費下載 Thunderbird</h3><!--#include virtual="/inc/dltb.html" -->
+            </div>
+            <ul>
+                <li><a href="system-requirements/">系統需求</a></li>
+                <li><a href="releases/">版本資訊</a></li>
+            </ul>
+         </div>
+      </div>
    </div>
-</div>
 </section>
 
 <section class="container block">
@@ -244,19 +281,19 @@ div[class^=grid-] > p {
 </section>
 
 <div id="side" class="right">
-	<h3>資源與鏈結</h3>
-	<ul class="compact">
-<!--		<li><img src="images/gmail-favicon.ico" alt="">&nbsp;<a href="http://blog.bobchao.net/2009/12/thunderbird-3-google.html">GMail 用戶請注意 IMAP 相關設定</a>（柏強 Blog）</li>-->
-		<li><a href="http://forum.moztw.org/viewforum.php?f=9">MozTW Thunderbird 中文討論區</a></li>
-		<li><a href="https://addons.mozilla.org/thunderbird/" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'Mozilla', 'AMO-tb']);">取得 Thunderbird 附加元件</a></li>
-		<li><a href="https://addons.mozilla.org/thunderbird/personas/" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'Mozilla', 'AMO-tb-personas']);">取得個性面板</a></li>
-		<li><a href="http://support.mozillamessaging.com/" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'Mozilla', 'SUMOMO']);">Thunderbird 補助說明</a></li>
-	</ul>
-	
-	<a style="text-decoration: none;" href="http://www.facebook.com/groups/thunderbirdfans.tw/" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'Facebook-thunderbirdfanstw', 'thunderbird']);">
-    	<h3><img src="/images/foxmosa-mail-01.jpg" alt="" style="margin-left: -15px;"></h3>
-	    <span style="font-size: 120%;">Thunderbird 愛好者俱樂部</span>
-	</a>
+   <h3>資源與鏈結</h3>
+   <ul class="compact">
+<!--     <li><img src="images/gmail-favicon.ico" alt="">&nbsp;<a href="http://blog.bobchao.net/2009/12/thunderbird-3-google.html">GMail 用戶請注意 IMAP 相關設定</a>（柏強 Blog）</li>-->
+      <li><a href="http://forum.moztw.org/viewforum.php?f=9">MozTW Thunderbird 中文討論區</a></li>
+      <li><a href="https://addons.mozilla.org/thunderbird/" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'Mozilla', 'AMO-tb']);">取得 Thunderbird 附加元件</a></li>
+      <li><a href="https://addons.mozilla.org/thunderbird/personas/" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'Mozilla', 'AMO-tb-personas']);">取得個性面板</a></li>
+      <li><a href="http://support.mozillamessaging.com/" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'Mozilla', 'SUMOMO']);">Thunderbird 補助說明</a></li>
+   </ul>
+   
+   <a style="text-decoration: none;" href="http://www.facebook.com/groups/thunderbirdfans.tw/" onClick="_gaq.push(['_trackEvent', 'Outgoing', 'Facebook-thunderbirdfanstw', 'thunderbird']);">
+      <h3><img src="/images/foxmosa-mail-01.jpg" alt="" style="margin-left: -15px;"></h3>
+       <span style="font-size: 120%;">Thunderbird 愛好者俱樂部</span>
+   </a>
 </div>
 
 <!--#include virtual="/sandstone/footer.shtml" -->
