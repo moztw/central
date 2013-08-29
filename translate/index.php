@@ -24,19 +24,24 @@
 	<ul>
 		<li>若您想要知道目前各程式的正體中文語系在 Mozilla repository 當中的狀態</li>
 	</ul>
+	<!-- DEPRECATED
 	<p>請前往 <a href="https://l10n.mozilla.org/webby/">Webby</a></p>
 	<ul>
 		<li>若您想要知道目前有哪些語系已經加入某個網頁專案，以及各專案的狀態</li>
 		<li>各網頁專案的 repo/stage 等基礎資訊</li>
-	</ul>
+	</ul>-->
 	<p>請前往 <a href="http://tinderbox.mozilla.org/showbuilds.cgi?tree=Mozilla-l10n-zh-TW">tinderbox</a></p>
 	<ul>
 		<li>若您想要知道 l10n repository 目前的編譯狀態</li>
 	</ul>
 	<p>請前往 <a href="https://localize.mozilla.org/zh_TW/">Mozilla Verbatim</a></p>
 	<ul>
-		<li>若您想要知道目前已經加入的網頁專案（配合 Webby）</li>
+		<li>若您想要知道目前已經加入的網頁專案</li>
 		<li>送出各維護中專案的字串翻譯建議</li>
+	</ul>
+    <p>請前往 <a href="http://l10n.mozilla-community.org/~pascalc/langchecker/?locale=zh-TW">Lang format file checker</a></p>
+	<ul>
+		<li>若您想要知道 Snippet (.Lang) 格式字串檔的翻譯狀況</li>
 	</ul>
 	<p>第三方工具</p>
 	<ul>
